@@ -1,26 +1,45 @@
 {
-	"parentResources": [ // the list of reference parent shared resource bundles, as expandable URLs
+	"parentResources": [ // the list of reference parent shared resource bundles, as expandable, node-relative URLs
 		{
-			"href":"http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/5/shared"
+			"href":"../5/shared"
 		}, 
 		{
-			"href":"http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/0/shared"
+			"href":"../0/shared"
 		}
 	], 
 	"sharedResources": [
-		{ // 3WS-Style Material definition
-			"type": "MaterialDefinition",
+		{ 
+			"type": "MaterialDefinition", // options: MaterialDefinition, ShaderDefinition, ShaderReference (indicating a specific, client-built-in-shader)
 			"id": "Mat01", // a generated ID, unique within the node.
 			"name": "TerrainMaterial_Topobasemap",
 			"parameters" : {
 				"vertexColors" : false,
 				"transparent" : false,
-				"map" : {
+				"maps" : {
 					"encoding" : "data:image/jpeg",
 					"wrap" : ["repeat","repeat"],
-					"inTextureBundle": { 
-						"href": "http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/textures/3"
-					}
+					"images" [
+						{
+							"size": 2048,
+							"href": "./textures/0"
+						},
+						{
+							"size": 1024,
+							"href": "./textures/1"
+						},
+						{
+							"size": 512,
+							"href": "./textures/2"
+						},
+						{
+							"size": 256,
+							"href": "./textures/3"
+						},
+						{
+							"size": 128,
+							"href": "./textures/4"
+						}
+					]
 				},
 				"reflectivity" : 0,
 				"transparency" : 1,
@@ -29,7 +48,7 @@
 				"specular" : "0x000000",
 				"shininess" : 1,
 				"renderMode": "solid", // options: solid, untextured, wireframe
-				"type" : "lambert" // options: 
+				"type" : "lambert" // options: ?
 			}
 		},
 		{ // 3WS-Style Material definition

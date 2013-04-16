@@ -3,27 +3,27 @@
 		{ // a normal feature using a unique geometry
 			"id": 309432971018, // id is a long value.
 			"mbb": [1222178.283, 83371.902, 54758.098, 2242.100, 34.155, 29.821], // the mbb refines the mbs information that the client already has from the NodeIndexDocument.
-			"classname": "Building", 
-			"geometries": [ // one Feature can have multiple geometries
+			"classname": "Building", // links this feature to a defined layer.
+			"geometries": [ // Geometry defintion including materials; note thath one Feature can have multiple geometries
 				{
 					"type": "triangles", // types are: triangles, lines, points (i.e. GL render primitives)
 					"components": [ // a single geometry can have multiple components if different materials are used (i.e. glass for windows, brick texture for walls, ...)
 						{
 							"id": 0, // geometry component ID; only locally valid.
 							"material": {
-								"href": "http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/shared#Mat01", // fully qualified URL to access the material.
+								"href": "./shared#Mat01", // node-relative URL to access the material. Uses an anchor to define the actual material in the shared resources bundle.
 							}
 						},
 						{
 							"id": 1,
 							"material": {
-								"href": "http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/shared#Mat02",
+								"href": "./51/shared#Mat02", // node-relative URL to access the material. Uses an anchor to define the actual material in the shared resources bundle.
 							}
 						},
 						{
 							"id": 2,
 							"material": {
-								"href": "http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/shared#Mat03",
+								"href": "./51/shared#Mat03", // node-relative URL to access the material. Uses an anchor to define the actual material in the shared resources bundle.
 							}
 						}
 					],

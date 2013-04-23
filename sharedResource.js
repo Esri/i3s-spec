@@ -16,28 +16,43 @@
 				"vertexColors" : false,
 				"transparent" : false,
 				"maps" : {
-					"encoding" : "data:image/jpeg",
+					"encoding" : "data:image/jpeg", // the encoding/content type that is used by all images in this map. 
 					"wrap" : ["repeat","repeat"],
-					"images" [
+					"images": [ // an array of images that represent the same content in different resolutions.
 						{
-							"size": 2048,
-							"href": "./textures/0"
+							"size": 2048, // x size of this image.
+							"pixelInWorldUnits": 0.211, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+							"href": "./textures/0_0", // href to the block in which this texture image resides.
+							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+							"length": 245631 // length in bytes of this image.
 						},
 						{
-							"size": 1024,
-							"href": "./textures/1"
+							"size": 1024, // x size of this image.
+							"pixelInWorldUnits": 0.422, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+							"href": "./textures/0_1", // href to the block in which this texture image resides.
+							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+							"length": 245631 // length in bytes of this image.
 						},
 						{
-							"size": 512,
-							"href": "./textures/2"
+							"size": 512, // x size of this image.
+							"pixelInWorldUnits": 0.844, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+							"href": "./textures/0_2", // href to the block in which this texture image resides.
+							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+							"length": 245631 // length in bytes of this image.
 						},
 						{
-							"size": 256,
-							"href": "./textures/3"
+							"size": 256, // x size of this image.
+							"pixelInWorldUnits": 1.688, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+							"href": "./textures/0_3", // href to the block in which this texture image resides.
+							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+							"length": 245631 // length in bytes of this image.
 						},
 						{
-							"size": 128,
-							"href": "./textures/4"
+							"size": 128, // x size of this image.
+							"pixelInWorldUnits": 3.376, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+							"href": "./textures/0_4", // href to the block in which this texture image resides.
+							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+							"length": 245631 // length in bytes of this image.
 						}
 					]
 				},

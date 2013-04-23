@@ -10,17 +10,17 @@
 					"components": [ // a single geometry can have multiple components if different materials are used (i.e. glass for windows, brick texture for walls, ...)
 						{
 							"material": {
-								"href": "./shared#Mat01", // node-relative URL to access the material. Uses an anchor to define the actual material in the shared resources bundle.
+								"id": "Mat01", // ID of the Material, as defined in the shared resources bundle
 							}
 						},
 						{
 							"material": {
-								"href": "./51/shared#Mat02", // node-relative URL to access the material. Uses an anchor to define the actual material in the shared resources bundle.
+								"id": "Mat02", // ID of the Material, as defined in the shared resources bundle
 							}
 						},
 						{
 							"material": {
-								"href": "./51/shared#Mat03", // node-relative URL to access the material. Uses an anchor to define the actual material in the shared resources bundle.
+								"id": "Mat03", // ID of the Material, as defined in the shared resources bundle
 							}
 						}
 					],

@@ -24,78 +24,58 @@
 							}
 						}
 					],
-					"vertexAttributes": [ // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
-						{
-							"name": "position", // the name of the vertex attribute; here: vertex positions
-							"data": {
-								"byteOffset": 254976, // the starting byte position where the required bytes begin.
-								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-								"valueType": "Float32", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-								"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
-							}
+					"vertexAttributes": { // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
+						"position": { // the name of the vertex attribute; here: vertex positions
+							"byteOffset": 254976, // the starting byte position where the required bytes begin.
+							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+							"valueType": "Float32", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+							"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
 						},
-						{
-							"name": "normal", // the name of the vertex attribute; here: vertex normals
-							"data": {
-								"byteOffset": 259116, // the starting byte position where the required bytes begin.
-								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-								"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-								"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a normal vector)
-							}
+						"normal": { // the name of the vertex attribute; here: vertex normals
+							"byteOffset": 259116, // the starting byte position where the required bytes begin.
+							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+							"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+							"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a normal vector)
 						},
-						{
-							"name": "uv0", // the name of the vertex attribute; here: 1st texture coordinates
-							"data": {
-								"byteOffset": 260496, // the starting byte position where the required bytes begin.
-								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-								"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-								"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
-							}
+						"uv0": { // the name of the vertex attribute; here: 1st texture coordinates
+							"byteOffset": 260496, // the starting byte position where the required bytes begin.
+							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+							"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+							"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
 						},
-						{
-							"name": "classification", // the name of the vertex attribute; here: vertex classification/colors
-							"data": {
-								"byteOffset": 261876, // the starting byte position where the required bytes begin.
-								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-								"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-								"valuesPerElement": 3 // number of (UInt8) values need to make a valid element (here a RGB intensity)
-							}
+						"classification": { // the name of the vertex attribute; here: vertex classification/colors
+							"byteOffset": 261876, // the starting byte position where the required bytes begin.
+							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+							"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+							"valuesPerElement": 3 // number of (UInt8) values need to make a valid element (here a RGB intensity)
 						}
-					],
-					"faces": [ // indices for positions, normals, texture coordinates to build faces. This is an open list.
-						{
-							"name": "position",
-							"data": {
-								"byteOffset": 165349,
-								"count": 345,
-								"valueType": "Int16",
-								"valuesPerElement": 1
-							},
+					},
+					"faces": { // indices for positions, normals, texture coordinates to build faces. This is an open list.
+						"position": {
+							"byteOffset": 165349,
+							"count": 345,
+							"valueType": "Int16",
+							"valuesPerElement": 1
 							"componentIndices": [ // array index where the component starts.
 								0,
 								36,
 								246
 							]
 						},
-						{
-							"name": "normal",
-							"data": {
-								"byteOffset": 165349,
-								"count": 345,
-								"valueType": "Int16",
-								"valuesPerElement": 1
-							}
+						"name": "normal",
+						"normal": {
+							"byteOffset": 165349,
+							"count": 345,
+							"valueType": "Int16",
+							"valuesPerElement": 1
 						},
-						{
-							"name": "uv0",
-							"data": {
-								"byteOffset": 165349,
-								"count": 345,
-								"valueType": "Int16",
-								"valuesPerElement": 1
-							}
+						"uv0": {
+							"byteOffset": 165349,
+							"count": 345,
+							"valueType": "Int16",
+							"valuesPerElement": 1
 						}
-					],
+					},
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 				}
 			],

@@ -8,13 +8,13 @@
 	"precision": 0.0000121, // the "epsilon" value for this node; i.e. the maximum error introduced through generalization of features, relative to the diameter of the MBS of this node. For all nodes/caches without LOD features, this value can be 0.0.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
 	"expires": "2014-09-14T23:12:00.000Z", // expiration date of this node; should always be in UTC.
-	"transform": { // a world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.
+	"transform": { // an optional, world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.
 		"nodePosition" : [0.0,0.0,0.0],
 		"nodeRotation" : [0.0,0.0,0.0],
 		"nodeScale" : [1.0,1.0,1.0]
 	},
 	"sharedResource": { // an expandable, node-relative reference to the shared resource bundle belonging to this node.
-		"href": "./sharedResource"
+		"href": "./shared"
 	},
 	"featureData": [ // an array of expandable, node-relative references to the feature data bundles belonging to this node.
 		{ 
@@ -32,7 +32,7 @@
 				"href": "./geometries/1"
 		},
 	],
-	"textureData": [  // an array of expandable, node-relative references to the texture atlas bundles belonging to this node.
+	"textureData": [  // an array of expandable, node-relative references to the texture atlas bundles belonging to this node. If texture LOD is activated, there will be multiple blocks following the pattern /textures/<blockID>_<LoDID> here.
 		{ 
 				"href": "./textures/0"
 		},
@@ -86,22 +86,26 @@
 	"features":[ // the list of features in this node.
 		{
 			"id": 309432971018, // long id, unique across the cache.
+			"block:" 0, // the number of the feature data block this feature resides in.
 			"mbs": [1222178.283, 83371.902, 34.155, 29.821]
 		},
 		{
 			"id": 309432971019,
+			"block:" 1,
 			"mbs": [1222164.382, 83230.442, 33.005, 40.011],
 			"lodChildren": [309432971021,309432971022], // List of LOD children IDs; only needed for features that participate in a LOD tree that have children.
 			"rank": 1 // LOD rank; only needed for features that participate in a LOD tree.
 		},
 		{
 			"id": 309432971020,
+			"block:" 1, // the number of the feature data block this feature resides in.
 			"mbs": [1223220.937, 83290.101, 30.625, 12.899],
 			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD tree. Used to tell the client which features represent a single feature.
 			"rank": 2
 		},
 		{
 			"id": 309432971021,
+			"block:" 1, // the number of the feature data block this feature resides in.
 			"mbs": [1222817.322, 83901.018, 37.833, 10.901],
 			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD tree. Used to tell the client which features represent a single feature.
 			"rank": 2

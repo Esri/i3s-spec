@@ -3,7 +3,7 @@
 	"level": 2, // explicit level of this node within the index tree.
 	"href": "./nodes/51", // the relative URL to the Cache resource from which this NID comes.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (cache update session ID) of this node.
-	"srs": "epsg:4326", // the srs used for all data in this node.
+	"srs": "epsg:3857", // the srs used for all data in this node.
 	"mbs": [122.2, 831.9, 34.5, 29.8], // the mbs of this node.
 	"precision": 0.0000121, // the "epsilon" value for this node; i.e. the maximum error introduced through generalization of features, relative to the diameter of the MBS of this node. For all nodes/caches without LOD features, this value can be 0.0.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.

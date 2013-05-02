@@ -8,11 +8,7 @@
 	"precision": 0.0000121, // the "epsilon" value for this node; i.e. the maximum error introduced through generalization of features, relative to the diameter of the MBS of this node. For all nodes/caches without LOD features, this value can be 0.0.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
 	"expires": "2014-09-14T23:12:00.000Z", // expiration date of this node; should always be in UTC.
-	"transform": { // an optional, world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.
-		"nodePosition" : [0.0,0.0,0.0],
-		"nodeRotation" : [0.0,0.0,0.0],
-		"nodeScale" : [1.0,1.0,1.0]
-	},
+	"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1], // an optional, world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.
 	"sharedResource": { // an expandable, node-relative reference to the shared resource bundle belonging to this node.
 		"href": "./shared"
 	},

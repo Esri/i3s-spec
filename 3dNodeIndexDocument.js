@@ -14,10 +14,12 @@
 	},
 	"featureData": [ // an array of expandable, node-relative references to the feature data bundles belonging to this node.
 		{ 
-				"href": "./features/0"
+				"href": "./features/0",
+				"layerContent": ["Public Buildings", "Transport Buildings"]
 		},
 		{ 
-				"href": "./features/1"
+				"href": "./features/1",
+				"layerContent": ["Transport Buildings"]
 		},
 	],
 	"geometryData": [ // an array of expandable, node-relative references to the geometry bundles belonging to this node.

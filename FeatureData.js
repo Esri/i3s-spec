@@ -4,7 +4,7 @@
 			"id": 309432971018, // id is a long value.
 			"mbb": [1222178.283, 83371.902, 54758.098, 2242.100, 34.155, 29.821], // the mbb refines the mbs information that the client already has from the NodeIndexDocument.
 			"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1], // an optional tranform that can be used to align the mbb.
-			"classname": "Building", // links this feature to a defined layer.
+			"layer": "Public Building", // links this feature to a defined layer.
 			"geometries": [ // Geometry defintion including materials; note that one Feature can have multiple geometries
 				{
 					"type": "triangles", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
@@ -174,7 +174,7 @@
 		{ // a Feature using an instance geometry
 			"id": 309432971019,
 			"mbb": [1222178.283, 83371.902, 54758.098, 2242.100, 34.155, 29.821],
-			"classname": "Building", 
+			"layer": "Transport Building", 
 			"geometries": [ 
 				{
 					"id": "Tree_123_Symbol", // ID of the geometry in the shared resource bundle.

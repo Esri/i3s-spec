@@ -3,9 +3,8 @@
 	"level": 2, // explicit level of this node within the index tree.
 	"href": "./nodes/51", // the relative URL to the Cache resource from which this NID comes.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (cache update session ID) of this node.
-	"srs": "epsg:3857", // the srs used for all data in this node.
-	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
-	"precision": 1.021, // the "epsilon" value for this node; i.e. the maximum error introduced through generalization of features, relative to the diameter of the MBS of this node. For all nodes/caches without LOD features, this value can be 0.0.
+	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the indexCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
+	"precision": 1.021, // the "epsilon" value for this node; i.e. the absolute maximum error introduced through generalization of features. For all nodes/caches without LOD features, this value can be 0.0.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
 	"expires": "2014-09-14T23:12:00.000Z", // expiration date of this node; should always be in UTC.
 	"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1], // an optional, world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.

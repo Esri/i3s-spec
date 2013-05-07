@@ -38,6 +38,6 @@
 				"dataset": "BuildingShellTransport",
 				"workspaceConnectionString": "C:\Users\username\Documents\ArcGIS\Default.gdb"
 			}
-		},
+		}
     ]
 }

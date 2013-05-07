@@ -7,8 +7,9 @@
 	"copyrightText" : "Vermessungsamt der Stadt Zürich", // copyright/usage information
 	"version": "1.0", // format version of this resource; used here again if this cahce hasn't been served by a 3D Scene Server.
 	"geometryType": "FeatureMesh", // the geometry type of the cache; selected from {FeatureMesh, IntegratedMesh, RasterTerrain, TINTerrain, Point, Line, Polygon, PointCloud}.
-	"srs": "urn:ogc:def:crs:EPSG::3857", // the horizontal SRS used for all "metadata" in this cache, identified by a OGC URN. Just a number often leaves many ambiguities (is it SRID, WKIF, EPSG, ...?).
-	"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent, in the horizontal SRS 
+	"indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
+	"positionsCRS": "http://www.opengis.net/def/crs/EPSG/0/32632", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL. 
+	"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent of this cache, in the horizontal indexCRS 
 	"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.0", // MIME type for the encoding used for the Node Index Documents
 	"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.0",  // MIME type for the encoding used for the Feature Data Resources
 	"geometryEncoding": "application/octet-stream; version=1.0", // MIME type for the encoding used for the Geometry Resources
@@ -18,15 +19,25 @@
     "layers" : [ // the list of layers contained in this cache.
 		{
 			"id": 0, // the ID of this layer. Unique only within a cache.
-			"typeName": "BuildingShellPublic", // the feature class name behind this layer.
-			"alias": "Public buildings", // the alias used for this layer.
-			"href" : "./layers/Public%20Buildings", // relative URL to the Layer resource giving full information on the Layer's schema and drawing info. 
+			"name": "BuildingShellPublic", // the feature class name behind this layer.
+			"alias": "Public buildings", // the display alias used for this layer.
+			"href": "./layers/Public%20Buildings", // relative URL to the Layer resource giving full information on the Layer's schema and drawing info. 
+			"sourceDataConnection": { // the information where the original data for this layer came from. This layer came from the CE exporter
+				"type": "CEproject", // the type of the source data this layer was generated from. Options: { SDE, FileGDB, Raster, Shapefile, CEProject
+				"dataset": "PortlandBuildableVolumes", // the name of the Feature class/dataset in the source to select the correct data in the source workspace. 
+				"workspaceConnectionString": "D:\ceworkspace\PortlandBuildableVolumes" // URL connection string pointing to the workspace from which this layer originates
+			}
 		},
 		{
 			"id": 1, // the ID of this layer. Unique only within a cache.
-			"typeName": "BuildingShellTransport", // the feature class name behind this layer.
-			"alias": "Transport buildings", // the alias used for this layer.
-			"href" : "./layers/Transport%20Buildings", // relative URL to the Layer resource giving full information on the Layer's schema and drawing info. 
+			"name": "BuildingShellTransport", // the feature class name behind this layer.
+			"alias": "Transport buildings", // the display alias used for this layer.
+			"href": "./layers/Transport%20Buildings", // relative URL to the Layer resource giving full information on the Layer's schema and drawing info. 
+			"sourceDataConnection": { // the information where the original data for this layer came from.
+				"type": "FileGDB",
+				"dataset": "BuildingShellTransport",
+				"workspaceConnectionString": "C:\Users\username\Documents\ArcGIS\Default.gdb"
+			}
 		},
     ]
 }

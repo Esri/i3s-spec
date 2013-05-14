@@ -22,35 +22,35 @@
 						{
 							"size": 2048, // x size of this image.
 							"pixelInWorldUnits": 0.211, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
-							"href": "./textures/0_0", // href to the block in which this texture image resides.
+							"href": "./textures/0_0", // href to the block in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDataBlockID>_<textureLoDID>.
 							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
 							"length": 245631 // length in bytes of this image.
 						},
 						{
 							"size": 1024, // x size of this image.
 							"pixelInWorldUnits": 0.422, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
-							"href": "./textures/0_1", // href to the block in which this texture image resides.
+							"href": "./textures/0_1", // href to the block in which this texture image resides. The resource ID (here 0_1) follows this pattern: <featureDataBlockID>_<textureLoDID>.
 							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
 							"length": 245631 // length in bytes of this image.
 						},
 						{
 							"size": 512, // x size of this image.
 							"pixelInWorldUnits": 0.844, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
-							"href": "./textures/0_2", // href to the block in which this texture image resides.
+							"href": "./textures/0_2", // href to the block in which this texture image resides. The resource ID (here 0_2) follows this pattern: <featureDataBlockID>_<textureLoDID>.
 							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
 							"length": 245631 // length in bytes of this image.
 						},
 						{
 							"size": 256, // x size of this image.
 							"pixelInWorldUnits": 1.688, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
-							"href": "./textures/0_3", // href to the block in which this texture image resides.
+							"href": "./textures/0_3", // href to the block in which this texture image resides. The resource ID (here 0_3) follows this pattern: <featureDataBlockID>_<textureLoDID>.
 							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
 							"length": 245631 // length in bytes of this image.
 						},
 						{
 							"size": 128, // x size of this image.
 							"pixelInWorldUnits": 3.376, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
-							"href": "./textures/0_4", // href to the block in which this texture image resides.
+							"href": "./textures/0_4", // href to the block in which this texture image resides. The resource ID (here 0_4) follows this pattern: <featureDataBlockID>_<textureLoDID>.
 							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
 							"length": 245631 // length in bytes of this image.
 						}
@@ -76,13 +76,15 @@
 				"maps" : {
 					"encoding" : "data:image/jpeg",
 					"wrap" : ["repeat","repeat"],
-					"images": {
-						"size": 256, // x size of this image.
-						"pixelInWorldUnits": 1.688, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
-						"href": "./textures/0_3", // href to the block in which this texture image resides.
-						"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
-						"length": 245631 // length in bytes of this image.
-					}
+					"images": [
+						{
+							"size": 256, // x size of this image.
+							"pixelInWorldUnits": 1.688, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+							"href": "./textures/0", // href to the block in which this texture image resides.
+							"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+							"length": 245631 // length in bytes of this image.
+						}
+					]
 				},
 				"reflectivity" : 0,
 				"transparency" : 1,

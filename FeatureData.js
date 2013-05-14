@@ -11,17 +11,17 @@
 					"components": [ // a single geometry can have multiple components if different materials are used (i.e. glass for windows, brick texture for walls, ...)
 						{
 							"material": {
-								"id": "Mat01", // ID of the Material, as defined in the shared resources bundle
+								"id": "Mat01" // ID of the Material, as defined in the shared resources bundle
 							}
 						},
 						{
 							"material": {
-								"id": "Mat02", // ID of the Material, as defined in the shared resources bundle
+								"id": "Mat02" // ID of the Material, as defined in the shared resources bundle
 							}
 						},
 						{
 							"material": {
-								"id": "Mat03", // ID of the Material, as defined in the shared resources bundle
+								"id": "Mat03" // ID of the Material, as defined in the shared resources bundle
 							}
 						}
 					],
@@ -56,7 +56,7 @@
 							"byteOffset": 165349,
 							"count": 345,
 							"valueType": "Int16",
-							"valuesPerElement": 1
+							"valuesPerElement": 1,
 							"componentIndices": [ // array index where the component starts.
 								0,
 								36,

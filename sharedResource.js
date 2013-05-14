@@ -73,11 +73,15 @@
 			"parameters" : {
 				"vertexColors" : false,
 				"transparent" : false,
-				"map" : {
+				"maps" : {
 					"encoding" : "data:image/jpeg",
 					"wrap" : ["repeat","repeat"],
-					"inTextureBundle": { 
-						"href": "http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/textures/4"
+					"images": {
+						"size": 256, // x size of this image.
+						"pixelInWorldUnits": 1.688, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+						"href": "./textures/0_3", // href to the block in which this texture image resides.
+						"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
+						"length": 245631 // length in bytes of this image.
 					}
 				},
 				"reflectivity" : 0,

@@ -7,77 +7,80 @@
 			"layer": "Public Building", // links this feature to a defined layer.
 			"geometries": [ // Geometry defintion including materials; note that one Feature can have multiple geometries
 				{
-					"type": "triangles", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
-					"components": [ // a single geometry can have multiple components if different materials are used (i.e. glass for windows, brick texture for walls, ...)
-						{
-							"material": {
-								"id": "Mat01" // ID of the Material, as defined in the shared resources bundle
+					"type": "ArrayBufferView", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
+					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+					"params": { 
+						"type": "triangles", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
+						"components": [ // a single geometry can have multiple components if different materials are used (i.e. glass for windows, brick texture for walls, ...)
+							{
+								"material": {
+									"id": "Mat01" // ID of the Material, as defined in the shared resources bundle
+								}
+							},
+							{
+								"material": {
+									"id": "Mat02" // ID of the Material, as defined in the shared resources bundle
+								}
+							},
+							{
+								"material": {
+									"id": "Mat03" // ID of the Material, as defined in the shared resources bundle
+								}
+							}
+						],
+						"vertexAttributes": { // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
+							"position": { // the name of the vertex attribute; here: vertex positions
+								"byteOffset": 254976, // the starting byte position where the required bytes begin.
+								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+								"valueType": "Float32", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+								"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
+							},
+							"normal": { // the name of the vertex attribute; here: vertex normals
+								"byteOffset": 259116, // the starting byte position where the required bytes begin.
+								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+								"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+								"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a normal vector)
+							},
+							"uv0": { // the name of the vertex attribute; here: 1st texture coordinates
+								"byteOffset": 260496, // the starting byte position where the required bytes begin.
+								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+								"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+								"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
+							},
+							"classification": { // the name of the vertex attribute; here: vertex classification/colors
+								"byteOffset": 261876, // the starting byte position where the required bytes begin.
+								"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
+								"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+								"valuesPerElement": 3 // number of (UInt8) values need to make a valid element (here a RGB intensity)
 							}
 						},
-						{
-							"material": {
-								"id": "Mat02" // ID of the Material, as defined in the shared resources bundle
+						"faces": { // indices for positions, normals, texture coordinates to build faces. This is an open list.
+							"position": {
+								"byteOffset": 165349,
+								"count": 345,
+								"valueType": "Int16",
+								"valuesPerElement": 1,
+								"componentIndices": [ // array index where the component starts.
+									0,
+									36,
+									246
+								]
+							},
+							"name": "normal",
+							"normal": {
+								"byteOffset": 165349,
+								"count": 345,
+								"valueType": "Int16",
+								"valuesPerElement": 1
+							},
+							"uv0": {
+								"byteOffset": 165349,
+								"count": 345,
+								"valueType": "Int16",
+								"valuesPerElement": 1
 							}
-						},
-						{
-							"material": {
-								"id": "Mat03" // ID of the Material, as defined in the shared resources bundle
-							}
 						}
-					],
-					"vertexAttributes": { // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
-						"position": { // the name of the vertex attribute; here: vertex positions
-							"byteOffset": 254976, // the starting byte position where the required bytes begin.
-							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-							"valueType": "Float32", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-							"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
-						},
-						"normal": { // the name of the vertex attribute; here: vertex normals
-							"byteOffset": 259116, // the starting byte position where the required bytes begin.
-							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-							"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-							"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a normal vector)
-						},
-						"uv0": { // the name of the vertex attribute; here: 1st texture coordinates
-							"byteOffset": 260496, // the starting byte position where the required bytes begin.
-							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-							"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-							"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
-						},
-						"classification": { // the name of the vertex attribute; here: vertex classification/colors
-							"byteOffset": 261876, // the starting byte position where the required bytes begin.
-							"count": 345, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-							"valueType": "Int16", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
-							"valuesPerElement": 3 // number of (UInt8) values need to make a valid element (here a RGB intensity)
-						}
-					},
-					"faces": { // indices for positions, normals, texture coordinates to build faces. This is an open list.
-						"position": {
-							"byteOffset": 165349,
-							"count": 345,
-							"valueType": "Int16",
-							"valuesPerElement": 1,
-							"componentIndices": [ // array index where the component starts.
-								0,
-								36,
-								246
-							]
-						},
-						"name": "normal",
-						"normal": {
-							"byteOffset": 165349,
-							"count": 345,
-							"valueType": "Int16",
-							"valuesPerElement": 1
-						},
-						"uv0": {
-							"byteOffset": 165349,
-							"count": 345,
-							"valueType": "Int16",
-							"valuesPerElement": 1
-						}
-					},
-					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+					}
 				}
 			],
 			"attributes": [
@@ -177,8 +180,11 @@
 			"layer": "Transport Building", 
 			"geometries": [ 
 				{
-					"id": "Tree_123_Symbol", // ID of the geometry in the shared resource bundle.
-					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0] // transform used to correcty place/scale/rotate the instance.
+					"type": "SharedResourceReference", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
+					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+					"params": {
+						"id": "Tree_123_Symbol", // ID of the geometry in the shared resource bundle.
+					}
 				}
 			],
 			"attributes": [

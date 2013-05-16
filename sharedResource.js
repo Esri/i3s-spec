@@ -1,16 +1,6 @@
 {
-	"parentResources": [ // the list of reference parent shared resource bundles, as expandable, node-relative URLs
-		{
-			"href":"../5/shared"
-		}, 
-		{
-			"href":"../0/shared"
-		}
-	], 
-	"sharedResources": [
-		"Mat01": { 
-			"type": "MaterialDefinition", // options: MaterialDefinition, ShaderDefinition, ShaderReference (indicating a specific, client-built-in-shader)
-			"id": "Mat01", // a generated ID, unique within the node.
+	"MaterialDefinitions": { // a Map of all Material Definitions needed by features of this node.
+		"Mat01": { // a full material definition
 			"name": "TerrainMaterial_Topobasemap",
 			"parameters" : {
 				"vertexColors" : false,
@@ -69,9 +59,10 @@
 				"type" : "lambert" // options: ?
 			}
 		},
-		{ // 3WS-Style Material definition
-			"type": "MaterialDefinition",
-			"id": "Tree_123_Mat", // a generated ID, unique within the node.
+		"Mat02": { // A material Definition that is contained in a parent shared node
+			"href":"../0/shared" // the href that resolves to the shared resource bundle in which the material defintion is contained.
+		},
+		"Tree_123_Mat": { // 3WS-Style Material definition
 			"name": "OakTree_12", // Original material name
 			"parameters" : {
 				"vertexColors" : false,
@@ -100,10 +91,13 @@
 				"renderMode": "solid", // options: solid, untextured, wireframe
 				"type" : "lambert" // options: 
 			}
-		},
-		{ // a shared geometry to be used to instantiate many features; here, all vertex data is in-line.
-			"type": "Symbol",
-			"id": "Tree_123_Symbol",	// a generated ID, unique within the cache.
+		}
+	},
+	"ShaderDefinitions": {
+	}
+	"Symbols": { // a map of all the Symbols (geometries to be instanced) in this Shared Bundle.
+		"Tree_123_Symbol": { // a shared geometry to be used to instantiate many features; here, all vertex data is in-line.
+			"name": "Tree_123_Symbol",
 			"geometries": [
 				{
 					"type": "Embedded", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
@@ -128,5 +122,5 @@
 				}
 			]
 		}
-	]
+	}
 }

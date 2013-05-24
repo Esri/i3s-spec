@@ -55,7 +55,7 @@
 							}
 						},
 						"faces": { // indices for positions, normals, texture coordinates to build faces. This is an open list.
-							"position": {
+							"position": { // position index array buffer view
 								"byteOffset": 165349,
 								"count": 345,
 								"valueType": "Int16",
@@ -66,14 +66,13 @@
 									246
 								]
 							},
-							"name": "normal",
-							"normal": {
+							"normal": { // normals index array buffer view
 								"byteOffset": 165349,
 								"count": 345,
 								"valueType": "Int16",
 								"valuesPerElement": 1
 							},
-							"uv0": {
+							"uv0": { // texture coordinates index array buffer view
 								"byteOffset": 165349,
 								"count": 345,
 								"valueType": "Int16",
@@ -88,86 +87,70 @@
 					"metadata": [ // Special group for default attributes and other metadata.
 						{
 							"name": "OID",
-							"type": "esriFieldTypeOID",
 							"value": 34983
 						},
 						{
 							"name": "area",
-							"type": "esriFieldTypeDouble",
 							"value": 101131.1435
 						},
 						{
 							"name": "length",
-							"type": "esriFieldTypeDouble",
 							"value": 390.73893
 						}
 					]
 				},
 				{
 					"name": "type",
-					"type": "esriFieldTypeString",
 					"value": "Business (Group B)"
 				},
 				{
 					"name": "subtype",
-					"type": "esriFieldTypeString",
 					"value": "Office Building"
 				},
 				{
 					"name": "name",
-					"type": "esriFieldTypeString",
 					"value": "Technopark"
 				},
 				{
 					"name": "description",
-					"type": "esriFieldTypeString",
 					"value": "An office center for high-tech companies and spin-offs"
 				},
 				{
 					"name": "attribution",
-					"type": "esriFieldTypeString",
 					"value": "Stadt Zürich"
 				},
 				{
 					"name": "totalHeight",
-					"type": "esriFieldTypeDouble",
 					"value": 30.88
 				},
 				{
 					"name": "eaveHeight",
-					"type": "esriFieldTypeDouble",
 					"value": 24.35
 				},
 				{
 					"name": "levelsAboveGround",
-					"type": "esriFieldTypeInteger",
 					"value": 5
 				},
 				{
 					"name": "levelsBelowGround",
-					"type": "esriFieldTypeInteger",
 					"value": 2
 				},
 				{
 					"name": "status",
-					"type": "esriFieldTypeString",
 					"value": "built"
 				},
 				{
 					"name": "beginLifespan",
-					"type": "esriFieldTypeDate",
 					"value": "1993-03-12 00:00:00"
 				},
 				{
 					"name": "endLifespan",
-					"type": "esriFieldTypeDate",
 					"value": ""
 				},
 				{
 					"reports": [ // attributes can be grouped!
 						{
 							"name": "GFA",
-							"type": "esriFieldTypeDouble",
 							"value": 30000
 						}
 					]
@@ -192,34 +175,28 @@
 					"metadata": [ // Special group for default attributes and other metadata.
 						{
 							"name": "OID",
-							"type": "esriFieldTypeOID",
 							"value": 34984
 						},
 						{
 							"name": "area",
-							"type": "esriFieldTypeDouble",
 							"value": 47472.123
 						},
 						{
 							"name": "length",
-							"type": "esriFieldTypeDouble",
 							"value": 120.73893
 						}
 					]
 				},
 				{
 					"name": "type",
-					"type": "esriFieldTypeString",
 					"value": "Business (Group B)"
 				},
 				{
 					"name": "subtype",
-					"type": "esriFieldTypeString",
 					"value": "Office Building"
 				},
 				{
 					"name": "name",
-					"type": "esriFieldTypeString",
 					"value": "Technopark Erweiterung"
 				}
 			]

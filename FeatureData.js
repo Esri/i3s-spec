@@ -3,7 +3,7 @@
 		{ // a normal feature using a unique geometry
 			"id": 309432971018, // id is a long value.
 			"positionOffset": [537218.344, 5328647.27], // the x,y offset used by all vertex positions in this feature. Add these values to the feature geometry vertex positions to get absolute projected coordinates in the positionCRS.
-			"mbb": [537218.283, 5328647.902, 537218.098, 5328647.100, 34.155, 29.821], // xmin, ymin, zmin, xmax, ymax, zmax of the feature's minimum bounding box, expressed in the positionCRS, without offset.
+			"mbb": [537218.283, 5328647.902, 29.821, 5328647.100, 34.155, 537218.098], // xmin, ymin, zmin, xmax, ymax, zmax of the feature's minimum bounding box, expressed in the positionCRS, without offset.
 			"layer": "Public Building", // links this feature to a defined layer.
 			"geometries": [ // Geometry defintion including materials; note that one Feature can have multiple geometries
 				{

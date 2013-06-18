@@ -18,6 +18,7 @@
 						"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {}
 						"atlas": false, // indicates whether this map (set of images) are etxture atlases or not.
 						"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
+						"channels": "rgba", // indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...
 						"images": [ // an array of images that represent the same content in different resolutions.
 							{
 								"id" : 8448757298993561619, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
@@ -76,6 +77,7 @@
 					{
 						"encoding" : "data:image/jpeg",
 						"wrap" : ["repeat","repeat"],
+						"channels": "rgba",
 						"images": [
 							{
 								"size": 256, // x size of this image.

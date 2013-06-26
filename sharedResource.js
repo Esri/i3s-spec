@@ -72,7 +72,14 @@
 			"name": "OakTree_12", // Original material name
 			"parameters" : {
 				"vertexColors" : false,
-				"transparent" : false,
+				"reflectivity" : 0,
+				"transparency" : 1,
+				"ambient" : "0x000000",
+				"diffuse" : "0xffffff",
+				"specular" : "0x000000",
+				"shininess" : 1,
+				"renderMode": "solid", // options: solid, untextured, wireframe
+				"type" : "lambert", // options: 
 				"maps" : [
 					{
 						"encoding" : "data:image/jpeg",
@@ -88,15 +95,7 @@
 							}
 						]
 					}
-				],
-				"reflectivity" : 0,
-				"transparency" : 1,
-				"ambient" : "0x000000",
-				"diffuse" : "0xffffff",
-				"specular" : "0x000000",
-				"shininess" : 1,
-				"renderMode": "solid", // options: solid, untextured, wireframe
-				"type" : "lambert" // options: 
+				]
 			}
 		}
 	},

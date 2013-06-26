@@ -100,7 +100,7 @@
 		}
 	},
 	"ShaderDefinitions": {
-	}
+	},
 	"Symbols": { // a map of all the Symbols (geometries to be instanced) in this Shared Bundle.
 		"Tree_123_Symbol": { // a shared geometry to be used to instantiate many features; here, all vertex data is in-line.
 			"name": "Tree_123_Symbol",

@@ -1,7 +1,6 @@
 {
-	"id": 51, // Tree Key ID. This node is thus two level below the root node. On the first level, it's the sixth node, on the second level, it's the first. The 0 is always the root node.
+	"id": 51, // Tree Key ID. This node is thus two level below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.
 	"level": 2, // explicit level of this node within the index tree.
-	"href": "./nodes/51", // the relative URL to the resource from which this NID comes.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this node.
 	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the indexCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
 	"precision": 1.021, // the "epsilon" value for this node; i.e. the absolute maximum error introduced through generalization of features. For all nodes/layers without LOD features, this value can be 0.0.

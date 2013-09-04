@@ -1,22 +1,23 @@
 {
+	"globalMap": "..textures/global.jpg", // href to a low-resolution texture atlas that contains downsampled textures for all features in the node. To be used if the node is relatively small on the screen to preserve client resources.
 	"MaterialDefinitions": { // a Map of all Material Definitions needed by features of this node.
 		"Mat01": { // a full material definition
-			"name": "TerrainMaterial_Topobasemap",
+			"name": "Building12541_Material", // original name of the Material in the authoring application/source data
 			"parameters" : {
-				"vertexColors" : false, // Indicates whether this Material use Vertex Colors.
-				"reflectivity" : 0,
-				"transparency" : 1,
-				"ambient" : "0x000000",
-				"diffuse" : "0xffffff",
-				"specular" : "0x000000",
-				"shininess" : 1,
+				"vertexColors" : false, // Indicates whether this Material uses Vertex Colors.
+				"reflectivity" : 0, // reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
+				"transparency" : 1, // transparency for the shader, 0 is opaque, 1 is fully transparent
+				"ambient" : "0x000000", // ambient color
+				"diffuse" : "0xffffff", // diffuse color
+				"specular" : "0x000000", // specular color
+				"shininess" : 1, // amount of specular highlights, 0 is none, 1 is max (for shader)
 				"renderMode": "solid", // options: solid, untextured, wireframe
 				"type" : "lambert", // options: ?
-				"maps" : [
+				"maps" : [ // the list of maps for this material
 					{
 						"encoding" : "data:image/jpeg", // the encoding/content type that is used by all images in this map. 
 						"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {}
-						"atlas": false, // indicates whether this map (set of images) are etxture atlases or not.
+						"atlas": false, // indicates whether this map (set of images) are texture atlases or not.
 						"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
 						"channels": "rgba", // indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...
 						"images": [ // an array of images that represent the same content in different resolutions.

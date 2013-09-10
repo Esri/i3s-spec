@@ -17,7 +17,7 @@
 					{
 						"encoding" : "data:image/jpeg", // the encoding/content type that is used by all images in this map. 
 						"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {}
-						"atlas": false, // indicates whether this map (set of images) are texture atlases or not.
+						"atlas": true, // indicates whether this map (set of images) are texture atlases or not.
 						"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
 						"channels": "rgba", // indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...
 						"images": [ // an array of images that represent the same content in different resolutions.
@@ -26,40 +26,45 @@
 								"size": 2048, // x size of this image.
 								"pixelInWorldUnits": 0.211, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 								"href": "../textures/0_0", // href to the block in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDataBlockID>_<textureLoDID>.
-								"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
-								"length": 245631 // length in bytes of this image.
+								"byteOffset": 0, // byte offset of this image in the block in which this texture image resides.
+								"length": 245631, // length in bytes of this image.
+								"subimageRegion":[0, 0, 256, 256] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
 							},
 							{
 								"id" : 8448757298993561620, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
 								"size": 1024, // x size of this image.
 								"pixelInWorldUnits": 0.422, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 								"href": "../textures/0_1", // href to the block in which this texture image resides. The resource ID (here 0_1) follows this pattern: <featureDataBlockID>_<textureLoDID>.
-								"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
-								"length": 120123 // length in bytes of this image.
+								"byteOffset": 0, // byte offset of this image in the block in which this texture image resides.
+								"length": 120123, // length in bytes of this image.
+								"subimageRegion":[0, 0, 128, 128] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
 							},
 							{
 								"id" : 8448757298993561621, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
 								"size": 512, // x size of this image.
 								"pixelInWorldUnits": 0.844, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 								"href": "../textures/0_2", // href to the block in which this texture image resides. The resource ID (here 0_2) follows this pattern: <featureDataBlockID>_<textureLoDID>.
-								"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
-								"length": 65932 // length in bytes of this image.
+								"byteOffset": 0, // byte offset of this image in the block in which this texture image resides.
+								"length": 65932, // length in bytes of this image.
+								"subimageRegion":[0, 0, 64, 64] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
 							},
 							{
 								"id" : 8448757298993561622, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
 								"size": 256, // x size of this image.
 								"pixelInWorldUnits": 1.688, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 								"href": "../textures/0_3", // href to the block in which this texture image resides. The resource ID (here 0_3) follows this pattern: <featureDataBlockID>_<textureLoDID>.
-								"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
-								"length": 34561 // length in bytes of this image.
+								"byteOffset": 0, // byte offset of this image in the block in which this texture image resides.
+								"length": 34561, // length in bytes of this image.
+								"subimageRegion":[0, 0, 32, 32] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
 							},
 							{
 								"id" : 8448757298993561623, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
 								"size": 128, // x size of this image.
 								"pixelInWorldUnits": 3.376, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 								"href": "../textures/0_4", // href to the block in which this texture image resides. The resource ID (here 0_4) follows this pattern: <featureDataBlockID>_<textureLoDID>.
-								"byteOffset": 34253, // byte offset of this image in the block in which this texture image resides.
-								"length": 12011 // length in bytes of this image.
+								"byteOffset": 0, // byte offset of this image in the block in which this texture image resides.
+								"length": 12011, // length in bytes of this image.
+								"subimageRegion":[0, 0, 16, 16] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
 							}
 						]
 					}
@@ -84,7 +89,7 @@
 				"maps" : [
 					{
 						"encoding" : "data:image/jpeg",
-						"wrap" : ["repeat","repeat"],
+						"wrap" : ["none","none"],
 						"channels": "rgba",
 						"images": [
 							{

@@ -20,11 +20,10 @@
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "esriRTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
 			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs 
-			"dimensonality": 3, // number of dimension sin which this index differentiates. 
+			"dimensonality": 3, // number of dimensions in which this index differentiates. 
 			"childrenCardinality": [0,9], // min/max number of children per node.
 			"neighborCardinality": [0,9] // min/max number of neighbors per node.
 		}
-		"esriRTree", 
 		"featureOrdering": ["Layer", "Prominence"] // Ordered list of keywords indicating the ordering scheme applied to sort features within a node; selected from {ID, Prominence, Layer}
 	}
 	"fields" :	[ // schema definition for this layer.
@@ -54,6 +53,6 @@
 		  "alias" : "Eave Height"
 		}
 	],
-	"drawingInfo": { // The default symbology to use on this layer. Specification will be identical to WebCIM.
+	"WebCimDrawingInfo": { // The default symbology to use on this layer. Specification will be identical to WebCIM.
 	}
 }

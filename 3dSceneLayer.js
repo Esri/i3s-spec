@@ -1,5 +1,6 @@
 {
 	"id": 0, // the ID of this layer, unique within a 3dSceneService.
+	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this layer document. The alyer document is normally only updated if there are schema or default symbology changes.
 	"name": "PublicBuildings", // the name of this layer.
 	"alias": "Public Buildings", // the display alias to be used for this layer.
 	"description" : "This layer contains textured Building features for the City of Zurich.\n", // Cache description 
@@ -17,14 +18,14 @@
 		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.1",  // MIME type for the encoding used for the Feature Data Resources
 		"geometryEncoding": "application/octet-stream; version=1.1", // MIME type for the encoding used for the Geometry Resources
 		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
+		"featureOrdering": ["Layer", "Prominence"], // Ordered list of keywords indicating the ordering scheme applied to sort features within a node; selected from {ID, Prominence, Layer}
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "esriRTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
 			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs 
-			"dimensonality": 3, // number of dimensions in which this index differentiates. 
+			"dimensionality": 3, // number of dimensions in which this index differentiates. 
 			"childrenCardinality": [0,9], // min/max number of children per node.
 			"neighborCardinality": [0,9] // min/max number of neighbors per node.
 		}
-		"featureOrdering": ["Layer", "Prominence"] // Ordered list of keywords indicating the ordering scheme applied to sort features within a node; selected from {ID, Prominence, Layer}
 	}
 	"fields" :	[ // schema definition for this layer.
 		{
@@ -53,6 +54,16 @@
 		  "alias" : "Eave Height"
 		}
 	],
-	"WebCimDrawingInfo": { // The default symbology to use on this layer. Specification will be identical to WebCIM.
+	"drawingInfo": { // The default symbology to use on this layer.
+		"renderer": {
+			"type": "simple", // renderer definition
+			"symbol": {
+				"type": "CIMSymbolReference", // indicates that below this item, the expected structure is identical to WebCIM.
+				"symbolName": "Symbol_123",
+				"symbol": {
+					
+				}
+			}
+		}
 	}
 }

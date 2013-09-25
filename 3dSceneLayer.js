@@ -1,6 +1,6 @@
 {
 	"id": 0, // the ID of this layer, unique within a 3dSceneService.
-	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this layer document. The alyer document is normally only updated if there are schema or default symbology changes.
+	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the newest version (store update session ID) of this layer.
 	"name": "PublicBuildings", // the name of this layer.
 	"alias": "Public Buildings", // the display alias to be used for this layer.
 	"description" : "This layer contains textured Building features for the City of Zurich.\n", // Cache description 

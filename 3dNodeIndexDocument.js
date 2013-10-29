@@ -13,10 +13,12 @@
 	"featureData": [ // an array of feature data bundles belonging to this node.
 		{ 
 				"href": "./features/0", // an expandable, node-relative references to the feature data bundle.
+				"featureRange": [0, 189], // inclusive indices of the features list in this node that indicate which features of the node are located in this bundle
 				"layerContent": ["Public Buildings", "Transport Buildings"] // Indicates features of which layers have been encoded in this bundle. Allows the client to determine which bundles to load if only a subset of layers in store is to be laoded.
 		},
 		{ 
 				"href": "./features/1",
+				"featureRange": [190, 195], // inclusive indices of the features list in this node that indicate which features of the node are located in this bundle
 				"layerContent": ["Transport Buildings"]
 		}
 	],
@@ -30,10 +32,16 @@
 	],
 	"textureData": [  // an array of expandable, node-relative references to the texture atlas bundles belonging to this node. If texture LOD is activated, there will be multiple blocks following the pattern /textures/<blockID>_<LoDID> here.
 		{ 
-				"href": "./textures/0"
+				"href": "./textures/0_0",
+				"multiTexturedBundle": false // true if the bundle contains multiple textures. Options: {*false*, true}
 		},
 		{ 
-				"href": "./textures/1"
+				"href": "./textures/0_1",
+				"multiTexturedBundle": false
+		},
+		{ 
+				"href": "./textures/0_2",
+				"multiTexturedBundle": false
 		}
 	],
 	"parentNode": {  // an expandable node-relative reference with some additional information to parent node of this node.
@@ -82,26 +90,22 @@
 	"features":[ // the list of features in this node.
 		{
 			"id": 309432971018, // long id, unique across the store.
-			"block": 0, // the number of the feature data block this feature resides in.
 			"mbs": [122.41, 39.83452, 445.2, 24.5] // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
 		},
 		{
 			"id": 309432971019,
-			"block": 1,
 			"mbs": [122.41, 39.83452, 445.2, 40.011], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
 			"lodChildren": [309432971021,309432971022], // List of LOD children IDs; only needed for features that participate in a LOD tree that have children.
 			"rank": 1 // LOD rank; only needed for features that participate in a LOD tree.
 		},
 		{
 			"id": 309432971020,
-			"block": 1, // the number of the feature data block this feature resides in.
 			"mbs": [122.41, 39.83452, 445.2, 12.899], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
 			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD tree. Used to tell the client which features represent a single feature.
 			"rank": 2
 		},
 		{
 			"id": 309432971021,
-			"block": 1, // the number of the feature data block this feature resides in.
 			"mbs": [122.41, 39.83452, 445.2, 10.901], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
 			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD tree. Used to tell the client which features represent a single feature.
 			"rank": 2

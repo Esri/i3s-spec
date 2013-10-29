@@ -1,20 +1,36 @@
 {
 	"materialDefinitions": { // a Map of all Material Definitions needed by features of this node.
-		"Mat01": { // a full material definition
+		"Mat01": { // a full material definition for a standard material
 			"name": "Standard_Material", // original name of the Material in the authoring application/source data
-			"type": "standard", // material/shader type, options: {standard, water, billboard, leafcard}
+			"type": "standard", // material/shader type, options: {*standard*, water, billboard, leafcard}
 			"params" : {
-				"vertexColors" : false, // Indicates whether this Material uses Vertex Colors.
-				"reflectivity" : 0, // reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
-				"transparency" : 0, // transparency for the shader, 0 is opaque, 1 is fully transparent
-				"ambient" : [0, 0, 0],
-				"diffuse" : [1, 1, 1],
-				"specular" : [0.1, 0.1, 0.1],
-				"shininess" : 1, // amount of specular highlights, 0 is none, 1 is max (for shader)
-				"renderMode": "solid" // options: {solid, untextured, wireframe}
+				"vertexColors" : false, // {*false*, true} Indicates whether this Material uses Vertex Colors.
+				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
+				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent
+				"ambient" : [0, 0, 0], // [*0*..1], [*0*..1], [*0*..1]
+				"diffuse" : [1, 1, 1], // [0..*1*], [0..*1*], [0..*1*]
+				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
+				"shininess" : 1, // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
+				"renderMode": "solid", // options: {*solid*, untextured, wireframe}
+				"castShadows": true, // I3S 1.2
+				"receiveShadows": true // I3S 1.2
 			}
 		},
-		"Mat02": { // A material Definition that is contained in a parent shared node
+		"Mat02": { // a full material definition for a water material
+			"name": "Water_Material", // original name of the Material in the authoring application/source data
+			"type": "water", // material/shader type, options: {*standard*, water, billboard, leafcard}
+			"params" : {
+				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
+				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent
+				"waveSpeed" : 6.2, // [*0*..255]
+				"waveAmplitude" : 1.2, // [*0*..255]
+				"ambient" : [0, 0, 0], // [*0*..1], [*0*..1], [*0*..1]
+				"diffuse" : [1, 1, 1], // [0..*1*], [0..*1*], [0..*1*]
+				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
+				"shininess" : 1 // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
+			}
+		},
+		"Mat09": { // A material Definition that is contained in a parent shared node
 			"href":"../0/shared" // the href that resolves to the shared resource bundle in which the material defintion is contained.
 		}
 	},
@@ -42,8 +58,7 @@
 					"pixelInWorldUnits": 0.211, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 					"href": "../textures/0_0", // href to the texture set in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
 					"byteOffset": 0, // byte offset of this image in the texture set in which this texture image resides.
-					"length": 245631, // length in bytes of this image.
-					"subimageRegion":[0, 0, 256, 256] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
+					"length": 245631 // length in bytes of this image.
 				},
 				{
 					"id" : 8448757298993561620, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
@@ -51,8 +66,7 @@
 					"pixelInWorldUnits": 0.422, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 					"href": "../textures/0_1", // href to the texture set in which this texture image resides. The resource ID (here 0_1) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
 					"byteOffset": 0, // byte offset of this image in the texture set in which this texture image resides.
-					"length": 120123, // length in bytes of this image.
-					"subimageRegion":[0, 0, 128, 128] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
+					"length": 120123 // length in bytes of this image.
 				},
 				{
 					"id" : 8448757298993561621, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
@@ -60,8 +74,7 @@
 					"pixelInWorldUnits": 0.844, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 					"href": "../textures/0_2", // href to the texture set in which this texture image resides. The resource ID (here 0_2) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
 					"byteOffset": 0, // byte offset of this image in the texture set in which this texture image resides.
-					"length": 65932, // length in bytes of this image.
-					"subimageRegion":[0, 0, 64, 64] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
+					"length": 65932 // length in bytes of this image.
 				}
 			]
 		}

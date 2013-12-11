@@ -30,7 +30,7 @@
 				"shininess" : 1 // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
 			}
 		},
-		"Mat09": { // A material Definition that is contained in a parent shared node
+		"Mat09": { // A material definition that is contained in an ancestor node's shared resource
 			"href":"../0/shared" // the href that resolves to the shared resource bundle in which the material defintion is contained.
 		}
 	},
@@ -53,7 +53,7 @@
 			],
 			"images": [ // an array of images that represent the same content in different resolutions.
 				{
-					"id" : 8448757298993561619, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
+					"id" : "8448757298993561619", // a string containing a UINt64 ID for each image. Generated using the BuildID function that is documented in the spec.
 					"size": 2048, // x size of this image.
 					"pixelInWorldUnits": 0.211, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 					"href": "../textures/0_0", // href to the texture set in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
@@ -61,7 +61,7 @@
 					"length": 245631 // length in bytes of this image.
 				},
 				{
-					"id" : 8448757298993561620, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
+					"id" : "8448757298993561620", // a string containing a UINt64 ID for each image. Generated using the BuildID function that is documented in the spec.
 					"size": 1024, // x size of this image.
 					"pixelInWorldUnits": 0.422, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 					"href": "../textures/0_1", // href to the texture set in which this texture image resides. The resource ID (here 0_1) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
@@ -69,7 +69,7 @@
 					"length": 120123 // length in bytes of this image.
 				},
 				{
-					"id" : 8448757298993561621, // a UINT64 unique ID for each image. Generated using the BuildID function that is documented in the spec.
+					"id" : "8448757298993561621", // a string containing a UINt64 ID for each image. Generated using the BuildID function that is documented in the spec.
 					"size": 512, // x size of this image.
 					"pixelInWorldUnits": 0.844, // maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
 					"href": "../textures/0_2", // href to the texture set in which this texture image resides. The resource ID (here 0_2) follows this pattern: <featureDatatexture setID>_<textureLoDID>.

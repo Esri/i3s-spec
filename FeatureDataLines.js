@@ -11,12 +11,12 @@
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"crsType": "projected", // allowed types are: projected, geographic, geocentric
 					"params": { 
-						"type": "line", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
+						"type": "line", // types are: triangle_strip, triangles, line, point (i.e. GL render primitives)
 						"vertexAttributes": {
 							"position": {	// the name of the vertex attribute; here: vertex positions in the projected CRS used in this cache
 								"byteOffset": 18371, // the starting byte position where the required bytes begin.
 								"count": 1211, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-								"valueType": "Float32", // the element type, either UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64
+								"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32, Int16, Int32, Int64 or Float32, Float64
 								"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
 							}
 						}

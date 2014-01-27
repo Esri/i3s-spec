@@ -10,7 +10,7 @@
 					"type": "Embedded", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"params": { 
-						"type": "point", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
+						"type": "points", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
 						"vertexAttributes": {
 							"position": [537218.344, 5328647.27, 29.821]
 						}

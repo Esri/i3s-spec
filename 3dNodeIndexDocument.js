@@ -1,11 +1,25 @@
+/**
+	Example i3s 1.2 3d Node Index Document Resource.
+*/
 {
 	"id": 51, // Tree Key ID. This node is thus two level below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.
 	"level": 2, // explicit level of this node within the index tree.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this node.
-	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the geographicCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
-	"precision": 1.021, // the "epsilon" value for this node; i.e. the absolute maximum error introduced through generalization of features. For all nodes/layers without LOD features, this value can be 0.0.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
 	"expires": "2014-09-14T23:12:00.000Z", // expiration date of this node; should always be in UTC.
+	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the geographicCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
+	"lodError": [ // a list with error metrics that are generated for LOD-enabled caches and that enable the client to pick the right LoD for rendering.
+			{
+				"errorMetric": "removedFeatureDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
+				"maxError": 17.59, // maximum error, expressed in the CRS of the vertex coordinates
+				"avgError": 12.34 // average error for all features in this node, expressed in the CRS of the vertex coordinates
+			},
+			{
+				"errorMetric": "removedFaceDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
+				"maxError": 11.11, // maximum error, expressed in the CRS of the vertex coordinates
+				"avgError": 2.19 // average error for all features in this node, expressed in the CRS of the vertex coordinates
+			}
+	],
 	"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1], // an optional, world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.
 	"sharedResource": { // an expandable, node-relative reference to the shared resource bundle belonging to this node.
 		"href": "./shared"
@@ -87,7 +101,7 @@
 			"mbs": [122.2, 39.9, 429.8, 2334.5] // the mbs of the neigbor node.
 		}
 	],
-	"features":[ // the list of features in this node.
+	"features":[ // the list of features in this node. To find which feature livers in bundle i, check /featureRange[i]/featureRange.
 		{
 			"id": 309432971018, // long id, unique across the store.
 			"mbs": [122.41, 39.83452, 445.2, 24.5] // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
@@ -95,19 +109,20 @@
 		{
 			"id": 309432971019,
 			"mbs": [122.41, 39.83452, 445.2, 40.011], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
-			"lodChildren": [309432971021,309432971022], // List of LOD children IDs; only needed for features that participate in a LOD tree that have children.
+			"lodChildFeatures": [309432971021,309432971022], // List of LOD children IDs; needed for non-leaf features that participate in a LOD tree or in a heavy-feature-split-tree.
+			"lodChildNodes": [511, 511], // list corresponding to the LoD children IDs and showing in which Node child which Feature child resides.
 			"rank": 1 // LOD rank; only needed for features that participate in a LOD tree.
 		},
 		{
 			"id": 309432971020,
 			"mbs": [122.41, 39.83452, 445.2, 12.899], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
-			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD tree. Used to tell the client which features represent a single feature.
+			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD/Split-feature tree. Used to tell the client which features represent a single feature.
 			"rank": 2
 		},
 		{
 			"id": 309432971021,
 			"mbs": [122.41, 39.83452, 445.2, 10.901], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
-			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD tree. Used to tell the client which features represent a single feature.
+			"rootFeature": 309432971019, // ID of the root Feature of this LOD child; only needed for non-root features that participate in a LOD/Split-feature tree. Used to tell the client which features represent a single feature.
 			"rank": 2
 		}
 	]

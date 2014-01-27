@@ -1,3 +1,6 @@
+/**
+	Example i3s 1.2 SharedData Resource with Material Definitions and separate Texture Definitions.
+*/
 {
 	"materialDefinitions": { // a Map of all Material Definitions needed by features of this node.
 		"Mat01": { // a full material definition for a standard material
@@ -38,7 +41,7 @@
 		"38572918": {
 			"encoding" : "data:image/png", // the encoding/content type that is used by all images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png.
 			"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {*none*, repeat, mirror}
-			"atlas": true, // indicates whether this map (set of images) are texture atlases or not.
+			"atlas": true, // indicates whether this map (set of images) are texture atlases or not. options: {*false*, true}
 			"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
 			"channels": "rgba", // indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...
 			"regions": [

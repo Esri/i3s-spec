@@ -8,14 +8,14 @@
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
 	"expires": "2014-09-14T23:12:00.000Z", // expiration date of this node; should always be in UTC.
 	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the geographicCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
-	"lodError": [ // a list with error metrics that are generated for LOD-enabled caches and that enable the client to pick the right LoD for rendering.
+	"lodMetric": [ // a list with error metrics that are generated for LOD-enabled caches and that enable the client to pick the right LoD for rendering.
 			{
-				"errorMetric": "removedFeatureDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
+				"metricType": "removedFeatureDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
 				"maxError": 17.59, // maximum error, expressed in the CRS of the vertex coordinates
 				"avgError": 12.34 // average error for all features in this node, expressed in the CRS of the vertex coordinates
 			},
 			{
-				"errorMetric": "removedFaceDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
+				"metricType": "removedFaceDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
 				"maxError": 11.11, // maximum error, expressed in the CRS of the vertex coordinates
 				"avgError": 2.19 // average error for all features in this node, expressed in the CRS of the vertex coordinates
 			}

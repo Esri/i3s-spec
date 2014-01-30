@@ -29,8 +29,8 @@
 			"childrenCardinality": [0,9], // min/max number of children per node.
 			"neighborCardinality": [0,9] // min/max number of neighbors per node.
 		}
-	}
-	"fields" :	[ // schema definition for this layer.
+	},
+	"fields" :	[ // schema definition for this layer, as with 2D Layers.
 		{
 		  "name" : "ObjectID", 
 		  "type" : "esriFieldTypeOID", 
@@ -55,6 +55,16 @@
 		  "name" : "eaveHeight", 
 		  "type" : "esriFieldTypeFloat", 
 		  "alias" : "Eave Height"
+		}, 
+		{	// Special attributes that are stored per geometry component are also declared here.
+		  "name" : "classification", // name of the vertex attribute as also defined in FeatureData/Geometries
+		  "type" : "esriFieldTypeVertexAttribute", // specific field type constant to indicate this is a vertex attribute. options: {esriFieldTypeVertexAttribute, esriFieldTypeFaceAttribute} 
+		  "alias" : "Point Classification"
+		}, 
+		{	// 
+		  "name" : "color", 
+		  "type" : "esriFieldTypeVertexAttribute", 
+		  "alias" : "Color"
 		}
 	],
 	"drawingInfo": { // The default symbology to use on this layer.

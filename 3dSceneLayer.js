@@ -21,6 +21,7 @@
 		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.2",  // MIME type for the encoding used for the Feature Data Resources
 		"geometryEncoding": "application/octet-stream; version=1.2", // MIME type for the encoding used for the Geometry Resources
 		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
+		"lodType": "FeatureTree", // optional field to indicate which LoD Scheme is used in this store. Selected from {MeshPyramid, FeatureTree}.
 		"featureOrdering": ["Layer", "Prominence"], // Ordered list of keywords indicating the ordering scheme applied to sort features within a node; selected from {ID, Prominence, Layer}
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "esriRTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}

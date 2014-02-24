@@ -1,9 +1,9 @@
 i3s-spec
 ========
 
-Indexed 3D Scene Format Specification
+*Indexed 3D Scene Format Specification*
 
-This repository host the specification for the upcoming Scene Service and its delivery format I3S (Indexed 3D Scene). These are the core resources:
+This repository hosts the specification for the ArcGIS Scene Service and its delivery format I3S (Indexed 3D Scene). These are the core resources:
 
 -	Indexed 3d Scene Format Specification.docx – Main specification document for the I3S Format
 -	Service Rest Endpoint resources.docx – Specification document for the REST endpoint of the Scene Service

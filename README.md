@@ -11,5 +11,5 @@ This repository host the specification for the upcoming Scene Service and its de
 
 We are also building a [Validation Toolkit](https://devtopia.esri.com/Zurich-R-D-Center/i3s-validator) to support developers.
 
-There is also a set of informative and explorative articels on implementaiton details and usage strategies for the format available in the [i3s wiki](https://devtopia.esri.com/Zurich-R-D-Center/i3s-spec/wiki/_pages) that incldues client traversal patterns, suggestions on optimizations and approachs to steps of the cooking process, such as texture atlas generation.
+There is also a set of informative and explorative articles on implementation details and usage strategies for the format available in the [i3s wiki](https://devtopia.esri.com/Zurich-R-D-Center/i3s-spec/wiki/_pages) that includes client traversal patterns, suggestions on optimizations and approaches to steps of the cooking process, such as texture atlas generation.
 

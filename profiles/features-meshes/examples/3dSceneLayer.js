@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.2 3d Scene Layer Resource.
+	Example i3s 1.3 3d Scene Layer Resource.
 */
 {
 	"id": 0, // the ID of this layer, unique within a 3dSceneService.
@@ -17,12 +17,13 @@
 		"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent of this store, in the horizontal indexCRS 
 		"geographicCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
 		"projectedCRS": "http://www.opengis.net/def/crs/EPSG/0/32632", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL. 
-		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.2", // MIME type for the encoding used for the Node Index Documents
-		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.2",  // MIME type for the encoding used for the Feature Data Resources
-		"geometryEncoding": "application/octet-stream; version=1.2", // MIME type for the encoding used for the Geometry Resources
+		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.3", // MIME type for the encoding used for the Node Index Documents
+		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.3",  // MIME type for the encoding used for the Feature Data Resources
+		"geometryEncoding": "application/octet-stream+gzip; version=1.3", // MIME type for the encoding used for the Geometry Resources
 		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
 		"lodType": "FeatureTree", // optional field to indicate which LoD Scheme is used in this store. Selected from {MeshPyramid, FeatureTree}.
 		"featureOrdering": ["Layer", "Prominence"], // Ordered list of keywords indicating the ordering scheme applied to sort features within a node; selected from {ID, Prominence, Layer}
+		"treekeyDigits": 1, // optional property indicating the length of each key for node treekeys, one of {*1*, 2}
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "esriRTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
 			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs 

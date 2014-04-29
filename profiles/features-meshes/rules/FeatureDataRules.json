@@ -77,18 +77,29 @@
    "valueSchema": "None"
   },
   {
+   "qname": "featureData.geometries.id",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
    "qname": "featureData.geometries.type",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "ArrayBufferView", "SharedResourceReference", "Embedded"
+    "ArrayBufferView", "GeometryReference", "SharedResourceReference", "Embedded"
    ]
   },
   {
    "qname": "featureData.geometries.transformation",
-   "required": true,
+   "required": false,
    "containerType": "Array",
    "cardinality": [
     16,
@@ -105,6 +116,50 @@
    "valueSchema": "None"
   },
   {
+   "qname": "featureData.geometries.params.$ref",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "Pointer",
+   "valueDependency": {
+    "to": "/featureData/geometries/params/type",
+    "type": "ISONEOF",
+    "value": ["GeometryReference", "SharedResourceReference"]
+   }
+  },
+  {
+   "qname": "featureData.geometries.params.lodGeometry",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None",
+   "valueDependency": {
+    "to": "/featureData/geometries/params/type",
+    "type": "ISONEOF",
+    "value": ["GeometryReference"]
+   }
+  },
+  {
+   "qname": "featureData.geometries.params.faceRange",
+   "required": false,
+   "containerType": "Array",
+   "valueType": "number",
+   "valueSchema": "None",
+   "cardinality": [
+    2,
+    2
+   ],
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ],
+   "valueDependency": {
+    "to": "/featureData/geometries/params/type",
+    "type": "ISONEOF",
+    "value": ["GeometryReference"]
+   }
+  },
+  {
    "qname": "featureData.geometries.params.type",
    "required": true,
    "containerType": "None",
@@ -112,7 +167,12 @@
    "valueSchema": "None",
    "valueDomain": [
     "triangle_strip", "triangles", "lines", "points"
-   ]
+   ],
+   "valueDependency": {
+    "to": "/featureData/geometries/params/type",
+    "type": "ISONEOF",
+    "value": ["ArrayBufferView", "Embedded"]
+   }
   },
   {
    "qname": "featureData.geometries.params.components",
@@ -369,6 +429,261 @@
    "containerType": "None",
    "valueType": "None",
    "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.id",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
+   "qname": "geometryData.type",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "ArrayBufferView", "Embedded"
+   ]
+  },
+  {
+   "qname": "geometryData.transformation",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    16,
+    16
+   ],
+   "valueType": "number",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.params",
+   "required": true,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.params.type",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "triangle_strip", "triangles", "lines", "points"
+   ]
+  },
+  {
+   "qname": "geometryData.params.components.id",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
+   "qname": "geometryData.params.components.material",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "Pointer"
+  },
+  {
+   "qname": "geometryData.params.components.texture",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "Pointer"
+  },
+  {
+   "qname": "geometryData.params.components.region",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1024
+   ]
+  },
+  {
+   "qname": "geometryData.params.vertexAttributes",
+   "required": true,
+   "containerType": "Object",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.params.vertexAttributes.*.byteOffset",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.vertexAttributes.*.count",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.vertexAttributes.*.valueType",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+     "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.vertexAttributes.*.valuesPerElement",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    16
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.faces",
+   "required": true,
+   "containerType": "Object",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.params.faces.componentIndices",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.params.faces.*.byteOffset",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "None",
+   "valueRange": [
+    5e-324,
+    1.7976931348623157e+308
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.faces.*.count",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.faces.*.valueType",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+     "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
+  },
+  {
+   "qname": "geometryData.params.faces.*.valuesPerElement",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ],
+   "valueDependency": {
+    "to": "/geometryData/params/type",
+    "type": "IS",
+    "value": "ArrayBufferView"
+   }
   }
  ]
 }

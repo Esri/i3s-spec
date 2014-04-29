@@ -1,11 +1,11 @@
 /**
-	Example i3s 1.2 FeatureData Resource using the LoD/GeometryReference Profile.
+	Example i3s 1.2 FeatureData Resource using the features-meshes Profile with a reference to a merged geometry shared between multiple features.
 */
 {
 	"featureData": [
 		{ 
 			"id": 309432971018,
-			"position": [537218.344, 5328647.27],
+			"position": [537218.344, 5328647.27, 0.0],
 			"pivotOffset": [0.0, 0.0, 14.9],
 			"mbb": [537218.283, 5328647.902, 29.821, 5328647.100, 537218.098, 34.155],
 			"layer": "Zoning Envelopes",

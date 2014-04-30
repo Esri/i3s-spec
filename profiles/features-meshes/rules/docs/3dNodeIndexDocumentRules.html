@@ -2,7 +2,8 @@
 <body>
 <table>
 <tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Notes</th></tr>
-<tr><td>id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
+<tr><td>id</td><td>Y</td><td> </td><td> </td><td>[None]string/NodeID</td></tr>
+<tr><td>id</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
 <tr><td>level</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
 <tr><td>version</td><td>Y</td><td> </td><td> </td><td>[None]string/UUID</td></tr>
 <tr><td>created</td><td> </td><td> </td><td> </td><td>[None]string/Date</td></tr>
@@ -19,17 +20,19 @@
 <tr><td>geometryData</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
 <tr><td>textureData</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
 <tr><td>parentNode</td><td>Y</td><td> </td><td> </td><td>[None]object/None</td></tr>
-<tr><td>parentNode.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
+<tr><td>parentNode.id</td><td>Y</td><td> </td><td> </td><td>[None]string/NodeID</td></tr>
 <tr><td>parentNode.version</td><td>Y</td><td> </td><td> </td><td>[None]string/UUID</td></tr>
 <tr><td>parentNode.href</td><td>Y</td><td> </td><td> </td><td>[None]string/URL</td></tr>
 <tr><td>parentNode.mbs</td><td>Y</td><td>4</td><td>4</td><td>[Array]number/None</td></tr>
 <tr><td>parentNode.featureCount</td><td> </td><td> </td><td> </td><td>[None]number/Integer</td></tr>
 <tr><td>children</td><td>Y</td><td>0</td><td>9</td><td>[Array]object/None</td></tr>
+<tr><td>children.id</td><td>Y</td><td> </td><td> </td><td>[None]string/NodeID</td></tr>
 <tr><td>children.version</td><td>Y</td><td> </td><td> </td><td>[None]string/UUID</td></tr>
 <tr><td>children.href</td><td>Y</td><td> </td><td> </td><td>[None]string/URL</td></tr>
 <tr><td>children.mbs</td><td>Y</td><td>4</td><td>4</td><td>[Array]number/None</td></tr>
 <tr><td>children.featureCount</td><td> </td><td> </td><td> </td><td>[None]number/Integer</td></tr>
 <tr><td>neighbors</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
+<tr><td>neighbors.id</td><td>Y</td><td> </td><td> </td><td>[None]string/NodeID</td></tr>
 <tr><td>neighbors.version</td><td>Y</td><td> </td><td> </td><td>[None]string/UUID</td></tr>
 <tr><td>neighbors.href</td><td>Y</td><td> </td><td> </td><td>[None]string/URL</td></tr>
 <tr><td>neighbors.mbs</td><td>Y</td><td>4</td><td>4</td><td>[Array]number/None</td></tr>
@@ -38,7 +41,7 @@
 <tr><td>features.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
 <tr><td>features.mbs</td><td>Y</td><td>4</td><td>4</td><td>[Array]number/None</td></tr>
 <tr><td>features.lodChildFeatures</td><td>Y</td><td>0</td><td>-1</td><td>[Array]number/Integer</td></tr>
-<tr><td>features.lodChildNodes</td><td>Y</td><td>0</td><td>9</td><td>[Array]number/Integer</td></tr>
+<tr><td>features.lodChildNodes</td><td>Y</td><td>0</td><td>9</td><td>[Array]string/NodeID</td></tr>
 <tr><td>features.rank</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
 <tr><td>features.rootFeature</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
 </table>

@@ -11,7 +11,7 @@
 	"capabilities" : ["View", "Query", "Edit"], // capabilities possible on this layer. If not served by a 3D Scene Server (e.g. exported by CE), "View" only.
 	"store": { // information on the store (a grouping of 1..* layers to a shared index and resource set) of which this layer is a part.
 		"id" : "9f62cd8f-0ab7-451e-917a-65ec8e10a432", // store ID - unique across a SceneServer. Enables the client to discover which layers a part of a common store, if any.
-		"profile": "features-meshes", // i3s 1.3. Indicates which profile this scene store fulfills. One of {features-meshes, features-polygons, features-points, analytics, meshpyramids, pointclouds, symbols}.
+		"profile": "features-meshes", // i3s 1.3. Indicates which profile this scene store fulfills. One of {features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}.
 		"rootNode": "./nodes/0", // relative URL to root node resource.
 		"version": "1.3", // format version of this resource; used here again if this store hasn't been served by a 3D Scene Server.
 		"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent of this store, in the horizontal indexCRS 
@@ -23,7 +23,6 @@
 		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
 		"lodType": "FeatureTree", // optional field to indicate which LoD Scheme is used in this store. Selected from {MeshPyramid, FeatureTree}.
 		"featureOrdering": ["Layer", "Prominence"], // Ordered list of keywords indicating the ordering scheme applied to sort features within a node; selected from {ID, Prominence, Layer}
-		"treekeyDigits": 1, // optional property indicating the length of each key for node treekeys, one of {*1*, 2}
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "esriRTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
 			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs 

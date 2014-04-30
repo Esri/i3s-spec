@@ -7,12 +7,27 @@
 		"qname" : "id",
 		"required" : true,
 		"containerType": "None",
-		"valueType" : "number",
-		"valueSchema" : "Integer",
-		"valueRange" : [
-			0,
-			1.7976931348623157e+308
-		]
+		"valueType" : "string",
+		"valueSchema" : "NodeID",
+		"valueDependencies": [ {
+			"to" : "/level",
+			"type" : "NOT",
+			"value" : "0"
+		} ]
+	}, {
+		"qname" : "id",
+		"required" : true,
+		"containerType": "None",
+		"valueType" : "string",
+		"valueSchema" : "None",
+	    "valueDomain": [
+		  "root"
+	    ],
+		"valueDependencies": [ {
+			"to" : "/level",
+			"type" : "IS",
+			"value" : "0"
+		} ]
 	}, {
 		"qname" : "level",
 		"required" : true,
@@ -137,21 +152,17 @@
 		"containerType": "None",
 		"valueType" : "object",
 		"valueSchema" : "None",
-		"valueDependency" : {
+		"valueDependencies" : [ {
 			"to" : "/level",
 			"type" : "NOT",
 			"value" : 1
-		}
+		} ]
 	}, {
 		"qname" : "parentNode.id",
 		"required" : true,
 		"containerType": "None",
-		"valueType" : "number",
-		"valueSchema" : "Integer",
-		"valueRange" : [
-			0,
-			1.7976931348623157e+308
-		]
+		"valueType" : "string",
+		"valueSchema" : "NodeID"
 	}, {
 		"qname" : "parentNode.version",
 		"required" : true,
@@ -195,6 +206,12 @@
 		"valueType" : "object",
 		"valueSchema" : "None"
 	}, {
+		"qname" : "children.id",
+		"required" : true,
+		"containerType": "None",
+		"valueType" : "string",
+		"valueSchema" : "NodeID"
+	}, {
 		"qname" : "children.version",
 		"required" : true,
 		"containerType": "None",
@@ -236,12 +253,18 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None",
-		"valueDependency" : {
+		"valueDependencies" : [ {
 			"to" : "/level",
 			"type" : "NOT",
 			"value" : 1
-		}
+		} ]
 	}, {
+		"qname" : "neighbors.id",
+		"required" : true,
+		"containerType": "None",
+		"valueType" : "string",
+		"valueSchema" : "NodeID"
+	},{
 		"qname" : "neighbors.version",
 		"required" : true,
 		"containerType": "None",
@@ -313,11 +336,11 @@
 		],
 		"valueType" : "number",
 		"valueSchema" : "Integer",
-		"valueDependency" : {
+		"valueDependencies" : [ {
 			"to" : "[../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
-		}
+		} ]
 	}, {
 		"qname" : "features.lodChildNodes",
 		"required" : true,
@@ -326,13 +349,13 @@
 			0,
 			9
 		],
-		"valueType" : "number",
-		"valueSchema" : "Integer",
-		"valueDependency" : {
+		"valueType" : "string",
+		"valueSchema" : "NodeID",
+		"valueDependencies" : [ {
 			"to" : "[../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
-		}
+		} ]
 	}, {
 		"qname" : "features.rank",
 		"required" : true,
@@ -343,11 +366,11 @@
 			0,
 			1.7976931348623157e+308
 		],
-		"valueDependency" : {
+		"valueDependencies" : [ {
 			"to" : "[../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
-		}
+		} ]
 	}, {
 		"qname" : "features.rootFeature",
 		"required" : true,
@@ -358,11 +381,15 @@
 			0,
 			1.7976931348623157e+308
 		],
-		"valueDependency" : {
+		"valueDependencies" : [ {
 			"to" : "[../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
-		}
+		}, {
+			"to" : "/level",
+			"type" : "NOT",
+			"value" : 0
+		} ]
 	}
 	]
 }

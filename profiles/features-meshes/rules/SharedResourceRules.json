@@ -44,11 +44,11 @@
    "containerType": "None",
    "valueType": "boolean",
    "valueSchema": "None",
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/materialDefinitions/*/type",
     "type": "IS",
     "value": "standard"
-   }
+   } ]
   },
   {
    "qname": "materialDefinitions.*.params.reflectivity",
@@ -108,11 +108,7 @@
   {
    "qname": "materialDefinitions.*.params.shininess",
    "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    3,
-    3
-   ],
+   "containerType": "None",
    "valueType": "number",
    "valueSchema": "Float"
   },
@@ -150,11 +146,11 @@
     1,
     255
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/materialDefinitions/*/type",
     "type": "IS",
     "value": "water"
-   }
+   } ]
   },
   {
    "qname": "materialDefinitions.*.params.waveAmplitude",
@@ -166,11 +162,11 @@
     1,
     255
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/materialDefinitions/*/type",
     "type": "IS",
     "value": "water"
-   }
+   } ]
   },
   {
    "qname": "materialDefinitions.*.href",
@@ -181,11 +177,11 @@
    "valueDomain": [
     "CodeExample"
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/materialDefinitions/*/type",
     "type": "IS",
     "value": "reference"
-   }
+   } ]
   },
   {
    "qname": "textureDefinitions",
@@ -205,7 +201,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "data:image/png", "data:image/jpg"
+    "data:image/png", "data:image/jpg", "data:image/jpeg"
    ]
   },
   {
@@ -259,11 +255,11 @@
    ],
    "valueType": "object",
    "valueSchema": "None",
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/textureDefinitions/*/atlas",
     "type": "IS",
     "value": true
-   }
+   } ]
   },
   {
    "qname": "textureDefinitions.*.regions.id",
@@ -505,11 +501,11 @@
     0,
     1.7976931348623157e+308
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.vertexAttributes.*.count",
@@ -521,11 +517,11 @@
     0,
     1.7976931348623157e+308
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.vertexAttributes.*.valueType",
@@ -536,11 +532,11 @@
    "valueDomain": [
      "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.vertexAttributes.*.valuesPerElement",
@@ -552,11 +548,11 @@
     0,
     16
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.faces",
@@ -590,11 +586,11 @@
     5e-324,
     1.7976931348623157e+308
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.faces.*.count",
@@ -606,11 +602,11 @@
     0,
     1.7976931348623157e+308
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.faces.*.valueType",
@@ -621,11 +617,11 @@
    "valueDomain": [
      "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   },
   {
    "qname": "symbols.*.geometries.params.faces.*.valuesPerElement",
@@ -637,11 +633,11 @@
     0,
     1.7976931348623157e+308
    ],
-   "valueDependency": {
+   "valueDependencies": [ {
     "to": "/symbols/*/geometries/params/type",
     "type": "IS",
     "value": "ArrayBufferView"
-   }
+   } ]
   }
  ]
 }

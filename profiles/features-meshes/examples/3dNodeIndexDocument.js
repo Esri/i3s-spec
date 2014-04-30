@@ -2,7 +2,7 @@
 	Example i3s 1.2 3d Node Index Document Resource.
 */
 {
-	"id": 51, // Tree Key ID. This node is thus two level below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.
+	"id": "5-1", // Tree Key ID. This node is thus two level below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.
 	"level": 2, // explicit level of this node within the index tree.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this node.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
@@ -18,8 +18,7 @@
 				"metricType": "removedFaceDiameter", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
 				"maxError": 11.11, // maximum error, expressed in the CRS of the vertex coordinates
 				"avgError": 2.19 // average error for all features in this node, expressed in the CRS of the vertex coordinates
-			}
-			,
+			},
 			{
 				"metricType": "screenSpaceRelative", // name of the error metric, one of {removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...} 
 				"maxError": 0.0034 // error relative to the diameter of the screen area rendered; This example would translate to ~7px on a FullHD screen.
@@ -64,7 +63,7 @@
 		}
 	],
 	"parentNode": {  // an expandable node-relative reference with some additional information to parent node of this node.
-		"id": 5, // the ID of the parent node.
+		"id": "5", // the ID of the parent node.
 		"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
 		"href": "../5", // the node-relative URL to the parent node.
 		"mbs": [122.2, 39.9, 421.0, 5462.1], // the MBS of the parent node.
@@ -72,37 +71,37 @@
 	},
 	"children": [ // the list of child nodes of this node.
 		{ 
-			"id": 511, 
+			"id": "5-1-1", 
 			"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
-			"href": "../511", // the node-relative URL to the child node.
+			"href": "../5-1-1", // the node-relative URL to the child node.
 			"mbs": [122.2, 39.9, 429.8, 2334.5],
 			"featureCount": 3817 // the aggregated number of features in this child node and any further descendants. Used to enable clients to quickly discovere where data is and to visualize the clusters.
 		}, 
 		{ 
-			"id": 512, 
+			"id": "5-1-2", 
 			"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
-			"href": "../512", // the node-relative URL to the child node.
+			"href": "../5-1-2", // the node-relative URL to the child node.
 			"mbs": [122.2, 39.9, 429.8, 2334.5],
 			"featureCount": 1210 // the aggregated number of features in this child node and any further descendants. Used to enable clients to quickly discovere where data is and to visualize the clusters.
 		}
 	],
 	"neighbors": [ // neighbors are nodes on the same index level whose extent is close by to the extent of this NID. They are added during encoding when the index structure has been built.
 		{ 
-			"id": 52, 
+			"id": "5-2", 
 			"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
 			"href": "../52", // the node-relative URL to the neighbor node.
 			"mbs": [122.2, 39.9, 429.8, 2334.5] // the mbs of the neigbor node.
 		}, 
 		{ 
-			"id": 34, 
+			"id": "3-4", 
 			"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
-			"href": "../34", // the node-relative URL to the neighbor node.
+			"href": "../3-4", // the node-relative URL to the neighbor node.
 			"mbs": [122.2, 39.9, 429.8, 2334.5] // the mbs of the neigbor node.
 		},
 		{ 
-			"id": 53, 
+			"id": "5-3", 
 			"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
-			"href": "../53", // the node-relative URL to the neighbor node.
+			"href": "../5-3", // the node-relative URL to the neighbor node.
 			"mbs": [122.2, 39.9, 429.8, 2334.5] // the mbs of the neigbor node.
 		}
 	],
@@ -115,7 +114,7 @@
 			"id": 309432971019,
 			"mbs": [122.41, 39.83452, 445.2, 40.011], // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
 			"lodChildFeatures": [309432971021,309432971022], // List of LOD children IDs; needed for non-leaf features that participate in a LOD tree or in a heavy-feature-split-tree.
-			"lodChildNodes": [511, 511], // list corresponding to the LoD children IDs and showing in which Node child which Feature child resides.
+			"lodChildNodes": ["5-1-1", "5-1-1"], // list corresponding to the LoD children IDs and showing in which Node child which Feature child resides.
 			"rank": 1 // LOD rank; only needed for features that participate in a LOD tree.
 		},
 		{

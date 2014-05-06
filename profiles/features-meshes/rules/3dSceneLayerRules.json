@@ -338,14 +338,14 @@
    "valueSchema": "None"
   },
   {
-   "qname": "fields.name",
+   "qname": "fields.*.name",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None"
   },
   {
-   "qname": "fields.type",
+   "qname": "fields.*.type",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -355,7 +355,7 @@
    ]
   },
   {
-   "qname": "fields.alias",
+   "qname": "fields.*.alias",
    "required": false,
    "containerType": "None",
    "valueType": "string",

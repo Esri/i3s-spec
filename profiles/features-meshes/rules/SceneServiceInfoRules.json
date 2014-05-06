@@ -60,7 +60,7 @@
    "valueSchema": "None"
   },
   {
-   "qname": "layers.id",
+   "qname": "layers.*.id",
    "required": true,
    "containerType": "None",
    "valueType": "number",
@@ -71,21 +71,21 @@
    ]
   },
   {
-   "qname": "layers.name",
+   "qname": "layers.*.name",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None"
   },
   {
-   "qname": "layers.alias",
+   "qname": "layers.*.alias",
    "required": false,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None"
   },
   {
-   "qname": "layers.lodType",
+   "qname": "layers.*.lodType",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -95,7 +95,7 @@
    ]
   },
   {
-   "qname": "layers.href",
+   "qname": "layers.*.href",
    "required": true,
    "containerType": "None",
    "valueType": "string",

@@ -368,7 +368,7 @@
   },
   {
    "qname": "symbols",
-   "required": true,
+   "required": false,
    "containerType": "Object",
    "cardinality": [
     0,
@@ -393,180 +393,16 @@
     -1
    ],
    "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.type",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-    "ArrayBufferView", "SharedResourceReference", "Embedded"
-   ]
-  },
-  {
-   "qname": "symbols.*.geometries.transformation",
-   "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    16,
-    16
-   ],
-   "valueType": "number",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.params",
-   "required": true,
-   "containerType": "None",
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.params.type",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-    "triangle_strip", "triangles", "lines", "points"
-   ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.components",
-   "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.params.components.id",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.components.material",
-   "required": false,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "Pointer"
-  },
-  {
-   "qname": "symbols.*.geometries.params.components.texture",
-   "required": false,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "Pointer"
-  },
-  {
-   "qname": "symbols.*.geometries.params.components.region",
-   "required": false,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1024
-   ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.vertexAttributes",
-   "required": true,
-   "containerType": "Object",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.params.vertexAttributes.*.byteOffset",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "ArrayBufferView"
    } ]
   },
   {
-   "qname": "symbols.*.geometries.params.vertexAttributes.*.count",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
-   } ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.vertexAttributes.*.valueType",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
-   } ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.vertexAttributes.*.valuesPerElement",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    16
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
-   } ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.faces",
-   "required": true,
-   "containerType": "Object",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.params.faces.componentIndices",
+   "qname": "symbols.*.geometries",
    "required": true,
    "containerType": "Array",
    "cardinality": [
@@ -574,69 +410,12 @@
     -1
    ],
    "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "symbols.*.geometries.params.faces.*.byteOffset",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "None",
-   "valueRange": [
-    5e-324,
-    1.7976931348623157e+308
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
-   } ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.faces.*.count",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
-   } ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.faces.*.valueType",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
-   } ]
-  },
-  {
-   "qname": "symbols.*.geometries.params.faces.*.valuesPerElement",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ],
-   "valueDependencies": [ {
-    "to": "/symbols/*/geometries/params/type",
-    "type": "IS",
-    "value": "ArrayBufferView"
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "Embedded"
    } ]
   }
  ]

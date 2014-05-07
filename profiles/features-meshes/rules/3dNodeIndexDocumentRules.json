@@ -431,11 +431,11 @@
 		}, {
 			"to" : "/level",
 			"type" : "NOT",
-			"value" : 0
+			"value" : 1
 		}, {
 			"to" : "rank",
 			"type" : "NOT",
-			"value" : 0
+			"value" : 1
 		} ]
 	}
 	]

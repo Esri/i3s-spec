@@ -1,4 +1,4 @@
-{
+﻿{
  "targetProfile": "feature-mesh",
  "resource": "SharedResource",
  "version": "1.3",
@@ -11,6 +11,12 @@
     0,
     -1
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*",
+   "required": true,
    "valueType": "object",
    "valueSchema": "None"
   },
@@ -80,6 +86,12 @@
     3,
     3
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.ambient",
+   "required": false,
    "valueType": "number",
    "valueSchema": "Float"
   },
@@ -91,6 +103,12 @@
     3,
     3
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.diffuse",
+   "required": false,
    "valueType": "number",
    "valueSchema": "Float"
   },
@@ -102,6 +120,12 @@
     3,
     3
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.specular",
+   "required": false,
    "valueType": "number",
    "valueSchema": "Float"
   },
@@ -195,6 +219,12 @@
    "valueSchema": "None"
   },
   {
+   "qname": "textureDefinitions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
    "qname": "textureDefinitions.*.encoding",
    "required": true,
    "containerType": "None",
@@ -212,6 +242,15 @@
     1,
     2
    ],
+   "valueType": "object",
+   "valueSchema": "None",
+   "valueDomain": [
+    "none", "repeat", "mirror"
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.wrap.*",
+   "required": true,
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
@@ -262,6 +301,12 @@
    } ]
   },
   {
+   "qname": "textureDefinitions.*.regions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
    "qname": "textureDefinitions.*.regions.id",
    "required": true,
    "containerType": "None",
@@ -280,6 +325,12 @@
     4,
     4
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.regions.subimageRegion",
+   "required": true,
    "valueType": "number",
    "valueSchema": "Float",
    "valueRange": [
@@ -299,7 +350,13 @@
    "valueSchema": "None"
   },
   {
-   "qname": "textureDefinitions.*.images.id",
+   "qname": "textureDefinitions.*.images.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.id",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -309,7 +366,7 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.size",
+   "qname": "textureDefinitions.*.images.*.size",
    "required": true,
    "containerType": "None",
    "valueType": "number",
@@ -378,6 +435,12 @@
    "valueSchema": "None"
   },
   {
+   "qname": "symbols.*",
+   "required": false,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
    "qname": "symbols.*.name",
    "required": true,
    "containerType": "None",
@@ -393,6 +456,12 @@
     -1
    ],
    "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "symbols.*.geometries.*",
+   "required": true,
+   "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
    "valueDependencies" : [ {
@@ -402,13 +471,8 @@
    } ]
   },
   {
-   "qname": "symbols.*.geometries",
+   "qname": "symbols.*.geometries.*",
    "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
    "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",

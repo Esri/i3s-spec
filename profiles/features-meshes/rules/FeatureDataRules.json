@@ -1,4 +1,4 @@
-{
+﻿{
  "targetProfile": "feature-mesh",
  "resource": "FeatureData",
  "version": "1.3",
@@ -11,6 +11,12 @@
     0,
     -1
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*",
+   "required": true,
    "valueType": "object",
    "valueSchema": "None"
   },
@@ -33,6 +39,12 @@
     3,
     3
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.position.*",
+   "required": true,
    "valueType": "number",
    "valueSchema": "None"
   },
@@ -44,6 +56,12 @@
     3,
     3
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.pivotOffset.*",
+   "required": false,
    "valueType": "number",
    "valueSchema": "None"
   },
@@ -55,6 +73,12 @@
     6,
     6
    ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.mbb.*",
+   "required": true,
    "valueType": "number",
    "valueSchema": "None"
   },
@@ -74,6 +98,12 @@
     -1
    ],
    "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
+   "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
    "valueDependencies" : [ {
@@ -83,13 +113,8 @@
    } ]
   },
   {
-   "qname": "featureData.*.geometries",
+   "qname": "featureData.*.geometries.*",
    "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
    "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryReferenceRules.json",
@@ -100,13 +125,9 @@
    } ]
   },
   {
-   "qname": "featureData.*.geometries",
+   "qname": "featureData.*.geometries.*",
    "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
+   "containerType": "None",
    "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",
@@ -128,6 +149,23 @@
    "valueSchema": "None"
   },
   {
+   "qname": "featureData.*.attributes",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
    "qname": "featureData.*.attributes.0.metadata",
    "required": false,
    "containerType": "Array",
@@ -139,17 +177,29 @@
    "valueSchema": "None"
   },
   {
-   "qname": "featureData.*.attributes.*.metadata.*.name",
+   "qname": "featureData.*.attributes.0.metadata.*",
+   "required": false,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.0.metadata.*.name",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None"
   },
   {
-   "qname": "featureData.*.attributes.*.metadata.*.value",
+   "qname": "featureData.*.attributes.0.metadata.*.value",
    "required": true,
    "containerType": "None",
    "valueType": "Any",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*",
+   "required": false,
+   "valueType": "object",
    "valueSchema": "None"
   },
   {
@@ -175,6 +225,12 @@
     -1
    ],
    "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.*",
+   "required": true,
+   "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
    "valueDependencies" : [ {
@@ -184,13 +240,8 @@
    } ]
   },
   {
-   "qname": "geometryData",
+   "qname": "geometryData.*",
    "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
    "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",

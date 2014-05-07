@@ -1,4 +1,4 @@
-{
+﻿{
 	"targetProfile": "feature-mesh",
 	"resource": "3dNodeIndexDocument",
 	"version": "1.3",
@@ -12,9 +12,10 @@
 		"valueDependencies": [ {
 			"to" : "/level",
 			"type" : "NOT",
-			"value" : "0"
+			"value" : "1"
 		} ]
-	}, {
+	}, 
+	{
 		"qname" : "id",
 		"required" : true,
 		"containerType": "None",
@@ -26,9 +27,10 @@
 		"valueDependencies": [ {
 			"to" : "/level",
 			"type" : "IS",
-			"value" : "0"
+			"value" : "1"
 		} ]
-	}, {
+	}, 
+	{
 		"qname" : "level",
 		"required" : true,
 		"containerType": "None",
@@ -38,25 +40,29 @@
 			0,
 			1.7976931348623157e+308
 		]
-	}, {
+	}, 
+	{
 		"qname" : "version",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, {
+	}, 
+	{
 		"qname" : "created",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "Date"
-	}, {
+	}, 
+	{
 		"qname" : "expires",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "Date"
-	}, {
+	}, 
+	{
 		"qname" : "mbs",
 		"required" : true,
 		"containerType": "Array",
@@ -64,9 +70,16 @@
 			4,
 			4
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},  
+	{
+		"qname" : "mbs.*",
+		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	}, 
+	{
 		"qname" : "lodSelection",
 		"required" : true,
 		"containerType": "Array",
@@ -76,25 +89,35 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},{
+	}, 
+	{
+		"qname" : "lodSelection.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},
+	{
 		"qname" : "lodSelection.*.metric",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "number",
 		"valueSchema" : "None"
-	},{
+	},
+	{
 		"qname" : "lodSelection.*.maxError",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "number",
 		"valueSchema" : "None"
-	},{
+	},
+	{
 		"qname" : "lodSelection.*.avgError",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	}, 
+	{
 		"qname" : "transform",
 		"required" : true,
 		"containerType": "Array",
@@ -102,21 +125,30 @@
 			16,
 			16
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
+		"qname" : "transform.*",
+		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	},  
+	{
 		"qname" : "sharedResource",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, {
+	}, 
+	{
 		"qname" : "sharedResource.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "featureData",
 		"required" : true,
 		"containerType": "Array",
@@ -126,12 +158,20 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, {
+	}, 
+	{
+		"qname" : "featureData.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
 		"qname" : "featureData.*.href",
 		"required" : true,
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "featureData.*.featureRange",
 		"required" : true,
 		"containerType": "Array",
@@ -139,18 +179,33 @@
 			2,
 			2
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},  
+	{
+		"qname" : "featureData.*.featureRange.*",
+		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "Integer"
-	}, {
+	},
+	{
 		"qname" : "featureData.*.layerContent",
 		"required" : false,
+		"containerType": "Array",
 		"cardinality" : [
 			1,
 			-1
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
+		"qname" : "featureData.*.layerContent.*",
+		"required" : false,
 		"valueType" : "string",
 		"valueSchema" : "None"
-	}, {
+	},
+	{
 		"qname" : "geometryData",
 		"required" : true,
 		"containerType": "Array",
@@ -160,12 +215,20 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, {
+	}, 
+	{
+		"qname" : "geometryData.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},
+	{
 		"qname" : "geometryData.*.href",
 		"required" : true,
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "textureData",
 		"required" : true,
 		"containerType": "Array",
@@ -175,17 +238,26 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, {
+	},  
+	{
+		"qname" : "textureData.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},
+	{
 		"qname" : "textureData.*.href",
 		"required" : true,
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "textureData.*.multiTexturedBundle",
 		"required" : false,
 		"valueType" : "boolean",
 		"valueSchema" : "None"
-	}, {
+	}, 
+	{
 		"qname" : "parentNode",
 		"required" : true,
 		"containerType": "None",
@@ -196,25 +268,29 @@
 			"type" : "NOT",
 			"value" : 1
 		} ]
-	}, {
+	}, 
+	{
 		"qname" : "parentNode.id",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "NodeID"
-	}, {
+	}, 
+	{
 		"qname" : "parentNode.version",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, {
+	}, 
+	{
 		"qname" : "parentNode.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "parentNode.mbs",
 		"required" : true,
 		"containerType": "Array",
@@ -222,9 +298,16 @@
 			4,
 			4
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},  
+	{
+		"qname" : "parentNode.mbs.*",
+		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	},
+	{
 		"qname" : "parentNode.featureCount",
 		"required" : false,
 		"containerType": "None",
@@ -234,7 +317,8 @@
 			0,
 			1.7976931348623157e+308
 		]
-	}, {
+	}, 
+	{
 		"qname" : "children",
 		"required" : true,
 		"containerType": "Array",
@@ -244,25 +328,46 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, {
+	},  
+	{
+		"qname" : "children",
+		"required" : true,
+		"containerType": "Array",
+		"cardinality" : [
+			0,
+			99
+		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},  
+	{
+		"qname" : "children.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},
+	{
 		"qname" : "children.*.id",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "NodeID"
-	}, {
+	}, 
+	{
 		"qname" : "children.*.version",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, {
+	}, 
+	{
 		"qname" : "children.*.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "children.*.mbs",
 		"required" : true,
 		"containerType": "Array",
@@ -270,9 +375,16 @@
 			4,
 			4
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
+		"qname" : "children.*.mbs.*",
+		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	},
+	{
 		"qname" : "children.*.featureCount",
 		"required" : false,
 		"containerType": "None",
@@ -282,7 +394,8 @@
 			0,
 			1.7976931348623157e+308
 		]
-	}, {
+	}, 
+	{
 		"qname" : "neighbors",
 		"required" : true,
 		"containerType": "Array",
@@ -297,25 +410,35 @@
 			"type" : "NOT",
 			"value" : 1
 		} ]
-	}, {
+	},  
+	{
+		"qname" : "neighbors.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
 		"qname" : "neighbors.*.id",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "NodeID"
-	},{
+	},
+	{
 		"qname" : "neighbors.*.version",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, {
+	}, 
+	{
 		"qname" : "neighbors.*.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, {
+	}, 
+	{
 		"qname" : "neighbors.*.mbs",
 		"required" : true,
 		"containerType": "Array",
@@ -323,9 +446,16 @@
 			4,
 			4
 		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},  
+	{
+		"qname" : "neighbors.*.mbs.*",
+		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	},
+	{
 		"qname" : "neighbors.*.featureCount",
 		"required" : false,
 		"containerType": "None",
@@ -335,7 +465,8 @@
 			0,
 			1.7976931348623157e+308
 		]
-	}, {
+	}, 
+	{
 		"qname" : "features",
 		"required" : true,
 		"containerType": "Array",
@@ -345,7 +476,14 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, {
+	},  
+	{
+		"qname" : "features.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	},
+	{
 		"qname" : "features.*.id",
 		"required" : true,
 		"containerType": "None",
@@ -355,7 +493,8 @@
 		],
 		"valueType" : "number",
 		"valueSchema" : "Integer"
-	}, {
+	}, 
+	{
 		"qname" : "features.*.mbs",
 		"required" : true,
 		"containerType": "Array",
@@ -365,7 +504,14 @@
 		],
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, {
+	},   
+	{
+		"qname" : "features.*.mbs.*",
+		"required" : true,
+		"valueType" : "number",
+		"valueSchema" : "None"
+	},
+	{
 		"qname" : "features.*.lodChildFeatures",
 		"required" : true,
 		"containerType": "Array",
@@ -373,14 +519,21 @@
 			0,
 			-1
 		],
-		"valueType" : "number",
-		"valueSchema" : "Integer",
+		"valueType" : "object",
+		"valueSchema" : "None",
 		"valueDependencies" : [ {
 			"to" : "[../../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
 		} ]
-	}, {
+	}, 
+	{
+		"qname" : "features.*.lodChildFeatures.*",
+		"required" : true,
+		"valueType" : "number",
+		"valueSchema" : "Integer"
+	},
+	{
 		"qname" : "features.*.lodChildNodes",
 		"required" : true,
 		"containerType": "Array",
@@ -388,8 +541,8 @@
 			0,
 			9
 		],
-		"valueType" : "string",
-		"valueSchema" : "NodeID",
+		"valueType" : "object",
+		"valueSchema" : "None",
 		"valueDependencies" : [ {
 			"to" : "[../../]/store/lodType",
 			"type" : "IS",
@@ -399,7 +552,14 @@
 			"type" : "NOT",
 			"value" : null
 		} ]
-	}, {
+	},
+	{
+		"qname" : "features.*.lodChildNodes.*",
+		"required" : true,
+		"valueType" : "string",
+		"valueSchema" : "NodeID"
+	}, 
+	{
 		"qname" : "features.*.rank",
 		"required" : true,
 		"containerType": "None",
@@ -431,11 +591,11 @@
 		}, {
 			"to" : "/level",
 			"type" : "NOT",
-			"value" : 0
+			"value" : 1
 		}, {
 			"to" : "rank",
 			"type" : "NOT",
-			"value" : 0
+			"value" : 1
 		} ]
 	}
 	]

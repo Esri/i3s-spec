@@ -29,6 +29,12 @@
 			16,
 			16
 		],
+		"valueType": "object",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "transformation.*",
+		"required": false,
 		"valueType": "number",
 		"valueSchema": "None"
 	},
@@ -57,20 +63,21 @@
 		"qname": "params.faceRange",
 		"required": false,
 		"containerType": "Array",
-		"valueType": "number",
+		"valueType": "object",
 		"valueSchema": "None",
 		"cardinality": [
 			2,
 			2
-		],
+		]
+	},
+	{
+		"qname": "params.faceRange.*",
+		"required": false,
+		"valueType": "number",
+		"valueSchema": "None",
 		"valueRange": [
 			0,
 			1.7976931348623157e+308
-		],
-		"valueDependencies": [{
-			"to": "/featureData/geometries/params/type",
-			"type": "ISONEOF",
-			"value": ["GeometryReference"]
-		}]
+		]
 	}]
 }

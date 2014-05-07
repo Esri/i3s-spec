@@ -144,6 +144,7 @@
 	}, {
 		"qname" : "featureData.*.layerContent",
 		"required" : false,
+        "containerType": "Array",
 		"cardinality" : [
 			1,
 			-1
@@ -431,11 +432,11 @@
 		}, {
 			"to" : "/level",
 			"type" : "NOT",
-			"value" : 0
+			"value" : 1
 		}, {
 			"to" : "rank",
 			"type" : "NOT",
-			"value" : 0
+			"value" : 1
 		} ]
 	}
 	]

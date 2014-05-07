@@ -128,7 +128,7 @@
    "valueSchema": "None"
   },
   {
-   "qname": "featureData.*.attributes.0.metadata",
+   "qname": "featureData.*.attributes.*.metadata",
    "required": false,
    "containerType": "Array",
    "cardinality": [

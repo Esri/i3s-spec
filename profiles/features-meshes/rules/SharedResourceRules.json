@@ -299,7 +299,7 @@
    "valueSchema": "None"
   },
   {
-   "qname": "textureDefinitions.*.images.id",
+   "qname": "textureDefinitions.*.images.*.id",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -309,7 +309,7 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.size",
+   "qname": "textureDefinitions.*.images.*.size",
    "required": true,
    "containerType": "None",
    "valueType": "number",
@@ -320,7 +320,7 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.pixelInWorldUnits",
+   "qname": "textureDefinitions.*.images.*.pixelInWorldUnits",
    "required": false,
    "containerType": "None",
    "valueType": "number",
@@ -331,14 +331,14 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.href",
+   "qname": "textureDefinitions.*.images.*.href",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "URL"
   },
   {
-   "qname": "textureDefinitions.*.images.byteOffset",
+   "qname": "textureDefinitions.*.images.*.byteOffset",
    "required": false,
    "containerType": "None",
    "valueType": "number",
@@ -349,7 +349,7 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.length",
+   "qname": "textureDefinitions.*.images.*.length",
    "required": false,
    "containerType": "None",
    "valueType": "number",

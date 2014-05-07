@@ -57,6 +57,20 @@
 		]
 	},
 	{
+		"qname": "params.material",
+		"required": false,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "Pointer"
+	},
+	{
+		"qname": "params.texture",
+		"required": false,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "Pointer"
+	},
+	{
 		"qname": "params.components",
 		"required": false,
 		"containerType": "Array",

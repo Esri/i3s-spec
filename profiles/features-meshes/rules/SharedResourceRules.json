@@ -90,10 +90,14 @@
    "valueSchema": "None"
   },
   {
-   "qname": "materialDefinitions.*.params.ambient",
+   "qname": "materialDefinitions.*.params.ambient.*",
    "required": false,
    "valueType": "number",
-   "valueSchema": "Float"
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
   },
   {
    "qname": "materialDefinitions.*.params.diffuse",
@@ -107,10 +111,14 @@
    "valueSchema": "None"
   },
   {
-   "qname": "materialDefinitions.*.params.diffuse",
+   "qname": "materialDefinitions.*.params.diffuse.*",
    "required": false,
    "valueType": "number",
-   "valueSchema": "Float"
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
   },
   {
    "qname": "materialDefinitions.*.params.specular",
@@ -124,10 +132,14 @@
    "valueSchema": "None"
   },
   {
-   "qname": "materialDefinitions.*.params.specular",
+   "qname": "materialDefinitions.*.params.specular.*",
    "required": false,
    "valueType": "number",
-   "valueSchema": "Float"
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
   },
   {
    "qname": "materialDefinitions.*.params.shininess",
@@ -377,7 +389,7 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.pixelInWorldUnits",
+   "qname": "textureDefinitions.*.images.*.pixelInWorldUnits",
    "required": false,
    "containerType": "None",
    "valueType": "number",
@@ -388,14 +400,14 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.href",
+   "qname": "textureDefinitions.*.images.*.href",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "URL"
   },
   {
-   "qname": "textureDefinitions.*.images.byteOffset",
+   "qname": "textureDefinitions.*.images.*.byteOffset",
    "required": false,
    "containerType": "None",
    "valueType": "number",
@@ -406,7 +418,7 @@
    ]
   },
   {
-   "qname": "textureDefinitions.*.images.length",
+   "qname": "textureDefinitions.*.images.*.length",
    "required": false,
    "containerType": "None",
    "valueType": "number",

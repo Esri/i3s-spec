@@ -149,17 +149,6 @@
    "valueSchema": "None"
   },
   {
-   "qname": "featureData.*.attributes",
-   "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    0,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
    "qname": "featureData.*.attributes.*",
    "required": true,
    "valueType": "object",
@@ -194,12 +183,6 @@
    "required": true,
    "containerType": "None",
    "valueType": "Any",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*",
-   "required": false,
-   "valueType": "object",
    "valueSchema": "None"
   },
   {

@@ -324,17 +324,6 @@
 		"containerType": "Array",
 		"cardinality" : [
 			0,
-			9
-		],
-		"valueType" : "object",
-		"valueSchema" : "None"
-	},  
-	{
-		"qname" : "children",
-		"required" : true,
-		"containerType": "Array",
-		"cardinality" : [
-			0,
 			99
 		],
 		"valueType" : "object",
@@ -548,7 +537,7 @@
 			"type" : "IS",
 			"value" : "FeatureTree"
 		}, {
-			"to" : "lodChildFeatures",
+			"to" : "../lodChildFeatures",
 			"type" : "NOT",
 			"value" : null
 		} ]
@@ -593,7 +582,7 @@
 			"type" : "NOT",
 			"value" : 1
 		}, {
-			"to" : "rank",
+			"to" : "../rank",
 			"type" : "NOT",
 			"value" : 1
 		} ]

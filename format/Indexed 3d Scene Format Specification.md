@@ -286,8 +286,7 @@ When using a mesh pyramid based LOD approach each interior node in the i3S tree 
 
 <h3><a name="_4_3">LoD Selection Metrics</a></h3>
 
-<p>A client
-needs information to determine whether a node’s contents are "good enough" to
+<p>A client needs information to determine whether a node’s contents are "good enough" to
 render under constraints such as resolution, screen size, bandwidth and
 available memory and target minimum quality goals. i3s originally used a single, unit-less "precision"
 value that i3s generators add to each node. Clients use a heuristic to
@@ -392,8 +391,7 @@ sets offered by an instance of a 3dSceneService.</p>
 
 <p>The 3dSceneServiceInfo has the following structure:</p>
 
-<!-- FIXME INSERT Figure 6 UML 3dSceneServiceInfo -->
-
+<img src="images/figure-06.png" title="Logical schema of the 3dSceneServiceInfo document" alt="Logical schema of the 3dSceneServiceInfo document" />
 
 <p>Figure 6: Logical schema of the 3dSceneServiceInfo document</p>
 
@@ -489,7 +487,7 @@ layer in a store, including the default symbology to use. It shares the
 definition of this default symbology with the web scene item JSON file. The
 3dSceneLayerInfo has the following structure:</p>
 
-<!-- FIXME INSERT Figure 7 UML 3dSceneLayerInfo -->
+<img src="images/figure-07.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document" />
 
 <p><em>Figure 7: Logical schema of the 3dSceneLayerInfo document</em></p>
 
@@ -732,7 +730,7 @@ the Minimum Bounding Sphere as spheres.</p>
 
 <p>The 3dNodeIndexDocument has the following structure:</p>
 
-<!-- FIXME INSERT Figure 8 UML 3dNodeIndexDocument -->
+<img src="images/figure-08.png" title="Logical schema of the 3dNodeIndexDocument document" alt="Logical schema of the 3dNodeIndexDocument document" />
 
 <p>Figure 8: Logical schema of the 3dNodeIndexDocument</p>
 
@@ -948,7 +946,7 @@ to geometry attributes and other references to styling or materials.</p>
 
 <p>Features have the following structure:</p>
 
-<!-- FIXME INSERT Figure 9 UML Feature Data -->
+<img src="images/figure-09.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document" />
 
 <p><em>Figure 9: Logical schema of the FeatureData document</em></p>
 
@@ -1165,9 +1163,9 @@ feature in that node or in features which are stored in the subtree of the
 current node. This approach ensures an optimal distribution of shared resources
 across nodes, while maintaining the node-based updating process.</p>
 
-<!-- FIXME INSERT Figure 10 UML SharedResource -->
+<img src="images/figure-10.png" title="Logical schema of the SharedData document" alt="Logical schema of the SharedData document" />
 
-<p><em>Figure 10: Logical schema of the FeatureData document</em></p>
+<p><em>Figure 10: Logical schema of the SharedData document</em></p>
 
 <h4>Class SharedResource</h4>
 

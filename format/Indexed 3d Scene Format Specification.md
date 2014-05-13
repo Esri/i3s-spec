@@ -1,10 +1,10 @@
-<h1>Esri Indexed 3d Scene (i3s/i3p) <br>
-Format Specification</h1>
+<h2>Esri Indexed 3d Scene (i3s/i3p) <br>
+Format Specification</h2>
 
 </div>
 
-<p>Version 1.3.50, 2014-05-15<br/>
-<em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
+<p>Version 1.3, rev. 51, 2014-05-13</p>
+</p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal Müller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
 
 <p>
@@ -14,13 +14,17 @@ default format delivered by the ArcGIS Scene Service. The first sections of
 this specification explain the conceptual structure of i3s, while the latter
 sections provide a detailed implementation-level view.</p>
 
-<h1>Table of Contents</h1>
+<h2>Table of Contents</h2>
 
 <ol>
 	<li><a href="#_1">Requirements</a></li>
 	<li><a href="#_2">The i3s Store – what goes into an Indexed 3D Scene?</a></li>
 	<li><a href="#_3">The Index Structure</a></li>
-	<li><a href="#_4">Level of Detail Concept</a></li>
+	<li><a href="#_4">Level of Detail Concept</a>
+	<ol>
+		<li><a href="#_4_1">Feature LoD Trees</a></li>
+		<li><a href="#_4_2">Integrated Mesh Pyramids</a></li>
+	</ol></li>
 	<li><a href="#_5">Coordinate Reference Systems</a></li>
 	<li><a href="#_6">Structure of i3s Resources</a></li>
 	<li><a href="#_7">JSON Resources Schema and Documentation</a>
@@ -41,7 +45,7 @@ sections provide a detailed implementation-level view.</p>
 	</ol></li>
 </ol>
 
-<h1><a name="_1">Requirements</a></h1>
+<h2><a name="_1">Requirements</a></h2>
 
 <p>The Esri Indexed 3d Scene (i3s) format and the corresponding package format (i3d) are
 specified to fulfill this set of requirements:</p>
@@ -64,7 +68,7 @@ specified to fulfill this set of requirements:</p>
 <p>Some of these requirements (especially 8, 9, 10 and 12) are shared with the <a href="https://github.com/KhronosGroup/glTF">Khronos glTF format</a>, which is an upcoming standard for transferring 3D content. In this
 version of i3s, the two formats share the specification of Geometry TypedArrays.</p>
 
-<h1><a name="_2">The i3s Store – what goes into an Indexed 3D Scene?</h1>
+<h2><a name="_2">The i3s Store – what goes into an Indexed 3D Scene?</h2>
 
 <p>The basic unit of an Indexed 3D Scene is a Store, which contains individual resources (files) for a set of layers, index,
 geometries, textures and more. Within such a store, the i3s format supports a
@@ -80,43 +84,43 @@ supported are listed in the following Table.</p>
  </tr>
  <tr>
   <td>Integrated Mesh <em>(Acute3D)</em></td>
-  <td><a href="">mesh-pyramids</a></td>
+  <td><a href="../profiles/mesh-pyramids/mesh-pyramids.md">mesh-pyramids</a></td>
   <td>Yes</td>
   <td>No</td>
  </tr>
  <tr>
   <td>Individual Feature Mesh <em>(Multipatch)</em></td>
-  <td><a href="">featurs-meshes</a></td>
+  <td><a href="../profiles/features-meshes/features-meshes.md">features-meshes</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
   <tr>
   <td>Point Features <em>(GIS Data)</em></td>
-  <td><a href="">featurs-meshes</a></td>
+  <td><a href="../profiles/features-points/features-points.md">features-points</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
   <tr>
   <td>Line Features <em>(GIS Data)</em></td>
-  <td><a href="">featurs-meshes</a></td>
+  <td><a href="../profiles/features-lines/features-lines.md">features-lines</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
   <tr>
   <td>Polygon Features <em>(GIS Data)</em></td>
-  <td><a href="">featurs-meshes</a></td>
+  <td><a href="../profiles/features-polygons/features-polygons.md">features-polygons</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
   <td>Pointclouds <em>(LAS)</em></td>
-  <td><a href="">pointclouds</a></td>
+  <td><a href="../profiles/pointclouds/pointclouds.md">pointclouds</a></td>
   <td>Vertex Attributes (VA)</td>
   <td>On VAs only</td>
  </tr>
  <tr>
   <td>Analytics <em>(Sensor Data, Simulations)</em></td>
-  <td><a href="">analytics</a></td>
+  <td><a href="../profiles/analytics/analytics.md">analytics</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
@@ -134,7 +138,7 @@ Scene Service, local database or the file system that need to be made by the cli
 drastically and furthermore allows reducing the total data volume. In addition,
 layers in a shared stored can share resources, such as instance geometries.</p>
 
-<h1><a name="_3">The Index Structure</a></h1>
+<h2><a name="_3">The Index Structure</a></h2>
 
 <p>Esri i3s is, as the name implies, an indexed, partitioned 3D Scene format with some
 similarities to <a href="http://code.google.com/p/regionator/wiki/Welcome">regionated KML</a>
@@ -153,9 +157,11 @@ spatial proximity in the 1D ordering. Treekeys are strings that in which levels 
 "3-0-34-234-2" has 5 numeric elements, hence the node is on level 5 (root is level 0) and the node "1-2-34-234" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
-<!-- FIXME INSERT Figure 1 Nodekeys -->
+<img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys" />
 
-<h1><a name="_4">Level of Detail Concept</a></h1>
+<p><em>Figure 1: A sample Index Tree with Treekeys</em></p>
+
+<h2><a name="_4">Level of Detail Concept</a></h2>
 
 <p>The Level of Detail concept introduced with this format specification covers several use cases, 
 including splitting up very heavy features such as detailed buildings, very large features (coastlines, rivers, infrastructure), 
@@ -196,26 +202,70 @@ in the next inner Node. In the leaf node, the LoD3 representation is stored
 with additional children representing Exterior Installations and other details.
 In both cases, geometries are pre-aggregated into Geometry Array Buffers.</p>
 
-<h2><a name="_4_1">Feature LoD trees</a></h2>
+<h3><a name="_4_1">Feature LoD trees</a></h3>
 
-<p>The feature-based Level of Detail approach, i.e. where each feature in a node can have
-higher-detail or lower-detail representations has the following properties:</p>
+<p>In the feature-based Level of Detail approach each feature in a node can have
+higher-detail or lower-detail representations. This approach enables clients to switch out representations by feature instead of by node, as in the mesh-pyramid case. 
+A Feature in a Node has the following properties when using feature tree LoDs:</p>
 
 <ul>
 	<li>A Feature can participate in a so-called LoD tree.</li>
 	<li>A LoD tree has a single root feature.</li>
-	<li>Each non-leaf participating Feature has a set of n <code>lodChildren</code>. </li>
+	<li>Each non-leaf participating Feature has a set of n <code>lodChildFeatures</code>. </li>
 	<li>The client receives LoD information with the Node Index Document already, allowing making a choice whether to load a certain resource or not, and also to later identify which features replace which other features.</li>
-	<li><code>lodChildren</code> are guaranteed to be either in the same node or in a direct child node.</li>
-	<li>Each Feature that participates in a LoD tree has a rank from 1..d.</li>
+	<li><code>lodChildFeatures</code> are guaranteed to be either in the same node or in a direct child node.</li>
+	<li>Each Feature that participates in a LoD tree has a rank from 0..d.</li>
 	<li>Each Feature that participates in a LoD tree and has a rank > 1 has a <code>rootFeature</code> reference. This reference enables the client to detect which features represent a single object, e.g. for picking purposes.</li>
 </ul>
 
-<!-- FIXME INSERT Figure 2 FeatureTree -->
+<img src="images/figure-02.png" title="Example Nodes + Feature LoD Index Tree" alt="Example Nodes + Feature LoD Index Tree" />
 
-<h2><a name="_4_2">Mesh Pyramids</a></h2>
+<p><em>Figure 2: Example Nodes + Feature LoD Index Tree. Orange boxes represent features, orange dotted lines indicate lodChildFeatures relationships.</em></p>
 
-<p>A Mesh typically is a single, fused geometry that represents multiple real-world features, such as a full block of buildings. 
+In the feature tree example above, the features 1 to 3 need to have the following properties set:
+
+<table>
+	<tr>
+		<td><strong>Property</strong></td>
+		<td><strong>Feature 1</strong></td>
+		<td><strong>Feature 2</strong></td>
+		<td><strong>Feature 3</strong></td>
+	</tr>
+	<tr>
+		<td><strong>id</strong></td>
+		<td><code>1</code></td>
+		<td><code>2</code></td>
+		<td><code>3</code></td>
+	</tr>
+	<tr>
+		<td><strong>lodChildFeatures</strong></td>
+		<td><code>[2, 3, 4]</code></td>
+		<td><code>null</code></td>
+		<td><code>null</code></td>
+	</tr>
+	<tr>
+		<td><strong>lodChildNodes</strong></td>
+		<td><code>["3-0", "3-0", "3-1"]</code></td>
+		<td><code>null</code></td>
+		<td><code>null</code></td>
+	</tr>
+	<tr>
+		<td><strong>rootFeature</strong></td>
+		<td><code>null</code></td>
+		<td><code>1</code></td>
+		<td><code>1</code></td>
+	</tr>
+	<tr>
+		<td><strong>rank</strong></td>
+		<td><code>0</code></td>
+		<td><code>1</code></td>
+		<td><code>1</code></td>
+	</tr>
+</table>
+
+<h3><a name="_4_2">Integrated Mesh Pyramids</a></h3>
+
+<p>An Integrated Mesh typically is a single, fused geometry that represents multiple real-world features, such as a full block of buildings. 
 Meshes are common and can be generated automatically from LiDAR, oblique imagery and stereophotogrammetry by many providers. 
 They can also be built by aggregating, fusing and reducing individual features meshes.</p>
 
@@ -223,7 +273,9 @@ They can also be built by aggregating, fusing and reducing individual features m
 with LoD children in the direct descendants, filling up the entire index with representations. 
 The figure below shows an example of such a tree.</p>
 
-<!-- FIXME INSERT Figure 3 MeshPyramid -->
+<img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
+
+<p><em>Figure 1: Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
 
 <p>In this example, from root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
 This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
@@ -232,7 +284,7 @@ with the same set size as the number of node children.</p>
 <p>The links between all meshes participating in a LoD tree are either created during the cache creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
 When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  With mesh pyramids there is no concept of an LOD tree for an individual feature. Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the required level of detail.</p>
 
-<h2><a name="_4_3">LoD Selection Metrics</a></h2>
+<h3><a name="_4_3">LoD Selection Metrics</a></h3>
 
 <p>A client
 needs information to determine whether a node’s contents are "good enough" to
@@ -266,7 +318,7 @@ following example:</p>
 <p>
 These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
 
-<h1><a name="_5">Coordinate Reference Systems</a></h1>
+<h2><a name="_5">Coordinate Reference Systems</a></h2>
 
 <p>Indexed 3D Scenes have to fulfill several in part conflicting requirements when it comes
 to the selection of spatial reference systems to use:</p>
@@ -298,14 +350,14 @@ to the selection of spatial reference systems to use:</p>
 	<li>3.	Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<h1><a name="_6">Structure of i3s resources</a></h1>
+<h2><a name="_6">Structure of i3s resources</a></h2>
 
 <p>The i3s format contains different components – node index documents (NIDs), feature
 data, textures, geometry and resources shared across features of a given node.
 Feature data, textures, geometry and shared resources are all called resources
 and are always attached to a node.</p>
 
-<!-- FIXME INSERT Figure 4 Node structure -->
+<img src="images/figure-04.png" title="Structure of a single Node and its attached Resources" alt="Structure of a single Node and its attached Resources" />
 
 <p>Figure 4: Structure of a single Node and its attached Resources</p>
 
@@ -324,14 +376,16 @@ be in the node as part of a shared resource that bubbled up. For each texture
 created is then equal <strong>m*Texture LoD Steps</strong>. The following
 figure illustrates an example set of bundles within a node:</p>
 
-<!-- FIXME INSERT Figure 5 Detailed Node structure -->
+<img src="images/figure-05.png" title="Detailed Node Structure" alt="Detailed Node Structure" />
 
-<h1><a name="_7">JSON Resources Schema and Documentation</a></h1>
+<p>Figure 5: Detailed Node Structure</p>
+
+<h2><a name="_7">JSON Resources Schema and Documentation</a></h2>
 
 <p>This section provides a detailed, logical-level specification for each of the
 resource types.</p>
 
-<h2><a name="_7_1">3dSceneServiceInfo.js</a></h2>
+<h3><a name="_7_1">3dSceneServiceInfo.js</a></h3>
 
 <p>The 3dSceneServiceInfo file is a JSON file that describes the capability and data
 sets offered by an instance of a 3dSceneService.</p>
@@ -347,7 +401,7 @@ sets offered by an instance of a 3dSceneService.</p>
 It is generated solely by the 3D Scene Server for each service instance. Its
 description is contained here only for reference.</p>
 
-<h3>Class 3dSceneServiceInfo</h3>
+<h4>Class 3dSceneServiceInfo</h4>
 
 <p>The 3dSceneServiceInfo is the major object in the 3dSceneServiceInfo document.
 There is always exactly one 3dSceneServiceInfo object in the document, which
@@ -383,7 +437,7 @@ describes a running SceneService instance. </p>
 
 <p><em>Table 3: Attributes of the Class <strong>3dSceneServiceInfo</strong> within the 3dSceneServiceInfo document</em></p>
 
-<h3>Class Layer</h3>
+<h4>Class Layer</h4>
 
 <p>In the 3dSceneServiceInfo document, the Layer object provides a reference so that
 clients know which Layers are served by a given service. </p>
@@ -428,7 +482,7 @@ clients know which Layers are served by a given service. </p>
 
 <p><em>Table 4: Attributes of the Class Layer within the 3dSceneServiceInfo document</em></p>
 
-<h2><a name="_7_2">3dSceneLayerInfo.js</a></h2>
+<h3><a name="_7_2">3dSceneLayerInfo.js</a></h3>
 
 <p>The 3dSceneLayerInfo file is a JSON file that describes the properties of a single
 layer in a store, including the default symbology to use. It shares the
@@ -439,7 +493,7 @@ definition of this default symbology with the web scene item JSON file. The
 
 <p><em>Figure 7: Logical schema of the 3dSceneLayerInfo document</em></p>
 
-<h3>Class 3dSceneLayerInfo</h3>
+<h4>Class 3dSceneLayerInfo</h4>
 
 <p>The 3dSceneLayerInfo is the major object in the 3dSceneLayerInfo document. There is
 always exactly one 3dSceneLayerInfo object in the document, which describes a
@@ -491,7 +545,7 @@ Layer.</p>
 
 <p><em>Table 5: Attributes of the Class <strong>Node</strong> within the 3dSceneLayerInfo</em></p>
 
-<h3>Class Store</h3>
+<h4>Class Store</h4>
 
 <p>While Layers are the user-visible entry point to the 3dSceneServer resources (for web
 scene authoring and viewing), internally the service uses so-called stores. A
@@ -587,7 +641,7 @@ applied.</p>
 
 <p><em>Table 6: Attributes of the Class <strong>Store</strong> within the 3dSceneServiceInfo document</em></p>
 
-<h3>Class Field</h3>
+<h4>Class Field</h4>
 
 <p>The Field class is used to provide schema information for this 3dSceneLayer.</p>
 
@@ -616,7 +670,7 @@ applied.</p>
 
 <p><em>Table 7: Attributes of the Class <strong>Field</strong> within the 3dSceneLayerInfo</em></p>
 
-<h3>Class IndexScheme</h3>
+<h4>Class IndexScheme</h4>
 
 <p>The IndexScheme class declaratively describes computational and structural
 properties of the index used within an i3s store. This information can be used
@@ -657,13 +711,13 @@ by clients to better understand how to work with the index.</p>
 
 <p><em>Table 8: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo</em></p>
 
-<h3>Class WebCimDrawingInfo</h3>
+<h4>Class WebCimDrawingInfo</h4>
 
 <p>WebCimDrawingInfo and the associated classes contain the default symbology for this Layer. This
 part matches the WebCIM (Cartographic Information Model) as used by the other
 Esri REST services.</p>
 
-<h2><a name="_7_3">3dNodeIndexDocument.js</a></h2>
+<h3><a name="_7_3">3dNodeIndexDocument.js</a></h3>
 
 <p>The 3dNodeIndexDocument JSON file describes a single index node within a store, with links to other
 nodes (children, sibling, and parent), links to feature data, geometry data and
@@ -682,7 +736,7 @@ the Minimum Bounding Sphere as spheres.</p>
 
 <p>Figure 8: Logical schema of the 3dNodeIndexDocument</p>
 
-<h3>Class Node</h3>
+<h4>Class Node</h4>
 
 <p>The Node is the root object in the 3dNodeIndexDocument. There is always exactly one Node
 object in a 3dNodeIndexDocument.</p>
@@ -733,7 +787,7 @@ object in a 3dNodeIndexDocument.</p>
 
 <p><em>Table 9: Attributes of the Class <strong>Node</strong> within the NodeIndexDocument</em></p>
 
-<h3>Class NodeReference</h3>
+<h4>Class NodeReference</h4>
 
 <p>A NodeReference is a pointer to another node – the parent, a child or a
 neighbor. NodeReferences contain a relative URL pointing to the referenced NID,
@@ -775,7 +829,7 @@ whether to load that node or not, as well as maintaining store consistency.</p>
 
 <p><em>Table 10: Attributes of the Class <strong>NodeReference</strong> within the NodeIndexDocument</em></p>
 
-<h3>Class Resource</h3>
+<h4>Class Resource</h4>
 
 <p>Resource objects are pointers to different types of resources related to a node, such as
 the feature data, the geometry attributes and indices, textures and shared
@@ -811,7 +865,7 @@ resources.</p>
 
 <p><em>Table 11: Attributes of the Class <strong>Resource</strong> within the NodeIndexDocument</em></p>
 
-<h3>Class Feature</h3>
+<h4>Class Feature</h4>
 
 <p>Features are representations of the geographic objects stored in a layer. 
 In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.</p>
@@ -846,7 +900,7 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 
 <p><em>Table 12: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
 
-<h3>Class LodSelection</h3>
+<h4>Class LodSelection</h4>
 
 <p>A LodSelection object provides information on a given metric determined during
 the cooking process of an i3s store. This metric can be used by the client to
@@ -887,7 +941,7 @@ min/avg/max values, typically only one or two are used.</p>
 
 <p><em>Table 13: Attributes of the Class <strong>LodSelection</strong> within the NodeIndexDocument</em></p>
 
-<h2><a name="_7_4">FeatureData.js</a></h2>
+<h3><a name="_7_4">FeatureData.js</a></h3>
 
 <p>The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors
 to geometry attributes and other references to styling or materials.</p>
@@ -898,7 +952,7 @@ to geometry attributes and other references to styling or materials.</p>
 
 <p><em>Figure 9: Logical schema of the FeatureData document</em></p>
 
-<h3>Class Feature</h3>
+<h4>Class Feature</h4>
 
 A Feature is a single object within a GIS data set, usually
 representative of a feature present in the real, geographic world.
@@ -938,7 +992,7 @@ representative of a feature present in the real, geographic world.
 
 <p><em>Table 14: Attributes of the Class <strong>Feature</strong> within the FeatureData document</em></p>
 
-<h3>Class FeatureAttribute</h3>
+<h4>Class FeatureAttribute</h4>
 
 <p>A FeatureAttribute is a field carrying a value.</p>
 
@@ -962,7 +1016,7 @@ representative of a feature present in the real, geographic world.
 
 <p><em>Table 15: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
-<h3>Class AbstractGeometry</h3>
+<h4>Class AbstractGeometry</h4>
 
 <p>This is the superclass for all types of geometry definitions used in i3s.</p>
 
@@ -991,14 +1045,14 @@ representative of a feature present in the real, geographic world.
 
 <p><em>Table 16: Attributes of the Class <strong>AbstractGeometry</strong> within the FeatureData document</em></p>
 
-<h3>Class MultiComponentGeometry</h3>
+<h4>Class MultiComponentGeometry</h4>
 
 Objects of this type extend AbstractGeometry and include a definition of a geometry that may have
 multiple materials, textures, or use multiple regions from a texture. One
 Feature can have multiple geometries, which can consist of multiple components.
 They do not have additional fields, only references to <a href="#_7_4_Components">Components</a>.</p>
 
-<h3>Class SingleComponentGeometry</h3>
+<h4>Class SingleComponentGeometry</h4>
 
 Objects of this type extend AbstractGeometry and use only one texture and one material. Components may
 only be declared to denote subimage regions.</p>
@@ -1023,7 +1077,7 @@ only be declared to denote subimage regions.</p>
 
 <p><em>Table 17: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
-<h3><a name="_7_4_Components">Class Component</a></h3>
+<h4><a name="_7_4_Components">Class Component</a></h4>
 
 Component objects provide information on parts of the geometry they
 belong to, specifically with which material and texture to render them.</p>
@@ -1058,7 +1112,7 @@ belong to, specifically with which material and texture to render them.</p>
 
 <p><em>Table 18: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
 
-<h3>Class GeometryAttribute</h3>
+<h4>Class GeometryAttribute</h4>
 
 Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes – VertexAttributes and
 FaceAttributes. While the first describe properties that are valid for a single
@@ -1101,7 +1155,7 @@ which vertex positions make up a face.</p>
 
 <p><em>Table 19: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
-<h2><a name="_7_5">SharedResources.js</a></h2>
+<h3><a name="_7_5">SharedResources.js</a></h3>
 
 <p>Shared resources are models or textures that can be shared among features within the
 same store. They are stored as a JSON file entirely, comparable to the encoding
@@ -1115,12 +1169,12 @@ across nodes, while maintaining the node-based updating process.</p>
 
 <p><em>Figure 10: Logical schema of the FeatureData document</em></p>
 
-<h3>Class SharedResource</h3>
+<h4>Class SharedResource</h4>
 
 <p>The <code>SharedResource</code> class collects Material definitions, Texture definitions, Shader definitions and geometry
 symbols that need to be instanced.</p>
 
-<h3>Class Material</h3>
+<h4>Class Material</h4>
 
 <p>Materials describe how a Feature or a set of Features is to be rendered. This includes
 which shading and which colors to use. The following table provides the set of
@@ -1186,7 +1240,7 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 
 <p><em>Table 20: Attributes of the Class <strong>Material</strong> within the SharedResources document</em></p>
 
-<h3>Class Texture</h3>
+<h4>Class Texture</h4>
 
 <p>A Texture is a set of images, with some parameters specific to the texture/uv mapping to
 geometries.</p>
@@ -1226,7 +1280,7 @@ geometries.</p>
 
 <p><em>Table 21: Attributes of the Class <strong>Texture</strong> within the SharedResources document</em></p>
 
-<h3>Class Image</h3>
+<h4>Class Image</h4>
 
 <p>An image is a binary resource, containing a single raster that can be used to texture a
 feature or symbol. It represents one specific texture LoD. 
@@ -1272,16 +1326,16 @@ For details on texture organisation, please refer to the section on <a href="#_7
 
 <p><em>Table 22: Attributes of the Class <strong>Image</strong> within the SharedResources document</em></p>
 
-<h3>Class ShaderDefinition</h3>
+<h4>Class ShaderDefinition</h4>
 
 <p>ShaderDefinitions are, in this version of the i3s specification, an optional feature to provide
 API-dependent shader programs with a layer.</p>
 
-<h3>Class Symbol</h3>
+<h4>Class Symbol</h4>
 
 <p>For Symbols, the same model is used as in the FeatureData Geometry.</p>
 
-<h2><a name="_7_6">Textures.bin</a></h2>
+<h3><a name="_7_6">Textures.bin</a></h3>
 
 <p>The Textures file is a binary resource that contains one or multiple images that
 are used as textures of features in the store. A single Texture.bin file
@@ -1290,14 +1344,14 @@ single texture atlas or multiple individual textures; the decision how this is
 bundled is left to the authoring application so that specific aspects of the
 materials and textures used can be taken into account, such as tiling.</p>
 
-<h2><a name="_Toc367801583">Texture Recommendations and Requirements</span></a></span></h2>
+<h3><a name="_Toc367801583">Texture Recommendations and Requirements</span></a></span></h3>
 
 <p>Especially for Web and Mobile clients, the number of textures and their volume is the
 limiting factor in how much data can be displayed at any given time, Thus, this
 specification provides several recommendations and requirements on texture
 resources that are delivered as part of an Indexed 3D Scene.</p>
 
-<h3>Image Formats</h3>
+<h4>Image Formats</h4>
 
 <p>At the current stage, the following texture formats are recommended – JPEG for RGB and
 PNG for RGBA. They were chosen over S3TC because of low bandwidth consumption
@@ -1306,13 +1360,13 @@ transparency rendering in WebGL. However, with more wide-spread client support
 for next-generation texture compression formats such as <a href="http://en.wikipedia.org/wiki/Adaptive_Scalable_Texture_Compression">ASTC</a>
 and <a href="http://www.g-truc.net/post-0340.html ">BPTC</a> which will become available later on.</p>
 
-<h3>Texture Sets</span></h3>
+<h4>Texture Sets</span></h4>
 
 <p>While this specification allows the combination of multiple textures into a single
 resource by using array buffer views, we generally recommend to use large
 atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle. </span></p>
 
-<h3>Atlas usage</h3>
+<h4>Atlas usage</h4>
 
 <p>Individual textures should be aggregated into texture atlases, where they become subtextures. As
 all texture resources, the atlas has to be 2<sup>n</sup>-sized on both
@@ -1341,7 +1395,7 @@ to WebGL and other APIs using Uniform Arrays and can be encoded in a 32bit Float
 	<li>height: 4 bit, value is 2n, range of n:  [1,16] , values: [2,4,8,16,32,…,4096]</li>
 </ul>
 
-<h3>Texture coordinates</h3>
+<h4>Texture coordinates</h4>
 
 <p>Texture coordinates do not take atlas regions into account directly. They always range
 from <code>0…1</code> in U and V, except when using the
@@ -1349,7 +1403,7 @@ from <code>0…1</code> in U and V, except when using the
 handle repeating textures in atlases. This approach has been selected since
 client capabilities in dealing with more complex UV cases vary greatly.</p>
 
-<h3><a name="#_7_6_GenerateID">Generating Image IDs</a></h3>
+<h4><a name="#_7_6_GenerateID">Generating Image IDs</a></h4>
 
 <p>The Id of an image is generated using the following method:</p>
 
@@ -1366,7 +1420,7 @@ client capabilities in dealing with more complex UV cases vary greatly.</p>
 <p>Usage syntax: <br/>
 <code>UInt64 BuildID(Long id, int w, int h , int l, int al);</code> </p>
 
-<h4>Function Parameters</h4>
+<h5>Function Parameters</h5>
 
 <table>
 	<tr>
@@ -1391,7 +1445,7 @@ client capabilities in dealing with more complex UV cases vary greatly.</p>
 	</tr>
 </table>
 
-<h2><a name="_7_5">Geometry.bin</a></h2>
+<h3><a name="_7_5">Geometry.bin</a></h3>
 
 <p>The binary geometry attribute file follows the <a href="http://www.khronos.org/registry/typedarray/specs/latest/">Khronos Typed Array
 specification</a> in the Editor’s Draft version of 10<sup>th</sup> April 2013.
@@ -1437,16 +1491,16 @@ the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
 <p><strong>Note: The expected triangle/face winding order in all geometry resources is
 counterclockwise (CCW).</strong></p>
 
-<h1><a name="_8">Persistence</a><span
-lang=EN-US></h1>
+<h2><a name="_8">Persistence</a><span
+lang=EN-US></h2>
 
 <p>All storage methods store the Indexed 3D Scene in a simple key-value structure, with the
 key representing the access URL and the value being the JSON document or other
 resource type.</p>
 
-<h2><a name="_8_1">File System</a></h2>
+<h3><a name="_8_1">File System</a></h3>
 
-In this persistence schema, all resources reside in the file system as individual files. These files are organsed in folders in the following scheme:
+<p>In this persistence schema, all resources reside in the file system as individual files. These files are organsed in folders in the following scheme:</p>
 
 <pre>
 /3dSceneLayer.json
@@ -1468,9 +1522,10 @@ In this persistence schema, all resources reside in the file system as individua
 ...
 </pre>
 
-This scheme is not recommended for very large caches, as there is a limit of 64K folders in serveral contexts such as FAT32 file systems, which are still used on mobile media.
+<p>This scheme is not recommended for very large caches, as there is a limit of 64K folders in serveral contexts such as FAT32 file systems, 
+which are still used on mobile media.</p>
 
-<h2><a name="_8_2">CouchDB, IndexedDB and other Key-Value Stores</a></h2>
+<h3><a name="_8_2">CouchDB, IndexedDB and other Key-Value Stores</a></h3>
 
 <p>The Scene Server stores i3s resources in a document-oriented database. After
 testing, CouchDB was selected as being suitable. Especially large stores
@@ -1487,6 +1542,6 @@ IndexedDB offers a method of storing data client-side and allows indexed
 database queries against JSON documents. 
 It can be used to have persistent caches on the client side and uses an identical scheme as server-side, CouchDB storage.</p>
 
-<h2><a name="_8_3">Packaged Indexed 3d Scenes (i3p files)</a></h2>
+<h3><a name="_8_3">Packaged Indexed 3d Scenes (i3p files)</a></h3>
 
 <p>Coming very soon!</p>

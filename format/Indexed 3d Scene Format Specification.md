@@ -5,7 +5,7 @@ Format Specification</h2>
 
 <p>Version 1.3, rev. 53, 2014-05-14</p>
 </p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal Müller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
+<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
 
 <p>
 This document specifies the Indexed 3D Scene delivery
@@ -275,7 +275,7 @@ The figure below shows an example of such a tree.</p>
 
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
 
-<p><em>Figure 1: Example Nodes + Mesh Pyramid. Orange boxes represent meshes.</em></p>
+<p><em>Figure 3: Example Nodes + Mesh Pyramid. Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
 
 <p>In this example, from root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
 This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 

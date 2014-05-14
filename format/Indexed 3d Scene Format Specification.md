@@ -275,14 +275,14 @@ The figure below shows an example of such a tree.</p>
 
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
 
-<p><em>Figure 1: Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
+<p><em>Figure 1: Example Nodes + Mesh Pyramid. Orange boxes represent meshes.</em></p>
 
 <p>In this example, from root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
 This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
 with the same set size as the number of node children.</p>
 
 <p>The links between all meshes participating in a LoD tree are either created during the cache creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
-When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  With mesh pyramids there is no concept of an LOD tree for an individual feature. Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the required level of detail.</p>
+When using a mesh pyramid based LOD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  With mesh pyramids there is no concept of an LOD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the required level of detail.</p>
 
 <h3><a name="_4_3">LoD Selection Metrics</a></h3>
 
@@ -346,7 +346,7 @@ to the selection of spatial reference systems to use:</p>
 			<li>EPSG:32601 to EPSG:32660, EPSG:32701 to EPSG:32760 (UTM WGS84)</li>
 			<li>EPSG:3857 (Web Mercator WGS84) or EPSG:32662 (Plate Carree WGS84) for large extent datasets (~12° to 360° horizontal extent)</li>
 		</ol>
-	<li>3.	Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
+	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
 <h2><a name="_6">Structure of i3s resources</a></h2>
@@ -748,12 +748,12 @@ object in a 3dNodeIndexDocument.</p>
 	<tr>
 		<td>id</td>
 		<td>String TreeKey</td>
-		<td>Tree Key ID, unique within the store. The root node is always "root", all others follow the pattern "2-4-0-15-2". At each leve in a subtree, numbering starts at 0.</td>
+		<td>Tree Key ID, unique within the store. The root node is always "root", all others follow the pattern "2-4-0-15-2". At each level in a subtree, numbering starts at 0.</td>
 	</tr>
 	<tr>
 		<td>level</td>
 		<td>int</td>
-		<td>Explicit level of this node within the index tree. The lowest level is 0.</td>
+		<td>Explicit level of this node within the index tree. The lowest level is 1.</td>
 	</tr>
 	<tr>
 		<td>version</td>
@@ -768,12 +768,12 @@ object in a 3dNodeIndexDocument.</p>
 	<tr>
 		<td>created</td>
 		<td>timestamp[0..1]</td>
-		<td>Creation date of this node in UTC.</td>
+		<td>Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mmZ (see http://www.w3.org/TR/NOTE-datetime).</td>
 	</tr>
 	<tr>
 		<td>expires</td>
 		<td>timestamp[0..1]</td>
-		<td>Expiration date of this node in UTC.</td>
+		<td>Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mmZ (see http://www.w3.org/TR/NOTE-datetime).</td>
 	</tr>
 	<tr>
 		<td>transform</td>
@@ -852,12 +852,12 @@ resources.</p>
 	<tr>
 		<td>featureRange</td>
 		<td>int[2]</td>
-		<td>Optional attributed only used with featureData resources that provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle.</td>
+		<td>Only applicable for featureData resources. Provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle.</td>
 	</tr>
 	<tr>
 		<td>multiTexturedBundle</td>
 		<td>boolean</td>
-		<td><code>true</code> if the bundle contains multiple textures to tell the client in advance how to handle that bundle. </td>
+		<td>Only applicable for textureData resources. <code>true</code> if the bundle contains multiple textures. If <code>false</code>, clients can interpret the entire bundle as a single image. </td>
 	</tr>
 </table>
 
@@ -880,19 +880,24 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 		<td>An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node.</td>
 	</tr>
 	<tr>
-		<td>lodChildren</td>
+		<td>lodChildFeatures</td>
 		<td>long[0..*]</td>
-		<td>IDs of Features in a lower LOD level, which can replace this feature when loaded.</td>
+		<td>IDs of features in a higher LOD level which together make up this feature.</td>
 	</tr>
+	<tr>
+		<td>lodChildNodes</td>
+		<td>string[0..*]</td>
+		<td>Tree Key IDs of the nodes in which the lodChildFeatures are found</td>
+	</tr>	
 	<tr>
 		<td>rank</td>
 		<td>int[0..1]</td>
-		<td>The LOD level of this feature. Only required for Features that participate in a LOD tree and are not root features of that LOD tree.</td>
+		<td>The LOD level of this feature. Only required for features that participate in a LOD tree. The lowest rank is 1.</td>
 	</tr>
 	<tr>
-		<td>root</td>
-		<td>long[0..1]</td>
-		<td>The ID of the root node of a feature LOD tree that this feature participates in. Only required if the feature participates in a LOD tree.</td>
+		<td>rootFeature</td>
+		<td>string</td>
+		<td>The Tree Key ID of the root node of a feature LOD tree that this feature participates in. Only required if the feature participates in a LOD tree and if it is not the rootFeature itself.</td>
 	</tr>
 </table>
 
@@ -968,8 +973,8 @@ representative of a feature present in the real, geographic world.
 	</tr>
 	<tr>
 		<td>position</td>
-		<td>double[2]</td>
-		<td>An array of two doubles, giving the x,y (easting/northing) position of this feature's minimum bounding sphere center, in the projectedCRS.</td>
+		<td>double[3]</td>
+		<td>An array of three doubles, giving the x,y,z (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the projectedCRS.</td>
 	</tr>
 	<tr>
 		<td>pivotOffset</td>
@@ -979,7 +984,7 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>mbb</td>
 		<td>double[6]</td>
-		<td>An array of six doubles, corresponding to x<sub>min</sub>, y<sub>min</sub>, z<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub> and z<sub>max</sub> of the minimum bounding box of the feature, expressed in the projectedCRS, without offset. The mbb can be used with the Feature�s Transform to provide a LOD0 representation without loading the GeometryAttributes.</td>
+		<td>An array of six doubles, corresponding to x<sub>min</sub>, y<sub>min</sub>, z<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub> and z<sub>max</sub> of the minimum bounding box of the feature, expressed in the projectedCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes.</td>
 	</tr>
 	<tr>
 		<td>layer</td>

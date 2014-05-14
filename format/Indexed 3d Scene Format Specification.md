@@ -1,4 +1,4 @@
-﻿<h2>Esri Indexed 3d Scene (i3s/i3p) <br>
+<h2>Esri Indexed 3d Scene (i3s/i3p) <br>
 Format Specification</h2>
 
 </div>

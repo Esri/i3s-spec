@@ -1461,8 +1461,7 @@ same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
 the following code:</blockquote>
 
-<code>
-<pre>      // create an 8-byte ArrayBuffer
+<code><pre>      // create an 8-byte ArrayBuffer
       var b = new ArrayBuffer(8);
 
       // create a view v1 referring to b, of type Int32, starting at

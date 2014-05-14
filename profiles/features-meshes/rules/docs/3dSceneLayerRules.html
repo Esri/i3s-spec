@@ -1,46 +1,54 @@
 <html>
 <body>
 <table>
-<tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Notes</th></tr>
-<tr><td>id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>version</td><td>Y</td><td> </td><td> </td><td>[None]string/UUID</td></tr>
-<tr><td>name</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>alias</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>description</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>copyrightText</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>capabilities</td><td>Y</td><td>1</td><td>3</td><td>[Array]string/None</td></tr>
-<tr><td>store</td><td>Y</td><td> </td><td> </td><td>[None]object/None</td></tr>
-<tr><td>store.id</td><td>Y</td><td> </td><td> </td><td>[None]string/UUID</td></tr>
-<tr><td>store.profile</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.rootNode</td><td>Y</td><td> </td><td> </td><td>[None]string/URL</td></tr>
-<tr><td>store.version</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.extent</td><td>Y</td><td>4</td><td>4</td><td>[Array]number/None</td></tr>
-<tr><td>store.geographicCRS</td><td>Y</td><td> </td><td> </td><td>[None]string/URL</td></tr>
-<tr><td>store.projectedCRS</td><td>Y</td><td> </td><td> </td><td>[None]string/URL</td></tr>
-<tr><td>store.nidEncoding</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.featureEncoding</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.geometryEncoding</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.textureEncoding</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.lodType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.featureOrdering</td><td> </td><td>0</td><td>-1</td><td>[Array]string/None</td></tr>
-<tr><td>store.indexingScheme</td><td> </td><td> </td><td> </td><td>[None]object/None</td></tr>
-<tr><td>store.indexingScheme.name</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.indexingScheme.inclusive</td><td> </td><td> </td><td> </td><td>[None]boolean/None</td></tr>
-<tr><td>store.indexingScheme.dimensionality</td><td> </td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>store.indexingScheme.childrenCardinality</td><td>Y</td><td>2</td><td>2</td><td>[Array]number/Integer</td></tr>
-<tr><td>store.indexingScheme.neighborCardinality</td><td>Y</td><td>2</td><td>2</td><td>[Array]number/Integer</td></tr>
-<tr><td>store.defaultGeometrySchema</td><td> </td><td> </td><td> </td><td>[None]object/None</td></tr>
-<tr><td>store.defaultGeometrySchema.vertexAttributes</td><td>Y</td><td>1</td><td>-1</td><td>[Object]object/None</td></tr>
-<tr><td>store.defaultGeometrySchema.vertexAttributes.*.valueType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.defaultGeometrySchema.vertexAttributes.*.valuesPerElement</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>store.defaultGeometrySchema.faces</td><td>Y</td><td>1</td><td>-1</td><td>[Object]object/None</td></tr>
-<tr><td>store.defaultGeometrySchema.faces.*.valueType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>store.defaultGeometrySchema.faces.*.valuesPerElement</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>fields</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>fields.name</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>fields.type</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>fields.alias</td><td> </td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>drawingInfo</td><td> </td><td> </td><td> </td><td>[None]object/None</td></tr>
+<tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Container</th><th>Value Rules</th><th>Conditions</th></tr>
+<tr><td><code> id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> version</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
+<tr><td><code> name</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> alias</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> description</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> copyrightText</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> capabilities</code></td><td>True</td><td>1</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> capabilities.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
+<tr><td><code> store.profile</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.rootNode</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> store.version</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.extent</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.extent.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> store.geographicCRS</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> store.projectedCRS</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> store.nidEncoding</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.featureEncoding</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.geometryEncoding</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.textureEncoding</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.lodType</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.featureOrdering</code></td><td> </td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.featureOrdering.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.indexingScheme</code></td><td> </td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.name</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.inclusive</code></td><td> </td><td> </td><td> </td><td>None</td><td>boolean/None</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.dimensionality</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.childrenCardinality</code></td><td>True</td><td>2</td><td>2</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.childrenCardinality.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.neighborCardinality</code></td><td>True</td><td>2</td><td>2</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.indexingScheme.neighborCardinality.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema</code></td><td> </td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.vertexAttributes</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.vertexAttributes.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.vertexAttributes.*.valueType</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.vertexAttributes.*.valuesPerElement</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces.*.valueType</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces.*.valuesPerElement</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> fields</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> fields.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> fields.*.name</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> fields.*.type</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> fields.*.alias</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> drawingInfo</code></td><td> </td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
 </table>
 </body>
 </html>

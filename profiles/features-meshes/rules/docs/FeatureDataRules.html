@@ -1,65 +1,32 @@
 <html>
 <body>
 <table>
-<tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Notes</th></tr>
-<tr><td>featureData</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>featureData.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.position</td><td>Y</td><td>3</td><td>3</td><td>[Array]number/None</td></tr>
-<tr><td>featureData.pivotOffset</td><td> </td><td>3</td><td>3</td><td>[Array]number/None</td></tr>
-<tr><td>featureData.mbb</td><td>Y</td><td>6</td><td>6</td><td>[Array]number/None</td></tr>
-<tr><td>featureData.layer</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.geometries</td><td>Y</td><td>1</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>featureData.geometries.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.type</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.geometries.transformation</td><td> </td><td>16</td><td>16</td><td>[Array]number/None</td></tr>
-<tr><td>featureData.geometries.params</td><td>Y</td><td> </td><td> </td><td>[None]object/None</td></tr>
-<tr><td>featureData.geometries.params.$ref</td><td>Y</td><td> </td><td> </td><td>[None]string/Pointer</td></tr>
-<tr><td>featureData.geometries.params.lodGeometry</td><td> </td><td> </td><td> </td><td>[None]boolean/None</td></tr>
-<tr><td>featureData.geometries.params.faceRange</td><td> </td><td>2</td><td>2</td><td>[Array]number/None</td></tr>
-<tr><td>featureData.geometries.params.type</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.geometries.params.components</td><td> </td><td>1</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>featureData.geometries.params.components.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.params.components.material</td><td> </td><td> </td><td> </td><td>[None]string/Pointer</td></tr>
-<tr><td>featureData.geometries.params.components.texture</td><td> </td><td> </td><td> </td><td>[None]string/Pointer</td></tr>
-<tr><td>featureData.geometries.params.components.region</td><td> </td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.params.vertexAttributes</td><td>Y</td><td>1</td><td>-1</td><td>[Object]object/None</td></tr>
-<tr><td>featureData.geometries.params.vertexAttributes.*.byteOffset</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.params.vertexAttributes.*.count</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.params.vertexAttributes.*.valueType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.geometries.params.vertexAttributes.*.valuesPerElement</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.params.faces</td><td>Y</td><td>1</td><td>-1</td><td>[Object]object/None</td></tr>
-<tr><td>featureData.geometries.params.faces.componentIndices</td><td>Y</td><td>1</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>featureData.geometries.params.faces.*.byteOffset</td><td>Y</td><td> </td><td> </td><td>[None]number/None</td></tr>
-<tr><td>featureData.geometries.params.faces.*.count</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.geometries.params.faces.*.valueType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.geometries.params.faces.*.valuesPerElement</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>featureData.attributes</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>featureData.attributes.metadata</td><td> </td><td>1</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>featureData.attributes.metadata.name</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.attributes.metadata.value</td><td>Y</td><td> </td><td> </td><td>[None]Any/None</td></tr>
-<tr><td>featureData.attributes.name</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>featureData.attributes.value</td><td>Y</td><td> </td><td> </td><td>[None]Any/None</td></tr>
-<tr><td>geometryData</td><td>Y</td><td>0</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>geometryData.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.type</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>geometryData.transformation</td><td> </td><td>16</td><td>16</td><td>[Array]number/None</td></tr>
-<tr><td>geometryData.params</td><td>Y</td><td> </td><td> </td><td>[None]object/None</td></tr>
-<tr><td>geometryData.params.type</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>geometryData.params.components.id</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.params.components.material</td><td> </td><td> </td><td> </td><td>[None]string/Pointer</td></tr>
-<tr><td>geometryData.params.components.texture</td><td> </td><td> </td><td> </td><td>[None]string/Pointer</td></tr>
-<tr><td>geometryData.params.components.region</td><td> </td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.params.vertexAttributes</td><td>Y</td><td>1</td><td>-1</td><td>[Object]object/None</td></tr>
-<tr><td>geometryData.params.vertexAttributes.*.byteOffset</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.params.vertexAttributes.*.count</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.params.vertexAttributes.*.valueType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>geometryData.params.vertexAttributes.*.valuesPerElement</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.params.faces</td><td>Y</td><td>1</td><td>-1</td><td>[Object]object/None</td></tr>
-<tr><td>geometryData.params.faces.componentIndices</td><td>Y</td><td>1</td><td>-1</td><td>[Array]object/None</td></tr>
-<tr><td>geometryData.params.faces.*.byteOffset</td><td>Y</td><td> </td><td> </td><td>[None]number/None</td></tr>
-<tr><td>geometryData.params.faces.*.count</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
-<tr><td>geometryData.params.faces.*.valueType</td><td>Y</td><td> </td><td> </td><td>[None]string/None</td></tr>
-<tr><td>geometryData.params.faces.*.valuesPerElement</td><td>Y</td><td> </td><td> </td><td>[None]number/Integer</td></tr>
+<tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Container</th><th>Value Rules</th><th>Conditions</th></tr>
+<tr><td><code> featureData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> featureData.*.position</code></td><td>True</td><td>3</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.position.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> featureData.*.pivotOffset</code></td><td> </td><td>3</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.pivotOffset.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> featureData.*.mbb</code></td><td>True</td><td>6</td><td>6</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.mbb.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> featureData.*.layer</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> featureData.*.geometries</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.geometries.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td>type IS ArrayBufferView<br/></td></tr>
+<tr><td><code> featureData.*.geometries.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td>type IS GeometryReference<br/></td></tr>
+<tr><td><code> featureData.*.geometries.*</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/NamedRuleset</td><td>type IS Embedded<br/></td></tr>
+<tr><td><code> featureData.*.attributes</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.0.metadata</code></td><td> </td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.0.metadata.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.0.metadata.*.name</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.0.metadata.*.value</code></td><td>True</td><td> </td><td> </td><td>None</td><td>Any/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.*.name</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> featureData.*.attributes.*.value</code></td><td>True</td><td> </td><td> </td><td>None</td><td>Any/None</td><td> </td></tr>
+<tr><td><code> geometryData</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> geometryData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td>type IS ArrayBufferView<br/></td></tr>
+<tr><td><code> geometryData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td>type IS Embedded<br/></td></tr>
 </table>
 </body>
 </html>

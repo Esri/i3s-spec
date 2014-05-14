@@ -1443,7 +1443,7 @@ client capabilities in dealing with more complex UV cases vary greatly.</p>
 	</tr>
 </table>
 
-<h3><a name="_7_5">Geometry.bin</a></h3>
+<h3><a name="_7_7">Geometry.bin</a></h3>
 
 <p>The binary geometry attribute file follows the <a href="http://www.khronos.org/registry/typedarray/specs/latest/">Khronos Typed Array
 specification</a> in the Editor’s Draft version of 10<sup>th</sup> April 2013.
@@ -1461,8 +1461,8 @@ same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
 the following code:</blockquote>
 
-<code><pre>
-      // create an 8-byte ArrayBuffer
+<code>
+<pre>      // create an 8-byte ArrayBuffer
       var b = new ArrayBuffer(8);
 
       // create a view v1 referring to b, of type Int32, starting at
@@ -1475,8 +1475,8 @@ the following code:</blockquote>
 
       // create a view v3 referring to b, of type Int16, starting at
       // byte index 2 and having a length of 2
-      var v3 = new Int16Array(b, 2, 2);
-</pre></code>
+      var v3 = new Int16Array(b, 2, 2);</pre>
+</code>
 
 <blockquote>This defines an 8-byte buffer b, and three
 views of that buffer, v1, v2, and v3. Each of the views refers to the same

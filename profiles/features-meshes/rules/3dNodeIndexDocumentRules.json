@@ -555,7 +555,7 @@
 		"valueType" : "number",
 		"valueSchema" : "Integer",
 		"valueRange" : [
-			0,
+			1,
 			1.7976931348623157e+308
 		],
 		"valueDependencies" : [ {

@@ -1,15 +1,15 @@
-<h2>Esri Indexed 3d Scene (i3s/i3p) <br>
+ï»¿<h2>Esri Indexed 3d Scene (i3s/i3p) <br>
 Format Specification</h2>
 
 </div>
 
-<p>Version 1.3, rev. 51, 2014-05-13</p>
+<p>Version 1.3, rev. 53, 2014-05-14</p>
 </p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal Müller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
+<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal MÃ¼ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
 
 <p>
 This document specifies the Indexed 3D Scene delivery
-format used to stream 3D GIS data to mobile, web and desktop clients. It’s the
+format used to stream 3D GIS data to mobile, web and desktop clients. It's the
 default format delivered by the ArcGIS Scene Service. The first sections of
 this specification explain the conceptual structure of i3s, while the latter
 sections provide a detailed implementation-level view.</p>
@@ -18,7 +18,7 @@ sections provide a detailed implementation-level view.</p>
 
 <ol>
 	<li><a href="#_1">Requirements</a></li>
-	<li><a href="#_2">The i3s Store – what goes into an Indexed 3D Scene?</a></li>
+	<li><a href="#_2">The i3s Store - what goes into an Indexed 3D Scene?</a></li>
 	<li><a href="#_3">The Index Structure</a></li>
 	<li><a href="#_4">Level of Detail Concept</a>
 	<ol>
@@ -51,7 +51,7 @@ sections provide a detailed implementation-level view.</p>
 specified to fulfill this set of requirements:</p>
 
 <ol>
-	<li><strong>User Experience first:</strong> Support a very good user experience – high interactivity, fast display, rendering of visually relevant features first</li>
+	<li><strong>User Experience first:</strong> Support a very good user experience - high interactivity, fast display, rendering of visually relevant features first</li>
 	<li><strong>Scalability:</strong> Support very large scenes, with global extent and a very large number of features (up to 1 billion), as well as very heavy features</li>
 	<li><strong>Reusability:</strong> Be useable both as the delivery format of the ArcGIS Scene Service, the ArcGIS "MultiPatch" Feature Service and as a format stored in a local file or database</li>
 	<li><strong>Level of Detail:</strong> Support Level of Detail concepts for generalization of very large/heavy features and for "semantic" Level of Detail approaches</li>
@@ -62,13 +62,13 @@ specified to fulfill this set of requirements:</p>
 	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards</li>
 	<li><strong>Compatibility:</strong> Have a single structure that is useable by all ArcGIS Desktop, Web and native apps, cross platform and cross device usage, map well to GL APIS</li>
 	<li><strong>Declarative:</strong> limit how much specific knowledge on the client-side is needed for format support (e.g. Index generation method only needs to be known while writing the format)</li>
-	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" – make all resources navigable using hrefs from relevant other resources.</li>
+	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" - make all resources navigable using hrefs from relevant other resources.</li>
 </ol>
 
 <p>Some of these requirements (especially 8, 9, 10 and 12) are shared with the <a href="https://github.com/KhronosGroup/glTF">Khronos glTF format</a>, which is an upcoming standard for transferring 3D content. In this
 version of i3s, the two formats share the specification of Geometry TypedArrays.</p>
 
-<h2><a name="_2">The i3s Store – what goes into an Indexed 3D Scene?</h2>
+<h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</h2>
 
 <p>The basic unit of an Indexed 3D Scene is a Store, which contains individual resources (files) for a set of layers, index,
 geometries, textures and more. Within such a store, the i3s format supports a
@@ -144,10 +144,10 @@ layers in a shared stored can share resources, such as instance geometries.</p>
 similarities to <a href="http://code.google.com/p/regionator/wiki/Welcome">regionated KML</a>
 or X3D Earth. The purpose of any index is to allow fast access to (blocks of)
 relevant data. In an Indexed 3D Scene, the spatial extent is split into regions
-with a roughly equal amount of data in them, and an access data structure – the
-actual index – allows the client and the server to quickly discover which data the
+with a roughly equal amount of data in them, and an access data structure - the
+actual index - allows the client and the server to quickly discover which data the
 client actually needs. Such a region of a 3D Scene is called a <em>Node</em>.
-Node creation is capacity driven – the smaller the node capacity is, the smaller
+Node creation is capacity driven - the smaller the node capacity is, the smaller
 the spatial extent of each node will be.</p>
 
 <p>All Nodes have an ID that is unique throughout a cache. The ID format used is that of a treekey,
@@ -286,7 +286,7 @@ When using a mesh pyramid based LOD approach each interior node in the i3S tree 
 
 <h3><a name="_4_3">LoD Selection Metrics</a></h3>
 
-<p>A client needs information to determine whether a node’s contents are "good enough" to
+<p>A client needs information to determine whether a node's contents are "good enough" to
 render under constraints such as resolution, screen size, bandwidth and
 available memory and target minimum quality goals. i3s originally used a single, unit-less "precision"
 value that i3s generators add to each node. Clients use a heuristic to
@@ -339,19 +339,19 @@ to the selection of spatial reference systems to use:</p>
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
-	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node’s minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:
+	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:
 	<li>
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 			<li>EPSG:32601 to EPSG:32660, EPSG:32701 to EPSG:32760 (UTM WGS84)</li>
-			<li>EPSG:3857 (Web Mercator WGS84) or EPSG:32662 (Plate Carrée WGS84) for large extent datasets (~12° to 360° horizontal extent)</li>
+			<li>EPSG:3857 (Web Mercator WGS84) or EPSG:32662 (Plate Carree WGS84) for large extent datasets (~12Â° to 360Â° horizontal extent)</li>
 		</ol>
 	<li>3.	Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
 <h2><a name="_6">Structure of i3s resources</a></h2>
 
-<p>The i3s format contains different components – node index documents (NIDs), feature
+<p>The i3s format contains different components - node index documents (NIDs), feature
 data, textures, geometry and resources shared across features of a given node.
 Feature data, textures, geometry and shared resources are all called resources
 and are always attached to a node.</p>
@@ -547,11 +547,11 @@ Layer.</p>
 
 <p>While Layers are the user-visible entry point to the 3dSceneServer resources (for web
 scene authoring and viewing), internally the service uses so-called stores. A
-store can contain 1…* layers, which will share a common index and set of nodes,
+store can contain 1...* layers, which will share a common index and set of nodes,
 as well as resources. The Store object describes the exact physical storage of
 a Layer and enables the client to detect when multiple Layers are served from
-the same Store. Storing multiple layers in a single store – and thus having
-them share resources – enables efficient serving of many layers of the same
+the same Store. Storing multiple layers in a single store - and thus having
+them share resources - enables efficient serving of many layers of the same
 content type, but with different attribute schemas or different symbology
 applied.</p>
 
@@ -787,7 +787,7 @@ object in a 3dNodeIndexDocument.</p>
 
 <h4>Class NodeReference</h4>
 
-<p>A NodeReference is a pointer to another node – the parent, a child or a
+<p>A NodeReference is a pointer to another node - the parent, a child or a
 neighbor. NodeReferences contain a relative URL pointing to the referenced NID,
 as well as a set of metainformation that can be used by the client to determine
 whether to load that node or not, as well as maintaining store consistency.</p>
@@ -906,7 +906,7 @@ determine whether a representation is of the right quality level for rendering
 or whether a different representation is needed. </p>
 
 <p>Cookers can add as many <code>LodSelection</code> objects as desired but must provide
-one as soon as the layer’s <code>lodType</code> is not null. Of the three
+one as soon as the layer's <code>lodType</code> is not null. Of the three
 min/avg/max values, typically only one or two are used.</p>
 
 <table>
@@ -1112,7 +1112,7 @@ belong to, specifically with which material and texture to render them.</p>
 
 <h4>Class GeometryAttribute</h4>
 
-Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes – VertexAttributes and
+Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and
 FaceAttributes. While the first describe properties that are valid for a single
 vertex, the second are used to describe faces and other structures by providing
 a set of indices. As an example, the <code>faces.position</code> index attribute is used to define
@@ -1146,7 +1146,7 @@ which vertex positions make up a face.</p>
 	</tr>
 	<tr>
 		<td>componentIndices</td>
-		<td>int[0…*]</td>
+		<td>int[0...*]</td>
 		<td>An optional array that indicates how many of the elements in this view belong to the first, second and consecutive components of the geometry. The number of entries in this array, when present, has to be equal to the number of entries in the components List of the enclosing Geometry object. The entire field is optional when no components have been declared for this Geometry.</td>
 	</tr>
 </table>
@@ -1337,7 +1337,7 @@ API-dependent shader programs with a layer.</p>
 
 <p>The Textures file is a binary resource that contains one or multiple images that
 are used as textures of features in the store. A single Texture.bin file
-contains 1…n textures for a single specific texture LoD. It can contain a
+contains 1...n textures for a single specific texture LoD. It can contain a
 single texture atlas or multiple individual textures; the decision how this is
 bundled is left to the authoring application so that specific aspects of the
 materials and textures used can be taken into account, such as tiling.</p>
@@ -1351,7 +1351,7 @@ resources that are delivered as part of an Indexed 3D Scene.</p>
 
 <h4>Image Formats</h4>
 
-<p>At the current stage, the following texture formats are recommended – JPEG for RGB and
+<p>At the current stage, the following texture formats are recommended - JPEG for RGB and
 PNG for RGBA. They were chosen over S3TC because of low bandwidth consumption
 and widespread adoption in all steps of the toolchain, such as supporting alpha
 transparency rendering in WebGL. However, with more wide-spread client support
@@ -1387,17 +1387,17 @@ them in the texture itself.</p>
 to WebGL and other APIs using Uniform Arrays and can be encoded in a 32bit Float per region using the following pattern:</p>
 
 <ul>
-	<li>anchor x: 12 bit, value is 16 * n, range of n: [1,4096], values: [16, 32, 48, 64, , …, 65536]</li>
-	<li>anchor y: 12 bit, value is 16 * n, range of n: [1,4096], values: [16, 32, 48, 64, , …, 65536]</li>
-	<li>width: 4 bit, value is 2n, range of n:  [1,16], values: [2,4,8,16,32,…,4096]</li>
-	<li>height: 4 bit, value is 2n, range of n:  [1,16] , values: [2,4,8,16,32,…,4096]</li>
+	<li>anchor x: 12 bit, value is 16 * n, range of n: [1,4096], values: [16, 32, 48, 64, , ..., 65536]</li>
+	<li>anchor y: 12 bit, value is 16 * n, range of n: [1,4096], values: [16, 32, 48, 64, , ..., 65536]</li>
+	<li>width: 4 bit, value is 2n, range of n:  [1,16], values: [2,4,8,16,32,...,4096]</li>
+	<li>height: 4 bit, value is 2n, range of n:  [1,16] , values: [2,4,8,16,32,...,4096]</li>
 </ul>
 
 <h4>Texture coordinates</h4>
 
 <p>Texture coordinates do not take atlas regions into account directly. They always range
-from <code>0…1</code> in U and V, except when using the
-“repeat” wrapping mode, where they may range from <code>0…n</code> (n being the number of repeats). The client is expected to use the <code>subimageRegion</code> values and the texture coordinates to best
+from <code>0...</code> in U and V, except when using the
+"repeat" wrapping mode, where they may range from <code>0...n</code> (n being the number of repeats). The client is expected to use the <code>subimageRegion</code> values and the texture coordinates to best
 handle repeating textures in atlases. This approach has been selected since
 client capabilities in dealing with more complex UV cases vary greatly.</p>
 
@@ -1446,7 +1446,7 @@ client capabilities in dealing with more complex UV cases vary greatly.</p>
 <h3><a name="_7_7">Geometry.bin</a></h3>
 
 <p>The binary geometry attribute file follows the <a href="http://www.khronos.org/registry/typedarray/specs/latest/">Khronos Typed Array
-specification</a> in the Editor’s Draft version of 10<sup>th</sup> April 2013.
+specification</a> in the Editor's Draft version of 10<sup>th</sup> April 2013.
 Citing the overview of that spec:</p>
 
 <blockquote>This specification defines an ArrayBuffer

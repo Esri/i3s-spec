@@ -1466,20 +1466,20 @@ same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
 the following code:</blockquote>
 
-<code><pre>      // create an 8-byte ArrayBuffer
-      var b = new ArrayBuffer(8);
-
-      // create a view v1 referring to b, of type Int32, starting at
-      // the default byte index (0) and extending until the end of the buffer
-      var v1 = new Int32Array(b);
-
-      // create a view v2 referring to b, of type Uint8, starting at
-      // byte index 2 and extending until the end of the buffer
-      var v2 = new Uint8Array(b, 2);
-
-      // create a view v3 referring to b, of type Int16, starting at
-      // byte index 2 and having a length of 2
-      var v3 = new Int16Array(b, 2, 2);</pre>
+<code><pre>    // create an 8-byte ArrayBuffer
+    var b = new ArrayBuffer(8);
+    
+    // create a view v1 referring to b, of type Int32, starting at
+    // the default byte index (0) and extending until the end of the buffer
+    var v1 = new Int32Array(b);
+    
+    // create a view v2 referring to b, of type Uint8, starting at
+    // byte index 2 and extending until the end of the buffer
+    var v2 = new Uint8Array(b, 2);
+    
+    // create a view v3 referring to b, of type Int16, starting at
+    // byte index 2 and having a length of 2
+    var v3 = new Int16Array(b, 2, 2);</pre>
 </code>
 
 <blockquote>This defines an 8-byte buffer b, and three

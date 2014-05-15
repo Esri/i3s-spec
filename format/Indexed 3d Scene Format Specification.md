@@ -1580,7 +1580,7 @@ The format of the package itself is defined as follows:
 		<li>ArchiveCompressionType: STORE</li>
 		<li>ResourceCompressionType: GZIP</li>
 	</ol></li>
-<ol>
+</ol>
 
 <h4>Metadata.json</h4>
 

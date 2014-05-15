@@ -275,7 +275,7 @@ The figure below shows an example of such a tree.</p>
 
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
 
-<p><em>Figure 3: Example Nodes + Mesh Pyramid. Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
+<p><em>Figure 3: Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
 
 <p>In this example, from root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
 This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
@@ -1546,4 +1546,77 @@ It can be used to have persistent caches on the client side and uses an identica
 
 <h3><a name="_8_3">Packaged Indexed 3d Scenes (i3p files)</a></h3>
 
-<p>Coming very soon!</p>
+<p>i3s packages (i3p) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file, 
+and they optionally also allow to be directly consumed by applications such as clients or services. 
+The file layout is identical to the <a href="#_8_1">File System layout</a> described before. This is referred to as the BASIC folder pattern. 
+There is also an EXTENDED foder pattern that uses subtree partitions to avoid problems with very large packages. 
+This EXTENDED pattern is added as a keyword only in this sepcification version for future proofness.
+Within an archive, this BASIC folder pattern results in the following structure:</p>
+
+<img src="images/figure-11.png" title="Structure of an i3s package" alt="Structure of an i3s package" />
+
+<p><em>Figure 11: Structure of an i3s package with BASIC folder layout</em></p>
+
+The format of the package itself is defined as follows:
+
+<ul>
+	<li>The Archive type is always <a href="http://www.enterag.ch/enterag/downloads/Zip64File_TechnicalDocumentation.pdf">Zip64</a>.</li>
+	<li>On this Archive, an overall compression scheme may be applied. 
+	This compression scheme has to be either STORE or DEFLATE64. 
+	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller caches. </li>
+	<li>Every resource except textures may also be individually compressed. For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available anymore in browsers.</li>
+</ul>
+
+<p>For the two mentioned used cases, i3p is employed as follows:</p>
+
+<ol>
+	<li>i3p as a transfer format: 
+	<ol>
+		<li>ArchiveCompressionType: DEFLATE64</li>
+		<li>ResourceCompressionType: NONE</li>
+	</ol></li>
+	<li>i3p as a serving format:
+	<ol>
+		<li>ArchiveCompressionType: STORE</li>
+		<li>ResourceCompressionType: GZIP</li>
+	</ol></li>
+<ol>
+
+<h4>Metadata.json</h4>
+
+<p>The following entries are permitted in the Metadata.json file that is part of every i3p archive:</p>
+
+<table>
+	<tr>
+		<th>Property</th>
+		<th>Required</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>folderPattern</td>
+		<td>True</d>
+		<td>One of {*BASIC*, EXTENDED}</td>
+	</tr>
+	<tr>
+		<td>ArchiveCompressionType</td>
+		<td>True</d>
+		<td>One of {*STORE*, DEFLATE64[, DEFLATE]}</td>
+	</tr>
+	<tr>
+		<td>ResourceCompressionType</td>
+		<td>True</d>
+		<td>One of {*NONE*, GZIP}</td>
+	</tr>
+	<tr>
+		<td>i3sVersion</td>
+		<td>True</d>
+		<td>One of {1.2, *1.3*}</td>
+	</tr>
+	<tr>
+		<td>nodeCount</td>
+		<td>True</d>
+		<td> </td>
+	</tr>
+</table>
+
+

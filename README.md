@@ -11,8 +11,7 @@ This repository hosts the specification for the ArcGIS Scene Service and its del
 -   Validator rule files for each profile
 
 The structure of this specification is as follows:
-- Format: Full logical format specification
-- Package: Full physical format specification for packaged i3s caches (*.i3p)
+- Format: Full logical format specification, including  physical format specification for packaged i3s caches (*.i3p)
 - Profiles: Subsets the full format specification for different data structures such as MeshPyramids, Analytics and Features (Meshes, Points, Lines, Polygons)
 - Service: Contains the REST API specification for the Scene Service.
 

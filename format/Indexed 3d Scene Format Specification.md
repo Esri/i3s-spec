@@ -84,7 +84,7 @@ supported are listed in the following Table.</p>
  </tr>
  <tr>
   <td>Integrated Mesh <em>(Acute3D)</em></td>
-  <td><a href="../profiles/mesh-pyramids/mesh-pyramids.md">mesh-pyramids</a></td>
+  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>Yes</td>
   <td>No</td>
  </tr>

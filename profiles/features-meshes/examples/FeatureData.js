@@ -1,3 +1,6 @@
+/**
+	Example i3s 1.3 Feature Data Resource for the features-meshes (FM) profile.
+*/
 {
 	"featureData": [
 		{ // a normal feature using a unique geometry

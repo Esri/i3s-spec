@@ -154,7 +154,7 @@ the spatial extent of each node will be.</p>
 i.e. the key directly indicates the position of the node in the tree. Treekeys
 allow sorting all resources on a single dimension and usually maintain 2D
 spatial proximity in the 1D ordering. Treekeys are strings that in which levels are separated by dashes: 
-"3-0-34-234-2" has 5 numeric elements, hence the node is on level 5 (root is level 0) and the node "1-2-34-234" is its parent.  
+"3-0-34-234-2" has 5 numeric elements, hence the node is on level 5 (root is level 0) and the node "3-0-34-234" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
 <img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys" />
@@ -339,8 +339,7 @@ to the selection of spatial reference systems to use:</p>
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
-	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:
-	<li>
+	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:</li>
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 			<li>EPSG:32601 to EPSG:32660, EPSG:32701 to EPSG:32760 (UTM WGS84)</li>

@@ -23,3 +23,34 @@ We are also building a [Validation Toolkit](https://devtopia.esri.com/Zurich-R-D
 
 There is also a set of informative and explorative articles on implementation details and usage strategies for the format available in the [i3s wiki](https://devtopia.esri.com/Zurich-R-D-Center/i3s-spec/wiki/_pages) that includes client traversal patterns, suggestions on optimizations and approaches to steps of the cooking process, such as texture atlas generation.
 
+Known Implementations:
+
+- Cookers:
+    - Redlands: 
+        - Supported Profiles: 1.3 meshpyramid
+        - Product: ArcGIS Server 10.3
+        - Status: In development, >75% conformance to profile
+    - Beijing:
+        - Supported Profiles: 1.3 features (-meshes, -points, -lines, -polygons)
+        - Product: standalone Windows App, integration with ArcGIS Server ongoing
+        - Status: In development, >80% conformance to profile
+    - Acute3D:
+        - Supported Profiles: 1.3 features-meshes with full feature-tree LoD
+        - Product: Smart3DCapture
+        - Status: In development, >95% conformance to profile
+    - Cyclomedia: 
+        - Supported Profiles: 1.3 meshpyramids or features-meshes (not yet known)
+        - Product: (?)
+        - Status: In early development (no cache samples available yet)
+    - VAlarm: 
+        - Supported Profiles: 1.3 features-points, analytics
+        - Product: VAlarm Tools Cloud (?)
+        - Status: Planned, ETA for features-points in June/2014
+    - Esri CH:
+        - Supported Profiles: 1.3 analytics
+        - Product: GeoEvent Processor Extension
+        - Status: In development, ETA for simple anayltics in June/2014
+- Clients
+    - ArcGIS Web Scene Viewer (supports 1.3 features-meshes) 
+    - ArcGIS Mobile Runtime (supports 1.2 meshpyramids, features-meshes)
+    - ArcGIS Pro (supports 1.2 meshpyramids)

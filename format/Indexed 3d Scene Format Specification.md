@@ -3,7 +3,7 @@ Format Specification</h2>
 
 </div>
 
-<p>Version 1.3, rev. 53, 2014-05-14</p>
+<p>Version 1.3, rev. 55, 2014-05-28</p>
 </p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
 
@@ -131,7 +131,7 @@ supported are listed in the following Table.</p>
 <p>A single i3s store can contain data from multiple layers, but only one content type (one profile), as the
 different content types typically require different indexing and Level of
 Details methods to perform best. In many cases their schema also differs
-substantially. However, a single cache can contain multiple layers that share
+substantially. However, a single store can contain multiple layers that share
 the same content type. Effectively these layers will share the same index, but
 they can still be accessed individually. This reduces the number of calls to a
 Scene Service, local database or the file system that need to be made by the client
@@ -150,7 +150,7 @@ client actually needs. Such a region of a 3D Scene is called a <em>Node</em>.
 Node creation is capacity driven - the smaller the node capacity is, the smaller
 the spatial extent of each node will be.</p>
 
-<p>All Nodes have an ID that is unique throughout a cache. The ID format used is that of a treekey,
+<p>All Nodes have an ID that is unique throughout a store. The ID format used is that of a treekey,
 i.e. the key directly indicates the position of the node in the tree. Treekeys
 allow sorting all resources on a single dimension and usually maintain 2D
 spatial proximity in the 1D ordering. Treekeys are strings that in which levels are separated by dashes: 
@@ -176,7 +176,7 @@ authored representations to be used for different viewing ranges. </p>
   </tr>
   <tr>
     <td>Discrete</td>
-    <td><em>Multiple representations</em>, a more detailed one fully replaces a co-arser representation</td>
+    <td><em>Multiple representations</em>, a more detailed one fully replaces a coarser representation</td>
     <td>Image Pyramid, Mesh Pyramid, Height map pyramid, Line/Polygon Generalization</td>
   </tr>
   <tr>
@@ -281,7 +281,7 @@ The figure below shows an example of such a tree.</p>
 This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
 with the same set size as the number of node children.</p>
 
-<p>The links between all meshes participating in a LoD tree are either created during the cache creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
+<p>The links between all meshes participating in a LoD tree are either created during the store creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
 When using a mesh pyramid based LOD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  With mesh pyramids there is no concept of an LOD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the required level of detail.</p>
 
 <h3><a name="_4_3">LoD Selection Metrics</a></h3>
@@ -339,12 +339,13 @@ to the selection of spatial reference systems to use:</p>
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
-	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:</li>
+	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 			<li>EPSG:32601 to EPSG:32660, EPSG:32701 to EPSG:32760 (UTM WGS84)</li>
 			<li>EPSG:3857 (Web Mercator WGS84) or EPSG:32662 (Plate Carree WGS84) for large extent datasets (~12° to 360° horizontal extent)</li>
 		</ol>
+	</li>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
@@ -463,7 +464,7 @@ clients know which Layers are served by a given service. </p>
 	<tr>
 		<td>geometryType</td>
 		<td>String</td>
-		<td>The geometry type of the cache; selected from <code>{FeatureMesh, IntegratedMesh, RasterTerrain, TINTerrain, Point, Line, Polygon, PointCloud}</code>.</td>
+		<td>The geometry type of the store; selected from <code>{FeatureMesh, IntegratedMesh, RasterTerrain, TINTerrain, Point, Line, Polygon, PointCloud}</code>.</td>
 	</tr>
 	<tr>
 		<td>lodType </td>
@@ -1031,7 +1032,7 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>id</td>
 		<td>Long</td>
-		<td>Referenceable, unique ID of the Geometry in this cache.</td>
+		<td>Referenceable, unique ID of the Geometry in this store.</td>
 	</tr>
 	<tr>
 		<td>type</td>
@@ -1383,7 +1384,7 @@ pixels) or scaled to the nearest lower 2<sup>n</sup> size. An image that is
 the atlas or padded to 256px x 128px.</p>
 
 <p>The pixels belonging to a subtexture are identified by the <code>subimageRegion: [0, 0, 0.5, 0.5]</code> attribute. An atlas may have a
-maximum of 256 <code>subimageRegions</code>; the reason for this limitation is
+maximum of 1024 <code>subimageRegions</code>; the reason for this limitation is
 the amount of information that can be passed to the shader when not embedding
 them in the texture itself.</p>
 
@@ -1391,16 +1392,16 @@ them in the texture itself.</p>
 to WebGL and other APIs using Uniform Arrays and can be encoded in a 32bit Float per region using the following pattern:</p>
 
 <ul>
-	<li>anchor x: 12 bit, value is 16 * n, range of n: [1,4096], values: [16, 32, 48, 64, , ..., 65536]</li>
-	<li>anchor y: 12 bit, value is 16 * n, range of n: [1,4096], values: [16, 32, 48, 64, , ..., 65536]</li>
-	<li>width: 4 bit, value is 2n, range of n:  [1,16], values: [2,4,8,16,32,...,4096]</li>
-	<li>height: 4 bit, value is 2n, range of n:  [1,16] , values: [2,4,8,16,32,...,4096]</li>
+	<li>anchor x: 12 bit, value is 8 * n, range of n: [1,4096], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
+	<li>anchor y: 12 bit, value is 8 * n, range of n: [1,4096], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
+	<li>width: 4 bit, value is 2<sup>n</sup>, range of n: [3,14], values: [8,16,32,...,16384]</li>
+	<li>height: 4 bit, value is 2<sup>n</sup>, range of n: [3,14] , values: [8,16,32,...,16384]</li>
 </ul>
 
 <h4>Texture coordinates</h4>
 
 <p>Texture coordinates do not take atlas regions into account directly. They always range
-from <code>0...</code> in U and V, except when using the
+from <code>0...1</code> in U and V, except when using the
 "repeat" wrapping mode, where they may range from <code>0...n</code> (n being the number of repeats). The client is expected to use the <code>subimageRegion</code> values and the texture coordinates to best
 handle repeating textures in atlases. This approach has been selected since
 client capabilities in dealing with more complex UV cases vary greatly.</p>
@@ -1409,25 +1410,27 @@ client capabilities in dealing with more complex UV cases vary greatly.</p>
 
 <p>The Id of an image is generated using the following method:</p>
 
-<code><pre>UInt64 BuildID(LONG id, int w, int h , int l, int al)
+```
+UInt64 BuildID(LONG id, int w, int h , int l, int al)
 {
-   UInt64 l_al = ((UInt64)al)<<60;
-   UInt64 l_l = ((UInt64)l)<<56;
-   UInt64 l_w = ((UInt64)w)<<44;
-   UInt64 l_h = ((UInt64)h)<<32;
-   UInt64 id64 = l_al + l_l + l_w + l_h + (UInt64)id;
-   return id64;
-}</pre></code>
+    UInt64 l_al = ((UInt64)al)<<60;
+    UInt64 l_l = ((UInt64)l)<<56;
+    UInt64 l_w = ((UInt64)w)<<44;
+    UInt64 l_h = ((UInt64)h)<<32;
+    UInt64 id64 = l_al + l_l + l_w + l_h + (UInt64)id;
+    return id64;
+}
+```
 
 <p>Usage syntax: <br/>
-<code>UInt64 BuildID(Long id, int w, int h , int l, int al);</code> </p>
+<code>UInt64 image_id = BuildID(id, w, h, l, al);</code> </p>
 
 <h5>Function Parameters</h5>
 
 <table>
 	<tr>
 		<td>id</td>
-		<td>Index of the texture in the cache, start from 1</td>
+		<td>Index of the texture in the store, start from 1</td>
 	</tr>
 	<tr>
 		<td>w</td>
@@ -1465,7 +1468,8 @@ same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
 the following code:</blockquote>
 
-<code><pre>    // create an 8-byte ArrayBuffer
+```
+    // create an 8-byte ArrayBuffer
     var b = new ArrayBuffer(8);
     
     // create a view v1 referring to b, of type Int32, starting at
@@ -1479,7 +1483,7 @@ the following code:</blockquote>
     // create a view v3 referring to b, of type Int16, starting at
     // byte index 2 and having a length of 2
     var v3 = new Int16Array(b, 2, 2);</pre>
-</code>
+```
 
 <blockquote>This defines an 8-byte buffer b, and three
 views of that buffer, v1, v2, and v3. Each of the views refers to the same
@@ -1501,29 +1505,29 @@ resource type.</p>
 
 <h3><a name="_8_1">File System</a></h3>
 
-<p>In this persistence schema, all resources reside in the file system as individual files. These files are organsed in folders in the following scheme:</p>
+<p>In this persistence schema, all resources reside in the file system as individual files. These files are organised in folders in the following scheme:</p>
 
 <pre>
 /3dSceneLayer.json
 /nodes/root/3dNodeIndexDocument.json
 /nodes/root/features/0.json ...n.json
-/nodes/root/geometries/0.json ...n.json
+/nodes/root/geometries/0.json ...n.bin
 /nodes/root/shared/SharedResource.json
 /nodes/root/textures/0_0.json ...n_m.bin
 /nodes/0/3dNodeIndexDocument.json
 /nodes/0/features/0.json ...n.json
-/nodes/0/geometries/0.json ...n.json
+/nodes/0/geometries/0.json ...n.bin
 /nodes/0/shared/SharedResource.json
 /nodes/0/textures/0_0.json ...n_m.bin
 /nodes/0-1/3dNodeIndexDocument.json
 /nodes/0-1/features/0.json ...n.json
-/nodes/0-1/geometries/0.json ...n.json
+/nodes/0-1/geometries/0.json ...n.bin
 /nodes/0-1/shared/SharedResource.json
 /nodes/0-1/textures/0_0.json ...n_m.bin
 ...
 </pre>
 
-<p>This scheme is not recommended for very large caches, as there is a limit of 64K folders in serveral contexts such as FAT32 file systems, 
+<p>This scheme is not recommended for very large stores, as there is a limit of 64K folders in several contexts such as FAT32 file systems, 
 which are still used on mobile media.</p>
 
 <h3><a name="_8_2">CouchDB, IndexedDB and other Key-Value Stores</a></h3>
@@ -1541,14 +1545,14 @@ itself is stored as the value document. All resources are added as attachments t
 many current browsers, such as Firefox, Chrome and Internet Explorer.
 IndexedDB offers a method of storing data client-side and allows indexed
 database queries against JSON documents. 
-It can be used to have persistent caches on the client side and uses an identical scheme as server-side, CouchDB storage.</p>
+It can be used to have persistent stores on the client side and uses an identical scheme as server-side, CouchDB storage.</p>
 
 <h3><a name="_8_3">Packaged Indexed 3d Scenes (i3p files)</a></h3>
 
 <p>i3s packages (i3p) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file, 
 and they optionally also allow to be directly consumed by applications such as clients or services. 
 The file layout is identical to the <a href="#_8_1">File System layout</a> described before. This is referred to as the BASIC folder pattern. 
-There is also an EXTENDED foder pattern that uses subtree partitions to avoid problems with very large packages. 
+There is also an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages. 
 This EXTENDED pattern is added as a keyword only in this sepcification version for future proofness.
 Within an archive, this BASIC folder pattern results in the following structure:</p>
 
@@ -1562,7 +1566,7 @@ The format of the package itself is defined as follows:
 	<li>The Archive type is always <a href="http://www.enterag.ch/enterag/downloads/Zip64File_TechnicalDocumentation.pdf">Zip64</a>.</li>
 	<li>On this Archive, an overall compression scheme may be applied. 
 	This compression scheme has to be either STORE or DEFLATE64. 
-	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller caches. </li>
+	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller stores. </li>
 	<li>Every resource except textures may also be individually compressed. For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available anymore in browsers.</li>
 </ul>
 

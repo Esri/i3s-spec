@@ -384,6 +384,32 @@ figure illustrates an example set of bundles within a node:</p>
 <p>This section provides a detailed, logical-level specification for each of the
 resource types.</p>
 
+<h3><a name="_7_0">Basic value types</a></h3>
+
+Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
+
+* **String**: A utf8 String.
+* **Float**: A Float64 number with an optional fractional component, such as "1.02" or "1.0".
+* **Integer**: An Int32 number without a fractional component, such as "234".
+* **UUID**: A canonical hexadecimal UUID, such as "550e8400-e29b-41d4-a716-446655440000"
+* **Date**: An ISO 8601 timestamp YYYY-MM-DD HH:MM:SS.sss string with fixed Z timezone information, such as "2009-01-01T12:00:00.000Z"
+* **URL**: Any resolvable, relative or absolute, URL, such as "../Node/51/sharedResource"
+* **Pointer**: Any resolvable reference to an object in a JSON document, consisting of a relative or absolute URL and a document path, such as [../Node/51/sharedResource]/materialDefinitions/Mat01
+* **NodeID**: A treekey string such as “3-0-34-234-2” that is zero-based (first child is "0", root node is "root").
+
+<h4><a name="_7_0_1">Pointers</a></h4>
+
+i3s use the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
+The Pointer consists of two elements:
+* mandatory in-document reference: Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
+    * _Absolute_ references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by the qname. 
+        * Example: /materialDefinitions/*/type
+    * _Relative_ references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
+        * Example: params/ambient/0 
+* optional URL: The pointer may be prefixed with a URL to a different document. This URL may be relative to the document that is being evaluated or absolute. To identify the URL element of a pointer, it is given in square brackets. Examples:
+    * relative URL + absolute reference: From FeatureData to 3dSceneLayer.name: [../../]/name
+    * absolute URL + absolute reference: [http://web3d.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/nodes/51]/parentNode/id
+
 <h3><a name="_7_1">3dSceneServiceInfo.js</a></h3>
 
 <p>The 3dSceneServiceInfo file is a JSON file that describes the capability and data
@@ -448,7 +474,7 @@ clients know which Layers are served by a given service. </p>
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>long</td>
+		<td>Integer</td>
 		<td>The ID of this layer, unique within a 3dSceneService.</td>
 	</tr>
 	<tr>
@@ -505,27 +531,27 @@ Layer.</p>
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>long</td>
+		<td>Integer</td>
 		<td>Unique numeric ID of the Layer.</td>
 	</tr>
 	<tr>
 		<td>version</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The ID of the last update session in which any resource belonging to this layer has been updated.</td>
 	</tr>
 	<tr>
 		<td>name</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The name of this layer.</td>
 	</tr>
 	<tr>
 		<td>alias</td>
-		<td>string[0..1]</td>
+		<td>String[0..1]</td>
 		<td>The display alias to be used for this layer.</td>
 	</tr>
 	<tr>
 		<td>description</td>
-		<td>string[0..1]</td>
+		<td>String[0..1]</td>
 		<td>Description string for this layer.</td>
 	</tr>
 	<tr>
@@ -584,7 +610,7 @@ applied.</p>
 	</tr>
 	<tr>
 		<td>extent</td>
-		<td>Double[4]</td>
+		<td>Float[4]</td>
 		<td>The 2D spatial extent (x<sub>min</sub>, y<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub>) of this store, in the horizontal geographicCRS</td>
 	</tr>
 	<tr>
@@ -651,17 +677,17 @@ applied.</p>
 	</tr>
 	<tr>
 		<td>name</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The name of the field.</td>
 	</tr>
 	<tr>
 		<td>type</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The type of the field, from this enum: <code>{esriFieldTypeBlob, esriFieldTypeDate, esriFieldTypeDouble, esriFieldTypeGeometry, esriFieldTypeGlobalID, esriFieldTypeGUID, esriFieldTypeInteger, esriFieldTypeOID, esriFieldTypeRaster, esriFieldTypeSingle, esriFieldTypeSmallInteger, esriFieldTypeString, esriFieldTypeXML}</code></td>
 	</tr>
 	<tr>
 		<td>alias</td>
-		<td>string[0..1] </td>
+		<td>String[0..1] </td>
 		<td>The display alias to be used for this field.</td>
 	</tr>
 </table>
@@ -682,27 +708,27 @@ by clients to better understand how to work with the index.</p>
 	</tr>
 	<tr>
 		<td>name</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The name of the field.</td>
 	</tr>
 	<tr>
 		<td>inclusive</td>
-		<td>boolean</td>
+		<td>Boolean</td>
 		<td>true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs</td>
 	</tr>
 	<tr>
 		<td>dimensionality</td>
-		<td>int</td>
+		<td>Integer</td>
 		<td>The number of dimensions in which this index differentiates.</td>
 	</tr>
 	<tr>
 		<td>childrenCardinality</td>
-		<td>int[2]</td>
+		<td>Integer[2]</td>
 		<td>min/max number of children per node.</td>
 	</tr>
 	<tr>
 		<td>neighborCardinality</td>
-		<td>int[2]</td>
+		<td>Integer[2]</td>
 		<td>min/max number of neighbors per node.</td>
 	</tr>
 </table>
@@ -752,7 +778,7 @@ object in a 3dNodeIndexDocument.</p>
 	</tr>
 	<tr>
 		<td>level</td>
-		<td>int</td>
+		<td>Integer</td>
 		<td>Explicit level of this node within the index tree. The lowest level is 1.</td>
 	</tr>
 	<tr>
@@ -762,22 +788,22 @@ object in a 3dNodeIndexDocument.</p>
 	</tr>
 	<tr>
 		<td>mbs</td>
-		<td>double[4]</td>
+		<td>Float[4]</td>
 		<td>An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node.</td>
 	</tr>
 	<tr>
 		<td>created</td>
-		<td>timestamp[0..1]</td>
+		<td>Date[0..1]</td>
 		<td>Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mmZ (see http://www.w3.org/TR/NOTE-datetime).</td>
 	</tr>
 	<tr>
 		<td>expires</td>
-		<td>timestamp[0..1]</td>
+		<td>Date[0..1]</td>
 		<td>Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mmZ (see http://www.w3.org/TR/NOTE-datetime).</td>
 	</tr>
 	<tr>
 		<td>transform</td>
-		<td>Double[16]</td>
+		<td>Float[16]</td>
 		<td>Optional, 3D (4x4) transformation matrix expressed as a linear array of 16 values.</td>
 	</tr>
 </table>
@@ -800,12 +826,12 @@ whether to load that node or not, as well as maintaining store consistency.</p>
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>string</td>
+		<td>String</td>
 		<td>Tree Key ID (e.g. "1-3-0-5") of the referenced node.</td>
 	</tr>
 	<tr>
 		<td>mbs</td>
-		<td>double[4]</td>
+		<td>Float[4]</td>
 		<td>An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node.</td>
 	</tr>
 	<tr>
@@ -820,7 +846,7 @@ whether to load that node or not, as well as maintaining store consistency.</p>
 	</tr>
 	<tr>
 		<td>featureCount</td>
-		<td>int</td>
+		<td>Integer</td>
 		<td>Number of features in the referenced node and its descendants, down to the leaf nodes.</td>
 	</tr>
 </table>
@@ -841,22 +867,22 @@ resources.</p>
 	</tr>
 	<tr>
 		<td>href</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The relative URL to the referenced resource.</td>
 	</tr>
 	<tr>
 		<td>layerContent</td>
-		<td>string[1..*]</td>
+		<td>String[1..*]</td>
 		<td>The list of layer names that indicates which layer features in the bundle belongs to. The client can use this information to selectively download bundles.</td>
 	</tr>
 	<tr>
 		<td>featureRange</td>
-		<td>int[2]</td>
+		<td>Integer[2]</td>
 		<td>Only applicable for featureData resources. Provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle.</td>
 	</tr>
 	<tr>
 		<td>multiTexturedBundle</td>
-		<td>boolean</td>
+		<td>Boolean</td>
 		<td>Only applicable for textureData resources. <code>true</code> if the bundle contains multiple textures. If <code>false</code>, clients can interpret the entire bundle as a single image. </td>
 	</tr>
 </table>
@@ -871,32 +897,32 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 <table>
 	<tr>
 		<td>id</td>
-		<td>long</td>
+		<td>Integer</td>
 		<td>An ID of the Feature, unique within the store (important to note when using Features from multiple stores!)</td>
 	</tr>
 	<tr>
 		<td>mbs</td>
-		<td>double[4]</td>
+		<td>Float[4]</td>
 		<td>An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node.</td>
 	</tr>
 	<tr>
 		<td>lodChildFeatures</td>
-		<td>long[0..*]</td>
+		<td>Integer[0..*]</td>
 		<td>IDs of features in a higher LOD level which together make up this feature.</td>
 	</tr>
 	<tr>
 		<td>lodChildNodes</td>
-		<td>string[0..*]</td>
+		<td>String[0..*]</td>
 		<td>Tree Key IDs of the nodes in which the lodChildFeatures are found</td>
 	</tr>	
 	<tr>
 		<td>rank</td>
-		<td>int[0..1]</td>
+		<td>Integer[0..1]</td>
 		<td>The LOD level of this feature. Only required for features that participate in a LOD tree. The lowest rank is 1.</td>
 	</tr>
 	<tr>
 		<td>rootFeature</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The Tree Key ID of the root node of a feature LOD tree that this feature participates in. Only required if the feature participates in a LOD tree and if it is not the rootFeature itself.</td>
 	</tr>
 </table>
@@ -927,17 +953,17 @@ min/avg/max values, typically only one or two are used.</p>
 	</tr>
 	<tr>
 		<td>maxValue</td>
-		<td>float[0..1]</td>
+		<td>Float[0..1]</td>
 		<td>maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
 	</tr>
 	<tr>
 		<td>avgValue</td>
-		<td>float[0..1]</td>
+		<td>Float[0..1]</td>
 		<td>maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
 	</tr>
 	<tr>
 		<td>minValue</td>
-		<td>float[0..1]</td>
+		<td>Float[0..1]</td>
 		<td>minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
 	</tr>
 </table>
@@ -968,27 +994,27 @@ representative of a feature present in the real, geographic world.
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>long</td>
+		<td>Integer</td>
 		<td>Feature ID, unique within the store.</td>
 	</tr>
 	<tr>
 		<td>position</td>
-		<td>double[3]</td>
+		<td>Float[3]</td>
 		<td>An array of three doubles, giving the x,y,z (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the projectedCRS.</td>
 	</tr>
 	<tr>
 		<td>pivotOffset</td>
-		<td>double[3]</td>
+		<td>Float[3]</td>
 		<td>An array of three doubles, providing an optional, "semantic" pivot offset that can be used to e.g. correctly drape tree symbols.</td>
 	</tr>
 	<tr>
 		<td>mbb</td>
-		<td>double[6]</td>
+		<td>Float[6]</td>
 		<td>An array of six doubles, corresponding to x<sub>min</sub>, y<sub>min</sub>, z<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub> and z<sub>max</sub> of the minimum bounding box of the feature, expressed in the projectedCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes.</td>
 	</tr>
 	<tr>
 		<td>layer</td>
-		<td>string</td>
+		<td>String</td>
 		<td>The name of the Feature Class this feature belongs to.</td>
 	</tr>
 </table>
@@ -1031,7 +1057,7 @@ representative of a feature present in the real, geographic world.
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>Long</td>
+		<td>Integer</td>
 		<td>Referenceable, unique ID of the Geometry in this store.</td>
 	</tr>
 	<tr>
@@ -1041,7 +1067,7 @@ representative of a feature present in the real, geographic world.
 	</tr>
 	<tr>
 		<td>transformation</td>
-		<td>double[16]</td>
+		<td>Float[16]</td>
 		<td>3D (4x4) transformation matrix expressed as a linear array of 16 values.</td>
 	</tr>
 </table>
@@ -1093,7 +1119,7 @@ belong to, specifically with which material and texture to render them.</p>
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>Long</td>
+		<td>Integer</td>
 		<td>The ID of the component, only unique within the Geometry</td>
 	</tr>
 	<tr>
@@ -1131,12 +1157,12 @@ which vertex positions make up a face.</p>
 	</tr>
 	<tr>
 		<td>byteOffset</td>
-		<td>long</td>
+		<td>Integer</td>
 		<td>The starting byte position where the required bytes begin</td>
 	</tr>
 	<tr>
 		<td>count</td>
-		<td>long</td>
+		<td>Integer</td>
 		<td>The number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.</td>
 	</tr>
 	<tr>
@@ -1151,7 +1177,7 @@ which vertex positions make up a face.</p>
 	</tr>
 	<tr>
 		<td>componentIndices</td>
-		<td>int[0...*]</td>
+		<td>Integer[0...*]</td>
 		<td>An optional array that indicates how many of the elements in this view belong to the first, second and consecutive components of the geometry. The number of entries in this array, when present, has to be equal to the number of entries in the components List of the enclosing Geometry object. The entire field is optional when no components have been declared for this Geometry.</td>
 	</tr>
 </table>
@@ -1297,17 +1323,17 @@ For details on texture organisation, please refer to the section on <a href="#_7
 	</tr>
 	<tr>
 		<td>id</td>
-		<td>string</td>
+		<td>String</td>
 		<td>A unique ID for each image. Generated using the <a href="#_7_6_GenerateID">BuildID</a> function.</td>
 	</tr>
 	<tr>
 		<td>size</td>
-		<td>int</td>
+		<td>Integer</td>
 		<td>x size of this image.</td>
 	</tr>
 	<tr>
 		<td>pixelInWorldUnits</td>
-		<td>float</td>
+		<td>Float</td>
 		<td>maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)</td>
 	</tr>
 	<tr>
@@ -1317,12 +1343,12 @@ For details on texture organisation, please refer to the section on <a href="#_7
 	</tr>
 	<tr>
 		<td>byteOffset</td>
-		<td>long[0..1]</td>
+		<td>Integer[0..1]</td>
 		<td>The byte offset of this image in the block in which this texture image resides.</td>
 	</tr>
 	<tr>
 		<td>length</td>
-		<td>long[0..1]</td>
+		<td>Integer[0..1]</td>
 		<td>The length in bytes of this image.</td>
 	</tr>
 </table>

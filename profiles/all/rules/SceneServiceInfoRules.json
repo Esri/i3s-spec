@@ -1,6 +1,3 @@
-/**
-	Example i3s 1.3 3d Scene Service Info Resource for all profiles - this resoruce is not profile-dependent.
-*/
 {
  "targetProfile": "all",
  "resource": "SceneServiceInfo",

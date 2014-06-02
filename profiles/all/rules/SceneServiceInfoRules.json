@@ -1,5 +1,8 @@
+/**
+	Example i3s 1.3 3d Scene Service Info Resource for all profiles - this resoruce is not profile-dependent.
+*/
 {
- "targetProfile": "feature-mesh",
+ "targetProfile": "all",
  "resource": "SceneServiceInfo",
  "version": "1.3",
  "rules": [
@@ -109,7 +112,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "FeatureTree", "None"
+    "FeatureTree", "MeshPyramid", "None"
    ]
   },
   {

@@ -12,7 +12,7 @@
 		"valueDependencies": [ {
 			"to" : "/level",
 			"type" : "NOT",
-			"value" : "1"
+			"value" : 1
 		} ]
 	}, 
 	{
@@ -27,8 +27,8 @@
 		"valueDependencies": [ {
 			"to" : "/level",
 			"type" : "IS",
-			"value" : "1"
-		} ]
+			"value" : 1
+		}]
 	}, 
 	{
 		"qname" : "level",
@@ -277,8 +277,28 @@
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
-		"valueSchema" : "NodeID"
+		"valueSchema" : "NodeID",
+		"valueDependencies": [ {
+			"to" : "/level",
+			"type" : "NOT",
+			"value" : 2
+		} ]
 	}, 
+	{
+		"qname" : "parentNode.id",
+		"required" : true,
+		"containerType": "None",
+		"valueType" : "string",
+		"valueSchema" : "None",
+	    "valueDomain": [
+		  "root"
+	    ],
+		"valueDependencies": [ {
+			"to" : "/level",
+			"type" : "IS",
+			"value" : 2
+		}]
+	},
 	{
 		"qname" : "parentNode.version",
 		"required" : true,

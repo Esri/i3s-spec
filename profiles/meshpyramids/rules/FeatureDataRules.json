@@ -89,6 +89,29 @@
    "valueType": "string",
    "valueSchema": "None"
   },
+    {
+   "qname": "featureData.*.geometries",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryReferenceRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "GeometryReference"
+   } ]
+  },
   {
    "qname": "featureData.*.attributes",
    "required": true,

@@ -36,28 +36,24 @@
 					"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
 				},
 				"normal": { // the name of the vertex attribute; here: vertex normals
-					"valueType": "Int16", // the element type, either UInt8, UInt16, UInt32,  *Int16*, Int32, Int64 or Float32, Float64
-					"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a normal vector)
+					"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32,  *Int16*, Int32, Int64 or Float32, Float64
+					"valuesPerElement": 3 // number of (Int16) values need to make a valid element (here a normal vector)
 				},
 				"uv0": { // the name of the vertex attribute; here: 1st texture coordinates, must be present if a textureID is referenced
-					"valueType": "Int16", // the element type, either UInt8, UInt16, UInt32,  *Int16*, Int32, Int64 or Float32, Float64
+					"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32,  *Int16*, Int32, Int64 or Float32, Float64
 					"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
 				}
 			},
 			"faces": { // indices for positions, normals, texture coordinates to build faces. This is an open list.
 				"position": { // position index array buffer view
-					"valueType": "Int16",
+					"valueType": "UInt32",
 					"valuesPerElement": 1
 				},
 				"normal": { // normals index array buffer view
-					"valueType": "Int16",
+					"valueType": "UInt32",
 					"valuesPerElement": 1
 				},
 				"uv0": { // texture coordinates index array buffer view
-					"valueType": "Int16",
-					"valuesPerElement": 1
-				}				,
-				"featureID": { // featureID per face array buffer view
 					"valueType": "UInt32",
 					"valuesPerElement": 1
 				}

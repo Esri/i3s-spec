@@ -8,7 +8,7 @@
    "required": true,
    "containerType": "Array",
    "cardinality": [
-    0,
+    1,
     -1
    ],
    "valueType": "object",
@@ -36,7 +36,7 @@
    "required": true,
    "containerType": "Array",
    "cardinality": [
-    3,
+    2,
     3
    ],
    "valueType": "object",
@@ -155,37 +155,6 @@
    "valueSchema": "None"
   },
   {
-   "qname": "featureData.*.attributes.0.metadata",
-   "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata.*",
-   "required": false,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata.*.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata.*.value",
-   "required": true,
-   "containerType": "None",
-   "valueType": "Any",
-   "valueSchema": "None"
-  },
-  {
    "qname": "featureData.*.attributes.*.name",
    "required": true,
    "containerType": "None",
@@ -197,6 +166,17 @@
    "required": true,
    "containerType": "None",
    "valueType": "Any",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*.group",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
    "valueSchema": "None"
   },
   {

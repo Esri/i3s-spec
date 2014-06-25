@@ -999,8 +999,8 @@ representative of a feature present in the real, geographic world.
 	</tr>
 	<tr>
 		<td>position</td>
-		<td>Float[3]</td>
-		<td>An array of three doubles, giving the x,y,z (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the projectedCRS.</td>
+		<td>Float[2..3]</td>
+		<td>An array of two or three doubles, giving the x,y(,z) (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the projectedCRS.</td>
 	</tr>
 	<tr>
 		<td>pivotOffset</td>
@@ -1017,13 +1017,23 @@ representative of a feature present in the real, geographic world.
 		<td>String</td>
 		<td>The name of the Feature Class this feature belongs to.</td>
 	</tr>
+	<tr>
+		<td>attributes</td>
+		<td>FeatureAttribute[0..*]</td>
+		<td>The list of GIS attributes the feature has.</td>
+	</tr>
+	<tr>
+		<td>geometries</td>
+		<td>Geometry[1..*]</td>
+		<td>The list of geometries the feature has. A feature always has at least one Geometry.</td>
+	</tr>
 </table>
 
 <p><em>Table 14: Attributes of the Class <strong>Feature</strong> within the FeatureData document</em></p>
 
 <h4>Class FeatureAttribute</h4>
 
-<p>A FeatureAttribute is a field carrying a value.</p>
+<p>A FeatureAttribute is a field carrying a value. This value may also be a list of complete attributes, to be used with reports or metadata.</p>
 
 <table>
 	<tr>
@@ -1039,15 +1049,20 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>value</td>
 		<td>String</td>
-		<td>The value of the attribute.</td>
+		<td>The value of the attribute. If group is set and the type of this attribute is set to esriFieldTypeGroup, the value may be used as a label.</td>
+	</tr>
+	<tr>
+		<td>group</td>
+		<td>FeatureAttribute[0..*]</td>
+		<td>A list of FeatureAttributes belonging to a attribute value group.</td>
 	</tr>
 </table>
 
 <p><em>Table 15: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
-<h4>Class AbstractGeometry</h4>
+<h4>Class Geometry</h4>
 
-<p>This is the superclass for all types of geometry definitions used in i3s.</p>
+<p>This is the common container class for all types of geometry definitions used in i3s.</p>
 
 <table>
 	<tr>
@@ -1070,21 +1085,103 @@ representative of a feature present in the real, geographic world.
 		<td>Float[16]</td>
 		<td>3D (4x4) transformation matrix expressed as a linear array of 16 values.</td>
 	</tr>
+	<tr>
+		<td>params</td>
+		<td>GeometryParams</td>
+		<td>The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferViewa GeometryReference object, or a SharedResourceReference object.</td>
+	</tr>
 </table>
 
-<p><em>Table 16: Attributes of the Class <strong>AbstractGeometry</strong> within the FeatureData document</em></p>
+<p><em>Table 16: Attributes of the Class <strong>Geometry</strong> within the FeatureData document</em></p>
 
-<h4>Class MultiComponentGeometry</h4>
+<h4>Class GeometryParams</h4>
 
-Objects of this type extend AbstractGeometry and include a definition of a geometry that may have
+This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams, MultiComponentParams). It does not have properties of its own.
+
+<h4>Class GeometryReferenceParams</h4>
+
+Instead own owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>$ref</td>
+		<td>Pointer</td>
+		<td>In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the <a href="">i3s json pointer</a> syntax.</td>
+	</tr>
+	<tr>
+		<td>faceRange</td>
+		<td>Integer[2]</td>
+		<td>Inclusive range of faces in this geometry that belongs to this feature.</td>
+	</tr>
+	<tr>
+		<td>lodGeometry</td>
+		<td>Boolean</td>
+		<td>True if this geometry participates in a LoD tree (thus, always true in meshpyramids); indicates that the referenced Geometry has no components and only a single material.</td>
+	</tr>
+</table>
+
+<p><em>Table 17: Attributes of the Class <strong>GeometryReferenceParams</strong> within the FeatureData document</em></p>
+
+<h4>Class VestedGeometryParams</h4>
+
+<p>This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry, with either SingleComponentParams or MultiComponentParams.</p>
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>String</td>
+		<td>The primitive type of the geoemtry defined through a VestedGeometryParams object. One of {*triangles*, lines, points, triangle_strip}</td>
+	</tr>
+	<tr>
+		<td>vertexAttributes</td>
+		<td>VertexAttribute[1..*]</td>
+		<td>A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions. 
+		While there are standard keywords such as <code>position</code>, <code>uv0..uv9</code>, <code>normal</code> and <code>color</code>, this is an open, extendable list.</td>
+	</tr>
+	<tr>
+		<td>faces</td>
+		<td>FaceAttribute[0..*]</td>
+		<td>A list of Face Attributes, such as indices to build faces, and their definitions. 
+		While there are standard keywords such as <code>position</code>, <code>uv0..uv9</code>, <code>normal</code> and <code>color</code>, this is an open, extendable list.</td>
+	</tr>
+</table>
+
+<p><em>Table 18: Attributes of the Class <strong>VestedGeometryParams</strong> within the FeatureData document</em></p>
+
+<h4>Class MultiComponentParams</h4>
+
+<p>Objects of this type extend VestedGeometryParams and include a definition of a geometry that may have
 multiple materials, textures, or use multiple regions from a texture. One
-Feature can have multiple geometries, which can consist of multiple components.
-They do not have additional fields, only references to <a href="#_7_4_Components">Components</a>.</p>
+Feature can have multiple geometries, which can consist of multiple components.</p>
 
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>components</td>
+		<td>Component[1..*]</td>
+		<td>A MultiComponentParams geometry can have multiple components, e.g. to assign multiple materials (i.e. glass for windows, brick texture for walls, ...). Not used with LoD aggregate geometries.</td>
+	</tr>
+</table>
+
+<p><em>Table 19: Attributes of the Class <strong>MultiComponentParams</strong> within the FeatureData document</em></p>
+	
 <h4>Class SingleComponentGeometry</h4>
 
-Objects of this type extend AbstractGeometry and use only one texture and one material. Components may
-only be declared to denote subimage regions.</p>
+Objects of this type extend VestedGeometryParams and use only one texture and one material. They do not contain components.</p>
 
 <table>
 	<tr>
@@ -1104,7 +1201,7 @@ only be declared to denote subimage regions.</p>
 	</tr>
 </table>
 
-<p><em>Table 17: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
+<p><em>Table 20: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
 <h4><a name="_7_4_Components">Class Component</a></h4>
 
@@ -1139,7 +1236,7 @@ belong to, specifically with which material and texture to render them.</p>
 	</tr>
 </table>
 
-<p><em>Table 18: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
+<p><em>Table 21: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
 
 <h4>Class GeometryAttribute</h4>
 
@@ -1182,7 +1279,7 @@ which vertex positions make up a face.</p>
 	</tr>
 </table>
 
-<p><em>Table 19: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
+<p><em>Table 22: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
 <h3><a name="_7_5">SharedResources.js</a></h3>
 
@@ -1267,7 +1364,7 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 	</tr>
 </table>
 
-<p><em>Table 20: Attributes of the Class <strong>Material</strong> within the SharedResources document</em></p>
+<p><em>Table 23: Attributes of the Class <strong>Material</strong> within the SharedResources document</em></p>
 
 <h4>Class Texture</h4>
 
@@ -1307,7 +1404,7 @@ geometries.</p>
 	</tr>
 </table>
 
-<p><em>Table 21: Attributes of the Class <strong>Texture</strong> within the SharedResources document</em></p>
+<p><em>Table 24: Attributes of the Class <strong>Texture</strong> within the SharedResources document</em></p>
 
 <h4>Class Image</h4>
 
@@ -1353,7 +1450,7 @@ For details on texture organisation, please refer to the section on <a href="#_7
 	</tr>
 </table>
 
-<p><em>Table 22: Attributes of the Class <strong>Image</strong> within the SharedResources document</em></p>
+<p><em>Table 25: Attributes of the Class <strong>Image</strong> within the SharedResources document</em></p>
 
 <h4>Class ShaderDefinition</h4>
 

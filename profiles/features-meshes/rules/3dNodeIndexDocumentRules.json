@@ -88,7 +88,12 @@
 			-1
 		],
 		"valueType" : "object",
-		"valueSchema" : "None"
+		"valueSchema" : "None",
+		"valueDependencies": [ {
+			"to" : "[../../]/store/lodType",
+			"type" : "IS",
+			"value" : "FeatureTree"
+		} ]
 	}, 
 	{
 		"qname" : "lodSelection.*",

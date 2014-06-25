@@ -39,7 +39,7 @@ Known Implementations:
         - Product: Smart3DCapture
         - Status: In development, >95% conformance to profile
     - Cyclomedia: 
-        - Supported Profiles: 1.3 meshpyramids or features-meshes (not yet known)
+        - Supported Profiles: 1.3 features-meshes, pointclouds
         - Product: (?)
         - Status: In early development (no cache samples available yet)
     - VAlarm: 

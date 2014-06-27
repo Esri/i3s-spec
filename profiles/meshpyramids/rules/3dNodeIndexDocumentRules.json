@@ -97,7 +97,7 @@
 		"valueSchema" : "None"
 	},
 	{
-		"qname" : "lodSelection.*.metric",
+		"qname" : "lodSelection.*.metricType",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "number",

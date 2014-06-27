@@ -27,7 +27,9 @@
 	],
 	"geometryData": [ // an array of expandable, node-relative references to the geometry bundles belonging to this node.
 		{ 
-				"href": "./geometries/0"
+				"href": "./geometries/0",
+				"vertexElements": 12341, // count of elements in vertexAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema. In the example for this cache, this would mean 32 bytes per vertex.
+				"faceElements": 12341 // count of elements in faceAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema. In the example for this cache, this would mean 12 bytes per face.
 		}
 	],
 	"textureData": [  // an array of expandable, node-relative references to the texture atlas bundles belonging to this node. If texture LOD is activated, there will be multiple blocks following the pattern /textures/<blockID>_<LoDID> here.

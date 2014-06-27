@@ -22,6 +22,7 @@
 		"geometryEncoding": "application/octet-stream+gzip; version=1.3", // MIME type for the encoding used for the Geometry Resources
 		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
 		"lodType": "MeshPyramid", // optional field to indicate which LoD Scheme is used in this store. Selected from {MeshPyramid, FeatureTree}.
+		"knownVertexOrder": true, // optional vertex order indicator field to tell clients whether they can safely use backface culling.
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "QuadTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
 			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs 

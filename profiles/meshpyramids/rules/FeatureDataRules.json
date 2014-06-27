@@ -101,6 +101,16 @@
    "valueSchema": "None"
   },
   {
+   "qname": "featureData.*.geometries.*.type",
+   "required": true,
+   "valueType": "object",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "GeometryReference"
+   ]
+  },
+  {
    "qname": "featureData.*.geometries.*",
    "required": true,
    "valueType": "object",

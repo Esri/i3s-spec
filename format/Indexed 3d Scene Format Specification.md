@@ -3,7 +3,7 @@ Format Specification</h2>
 
 </div>
 
-<p>Version 1.3, rev. 55, 2014-05-28</p>
+<p>Version 1.3, rev. 56, 2014-06-27</p>
 </p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
 
@@ -986,6 +986,11 @@ resources.</p>
 In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.</p>
 
 <table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
 	<tr>
 		<td>id</td>
 		<td>Integer</td>

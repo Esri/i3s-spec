@@ -43,8 +43,8 @@
 					"maxScale": 10000000, // to be interpreted as a Marker-type lodSelection Metric
 					"symbol": {
 						"type": "MarkerSymbol", 
-						"altitudeMode": "relativeToGround", 
-						"altitudeOffset": 1,	// in meters 
+						"elevationMode": "relativeToGround",
+						"elevationOffset": 1,	// in meters
 						"placement": "top",	// center | left | ... 
 						"rotate" : [0, 0, 0], // in degrees
 						"resource": "http://static.arcgis.com/arcgis/rest/services/zurich/SceneServer/layers/1/symbols/14", // directly points to the Geometry definition of the Model to be used. In this case: 100 polys tank taken from a global portal library.
@@ -63,8 +63,8 @@
 					"maxScale": 49999, // to be interpreted as a Marker-type lodSelection Metric
 					"symbol": {
 						"type": "MarkerSymbol", 
-						"altitudeMode": "relativeToGround", 
-						"altitudeOffset": 1,	// in meters 
+						"elevationMode": "relativeToGround",
+						"elevationOffset": 1,	// in meters
 						"placement"	: "top",	// center | left | ... 
 						"rotate" : [0, 0, 0], // in degrees
 						"resource" : "./symbols/15", // directly points to the Geometry definition of the Model to be used. In this case: 10.000 polys tank provided by service author and published as part of this (symology only) service.

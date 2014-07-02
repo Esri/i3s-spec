@@ -35,7 +35,7 @@
 	"textureData": [  // an array of expandable, node-relative references to the texture atlas bundles belonging to this node. If texture LOD is activated, there will be multiple blocks following the pattern /textures/<blockID>_<LoDID> here.
 		{ 
 				"href": "./textures/0_0",
-				"multiTexturedBundle": false // true if the bundle contains multiple textures. Options: {*false*, true}
+				"multiTextureBundle": false // true if the bundle contains multiple textures. Options: {*false*, true}
 		}
 	],
 	"parentNode": {  // an expandable node-relative reference with some additional information to parent node of this node.

@@ -12,7 +12,7 @@
 		"valueDependencies": [ {
 			"to" : "/level",
 			"type" : "NOT",
-			"value" : "1"
+			"value" : 1
 		} ]
 	}, 
 	{
@@ -27,7 +27,7 @@
 		"valueDependencies": [ {
 			"to" : "/level",
 			"type" : "IS",
-			"value" : "1"
+			"value" : 1
 		} ]
 	}, 
 	{
@@ -37,7 +37,7 @@
 		"valueType" : "number",
 		"valueSchema" : "Integer",
 		"valueRange" : [
-			0,
+			1,
 			1.7976931348623157e+308
 		]
 	}, 
@@ -257,7 +257,7 @@
 		"valueSchema" : "URL"
 	}, 
 	{
-		"qname" : "textureData.*.multiTexturedBundle",
+		"qname" : "textureData.*.multiTextureBundle",
 		"required" : false,
 		"valueType" : "boolean",
 		"valueSchema" : "None"

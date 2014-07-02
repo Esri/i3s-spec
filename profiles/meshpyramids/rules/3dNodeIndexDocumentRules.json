@@ -267,7 +267,7 @@
 		"valueSchema" : "URL"
 	}, 
 	{
-		"qname" : "textureData.*.multiTexturedBundle",
+		"qname" : "textureData.*.multiTextureBundle",
 		"required" : false,
 		"valueType" : "boolean",
 		"valueSchema" : "None"

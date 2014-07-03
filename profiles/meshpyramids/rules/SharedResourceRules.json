@@ -210,9 +210,6 @@
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None",
-   "valueDomain": [
-    "CodeExample"
-   ],
    "valueDependencies": [ {
     "to": "/materialDefinitions/*/type",
     "type": "IS",
@@ -372,10 +369,7 @@
    "required": true,
    "containerType": "None",
    "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-    "CodeExample"
-   ]
+   "valueSchema": "None"
   },
   {
    "qname": "textureDefinitions.*.images.*.size",

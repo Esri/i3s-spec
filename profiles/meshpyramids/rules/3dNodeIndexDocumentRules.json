@@ -100,7 +100,7 @@
 		"qname" : "lodSelection.*.metricType",
 		"required" : true,
 		"containerType": "None",
-		"valueType" : "number",
+		"valueType" : "string",
 		"valueSchema" : "None",
 		"valueDomain": [
 			"screenSpaceRelative"

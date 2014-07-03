@@ -210,9 +210,6 @@
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None",
-   "valueDomain": [
-    "CodeExample"
-   ],
    "valueDependencies": [ {
     "to": "/materialDefinitions/*/type",
     "type": "IS",

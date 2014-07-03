@@ -36,7 +36,7 @@
    "required": true,
    "containerType": "Array",
    "cardinality": [
-    3,
+    2,
     3
    ],
    "valueType": "object",

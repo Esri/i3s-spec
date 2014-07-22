@@ -1,17 +1,20 @@
+/**
+	Example i3s 1.3 Feature Data Resource for the features-lines profile.
+*/
 {
 	"featureData": [
 		{ // a feature with a Line geometry
 			"id": 309432971018, // id is a long value.
-			"positionOffset": [537218.344, 5328647.27], // the x,y offset used by all vertex positions in this feature. Add these values to the feature geometry vertex positions to get absolute projected coordinates in the positionCRS.
+			"position": [537218.344, 5328647.27], // the x,y offset used by all vertex positions in this feature. Add these values to the feature geometry vertex positions to get absolute projected coordinates in the positionCRS.
 			"mbb": [537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821], // xmin, ymin, zmin, xmax, ymax, zmax of the feature's minimum bounding box, expressed in the positionCRS, without offset.
-			"layer": "TransportNetworkSegment", // links this feature to a defined layer.
+			"layer": "TramwayLines", // links this feature to a defined layer.
 			"geometries": [ // Geometry defintion including materials; note that one Feature can have multiple geometries
 				{
+					"id": 2412332,
 					"type": "ArrayBufferView", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
-					"crsType": "projected", // allowed types are: projected, geographic, geocentric
 					"params": { 
-						"type": "line", // types are: triangle_strip, triangles, line, point (i.e. GL render primitives)
+						"type": "line", // types are: triangle_strip, triangles, line, point
 						"vertexAttributes": {
 							"position": {	// the name of the vertex attribute; here: vertex positions in the projected CRS used in this cache
 								"byteOffset": 18371, // the starting byte position where the required bytes begin.
@@ -37,8 +40,8 @@
 					"value": "vertical"
 				},
 				{
-					"name": "depth",
-					"value": 390.73893
+					"name": "width",
+					"value": 130.0
 				}
 			]
 		}

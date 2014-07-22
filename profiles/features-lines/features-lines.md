@@ -1,16 +1,17 @@
-# i3s profile: Features-Points (FP)
+# i3s profile: Features-Lines (FL)
 
 ## Summary
 
-*What this profile is for:* Support for points and multipoints with symbolisation and feature-tree-based LoD. Does not use external ArrayBufferGeometries. It is not recommended for massive multipoint features - these should use the pointclouds profile instead.
+*What this profile is for:* Support for polylines (no multilines) with symbolisation and feature-tree-based LoD. 
+Uses embedded geometries or ArrayBuffer views - encoders are encouraged to optimize for size (small lines go to Embedded, larger one to ArrayBufferViews).
 
 ## Access Pattern
 
-<p>The access pattern is identical to that of the Features-Meshes profile, only that no Geometry resources have to be loaded.</p>
+<p>The access pattern is identical to that of the Features-Meshes profile.</p>
 
 ## Schema
 
-The features-points profile makes use of 6 main resource types and allows a restricted set of properties.
+The features-meshes profile makes use of all 7 main resource types and restricts properties a little.
 
 ### SceneServiceInfo
 
@@ -72,6 +73,10 @@ The features-points profile makes use of 6 main resource types and allows a rest
 <tr><td><code> store.defaultGeometrySchema.vertexAttributes.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
 <tr><td><code> store.defaultGeometrySchema.vertexAttributes.*.valueType</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
 <tr><td><code> store.defaultGeometrySchema.vertexAttributes.*.valuesPerElement</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces.*.valueType</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> store.defaultGeometrySchema.faces.*.valuesPerElement</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
 <tr><td><code> fields</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> fields.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
 <tr><td><code> fields.*.name</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
@@ -98,7 +103,7 @@ The features-points profile makes use of 6 main resource types and allows a rest
 <tr><td><code> lodSelection.*.maxError</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/None</td><td> </td></tr>
 <tr><td><code> lodSelection.*.avgError</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/None</td><td> </td></tr>
 <tr><td><code> transform</code></td><td>True</td><td>16</td><td>16</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> transform.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> transform.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
 <tr><td><code> sharedResource</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
 <tr><td><code> sharedResource.href</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
 <tr><td><code> featureData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
@@ -108,9 +113,13 @@ The features-points profile makes use of 6 main resource types and allows a rest
 <tr><td><code> featureData.*.featureRange.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Integer</td><td> </td></tr>
 <tr><td><code> featureData.*.layerContent</code></td><td> </td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> featureData.*.layerContent.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>string/None</td><td> </td></tr>
-<tr><td><code> geometryData</code></td><td>True</td><td>0</td><td>1</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> geometryData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> geometryData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
 <tr><td><code> geometryData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> textureData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> textureData.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> textureData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> textureData.*.multiTextureBundle</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>boolean/None</td><td> </td></tr>
 <tr><td><code> parentNode</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/None</td><td>/level NOT 1<br/></td></tr>
 <tr><td><code> parentNode.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/NodeID</td><td> </td></tr>
 <tr><td><code> parentNode.version</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
@@ -156,10 +165,11 @@ The features-points profile makes use of 6 main resource types and allows a rest
 <tr><td><code> featureData.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
 <tr><td><code> featureData.*.position</code></td><td>True</td><td>2</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> featureData.*.position.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
-<tr><td><code> featureData.*.mbb</code></td><td> </td><td>6</td><td>6</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.mbb</code></td><td>True</td><td>6</td><td>6</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> featureData.*.mbb.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
 <tr><td><code> featureData.*.layer</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> featureData.*.geometries</code></td><td> </td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.geometries</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.geometries.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td>type IS ArrayBufferView<br/></td></tr>
 <tr><td><code> featureData.*.geometries.*</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/NamedRuleset</td><td>type IS Embedded<br/></td></tr>
 <tr><td><code> featureData.*.attributes</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> featureData.*.attributes.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
@@ -203,9 +213,9 @@ The features-points profile makes use of 6 main resource types and allows a rest
 <tr><td><code> textureDefinitions.*.channels</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
 <tr><td><code> textureDefinitions.*.regions</code></td><td>True</td><td>1</td><td>4096</td><td> </td><td>object/None</td><td>/textureDefinitions/*/atlas IS true<br/></td></tr>
 <tr><td><code> textureDefinitions.*.regions.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions.*.subimageRegion</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions.*.subimageRegion.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Float</td><td> </td></tr>
+<tr><td><code> textureDefinitions.*.regions.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> textureDefinitions.*.regions.subimageRegion</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> textureDefinitions.*.regions.subimageRegion</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Float</td><td> </td></tr>
 <tr><td><code> textureDefinitions.*.images</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> textureDefinitions.*.images.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
 <tr><td><code> textureDefinitions.*.images.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>

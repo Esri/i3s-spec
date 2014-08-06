@@ -16,8 +16,6 @@
 					"params": {
 						"$ref": "/geometryData/123", // in-document absolute reference to full geometry definition (in-line or view) using JSON pointer syntax
 						"faceRange": [0,189], // inclusive range of faces in this geometry that belongs to this feature.
-						"material": "/materialDefinitions/Mat01", // JSON Pointer style reference to the material definition in this node's shared resource, from its root element.
-						"texture": "textureDefinitions/38572918", // Optional JSON Pointer style reference to the texture definition in this node's shared resource, from its root element.
 						"region": 0 // // Optional index of the subregion in the texture atlas to use with this geometry. Only valid if the texture is a texture atlas.
 					}
 				}
@@ -38,6 +36,8 @@
 			"params": { 
 				"type": "triangles", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
 				"topology": "PerAttributeArray", // one of ["PerAttributeArray", "InterleavedArray", "Indexed"]. When "Indexed", the indices must also be declared.
+				"material": "/materialDefinitions/Mat01", // JSON Pointer style reference to the material definition in this node's shared resource, from its root element.
+				"texture": "/textureDefinitions/38572918", // JSON Pointer style reference to the texture definition in this node's shared resource, from its root element.			
 				"vertexAttributes": { // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
 					"position": { // the name of the vertex attribute; here: vertex positions
 						"byteOffset": 254976, // the starting byte position where the required bytes begin.

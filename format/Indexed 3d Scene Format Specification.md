@@ -3,7 +3,7 @@ Format Specification</h2>
 
 </div>
 
-<p>Version 1.3, rev. 56, 2014-06-27</p>
+<p>Version 1.3, rev. 60, 2014-08-25</p>
 </p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
 
@@ -22,8 +22,10 @@ sections provide a detailed implementation-level view.</p>
 	<li><a href="#_3">The Index Structure</a></li>
 	<li><a href="#_4">Level of Detail Concept</a>
 	<ol>
-		<li><a href="#_4_1">Feature LoD Trees</a></li>
-		<li><a href="#_4_2">Integrated Mesh Pyramids</a></li>
+		<li><a href="#_4_1">Integrated Meshes</a></li>
+		<li><a href="#_4_2">Feature LoD Trees</a></li>
+		<li><a href="#_4_3">Mesh Pyramids</a></li>
+		<li><a href="#_4_4">LoD Selection Metrics</a></li>
 	</ol></li>
 	<li><a href="#_5">Coordinate Reference Systems</a></li>
 	<li><a href="#_6">Structure of i3s Resources</a></li>
@@ -47,7 +49,7 @@ sections provide a detailed implementation-level view.</p>
 
 <h2><a name="_1">Requirements</a></h2>
 
-<p>The Esri Indexed 3d Scene (i3s) format and the corresponding package format (i3d) are
+<p>The Esri Indexed 3d Scene (i3s) format and the corresponding package format (i3p) are
 specified to fulfill this set of requirements:</p>
 
 <ol>
@@ -159,6 +161,8 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 
 <img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys" />
 
+![A sample Index Tree with Treekeys](images/figure-01.png)
+
 <p><em>Figure 1: A sample Index Tree with Treekeys</em></p>
 
 <h2><a name="_4">Level of Detail Concept</a></h2>
@@ -202,11 +206,26 @@ in the next inner Node. In the leaf node, the LoD3 representation is stored
 with additional children representing Exterior Installations and other details.
 In both cases, geometries are pre-aggregated into Geometry Array Buffers.</p>
 
-<h3><a name="_4_1">Feature LoD trees</a></h3>
+<h3><a name="_4_1">Integrated Meshes</a></h3>
 
-<p>In the feature-based Level of Detail approach each feature in a node can have
-higher-detail or lower-detail representations. This approach enables clients to switch out representations by feature instead of by node, as in the mesh-pyramid case. 
-A Feature in a Node has the following properties when using feature tree LoDs:</p>
+<p>An Integrated Mesh typically is a single, fused geometry that represents multiple real-world features, such as a full block of buildings. 
+Meshes are common and can be generated automatically from LiDAR, oblique imagery and stereophotogrammetry by many providers. 
+They can also be built by aggregating, fusing and reducing individual features meshes.</p>
+
+<p>In cases where such "integrated meshes" are encoded in i3s, it is expected to have a single feature per node, 
+with LoD children in the direct descendants, filling up the entire index with representations. </p>
+
+<p>From root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
+This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
+with the same set size as the number of node children.</p>
+
+<p>The links between all meshes participating in a LoD tree are either created during the store creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
+
+<h3><a name="_4_2">Feature LoD trees</a></h3>
+
+<p>In the feature-tree approach each feature in a node has explicit higher-detail or lower-detail representations. This approach maintains explicit LoD representations between different features. When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates -> Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained. This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a building actually consists of one set of individual features per LoD.
+
+In addition, the feature-tree approach enables clients to switch out representations by feature instead of by node, as in the mesh-pyramid case. A Feature in a Node has the following properties when using feature tree LoDs:</p>
 
 <ul>
 	<li>A Feature can participate in a so-called LoD tree.</li>
@@ -263,28 +282,18 @@ In the feature tree example above, the features 1 to 3 need to have the followin
 	</tr>
 </table>
 
-<h3><a name="_4_2">Integrated Mesh Pyramids</a></h3>
+<h3><a name="_4_3">Mesh Pyramids</a></h3>
 
-<p>An Integrated Mesh typically is a single, fused geometry that represents multiple real-world features, such as a full block of buildings. 
-Meshes are common and can be generated automatically from LiDAR, oblique imagery and stereophotogrammetry by many providers. 
-They can also be built by aggregating, fusing and reducing individual features meshes.</p>
-
-<p>In cases where such "integrated meshes" are encoded in i3s, it is expected to have a single feature per node, 
-with LoD children in the direct descendants, filling up the entire index with representations. 
-The figure below shows an example of such a tree.</p>
+<p>Mesh Pyramids are a compact way of representing multiple levels of detail. A full representation pyramid for all features is built from the finest representation by aggregating, fusing and reducing individual features meshes. This full tree approach avoids the need to have LoD trees for individual features. It is therefore suitable in cases where the input data doesn't have predefined LoDs.</p> 
 
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
 
 <p><em>Figure 3: Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
 
-<p>In this example, from root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
-This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
-with the same set size as the number of node children.</p>
 
-<p>The links between all meshes participating in a LoD tree are either created during the store creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
-When using a mesh pyramid based LOD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  With mesh pyramids there is no concept of an LOD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the required level of detail.</p>
+<p>When using a Mesh Pyramid based LoD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features included in that node's child nodes. With mesh pyramids there is no concept of an LoD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the LoD Selection Metrics. The correspondence between a reduced LOD feature in an interior node and the same feature in descendent nodes is based purely on the <code>id<code> of the feature.</p>
 
-<h3><a name="_4_3">LoD Selection Metrics</a></h3>
+<h3><a name="_4_4">LoD Selection Metrics</a></h3>
 
 <p>A client needs information to determine whether a node's contents are "good enough" to
 render under constraints such as resolution, screen size, bandwidth and
@@ -388,7 +397,7 @@ resource types.</p>
 
 Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
 
-* **String**: A utf8 String.
+* **String**: An utf8 String.
 * **Float**: A Float64 number with an optional fractional component, such as "1.02" or "1.0".
 * **Integer**: An Int32 number without a fractional component, such as "234".
 * **UUID**: A canonical hexadecimal UUID, such as "550e8400-e29b-41d4-a716-446655440000"
@@ -567,7 +576,7 @@ Layer.</p>
 </table>
 
 
-<p><em>Table 5: Attributes of the Class <strong>Node</strong> within the 3dSceneLayerInfo</em></p>
+<p><em>Table 5: Attributes of the Class <strong>Node</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class Store</h4>
 
@@ -599,6 +608,12 @@ applied.</p>
 		One of <code>{features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}</code>.</td>
 	</tr>
 	<tr>
+		<td>resourcePattern</td>
+		<td>String [1..5]</td>
+		<td>Indicates the resources needed for rendering and the required order in which the client should load them.
+		One of <code>{3dNodeIndexDocument, SharedResource, FeatureData, Geometry, Texture}</code>.</td>
+	</tr>
+	<tr>
 		<td>rootNode</td>
 		<td>URL</td>
 		<td>relative URL to root node resource.</td>
@@ -611,15 +626,15 @@ applied.</p>
 	<tr>
 		<td>extent</td>
 		<td>Float[4]</td>
-		<td>The 2D spatial extent (x<sub>min</sub>, y<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub>) of this store, in the horizontal geographicCRS</td>
+		<td>The 2D spatial extent (x<sub>min</sub>, y<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub>) of this store, in the horizontal indexCRS</td>
 	</tr>
 	<tr>
-		<td>geographicCRS</td>
+		<td>indexCRS</td>
 		<td>URL</td>
 		<td>The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL.</td>
 	</tr>
 	<tr>
-		<td>projectedCRS</td>
+		<td>vertexCRS</td>
 		<td>URL</td>
 		<td>The horizontal CRS used for all "vertex positions" in this store, identified by an OGC URL.</td>
 	</tr>
@@ -643,8 +658,8 @@ applied.</p>
 	</tr>
 	<tr>
 		<td>textureEncoding</td>
-		<td>MIMEType</td>
-		<td>MIME type for the encoding used for the Texture Resources</td>
+		<td>MIMEType[1..*]</td>
+		<td>MIME type(s) for the encoding used for the Texture Resources</td>
 	</tr>
 	<tr>
 		<td>lodType</td>
@@ -671,9 +686,19 @@ applied.</p>
 		<td>GeometrySchema[0..1]</td>
 		<td>A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramid caches.</td>
 	</tr>
+	<tr>
+		<td>defaultTextureDefinition</td>
+		<td>TextureDefinition[0..1]</td>
+		<td>A common, global TextureDefinition (see <a href="#_7_5">SharedResources</a>) to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: ```encoding```, ```uvSet```, ```wrap``` and ```channels```.</td>
+	</tr>
+	<tr>
+		<td>defaultMaterialDefinition</td>
+		<td>MaterialDefinition[0..1]</td>
+		<td>If a store uses only one material, it can be defined here entirely as a MaterialDefinition (see <a href="#_7_5">SharedResources</a>).</td>
+	</tr>
 </table>
 
-<p><em>Table 6: Attributes of the Class <strong>Store</strong> within the 3dSceneServiceInfo document</em></p>
+<p><em>Table 6: Attributes of the Class <strong>Store</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class GeometrySchema</h4>
 
@@ -687,18 +712,47 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store.Reuses 
 		<td><strong>Description</strong></td>
 	</tr>
 	<tr>
+		<td>header</td>
+		<td>FeatureData::HeaderDefinition[0..*]</td>
+		<td>Defines header fields in the Geometry resources ofthis store that precede the vertex (and index) data</td>
+	</tr>
+	<tr>
 		<td>vertexAttributes</td>
 		<td>FeatureData::GeometryAttribute[1..*]</td>
-		<td>The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL.</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>faces</td>
 		<td>FeatureData::GeometryAttribute[0..*]</td>
-		<td>The horizontal CRS used for all "vertex positions" in this store, identified by an OGC URL.</td>
+		<td></td>
 	</tr>
 </table>
 
-<p><em>Table 6a: Attributes of the Class <strong>Store</strong> within the 3dSceneServiceInfo document</em></p>
+<p><em>Table 6a: Attributes of the Class <strong>GeometrySchema</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class HeaderDefinition</h4>
+
+<p>Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, sinble element fields. The HeaderDefinition prives the name of each field for later access and the valueType of that header field.</p>
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>propertyName</td>
+		<td>String</td>
+		<td>The name of the property in the header</td>
+	</tr>
+	<tr>
+		<td>valueType</td>
+		<td>String</td>
+		<td>The element type of the header property, from <code>{UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64}</code></td>
+	</tr>
+</table>
+
+<p><em>Table 6b: Attributes of the Class <strong>HeaderDefinition</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class Field</h4>
 
@@ -729,7 +783,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store.Reuses 
 	</tr>
 </table>
 
-<p><em>Table 7: Attributes of the Class <strong>Field</strong> within the 3dSceneLayerInfo</em></p>
+<p><em>Table 7: Attributes of the Class <strong>Field</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class IndexScheme</h4>
 
@@ -770,7 +824,7 @@ by clients to better understand how to work with the index.</p>
 	</tr>
 </table>
 
-<p><em>Table 8: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo</em></p>
+<p><em>Table 8: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class WebCimDrawingInfo</h4>
 
@@ -1091,12 +1145,12 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>id</td>
 		<td>Integer</td>
-		<td>Feature ID, unique within the store.</td>
+		<td>Feature ID, unique within the Node. If <code>lodType</code> is <code>feature-tree</code>, the ID must be unique in the store.</td>
 	</tr>
 	<tr>
 		<td>position</td>
 		<td>Float[2..3]</td>
-		<td>An array of two or three doubles, giving the x,y(,z) (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the projectedCRS.</td>
+		<td>An array of two or three doubles, giving the x,y(,z) (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the vertexCRS.</td>
 	</tr>
 	<tr>
 		<td>pivotOffset</td>
@@ -1106,7 +1160,7 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>mbb</td>
 		<td>Float[6]</td>
-		<td>An array of six doubles, corresponding to x<sub>min</sub>, y<sub>min</sub>, z<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub> and z<sub>max</sub> of the minimum bounding box of the feature, expressed in the projectedCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes.</td>
+		<td>An array of six doubles, corresponding to x<sub>min</sub>, y<sub>min</sub>, z<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub> and z<sub>max</sub> of the minimum bounding box of the feature, expressed in the vertexCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes.</td>
 	</tr>
 	<tr>
 		<td>layer</td>
@@ -1351,12 +1405,12 @@ which vertex positions make up a face.</p>
 	<tr>
 		<td>byteOffset</td>
 		<td>Integer</td>
-		<td>The starting byte position where the required bytes begin</td>
+		<td>The starting byte position where the required bytes begin. Only used with the Geometry <code>"type": "ArrayBufferView"</code>.</td>
 	</tr>
 	<tr>
 		<td>count</td>
 		<td>Integer</td>
-		<td>The number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.</td>
+		<td>The number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read. Only used with the Geometry <code>"type": "ArrayBufferView"</code>.</td>
 	</tr>
 	<tr>
 		<td>valueType</td>
@@ -1367,6 +1421,11 @@ which vertex positions make up a face.</p>
 		<td>valuesPerElement</td>
 		<td>short</td>
 		<td>The number of values need to make a valid element (such as 3 for a xyz position)</td>
+	</tr>
+	<tr>
+		<td>values</td>
+		<td>Float[*]</td>
+		<td>The actual values. Only used with the Geometry <code>"type": "Embedded"</code></td>
 	</tr>
 	<tr>
 		<td>componentIndices</td>
@@ -1611,8 +1670,8 @@ them in the texture itself.</p>
 to WebGL and other APIs using Uniform Arrays and can be encoded in a 32bit Float per region using the following pattern:</p>
 
 <ul>
-	<li>anchor x: 12 bit, value is 8 * n, range of n: [1,4096], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
-	<li>anchor y: 12 bit, value is 8 * n, range of n: [1,4096], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
+	<li>anchor x: 12 bit, value is 8 * (n + 1), range of n: [0,4095], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
+	<li>anchor y: 12 bit, value is 8 * (n + 1), range of n: [0,4095], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
 	<li>width: 4 bit, value is 2<sup>n</sup>, range of n: [3,14], values: [8,16,32,...,16384]</li>
 	<li>height: 4 bit, value is 2<sup>n</sup>, range of n: [3,14] , values: [8,16,32,...,16384]</li>
 </ul>

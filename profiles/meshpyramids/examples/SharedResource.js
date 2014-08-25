@@ -39,7 +39,7 @@
 	},
 	"textureDefinitions": { // a Map of texture map definitions
 		"38572918": {
-			"encoding" : "data:image/png", // the encoding/content type that is used by all images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png.
+			"encoding" : ["image/png"], // a list with the encoding types that available for the images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png. If alpha maps are declared in the channels attribute, encoding has to be image/png.
 			"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {*none*, repeat, mirror}
 			"atlas": true, // indicates whether this map (set of images) are texture atlases or not. options: {*false*, true}
 			"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.

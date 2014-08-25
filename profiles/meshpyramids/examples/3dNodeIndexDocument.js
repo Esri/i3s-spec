@@ -15,6 +15,7 @@
 			}
 	],
 	"transform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1], // an optional, world-space transform applied to all elements in the node. Can be used to quantize vertex attributes.
+	"renderableWithoutMetadata": true, // indicates whether this node can be rendered without the information from FeatureData/SharedResource, i.e. purely with the default geometry schema, material, and texture.
 	"sharedResource": { // an expandable, node-relative reference to the shared resource bundle belonging to this node.
 		"href": "./shared"
 	},
@@ -27,9 +28,7 @@
 	],
 	"geometryData": [ // an array of expandable, node-relative references to the geometry bundles belonging to this node.
 		{ 
-				"href": "./geometries/0",
-				"vertexElements": 12341, // count of elements in vertexAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema. In the example for this cache, this would mean 32 bytes per vertex.
-				"faceElements": 12341 // count of elements in faceAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema. In the example for this cache, this would mean 12 bytes per face.
+				"href": "./geometries/0"
 		}
 	],
 	"textureData": [  // an array of expandable, node-relative references to the texture atlas bundles belonging to this node. If texture LOD is activated, there will be multiple blocks following the pattern /textures/<blockID>_<LoDID> here.

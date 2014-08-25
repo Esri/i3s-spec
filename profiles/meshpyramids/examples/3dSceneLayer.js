@@ -30,8 +30,15 @@
 			"childrenCardinality": [0,9], // min/max number of children per node.
 			"neighborCardinality": [0,9] // min/max number of neighbors per node.
 		},
-		"defaultGeometrySchema": { // since i3s 1.3: common properties of all geometry buffer views in this cache. Note: Per geometry resource, only 1 Geometry may be present when using the defaultGeometrySchema. This pattern is mostly used with MeshPyramids.
-			"vertexAttributes": {
+		"defaultGeometrySchema": { // since i3s 1.3: geometry resource layout for nodes that declare the use of defaultGeometrySchema in the node index.
+			"header": [	// header fields that precede the vertex data
+				{
+					"property": "vertexCount", // vertex count 
+					"type": "UInt32"
+				}
+			],
+			"topology": "PerAttributeArray", // one of ["PerAttributeArray", "InterleavedArray", "Indexed"]. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
+			"vertexAttributes": [ // the vertex attributes must appear in the order that they are declared here. 
 				"position": { // the name of the vertex attribute; here: vertex positions
 					"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32,  Int16, Int32, Int64 or *Float32*, Float64
 					"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
@@ -44,21 +51,27 @@
 					"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32,  *Int16*, Int32, Int64 or Float32, Float64
 					"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
 				}
-			},
-			"faces": { // indices for positions, normals, texture coordinates to build faces. This is an open list.
-				"position": { // position index array buffer view
-					"valueType": "UInt32",
-					"valuesPerElement": 1
-				},
-				"normal": { // normals index array buffer view
-					"valueType": "UInt32",
-					"valuesPerElement": 1
-				},
-				"uv0": { // texture coordinates index array buffer view
-					"valueType": "UInt32",
-					"valuesPerElement": 1
-				}
-			}
+			]
+		},
+		"defaultTextureDefinition": {
+			"encoding" : ["image/jpeg", "image/dxt5"],
+			"uvSet": "uv0", 
+			"channels": "rgba", 
+		},
+		"defaultMaterialDefinition": {
+			"type": "standard",
+			"params" : {
+				"vertexColors" : false, // {*false*, true} Indicates whether this Material uses Vertex Colors.
+				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
+				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent
+				"ambient" : [0, 0, 0], // [*0*..1], [*0*..1], [*0*..1]
+				"diffuse" : [1, 1, 1], // [0..*1*], [0..*1*], [0..*1*]
+				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
+				"shininess" : 1, // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
+				"renderMode": "solid", // options: {*solid*, untextured, wireframe}
+				"castShadows": true, // I3S 1.2
+				"receiveShadows": true // I3S 1.2
+			}			
 		}
 	},
 	"fields" :	[ // schema definition for this layer, as with 2D Layers.

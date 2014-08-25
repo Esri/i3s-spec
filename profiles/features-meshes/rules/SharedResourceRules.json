@@ -1,0 +1,492 @@
+﻿{
+ "targetProfile": "feature-mesh",
+ "resource": "SharedResource",
+ "version": "1.3",
+ "rules": [
+  {
+   "qname": "materialDefinitions",
+   "required": true,
+   "containerType": "Object",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.name",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.type",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "standard", "water", "billboard", "leafcard", "reference"
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params",
+   "required": true,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.vertexColors",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "/materialDefinitions/*/type",
+    "type": "IS",
+    "value": "standard"
+   } ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.reflectivity",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.transparency",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.ambient",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.ambient.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.diffuse",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.diffuse.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.specular",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.specular.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.shininess",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float"
+  },
+  {
+   "qname": "materialDefinitions.*.params.renderMode",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "solid", "untextured", "wireframe"
+   ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.castShadows",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.receiveShadows",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*.params.waveSpeed",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    1,
+    255
+   ],
+   "valueDependencies": [ {
+    "to": "/materialDefinitions/*/type",
+    "type": "IS",
+    "value": "water"
+   } ]
+  },
+  {
+   "qname": "materialDefinitions.*.params.waveAmplitude",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    1,
+    255
+   ],
+   "valueDependencies": [ {
+    "to": "/materialDefinitions/*/type",
+    "type": "IS",
+    "value": "water"
+   } ]
+  },
+  {
+   "qname": "materialDefinitions.*.href",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "/materialDefinitions/*/type",
+    "type": "IS",
+    "value": "reference"
+   } ]
+  },
+  {
+   "qname": "textureDefinitions",
+   "required": true,
+   "containerType": "Object",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.encoding",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "data:image/png", "data:image/jpg", "data:image/jpeg"
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.wrap",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    2
+   ],
+   "valueType": "object",
+   "valueSchema": "None",
+   "valueDomain": [
+    "none", "repeat", "mirror"
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.wrap.*",
+   "required": true,
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "none", "repeat", "mirror"
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.atlas",
+   "required": true,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.uvSet",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "uv0", "uv1", "uv2", "uv3","uv4", "uv5", "uv6", "uv7"
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.channels",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "rgb", "rgba", "h", "n", "d", "a"
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.regions",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    4096
+   ],
+   "valueType": "object",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "/textureDefinitions/*/atlas",
+    "type": "IS",
+    "value": true
+   } ]
+  },
+  {
+   "qname": "textureDefinitions.*.regions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.regions.*.id",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    4095
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.regions.*.subimageRegion",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    4,
+    4
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.regions.*.subimageRegion.*",
+   "required": true,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.images",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.images.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.id",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.size",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    8192
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.pixelInWorldUnits",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "None",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.href",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "URL"
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.byteOffset",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
+   "qname": "textureDefinitions.*.images.*.length",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
+   "qname": "shaderDefinitions",
+   "required": false,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "symbols",
+   "required": false,
+   "containerType": "Object",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "symbols.*",
+   "required": false,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "symbols.*.name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "symbols.*.geometries",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "symbols.*.geometries.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "ArrayBufferView"
+   } ]
+  },
+  {
+   "qname": "symbols.*.geometries.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "Embedded"
+   } ]
+  }
+ ]
+}

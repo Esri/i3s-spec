@@ -161,8 +161,6 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 
 <img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys" />
 
-![A sample Index Tree with Treekeys](images/figure-01.png)
-
 <p><em>Figure 1: A sample Index Tree with Treekeys</em></p>
 
 <h2><a name="_4">Level of Detail Concept</a></h2>
@@ -1516,6 +1514,21 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 		<td>params.renderMode</td>
 		<td>String</td>
 		<td>Rendering mode, any one of <code>{textured, solid, untextured, wireframe}</code></td>
+	</tr>
+	<tr>
+		<td>params.castShadows</td>
+		<td>Boolean</td>
+		<td><code>true</code> if features with this material should cast shadows</td>
+	</tr>
+	<tr>
+		<td>params.receiveShadows</td>
+		<td>Boolean</td>
+		<td><code>true</code> if features with this material should receive shadows</td>
+	</tr>
+	<tr>
+		<td>params.doubleSided</td>
+		<td>Boolean</td>
+		<td>Indicates whether the material should be rendered double-sided, i.e. without backface culling</td>
 	</tr>
 </table>
 

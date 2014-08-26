@@ -15,9 +15,9 @@
 				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
 				"shininess" : 1, // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
 				"renderMode": "solid", // options: {*solid*, untextured, wireframe}
-				"castShadows": true, // I3S 1.2
-				"receiveShadows": true, // I3S 1.2
-				"doubleSided": true
+				"castShadows": true, // should features with this material cast shadows?
+				"receiveShadows": true, // should features with this material receive shadows?
+				"doubleSided": true // should the material be rendered double-sided, i.e. without backface culling?
 			}
 		},
 		"Mat02": { // a full material definition for a water material

@@ -72,7 +72,7 @@
           "region": { // region info; must be present if the material property "vertexRegions" is set to true
             "byteOffset": 265170, // the starting byte position where the required bytes begin.
             "count": 398, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-            "valueType": "Int16", // the element type, must be Int16
+            "valueType": "UInt16", // the element type, must be UInt16
             "valuesPerElement": 4 // number of (Int16) values need to make a valid element (here a region info)
 					}
 				}

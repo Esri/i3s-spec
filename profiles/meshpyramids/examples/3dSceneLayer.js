@@ -53,7 +53,7 @@
 					"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
 				},
         "region": { // per-vertex region info. analogous to textureDefinitions.regions in sharedResource. Values define uv-coordinates of region borders: [umin, vmin, umax, vmax]
-					"valueType": "Int16", // the element type, currently only Int16
+					"valueType": "UInt16", // the element type, currently only UInt16
 					"valuesPerElement": 4 // number of (Int16) values need to make a valid element (here a region info)
 				}
 			]

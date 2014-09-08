@@ -51,17 +51,22 @@
 				"uv0": { // the name of the vertex attribute; here: 1st texture coordinates, must be present if a textureID is referenced
 					"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32,  *Int16*, Int32, Int64 or Float32, Float64
 					"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
+				},
+				"region": { // per-vertex region info. analogous to textureDefinitions.regions in sharedResource. Values define uv-coordinates of region borders: [umin, vmin, umax, vmax]
+					"valueType": "Int16", // the element type, currently only Int16
+					"valuesPerElement": 4 // number of (Int16) values need to make a valid element (here a region info)
 				}
 			]
 		},
 		"defaultTextureDefinition": {
-			"encoding" : ["image/jpeg", "image/dxt5"],
+			"encoding" : ["image/jpeg", "image/vnd-ms.dds"],
 			"uvSet": "uv0", 
 			"channels": "rgba"
 		},
 		"defaultMaterialDefinition": {
 			"type": "standard",
 			"params" : {
+				"vertexRegions": false, // {*false*, true} Indicates whether this Material uses per-vertex regions
 				"vertexColors" : false, // {*false*, true} Indicates whether this Material uses Vertex Colors.
 				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
 				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent

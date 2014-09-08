@@ -3,9 +3,10 @@ Format Specification</h2>
 
 </div>
 
-<p>Version 1.3, rev. 60, 2014-08-25</p>
-</p style="font-size:80%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang</p>
+<p>Version 1.3, rev. 61, 2014-09-08</p>
+</p style="font-size:70%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
+<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang<br/>
+<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt</p>
 
 <p>
 This document specifies the Indexed 3D Scene delivery
@@ -70,7 +71,7 @@ specified to fulfill this set of requirements:</p>
 <p>Some of these requirements (especially 8, 9, 10 and 12) are shared with the <a href="https://github.com/KhronosGroup/glTF">Khronos glTF format</a>, which is an upcoming standard for transferring 3D content. In this
 version of i3s, the two formats share the specification of Geometry TypedArrays.</p>
 
-<h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</h2>
+<h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</a></h2>
 
 <p>The basic unit of an Indexed 3D Scene is a Store, which contains individual resources (files) for a set of layers, index,
 geometries, textures and more. Within such a store, the i3s format supports a
@@ -286,7 +287,7 @@ In the feature tree example above, the features 1 to 3 need to have the followin
 
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
 
-<p><em>Figure 3: Example Nodes + Mesh Pyramid. Turquise boxes represent geometries, orange boxes represent features. Turquise dotted lines indicate Geometry -> Feature relationships.</em></p>
+<p><em>Figure 3: Example Nodes + Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
 
 
 <p>When using a Mesh Pyramid based LoD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features included in that node's child nodes. With mesh pyramids there is no concept of an LoD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the LoD Selection Metrics. The correspondence between a reduced LOD feature in an interior node and the same feature in descendent nodes is based purely on the <code>id<code> of the feature.</p>
@@ -1476,9 +1477,14 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 		<td>Indicates the material type, chosen from the supported values <code>{Standard, Water, Leafcard, Billboard}</code></td>
 	</tr>
 	<tr>
+		<td>params.vertexRegions</td>
+		<td>Boolean[0..1]</td>
+		<td>Indicates whether this Material uses per-vertex regions. Defaults to <code>false</code>.</td>
+	</tr>	
+	<tr>
 		<td>params.vertexColors</td>
-		<td>Boolean</td>
-		<td>Indicates whether this Material use Vertex Colors.</td>
+		<td>Boolean[0..1]</td>
+		<td>Indicates whether this Material use Vertex Colors. Defaults to <code>false</code>.</td>
 	</tr>
 	<tr>
 		<td>params.transparency</td>
@@ -1660,9 +1666,9 @@ and <a href="http://www.g-truc.net/post-0340.html ">BPTC</a> which will become a
 resource by using array buffer views, we generally recommend to use large
 atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle. </span></p>
 
-<h4>Atlas usage</h4>
+<h4>Atlas usage and Regions</h4>
 
-<p>Individual textures should be aggregated into texture atlases, where they become subtextures. As
+<p>Individual textures should be aggregated into texture atlases, where they become subtextures. Just as
 all texture resources, the atlas has to be 2<sup>n</sup>-sized on both
 dimensions, with n being in the range [3,16]. Width and height dimensions do
 not have to be equal, e.g. 512px x 256px. Subtextures contained within an atlas
@@ -1674,20 +1680,10 @@ pixels) or scaled to the nearest lower 2<sup>n</sup> size. An image that is
 140px x 90px would thus be rescaled to 128px x 64px before being inserted into
 the atlas or padded to 256px x 128px.</p>
 
-<p>The pixels belonging to a subtexture are identified by the <code>subimageRegion: [0, 0, 0.5, 0.5]</code> attribute. An atlas may have a
-maximum of 1024 <code>subimageRegions</code>; the reason for this limitation is
-the amount of information that can be passed to the shader when not embedding
-them in the texture itself.</p>
-
-<p>Implementation Hint: Region information can be passed on
-to WebGL and other APIs using Uniform Arrays and can be encoded in a 32bit Float per region using the following pattern:</p>
-
-<ul>
-	<li>anchor x: 12 bit, value is 8 * (n + 1), range of n: [0,4095], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
-	<li>anchor y: 12 bit, value is 8 * (n + 1), range of n: [0,4095], values: [8, 16, 32, 48, 64, , ..., 32768]</li>
-	<li>width: 4 bit, value is 2<sup>n</sup>, range of n: [3,14], values: [8,16,32,...,16384]</li>
-	<li>height: 4 bit, value is 2<sup>n</sup>, range of n: [3,14] , values: [8,16,32,...,16384]</li>
-</ul>
+<p>The pixels belonging to a subtexture are identified by the <code>subimageRegion: [umin, vmin, umax, vmax]</code> attribute. 
+Region information is passed on to the shader using a separate vertex attribute so that every vertex UV coordinate becomes a UVR coordinate, 
+with the R encoding the <code>[umin, vmin, umax, vmax]</code> of the region in 4 <code>UInt16</code> values.
+</p>
 
 <h4>Texture coordinates</h4>
 

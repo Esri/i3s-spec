@@ -168,6 +168,31 @@
    "containerType": "None",
    "valueType": "Any",
    "valueSchema": "None"
-  }
- ]
+  },
+   {
+     "qname": "geometryData",
+     "required": true,
+     "containerType": "Array",
+     "cardinality": [
+       1,
+       -1
+     ],
+     "valueType": "object",
+     "valueSchema": "None"
+   },
+   {
+     "qname": "geometryData.*",
+     "required": true,
+     "valueType": "object",
+     "valueSchema": "NamedRuleset",
+     "namedRuleset": "./GeometryArrayBufferViewRules.json",
+     "valueDependencies": [
+       {
+         "to": "type",
+         "type": "IS",
+         "value": "ArrayBufferView"
+       }
+     ]
+   }
+  ]
 }

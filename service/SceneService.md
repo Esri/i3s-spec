@@ -34,10 +34,18 @@ This is the REST API for retrieval of these resoruces:
 	<tr>
 		<td rowspan="2" >SceneServer</td>
 		<td>&lt;ags-base-url&gt;/&lt;server-name&gt;/SceneServer</td>
-		<td>Server info and list of available caches</td>
+		<td>Server info and list of available services</td>
 	</tr>
 	<tr>
 		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer</a> </td>
+	</tr>
+	<tr>
+		<td rowspan="2" >Service Symbol Resources</td>
+		<td>&lt;<strong>scene-server-url</strong>&gt;/symbols</td>
+		<td>Symbol Resources shared across layers</td>
+	</tr>
+	<tr>
+		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols</a> </td>
 	</tr>
 	<tr>
 		<td rowspan="2" >Layer</td>
@@ -47,9 +55,17 @@ This is the REST API for retrieval of these resoruces:
 	<tr>
 		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings</a> </td>
 	</tr>
+		<tr>
+		<td rowspan="2" >Layer Symbol Resources</td>
+		<td>&lt;<strong>layer-url</strong>&gt;/symbols</td>
+		<td>Symbol Resources belonging to a single layer</td>
+	</tr>
+	<tr>
+		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols</a> </td>
+	</tr>
 	<tr>
 		<td rowspan="2" >Node</td>
-		<td>&lt;<strong> layer-url</strong> &gt;/nodes/&lt;node-id&gt;</td>
+		<td>&lt;<strong>layer-url</strong> &gt;/nodes/&lt;node-id&gt;</td>
 		<td>Node file (json)</td>
 	</tr>
 	<tr>

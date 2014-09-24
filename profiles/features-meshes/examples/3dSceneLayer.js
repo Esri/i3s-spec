@@ -99,16 +99,7 @@
 		  "alias" : "Color"
 		}
 	],
-	"drawingInfo": { // The default symbology to use on this layer.
-		"renderer": {
-			"type": "simple", // renderer definition
-			"symbol": {
-				"type": "CIMSymbolReference", // indicates that below this item, the expected structure is identical to WebCIM.
-				"symbolName": "Symbol_123",
-				"symbol": {
-					
-				}
-			}
-		}
+	"drawingInfo": { // The default symbology to use on this layer. Check the webscene-spec (https://devtopia.esri.com/Zurich-R-D-Center/webscene-spec) for full information.
+
 	}
 }

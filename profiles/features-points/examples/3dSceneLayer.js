@@ -67,16 +67,22 @@
 		  "alias" : "Color"
 		}
 	],
-	"drawingInfo": { // The default symbology to use on this layer.
+	"drawingInfo": { // The default symbology to use on this layer. Check the webscene-spec (https://devtopia.esri.com/Zurich-R-D-Center/webscene-spec) for full information.
 		"renderer": {
-			"type": "simple", // renderer definition
+			"type": "simple",
 			"symbol": {
-				"type": "CIMSymbolReference", // indicates that below this item, the expected structure is identical to WebCIM.
-				"symbolName": "Symbol_123",
-				"symbol": {
-					
-				}
+				"type": "PointSymbol3D",
+				"symbolLayers": [{
+					"size": 12,
+					"resource": {
+						"href": "../symbols/myPushPointIcon/iconPushPoint.png" // link to a symbolResource that is shared across the service
+					},
+					"type": "Icon",
+					"material": {
+					"color": [128, 128, 255]
+					}
+				}]
 			}
-		}
+        }
 	}
 }

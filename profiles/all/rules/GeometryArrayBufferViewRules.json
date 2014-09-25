@@ -71,55 +71,6 @@
 		"valueSchema": "Pointer"
 	},
 	{
-		"qname": "params.components",
-		"required": false,
-		"containerType": "Array",
-		"cardinality": [
-			1,
-			-1
-		],
-		"valueType": "object",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "params.components.*",
-		"required": false,
-		"valueType": "object",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "params.components.*.id",
-		"required": true,
-		"containerType": "None",
-		"valueType": "number",
-		"valueSchema": "Integer",
-		"valueRange": [0,
-		1.7976931348623157e+308]
-	},
-	{
-		"qname": "params.components.*.material",
-		"required": false,
-		"containerType": "None",
-		"valueType": "string",
-		"valueSchema": "Pointer"
-	},
-	{
-		"qname": "params.components.*.texture",
-		"required": false,
-		"containerType": "None",
-		"valueType": "string",
-		"valueSchema": "Pointer"
-	},
-	{
-		"qname": "params.components.*.region",
-		"required": false,
-		"containerType": "None",
-		"valueType": "number",
-		"valueSchema": "Integer",
-		"valueRange": [0,
-		4095]
-	},
-	{
 		"qname": "params.vertexAttributes",
 		"required": true,
 		"containerType": "Object",
@@ -196,21 +147,6 @@
 		"required": true,
 		"valueType": "object",
 		"valueSchema": "None"
-	},
-	{
-		"qname": "params.faces.componentIndices",
-		"required": false,
-		"containerType": "Array",
-		"cardinality": [1,
-		-1],
-		"valueType": "object",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "params.faces.componentIndices.*",
-		"required": false,
-		"valueType": "number",
-		"valueSchema": "Integer"
 	},
 	{
 		"qname": "params.faces.*.byteOffset",

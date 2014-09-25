@@ -108,8 +108,8 @@
 					"size": 3,
 					"type": "Line",
 					"material": {
-					"color": [0, 255, 255],
-					"transparency": 0.3
+						"color": [0, 255, 255],
+						"transparency": 0.3
 					}
 				}]
 			}

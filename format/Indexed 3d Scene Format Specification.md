@@ -396,27 +396,48 @@ resource types.</p>
 
 Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
 
-* **String**: An utf8 String.
-* **Float**: A Float64 number with an optional fractional component, such as "1.02" or "1.0".
-* **Integer**: An Int32 number without a fractional component, such as "234".
-* **UUID**: A canonical hexadecimal UUID, such as "550e8400-e29b-41d4-a716-446655440000"
-* **Date**: An ISO 8601 timestamp YYYY-MM-DD HH:MM:SS.sss string with fixed Z timezone information, such as "2009-01-01T12:00:00.000Z"
-* **URL**: Any resolvable, relative or absolute, URL, such as "../Node/51/sharedResource"
-* **Pointer**: Any resolvable reference to an object in a JSON document, consisting of a relative or absolute URL and a document path, such as [../Node/51/sharedResource]/materialDefinitions/Mat01
-* **NodeID**: A treekey string such as “3-0-34-234-2” that is zero-based (first child is "0", root node is "root").
+<ul>
+<li><strong>String</strong>: An utf8 String.</li>
+<li><strong>Float</strong>: A Float64 number with an optional fractional component, such as "1.02" or "1.0".</li>
+<li><strong>Integer</strong>: An Int32 number without a fractional component, such as "234".</li>
+<li><strong>UUID</strong>: A canonical hexadecimal UUID, such as "550e8400-e29b-41d4-a716-446655440000".</li>
+<li><strong>Date</strong>: An ISO 8601 timestamp YYYY-MM-DD HH:MM:SS.sss string with fixed Z timezone information, such as "2009-01-01T12:00:00.000Z".</li>
+<li><strong>URL</strong>: Any resolvable, relative or absolute, URL, such as "../Node/51/sharedResource".</li>
+<li><strong>Pointer</strong>: Any resolvable reference to an object in a JSON document, consisting of a relative or absolute URL and a document path, such as [../Node/51/sharedResource]/materialDefinitions/Mat01 .</li>
+<li><strong>NodeID</strong>: A treekey string such as “3-0-34-234-2” that is zero-based (first child is "0", root node is "root").</li>
+</ul>
 
 <h4><a name="_7_0_1">Pointers</a></h4>
 
-i3s use the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
+i3s uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
 The Pointer consists of two elements:
-* mandatory in-document reference: Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
-    * _Absolute_ references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by the qname. 
-        * Example: /materialDefinitions/*/type
-    * _Relative_ references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
-        * Example: params/ambient/0 
-* optional URL: The pointer may be prefixed with a URL to a different document. This URL may be relative to the document that is being evaluated or absolute. To identify the URL element of a pointer, it is given in square brackets. Examples:
-    * relative URL + absolute reference: From FeatureData to 3dSceneLayer.name: [../../]/name
-    * absolute URL + absolute reference: [http://web3d.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/nodes/51]/parentNode/id
+
+<ol>
+	<li><strong>mandatory in-document reference:</strong> Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
+		<ul>
+			<li><em>Absolute</em> references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by the qname. 
+				<ul>
+					<li>Example: <code>/materialDefinitions/*/type</code></li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li><em>Relative</em> references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
+				<ul>
+					<li>Example: <code>params/ambient/0</code></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><strong>optional URL:</strong> The pointer may be prefixed with a URL to a different document. This URL may be relative to the document that is being evaluated or absolute. To identify the URL element of a pointer, it is given in square brackets. Examples:
+		<ul>
+			<li><em>relative URL + absolute reference:</em> From FeatureData to 3dSceneLayer.name: <code>[../../]/name</code></li>
+		</ul>
+		<ul>
+			<li><em>absolute URL + absolute reference:</em> <code>[http://web3d.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/nodes/51]/parentNode/id</code></li>
+		</ul>
+	</li>
+</ol>
 
 <h3><a name="_7_1">3dSceneServiceInfo.js</a></h3>
 
@@ -1245,7 +1266,7 @@ representative of a feature present in the real, geographic world.
 
 <h4>Class GeometryParams</h4>
 
-This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams, MultiComponentParams). It does not have properties of its own.
+This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
 
 <h4>Class GeometryReferenceParams</h4>
 
@@ -1278,7 +1299,7 @@ Instead own owning a Geometry exclusively, a Feature can also reference a (part 
 
 <h4>Class VestedGeometryParams</h4>
 
-<p>This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry, with either SingleComponentParams or MultiComponentParams.</p>
+<p>This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry.</p>
 
 <table>
 	<tr>
@@ -1306,31 +1327,10 @@ Instead own owning a Geometry exclusively, a Feature can also reference a (part 
 </table>
 
 <p><em>Table 18: Attributes of the Class <strong>VestedGeometryParams</strong> within the FeatureData document</em></p>
-
-<h4>Class MultiComponentParams</h4>
-
-<p>Objects of this type extend VestedGeometryParams and include a definition of a geometry that may have
-multiple materials, textures, or use multiple regions from a texture. One
-Feature can have multiple geometries, which can consist of multiple components.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>components</td>
-		<td>Component[1..*]</td>
-		<td>A MultiComponentParams geometry can have multiple components, e.g. to assign multiple materials (i.e. glass for windows, brick texture for walls, ...). Not used with LoD aggregate geometries.</td>
-	</tr>
-</table>
-
-<p><em>Table 19: Attributes of the Class <strong>MultiComponentParams</strong> within the FeatureData document</em></p>
 	
 <h4>Class SingleComponentParams</h4>
 
-Objects of this type extend VestedGeometryParams and use only one texture and one material. They do not contain components and can be used with aggregated LoD geometries.</p>
+Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.</p>
 
 <table>
 	<tr>

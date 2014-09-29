@@ -57,6 +57,18 @@
 		]
 	},
 	{
+		"qname": "params.topology",
+		"required": true,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "None",
+		"valueDomain": [
+			"PerAttributeArray", 
+			"InterleavedArray", 
+			"Indexed"
+		]
+	},
+	{
 		"qname": "params.material",
 		"required": false,
 		"containerType": "None",

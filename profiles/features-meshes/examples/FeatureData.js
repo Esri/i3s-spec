@@ -116,7 +116,7 @@
 			"attributes": [
 				{ // Special group for default attributes and other metadata.
 					"name": "metadata",
-					"value": null,
+					"value": "metadata-group",
 					"group": [ 
 						{
 							"name": "OID",
@@ -182,7 +182,7 @@
 				},
 				{
 					"name": "reports",
-					"value": null,
+					"value": "reports-group",
 					"group": [
 						{
 							"name": "GFA",
@@ -199,16 +199,19 @@
 			"layer": "Transport Building", 
 			"geometries": [ 
 				{
-					"type": "SharedResourceReference", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
+					"id": 34532535,
+					"type": "GeometryReference", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared geometry in geometryData or in the shared resources (GeometryReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"params": {
-						"id": "Tree_123_Symbol" // ID of the geometry in the shared resource bundle.
+						"$ref": "[../shared]/symbols/123" // in-document absolute reference to full geometry definition (in-line or view) using JSON pointer syntax
 					}
 				}
 			],
 			"attributes": [
 				{
-					"metadata": [ // Special group for default attributes and other metadata.
+					"name": "metadata",
+					"value": "metadata-group",
+					"group": [ // Special group for default attributes and other metadata.
 						{
 							"name": "OID",
 							"value": 34984

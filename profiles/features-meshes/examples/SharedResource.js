@@ -34,13 +34,14 @@
 				"shininess" : 1 // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
 			}
 		},
-		"Mat09": { // A material definition that is contained in an ancestor node's shared resource
-			"href":"../0/shared" // the href that resolves to the shared resource bundle in which the material defintion is contained.
+		"Mat03": { // A material definition that is contained in an ancestor node's shared resource
+			"type":"reference",
+			"$ref":"[../../]/0/shared/materialDefinitions/Mat09" // the href that resolves to the shared resource bundle in which the material defintion is contained.
 		}
 	},
 	"textureDefinitions": { // a Map of texture map definitions
 		"38572918": {
-			"encoding" : ["image/png"], // a list with the encoding types that available for the images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png.
+			"encoding" : ["data:image/png"], // a list with the encoding types that available for the images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png.
 			"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {*none*, repeat, mirror}
 			"atlas": true, // indicates whether this map (set of images) are texture atlases or not. options: {*false*, true}
 			"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
@@ -88,17 +89,12 @@
 			"name": "Tree_123_Symbol",
 			"geometries": [
 				{
+					"id": 2419,
 					"type": "Embedded", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"params": {
 						"type": "triangles",
-						"components": [
-							{
-								"material": {
-									"id": "Tree_123_Mat" // ID of the material in the (this) shared resource bundle
-								}
-							}
-						],
+						"topology": "PerAttributeArray", // one of {*PerAttributeArray*, InterleavedArray, Indexed}. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
 						"vertexAttributes": { // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
 							"position" : [737.569,2.26,-924.68,736.654,1.9,-894.219,756.466,3.032,-893.59,757.381,3.008,-924.07,735.695,22.068,-894.136,736.619,22.237,-924.598,735.768,22.084,-894.707,736.657,22.247,-924.023,755.516,23.009,-893.508,754.961,22.995,-894.099,756.422,23.177,-923.987,755.832,23.157,-923.432],
 							"normal" : [0.048,-0.999,-0.004,-0.998,-0.047,-0.031,-0.22,0.975,-0.001,-0.031,-0.006,0.999,-0.048,0.999,0.022,0.998,0.047,0.03,-0.03,1,0.005,0.031,0.006,-1,-0.047,0.999,-0.013,-0.048,0.999,0.004]

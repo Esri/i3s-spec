@@ -2,66 +2,128 @@
 	"targetProfile": "feature-mesh",
 	"resource": "GeometryEmbedded",
 	"version": "1.3",
-	"rules": [{
-		"qname": "id",
-		"required": true,
-		"containerType": "None",
-		"valueType": "number",
-		"valueSchema": "Integer",
-		"valueRange": [0,
-		1.7976931348623157e+308]
-	},
-	{
-		"qname": "type",
-		"required": true,
-		"containerType": "None",
-		"valueType": "string",
-		"valueSchema": "None",
-		"valueDomain": ["Embedded"]
-	},
-	{
-		"qname": "transformation",
-		"required": false,
-		"containerType": "Array",
-		"cardinality": [
-			16,
-			16
-		],
-		"valueType": "object",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "transformation.*",
-		"required": false,
-		"valueType": "number",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "params",
-		"required": true,
-		"containerType": "Object",
-		"cardinality": [
-			1,
-			-1
-		],
-		"valueType": "object",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "params.*",
-		"required": true,
-		"valueType": "number",
-		"valueSchema": "None"
-	},
-	{
-		"qname": "params.type",
-		"required": true,
-		"containerType": "None",
-		"valueType": "string",
-		"valueSchema": "None",
-		"valueDomain": ["triangle_strip",
-		"triangles",
-		"lines",
-		"points"]
-	}]
+	"rules": [
+		{
+			"qname": "id",
+			"required": true,
+			"containerType": "None",
+			"valueType": "number",
+			"valueSchema": "Integer",
+			"valueRange": [0,
+			1.7976931348623157e+308]
+		},
+		{
+			"qname": "type",
+			"required": true,
+			"containerType": "None",
+			"valueType": "string",
+			"valueSchema": "None",
+			"valueDomain": ["Embedded"]
+		},
+		{
+			"qname": "transformation",
+			"required": false,
+			"containerType": "Array",
+			"cardinality": [
+				16,
+				16
+			],
+			"valueType": "object",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "transformation.*",
+			"required": false,
+			"valueType": "number",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.*",
+			"required": true,
+			"valueType": "object",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.type",
+			"required": true,
+			"containerType": "None",
+			"valueType": "string",
+			"valueSchema": "None",
+			"valueDomain": [
+				"triangle_strip", "triangles", "lines", "points"
+			]
+		},	
+		{
+			"qname": "params.topology",
+			"required": true,
+			"containerType": "None",
+			"valueType": "string",
+			"valueSchema": "None",
+			"valueDomain": [
+				"PerAttributeArray", 
+				"InterleavedArray", 
+				"Indexed"
+			]
+		},
+		{
+			"qname": "params.material",
+			"required": false,
+			"containerType": "None",
+			"valueType": "string",
+			"valueSchema": "Pointer"
+		},
+		{
+			"qname": "params.texture",
+			"required": false,
+			"containerType": "None",
+			"valueType": "string",
+			"valueSchema": "Pointer"
+		},
+			{
+			"qname": "params.vertexAttributes",
+			"required": true,
+			"containerType": "Object",
+			"cardinality": [
+				1,
+				-1
+			],
+			"valueType": "object",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.vertexAttributes.*",
+			"required": true,
+			"valueType": "object",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.vertexAttributes.*.*",
+			"required": true,
+			"valueType": "number",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.faces",
+			"required": true,
+			"containerType": "Object",
+			"cardinality": [
+				1,
+				-1
+			],
+			"valueType": "object",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.faces.*",
+			"required": true,
+			"valueType": "object",
+			"valueSchema": "None"
+		},
+		{
+			"qname": "params.faces.*.*",
+			"required": true,
+			"valueType": "number",
+			"valueSchema": "Integer"
+		}
+	]
 }

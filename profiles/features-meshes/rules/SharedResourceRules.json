@@ -21,6 +21,18 @@
    "valueSchema": "None"
   },
   {
+   "qname": "materialDefinitions.*.$ref",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "/materialDefinitions/*/type",
+    "type": "IS",
+    "value": "reference"
+   } ]
+  },
+  {
    "qname": "materialDefinitions.*.name",
    "required": false,
    "containerType": "None",
@@ -42,7 +54,12 @@
    "required": true,
    "containerType": "None",
    "valueType": "object",
-   "valueSchema": "None"
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "/materialDefinitions/*/type",
+    "type": "NOT",
+    "value": "reference"
+   } ]
   },
   {
    "qname": "materialDefinitions.*.params.vertexColors",
@@ -173,6 +190,13 @@
    "valueSchema": "None"
   },
   {
+   "qname": "materialDefinitions.*.params.doubleSided",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
    "qname": "materialDefinitions.*.params.waveSpeed",
    "required": false,
    "containerType": "None",
@@ -233,14 +257,25 @@
    "valueType": "object",
    "valueSchema": "None"
   },
-  {
+    {
    "qname": "textureDefinitions.*.encoding",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    4
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*.encoding.*",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "data:image/png", "data:image/jpg", "data:image/jpeg"
+    "data:image/png", "data:image/jpg", "data:image/jpeg, data:image/dds"
    ]
   },
   {
@@ -252,10 +287,7 @@
     2
    ],
    "valueType": "object",
-   "valueSchema": "None",
-   "valueDomain": [
-    "none", "repeat", "mirror"
-   ]
+   "valueSchema": "None"
   },
   {
    "qname": "textureDefinitions.*.wrap.*",

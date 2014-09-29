@@ -127,6 +127,18 @@
   {
    "qname": "featureData.*.geometries.*",
    "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryReferenceRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "SharedResourceReference"
+   } ]
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
    "containerType": "None",
    "valueType": "object",
    "valueSchema": "NamedRuleset",
@@ -180,8 +192,28 @@
    "valueSchema": "None"
   },
   {
-   "qname": "geometryData",
+   "qname": "featureData.*.attributes.*.group.*",
    "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*.group.*.name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*.group.*.value",
+   "required": true,
+   "containerType": "None",
+   "valueType": "Any",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData",
+   "required": false,
    "containerType": "Array",
    "cardinality": [
     1,

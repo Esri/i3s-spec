@@ -325,6 +325,29 @@
    "valueSchema": "None"
   },
   {
+    "qname": "store.defaultGeometrySchema.topology",
+    "required": true,
+    "containerType": "None",
+    "valueType": "string",
+    "valueSchema": "None",
+    "valueDomain": [
+      "PerAttributeArray", 
+      "InterleavedArray", 
+      "Indexed"
+    ]
+  },
+  {
+   "qname": "store.defaultGeometrySchema.vertexAttributeOrder",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
    "qname": "store.defaultGeometrySchema.vertexAttributes",
    "required": true,
    "containerType": "Object",
@@ -364,7 +387,7 @@
   },
   {
    "qname": "store.defaultGeometrySchema.faces",
-   "required": true,
+   "required": false,
    "containerType": "Object",
    "cardinality": [
     1,

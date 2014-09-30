@@ -1,5 +1,5 @@
 ﻿{
-	"targetProfile": "feature-mesh",
+	"targetProfile": "all",
 	"resource": "GeometryArrayBufferView",
 	"version": "1.3",
 	"rules": [{
@@ -145,7 +145,7 @@
 	},
 	{
 		"qname": "params.faces",
-		"required": true,
+		"required": false,
 		"containerType": "Object",
 		"cardinality": [
 			1,

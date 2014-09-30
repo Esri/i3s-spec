@@ -23,7 +23,6 @@
 		"geometryEncoding": "application/octet-stream+gzip; version=1.3", // MIME type for the encoding used for the Geometry Resources
 		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
 		"lodType": "MeshPyramid", // optional field to indicate which LoD Scheme is used in this store. Selected from {MeshPyramid, FeatureTree}.
-		"knownVertexOrder": true, // optional vertex order indicator field to tell clients whether they can safely use backface culling.
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "QuadTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
 			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs 
@@ -39,7 +38,8 @@
 				}
 			],
 			"topology": "PerAttributeArray", // one of ["PerAttributeArray", "InterleavedArray", "Indexed"]. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
-			"vertexAttributes": [ // the vertex attributes must appear in the order that they are declared here. 
+			"vertexAttributeOrder": ["position", "normal", "uv0", "region"], // provides the order of the keys in vertexAttributes.
+			"vertexAttributes": { // the vertex attributes must appear in the order that they are declared here. 
 				"position": { // the name of the vertex attribute; here: vertex positions
 					"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32,  Int16, Int32, Int64 or *Float32*, Float64
 					"valuesPerElement": 3  // number of (Float32) values need to make a valid element (here a xyz position)
@@ -56,17 +56,25 @@
 					"valueType": "Int16", // the element type, currently only Int16
 					"valuesPerElement": 4 // number of (Int16) values need to make a valid element (here a region info)
 				}
-			]
+			}
 		},
 		"defaultTextureDefinition": {
 			"encoding" : ["image/jpeg", "image/vnd-ms.dds"],
 			"uvSet": "uv0", 
-			"channels": "rgba"
+			"channels": "rgba",
+			"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {*none*, repeat, mirror}
+			"atlas": false, // indicates whether this map (set of images) are texture atlases or not. options: {*false*, true}
+			"images": [ // an array of images that represent the same content in different resolutions.
+				{
+					"id" : "default", // pro forma ID
+					"size": 2048, // x size of this image.
+					"href": "../textures/0_0" // href to the texture set in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
+				}
+			]
 		},
 		"defaultMaterialDefinition": {
 			"type": "standard",
 			"params" : {
-				"vertexRegions": false, // {*false*, true} Indicates whether this Material uses per-vertex regions
 				"vertexColors" : false, // {*false*, true} Indicates whether this Material uses Vertex Colors.
 				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
 				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent

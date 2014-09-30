@@ -94,6 +94,27 @@
    ]
   },
   {
+   "qname": "store.resourcePattern",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    5
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.resourcePattern.*",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+     "3dNodeIndexDocument", "SharedResource", "FeatureData", "Geometry", "Texture"
+   ]
+  },
+  {
    "qname": "store.rootNode",
    "required": true,
    "containerType": "None",
@@ -128,7 +149,7 @@
    "valueSchema": "None"
   },
   {
-   "qname": "store.geographicCRS",
+   "qname": "store.indexCRS",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -138,7 +159,7 @@
    ]
   },
   {
-   "qname": "store.projectedCRS",
+   "qname": "store.vertexCRS",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -279,6 +300,70 @@
    "valueSchema": "None"
   },
   {
+    "qname": "store.defaultGeometrySchema.topology",
+    "required": true,
+    "containerType": "None",
+    "valueType": "string",
+    "valueSchema": "None",
+    "valueDomain": [
+      "PerAttributeArray", 
+      "InterleavedArray", 
+      "Indexed"
+    ]
+  },
+  {
+   "qname": "store.defaultGeometrySchema.header",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.defaultGeometrySchema.header.*",
+   "required": true,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.defaultGeometrySchema.header.*.property",
+   "required": true,
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.defaultGeometrySchema.header.*.type",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+     "UInt8", "UInt16", "UInt32", "Int16", "Int32", "Int64", "Float32", "Float64"
+   ]
+  },
+  {
+   "qname": "store.defaultGeometrySchema.vertexAttributeOrder",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.defaultGeometrySchema.vertexAttributeOrder.*",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
    "qname": "store.defaultGeometrySchema.vertexAttributes",
    "required": true,
    "containerType": "Object",
@@ -317,8 +402,33 @@
    ]
   },
   {
-   "qname": "store.defaultGeometrySchema.faces",
+   "qname": "store.defaultGeometrySchema.faceAttributeOrder",
    "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None",
+   "valueDependencies": [
+       {
+         "to": "/store/defaultGeometrySchema/faces",
+         "type": "NOT",
+         "value": null
+       }
+     ]
+  },
+  {
+   "qname": "store.defaultGeometrySchema.faceAttributeOrder.*",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.defaultGeometrySchema.faces",
+   "required": false,
    "containerType": "Object",
    "cardinality": [
     1,
@@ -354,6 +464,20 @@
     16
    ]
   },
+  {
+   "qname": "store.defaultTextureDefinition",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/TextureDefinitionRules.json"
+  },  
+  {
+   "qname": "store.defaultMaterialDefinition",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/MaterialDefinitionRules.json"
+  },  
   {
    "qname": "fields",
    "required": true,

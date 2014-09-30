@@ -232,18 +232,6 @@
 		"valueSchema" : "URL"
 	}, 
 	{
-		"qname" : "geometryData.*.vertexElements",
-		"required" : true,
-		"valueType" : "number",
-		"valueSchema" : "Integer"
-	},
-	{
-		"qname" : "geometryData.*.faceElements",
-		"required" : true,
-		"valueType" : "number",
-		"valueSchema" : "Integer"
-	},
-	{
 		"qname" : "textureData",
 		"required" : true,
 		"containerType": "Array",

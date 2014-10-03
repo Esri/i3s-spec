@@ -1,6 +1,6 @@
 {
   "targetProfile": "all",
-  "resource": "GeometryArrayBufferView",  
+  "resource": "MaterialDefinition",  
   "version": "1.3",
   "rules": [
   {

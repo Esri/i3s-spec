@@ -34,7 +34,8 @@
 			}
 		},
 		"Mat09": { // A material definition that is contained in an ancestor node's shared resource
-			"href":"../0/shared" // the href that resolves to the shared resource bundle in which the material defintion is contained.
+			"type": "reference",
+			"$ref":"[../]/0/shared" // the href that resolves to the shared resource bundle in which the material defintion is contained.
 		}
 	},
 	"textureDefinitions": { // a Map of texture map definitions

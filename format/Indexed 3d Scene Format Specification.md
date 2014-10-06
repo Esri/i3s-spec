@@ -3,7 +3,7 @@ Format Specification</h2>
 
 </div>
 
-<p>Version 1.3, rev. 61, 2014-09-08</p>
+<p>Version 1.3, rev. 62, 2014-10-06</p>
 </p style="font-size:70%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang<br/>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt</p>
@@ -761,12 +761,12 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store.Reuses 
 		<td><strong>Description</strong></td>
 	</tr>
 	<tr>
-		<td>propertyName</td>
+		<td>property</td>
 		<td>String</td>
 		<td>The name of the property in the header</td>
 	</tr>
 	<tr>
-		<td>valueType</td>
+		<td>type</td>
 		<td>String</td>
 		<td>The element type of the header property, from <code>{UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64}</code></td>
 	</tr>
@@ -1313,6 +1313,11 @@ Instead own owning a Geometry exclusively, a Feature can also reference a (part 
 		<td>The primitive type of the geoemtry defined through a VestedGeometryParams object. One of {*triangles*, lines, points, triangle_strip}</td>
 	</tr>
 	<tr>
+		<td>topology</td>
+		<td>TopologyType</td>
+		<td>Declares the typology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
+	</tr>
+	<tr>
 		<td>vertexAttributes</td>
 		<td>VertexAttribute[1..*]</td>
 		<td>A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions. 
@@ -1553,7 +1558,7 @@ geometries.</p>
 	</tr>
 	<tr>
 		<td>encoding</td>
-		<td>MIMEtype</td>
+		<td>MIMEtype[1..*]</td>
 		<td>The encoding/content type that is used by all images in this map</td>
 	</tr>
 	<tr>

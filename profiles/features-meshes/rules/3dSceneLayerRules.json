@@ -424,6 +424,20 @@
    ]
   },
   {
+   "qname": "store.defaultTextureDefinition",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/TextureDefinitionRules.json"
+  },  
+  {
+   "qname": "store.defaultMaterialDefinition",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/MaterialDefinitionRules.json"
+  },
+  {
    "qname": "fields",
    "required": true,
    "containerType": "Array",

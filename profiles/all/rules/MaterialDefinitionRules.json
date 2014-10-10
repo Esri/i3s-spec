@@ -57,6 +57,18 @@
    } ]
   },
   {
+   "qname": "params.vertexColorsTransparency",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "../vertexColors",
+    "type": "IS",
+    "value": true
+   } ]
+  },
+  {
    "qname": "params.reflectivity",
    "required": false,
    "containerType": "None",

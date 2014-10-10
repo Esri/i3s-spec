@@ -1492,6 +1492,11 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 		<td>Indicates whether this Material use Vertex Colors. Defaults to <code>false</code>.</td>
 	</tr>
 	<tr>
+		<td>params.vertexColorTransparency</td>
+		<td>Boolean[0..1]</td>
+		<td>Indicates whether Vertex Colors also contain a transparency channel. Defaults to <code>false</code>.</td>
+	</tr>
+	<tr>
 		<td>params.transparency</td>
 		<td>Float </td>
 		<td>Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent.</td>

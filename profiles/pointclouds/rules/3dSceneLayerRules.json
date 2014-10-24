@@ -128,14 +128,14 @@
    "valueSchema": "None"
   },
   {
-   "qname": "store.geographicCRS",
+   "qname": "store.indexCRS",
    "required": true,
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "URL"
   },
   {
-   "qname": "store.projectedCRS",
+   "qname": "store.vertexCRS",
    "required": true,
    "containerType": "None",
    "valueType": "string",
@@ -188,7 +188,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "MeshPyramid", "None"
+    "FeatureTree", "None"
    ]
   },
   {

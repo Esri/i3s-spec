@@ -7,7 +7,7 @@
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this node.
 	"created": "2012-09-14T23:12:00.000Z", // creation date of this node; should always be in UTC.
 	"expires": "2014-09-14T23:12:00.000Z", // expiration date of this node; should always be in UTC.
-	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the geographicCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
+	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the indexCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
 	"lodSelection": [ // a list with lod selection metrics that are generated for LOD-enabled caches and that enable the client to pick the right LoD for rendering.
 			{
 				"metricType": "thinningFactor", // name of the error metric 

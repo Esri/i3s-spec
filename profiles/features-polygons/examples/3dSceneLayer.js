@@ -8,7 +8,7 @@
 	"alias": "AdministrativeDistricts", // the display alias to be used for this layer.
 	"description" : "This layer contains the 12 administrative districts of the City of Zurich.\n", // Cache description 
 	"copyrightText" : "Afs Zürich", // copyright/usage information
-	"capabilities" : ["View"], // capabilities possible on this layer. If not served by a 3D Scene Server (e.g. exported by CE), "View" only.
+	"capabilities" : ["View"], // capabilities possible on this layer. If not served by a 3D Scene Server (e.g. exported by CityEngine), "View" only.
 	"store": { // information on the store (a grouping of 1..* layers to a shared index and resource set) of which this layer is a part.
 		"id" : "9f62cd8f-0ab7-451e-917a-65ec8e10a432", // store ID - unique across a SceneServer. Enables the client to discover which layers a part of a common store, if any.
 		"profile": "features-polygons", // i3s 1.3. Indicates which profile this scene store fulfills. One of {features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}.

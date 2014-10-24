@@ -401,7 +401,7 @@ Value schemas are used to ensure that the content of a JSON property follows a f
 <li><strong>Float</strong>: A Float64 number with an optional fractional component, such as "1.02" or "1.0".</li>
 <li><strong>Integer</strong>: An Int32 number without a fractional component, such as "234".</li>
 <li><strong>UUID</strong>: A canonical hexadecimal UUID, such as "550e8400-e29b-41d4-a716-446655440000".</li>
-<li><strong>Date</strong>: An ISO 8601 timestamp YYYY-MM-DD HH:MM:SS.sss string with fixed Z timezone information, such as "2009-01-01T12:00:00.000Z".</li>
+<li><strong>Date</strong>: An ISO 8601 timestamp YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone, such as "2009-01-01T12:00:00.000Z".</li>
 <li><strong>URL</strong>: Any resolvable, relative or absolute, URL, such as "../Node/51/sharedResource".</li>
 <li><strong>Pointer</strong>: Any resolvable reference to an object in a JSON document, consisting of a relative or absolute URL and a document path, such as [../Node/51/sharedResource]/materialDefinitions/Mat01 .</li>
 <li><strong>NodeID</strong>: A treekey string such as “3-0-34-234-2” that is zero-based (first child is "0", root node is "root").</li>
@@ -591,7 +591,7 @@ Layer.</p>
 	<tr>
 		<td>capabilities</td>
 		<td>String[1..3]</td>
-		<td>Capabilities from the Set <code>{View, Query, Edit}</code> that are possible on this layer. If not served by a 3DSceneServer (e.g. exported by CE), "View" only.</td>
+		<td>Capabilities from the Set <code>{View, Query, Edit}</code> that are possible on this layer. If not served by a 3DSceneServer (e.g. exported by CityEngine), "View" only.</td>
 	</tr>
 </table>
 
@@ -709,7 +709,7 @@ applied.</p>
 	<tr>
 		<td>defaultTextureDefinition</td>
 		<td>TextureDefinition[0..1]</td>
-		<td>A common, global TextureDefinition (see <a href="#_7_5">SharedResources</a>) to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: ```encoding```, ```uvSet```, ```wrap``` and ```channels```.</td>
+		<td>A common, global TextureDefinition (see <a href="#_7_5">SharedResources</a>) to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: <code>encoding</code>, <code>uvSet</code>, <code>wrap</code> and <code>channels</code>.</td>
 	</tr>
 	<tr>
 		<td>defaultMaterialDefinition</td>
@@ -723,7 +723,7 @@ applied.</p>
 <h4>Class GeometrySchema</h4>
 
 <p>Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. 
-Reduces redundancies of ArrayBufferView geometry declarations in a store.Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.</p>
+Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.</p>
 
 <table>
 	<tr>
@@ -733,8 +733,8 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store.Reuses 
 	</tr>
 	<tr>
 		<td>header</td>
-		<td>FeatureData::HeaderDefinition[0..*]</td>
-		<td>Defines header fields in the Geometry resources ofthis store that precede the vertex (and index) data</td>
+		<td>HeaderDefinition[0..*]</td>
+		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
 	</tr>
 	<tr>
 		<td>vertexAttributes</td>
@@ -752,7 +752,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store.Reuses 
 
 <h4>Class HeaderDefinition</h4>
 
-<p>Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, sinble element fields. The HeaderDefinition prives the name of each field for later access and the valueType of that header field.</p>
+<p>Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.</p>
 
 <table>
 	<tr>
@@ -820,7 +820,7 @@ by clients to better understand how to work with the index.</p>
 	<tr>
 		<td>name</td>
 		<td>String</td>
-		<td>The name of the field.</td>
+		<td>Name of the scheme, selected from <code>{esriRTree, QuadTree, AGOLTilingScheme}</code>.</td>
 	</tr>
 	<tr>
 		<td>inclusive</td>
@@ -905,12 +905,12 @@ object in a 3dNodeIndexDocument.</p>
 	<tr>
 		<td>created</td>
 		<td>Date[0..1]</td>
-		<td>Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDTHH:MM:SS.sssZ (see http://www.w3.org/TR/NOTE-datetime).</td>
+		<td>Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone (see <a href="http://www.w3.org/TR/NOTE-datetime">http://www.w3.org/TR/NOTE-datetime</a>).</td>
 	</tr>
 	<tr>
 		<td>expires</td>
 		<td>Date[0..1]</td>
-		<td>Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDTHH:MM:SS.sssZ (see http://www.w3.org/TR/NOTE-datetime).</td>
+		<td>Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone (see <a href="http://www.w3.org/TR/NOTE-datetime">http://www.w3.org/TR/NOTE-datetime</a>).</td>
 	</tr>
 	<tr>
 		<td>transform</td>
@@ -1068,7 +1068,7 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 	<tr>
 		<td>id</td>
 		<td>Integer</td>
-		<td>An ID of the Feature object, unique within the store (important to note when using Features from multiple stores!). The ID must not be re-used e.g. for multiple representaiton of an input feature that are present in different nodes.</td>
+		<td>An ID of the Feature object, unique within the store (important to note when using Features from multiple stores!). The ID must not be re-used e.g. for multiple representation of an input feature that are present in different nodes.</td>
 	</tr>
 	<tr>
 		<td>mbs</td>
@@ -1165,7 +1165,7 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>id</td>
 		<td>Integer</td>
-		<td>Feature ID, unique within the Node. If <code>lodType</code> is <code>feature-tree</code>, the ID must be unique in the store.</td>
+		<td>Feature ID, unique within the Node. If <code>lodType</code> is <code>FeatureTree</code>, the ID must be unique in the store.</td>
 	</tr>
 	<tr>
 		<td>position</td>
@@ -1258,7 +1258,7 @@ representative of a feature present in the real, geographic world.
 	<tr>
 		<td>params</td>
 		<td>GeometryParams</td>
-		<td>The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferViewa GeometryReference object, or a SharedResourceReference object.</td>
+		<td>The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.</td>
 	</tr>
 </table>
 
@@ -1270,7 +1270,7 @@ This is the abstract parent class for all GeometryParams classes (GeometryRefere
 
 <h4>Class GeometryReferenceParams</h4>
 
-Instead own owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
+Instead of owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
 
 <table>
 	<tr>
@@ -1707,7 +1707,7 @@ client capabilities in dealing with more complex UV cases vary greatly.</p>
 
 <p>The Id of an image is generated using the following method:</p>
 
-```
+<pre><code>
 UInt64 BuildID(LONG id, int w, int h , int l, int al)
 {
     UInt64 l_al = ((UInt64)al)<<60;
@@ -1717,7 +1717,7 @@ UInt64 BuildID(LONG id, int w, int h , int l, int al)
     UInt64 id64 = l_al + l_l + l_w + l_h + (UInt64)id;
     return id64;
 }
-```
+</code></pre>
 
 <p>Usage syntax: <br/>
 <code>UInt64 image_id = BuildID(id, w, h, l, al);</code> </p>
@@ -1753,42 +1753,44 @@ UInt64 BuildID(LONG id, int w, int h , int l, int al)
 specification</a> in the Editor's Draft version of 10<sup>th</sup> April 2013.
 Citing the overview of that spec:</p>
 
-<blockquote>This specification defines an ArrayBuffer
+<blockquote>
+<p>This specification defines an ArrayBuffer
 type, representing a generic fixed-length binary buffer. It is not possible to
 manipulate the contents of an ArrayBuffer directly. Instead, a group of types
 are used to create views of the ArrayBuffer. For example, to access the buffer
 as an array of 32-bit signed integers, an Int32Array would be created that
-refers to the ArrayBuffer.</blockquote>
+refers to the ArrayBuffer.</p>
 
-<blockquote>Multiple typed array views can refer to the
+<p>Multiple typed array views can refer to the
 same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
-the following code:</blockquote>
+the following code:</p>
 
-```
-    // create an 8-byte ArrayBuffer
-    var b = new ArrayBuffer(8);
-    
-    // create a view v1 referring to b, of type Int32, starting at
-    // the default byte index (0) and extending until the end of the buffer
-    var v1 = new Int32Array(b);
-    
-    // create a view v2 referring to b, of type Uint8, starting at
-    // byte index 2 and extending until the end of the buffer
-    var v2 = new Uint8Array(b, 2);
-    
-    // create a view v3 referring to b, of type Int16, starting at
-    // byte index 2 and having a length of 2
-    var v3 = new Int16Array(b, 2, 2);</pre>
-```
+<pre><code>
+// create an 8-byte ArrayBuffer
+var b = new ArrayBuffer(8);
 
-<blockquote>This defines an 8-byte buffer b, and three
+// create a view v1 referring to b, of type Int32, starting at
+// the default byte index (0) and extending until the end of the buffer
+var v1 = new Int32Array(b);
+
+// create a view v2 referring to b, of type Uint8, starting at
+// byte index 2 and extending until the end of the buffer
+var v2 = new Uint8Array(b, 2);
+
+// create a view v3 referring to b, of type Int16, starting at
+// byte index 2 and having a length of 2
+var v3 = new Int16Array(b, 2, 2);
+</code></pre>
+
+<p>This defines an 8-byte buffer b, and three
 views of that buffer, v1, v2, and v3. Each of the views refers to the same
 buffer -- so v1[0] refers to bytes 0..3 as a signed 32-bit integer, v2[0]
 refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as
 a signed 16-bit integer. Any modification to one view is immediately visible in
 the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
-(where -1 is represented as 0xffff)."</blockquote>
+(where -1 is represented as 0xffff)."</p>
+</blockquote>
 
 <p><strong>Note: The expected triangle/face winding order in all geometry resources is
 counterclockwise (CCW).</strong></p>
@@ -1808,19 +1810,19 @@ resource type.</p>
 /3dSceneLayer.json
 /nodes/root/3dNodeIndexDocument.json
 /nodes/root/features/0.json ...n.json
-/nodes/root/geometries/0.json ...n.bin
+/nodes/root/geometries/0.bin ...n.bin
 /nodes/root/shared/SharedResource.json
-/nodes/root/textures/0_0.json ...n_m.bin
+/nodes/root/textures/0_0.bin ...n_m.bin
 /nodes/0/3dNodeIndexDocument.json
 /nodes/0/features/0.json ...n.json
-/nodes/0/geometries/0.json ...n.bin
+/nodes/0/geometries/0.bin ...n.bin
 /nodes/0/shared/SharedResource.json
-/nodes/0/textures/0_0.json ...n_m.bin
+/nodes/0/textures/0_0.bin ...n_m.bin
 /nodes/0-1/3dNodeIndexDocument.json
 /nodes/0-1/features/0.json ...n.json
-/nodes/0-1/geometries/0.json ...n.bin
+/nodes/0-1/geometries/0.bin ...n.bin
 /nodes/0-1/shared/SharedResource.json
-/nodes/0-1/textures/0_0.json ...n_m.bin
+/nodes/0-1/textures/0_0.bin ...n_m.bin
 ...
 </pre>
 

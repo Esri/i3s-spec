@@ -5,7 +5,7 @@
 	"featureData": [
 		{ // a normal feature using a unique geometry
 			"id": 309432971018, // id is a long value.
-			"position": [537218.344, 5328647.27], // the position of this feature's minimum bounding sphere center, in the projectedCRS.
+			"position": [537218.344, 5328647.27], // the position of this feature's minimum bounding sphere center, in the vertexCRS.
 			"mbb": [537218.283, 5328647.902, 29.821, 5328647.100, 537218.098, 34.155], // xmin, ymin, zmin, xmax, ymax, zmax of the feature's minimum bounding box, expressed in the positionCRS, without offset.
 			"layer": "PointCloud", // links this feature to a defined layer.
 			"geometries": [ // Geometry defintion including materials; note that one Feature can have multiple geometries

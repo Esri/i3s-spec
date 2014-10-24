@@ -5,7 +5,7 @@
 	"featureData": [
 		{ // a normal feature using a unique geometry
 			"id": 309432971018, // id is a long value.
-			"position": [537218.344, 5328647.27, 0.0], // the position of this feature's minimum bounding sphere center, in the projectedCRS.
+			"position": [537218.344, 5328647.27, 0.0], // the position of this feature's minimum bounding sphere center, in the vertexCRS.
 			"pivotOffset": [0.0, 0.0, 14.9], // an optional, "semantic" pivot offset that can be used to e.g. correctly drape tree symbols.
 			"mbb": [537218.283, 5328647.902, 29.821, 5328647.100, 537218.098, 34.155], // xmin, ymin, zmin, xmax, ymax, zmax of the feature's minimum bounding box, expressed in the positionCRS, without offset.
 			"layer": "Public Building", // links this feature to a defined layer.

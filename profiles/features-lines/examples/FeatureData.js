@@ -16,7 +16,7 @@
 					"params": { 
 						"type": "line", // types are: triangle_strip, triangles, line, point
 						"vertexAttributes": {
-							"position": {	// the name of the vertex attribute; here: vertex positions in the projected CRS used in this cache
+							"position": {	// the name of the vertex attribute; here: vertex positions in the vertexCRS used in this cache
 								"byteOffset": 18371, // the starting byte position where the required bytes begin.
 								"count": 1211, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
 								"valueType": "Float32", // the element type, either UInt8, UInt16, UInt32, Int16, Int32, Int64 or Float32, Float64

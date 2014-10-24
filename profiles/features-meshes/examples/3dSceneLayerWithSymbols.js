@@ -12,8 +12,8 @@
 		"version": "1.2", // format version of this resource; used here again if this store hasn't been served by a 3D Scene Server.
 		"geometryType": "FeatureMesh", // the geometry type of the cache; selected from {FeatureMesh, IntegratedMesh, RasterTerrain, TINTerrain, Point, Line, Polygon, PointCloud}.
 		"extent": [-180.0, -90.0, 180.0, 90.0], // the spatial extent of this store, in the horizontal indexCRS 
-		"geographicCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
-		"projectedCRS": "http://www.opengis.net/def/crs/EPSG/0/5806", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL. Here: Local cartesian without Datum.
+		"indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
+		"vertexCRS": "http://www.opengis.net/def/crs/EPSG/0/5806", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL. Here: Local cartesian without Datum.
 		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.2", // MIME type for the encoding used for the Node Index Documents
 		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.2",  // MIME type for the encoding used for the Feature Data Resources
 		"geometryEncoding": "application/octet-stream; version=1.2", // MIME type for the encoding used for the Geometry Resources

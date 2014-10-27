@@ -10,10 +10,12 @@
 			"layer": "PointCloud", // links this feature to a defined layer.
 			"geometries": [ // Geometry defintion including materials; note that one Feature can have multiple geometries
 				{
+					"id": 389572389,
 					"type": "ArrayBufferView", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0], // linearized 4x4 transformation matrix. Elements 13-15 of the 16 indicate the translational component.
 					"params": { 
 						"type": "points", // types are: triangle_strip, triangles, lines, points (i.e. GL render primitives)
+						"topology": "PerAttributeArray", // one of {*PerAttributeArray*, InterleavedArray, Indexed}. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
 						"vertexAttributes": { // these are the vertex attributes. Each attribute is described by an accessor to the geometry typed array. This is an open list.
 							"position": { // the name of the vertex attribute; here: vertex positions
 								"byteOffset": 254976, // the starting byte position where the required bytes begin.
@@ -38,8 +40,10 @@
 				}
 			],
 			"attributes": [
-				{
-					"metadata": [ // Special group for default attributes and other metadata.
+				{ // Special group for default attributes and other metadata.
+					"name": "metadata",
+					"value": "metadata-group",
+					"group": [ 
 						{
 							"name": "OID",
 							"value": 34983
@@ -49,14 +53,6 @@
 				{
 					"name": "someAttribute",
 					"value": "someValue"
-				},
-				{
-					"reports": [ // Special group for reports, i.e. statistical measures for the whole feature.
-						{
-							"name": "averagePrecision",
-							"value": 0.012
-						}
-					]
 				}
 			]
 		}

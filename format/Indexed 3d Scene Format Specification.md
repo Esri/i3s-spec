@@ -1,11 +1,9 @@
 <h2>Esri Indexed 3d Scene (i3s/i3p) <br>
 Format Specification</h2>
 
-</div>
-
 <p>Version 1.3, rev. 62, 2014-10-06</p>
-</p style="font-size:70%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br/>
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang<br/>
+<p style="font-size:70%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br>
+<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt</p>
 
 <p>
@@ -160,9 +158,10 @@ spatial proximity in the 1D ordering. Treekeys are strings that in which levels 
 "3-0-34-234-2" has 5 numeric elements, hence the node is on level 5 (root is level 1) and the node "3-0-34-234" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
-<img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys" />
-
+<div>
+<img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys">
 <p><em>Figure 1: A sample Index Tree with Treekeys</em></p>
+</div>
 
 <h2><a name="_4">Level of Detail Concept</a></h2>
 
@@ -236,11 +235,12 @@ In addition, the feature-tree approach enables clients to switch out representat
 	<li>Each Feature that participates in a LoD tree and has a rank > 1 has a <code>rootFeature</code> reference. This reference enables the client to detect which features represent a single object, e.g. for picking purposes.</li>
 </ul>
 
-<img src="images/figure-02.png" title="Example Nodes + Feature LoD Index Tree" alt="Example Nodes + Feature LoD Index Tree" />
-
+<div>
+<img src="images/figure-02.png" title="Example Nodes + Feature LoD Index Tree" alt="Example Nodes + Feature LoD Index Tree">
 <p><em>Figure 2: Example Nodes + Feature LoD Index Tree. Orange boxes represent features, orange dotted lines indicate lodChildFeatures relationships.</em></p>
+</div>
 
-In the feature tree example above, the features 1 to 3 need to have the following properties set:
+<p>In the feature tree example above, the features 1 to 3 need to have the following properties set:</p>
 
 <table>
 	<tr>
@@ -285,12 +285,12 @@ In the feature tree example above, the features 1 to 3 need to have the followin
 
 <p>Mesh Pyramids are a compact way of representing multiple levels of detail. A full representation pyramid for all features is built from the finest representation by aggregating, fusing and reducing individual features meshes. This full tree approach avoids the need to have LoD trees for individual features. It is therefore suitable in cases where the input data doesn't have predefined LoDs.</p> 
 
-<img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid" />
-
+<div>
+<img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid">
 <p><em>Figure 3: Example Nodes + Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
+</div>
 
-
-<p>When using a Mesh Pyramid based LoD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features included in that node's child nodes. With mesh pyramids there is no concept of an LoD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the LoD Selection Metrics. The correspondence between a reduced LOD feature in an interior node and the same feature in descendent nodes is based purely on the <code>id<code> of the feature.</p>
+<p>When using a Mesh Pyramid based LoD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features included in that node's child nodes. With mesh pyramids there is no concept of an LoD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the LoD Selection Metrics. The correspondence between a reduced LOD feature in an interior node and the same feature in descendent nodes is based purely on the <code>id</code> of the feature.</p>
 
 <h3><a name="_4_4">LoD Selection Metrics</a></h3>
 
@@ -303,7 +303,7 @@ found that clients can benefit from having more information on the errors
 introduced in LoD Generation. Thus, multiple metrics can be included, as in the
 following example:</p>
 
-<p><pre><code>
+<pre><code>
 "lodSelection": [
 	{
 		"metricType": "removedFeatureDiameter", 
@@ -320,10 +320,9 @@ following example:</p>
 		"maxError": 0.0034  
 	}
 ]
-</code></pre></p>
+</code></pre>
 
-<p>
-These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
+<p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
 
 <h2><a name="_5">Coordinate Reference Systems</a></h2>
 
@@ -343,10 +342,11 @@ to the selection of spatial reference systems to use:</p>
 <p>To match these requirements, the following approach is taken:</p>
 
 <ol>
-	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-relevant data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:</li>
+	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-relevant data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
+	</li>
 	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
@@ -364,9 +364,10 @@ data, textures, geometry and resources shared across features of a given node.
 Feature data, textures, geometry and shared resources are all called resources
 and are always attached to a node.</p>
 
-<img src="images/figure-04.png" title="Structure of a single Node and its attached Resources" alt="Structure of a single Node and its attached Resources" />
-
+<div>
+<img src="images/figure-04.png" title="Structure of a single Node and its attached Resources" alt="Structure of a single Node and its attached Resources">
 <p>Figure 4: Structure of a single Node and its attached Resources</p>
+</div>
 
 <p>Per node, there is exactly one Node Index Document and one Shared Resource. Feature Data,
 Geometry files and Texture files are split into bundles for optimal network
@@ -383,9 +384,10 @@ be in the node as part of a shared resource that bubbled up. For each texture
 created is then equal <strong>m*Texture LoD Steps</strong>. The following
 figure illustrates an example set of bundles within a node:</p>
 
-<img src="images/figure-05.png" title="Detailed Node Structure" alt="Detailed Node Structure" />
-
+<div>
+<img src="images/figure-05.png" title="Detailed Node Structure" alt="Detailed Node Structure">
 <p>Figure 5: Detailed Node Structure</p>
+</div>
 
 <h2><a name="_7">JSON Resources Schema and Documentation</a></h2>
 
@@ -394,7 +396,7 @@ resource types.</p>
 
 <h3><a name="_7_0">Basic value types</a></h3>
 
-Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
+<p>Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:</p>
 
 <ul>
 <li><strong>String</strong>: An utf8 String.</li>
@@ -409,8 +411,8 @@ Value schemas are used to ensure that the content of a JSON property follows a f
 
 <h4><a name="_7_0_1">Pointers</a></h4>
 
-i3s uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
-The Pointer consists of two elements:
+<p>i3s uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
+The Pointer consists of two elements:</p>
 
 <ol>
 	<li><strong>mandatory in-document reference:</strong> Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
@@ -446,9 +448,10 @@ sets offered by an instance of a 3dSceneService.</p>
 
 <p>The 3dSceneServiceInfo has the following structure:</p>
 
-<img src="images/figure-06.png" title="Logical schema of the 3dSceneServiceInfo document" alt="Logical schema of the 3dSceneServiceInfo document" />
-
+<div>
+<img src="images/figure-06.png" title="Logical schema of the 3dSceneServiceInfo document" alt="Logical schema of the 3dSceneServiceInfo document">
 <p><em>Figure 6: Logical schema of the 3dSceneServiceInfo document</em></p>
+</div>
 
 <p>This file is not generated by the authoring tools and is not part of a i3p package file.
 It is generated solely by the 3D Scene Server for each service instance. Its
@@ -542,9 +545,10 @@ layer in a store, including the default symbology to use. It shares the
 definition of this default symbology with the web scene item JSON file. The
 3dSceneLayerInfo has the following structure:</p>
 
-<img src="images/figure-07.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document" />
-
+<div>
+<img src="images/figure-07.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document">
 <p><em>Figure 7: Logical schema of the 3dSceneLayerInfo document</em></p>
+</div>
 
 <h4>Class 3dSceneLayerInfo</h4>
 
@@ -661,19 +665,19 @@ applied.</p>
 	<tr>
 		<td>nidEncoding</td>
 		<td>MIMEType</td>
-		<td>MIME type for the encoding used for the Node Index Documents; format:<br/> 
+		<td>MIME type for the encoding used for the Node Index Documents; format:<br> 
 		<code>application/vnd.esri.i3s.json+gzip; version=1.3</code></td>
 	</tr>
 	<tr>
 		<td>featureEncoding</td>
 		<td>MIMEType</td>
-		<td>MIME type for the encoding used for the Feature Data Resources; format:<br/>
+		<td>MIME type for the encoding used for the Feature Data Resources; format:<br>
 		<code>application/vnd.esri.i3s.json+gzip; version=1.3</code></td>
 	</tr>
 	<tr>
 		<td>geometryEncoding</td>
 		<td>MIMEType</td>
-		<td>MIME type for the encoding used for the Geometry Resources; format:<br/>
+		<td>MIME type for the encoding used for the Geometry Resources; format:<br>
 		<code>application/octet-stream; version=1.3</code></td>
 	</tr>
 	<tr>
@@ -867,9 +871,10 @@ the Minimum Bounding Sphere as spheres.</p>
 
 <p>The 3dNodeIndexDocument has the following structure:</p>
 
-<img src="images/figure-08.png" title="Logical schema of the 3dNodeIndexDocument document" alt="Logical schema of the 3dNodeIndexDocument document" />
-
+<div>
+<img src="images/figure-08.png" title="Logical schema of the 3dNodeIndexDocument document" alt="Logical schema of the 3dNodeIndexDocument document">
 <p><em>Figure 8: Logical schema of the 3dNodeIndexDocument</em></p>
+</div>
 
 <h4>Class Node</h4>
 
@@ -1147,14 +1152,15 @@ to geometry attributes and other references to styling or materials.</p>
 
 <p>Features have the following structure:</p>
 
-<img src="images/figure-09.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document" />
-
+<div>
+<img src="images/figure-09.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document">
 <p><em>Figure 9: Logical schema of the FeatureData document</em></p>
+</div>
 
 <h4>Class Feature</h4>
 
-A Feature is a single object within a GIS data set, usually
-representative of a feature present in the real, geographic world.
+<p>A Feature is a single object within a GIS data set, usually
+representative of a feature present in the real, geographic world.</p>
 
 <table>
 	<tr>
@@ -1266,11 +1272,11 @@ representative of a feature present in the real, geographic world.
 
 <h4>Class GeometryParams</h4>
 
-This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
+<p>This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.</p>
 
 <h4>Class GeometryReferenceParams</h4>
 
-Instead of owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
+<p>Instead of owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.</p>
 
 <table>
 	<tr>
@@ -1335,7 +1341,7 @@ Instead of owning a Geometry exclusively, a Feature can also reference a (part o
 	
 <h4>Class SingleComponentParams</h4>
 
-Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.</p>
+<p>Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.</p>
 
 <table>
 	<tr>
@@ -1359,7 +1365,7 @@ Objects of this type extend VestedGeometryParams and use one texture and one mat
 
 <h4><a name="_7_4_Components">Class Component</a></h4>
 
-Component objects provide information on parts of the geometry they
+<p>Component objects provide information on parts of the geometry they
 belong to, specifically with which material and texture to render them.</p>
 
 <table>
@@ -1394,7 +1400,7 @@ belong to, specifically with which material and texture to render them.</p>
 
 <h4>Class GeometryAttribute</h4>
 
-Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and
+<p>Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and
 FaceAttributes. While the first describe properties that are valid for a single
 vertex, the second are used to describe faces and other structures by providing
 a set of indices. As an example, the <code>faces.position</code> index attribute is used to define
@@ -1450,9 +1456,10 @@ feature in that node or in features which are stored in the subtree of the
 current node. This approach ensures an optimal distribution of shared resources
 across nodes, while maintaining the node-based updating process.</p>
 
-<img src="images/figure-10.png" title="Logical schema of the SharedData document" alt="Logical schema of the SharedData document" />
-
+<div>
+<img src="images/figure-10.png" title="Logical schema of the SharedData document" alt="Logical schema of the SharedData document">
 <p><em>Figure 10: Logical schema of the SharedData document</em></p>
+</div>
 
 <h4>Class SharedResource</h4>
 
@@ -1654,7 +1661,7 @@ single texture atlas or multiple individual textures; the decision how this is
 bundled is left to the authoring application so that specific aspects of the
 materials and textures used can be taken into account, such as tiling.</p>
 
-<h3><a name="_Toc367801583">Texture Recommendations and Requirements</span></a></span></h3>
+<h3><a name="_Toc367801583">Texture Recommendations and Requirements</a></h3>
 
 <p>Especially for Web and Mobile clients, the number of textures and their volume is the
 limiting factor in how much data can be displayed at any given time, Thus, this
@@ -1670,11 +1677,11 @@ transparency rendering in WebGL. However, with more wide-spread client support
 for next-generation texture compression formats such as <a href="http://en.wikipedia.org/wiki/Adaptive_Scalable_Texture_Compression">ASTC</a>
 and <a href="http://www.g-truc.net/post-0340.html ">BPTC</a> which will become available later on.</p>
 
-<h4>Texture Sets</span></h4>
+<h4>Texture Sets</h4>
 
 <p>While this specification allows the combination of multiple textures into a single
 resource by using array buffer views, we generally recommend to use large
-atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle. </span></p>
+atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle.</p>
 
 <h4>Atlas usage and Regions</h4>
 
@@ -1719,7 +1726,7 @@ UInt64 BuildID(LONG id, int w, int h , int l, int al)
 }
 </code></pre>
 
-<p>Usage syntax: <br/>
+<p>Usage syntax: <br>
 <code>UInt64 image_id = BuildID(id, w, h, l, al);</code> </p>
 
 <h5>Function Parameters</h5>
@@ -1795,8 +1802,7 @@ the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
 <p><strong>Note: The expected triangle/face winding order in all geometry resources is
 counterclockwise (CCW).</strong></p>
 
-<h2><a name="_8">Persistence</a><span
-lang=EN-US></h2>
+<h2><a name="_8">Persistence</a></h2>
 
 <p>All storage methods store the Indexed 3D Scene in a simple key-value structure, with the
 key representing the access URL and the value being the JSON document or other
@@ -1855,11 +1861,12 @@ There is also an EXTENDED folder pattern that uses subtree partitions to avoid p
 This EXTENDED pattern is added as a keyword only in this sepcification version for future proofness.
 Within an archive, this BASIC folder pattern results in the following structure:</p>
 
-<img src="images/figure-11.png" title="Structure of an i3s package" alt="Structure of an i3s package" />
-
+<div>
+<img src="images/figure-11.png" title="Structure of an i3s package" alt="Structure of an i3s package">
 <p><em>Figure 11: Structure of an i3s package with BASIC folder layout</em></p>
+</div>
 
-The format of the package itself is defined as follows:
+<p>The format of the package itself is defined as follows:</p>
 
 <ul>
 	<li>The Archive type is always <a href="http://www.enterag.ch/enterag/downloads/Zip64File_TechnicalDocumentation.pdf">Zip64</a>.</li>
@@ -1896,27 +1903,27 @@ The format of the package itself is defined as follows:
 	</tr>
 	<tr>
 		<td>folderPattern</td>
-		<td>True</d>
+		<td>True</td>
 		<td>One of {*BASIC*, EXTENDED}</td>
 	</tr>
 	<tr>
 		<td>ArchiveCompressionType</td>
-		<td>True</d>
+		<td>True</td>
 		<td>One of {*STORE*, DEFLATE64[, DEFLATE]}</td>
 	</tr>
 	<tr>
 		<td>ResourceCompressionType</td>
-		<td>True</d>
+		<td>True</td>
 		<td>One of {*NONE*, GZIP}</td>
 	</tr>
 	<tr>
 		<td>i3sVersion</td>
-		<td>True</d>
+		<td>True</td>
 		<td>One of {1.2, *1.3*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>
-		<td>True</d>
+		<td>True</td>
 		<td> </td>
 	</tr>
 </table>

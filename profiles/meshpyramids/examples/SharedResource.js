@@ -3,7 +3,7 @@
 */
 {
 	"materialDefinitions": { // a Map of all Material Definitions needed by features of this node.
-		"Mat01": { // a full material definition for a standard material
+		"Mat01": { // a material definition for a standard material
 			"name": "Standard_Material", // original name of the Material in the authoring application/source data
 			"type": "standard", // material/shader type, options: {*standard*, water, billboard, leafcard}
 			"params" : {
@@ -19,7 +19,7 @@
 				"receiveShadows": true // I3S 1.2
 			}
 		},
-		"Mat02": { // a full material definition for a water material
+		"Mat02": { // a material definition for a water material
 			"name": "Water_Material", // original name of the Material in the authoring application/source data
 			"type": "water", // material/shader type, options: {*standard*, water, billboard, leafcard}
 			"params" : {
@@ -31,6 +31,21 @@
 				"diffuse" : [1, 1, 1], // [0..*1*], [0..*1*], [0..*1*]
 				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
 				"shininess" : 1 // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
+			}
+		},
+		"Mat03": { // a material that uses vertex colors and vertex alpha
+			"name": "VertexRGBA_Material", // original name of the Material in the authoring application/source data
+			"type": "standard", // material/shader type, options: {*standard*, water, billboard, leafcard}
+			"params" : {
+				"vertexColors" : true, // {*false*, true} Indicates whether this Material uses Vertex Colors.
+				"useVertexColorAlpha" : true
+				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
+				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent
+				"shininess" : 1, // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
+				"ambient" : [0, 0, 0], // [*0*..1], [*0*..1], [*0*..1]
+				"diffuse" : [1, 1, 1], // [0..*1*], [0..*1*], [0..*1*]
+				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
+				"renderMode": "solid" // options: {*solid*, untextured, wireframe}
 			}
 		},
 		"Mat09": { // A material definition that is contained in an ancestor node's shared resource

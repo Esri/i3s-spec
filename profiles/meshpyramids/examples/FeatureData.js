@@ -68,7 +68,7 @@
 						"valueType": "UInt8", // the element type, either UInt8, UInt16, UInt32, Int16, Int32, Int64 or Float32, Float64
 						"valuesPerElement": 3 // number of (UInt8) values need to make a valid element (here a RGB intensity)
 					},
-					"region": { // region info; must be present if the material property "vertexRegions" is set to true
+					"uv0region": { // region info for the 1st texture coordinates vertex attribue; must be present if the material property "vertexRegions" is set to true
 						"byteOffset": 265170, // the starting byte position where the required bytes begin.
 						"count": 398, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
 						"valueType": "Int16", // the element type, must be Int16

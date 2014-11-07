@@ -57,7 +57,7 @@
    } ]
   },
   {
-   "qname": "params.vertexColorsTransparency",
+   "qname": "params.useVertexColorAlpha",
    "required": false,
    "containerType": "None",
    "valueType": "boolean",

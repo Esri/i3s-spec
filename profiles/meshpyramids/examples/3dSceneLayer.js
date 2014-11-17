@@ -37,7 +37,7 @@
 					"type": "UInt32"
 				}
 			],
-			"topology": "PerAttributeArray", // one of ["PerAttributeArray", "InterleavedArray", "Indexed"]. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
+			"topology": "PerAttributeArray", // one of ["PerAttributeArray", "InterleavedArray", "Indexed"]. When "Indexed", the indices must also be declared in the geometry schema ("faces") and precede the vertexAttribute data.
 			"vertexAttributeOrder": ["position", "normal", "uv0", "region"], // provides the order of the keys in vertexAttributes.
 			"vertexAttributes": { // the vertex attributes must appear in the order that they are declared here. 
 				"position": { // the name of the vertex attribute; here: vertex positions
@@ -53,8 +53,8 @@
 					"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
 				},
 				"region": { // per-vertex region info. analogous to textureDefinitions.regions in sharedResource. Values define uv-coordinates of region borders: [umin, vmin, umax, vmax]
-					"valueType": "Int16", // the element type, currently only Int16
-					"valuesPerElement": 4 // number of (Int16) values need to make a valid element (here a region info)
+					"valueType": "UInt16", // the element type, always UInt16 for region info
+					"valuesPerElement": 4 // number of (UInt16) values need to make a valid element (here a region info)
 				}
 			}
 		},

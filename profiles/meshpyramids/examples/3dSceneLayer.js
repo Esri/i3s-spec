@@ -21,7 +21,7 @@
 		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.3", // MIME type for the encoding used for the Node Index Documents
 		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.3",  // MIME type for the encoding used for the Feature Data Resources
 		"geometryEncoding": "application/octet-stream+gzip; version=1.3", // MIME type for the encoding used for the Geometry Resources
-		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
+		"textureEncoding": ["image/jpeg", "image/vnd-ms.dds"], // MIME types for the encoding used for the Texture Resources
 		"lodType": "MeshPyramid", // optional field to indicate which LoD Scheme is used in this store. Selected from {MeshPyramid, FeatureTree}.
 		"indexingScheme": { // Indexing Scheme properties
 			"name": "QuadTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}

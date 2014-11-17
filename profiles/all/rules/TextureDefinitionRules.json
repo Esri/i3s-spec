@@ -73,7 +73,7 @@
   },
   {
    "qname": "regions",
-   "required": true,
+   "required": false,
    "containerType": "Array",
    "cardinality": [
     1,

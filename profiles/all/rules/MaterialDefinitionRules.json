@@ -66,6 +66,10 @@
     "to": "../vertexColors",
     "type": "IS",
     "value": true
+   },{
+    "to": "../../type",
+    "type": "IS",
+    "value": "standard"
    } ]
   },
   {

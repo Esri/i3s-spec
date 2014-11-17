@@ -38,10 +38,10 @@
 			"type": "standard", // material/shader type, options: {*standard*, water, billboard, leafcard}
 			"params" : {
 				"vertexColors" : true, // {*false*, true} Indicates whether this Material uses Vertex Colors.
-				"useVertexColorAlpha" : true
+				"useVertexColorAlpha" : true,
 				"reflectivity" : 0, // [*0*..1] reflectivity for the shader, 0 is min, 1 is max (full environment reflectivity)
-				"transparency" : 0, // [*0*..1]transparency for the shader, 0 is opaque, 1 is fully transparent
-				"shininess" : 1, // [0..*1*], amount of specular highlights, 0 is none, 1 is max (for shader)
+				"transparency" : 0, // [*0*..1] transparency for the shader, 0 is opaque, 1 is fully transparent
+				"shininess" : 1, // [0..*1*] amount of specular highlights, 0 is none, 1 is max (for shader)
 				"ambient" : [0, 0, 0], // [*0*..1], [*0*..1], [*0*..1]
 				"diffuse" : [1, 1, 1], // [0..*1*], [0..*1*], [0..*1*]
 				"specular" : [0.1, 0.1, 0.1], // [0..*1*], [0..*1*], [0..*1*]
@@ -55,21 +55,11 @@
 	},
 	"textureDefinitions": { // a Map of texture map definitions
 		"38572918": {
-			"encoding" : ["image/png"], // a list with the encoding types that available for the images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png. If alpha maps are declared in the channels attribute, encoding has to be image/png.
+			"encoding" : ["image/jpeg", "image/vnd-ms.dds"], // a list with the encoding types that available for the images in this map.
 			"wrap" : ["repeat","repeat"], // texture wrapping/tiling mode; options: {*none*, repeat, mirror}
 			"atlas": true, // indicates whether this map (set of images) are texture atlases or not. options: {*false*, true}
 			"uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
 			"channels": "rgba", // indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement, ...
-			"regions": [
-				{
-					"id": 1,
-					"subimageRegion":[0, 0, 0.5, 0.5] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
-				},
-				{
-					"id": 2,
-					"subimageRegion":[0.5, 0, 1.0, 0.5] // required if "atlas": true. Indicates the region of the image that is to be tiled/wrapped.
-				}
-			],
 			"images": [ // an array of images that represent the same content in different resolutions.
 				{
 					"id" : "8448757298993561619", // a string containing a UINt64 ID for each image. Generated using the BuildID function that is documented in the spec.

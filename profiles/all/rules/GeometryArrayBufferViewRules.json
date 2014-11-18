@@ -52,8 +52,9 @@
 		"valueDomain": [
 			"triangle_strip",
 			"triangles",
-			"lines",
-			"points"
+			"line",
+			"point",
+			"polygon"
 		]
 	},
 	{
@@ -64,7 +65,6 @@
 		"valueSchema": "None",
 		"valueDomain": [
 			"PerAttributeArray", 
-			"InterleavedArray", 
 			"Indexed"
 		]
 	},
@@ -81,6 +81,29 @@
 		"containerType": "None",
 		"valueType": "string",
 		"valueSchema": "Pointer"
+	},
+	{
+		"qname": "params.rings",
+		"required": true,
+		"containerType": "Array",
+		"cardinality": [
+			1,
+			-1
+		],
+		"valueType": "object",
+		"valueSchema": "None",
+		"valueDependencies": [ {
+			"to" : "../type",
+			"type" : "IS",
+			"value" : "polygon"
+		} ] 
+	},
+	{
+		"qname": "params.rings.*",
+		"required": false,
+		"containerType": "None",
+		"valueType": "NamedRuleset",
+		"valueSchema": "./GeometryRingRules.json"
 	},
 	{
 		"qname": "params.vertexAttributes",
@@ -145,14 +168,19 @@
 	},
 	{
 		"qname": "params.faces",
-		"required": false,
+		"required": true,
 		"containerType": "Object",
 		"cardinality": [
 			1,
 			-1
 		],
 		"valueType": "object",
-		"valueSchema": "None"
+		"valueSchema": "None",
+		"valueDependencies": [ {
+			"to" : "../topology",
+			"type" : "IS",
+			"value" : "Indexed"
+		} ]
 	},
 	{
 		"qname": "params.faces.*",

@@ -15,20 +15,21 @@
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"params": { 
 						"type": "polygon", // types are: triangle_strip, triangles, line, point, polygon
+						"topology": "PerAttributeArray", // one of {*PerAttributeArray*, Indexed}. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
 						"rings":[ // definition of rings in the polygon: every element in the first array is an outer ring, which can optionally have inner rings, which can be nested.
 						  { // first outer ring.
 							"id": 0, // geometry-local id of this ring.
-							"start": 0 // offset in the positions array where this ring starts
+							"start": 0, // offset in the positions array where this ring starts
 							"segments": [2, 3, 0, 4], // descriptor for the outer ring. Each pair in the descriptor gives the ring segment type (outer ring (0), inner ring (1), cut (2)) and length, e.g. 2,3 means: 3 cut segments
 							"inner": [{ // 1 inner ring
-							  "start": 8 // offset in the positions array where this ring starts
+							  "start": 8, // offset in the positions array where this ring starts
 							  "segments": [1, 5], // descriptor for the inner ring
 							  "inner": [] // crater lake on volcano island in a crater lake ?
 							}]
 						  }, 
 						  { // second outer ring.
 							"id": 1, // geometry-local id of this ring.
-							"start": 12 // offset in the positions array where this ring starts
+							"start": 12, // offset in the positions array where this ring starts
 							"segments": [0, 5, 2, 1, 1, 3, 2, 3], // descriptor for the outer ring
 							"inner": [] // no inner rings, optional property
 						  }
@@ -49,10 +50,13 @@
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"params": { 
 						"type": "polygon", // types are: triangle_strip, triangles, line, point, polygon
-						"rings": [ // ring definitions. Outer rings are CCW, inner rings CW. An array of rings where each ring is an array of points. The first and last points of a ring must be the same.
-							[124, 19, 17], // an outer ring with 124 elements. The next 19 elements declare an inner ring, follwed by another 17 elements declaring an additional inner ring.
-							[290], // just a single outer ring.
-							[700, 61] // an outer ring with 700 elements, follwed by another 61 elements declaring an inner ring.
+						"topology": "PerAttributeArray", // one of {*PerAttributeArray*, Indexed}. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
+						"rings": [
+							{ // single outer ring.
+								"id": 0, // geometry-local id of this ring.
+								"start": 0, // offset in the positions array where this ring starts
+								"segments": [0, 495] // descriptor for the outer ring
+							}
 						], 
 						"vertexAttributes": {
 							"position": [537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821] //... and many, many more.
@@ -61,11 +65,21 @@
 				}
 			],
 			"attributes": [
-				{
-					"metadata": [ // Special group for default attributes and other metadata.
+				{ // Special group for default attributes and other metadata.
+					"name": "metadata",
+					"value": "metadata-group",
+					"group": [ 
 						{
 							"name": "OID",
-							"value": 12332
+							"value": 34983
+						},
+						{
+							"name": "area",
+							"value": 101131.1435
+						},
+						{
+							"name": "length",
+							"value": 390.73893
 						}
 					]
 				},

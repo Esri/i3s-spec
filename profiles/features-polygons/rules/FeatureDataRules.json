@@ -149,6 +149,26 @@
    ],
    "valueType": "object",
    "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*.group.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*.group.*.name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*.group.*.value",
+   "required": true,
+   "containerType": "None",
+   "valueType": "Any",
+   "valueSchema": "None"
   }
  ]
 }

@@ -52,39 +52,6 @@
 		}
 	],
 	"drawingInfo": { // The default symbology to use on this layer. Check the webscene-spec (https://devtopia.esri.com/Zurich-R-D-Center/webscene-spec) for full information.
-		"renderer": {
-			"type": "uniqueValue",
-				"field1": "laimejo",
-				"field2": "",
-				"field3": "",
-				"fieldDelimiter": ", ",
-				"defaultSymbol": null,
-				"defaultLabel": "",
-				"uniqueValueInfos": [{
-					"value": "A. Paulauskas",
-					"label": "Arturas Paulauskas",
-					"description": "",
-					"symbol": {
-						"type": "PolygonSymbol3D",
-						"symbolLayers": [
-							{
-								"type": "Fill"
-								"material": {
-									"color": [170, 102, 205],
-									"transparency": 0
-								},
-							},{
-								"size": 4,
-								"type": "Line",
-								"material": {
-								  "color": [112, 68, 137],
-								  "transparency": 0.6
-								}
-							}
-						]
-					}
-				}
-			]
-		}
+
 	}
 }

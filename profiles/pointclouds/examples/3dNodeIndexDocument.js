@@ -29,7 +29,7 @@
 		"id": "5", // the ID of the parent node.
 		"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // version (store update session ID) in which the linked node is consistent with this node. If the node is loaded but the version is not identical, the client should perform FindNode.
 		"href": "../5", // the node-relative URL to the parent node.
-		"mbs": [122.2, 39.9, 421.0, 5462.1], // the MBS of the parent node.
+		"mbs": [122.2, 39.9, 421.0, 5462.1] // the MBS of the parent node.
 	},
 	"children": [ // the list of child nodes of this node.
 		{ 

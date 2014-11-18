@@ -1365,6 +1365,46 @@ representative of a feature present in the real, geographic world.</p>
 
 <p><em>Table 20: Attributes of the Class <strong>SingleComponentParams</strong> within the FeatureData document</em></p>
 
+<h4>Class RingDescriptor</h4>
+
+<p>RingDescriptors are used in <code>type: polygon</code> geometries to handle inner and outer rings, as well as Level of Detail across such complex polygons.
+In a RingDescriptors, each segment is marked as either part of an outer ring (o = 0), an inner ring (i = 1), or a cut (c = 2) to allow control of symbology 
+and permit cutting of compelx polygons across nodes, as in this example:</p>
+
+<div>
+<img src="images/lod-polygon.png" title="A large Polygon with holes cut into Nodes" alt="A large Polygon with holes cut into Nodes">
+</div>
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>Integer</td>
+		<td>Geometry-local id of this ring, persistent across all LoDs that the geometry participates in.</td>
+	</tr>
+	<tr>
+		<td>start</td>
+		<td>Integer</td>
+		<td>Element offset in the positions array where this ring starts.</td>
+	</tr>
+	<tr>
+		<td>segments</td>
+		<td>Integer[2, *]</td>
+		<td>The descriptor for the ring. Each pair of values in the descriptor gives the ring segment type (outer ring (0), inner ring (1), cut (2)) and length, e.g. 2,3 means: 3 cut segments.</td>
+	</tr>
+	<tr>
+		<td>inner</td>
+		<td>RingDescriptor[0, *]</td>
+		<td>Definitions of inner rings. Can be nested recursively for crater lake on volcano island in a crater lake scenarios.</td>
+	</tr>
+</table>
+
+<p><em>Table 20a: Attributes of the class RingDescriptor in the FeatureData document</em></p>
+
 <h4><a name="_7_4_Components">Class Component</a></h4>
 
 <p>Component objects provide information on parts of the geometry they
@@ -1489,6 +1529,11 @@ attributes and params for the <code>"type": "standard"</code> material.</p>
 		<td>type</td>
 		<td>String</td>
 		<td>Indicates the material type, chosen from the supported values <code>{standard, water, billboard, leafcard, reference}</code></td>
+	</tr>
+	<tr>
+		<td>$ref</td>
+		<td>JSONPointer</td>
+		<td>The href that resolves to the shared resource bundle in which the material defintion is contained.</td>
 	</tr>
 	<tr>
 		<td>params.vertexRegions</td>

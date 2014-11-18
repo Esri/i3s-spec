@@ -28,15 +28,15 @@ sections provide a detailed implementation-level view.</p>
 	</ol></li>
 	<li><a href="#_5">Coordinate Reference Systems</a></li>
 	<li><a href="#_6">Structure of i3s Resources</a></li>
-	<li><a href="#_7">JSON Resources Schema and Documentation</a>
+	<li><a href="#_7">Resources Schema and Documentation</a>
 	<ol>
-		<li><a href="#_7_1">3dSceneServiceInfo.js</a></li>
-		<li><a href="#_7_2">3dSceneLayerInfo.js</a></li>
-		<li><a href="#_7_3">3dNodeIndexDocument.js</a></li>
-		<li><a href="#_7_4">FeatureData.js</a></li>
-		<li><a href="#_7_5">SharedResources.js</a></li>
-		<li><a href="#_7_6">Textures.bin</a></li>
-		<li><a href="#_7_7">Geometry.bin</a></li>
+		<li><a href="#_7_1">SceneServiceInfo</a></li>
+		<li><a href="#_7_2">SceneLayerInfo</a></li>
+		<li><a href="#_7_3">3dNodeIndexDocument</a></li>
+		<li><a href="#_7_4">FeatureData</a></li>
+		<li><a href="#_7_5">SharedResources</a></li>
+		<li><a href="#_7_6">Textures</a></li>
+		<li><a href="#_7_7">Geometry</a></li>
 	</ol></li>
 	<li><a href="#_8">Persistence</a>
 	<ol>
@@ -155,7 +155,7 @@ the spatial extent of each node will be.</p>
 i.e. the key directly indicates the position of the node in the tree. Treekeys
 allow sorting all resources on a single dimension and usually maintain 2D
 spatial proximity in the 1D ordering. Treekeys are strings that in which levels are separated by dashes: 
-"3-0-34-234-2" has 5 numeric elements, hence the node is on level 5 (root is level 1) and the node "3-0-34-234" is its parent.  
+"3-0-34-2-2" has 5 numeric elements, hence the node is on level 5 (root is level 1) and the node "3-0-34-2" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
 <div>
@@ -357,6 +357,8 @@ to the selection of spatial reference systems to use:</p>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
+<p>Note that at this point, the meshpyramids profile only allows the usage of EPSG:4326 (WGS84).</p>
+
 <h2><a name="_6">Structure of i3s resources</a></h2>
 
 <p>The i3s format contains different components - node index documents (NIDs), feature
@@ -441,7 +443,7 @@ The Pointer consists of two elements:</p>
 	</li>
 </ol>
 
-<h3><a name="_7_1">3dSceneServiceInfo.js</a></h3>
+<h3><a name="_7_1">SceneServiceInfo</a></h3>
 
 <p>The 3dSceneServiceInfo file is a JSON file that describes the capability and data
 sets offered by an instance of a 3dSceneService.</p>
@@ -538,7 +540,7 @@ clients know which Layers are served by a given service. </p>
 
 <p><em>Table 4: Attributes of the Class LayerSummary within the 3dSceneServiceInfo document</em></p>
 
-<h3><a name="_7_2">3dSceneLayerInfo.js</a></h3>
+<h3><a name="_7_2">3dSceneLayerInfo</a></h3>
 
 <p>The 3dSceneLayerInfo file is a JSON file that describes the properties of a single
 layer in a store, including the default symbology to use. It shares the
@@ -856,7 +858,7 @@ by clients to better understand how to work with the index.</p>
 part matches the WebCIM (Cartographic Information Model) as used by the other
 Esri REST services.</p>
 
-<h3><a name="_7_3">3dNodeIndexDocument.js</a></h3>
+<h3><a name="_7_3">3dNodeIndexDocument</a></h3>
 
 <p>The 3dNodeIndexDocument JSON file describes a single index node within a store, with links to other
 nodes (children, sibling, and parent), links to feature data, geometry data and
@@ -1145,7 +1147,7 @@ min/avg/max values, typically only one or two are used.</p>
 
 <p><em>Table 13: Attributes of the Class <strong>LodSelection</strong> within the NodeIndexDocument</em></p>
 
-<h3><a name="_7_4">FeatureData.js</a></h3>
+<h3><a name="_7_4">FeatureData</a></h3>
 
 <p>The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors
 to geometry attributes and other references to styling or materials.</p>
@@ -1446,7 +1448,7 @@ which vertex positions make up a face.</p>
 
 <p><em>Table 22: Attributes of the Class <strong>GeometryAttribute</strong> within the FeatureData document</em></p>
 
-<h3><a name="_7_5">SharedResources.js</a></h3>
+<h3><a name="_7_5">SharedResources</a></h3>
 
 <p>Shared resources are models or textures that can be shared among features within the
 same store. They are stored as a JSON file entirely, comparable to the encoding
@@ -1457,8 +1459,8 @@ current node. This approach ensures an optimal distribution of shared resources
 across nodes, while maintaining the node-based updating process.</p>
 
 <div>
-<img src="images/figure-10.png" title="Logical schema of the SharedData document" alt="Logical schema of the SharedData document">
-<p><em>Figure 10: Logical schema of the SharedData document</em></p>
+<img src="images/figure-10.png" title="Logical schema of the SharedResources document" alt="Logical schema of the SharedResources document">
+<p><em>Figure 10: Logical schema of the SharedResources document</em></p>
 </div>
 
 <h4>Class SharedResource</h4>
@@ -1470,7 +1472,7 @@ symbols that need to be instanced.</p>
 
 <p>Materials describe how a Feature or a set of Features is to be rendered. This includes
 which shading and which colors to use. The following table provides the set of
-attributes and params for the <code>"type": "Standard"</code> material.</p>
+attributes and params for the <code>"type": "standard"</code> material.</p>
 
 <table>
 	<tr>
@@ -1486,7 +1488,7 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 	<tr>
 		<td>type</td>
 		<td>String</td>
-		<td>Indicates the material type, chosen from the supported values <code>{Standard, Water, Leafcard, Billboard}</code></td>
+		<td>Indicates the material type, chosen from the supported values <code>{standard, water, billboard, leafcard, reference}</code></td>
 	</tr>
 	<tr>
 		<td>params.vertexRegions</td>
@@ -1499,7 +1501,7 @@ attributes and params for the <code>"type": "Standard"</code> material.</p>
 		<td>Indicates whether this Material use Vertex Colors. Defaults to <code>false</code>.</td>
 	</tr>
 	<tr>
-		<td>params.vertexColorTransparency</td>
+		<td>params.useVertexColorAlpha</td>
 		<td>Boolean[0..1]</td>
 		<td>Indicates whether Vertex Colors also contain a transparency channel. Defaults to <code>false</code>.</td>
 	</tr>
@@ -1589,9 +1591,9 @@ geometries.</p>
 		<td>The name of the UV set to be used as texture coordinates.</td>
 	</tr>
 	<tr>
-		<td>Channels</td>
+		<td>channels</td>
 		<td>String</td>
-		<td>indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...</td>
+		<td>indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement, ...</td>
 	</tr>
 </table>
 
@@ -1835,6 +1837,9 @@ resource type.</p>
 <p>This scheme is not recommended for very large stores, as there is a limit of 64K folders in several contexts such as FAT32 file systems, 
 which are still used on mobile media.</p>
 
+<p><strong>Note: The example files that are part of this spec in the profiles contain comments, 
+which are not allowed in JSON documents, and therefore use the *.js file extension.</strong></p>
+
 <h3><a name="_8_2">CouchDB, IndexedDB and other Key-Value Stores</a></h3>
 
 <p>The Scene Server stores i3s resources in a document-oriented database. After
@@ -1891,7 +1896,7 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	</ol></li>
 </ol>
 
-<h4>Metadata.json</h4>
+<h4>Metadata</h4>
 
 <p>The following entries are permitted in the Metadata.json file that is part of every i3p archive:</p>
 
@@ -1924,7 +1929,7 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	<tr>
 		<td>nodeCount</td>
 		<td>True</td>
-		<td> </td>
+		<td>Total number of nodes stored in this i3p.</td>
 	</tr>
 </table>
 

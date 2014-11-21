@@ -470,7 +470,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	}, 
 	{
 		"qname" : "features.*",
 		"required" : true,
@@ -507,7 +507,7 @@
 	},
 	{
 		"qname" : "features.*.lodChildFeatures",
-		"required" : true,
+		"required" : false,
 		"containerType": "Array",
 		"cardinality" : [
 			0,
@@ -567,7 +567,11 @@
 			"to" : "[../../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
-		} ]
+		}, {
+			"to" : "../lodChildFeatures",
+			"type" : "NOT",
+			"value" : null
+		}]
 	}, {
 		"qname" : "features.*.rootFeature",
 		"required" : true,
@@ -582,6 +586,10 @@
 			"to" : "[../../]/store/lodType",
 			"type" : "IS",
 			"value" : "FeatureTree"
+		}, {
+			"to" : "../lodChildFeatures",
+			"type" : "NOT",
+			"value" : null
 		}, {
 			"to" : "/level",
 			"type" : "NOT",

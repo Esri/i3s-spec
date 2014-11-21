@@ -1,5 +1,5 @@
 ﻿{
-	"targetProfile": "features-lines",
+	"targetProfile": "features-polygons",
 	"resource": "3dNodeIndexDocument",
 	"version": "1.3",
 	"rules":[

@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.2 Shared Data Resource with Material Definitions, Texture Definitions and an embedded symbol geometry.
+	Example i3s 1.3 Shared Data Resource with Material Definitions, Texture Definitions and an embedded symbol geometry for the features-meshes profile.
 */
 {
 	"materialDefinitions": { // a Map of all Material Definitions needed by features of this node.

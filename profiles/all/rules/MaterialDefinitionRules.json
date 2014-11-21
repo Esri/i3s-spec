@@ -62,7 +62,12 @@
    "containerType": "None",
    "valueType": "boolean",
    "valueSchema": "None",
-   "valueDependencies": [ {
+   "valueDependencies": [ 
+   {
+    "to": "../vertexColors",
+    "type": "NOT",
+    "value": null
+   },{
     "to": "../vertexColors",
     "type": "IS",
     "value": true

@@ -77,8 +77,6 @@
 		{
 			"id": 309432971018, // long id, unique across the store.
 			"mbs": [122.41, 39.83452, 445.2, 24.5] // x,y,z,r of the mbs of this feature. x,y are expressed as geographical coordinates, z and r are in meters. Z is relative to the wgs84 geoid.
-			"lodChildFeatures": [], // List of LOD children IDs; needed for non-leaf features that participate in a LOD tree or in a heavy-feature-split-tree.
-			"lodChildNodes": [], // list corresponding to the LoD children IDs and showing in which Node child which Feature child resides.
 		},
 		{
 			"id": 309432971019,

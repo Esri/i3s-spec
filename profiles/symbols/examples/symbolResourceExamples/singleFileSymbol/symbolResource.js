@@ -69,11 +69,11 @@
   },
   "textureDefinitions": { // a Map of texture map definitions (same as sharedResource.json)
     "Tex01": {
-      "encoding": "data:image/png", // the encoding/content type that is used by all images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png.
+      "encoding": ["data:image/png"], // the encoding/content type that is used by all images in this map. If alpha maps are declared in the channels attribute, encoding has to be image/png.
       "wrap": ["none", "none"], // texture wrapping/tiling mode; options: {*none*, repeat, mirror}
       "atlas": false, // indicates whether this map (set of images) are texture atlases or not. options: {*false*, true}
       "uvSet": "uv0", // indicates the set of UV coordinates to use for this map.
-      "channels": "rgba", // indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...
+      "channels": ["rgba"], // indicates which channels are stored in which channel of this map. Possible values: r=red, g=green, b=blue, a=alpha, r=bump, d=displacement, ...
       "images": [ // an array of images that represent the same content in different resolutions.
         // if all symbol data resides in a single file, there should not be more than one image per texture.
         {

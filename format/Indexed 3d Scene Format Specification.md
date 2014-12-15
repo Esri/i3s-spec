@@ -1637,7 +1637,7 @@ geometries.</p>
 	</tr>
 	<tr>
 		<td>channels</td>
-		<td>String</td>
+		<td>String[1..*]</td>
 		<td>indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement, ...</td>
 	</tr>
 </table>
@@ -1673,18 +1673,18 @@ For details on texture organisation, please refer to the section on <a href="#_7
 	</tr>
 	<tr>
 		<td>href</td>
-		<td>URL</td>
-		<td>The href to the image. The resource ID is identical to the id.</td>
+		<td>URL[1..*]</td>
+		<td>The href to the image(s), one per encoding, in the same order as the encodings.</td>
 	</tr>
 	<tr>
 		<td>byteOffset</td>
-		<td>Integer[0..1]</td>
-		<td>The byte offset of this image in the block in which this texture image resides.</td>
+		<td>Integer[0..*]</td>
+		<td>The byte offset of this image's encodings (one per encoding, in the same order as the encodings.) in the block in which this texture image resides.</td>
 	</tr>
 	<tr>
 		<td>length</td>
-		<td>Integer[0..1]</td>
-		<td>The length in bytes of this image.</td>
+		<td>Integer[0..*]</td>
+		<td>The length in bytes of this image's encodings (one per encoding, in the same order as the encodings).</td>
 	</tr>
 </table>
 

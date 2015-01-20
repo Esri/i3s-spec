@@ -237,7 +237,7 @@
 		"containerType": "Array",
 		"cardinality" : [
 			0,
-			1
+			-1
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"

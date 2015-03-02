@@ -4,153 +4,83 @@ This is the description of the REST API of the Scene Service.
 
 ## Access to REST Resources
 
-There is a set of REST resources also described in the i3s format specification that are served out via differend endpoints:
+There is a set of REST resources also defined in the i3s format specification that are served out via differend endpoints:
+
+Mandatory:
 
 - 3dSceneServiceInfo (JSON)
 - 3dSceneLayerInfo (JSON)
 - 3dNodeIndexDocument (JSON)
 - FeatureData (JSON)
 - SharedResources (JSON)
-- Textures (Binary)
-- Geometries (Binary)
+- TextureData (Binary)
+- GeometryData (Binary) 
 
-This is the REST API for retrieval of these resoruces:
+Optional:
 
-<table>
-	<tr>
-		<td><strong>Resource</strong></td>
-		<td><strong>URL</strong></td>
-		<td><strong>Returns</strong></td>
-	</tr>
-	<tr>
-		<td rowspan="2" >ArcGIS Server 
-		Base URL</td>
-		<td>http://&lt;hostname&gt;/arcgis/rest/services/</td>
-		<td>List of services</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/">http://3dcities.esri.com/arcgis/rest/services/</a> </td>
-	</tr>
-	<tr>
-		<td rowspan="2" >SceneServer</td>
-		<td>&lt;ags-base-url&gt;/&lt;server-name&gt;/SceneServer</td>
-		<td>Server info and list of available services</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer</a> </td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Service Symbol Resources</td>
-		<td>&lt;<strong>scene-server-url</strong>&gt;/symbols</td>
-		<td>Symbol Resources shared across layers</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols</a> </td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Layer</td>
-		<td>&lt;<strong>scene-server-url</strong>&gt;/layers/&lt;layer-name&gt;</td>
-		<td>Info about single layer (see 3dSceneLayer.js)</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings</a> </td>
-	</tr>
-		<tr>
-		<td rowspan="2" >Layer Symbol Resources</td>
-		<td>&lt;<strong>layer-url</strong>&gt;/symbols</td>
-		<td>Symbol Resources belonging to a single layer</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols</a> </td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Node</td>
-		<td>&lt;<strong>layer-url</strong> &gt;/nodes/&lt;node-id&gt;</td>
-		<td>Node file (json)</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings%20/nodes/51">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings /nodes/51</a> </td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Shared Resources</td>
-		<td>&lt;<strong>node-url</strong>&gt;/shared/</td>
-		<td>Shared resource data bundle for a node (symbology and materials)</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/shared">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings /nodes/51/shared</a></td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Features</td>
-		<td>&lt;<strong>node-url</strong>&gt;/features/&lt;feature-data-bundle-id&gt;</td>
-		<td>Feature data bundle.</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/features/3">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings /nodes/51/features/3</a></td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Geometries</td>
-		<td>&lt;<strong>node-url</strong>&gt;/geometries/&lt;geometry-data-bundle-id&gt;</td>
-		<td>Geometry data bundle.</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/caches/Buildings/nodes/51/geometries/3">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings /nodes/51/geometries/3</a></td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Textures</td>
-		<td>&lt;<strong>node-url</strong>&gt;/textures/&lt;texture-bundle-id&gt;</td>
-		<td>Texture bundle</td>
-	</tr>
-	<tr>
-		<td colspan="2" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings%20/nodes/51">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings /nodes/51</a>/textures/3</td>
-	</tr>
-</table>
+- Symbols (JSON with embedded Binary)
 
-## Access to REST Operations
+This is the REST API for retrieval of these resources:
 
-Furthermore, the specification includes a set of REST operations that provide capabilities such as querying:
+### Common Services Information
 
-- Search - find features matching a freetext query string
-- Query - filter features matching a SQL-style query
-- FindNode - find node that best matches a given spatial extent
+- *URL Pattern*: ```http://<hostname>/arcgis/rest/services/```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/">http://3dcities.esri.com/arcgis/rest/services/</a>
+- *Returns*: A List of all services running on the server instance.
 
-<table>
-	<tr>
-		<td><strong>Operation Name</strong></td>
-		<td><strong>Parent Resource</strong></td>
-		<td><strong>Parameters</strong></td>
-		<td><strong>Returns</strong></td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Search</td>
-		<td>Scene Server</td>
-		<td>Text query string</td>
-		<td>Search results</td>
-	</tr>
-	<tr>
-		<td colspan="3" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer</a>/Search?queryString=”technopark”</td>
-	</tr>
-	<tr>
-		<td rowspan="2" >FindNode</td>
-		<td>Cache</td>
-		<td>Extent</td>
-		<td>The node id</td>
-	</tr>
-	<tr>
-		<td colspan="3" ><a href="%20http:/3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/FindNode?sphere="> http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/FindNode?sphere=”{x:52.1,y:34.2,z:0,r:50}</a>”
-		JSON fragment needs to be URL-encoded:<br />
-		http://&lt;server-url&gt;/layers/PublicBuildings/FindNode?sphere=”%7Bx%3A52.1%2Cy%3A34.2%2Cz%3A0%2Cr%3A50%7D” </td>
-	</tr>
-	<tr>
-		<td rowspan="2" >Query</td>
-		<td>Layer</td>
-		<td>Existing map server query parameters</td>
-		<td>Query results</td>
-	</tr>
-	<tr>
-		<td colspan="3" ><a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/query?whereClause=">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/PublicBuildings/query?whereClause=”treeHeight</a> &gt; 10”</td>
-	</tr>
-</table>
+### 3dSceneServiceInfo
 
+- *URL Pattern*: ```<ags-base-url>/<server-name>/SceneServer```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer</a>
+- *Returns*: Scene Service metadata and list of available layers.
+ 
+### Symbols
 
+- *URL Pattern*: ```<scene-server-url>/symbols```
+- *Method*: ```GET```
+- *Example Service*: <a href="">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/symbols</a>
+- *Returns*: Single- or multifile resources for Symbols (using the symbols i3s profile) shared across layers.
 
+### 3dSceneLayerInfo
 
+- *URL Pattern*: ```<scene-server-url>/layers/<layer-id>```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0</a>
+- *Returns*: Detailed information about single layer, including symbology, field schema, and profile/store metadata, with a link to the root 3dNodeIndexDocument
+
+### 3dNodeIndexDocument
+
+- *URL Pattern*: ```<layer-url >/nodes/<node-id>```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1</a>
+- *Returns*: A file describing a single node in the spatial index, with links to all associated resources such as FeatureData, textures, Geometry and SharedResources
+ 
+### SharedResources
+
+- *URL Pattern*: ```<node-url>/shared/```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/features/0">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/features/0</a>
+- *Returns*: A feature data resource (bundle)
+
+### FeatureData
+
+- *URL Pattern*: ```<node-url>/features/<feature-data-bundle-id>```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/features/0">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/features/0</a>
+- *Returns*: A feature data resource (bundle)
+ 
+### GeometryData
+
+- *URL Pattern*: ```<node-url>/geometries/<geometry-data-bundle-id>```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/geometries/0">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/geometries/0</a>
+- *Returns*: A geometry data resource (bundle)
+ 
+### TextureData
+
+- *URL Pattern*: ```<node-url>/textures/<texture-data-bundle-id>```
+- *Method*: ```GET```
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/textures/0_0">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/textures/0_0</a>
+- *Returns*: A texture data resource (bundle). Refer to the i3s format specification for details on how different encodings and resolutions are encoded.

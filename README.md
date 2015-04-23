@@ -11,7 +11,7 @@ This repository hosts the specification for the ArcGIS Scene Service and its del
 -   Validator rule files for each profile
 
 The structure of this specification is as follows:
-- Format: Full logical format specification, including  physical format specification for packaged i3s caches (*.i3p)
+- Format: Full logical format specification, including  physical format specification for Scene Packages (*.spk)
 - Profiles: Subsets the full format specification for different data structures: 
     - Features (Meshes, Points, Lines, Polygons)
 	- Meshpyramids 
@@ -21,4 +21,6 @@ The structure of this specification is as follows:
 
 We are also building a [Validation Toolkit](https://devtopia.esri.com/Zurich-R-D-Center/i3s-validator) to support developers.
 
-There is also a set of informative and explorative articles on implementation details and usage strategies for the format available in the [i3s wiki](https://devtopia.esri.com/Zurich-R-D-Center/i3s-spec/wiki/_pages) that includes client traversal patterns, suggestions on optimizations and approaches to steps of the cooking process, such as texture atlas generation.
+This specification is licensed unter the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/). You can implement it without restrictions and can extend or modify it using the inbuilt extension and profilign mechanisms. However, you cannot create derivate works and distribute these. 
+
+You are very much invited to fork this repository though and to send Pull Requests if you have ideas for improvements or have found bugs in this documentation. 

@@ -21,9 +21,8 @@ sections provide a detailed implementation-level view.</p>
 	<li><a href="#_3">The Index Structure</a></li>
 	<li><a href="#_4">Level of Detail Concept</a>
 	<ol>
-		<li><a href="#_4_1">Integrated Meshes</a></li>
-		<li><a href="#_4_2">Feature LoD Trees</a></li>
-		<li><a href="#_4_3">Mesh Pyramids</a></li>
+		<li><a href="#_4_1">LoD Switching Models</a></li>
+		<li><a href="#_4_2">LoD Generation Types</a></li>
 		<li><a href="#_4_4">LoD Selection Metrics</a></li>
 	</ol></li>
 	<li><a href="#_5">Coordinate Reference Systems</a></li>
@@ -307,7 +306,7 @@ e.g. by breaking down a heavy and large feature, or they are predefined by the d
 <h3><a name="_4_2">LoD Generation Types</a></h3>
 
 <p>If the input data doesn't come with authored Levels of Detail, different LoD 
-Generation Types can be employed. As an example, the <code>MeshPyramid</mode> mode 
+Generation Types can be employed. As an example, the <code>MeshPyramid</code> type 
 creates a full representation pyramid for all features and is built from aggregating, 
 fusing and reducing individual features meshes. 
 Different types are applicable to different 3D layer types:</p> 
@@ -1885,11 +1884,6 @@ are used to create views of the ArrayBuffer. For example, to access the buffer
 as an array of 32-bit signed integers, an Int32Array would be created that
 refers to the ArrayBuffer.</p>
 
-<div>
-<img src="images/figure-10b.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
-<p><em>Figure 10b: Geometry Buffer Layout with headers</em></p>
-</div>
-
 <p>Multiple typed array views can refer to the
 same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
@@ -1920,6 +1914,11 @@ a signed 16-bit integer. Any modification to one view is immediately visible in
 the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
 (where -1 is represented as 0xffff)."</p>
 </blockquote>
+
+<div>
+<img src="images/figure-10b.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
+<p><em>Figure 10b: Geometry Buffer Layout with headers</em></p>
+</div>
 
 <p><strong>Note: The expected triangle/face winding order in all geometry resources is
 counterclockwise (CCW).</strong></p>

@@ -1,7 +1,7 @@
-<h2>Esri Indexed 3d Scene (i3s/i3p) <br>
+<h2>Esri Indexed 3d Scene (*.i3s) and Scene Package (*.spk) <br>
 Format Specification</h2>
 
-<p>Version 1.3, rev. 62, 2014-10-06</p>
+<p>Version 1.4, 2015-04-23</p>
 <p style="font-size:70%"><em>Editor:</em> Thorsten Reitz, Esri R&amp;D Center Zurich <br>
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Chengliang Shan, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt</p>
@@ -42,13 +42,13 @@ sections provide a detailed implementation-level view.</p>
 	<ol>
 		<li><a href="#_8_1">File System</a></li>
 		<li><a href="#_8_2">CouchDB and other KV Stores</a></li>
-		<li><a href="#_8_3">Packaged Indexed 3d Scenes (i3p files)</a></li>
+		<li><a href="#_8_3">Scene Packages (spk files)</a></li>
 	</ol></li>
 </ol>
 
 <h2><a name="_1">Requirements</a></h2>
 
-<p>The Esri Indexed 3d Scene (i3s) format and the corresponding package format (i3p) are
+<p>The Esri Indexed 3d Scene (i3s) format and the corresponding Scene Package format (spk) are
 specified to fulfill this set of requirements:</p>
 
 <ol>
@@ -72,25 +72,25 @@ version of i3s, the two formats share the specification of Geometry TypedArrays.
 <h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</a></h2>
 
 <p>The basic unit of an Indexed 3D Scene is a Store, which contains individual resources (files) for a set of layers, index,
-geometries, textures and more. Within such a store, the i3s format supports a
-wide range of types of 2D and 3D content needed for 3D GIS scenes via <strong>profiling</strong> of this format. All content types
+geometries, textures and more. Within such a store, the i3s format supports a wide range of types of 2D and 3D content 
+needed for 3D GIS scenes via <strong>profiling</strong> of this format. All layer types
 supported are listed in the following Table.</p>
 
 <table>
  <tr>
-  <td><strong>Name <em>(example)</em></strong></td>
+  <td><strong>Layer Type <em>(example)</em></strong></td>
   <td><strong>Profile</strong></td>
   <td><strong>Fields</strong></td>
   <td><strong>Symbology</strong></td>
  </tr>
  <tr>
-  <td>Integrated Mesh <em>(Acute3D)</em></td>
+  <td>3D Objects <em>(Multipatch)</em></td>
   <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>Yes</td>
-  <td>No</td>
+  <td>Yes</td>
  </tr>
  <tr>
-  <td>Individual Feature Mesh <em>(Multipatch)</em></td>
+  <td>3D Multirepresentation Objects <em>(CityGML)</em></td>
   <td><a href="../profiles/features-meshes/features-meshes.md">features-meshes</a></td>
   <td>Yes</td>
   <td>Yes</td>
@@ -107,14 +107,14 @@ supported are listed in the following Table.</p>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
-  <tr>
+ <tr>
   <td>Polygon Features <em>(GIS Data)</em></td>
   <td><a href="../profiles/features-polygons/features-polygons.md">features-polygons</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
-  <td>Pointclouds <em>(LAS)</em></td>
+  <td>Pointclouds <em>(LiDAR)</em></td>
   <td><a href="../profiles/pointclouds/pointclouds.md">pointclouds</a></td>
   <td>Vertex Attributes (VA)</td>
   <td>On VAs only</td>
@@ -127,9 +127,9 @@ supported are listed in the following Table.</p>
  </tr>
  </table>
 
-<p><em>Table 1: i3s Content Types supported in i3s</em></p>
+<p><em>Table 1: 3D Layer Types supported in i3s</em></p>
 
-<p>A single i3s store can contain data from multiple layers, but only one content type (one profile), as the
+<p>A single i3s store can contain data from multiple layers, but only one layer type (to be precise, implemented in one profile), as the
 different content types typically require different indexing and Level of
 Details methods to perform best. In many cases their schema also differs
 substantially. However, a single store can contain multiple layers that share
@@ -154,7 +154,7 @@ the spatial extent of each node will be.</p>
 <p>All Nodes have an ID that is unique throughout a store. The ID format used is that of a treekey,
 i.e. the key directly indicates the position of the node in the tree. Treekeys
 allow sorting all resources on a single dimension and usually maintain 2D
-spatial proximity in the 1D ordering. Treekeys are strings that in which levels are separated by dashes: 
+spatial proximity in the 1D ordering. Treekeys are strings in which levels are separated by dashes: 
 "3-0-34-2-2" has 5 numeric elements, hence the node is on level 5 (root is level 1) and the node "3-0-34-2" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
@@ -193,37 +193,57 @@ authored representations to be used for different viewing ranges. </p>
   </tr>
 </table>
 
+<p>Different Levels of Detail are bound to the different levels of the index tree. The leaf nodes of that contain have the 
+original representations with the highest detail. The closer nodes are to the root, the lower the level of detail will be. 
+For each level up, the amount of data is typically reduced by a factor between 2 and 10 by employing methods 
+such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also 
+have a balanced weight.</p>
+
 <p>In i3s, Level of Detail and Aggregation of Geometries into single bigger meshes for
-optimal rendering performance are orthogonal concepts. This enables Level of
-Detail approaches for individual features in a node based via the concept of a
-feature tree as well as aggregated LoD geometries for all features in a node
-via the concept of a mesh pyramid. An example of the individual feature
-approach is a single feature where in an inner Node the CityGML LoD1
-representation is used, but has three LoD2 children (Ground Plate, Walls, Roof)
-in the next inner Node. In the leaf node, the LoD3 representation is stored
-with additional children representing Exterior Installations and other details.
-In both cases, geometries are pre-aggregated into Geometry Array Buffers.</p>
+optimal rendering performance are orthogonal concepts. In all cases, geometries are 
+pre-aggregated into Geometry Array Buffers.</p>
 
-<h3><a name="_4_1">Integrated Meshes</a></h3>
+<div>
+<img src="images/figure-01b.png" title="Feature-based LoD switching" alt="Feature-based LoD switching">
+<p><em>Figure 1b: Different LoD representations at different levels of the index tree, with information for feature-based LoD switching</em></p>
+</div>
 
-<p>An Integrated Mesh typically is a single, fused geometry that represents multiple real-world features, such as a full block of buildings. 
-Meshes are common and can be generated automatically from LiDAR, oblique imagery and stereophotogrammetry by many providers. 
-They can also be built by aggregating, fusing and reducing individual features meshes.</p>
+<h3><a name="_4_1">LoD Switching Models</a></h3>
 
-<p>In cases where such "integrated meshes" are encoded in i3s, it is expected to have a single feature per node, 
-with LoD children in the direct descendants, filling up the entire index with representations. </p>
+<p>Depending on the properties of a 3D layer, a good user experience will necessitate 
+different ways of switching out content from one LoD with content from another LoD. 
+i3s currently supports the definition of two LoD switching models.</p>
 
-<p>From root to leaf nodes, each node carries a single mesh representing one or multiple features, for a total count of six nodes and six meshes. 
-This is typically the case with <em>integrated meshes</em>. Each of the features that is not a in a root node has a set of lodChildren, 
-with the same set size as the number of node children.</p>
+<h4>Node Switching</h4>
 
-<p>The links between all meshes participating in a LoD tree are either created during the store creation process, e.g. by breaking down a heavy and large feature, or they are predefined by the data provider, as it is the case with integrated meshes (Acute3D) data.
+<p>For homogeneous data sets such as dense meshes created from oblique imagery or pointclouds, 
+i3s includes a <strong>node-switching</strong> LoD mechanism. Node-switching means that the geometry of an entire 
+Node is loaded at once and replaces all geometry representing the same set of features. 
+<strong>node-switching</strong> is typically used in conjunction with LoD generation methods (see <a href="#_4_2"><code>lodMode</code></a>) 
+that create Full Representation Pyramids, similiar to a pyramid of images with different resolutions is 
+used for 2D mapping. From root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
 
-<h3><a name="_4_2">Feature LoD trees</a></h3>
+<div>
+<img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid">
+<p><em>Figure 2: Example Nodes + Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
+</div>
 
-<p>In the feature-tree approach each feature in a node has explicit higher-detail or lower-detail representations. This approach maintains explicit LoD representations between different features. When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates -> Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained. This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a building actually consists of one set of individual features per LoD.
+<p>The main advantage of this mecahnism is that clients require less information for performing 
+the switch.</p>
 
-In addition, the feature-tree approach enables clients to switch out representations by feature instead of by node, as in the mesh-pyramid case. A Feature in a Node has the following properties when using feature tree LoDs:</p>
+<h4>Feature Switching</h4>
+
+<p>Many GIS data sets are made of distinct, single objects, called features. The <code>feature-switching</code> 
+LoD switching mechanism is optimized for such data. Furthermore it can be used to transition brtween multiple 
+authored representations of features.</p>
+
+<p>In the <code>feature-switching</code> approach each feature in a node has explicit higher-detail or 
+lower-detail representations. This approach maintains explicit LoD representations between different features. 
+When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates -> 
+Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained. 
+This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a 
+building actually consists of one set of individual features per LoD. A Feature in a Node has 
+the following properties when using <code>feature-switching</code>:</p>
 
 <ul>
 	<li>A Feature can participate in a so-called LoD tree.</li>
@@ -235,9 +255,12 @@ In addition, the feature-tree approach enables clients to switch out representat
 	<li>Each Feature that participates in a LoD tree and has a rank > 1 has a <code>rootFeature</code> reference. This reference enables the client to detect which features represent a single object, e.g. for picking purposes.</li>
 </ul>
 
+<p>The links between all meshes participating in a LoD tree are either created during the store creation process, 
+e.g. by breaking down a heavy and large feature, or they are predefined by the data provider.</p>
+
 <div>
 <img src="images/figure-02.png" title="Example Nodes + Feature LoD Index Tree" alt="Example Nodes + Feature LoD Index Tree">
-<p><em>Figure 2: Example Nodes + Feature LoD Index Tree. Orange boxes represent features, orange dotted lines indicate lodChildFeatures relationships.</em></p>
+<p><em>Figure 3: Example Nodes + Feature LoD Index Tree. Orange boxes represent features, orange dotted lines indicate lodChildFeatures relationships.</em></p>
 </div>
 
 <p>In the feature tree example above, the features 1 to 3 need to have the following properties set:</p>
@@ -281,24 +304,62 @@ In addition, the feature-tree approach enables clients to switch out representat
 	</tr>
 </table>
 
-<h3><a name="_4_3">Mesh Pyramids</a></h3>
+<h3><a name="_4_2">LoD Generation Types</a></h3>
 
-<p>Mesh Pyramids are a compact way of representing multiple levels of detail. A full representation pyramid for all features is built from the finest representation by aggregating, fusing and reducing individual features meshes. This full tree approach avoids the need to have LoD trees for individual features. It is therefore suitable in cases where the input data doesn't have predefined LoDs.</p> 
+<p>If the input data doesn't come with authored Levels of Detail, different LoD 
+Generation Types can be employed. As an example, the <code>MeshPyramid</mode> mode 
+creates a full representation pyramid for all features and is built from aggregating, 
+fusing and reducing individual features meshes. 
+Different types are applicable to different 3D layer types:</p> 
 
-<div>
-<img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid">
-<p><em>Figure 3: Example Nodes + Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
-</div>
-
-<p>When using a Mesh Pyramid based LoD approach, each interior node in the i3s tree has a set of features that represent the reduced LOD representation of all of the features included in that node's child nodes. With mesh pyramids there is no concept of an LoD tree for an individual feature. Applications accessing the i3s tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes, based on the LoD Selection Metrics. The correspondence between a reduced LOD feature in an interior node and the same feature in descendent nodes is based purely on the <code>id</code> of the feature.</p>
+<table>
+	<tr>
+		<td></td>
+		<td><strong>3D Object</strong></td>
+		<td><strong>Points</strong></td>
+		<td><strong>Lines</strong></td>
+		<td><strong>Polygons</strong></td>
+		<td><strong>Pointclouds</strong></td>
+	</tr>
+	<tr>
+		<td><strong>MeshPyramid</strong></td>
+		<td>yes</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><strong>Thinning</strong></td>
+		<td>yes</td>
+		<td>yes</td>
+		<td>yes</td>
+		<td>yes</td>
+		<td>yes</td>
+	</tr>
+	<tr>
+		<td><strong>Clustering</strong></td>
+		<td></td>
+		<td>yes</td>
+		<td>yes</td>
+		<td></td>
+		<td>yes</td>
+	</tr>
+	<tr>
+		<td><strong>Generalization</strong></td>
+		<td>yes</td>
+		<td></td>
+		<td>yes</td>
+		<td>yes</td>
+		<td></td>
+	</tr>
+</table>
 
 <h3><a name="_4_4">LoD Selection Metrics</a></h3>
 
 <p>A client needs information to determine whether a node's contents are "good enough" to
 render under constraints such as resolution, screen size, bandwidth and
-available memory and target minimum quality goals. i3s originally used a single, unit-less "precision"
-value that i3s generators add to each node. Clients use a heuristic to
-determine what the resulting maximum on-screen error would be. However, it was
+available memory and target minimum quality goals. It was
 found that clients can benefit from having more information on the errors
 introduced in LoD Generation. Thus, multiple metrics can be included, as in the
 following example:</p>
@@ -455,7 +516,7 @@ sets offered by an instance of a Scene Service.</p>
 <p><em>Figure 6: Logical schema of the 3dSceneServiceInfo document</em></p>
 </div>
 
-<p>This file is not generated by the authoring tools and is not part of a i3p package file.
+<p>This file is not generated by the authoring tools and is not part of a spk package file.
 It is generated solely by the Scene Server for each service instance. Its
 description is contained here only for reference.</p>
 
@@ -493,52 +554,12 @@ describes a running SceneService instance. </p>
 	</tr>
 	<tr>
 		<td>layers</td>
-		<td>LayerSummary[1..*]</td>
-		<td>The summary Layer information - an extract of the full 3dSceneLayer information.</td>
+		<td>3dSceneLayerInfo[1..*]</td>
+		<td>The full <a href="#_7_2">3dSceneLayerInfo</a> information.</td>
 	</tr>
 </table>
 
 <p><em>Table 3: Attributes of the Class <strong>3dSceneServiceInfo</strong> within the 3dSceneServiceInfo document</em></p>
-
-<h4>Class LayerSummary</h4>
-
-<p>In the 3dSceneServiceInfo document, the LayerSummary object provides a reference so that
-clients know which Layers are served by a given service. </p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>Integer</td>
-		<td>The ID of this layer, unique within a 3dSceneService.</td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>String</td>
-		<td>The version of the service protocol/REST endpoint.</td>
-	</tr>
-	<tr>
-		<td>alias</td>
-		<td>String[0..1]</td>
-		<td>An optional display alias for the layer.</td>
-	</tr>
-	<tr>
-		<td>lodType </td>
-		<td>String[0..1]</td>
-		<td>The type of level of detail information present; selected from <code>{FeatureTree, MeshPyramid}</code>. The default is <code>FeatureTree</code>.</td>
-	</tr>
-	<tr>
-		<td>href</td>
-		<td>URL</td>
-		<td>The relative URL to the Layer resource giving full information on the Layer's schema and drawing info</td>
-	</tr>
-</table>
-
-<p><em>Table 4: Attributes of the Class LayerSummary within the 3dSceneServiceInfo document</em></p>
 
 <h3><a name="_7_2">3dSceneLayerInfo</a></h3>
 
@@ -568,6 +589,21 @@ Layer.</p>
 		<td>id</td>
 		<td>Integer</td>
 		<td>Unique numeric ID of the Layer.</td>
+	</tr>
+	<tr>
+		<td>href</td>
+		<td>URL</td>
+		<td>The relative URL to the 3dSceneLayerResource. Only present as part of the SceneServiceInfo resource.</td>
+	</tr>
+	<tr>
+		<td>layerType</td>
+		<td>String</td>
+		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, Pointcloud}</td>
+	</tr>
+	<tr>
+		<td>zFactor</td>
+		<td>Float</td>
+		<td>[deprecated] Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.</td>
 	</tr>
 	<tr>
 		<td>version</td>
@@ -601,8 +637,7 @@ Layer.</p>
 	</tr>
 </table>
 
-
-<p><em>Table 5: Attributes of the Class <strong>Node</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 5: Attributes of the Class <strong>3dSceneLayerInfo</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class Store</h4>
 
@@ -637,12 +672,12 @@ applied.</p>
 		<td>resourcePattern</td>
 		<td>String [1..5]</td>
 		<td>Indicates the resources needed for rendering and the required order in which the client should load them.
-		One of <code>{3dNodeIndexDocument, SharedResource, FeatureData, Geometry, Texture}</code>.</td>
+		Each value is one of <code>{3dNodeIndexDocument, SharedResource, FeatureData, Geometry, Texture}</code>.</td>
 	</tr>
 	<tr>
 		<td>rootNode</td>
 		<td>URL</td>
-		<td>relative URL to root node resource.</td>
+		<td>Relative URL to root node resource.</td>
 	</tr>
 	<tr>
 		<td>version</td>
@@ -668,19 +703,19 @@ applied.</p>
 		<td>nidEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Node Index Documents; format:<br> 
-		<code>application/vnd.esri.i3s.json+gzip; version=1.3</code></td>
+		<code>application/vnd.esri.i3s.json+gzip; version=1.4</code></td>
 	</tr>
 	<tr>
 		<td>featureEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Feature Data Resources; format:<br>
-		<code>application/vnd.esri.i3s.json+gzip; version=1.3</code></td>
+		<code>application/vnd.esri.i3s.json+gzip; version=1.4</code></td>
 	</tr>
 	<tr>
 		<td>geometryEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Geometry Resources; format:<br>
-		<code>application/octet-stream; version=1.3</code></td>
+		<code>application/octet-stream; version=1.4</code></td>
 	</tr>
 	<tr>
 		<td>textureEncoding</td>
@@ -689,8 +724,13 @@ applied.</p>
 	</tr>
 	<tr>
 		<td>lodType</td>
-		<td>String[0..1]</td>
-		<td>The type of level of detail information present; selected from <code>{FeatureTree, MeshPyramid}</code>. The default is <code>FeatureTree</code>.</td>
+		<td>String</td>
+		<td>optional field to indicate which LoD Generation Scheme is used in this store. One of <code>{*MeshPyramid*, FeatureTree, Thinning, Clustering, Generalizing}</code>.</td>
+	</tr>
+	<tr>
+		<td>lodModel</td>
+		<td>String</td>
+		<td>optional field to indicate which LoD Switching mode clients have to use. One of <code>{*node-switching*, feature-switching, none}</code>.</td>
 	</tr>
 	<tr>
 		<td>knownVertexOrder</td>
@@ -699,8 +739,8 @@ applied.</p>
 	</tr>
 	<tr>
 		<td>indexingScheme</td>
-		<td>String</td>
-		<td>Indexing Scheme used; selected from <code>{esriRTree, QuadTree, AGOLTilingScheme}</code></td>
+		<td>IndexScheme</td>
+		<td>Information on the Indexing Scheme (R-Tree, Octree, ...) used.</td>
 	</tr>
 	<tr>
 		<td>featureOrdering</td>
@@ -738,19 +778,49 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 		<td><strong>Description</strong></td>
 	</tr>
 	<tr>
+		<td>geometryType</td>
+		<td>String</td>
+		<td>Low-level default geometry type, one of <code>{triangle_strip, triangles, lines, points}</code>; if defined, all geometries in the store are expected to have this type.</td>
+	</tr>
+	<tr>
+		<td>topology</td>
+		<td>String[0..1]</td>
+		<td>one of <code>{*PerAttributeArray*, Indexed}</code>. When "Indexed", the indices must also be declared in the geometry schema ("faces") and precede the vertexAttribute data.</td>
+	</tr>
+	<tr>
 		<td>header</td>
 		<td>HeaderDefinition[0..*]</td>
 		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
 	</tr>
 	<tr>
+		<td>header</td>
+		<td>HeaderDefinition[0..*]</td>
+		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
+	</tr>
+	<tr>
+		<td>ordering</td>
+		<td>String[1..*]</td>
+		<td>Provides the order of the keys in vertexAttributes and faceAttributes, if present.</td>
+	</tr>
+	<tr>
 		<td>vertexAttributes</td>
 		<td>FeatureData::GeometryAttribute[1..*]</td>
-		<td></td>
+		<td>Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates</td>
 	</tr>
 	<tr>
 		<td>faces</td>
 		<td>FeatureData::GeometryAttribute[0..*]</td>
-		<td></td>
+		<td>Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates</td>
+	</tr>
+	<tr>
+		<td>featureAttributeOrder</td>
+		<td>String[1..*]</td>
+		<td>Provides the order of the keys in featureAttributes, if present.</td>
+	</tr>
+	<tr>
+		<td>featureAttributes</td>
+		<td>FeatureData::GeometryAttribute[0..*]</td>
+		<td>dDeclaration of the attributes per feature in the geometry, such as feature ID or face range</td>
 	</tr>
 </table>
 
@@ -774,7 +844,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	<tr>
 		<td>type</td>
 		<td>String</td>
-		<td>The element type of the header property, from <code>{UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64}</code></td>
+		<td>The element type of the header property, from <code>{UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64}</code></td>
 	</tr>
 </table>
 
@@ -798,7 +868,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	<tr>
 		<td>type</td>
 		<td>String</td>
-		<td>The type of the field, from this enum: <code>{esriFieldTypeBlob, esriFieldTypeDate, esriFieldTypeDouble, esriFieldTypeGeometry, 
+		<td>The type of the field, from this enum: <code>{esriFieldTypeBlob, esriFieldTypeGeometry, esriFieldTypeDate, esriFieldTypeFloat, esriFieldTypeDouble, esriFieldTypeGeometry, 
 		esriFieldTypeGlobalID, esriFieldTypeGUID, esriFieldTypeInteger, esriFieldTypeOID, 
 		esriFieldTypeSmallInteger, esriFieldTypeString, esriFieldTypeGroup}</code></td>
 	</tr>
@@ -865,7 +935,7 @@ nodes (children, sibling, and parent), links to feature data, geometry data and
 texture data resources, metadata such as metrics used for LoD selection, its
 spatial extent and a list of features that the node contains.</p>
 
-<p>Depending on the geometry and lodTypes used, a Node document can be tuned towards being
+<p>Depending on the geometry and <code>lodModel</code> used, a Node document can be tuned towards being
 light-weight or more heavy-weight. It is the means clients have to further
 decide which data to retrieve. The features list already provides sufficient
 data for simple visualization by rendering the centroids as point features or
@@ -1815,6 +1885,11 @@ are used to create views of the ArrayBuffer. For example, to access the buffer
 as an array of 32-bit signed integers, an Int32Array would be created that
 refers to the ArrayBuffer.</p>
 
+<div>
+<img src="images/figure-10b.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
+<p><em>Figure 10b: Geometry Buffer Layout with headers</em></p>
+</div>
+
 <p>Multiple typed array views can refer to the
 same ArrayBuffer, of different types, lengths, and offsets. This allows for
 complex data structures to be built up in the ArrayBuffer. As an example, given
@@ -1907,9 +1982,9 @@ IndexedDB offers a method of storing data client-side and allows indexed
 database queries against JSON documents. 
 It can be used to have persistent stores on the client side and uses an identical scheme as server-side, CouchDB storage.</p>
 
-<h3><a name="_8_3">Packaged Indexed 3d Scenes (i3p files)</a></h3>
+<h3><a name="_8_3">Scene Packages (spk files)</a></h3>
 
-<p>i3s packages (i3p) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file, 
+<p>Scene Packages (spk) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file, 
 and they optionally also allow to be directly consumed by applications such as clients or services. 
 The file layout is identical to the <a href="#_8_1">File System layout</a> described before. This is referred to as the BASIC folder pattern. 
 There is also an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages. 
@@ -1917,8 +1992,8 @@ This EXTENDED pattern is added as a keyword only in this sepcification version f
 Within an archive, this BASIC folder pattern results in the following structure:</p>
 
 <div>
-<img src="images/figure-11.png" title="Structure of an i3s package" alt="Structure of an i3s package">
-<p><em>Figure 11: Structure of an i3s package with BASIC folder layout</em></p>
+<img src="images/figure-11.png" title="Structure of an spk file" alt="Structure of an spk file">
+<p><em>Figure 11: Structure of an spk file with BASIC folder layout</em></p>
 </div>
 
 <p>The format of the package itself is defined as follows:</p>
@@ -1931,15 +2006,15 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	<li>Every resource except textures may also be individually compressed. For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available anymore in browsers.</li>
 </ul>
 
-<p>For the two mentioned used cases, i3p is employed as follows:</p>
+<p>For the two mentioned used cases, spk is employed as follows:</p>
 
 <ol>
-	<li>i3p as a transfer format: 
+	<li>spk as a transfer format: 
 	<ol>
 		<li>ArchiveCompressionType: DEFLATE64</li>
 		<li>ResourceCompressionType: NONE</li>
 	</ol></li>
-	<li>i3p as a serving format:
+	<li>spk as a serving format:
 	<ol>
 		<li>ArchiveCompressionType: STORE</li>
 		<li>ResourceCompressionType: GZIP</li>
@@ -1948,7 +2023,7 @@ Within an archive, this BASIC folder pattern results in the following structure:
 
 <h4>Metadata</h4>
 
-<p>The following entries are permitted in the Metadata.json file that is part of every i3p archive:</p>
+<p>The following entries are permitted in the Metadata.json file that is part of every spk archive:</p>
 
 <table>
 	<tr>
@@ -1974,12 +2049,12 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	<tr>
 		<td>i3sVersion</td>
 		<td>True</td>
-		<td>One of {1.2, *1.3*}</td>
+		<td>One of {1.2, 1.3, *1.4*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>
 		<td>True</td>
-		<td>Total number of nodes stored in this i3p.</td>
+		<td>Total number of nodes stored in this spk.</td>
 	</tr>
 </table>
 

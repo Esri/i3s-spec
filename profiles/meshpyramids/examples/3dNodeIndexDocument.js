@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.3 3d Node Index Document Resource for the Meshpyramids profile.
+	Example i3s 1.4 3d Node Index Document Resource for the Meshpyramids profile.
 */
 {
 	"id": "5-1", // Tree Key ID. This node is thus two levels below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.

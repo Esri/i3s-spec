@@ -788,12 +788,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	</tr>
 	<tr>
 		<td>header</td>
-		<td>HeaderDefinition[0..*]</td>
-		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
-	</tr>
-	<tr>
-		<td>header</td>
-		<td>HeaderDefinition[0..*]</td>
+		<td>HeaderAttribute[0..*]</td>
 		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
 	</tr>
 	<tr>
@@ -825,7 +820,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 
 <p><em>Table 6a: Attributes of the Class <strong>GeometrySchema</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class HeaderDefinition</h4>
+<h4>Class HeaderAttribute</h4>
 
 <p>Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.</p>
 
@@ -847,7 +842,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	</tr>
 </table>
 
-<p><em>Table 6b: Attributes of the Class <strong>HeaderDefinition</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 6b: Attributes of the Class <strong>HeaderAttribute</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class Field</h4>
 

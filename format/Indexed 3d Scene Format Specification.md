@@ -600,7 +600,7 @@ Layer.</p>
 		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, Pointcloud}</td>
 	</tr>
 	<tr>
-		<td>zFactor</td>
+		<td>ZFactor</td>
 		<td>Float</td>
 		<td>[deprecated] Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.</td>
 	</tr>

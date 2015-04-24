@@ -32,7 +32,7 @@
    ]
   },
   {
-   "qname": "zFactor",
+   "qname": "ZFactor",
    "required": false,
    "deprecated": true,
    "containerType": "None",

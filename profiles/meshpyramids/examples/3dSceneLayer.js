@@ -91,9 +91,7 @@
 				{
 					"id" : "default", // pro forma ID
 					"size": 2048, // x size of this image.
-					"href": ["../textures/0_0", "../textures/1_0"], // href to the texture set in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
-					"byteOffset": [0, 0], // pro forma byteOffset (there is always one texture if a defaultTextureDefinition is used)
-					"length": [0, 0] // pro forma length (to the end)
+					"href": ["../textures/0_0", "../textures/1_0"] // href to the texture set in which this texture image resides. The resource ID (here 0_0) follows this pattern: <featureDatatexture setID>_<textureLoDID>.
 				}
 			]
 		},

@@ -293,7 +293,7 @@
    "required": false,
    "valueType": "object",
    "valueSchema": "NamedRuleset",
-   "namedRuleset": "../../all/rules/TextureDefinitionRules.json"
+   "namedRuleset": "../../all/rules/DefaultTextureDefinitionRules.json"
   },  
   {
    "qname": "store.defaultMaterialDefinition",

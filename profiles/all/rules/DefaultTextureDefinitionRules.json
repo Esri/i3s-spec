@@ -1,6 +1,6 @@
 {
   "targetProfile": "all",
-  "resource": "TextureDefinition",  
+  "resource": "DefaultTextureDefinition",  
   "version": "1.4",
   "rules": [
   {
@@ -172,17 +172,6 @@
    ]
   },
   {
-   "qname": "images.*.pixelInWorldUnits",
-   "required": false,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "None",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ]
-  },
-  {
    "qname": "images.*.href",
    "required": true,
    "containerType": "Array",
@@ -199,28 +188,6 @@
    "containerType": "None",
    "valueType": "string",
    "valueSchema": "URL"
-  },
-  {
-   "qname": "images.*.byteOffset",
-   "required": false,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ]
-  },
-  {
-   "qname": "images.*.length",
-   "required": false,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    1.7976931348623157e+308
-   ]
   }
   ]
 }

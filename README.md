@@ -1,13 +1,13 @@
 i3s-spec
 ========
 
-*Indexed 3D Scene Format Specification*
+*Scene Layers: Service and Package Specification*
 
 [![App](https://github.com/Esri/i3s-spec/raw/master/teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
 This repository hosts the specification for the ArcGIS Scene Service and its delivery format, i3s (Indexed 3D Scene). These are the core resources:
 
--	[Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Main specification for the i3s Format
+-	[Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Specification for the Indexed 3D Scene Format and Scene Layer Package
 -	[Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
 -	A set of example JSON resources for each profile
 -   Validator rule files for each profile
@@ -57,5 +57,5 @@ does not consitute the creation and distribution of a derivative work.
 
 The supplementary resources may be updated without notice and are provided for use under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license and may be used, under the terms of that license, at your own risk.
 
-[](Esri Tags: ArcGIS WebScene ArcGISOnline SceneService ArcGISServer)
+[](Esri Tags: ArcGIS WebScene ArcGISOnline SceneService ArcGISServer ScenePackage SceneLayer)
 [](Esri Language: JavaScript)

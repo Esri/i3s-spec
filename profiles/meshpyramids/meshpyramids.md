@@ -65,22 +65,22 @@ No specific profile.
 
 Note that in this profile, the defaultGeometrySchema is mandatory. Otherwise this resource is highly similar to the 3dSceneLayer in the FM profile.
 
-[Meshpyramid 3dSceneLayer](./profiles/profiles/meshpyramids/rules/docs/3dSceneLayerRules.html)
+[Meshpyramid 3dSceneLayer](./profiles/meshpyramids/rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
 The main difference in MP 3dNodeIndexDocuments to FM 3dNodeIndexDocument is that the features list is not part of the document. Furthermore, there is always exactly 1 geometry and texture resource per node.
 
-[Meshpyramid 3dNodeIndexDocument](./profiles/profiles/meshpyramids/rules/docs/3dNodeIndexDocumentRules.html)
+[Meshpyramid 3dNodeIndexDocument](./profiles/meshpyramids/rules/docs/3dNodeIndexDocumentRules.html)
 
 ### FeatureData
 
 The FeatureData profile is similar to features-meshes, only there is no geometryData definition and that features do not have geometry definitions inline either, as a default schema is used. There are only backward references from the geometry itself, embedded as a face attribute, to features.
 
-[Meshpyramid FeatureData](./profiles/profiles/meshpyramids/rules/docs/FeatureDataRules.html)
+[Meshpyramid FeatureData](./profiles/meshpyramids/rules/docs/FeatureDataRules.html)
 
 ### SharedResources
 
 The Shared Resource profile is similar to features-meshes, only that symbols are not supported.
 
-[Meshpyramid SharedResources](./profiles/profiles/meshpyramids/rules/docs/SharedResourceRules.html)
+[Meshpyramid SharedResources](./profiles/meshpyramids/rules/docs/SharedResourceRules.html)

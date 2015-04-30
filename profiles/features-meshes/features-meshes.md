@@ -49,16 +49,16 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[features-meshes 3dSceneLayer](./profiles/profiles/features-meshes/rules/docs/3dSceneLayerRules.html)
+[features-meshes 3dSceneLayer](./profiles/features-meshes/rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
-[features-meshes 3dNodeIndexDocument](./profiles/profiles/features-meshes/rules/docs/3dNodeIndexDocumentRules.html)
+[features-meshes 3dNodeIndexDocument](./profiles/features-meshes/rules/docs/3dNodeIndexDocumentRules.html)
 
 ### FeatureData
 
-[features-meshes FeatureData](./profiles/profiles/features-meshes/rules/docs/FeatureDataRules.html)
+[features-meshes FeatureData](./profiles/features-meshes/rules/docs/FeatureDataRules.html)
 
 ### SharedResources
 
-[features-meshes SharedResources](./profiles/profiles/features-meshes/rules/docs/SharedResourceRules.html)
+[features-meshes SharedResources](./profiles/features-meshes/rules/docs/SharedResourceRules.html)

@@ -33,12 +33,12 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[pointclouds 3dSceneLayer](./profiles/profiles/pointclouds/rules/docs/3dSceneLayerRules.html)
+[pointclouds 3dSceneLayer](./profiles/pointclouds/rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
-[pointclouds 3dNodeIndexDocument](./profiles/profiles/pointclouds/rules/docs/3dNodeIndexDocumentRules.html)
+[pointclouds 3dNodeIndexDocument](./profiles/pointclouds/rules/docs/3dNodeIndexDocumentRules.html)
 
 ### FeatureData
 
-[pointclouds FeatureData](./profiles/profiles/pointclouds/rules/docs/FeatureDataRules.html)
+[pointclouds FeatureData](./profiles/pointclouds/rules/docs/FeatureDataRules.html)

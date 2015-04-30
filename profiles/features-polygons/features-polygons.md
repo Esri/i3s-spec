@@ -19,16 +19,16 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[features-polygons 3dSceneLayer](./profiles/features-polygons/rules/docs/3dSceneLayerRules.html)
+[features-polygons 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
-[features-polygons 3dNodeIndexDocument](./profiles/features-polygons/rules/docs/3dNodeIndexDocumentRules.html)
+[features-polygons 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
 
 ### FeatureData
 
-[features-polygons FeatureData](./profiles/features-polygons/rules/docs/FeatureDataRules.html)
+[features-polygons FeatureData](./rules/docs/FeatureDataRules.html)
 
 ### SharedResources
 
-[features-polygons SharedResources](./profiles/features-polygons/rules/docs/SharedResourceRules.html)
+[features-polygons SharedResources](./rules/docs/SharedResourceRules.html)

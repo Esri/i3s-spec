@@ -112,7 +112,7 @@
    "required": false,
    "valueType": "object",
    "valueSchema": "NamedRuleset",
-   "namedRuleset": "../../all/rules/FeatureAttributeRules.json",
+   "namedRuleset": "../../all/rules/FeatureAttributeRules.json"
   }
  ]
 }

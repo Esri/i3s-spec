@@ -1,11 +1,9 @@
-i3s-spec
-========
+Scene Layers: Service and Package Specification
+===============================================
 
-*Scene Layers: Service and Package Specification*
+[![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
-[![App](https://github.com/Esri/i3s-spec/raw/master/teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
-
-This repository hosts the specification for the ArcGIS Scene Service and its delivery format, i3s (Indexed 3D Scene). These are the core resources:
+This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition. These are the core resources:
 
 -	[Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Specification for the Indexed 3D Scene Format and Scene Layer Package
 -	[Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations

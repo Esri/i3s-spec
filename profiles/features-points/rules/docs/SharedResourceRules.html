@@ -3,47 +3,9 @@
 <table>
 <tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Container</th><th>Value Rules</th><th>Conditions</th></tr>
 <tr><td><code> materialDefinitions</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.name</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.type</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.vertexColors</code></td><td> </td><td> </td><td> </td><td>None</td><td>boolean/None</td><td>/materialDefinitions/*/type IS standard<br/></td></tr>
-<tr><td><code> materialDefinitions.*.params.reflectivity</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.transparency</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.ambient</code></td><td> </td><td>3</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.ambient.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.diffuse</code></td><td> </td><td>3</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.diffuse.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.specular</code></td><td> </td><td>3</td><td>3</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.specular.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.shininess</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.renderMode</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.castShadows</code></td><td> </td><td> </td><td> </td><td>None</td><td>boolean/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.receiveShadows</code></td><td> </td><td> </td><td> </td><td>None</td><td>boolean/None</td><td> </td></tr>
-<tr><td><code> materialDefinitions.*.params.waveSpeed</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Float</td><td>/materialDefinitions/*/type IS water<br/></td></tr>
-<tr><td><code> materialDefinitions.*.params.waveAmplitude</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Float</td><td>/materialDefinitions/*/type IS water<br/></td></tr>
-<tr><td><code> materialDefinitions.*.href</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/None</td><td>/materialDefinitions/*/type IS reference<br/></td></tr>
+<tr><td><code> materialDefinitions.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td> </td></tr>
 <tr><td><code> textureDefinitions</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.encoding</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.wrap</code></td><td>True</td><td>1</td><td>2</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.wrap.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.atlas</code></td><td>True</td><td> </td><td> </td><td>None</td><td>boolean/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.uvSet</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.channels</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions</code></td><td>True</td><td>1</td><td>4096</td><td> </td><td>object/None</td><td>/textureDefinitions/*/atlas IS true<br/></td></tr>
-<tr><td><code> textureDefinitions.*.regions.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions.*.subimageRegion</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.regions.*.subimageRegion.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Float</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images</code></td><td>True</td><td>1</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*.size</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*.pixelInWorldUnits</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/None</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*.href</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*.byteOffset</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
-<tr><td><code> textureDefinitions.*.images.*.length</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> textureDefinitions.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/NamedRuleset</td><td> </td></tr>
 <tr><td><code> shaderDefinitions</code></td><td> </td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
 <tr><td><code> symbols</code></td><td> </td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> symbols.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>

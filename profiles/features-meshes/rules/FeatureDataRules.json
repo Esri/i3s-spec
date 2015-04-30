@@ -1,0 +1,206 @@
+﻿{
+ "targetProfile": "features-meshes",
+ "resource": "FeatureData",
+ "version": "1.4",
+ "rules": [
+  {
+   "qname": "featureData",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.id",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    1.7976931348623157e+308
+   ]
+  },
+  {
+   "qname": "featureData.*.position",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    2,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.position.*",
+   "required": true,
+   "valueType": "number",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.pivotOffset",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.pivotOffset.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.mbb",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    6,
+    6
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.mbb.*",
+   "required": true,
+   "valueType": "number",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.layer",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.geometries",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "ArrayBufferView"
+   } ]
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryReferenceRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "GeometryReference"
+   } ]
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryReferenceRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "SharedResourceReference"
+   } ]
+  },
+  {
+   "qname": "featureData.*.geometries.*",
+   "required": true,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "Embedded"
+   } ]
+  },
+  {
+   "qname": "featureData.*.attributes",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "featureData.*.attributes.*",
+   "required": false,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/FeatureAttributeRules.json"
+  },
+  {
+   "qname": "geometryData",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    1,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "geometryData.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryArrayBufferViewRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "ArrayBufferView"
+   } ]
+  },
+  {
+   "qname": "geometryData.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/GeometryEmbeddedRules.json",
+   "valueDependencies" : [ {
+		"to": "type",
+		"type": "IS",
+		"value": "Embedded"
+   } ]
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+<html>
+<body>
+<table>
+<tr><th>Property</th><th>Required</th><th>Min.</th><th>Max.</th><th>Container</th><th>Value Rules</th><th>Conditions</th></tr>
+<tr><td><code> id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/NodeID</td><td>/level NOT 1<br/></td></tr>
+<tr><td><code> id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td>/level IS 1<br/></td></tr>
+<tr><td><code> level</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> version</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
+<tr><td><code> created</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/Date</td><td> </td></tr>
+<tr><td><code> expires</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/Date</td><td> </td></tr>
+<tr><td><code> mbs</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> mbs.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> lodSelection</code></td><td>True</td><td>1</td><td>1</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> lodSelection.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> lodSelection.*.metricType</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td> </td></tr>
+<tr><td><code> lodSelection.*.maxError</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/None</td><td> </td></tr>
+<tr><td><code> lodSelection.*.avgError</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/None</td><td> </td></tr>
+<tr><td><code> transform</code></td><td> </td><td>16</td><td>16</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> transform.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> sharedResource</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/None</td><td> </td></tr>
+<tr><td><code> sharedResource.href</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> featureData</code></td><td>True</td><td>0</td><td>1</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> featureData.*.featureRange</code></td><td> </td><td>2</td><td>2</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.featureRange.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> featureData.*.layerContent</code></td><td> </td><td>1</td><td>1</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> featureData.*.layerContent.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>string/None</td><td> </td></tr>
+<tr><td><code> geometryData</code></td><td>True</td><td>0</td><td>1</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> geometryData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> geometryData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> textureData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> textureData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> textureData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> textureData.*.multiTextureBundle</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>boolean/None</td><td> </td></tr>
+<tr><td><code> parentNode</code></td><td>True</td><td> </td><td> </td><td>None</td><td>object/None</td><td>/level NOT 1<br/></td></tr>
+<tr><td><code> parentNode.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/NodeID</td><td>/level NOT 2<br/></td></tr>
+<tr><td><code> parentNode.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/None</td><td>/level IS 2<br/></td></tr>
+<tr><td><code> parentNode.version</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
+<tr><td><code> parentNode.href</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> parentNode.mbs</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> parentNode.mbs.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> parentNode.featureCount</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> children</code></td><td>True</td><td>0</td><td>99</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> children.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> children.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/NodeID</td><td> </td></tr>
+<tr><td><code> children.*.version</code></td><td> </td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
+<tr><td><code> children.*.href</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> children.*.mbs</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> children.*.mbs.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> children.*.featureCount</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+<tr><td><code> neighbors</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td>/level NOT 1<br/></td></tr>
+<tr><td><code> neighbors.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
+<tr><td><code> neighbors.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/NodeID</td><td> </td></tr>
+<tr><td><code> neighbors.*.version</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/UUID</td><td> </td></tr>
+<tr><td><code> neighbors.*.href</code></td><td>True</td><td> </td><td> </td><td>None</td><td>string/URL</td><td> </td></tr>
+<tr><td><code> neighbors.*.mbs</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> neighbors.*.mbs.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
+<tr><td><code> neighbors.*.featureCount</code></td><td> </td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
+</table>
+</body>
+</html>

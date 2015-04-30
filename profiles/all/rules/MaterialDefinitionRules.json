@@ -1,0 +1,235 @@
+{
+  "targetProfile": "all",
+  "resource": "MaterialDefinition",  
+  "version": "1.4",
+  "rules": [
+  {
+   "qname": "$ref",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "../type",
+    "type": "IS",
+    "value": "reference"
+   } ]
+  },
+  {
+   "qname": "name",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "type",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "standard", "water", "billboard", "leafcard", "reference"
+   ]
+  },
+  {
+   "qname": "params",
+   "required": true,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "../type",
+    "type": "NOT",
+    "value": "reference"
+   } ]
+  },
+  {
+   "qname": "params.vertexColors",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None",
+   "valueDependencies": [ {
+    "to": "../../type",
+    "type": "IS",
+    "value": "standard"
+   } ]
+  },
+  {
+   "qname": "params.useVertexColorAlpha",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None",
+   "valueDependencies": [ 
+   {
+    "to": "../vertexColors",
+    "type": "NOT",
+    "value": null
+   },{
+    "to": "../vertexColors",
+    "type": "IS",
+    "value": true
+   },{
+    "to": "../../type",
+    "type": "IS",
+    "value": "standard"
+   } ]
+  },
+  {
+   "qname": "params.reflectivity",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "qname": "params.transparency",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "qname": "params.ambient",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "params.ambient.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
+  },
+  {
+   "qname": "params.diffuse",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "params.diffuse.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
+  },
+  {
+   "qname": "params.specular",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    3,
+    3
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "params.specular.*",
+   "required": false,
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+     0.0,
+     1.0
+   ]
+  },
+  {
+   "qname": "params.shininess",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float"
+  },
+  {
+   "qname": "params.renderMode",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "solid", "untextured", "wireframe"
+   ]
+  },
+  {
+   "qname": "params.castShadows",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "params.receiveShadows",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "params.doubleSided",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "params.waveSpeed",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    1,
+    255
+   ],
+   "valueDependencies": [ {
+    "to": "../../type",
+    "type": "IS",
+    "value": "water"
+   } ]
+  },
+  {
+   "qname": "params.waveAmplitude",
+   "required": true,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Float",
+   "valueRange": [
+    1,
+    255
+   ],
+   "valueDependencies": [ {
+    "to": "../../type",
+    "type": "IS",
+    "value": "water"
+   } ]
+  } ]
+ }

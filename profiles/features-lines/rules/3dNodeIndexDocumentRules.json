@@ -1,7 +1,7 @@
 ﻿{
 	"targetProfile": "features-lines",
 	"resource": "3dNodeIndexDocument",
-	"version": "1.3",
+	"version": "1.4",
 	"rules":[
 	{
 		"qname" : "id",

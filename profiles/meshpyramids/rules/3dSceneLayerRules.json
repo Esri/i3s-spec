@@ -259,7 +259,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "MeshPyramid"
+    "MeshPyramid", "None"
    ]
   },
   {
@@ -273,297 +273,20 @@
    ]
   },
   {
+   "qname": "store.defaultGeometrySchema",
+   "required": false,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/DefaultGeometrySchemaRules.json"
+  },
+  {
    "qname": "store.indexingScheme",
    "required": false,
    "containerType": "None",
    "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.indexingScheme.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.indexingScheme.inclusive",
-   "required": false,
-   "containerType": "None",
-   "valueType": "boolean",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.indexingScheme.dimensionality",
-   "required": false,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    4
-   ]
-  },
-  {
-   "qname": "store.indexingScheme.childrenCardinality",
-   "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    2,
-    2
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.indexingScheme.childrenCardinality.*",
-   "required": true,
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    9
-   ]
-  },
-  {
-   "qname": "store.indexingScheme.neighborCardinality",
-   "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    2,
-    2
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.indexingScheme.neighborCardinality.*",
-   "required": true,
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    9
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema",
-   "required": true,
-   "containerType": "None",
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-    "qname": "store.defaultGeometrySchema.geometryType",
-    "required": false,
-    "containerType": "None",
-    "valueType": "string",
-    "valueSchema": "None",
-    "valueDomain": [
-	  "triangles"
-    ]
-  },
-  {
-    "qname": "store.defaultGeometrySchema.topology",
-    "required": true,
-    "containerType": "None",
-    "valueType": "string",
-    "valueSchema": "None",
-    "valueDomain": [
-      "PerAttributeArray", 
-      "Indexed"
-    ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.header",
-   "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.header.*",
-   "required": true,
-   "containerType": "None",
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.header.*.property",
-   "required": true,
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.header.*.type",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64"
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.ordering",
-   "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.ordering.*",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.vertexAttributes",
-   "required": true,
-   "containerType": "Object",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.vertexAttributes.*",
-   "required": true,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.vertexAttributes.*.valueType",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64"
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.vertexAttributes.*.valuesPerElement",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    16
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.faces",
-   "required": true,
-   "containerType": "Object",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None",
-   "valueDependencies": [
-       {
-         "to": "/store/defaultGeometrySchema/topology",
-         "type": "IS",
-         "value": "Indexed"
-       }
-     ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.faces.*",
-   "required": true,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.faces.*.valueType",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64"
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.faces.*.valuesPerElement",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    16
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.featureAttributeOrder",
-   "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.featureAttributeOrder.*",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.featureAttributes",
-   "required": true,
-   "containerType": "Object",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.featureAttributes.*",
-   "required": true,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.defaultGeometrySchema.featureAttributes.*.valueType",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64"
-   ]
-  },
-  {
-   "qname": "store.defaultGeometrySchema.featureAttributes.*.valuesPerElement",
-   "required": true,
-   "containerType": "None",
-   "valueType": "number",
-   "valueSchema": "Integer",
-   "valueRange": [
-    0,
-    16
-   ]
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/IndexingSchemeRules.json"
   },
   {
    "qname": "store.defaultTextureDefinition",
@@ -594,31 +317,8 @@
    "qname": "fields.*",
    "required": true,
    "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "fields.*.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "fields.*.type",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-    "esriFieldTypeOID", "esriFieldTypeGeometry", "esriFieldTypeString", "esriFieldTypeFloat", "esriFieldTypeDouble", "esriFieldTypeLong", "esriFieldTypeShort", "esriFieldTypeVertexAttribute"
-   ]
-  },
-  {
-   "qname": "fields.*.alias",
-   "required": false,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/FieldRules.json"
   },
   {
    "qname": "drawingInfo",

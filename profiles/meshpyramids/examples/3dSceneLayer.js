@@ -4,7 +4,7 @@
 {
 	"id": 0, // the ID of this layer, unique within a 3dSceneService.
 	"layerType": "3DObject", // the type of this layer, one of {Point, Line, Polygon, *3DObject*, Pointcloud}
-	"zFactor": 1.0, // Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.
+	"ZFactor": 1.0, // Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the newest version (store update session ID) of this layer.
 	"name": "PublicBuildings", // the name of this layer.
 	"alias": "Public Buildings", // the display alias to be used for this layer.

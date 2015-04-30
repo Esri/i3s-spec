@@ -122,52 +122,8 @@
    "qname": "featureData.*.attributes.*",
    "required": false,
    "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata",
-   "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    -1
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata.*",
-   "required": false,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata.*.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.0.metadata.*.value",
-   "required": true,
-   "containerType": "None",
-   "valueType": "Any",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.value",
-   "required": true,
-   "containerType": "None",
-   "valueType": "Any",
-   "valueSchema": "None"
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/FeatureAttributeRules.json",
   },
    {
      "qname": "geometryData",

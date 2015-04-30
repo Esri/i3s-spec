@@ -1,7 +1,7 @@
 ﻿{
- "targetProfile": "feature-mesh",
+ "targetProfile": "features-meshes",
  "resource": "FeatureData",
- "version": "1.3",
+ "version": "1.4",
  "rules": [
   {
    "qname": "featureData",
@@ -162,54 +162,10 @@
   },
   {
    "qname": "featureData.*.attributes.*",
-   "required": true,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.value",
-   "required": true,
-   "containerType": "None",
-   "valueType": "Any",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.group",
    "required": false,
-   "containerType": "Array",
-   "cardinality": [
-    0,
-    -1
-   ],
    "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.group.*",
-   "required": true,
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.group.*.name",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "featureData.*.attributes.*.group.*.value",
-   "required": true,
-   "containerType": "None",
-   "valueType": "Any",
-   "valueSchema": "None"
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/FeatureAttributeRules.json",
   },
   {
    "qname": "geometryData",

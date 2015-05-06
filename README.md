@@ -3,9 +3,9 @@ Scene Layers: Service and Package Specification
 
 [![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
-This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition. 
+This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition (both encoded using JSON). 
 
-The specification provides implementation resources that explain how to implement different types of 3D layers:
+A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a extendable design to encode different types of 3D data such as:
 
 - 3D Objects (e.g. from Esri Multipatch)
 - 3D Multirepresentation Objects (e.g. from CityGML files with multiple Levels of Detail)
@@ -14,24 +14,32 @@ The specification provides implementation resources that explain how to implemen
 - Polygon Features (e.g. from GIS Data)
 - Pointclouds (e.g. from LiDAR)
 - Analytics (e.g. from Sensor Data or Simulations)
+- ...
 
-These are the core resources:
+
+## Can I Use...?
+
+For thef first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Objects type.
+
+This table explains which implementations of the specification exist and what they support.
+
+Software / Layers     | 3D Objects    | Points | Lines | Polygons | ...
+--------------------- | ------------- | ------ | ----- | -------- | -----------
+ArcGIS Server         | 10.3.1        | Planned for 10.4.0  | Planned for 10.4.0 | Planned for 10.4.0 |            
+ArcGIS Pro            | 1.1           | Planned for 1.2     | Planned for 1.2    | Planned for 1.2    |            
+ArcGIS Scene Viewer   | 3.7/10.3.1    | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 |
+
+Besides the 3D Objects type, we have included experimental versions of other layer types without support in released software.
+
+## Structure
+
+The specification explains how different types of Scene Layers are encoded using profiles. A profile is a common technique often used e.g. in JSON to encode format subsets. Each layer type maps to one profile.
 
 - [Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Specification for the Indexed 3D Scene Format and Scene Layer Package
 - [Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
 - Example JSON resources and validation rule files for each layer type
 
 We are also building a Validation Toolkit to support developers that is available upon request.
-
-## Can I Use...?
-
-This table explains which implementations of the specification exist and what they support.
-
-Software / Layers     | 3D Objects    | 3D Multirep Objects | Points | Lines | Polygons | Pointclouds
---------------------- | ------------- | ------------------- | ------ | ----- | -------- | -----------
-ArcGIS Server         | 10.3.1+       |                     |        |       |          |            
-ArcGIS Pro            | 1.1+          |                     |        |       |          |            
-ArcGIS Scene Viewer   | 1.0+          |                     |        |       |          |            
 
 ## Contributing
 

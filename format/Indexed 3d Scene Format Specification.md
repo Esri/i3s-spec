@@ -89,6 +89,12 @@ supported are listed in the following Table.</p>
   <td>Yes</td>
  </tr>
  <tr>
+  <td>Integrated Meshes</td>
+  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr>
   <td>3D Multirepresentation Objects <em>(CityGML)</em></td>
   <td><a href="../profiles/features-meshes/features-meshes.md">features-meshes</a></td>
   <td>Yes</td>
@@ -597,7 +603,7 @@ Layer.</p>
 	<tr>
 		<td>layerType</td>
 		<td>String</td>
-		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, Pointcloud}</td>
+		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, IntegratedMesh, Pointcloud}</td>
 	</tr>
 	<tr>
 		<td>ZFactor</td>

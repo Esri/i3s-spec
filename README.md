@@ -8,6 +8,7 @@ This repository hosts the specification for the ArcGIS Scene Service, including 
 A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a extendable design to encode different types of 3D data such as:
 
 - 3D Objects (e.g. from Esri Multipatch)
+- Integrated Meshes (e.g. from dense matching photogrammetric software)
 - 3D Multirepresentation Objects (e.g. from CityGML files with multiple Levels of Detail)
 - Point Features (e.g. from GIS Data)
 - Line Features (e.g. from GIS Data)
@@ -23,13 +24,13 @@ For the first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Object
 
 This table explains which implementations of the specification exist and what they support.
 
-Software / Layers     | 3D Objects    | Points | Lines | Polygons | ...
---------------------- | ------------- | ------ | ----- | -------- | -----------
-ArcGIS Server         | 10.3.1        | Planned for 10.4.0  | Planned for 10.4.0 | Planned for 10.4.0 |            
-ArcGIS Pro            | 1.1           | Planned for 1.2     | Planned for 1.2    | Planned for 1.2    |            
-ArcGIS Scene Viewer   | 3.7/10.3.1    | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 |
+Software / Layers     | 3D Objects | Integrated Mesh | Points | Lines | Polygons | ...
+--------------------- | ---------- | --------------- |------- | ----- | -------- | -----------
+ArcGIS Server         | 10.3.1     | 10.3.1     | Planned for 10.4.0  | Planned for 10.4.0 | Planned for 10.4.0 |            
+ArcGIS Pro            | 1.1        | 1.1     | Planned for 1.2     | Planned for 1.2    | Planned for 1.2    |            
+ArcGIS Scene Viewer   | 3.7/10.3.1 | 3.7/10.3.1     | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 |
 
-Besides the 3D Objects type, we have included experimental versions of other layer types without support in released software.
+Besides the 3D Objects and Integrated Mesh types, we have included experimental versions of other layer types without support in released software.
 
 ## Structure
 

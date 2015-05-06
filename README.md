@@ -3,23 +3,25 @@ Scene Layers: Service and Package Specification
 
 [![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
-This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition. These are the core resources:
+This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition. 
 
--	[Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Specification for the Indexed 3D Scene Format and Scene Layer Package
--	[Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
--	A set of example JSON resources for each profile
--   Validator rule files for each profile
+The specification provides implementation resources that explain how to implement different types of 3D layers:
 
-The structure of this specification is as follows:
-- Format: Full logical format specification, including  physical format specification for Scene Packages (*.spk)
-- Profiles: Subsets the full format specification for different data structures: 
-    - Features (Meshes, Points, Lines, Polygons)
-	- Meshpyramids 
-    - Analytics 
-    - Pointclouds
-- Service: Contains the REST API specification for the Scene Service.
+- 3D Objects (e.g. from Esri Multipatch)
+- 3D Multirepresentation Objects (e.g. from CityGML files with multiple Levels of Detail)
+- Point Features (e.g. from GIS Data)
+- Line Features (e.g. from GIS Data)
+- Polygon Features (e.g. from GIS Data)
+- Pointclouds (e.g. from LiDAR)
+- Analytics (e.g. from Sensor Data or Simulations)
 
-We are also building a Validation Toolkit to support developers.
+These are the core resources:
+
+- [Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Specification for the Indexed 3D Scene Format and Scene Layer Package
+- [Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
+- Example JSON resources and validation rule files for each layer type
+
+We are also building a Validation Toolkit to support developers that is available upon request.
 
 ## Contributing
 

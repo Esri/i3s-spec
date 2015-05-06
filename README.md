@@ -19,7 +19,7 @@ A Scene Layer is a container for arbitrarily large amounts of 3D geographic data
 
 ## Can I Use...?
 
-For thef first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Objects type.
+For the first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Objects type.
 
 This table explains which implementations of the specification exist and what they support.
 

@@ -23,6 +23,16 @@ These are the core resources:
 
 We are also building a Validation Toolkit to support developers that is available upon request.
 
+## Can I Use...?
+
+This table explains which implementations of the specification exist and what they support.
+
+Software / Layers     | 3D Objects    | 3D Multirep Objects | Points | Lines | Polygons | Pointclouds
+--------------------- | ------------- | ------------------- | ------ | ----- | -------- | -----------
+ArcGIS Server         | 10.3.1+       |                     |        |       |          |            
+ArcGIS Pro            | 1.1+          |                     |        |       |          |            
+ArcGIS Scene Viewer   | 1.0+          |                     |        |       |          |            
+
 ## Contributing
 
 You are very much invited to fork this repository to a public or private repository and to send Pull Requests if you have ideas for improvements or have found bugs in this documentation. Creating a Fork solely for this purpose 

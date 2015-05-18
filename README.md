@@ -9,28 +9,25 @@ A Scene Layer is a container for arbitrarily large amounts of 3D geographic data
 
 - 3D Objects (e.g. from Esri Multipatch)
 - Integrated Meshes (e.g. from dense matching photogrammetric software)
-- 3D Multirepresentation Objects (e.g. from CityGML files with multiple Levels of Detail)
 - Point Features (e.g. from GIS Data)
 - Line Features (e.g. from GIS Data)
 - Polygon Features (e.g. from GIS Data)
 - Pointclouds (e.g. from LiDAR)
+- 3D Multirepresentation Objects (e.g. from CityGML files with multiple Levels of Detail)
 - Analytics (e.g. from Sensor Data or Simulations)
 - ...
 
-
 ## Can I Use...?
 
-For the first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Objects type.
+For the first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Objects and Integrated Mesh types. All other layer types are in development. Access to these experimental specifications has to be requested separately.
 
 This table explains which implementations of the specification exist and what they support.
 
-Software / Layers     | 3D Objects | Integrated Mesh | Points | Lines | Polygons | ...
---------------------- | ---------- | --------------- |------- | ----- | -------- | -----------
-ArcGIS Server         | 10.3.1     | 10.3.1     | Planned for 10.4.0  | Planned for 10.4.0 | Planned for 10.4.0 |            
-ArcGIS Pro            | 1.1        | 1.1     | Planned for 1.2     | Planned for 1.2    | Planned for 1.2    |            
-ArcGIS Scene Viewer   | 3.7/10.3.1 | 3.7/10.3.1     | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 | Planned for 3.9/10.4.0 |
-
-Besides the 3D Objects and Integrated Mesh types, we have included experimental versions of other layer types without support in released software.
+Software / Layers     | 3D Objects | Integrated Mesh | ...
+--------------------- | ---------- | --------------- | -----------
+ArcGIS Server         | 10.3.1     | 10.3.1          | Planned for 10.4.0        
+ArcGIS Pro            | 1.1        | 1.1             | Planned for 1.2           
+ArcGIS Scene Viewer   | 3.7/10.3.1 | 3.7/10.3.1      | Planned for 3.9/10.4.0 
 
 ## Structure
 

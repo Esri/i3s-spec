@@ -96,37 +96,37 @@ supported are listed in the following Table.</p>
  </tr>
  <tr>
   <td>3D Multirepresentation Objects <em>(CityGML)</em></td>
-  <td><a href="../profiles/features-meshes/features-meshes.md">features-meshes</a></td>
+  <td>features-meshes</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
   <tr>
   <td>Point Features <em>(GIS Data)</em></td>
-  <td><a href="../profiles/features-points/features-points.md">features-points</a></td>
+  <td>features-points</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
   <tr>
   <td>Line Features <em>(GIS Data)</em></td>
-  <td><a href="../profiles/features-lines/features-lines.md">features-lines</a></td>
+  <td>features-lines</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
   <td>Polygon Features <em>(GIS Data)</em></td>
-  <td><a href="../profiles/features-polygons/features-polygons.md">features-polygons</a></td>
+  <td>features-polygons</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
   <td>Pointclouds <em>(LiDAR)</em></td>
-  <td><a href="../profiles/pointclouds/pointclouds.md">pointclouds</a></td>
+  <td>pointclouds</td>
   <td>Vertex Attributes (VA)</td>
   <td>On VAs only</td>
  </tr>
  <tr>
   <td>Analytics <em>(Sensor Data, Simulations)</em></td>
-  <td><a href="../profiles/analytics/analytics.md">analytics</a></td>
+  <td>analytics</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>

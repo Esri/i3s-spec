@@ -48,7 +48,7 @@ does not consitute the creation and distribution of a derivative work. Please se
 
 Copyright 2015 Esri
 
-The specification is licensed unter the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/). 
+The specification is licensed under the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/). 
 You can implement the specification in services, clients or processing tools without restrictions.
 
 You may also extend or modify the specification using the builtin extension and profiling mechanisms, however modified or extended versions of the specification may not be redistributed. The specification may only be redistributed in its unmodified version, under the same license.

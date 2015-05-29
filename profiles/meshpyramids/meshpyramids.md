@@ -12,7 +12,7 @@ The general pattern consists of these phases:</p>
 1.	Handshake & capabilities negotiation: The client ensures that the service has the expected resources and that client and server have a common set of capabilities. Within this phase, the client utilizes the following resources:
     1.	Retrieve SceneServiceInfo: General service information
     1.	Retrieve 3dSceneLayer: Information on available layers, including symbology and encoding
-1.	Index exploration: The client retrieves Node Index Documents and decides – based on lodSelection properties – whether it wants to download and render their attached resources. Within this phase, the client utilizes the following resource:
+1.	Index exploration: The client retrieves Node Index Documents and decides â€“ based on lodSelection properties â€“ whether it wants to download and render their attached resources. Within this phase, the client utilizes the following resource:
     1.	NodeIndexDocument: Summary of the content of a single node of the index, references children, parent and neighbor nodes, indicating what can be found there
 1.	Rendering: When a client has decided that it wants to render the content of a node, it retrieves the attached resources:
     1.	SharedData: Material defintions, shared geometries for instancing
@@ -27,7 +27,7 @@ Node traversal starts at the root node and recursively calls TraverseNodeTree(no
 
     TraverseNodeTree(node)
     {
-        if (node’s mbs is not visible) // see 1)
+        if (nodeâ€™s mbs is not visible) // see 1)
             // do nothing
         else if (node has no children or ScreenSize(mbs) < maxScreenThreshold) //see 2)
             // render the node // see 3) 
@@ -39,23 +39,23 @@ Node traversal starts at the root node and recursively calls TraverseNodeTree(no
 Additional notes:
 
 1. view frustum culling:
-    1. visibility test can include the ‘entirely inside the viewing frustum’ result which can be used to optimize away all further frustum culling tests on the children of the node
+    1. visibility test can include the â€˜entirely inside the viewing frustumâ€™ result which can be used to optimize away all further frustum culling tests on the children of the node
     1. this step can also optionally incorporate a cutoff distance threshold test  if desired.
 2. level-of-detail selection:
-    1. test used to decide how deep to recurse is based on mbs‘ projected size (diameter) on the screen vs the per node provided  ‘maxScreenThreshold’.
+    1. test used to decide how deep to recurse is based on mbsâ€˜ projected size (diameter) on the screen vs the per node provided  â€˜maxScreenThresholdâ€™.
 3. Rendering:
-    1. “render the node” potentially includes some, or all, of the following steps:
+    1. â€œrender the nodeâ€ potentially includes some, or all, of the following steps:
         1. Requesting the corresponding geometry and texture data if not already requested
         1. (asynchronously) accessing the corresponding geometry and texture data and loading it into GPU memory if not already loaded
         1. Binding, if loaded, the geometry VBO
         1. Binding, if loaded, the texture
         1. Making a draw() call if, at least, the geometry is loaded
 1. optimized user experience:
-    1. children should be sorted by the ascending distance from the observer…
+    1. children should be sorted by the ascending distance from the observerâ€¦
 
 ## Schema
 
-The meshpyramids profile makes use of all 7 main resource types and allows a restricted set of properties. It takes away some flexibility and features for a gain in performance, e.g. by making the FeatureData resource optional. Note that since the FeatureData resource is optional and loaded lazily for certain actions, the 3dSCeneLayer resource must contain a DefaultGeometrySchema. If that is not present, clients wouldn't now how to interpret the Geometry resources.
+The meshpyramids profile makes use of all 7 main resource types and allows a restricted set of properties. It takes away some flexibility and features for a gain in performance, e.g. by making the FeatureData resource optional. Note that since the FeatureData resource is optional and loaded lazily for certain actions, the 3dSCeneLayer resource must contain a DefaultGeometrySchema. If that is not present, clients wouldn't know how to interpret the Geometry resources.
 
 ### SceneServiceInfo
 

@@ -3,9 +3,9 @@ Scene Layers: Service and Package Specification
 
 [![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
-This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition (both encoded using JSON). 
+This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition (both encoded using JSON and binary ArrayBuffers). 
 
-A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a extendable design to encode different types of 3D data such as:
+A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a declarative, extendable design to encode different types of 3D data such as:
 
 - 3D Objects (e.g. from Esri Multipatch)
 - Integrated Meshes (e.g. from dense matching photogrammetric software)
@@ -63,11 +63,6 @@ Under the following terms:
 - Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 - No derivatives — If you remix, transform, or build upon the material, you may not distribute (see Note below) the modified material.
 - No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
-
-## Contributing to the Specifications
-
-You are very much invited to fork this repository to a public or private repository and to send Pull Requests if you have ideas for improvements or have found bugs in this documentation. Creating a Fork solely for this purpose 
-does not consitute the creation and distribution of a derivative work.
 
 ## License for JSON resources, validator, and examples
 

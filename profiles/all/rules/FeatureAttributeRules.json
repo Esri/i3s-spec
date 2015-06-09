@@ -1,0 +1,52 @@
+{
+ "targetProfile": "all",
+ "resource": "FeatureAttribute",
+ "version": "1.4",
+ "rules": [
+  {
+   "qname": "name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "value",
+   "required": true,
+   "containerType": "None",
+   "valueType": "Any",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "group",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "group.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "group.*.name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "group.*.value",
+   "required": true,
+   "containerType": "None",
+   "valueType": "Any",
+   "valueSchema": "None"
+  }
+ ]
+}

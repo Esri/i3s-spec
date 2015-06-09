@@ -29,7 +29,7 @@
 <tr><td><code> geometryData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> geometryData.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
 <tr><td><code> geometryData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
-<tr><td><code> textureData</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
+<tr><td><code> textureData</code></td><td> </td><td>0</td><td>*</td><td> </td><td>object/None</td><td> </td></tr>
 <tr><td><code> textureData.*</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>object/None</td><td> </td></tr>
 <tr><td><code> textureData.*.href</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/URL</td><td> </td></tr>
 <tr><td><code> textureData.*.multiTextureBundle</code></td><td> </td><td> </td><td> </td><td>undefined</td><td>boolean/None</td><td> </td></tr>
@@ -61,12 +61,12 @@
 <tr><td><code> features.*.id</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td> </td></tr>
 <tr><td><code> features.*.mbs</code></td><td>True</td><td>4</td><td>4</td><td> </td><td>number/None</td><td> </td></tr>
 <tr><td><code> features.*.mbs.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/None</td><td> </td></tr>
-<tr><td><code> features.*.lodChildFeatures</code></td><td>True</td><td>0</td><td>*</td><td> </td><td>object/None</td><td>[../../]/store/lodType IS FeatureTree<br/></td></tr>
+<tr><td><code> features.*.lodChildFeatures</code></td><td> </td><td>0</td><td>*</td><td> </td><td>object/None</td><td>[../../]/store/lodType IS FeatureTree<br/></td></tr>
 <tr><td><code> features.*.lodChildFeatures.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>number/Integer</td><td> </td></tr>
 <tr><td><code> features.*.lodChildNodes</code></td><td>True</td><td>0</td><td>9</td><td> </td><td>object/None</td><td>[../../]/store/lodType IS FeatureTree<br/>../lodChildFeatures NOT null<br/></td></tr>
 <tr><td><code> features.*.lodChildNodes.*</code></td><td>True</td><td> </td><td> </td><td>undefined</td><td>string/NodeID</td><td> </td></tr>
-<tr><td><code> features.*.rank</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td>[../../]/store/lodType IS FeatureTree<br/></td></tr>
-<tr><td><code> features.*.rootFeature</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td>[../../]/store/lodType IS FeatureTree<br/>/level NOT 1<br/>../rank NOT 1<br/></td></tr>
+<tr><td><code> features.*.rank</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td>[../../]/store/lodType IS FeatureTree<br/>../lodChildFeatures NOT null<br/></td></tr>
+<tr><td><code> features.*.rootFeature</code></td><td>True</td><td> </td><td> </td><td>None</td><td>number/Integer</td><td>[../../]/store/lodType IS FeatureTree<br/>../lodChildFeatures NOT null<br/>/level NOT 1<br/>../rank NOT 1<br/></td></tr>
 </table>
 </body>
 </html>

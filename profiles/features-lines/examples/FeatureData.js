@@ -14,7 +14,8 @@
 					"type": "ArrayBufferView", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
 					"params": { 
-						"type": "line", // types are: triangle_strip, triangles, line, point
+						"type": "line", // types are: line
+						"topology": "PerAttributeArray", // one of {*PerAttributeArray*}. When "Indexed", the indices must also be declared in the geometry schema and precede the vertexAttribute data.
 						"vertexAttributes": {
 							"position": {	// the name of the vertex attribute; here: vertex positions in the vertexCRS used in this cache
 								"byteOffset": 18371, // the starting byte position where the required bytes begin.

@@ -53,14 +53,14 @@ specified to fulfill this set of requirements:</p>
 <ol>
 	<li><strong>User Experience first:</strong> Support a very good user experience - high interactivity, fast display, rendering of visually relevant features first</li>
 	<li><strong>Scalability:</strong> Support very large scenes, with global extent and a very large number of features (up to 1 billion), as well as very heavy features</li>
-	<li><strong>Reusability:</strong> Be useable both as the delivery format of the ArcGIS Scene Service, the ArcGIS "MultiPatch" Feature Service and as a format stored in a local file or database</li>
+	<li><strong>Reusability:</strong> Be usable both as the delivery format of the ArcGIS Scene Service, the ArcGIS "MultiPatch" Feature Service and as a format stored in a local file or database</li>
 	<li><strong>Level of Detail:</strong> Support Level of Detail concepts for generalization of very large/heavy features and for "semantic" Level of Detail approaches</li>
 	<li><strong>Distribution:</strong> Allow distribution of resources in very large data sets</li>
 	<li><strong>Merging:</strong> Allow combination/merging with data from other scene data sets</li>
 	<li><strong>User-controllable symbology:</strong> Support client-side symbology rendering</li>
 	<li><strong>Extensibility:</strong> Be extensible to support new features (e.g. geometry types) and new platforms (e.g. by allowing definition of different materials/shaders)</li>
 	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards</li>
-	<li><strong>Compatibility:</strong> Have a single structure that is useable by all ArcGIS Desktop, Web and native apps, cross platform and cross device usage, map well to GL APIS</li>
+	<li><strong>Compatibility:</strong> Have a single structure that is usable by all ArcGIS Desktop, Web and native apps, cross platform and cross device usage, map well to GL APIS</li>
 	<li><strong>Declarative:</strong> limit how much specific knowledge on the client-side is needed for format support (e.g. Index generation method only needs to be known while writing the format)</li>
 	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" - make all resources navigable using hrefs from relevant other resources.</li>
 </ol>
@@ -71,7 +71,7 @@ version of i3s, the two formats share the specification of Geometry TypedArrays.
 <h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</a></h2>
 
 <p>The basic unit of an Indexed 3D Scene is a Store, which contains individual resources (files) for a set of layers, index,
-geometries, textures and more. Within such a store, the i3s format supports a wide range of types of 2D and 3D content 
+geometries, textures and more. Within such a store, the i3s format supports a wide range of types of 2D and 3D content
 needed for 3D GIS scenes via <strong>profiling</strong> of this format. All layer types
 supported are listed in the following Table.</p>
 
@@ -95,7 +95,7 @@ supported are listed in the following Table.</p>
   <td></td>
  </tr>
  <tr>
-  <td>3D Multirepresentation Objects <em>(CityGML)</em></td>
+  <td>3D Multi-representation Objects <em>(CityGML)</em></td>
   <td><a href="../profiles/features-meshes/features-meshes.md">features-meshes</a></td>
   <td>Yes</td>
   <td>Yes</td>
@@ -159,7 +159,7 @@ the spatial extent of each node will be.</p>
 <p>All Nodes have an ID that is unique throughout a store. The ID format used is that of a treekey,
 i.e. the key directly indicates the position of the node in the tree. Treekeys
 allow sorting all resources on a single dimension and usually maintain 2D
-spatial proximity in the 1D ordering. Treekeys are strings in which levels are separated by dashes: 
+spatial proximity in the 1D ordering. Treekeys are strings in which levels are separated by dashes:
 "3-0-34-2-2" has 5 numeric elements, hence the node is on level 5 (root is level 1) and the node "3-0-34-2" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
@@ -170,9 +170,9 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 
 <h2><a name="_4">Level of Detail Concept</a></h2>
 
-<p>The Level of Detail concept introduced with this format specification covers several use cases, 
-including splitting up very heavy features such as detailed buildings, very large features (coastlines, rivers, infrastructure), 
-thinning/clustering for optimized visualization and semantic LODs, i.e. the usage of explicit, 
+<p>The Level of Detail concept introduced with this format specification covers several use cases,
+including splitting up very heavy features such as detailed buildings, very large features (coastlines, rivers, infrastructure),
+thinning/clustering for optimized visualization and semantic LODs, i.e. the usage of explicit,
 authored representations to be used for different viewing ranges. </p>
 
 <table>
@@ -198,14 +198,14 @@ authored representations to be used for different viewing ranges. </p>
   </tr>
 </table>
 
-<p>Different Levels of Detail are bound to the different levels of the index tree. The leaf nodes of that contain have the 
-original representations with the highest detail. The closer nodes are to the root, the lower the level of detail will be. 
-For each level up, the amount of data is typically reduced by a factor between 2 and 10 by employing methods 
-such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also 
+<p>Different Levels of Detail are bound to the different levels of the index tree. The leaf nodes of that contain have the
+original representations with the highest detail. The closer nodes are to the root, the lower the level of detail will be.
+For each level up, the amount of data is typically reduced by a factor between 2 and 10 by employing methods
+such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also
 have a balanced weight.</p>
 
 <p>In i3s, Level of Detail and Aggregation of Geometries into single bigger meshes for
-optimal rendering performance are orthogonal concepts. In all cases, geometries are 
+optimal rendering performance are orthogonal concepts. In all cases, geometries are
 pre-aggregated into Geometry Array Buffers.</p>
 
 <div>
@@ -215,39 +215,36 @@ pre-aggregated into Geometry Array Buffers.</p>
 
 <h3><a name="_4_1">LoD Switching Models</a></h3>
 
-<p>Depending on the properties of a 3D layer, a good user experience will necessitate 
-different ways of switching out content from one LoD with content from another LoD. 
+<p>Depending on the properties of a 3D layer, a good user experience will necessitate
+different ways of switching out content from one LoD with content from another LoD.
 i3s currently supports the definition of two LoD switching models.</p>
 
 <h4>Node Switching</h4>
 
-<p>For homogeneous data sets such as dense meshes created from oblique imagery or pointclouds, 
-i3s includes a <strong>node-switching</strong> LoD mechanism. Node-switching means that the geometry of an entire 
-Node is loaded at once and replaces all geometry representing the same set of features. 
-<strong>node-switching</strong> is typically used in conjunction with LoD generation methods (see <a href="#_4_2"><code>lodMode</code></a>) 
-that create Full Representation Pyramids, similiar to a pyramid of images with different resolutions is 
-used for 2D mapping. From root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
+<p>For homogeneous data sets such as dense meshes created from oblique imagery or pointclouds,
+i3s includes a <strong>node-switching</strong> LoD mechanism. Node-switching means that the geometry of an entire
+Node is loaded at once and replaces all geometry representing the same set of features.
+<strong>node-switching</strong> is typically used in conjunction with LoD generation methods (see <a href="#_4_2"><code>lodMode</code></a>)
+that create Full Representation Pyramids, similarly to a pyramid of images with different resolutions is used for 2D mapping. From root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
 
 <div>
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid">
 <p><em>Figure 2: Example Nodes + Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
 </div>
 
-<p>The main advantage of this mecahnism is that clients require less information for performing 
+<p>The main advantage of this mechanism is that clients require less information for performing
 the switch.</p>
 
 <h4>Feature Switching</h4>
 
-<p>Many GIS data sets are made of distinct, single objects, called features. The <code>feature-switching</code> 
-LoD switching mechanism is optimized for such data. Furthermore it can be used to transition brtween multiple 
-authored representations of features.</p>
+<p>Many GIS data sets are made of distinct, single objects, called features. The <code>feature-switching</code> LoD switching mechanism is optimized for such data. Furthermore it can be used to transition between multiple authored representations of features.</p>
 
-<p>In the <code>feature-switching</code> approach each feature in a node has explicit higher-detail or 
-lower-detail representations. This approach maintains explicit LoD representations between different features. 
-When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates -> 
-Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained. 
-This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a 
-building actually consists of one set of individual features per LoD. A Feature in a Node has 
+<p>In the <code>feature-switching</code> approach each feature in a node has explicit higher-detail or
+lower-detail representations. This approach maintains explicit LoD representations between different features.
+When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates ->
+Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained.
+This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a
+building actually consists of one set of individual features per LoD. A Feature in a Node has
 the following properties when using <code>feature-switching</code>:</p>
 
 <ul>
@@ -260,7 +257,7 @@ the following properties when using <code>feature-switching</code>:</p>
 	<li>Each Feature that participates in a LoD tree and has a rank > 1 has a <code>rootFeature</code> reference. This reference enables the client to detect which features represent a single object, e.g. for picking purposes.</li>
 </ul>
 
-<p>The links between all meshes participating in a LoD tree are either created during the store creation process, 
+<p>The links between all meshes participating in a LoD tree are either created during the store creation process,
 e.g. by breaking down a heavy and large feature, or they are predefined by the data provider.</p>
 
 <div>
@@ -311,11 +308,11 @@ e.g. by breaking down a heavy and large feature, or they are predefined by the d
 
 <h3><a name="_4_2">LoD Generation Types</a></h3>
 
-<p>If the input data doesn't come with authored Levels of Detail, different LoD 
-Generation Types can be employed. As an example, the <code>MeshPyramid</code> type 
-creates a full representation pyramid for all features and is built from aggregating, 
-fusing and reducing individual features meshes. 
-Different types are applicable to different 3D layer types:</p> 
+<p>If the input data doesn't come with authored Levels of Detail, different LoD
+Generation Types can be employed. As an example, the <code>MeshPyramid</code> type
+creates a full representation pyramid for all features and is built from aggregating,
+fusing and reducing individual features meshes.
+Different types are applicable to different 3D layer types:</p>
 
 <table>
 	<tr>
@@ -372,9 +369,9 @@ following example:</p>
 <pre><code>
 "lodSelection": [
 	{
-		"metricType": "removedFeatureDiameter", 
+		"metricType": "removedFeatureDiameter",
 		"maxError": 17.59,			
-		"avgError": 12.34 
+		"avgError": 12.34
 	},
 	{
 		"metricType": "removedFaceDiameter",
@@ -382,7 +379,7 @@ following example:</p>
 		"avgError": 2.19			
 	},
 	{
-		"metricType": "screenSpaceRelative", 
+		"metricType": "screenSpaceRelative",
 		"maxError": 0.0034  
 	}
 ]
@@ -427,7 +424,7 @@ to the selection of spatial reference systems to use:</p>
 
 <h2><a name="_6">Structure of i3s resources</a></h2>
 
-<p>The i3s format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures, 
+<p>The i3s format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures,
 Geometry and SharedResources across features of a given node.
 FeatureData, Textures, Geometry and SharedResources are all called resources
 and are always attached to a node.</p>
@@ -485,7 +482,7 @@ The Pointer consists of two elements:</p>
 <ol>
 	<li><strong>mandatory in-document reference:</strong> Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
 		<ul>
-			<li><em>Absolute</em> references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by the qname. 
+			<li><em>Absolute</em> references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by a name.
 				<ul>
 					<li>Example: <code>/materialDefinitions/*/type</code></li>
 				</ul>
@@ -670,7 +667,7 @@ applied.</p>
 	<tr>
 		<td>profile</td>
 		<td>String</td>
-		<td>Indicates which profile this scene store fulfills. 
+		<td>Indicates which profile this scene store fulfills.
 		One of <code>{features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}</code>.</td>
 	</tr>
 	<tr>
@@ -707,7 +704,7 @@ applied.</p>
 	<tr>
 		<td>nidEncoding</td>
 		<td>MIMEType</td>
-		<td>MIME type for the encoding used for the Node Index Documents; format:<br> 
+		<td>MIME type for the encoding used for the Node Index Documents; format:<br>
 		<code>application/vnd.esri.i3s.json+gzip; version=1.4</code></td>
 	</tr>
 	<tr>
@@ -773,7 +770,7 @@ applied.</p>
 
 <h4>Class GeometrySchema</h4>
 
-<p>Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. 
+<p>Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.
 Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.</p>
 
 <table>
@@ -868,8 +865,8 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	<tr>
 		<td>type</td>
 		<td>String</td>
-		<td>The type of the field, from this enum: <code>{esriFieldTypeBlob, esriFieldTypeGeometry, esriFieldTypeDate, esriFieldTypeFloat, esriFieldTypeDouble, esriFieldTypeGeometry, 
-		esriFieldTypeGlobalID, esriFieldTypeGUID, esriFieldTypeInteger, esriFieldTypeOID, 
+		<td>The type of the field, from this enum: <code>{esriFieldTypeBlob, esriFieldTypeGeometry, esriFieldTypeDate, esriFieldTypeFloat, esriFieldTypeDouble, esriFieldTypeGeometry,
+		esriFieldTypeGlobalID, esriFieldTypeGUID, esriFieldTypeInteger, esriFieldTypeOID,
 		esriFieldTypeSmallInteger, esriFieldTypeString, esriFieldTypeGroup}</code></td>
 	</tr>
 	<tr>
@@ -1037,7 +1034,7 @@ object in a 3dNodeIndexDocument.</p>
 	<tr>
 		<td>features</td>
 		<td>Feature[1..*]</td>
-		<td>A list of summary information on the features present in this Node, used for previsualisation and LoD switching in featureTree LoD stores.</td>
+		<td>A list of summary information on the features present in this Node, used for pre-visualisation and LoD switching in featureTree LoD stores.</td>
 	</tr>
 </table>
 
@@ -1133,7 +1130,7 @@ resources.</p>
 
 <h4>Class Feature</h4>
 
-<p>Features are representations of the geographic objects stored in a layer. 
+<p>Features are representations of the geographic objects stored in a layer.
 In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.</p>
 
 <table>
@@ -1161,7 +1158,7 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 		<td>lodChildNodes</td>
 		<td>String[0..*]</td>
 		<td>Tree Key IDs of the nodes in which the lodChildFeatures are found</td>
-	</tr>	
+	</tr>
 	<tr>
 		<td>rank</td>
 		<td>Integer[0..1]</td>
@@ -1398,19 +1395,19 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>vertexAttributes</td>
 		<td>VertexAttribute[1..*]</td>
-		<td>A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions. 
+		<td>A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions.
 		While there are standard keywords such as <code>position</code>, <code>uv0..uv9</code>, <code>normal</code> and <code>color</code>, this is an open, extendable list.</td>
 	</tr>
 	<tr>
 		<td>faces</td>
 		<td>FaceAttribute[0..*]</td>
-		<td>A list of Face Attributes, such as indices to build faces, and their definitions. 
+		<td>A list of Face Attributes, such as indices to build faces, and their definitions.
 		While there are standard keywords such as <code>position</code>, <code>uv0..uv9</code>, <code>normal</code> and <code>color</code>, this is an open, extendable list.</td>
 	</tr>
 </table>
 
 <p><em>Table 18: Attributes of the Class <strong>VestedGeometryParams</strong> within the FeatureData document</em></p>
-	
+
 <h4>Class SingleComponentParams</h4>
 
 <p>Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.</p>
@@ -1438,8 +1435,8 @@ representative of a feature present in the real, geographic world.</p>
 <h4>Class RingDescriptor</h4>
 
 <p>RingDescriptors are used in <code>type: polygon</code> geometries to handle inner and outer rings, as well as Level of Detail across such complex polygons.
-In a RingDescriptors, each segment is marked as either part of an outer ring (o = 0), an inner ring (i = 1), or a cut (c = 2) to allow control of symbology 
-and permit cutting of compelx polygons across nodes, as in this example:</p>
+In a RingDescriptors, each segment is marked as either part of an outer ring (o = 0), an inner ring (i = 1), or a cut (c = 2) to allow control of symbology
+and permit cutting of complex polygons across nodes, as in this example:</p>
 
 <div>
 <img src="images/lod-polygon.png" title="A large Polygon with holes cut into Nodes" alt="A large Polygon with holes cut into Nodes">
@@ -1603,13 +1600,13 @@ attributes and params for the <code>"type": "standard"</code> material.</p>
 	<tr>
 		<td>$ref</td>
 		<td>JSONPointer</td>
-		<td>The href that resolves to the shared resource bundle in which the material defintion is contained.</td>
+		<td>The href that resolves to the shared resource bundle in which the material definition is contained.</td>
 	</tr>
 	<tr>
 		<td>params.vertexRegions</td>
 		<td>Boolean[0..1]</td>
 		<td>Indicates whether this Material uses per-vertex regions. Defaults to <code>false</code>.</td>
-	</tr>	
+	</tr>
 	<tr>
 		<td>params.vertexColors</td>
 		<td>Boolean[0..1]</td>
@@ -1717,8 +1714,8 @@ geometries.</p>
 <h4>Class Image</h4>
 
 <p>An image is a binary resource, containing a single raster that can be used to texture a
-feature or symbol. It represents one specific texture LoD. 
-For details on texture organisation, please refer to the section on <a href="#_7_6">Texture resources</a>.</p>
+feature or symbol. It represents one specific texture LoD.
+For details on texture organization, please refer to the section on <a href="#_7_6">Texture resources</a>.</p>
 
 <table>
 	<tr>
@@ -1814,8 +1811,8 @@ pixels) or scaled to the nearest lower 2<sup>n</sup> size. An image that is
 140px x 90px would thus be rescaled to 128px x 64px before being inserted into
 the atlas or padded to 256px x 128px.</p>
 
-<p>The pixels belonging to a subtexture are identified by the <code>subimageRegion: [umin, vmin, umax, vmax]</code> attribute. 
-Region information is passed on to the shader using a separate vertex attribute so that every vertex UV coordinate becomes a UVR coordinate, 
+<p>The pixels belonging to a subtexture are identified by the <code>subimageRegion: [umin, vmin, umax, vmax]</code> attribute.
+Region information is passed on to the shader using a separate vertex attribute so that every vertex UV coordinate becomes a UVR coordinate,
 with the R encoding the <code>[umin, vmin, umax, vmax]</code> of the region in 4 <code>UInt16</code> values.
 </p>
 
@@ -1924,9 +1921,9 @@ the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
 <p><strong>Note: The expected triangle/face winding order in all geometry resources is
 counterclockwise (CCW).</strong></p>
 
-<p><strong>Note: If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. 
-They are always given as if x,y and z axes all had metric units, as a unit vector. 
-This means that if WGS84 is used as a horizontal CRS, the normal calculation cannot directly use the face's WGS84 coordinates, 
+<p><strong>Note: If normal vectors are present in a geometry, they need to be calculated based on uniform axis units.
+They are always given as if x,y and z axes all had metric units, as a unit vector.
+This means that if WGS84 is used as a horizontal CRS, the normal calculation cannot directly use the face's WGS84 coordinates,
 but needs to convert them to a local cartesian CRS first.</strong></p>
 
 <h2><a name="_8">Persistence</a></h2>
@@ -1937,7 +1934,7 @@ resource type.</p>
 
 <h3><a name="_8_1">File System</a></h3>
 
-<p>In this persistence schema, all resources reside in the file system as individual files. These files are organised in folders in the following scheme:</p>
+<p>In this persistence schema, all resources reside in the file system as individual files. These files are organized in folders in the following scheme:</p>
 
 <pre>
 /3dSceneLayer.json
@@ -1959,36 +1956,36 @@ resource type.</p>
 ...
 </pre>
 
-<p>This scheme is not recommended for very large stores, as there is a limit of 64K folders in several contexts such as FAT32 file systems, 
+<p>This scheme is not recommended for very large stores, as there is a limit of 64K folders in several contexts such as FAT32 file systems,
 which are still used on mobile media.</p>
 
-<p><strong>Note: The example files that are part of this spec in the profiles contain comments, 
+<p><strong>Note: The example files that are part of this spec in the profiles contain comments,
 which are not allowed in JSON documents, and therefore use the *.js file extension.</strong></p>
 
 <h3><a name="_8_2">CouchDB, IndexedDB and other Key-Value Stores</a></h3>
 
 <p>The Scene Server stores i3s resources in a document-oriented database. After
 testing, CouchDB was selected as being suitable. Especially large stores
-benefit from this type of storage. Especially when data is updated often 
+benefit from this type of storage. Especially when data is updated often
 or when highly distributed cooking processes are used, CouchDB storage is recommended.</p>
 
-<p>In CouchDB, each node is stored by using <code>nodes_&lt;NodeID&gt;</code> as a key. The document 
-itself is stored as the value document. All resources are added as attachments to that value document. 
+<p>In CouchDB, each node is stored by using <code>nodes_&lt;NodeID&gt;</code> as a key. The document
+itself is stored as the value document. All resources are added as attachments to that value document.
 3dSceneLayer.json documents are stored using the special key <code>3dSceneLayer_&lt;LayerID&gt;</code>.</p>
 
 <p>IndexedDB is a Key-value document store available in
 many current browsers, such as Firefox, Chrome and Internet Explorer.
 IndexedDB offers a method of storing data client-side and allows indexed
-database queries against JSON documents. 
+database queries against JSON documents.
 It can be used to have persistent stores on the client side and uses an identical scheme as server-side, CouchDB storage.</p>
 
 <h3><a name="_8_3">Scene Packages (spk files)</a></h3>
 
-<p>Scene Packages (spk) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file, 
-and they optionally also allow to be directly consumed by applications such as clients or services. 
-The file layout is identical to the <a href="#_8_1">File System layout</a> described before. This is referred to as the BASIC folder pattern. 
-There is also an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages. 
-This EXTENDED pattern is added as a keyword only in this sepcification version for future proofness.
+<p>Scene Packages (spk) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file,
+and they optionally also allow to be directly consumed by applications such as clients or services.
+The file layout is identical to the <a href="#_8_1">File System layout</a> described before. This is referred to as the BASIC folder pattern.
+There is also an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.
+This EXTENDED pattern is added as a keyword only in this specification for future proofness.
 Within an archive, this BASIC folder pattern results in the following structure:</p>
 
 <div>
@@ -2000,16 +1997,16 @@ Within an archive, this BASIC folder pattern results in the following structure:
 
 <ul>
 	<li>The Archive type is always <a href="http://www.enterag.ch/enterag/downloads/Zip64File_TechnicalDocumentation.pdf">Zip64</a>.</li>
-	<li>On this Archive, an overall compression scheme may be applied. 
-	This compression scheme has to be either STORE or DEFLATE64. 
-	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller stores. </li>
+	<li>On this Archive, an overall compression scheme may be applied.
+	This compression scheme has to be either STORE or DEFLATE64.
+	Standard DEFLATE is acceptable as a fall-back if DEFLATE64 is not available, but will only work with smaller stores. </li>
 	<li>Every resource except textures may also be individually compressed. For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available anymore in browsers.</li>
 </ul>
 
 <p>For the two mentioned used cases, spk is employed as follows:</p>
 
 <ol>
-	<li>spk as a transfer format: 
+	<li>spk as a transfer format:
 	<ol>
 		<li>ArchiveCompressionType: DEFLATE64</li>
 		<li>ResourceCompressionType: NONE</li>
@@ -2057,5 +2054,3 @@ Within an archive, this BASIC folder pattern results in the following structure:
 		<td>Total number of nodes stored in this spk.</td>
 	</tr>
 </table>
-
-

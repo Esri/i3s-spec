@@ -3,7 +3,7 @@ Scene Layers: Service and Package Specification
 
 [![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
-This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition (both encoded using JSON and binary ArrayBuffers). 
+This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition (both encoded using JSON and binary ArrayBuffers).
 
 A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a declarative, extendable design to encode different types of 3D data such as:
 
@@ -27,7 +27,7 @@ Software / Layers     | 3D Objects | Integrated Mesh | ...
 --------------------- | ---------- | --------------- | -----------
 ArcGIS Server         | 10.3.1     | 10.3.1          | Planned for 10.4.0        
 ArcGIS Pro            | 1.1        | 1.1             | Planned for 1.2           
-ArcGIS Scene Viewer   | 3.7/10.3.1 | 3.7/10.3.1      | Planned for 3.9/10.4.0 
+ArcGIS Scene Viewer   | 3.7/10.3.1 | 3.7/10.3.1      | Planned for 3.9/10.4.0
 
 ## Structure
 
@@ -41,17 +41,17 @@ We are also building a Validation Toolkit to support developers that is availabl
 
 ## Contributing
 
-You are very much invited to fork this repository to a public or private repository and to send Pull Requests if you have ideas for improvements or have found bugs in this documentation. Creating a Fork solely for this purpose 
-does not consitute the creation and distribution of a derivative work. Please see our [guidelines for contributing](https://github.com/esri/contributing).
+You are very much invited to fork this repository to a public or private repository and to send Pull Requests if you have ideas for improvements or have found bugs in this documentation. Creating a Fork solely for this purpose
+does not constitute the creation and distribution of a derivative work. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## License for Indexed 3D Scene Format and REST Endpoint Specification
 
 Copyright 2015 Esri
 
-The specification is licensed under the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/). 
+The specification is licensed under the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/).
 You can implement the specification in services, clients or processing tools without restrictions.
 
-You may also extend or modify the specification using the builtin extension and profiling mechanisms, however modified or extended versions of the specification may not be redistributed. The specification may only be redistributed in its unmodified version, under the same license.
+You may also extend or modify the specification using the built-in extension and profiling mechanisms, however modified or extended versions of the specification may not be redistributed. The specification may only be redistributed in its unmodified version, under the same license.
 
 You are free to:
 

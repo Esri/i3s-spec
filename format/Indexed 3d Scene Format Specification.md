@@ -2,13 +2,13 @@
 Format Specification</h2>
 
 <p>Version 1.5, 2015-12-04</p>
-<p style="font-size:70%"><em>Editors:<br>
+<p style="font-size:80%"><em>Editors:<br>
 <em>Thorsten Reitz</em><br>
 <em>Tamrat Belayneh</em>, Esri<br>
 <em>Contributors:</em> Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon, Johannes Schmid, Simon Reinhard, Chengliang Shan, Ben Tan, Moxie Zhang<br>
-<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt</p>
-
+<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Johan Borg</p>
 <p>
+
 This document specifies the Indexed 3D Scene delivery
 format used to stream 3D GIS data to mobile, web and desktop clients. It's the
 default format delivered by the ArcGIS Scene Service. The first sections of
@@ -32,7 +32,7 @@ sections provide a detailed implementation-level view.</p>
 	<li><a href="#_7">Resources Schema and Documentation</a>
 	<ol>
 		<li><a href="#_7_1">SceneServiceInfo</a></li>
-		<li><a href="#_7_2">SceneLayerInfo</a></li>
+		<li><a href="#_7_2">3dSceneLayerInfo</a></li>
 		<li><a href="#_7_3">3dNodeIndexDocument</a></li>
 		<li><a href="#_7_4">FeatureData</a></li>
 		<li><a href="#_7_5">SharedResources</a></li>
@@ -238,6 +238,8 @@ that create Full Representation Pyramids, similarly to a pyramid of images with 
 <p>The main advantage of this mechanism is that clients require less information for performing
 the switch.</p>
 
+<p>When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature - the lodChildren field of feature therefore remains unpopulated. Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
+
 <h4>Feature Switching</h4>
 
 <p>Many GIS data sets are made of distinct, single objects, called features. The <code>feature-switching</code> LoD switching mechanism is optimized for such data. Furthermore it can be used to transition between multiple authored representations of features.</p>
@@ -382,13 +384,16 @@ following example:</p>
 		"avgError": 2.19			
 	},
 	{
-		"metricType": "screenSpaceRelative",
+		"metricType": "maxScreenThreshold",
 		"maxError": 0.0034  
 	}
 ]
 </code></pre>
 
 <p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
+
+<p>
+The maxScreenThreshold, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the diameter the MBS of the node. In other words, the content referenced by this node will qualify to be rendered only when the screen size is between the maximum screen threshold and minimum – which is inferred from the parent node’s maxScreenThreshold value. </p>
 
 <h2><a name="_5">Coordinate Reference Systems</a></h2>
 
@@ -423,7 +428,7 @@ to the selection of spatial reference systems to use:</p>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<p>Note that at this point, the meshpyramids profile only allows the usage of EPSG:4326 (WGS84).</p>
+<p>Begining i3s Version 1.5, meshpyramids profile supports outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both the index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
 
 <h2><a name="_6">Structure of i3s resources</a></h2>
 
@@ -583,6 +588,70 @@ definition of this default symbology with the web scene item JSON file. The
 <p>The 3dSceneLayerInfo is the major object in the 3dSceneLayerInfo document. There is
 always exactly one 3dSceneLayerInfo object in the document, which describes a
 Layer.</p>
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>Integer</td>
+		<td>Unique numeric ID of the Layer.</td>
+	</tr>
+	<tr>
+		<td>href</td>
+		<td>URL</td>
+		<td>The relative URL to the 3dSceneLayerResource. Only present as part of the SceneServiceInfo resource.</td>
+	</tr>
+	<tr>
+		<td>layerType</td>
+		<td>String</td>
+		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, IntegratedMesh, Pointcloud}</td>
+	</tr>
+	<tr>
+		<td>ZFactor</td>
+		<td>Float</td>
+		<td>[deprecated] Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.</td>
+	</tr>
+	<tr>
+		<td>version</td>
+		<td>String</td>
+		<td>The ID of the last update session in which any resource belonging to this layer has been updated.</td>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>String</td>
+		<td>The name of this layer.</td>
+	</tr>
+	<tr>
+		<td>alias</td>
+		<td>String[0..1]</td>
+		<td>The display alias to be used for this layer.</td>
+	</tr>
+	<tr>
+		<td>description</td>
+		<td>String[0..1]</td>
+		<td>Description string for this layer.</td>
+	</tr>
+	<tr>
+		<td>copyrightText</td>
+		<td>String[0..1]</td>
+		<td>Copyright and usage information for the data in this layer.</td>
+	</tr>
+	<tr>
+		<td>capabilities</td>
+		<td>String[1..3]</td>
+		<td>Capabilities from the Set <code>{View, Query, Edit}</code> that are possible on this layer. If not served by a 3DSceneServer (e.g. exported by CityEngine), "View" only.</td>
+	</tr>
+</table>
+
+<p><em>Table 5: Attributes of the Class <strong>3dSceneLayerInfo</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class attributeStorageInfo</h4>
+
+<p>The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. An object that describes the structure of the binary attributeData resource of a node.</p>
 
 <table>
 	<tr>
@@ -1956,7 +2025,7 @@ When the same feature is included in multiple nodes at different levels of detai
 </p>
 
 <p>
-Metadata on each _attribute_ resource is made available to clients via the scene service layer. When attributes are present within the scene cache, the _resourcePattern_ array in the layers store (layers[id].store.resourcePattern) will include a value called _Attributes_, indicating attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the _resourcePattern_, additional metadata present in the _fields_ array (_layers[id].fields[id]_) and  _attributeStorageInfo_ array (_layers[id].attributeStorageInfo[id]_), further describe each attribute resource.
+Metadata on each _attribute_ resource is made available to clients via the [scene service layer]((https://github.com/Esri/i3s-spec/blob/master/profiles/meshpyramids/examples/3dSceneLayer.js). When attributes are present within the scene cache, the _resourcePattern_ array in the layers store (layers[id].store.resourcePattern) will include a value called _Attributes_, indicating attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the _resourcePattern_, additional metadata present in the _fields_ array (_layers[id].fields[id]_) and  _attributeStorageInfo_ array (_layers[id].attributeStorageInfo[id]_), further describe each attribute resource.
 </p>
 
 <p>
@@ -1964,10 +2033,10 @@ These metadata allow clients to initialize and allocate any required client side
 </p>
 
 <p>
-![App](./images/Attribute_Legend_Support_Fig_2.png "Fig. 1 An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.")
+![App](./images/Attribute_Legend_Support_Fig_fields.png "Fig. 11 An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.")
 </p>
 
-<p>_Fig. 1 An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias._</p>
+<p>_Fig. 11 An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias._</p>
 
 Once a client application makes a decision regarding the field it is interested in accessing, it can use the _key_ property (_layers[id].attributeStorageInfo[].key_) of the _attributeStorageInfo_ metadata to uniquely identify and request the _attribute_ resource thru a new RESTful API, called **attributes.** The _attributeStorageInfo_ metadata in addtion contains all the information that a client application requires to decode the retrieved _attribute_ binary content.
 
@@ -1992,10 +2061,10 @@ _Fig. 2 a Node-Index-Document (NID) illustrating attribute data content access u
 The **attributes** REST API will allow client apps to fetch the attribute records of a given field as identified by its _Key_ property. As a result, every scene node (with the exception of 'root' node), will expose available attribute fields as discrete _attribute_ resources. These resources are accessible thru a relative URL to any Node Index Document.
 
 The _attributes_ REST api syntax is as follows:  
- URL: **http://&lt;sceneservrice-url&gt;/attributes/&lt;field_key&gt;/&lt;id&gt;**
+ URL: **http://&lt;sceneservrice-url&gt;/attributes/&lt;field_key&gt;/&lt;id>**
 
-- _attributes_ -  is the RESTful resource responsible for fetching the binary attribute resource. A client application will be able to decode the content of this _attribute_ resource solely based on the metadata information found in the scene layer _attributeStorageInfo_ array (which adequately describes the content of the binary data).
-- _field_key_ - is the field key value that will be used to request the desired feature attribute content.
+- _attributes_ -  is the RESTful resource responsible for fetching the binary attribute resource. A client application will be able to decode the content of this _attribute_ resource solely based on the metadata information found in the scene layer _attributeStorageInfo_ array (which adequately describes the content of the binary data).  
+- <i>field\_key</i> - is the field key value that will be used to request the desired feature attribute content.
 - _id_ - is the bundle id of the _attribute_ binary resource, corresponding to the geometry bundle id. By default this value is 0 (same as the geometry bundle id). If a node has more than 1 geometry resource, then the id of the _attribute_ resource will also match the geometry bundle id.
 
 
@@ -2013,7 +2082,7 @@ The _attributes_ REST api syntax is as follows:
   4. For string attribute values, an _attributeByteCounts_ object describing each of the string attribute values byte   count.
   5. The _attributeValues_ object describing the attribute value array, which contains member properties such as _valueType_ and _valuesPerElement_. For string attribute values in addition to its _valueType_ ('String'), there is an additional property _encoding_ ('UTF-8') that endicates the unicode enconding type. A String-Array is capable of supporting null attribute values (a 0 byte count value indicates a null string).  
 
-  Note that the _key_ property (with values such as _f_0_, _f_1_, etc...) is **automatically** computed and that there shouldn't be any relationship _assumed_ to the field index of the source feature class (especially important when a user adds or deletes fields during the lifetime of a layer).
+  Note that the _key_ property (with values such as <i>f_0</i>, <i>f_1</i>, etc...) is **automatically** computed and that there shouldn't be any relationship _assumed_ to the field index of the source feature class (especially important when a user adds or deletes fields during the lifetime of a layer).
 
    ![App](./images/Attribute_Legend_Support_Fig_3.png "Fig.3 An expanded view of a scene layer resource showing the content of an _attributeStorageInfo_ resource. The example shows 5 objects each corresponding to the 5 field objects of the _fields_ resource (as matched by the 'key' and  'name' properties present in both arrays).")  
 
@@ -2026,10 +2095,10 @@ The _attributes_ REST api syntax is as follows:
   The following example below shows the _attributes_ REST request signature:
 
    Example 1:  
-   a. http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-0/**attributes/0/f_1**  
-   b. http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-/**attributes/0/f_2**  
+   a. http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-0/<b>attributes/0/f_1</b>  
+   b. http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-/<b>attributes/0/f_2</b>  
 
-   In _Example 1.a_we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (_f_1_) in Fig. 1. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (_f_2_).
+   In _Example 1.a_we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (<i>f_1</i>) in Fig. 1. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (<i>f_2</i>).
 
 #### Attribute Resource - Details
 
@@ -2067,7 +2136,7 @@ The 'NEAR_DIST' field is of field type 'esriFieldTypeDouble' field type and is r
 
 The 'Name' field is of 'esriFieldTypeString' and is represented as a _String-Array_. A String-Array supports storage of variable length strings and is stored as two arrays in sequence where the first fixed length array has the byte counts of each string (null terminated) in the second array and the second array stores the actual string values as UTF8 encoded strings. The value type of the first array is (_UInt32_) where as the value type of the second array is _String_.  
 
-The _attributes_ REST api of a scene layer gives access to all scene cache supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in [Fig. 4](images/Attribute_Legend_Support_Fig_4.png) will have 5 binary resources, as identified by keys _f_0_, _f_1_, _f_2_, _f_3_ and _f_4_ and accessible by their respective rest resource URLs (_.../nodes/&lt;nodeID&gt;/attributes/0/f_1_, _.../nodes/&lt;nodeID&gt;/attributes/0/f_1_, etc..).
+The _attributes_ REST api of a scene layer gives access to all scene cache supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in [Fig. 4](images/Attribute_Legend_Support_Fig_4.png) will have 5 binary resources, as identified by keys <i>f_0_, f_1_, f_2_, f_3_ </i> and <i>f_4</i> and accessible by their respective rest resource URLs (_.../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc..).
 
 ## Accessing the legend of a 3D Objects Layer
 
@@ -2076,12 +2145,6 @@ Legends are essential for proper display (complete communication of represented 
 Clients are responsible for building legend information from the drawingInfo resource for the scene layer.
 In this scene layers and scene services behave identically to feature layers and feature services.
 
-Note : This is unlike the case for map services where legends are additional explicit resource advertised by the map service
-
-##Example Services
-WebScene : https://scenetestportal1.arcgis.com/arcgis/home/item.html?id=12dd771203554860903b12afd3adc000
-Scene Service URL: http://scenetest1.arcgis.com/arcgis/rest/services/Hosted/Attributes/SceneServer  
-Example attribute resource: http://scenetest1.arcgis.com/arcgis/rest/services/Hosted/Attributes/SceneServer/layers/0/nodes/0-0-0/attributes/f_0/0  (OIDs..)
 
 </p>
 
@@ -2098,20 +2161,26 @@ resource type.</p>
 <pre>
 /3dSceneLayer.json
 /nodes/root/3dNodeIndexDocument.json
-/nodes/root/features/0.json ...n.json
-/nodes/root/geometries/0.bin ...n.bin
-/nodes/root/shared/SharedResource.json
-/nodes/root/textures/0_0.bin ...n_m.bin
 /nodes/0/3dNodeIndexDocument.json
 /nodes/0/features/0.json ...n.json
 /nodes/0/geometries/0.bin ...n.bin
+/nodes/0/attributes/f_0/0.bin ...n.bin
+/nodes/0/attributes/f_1/0.bin ...n.bin
+/nodes/0/attributes/f_2/0.bin ...n.bin
+/nodes/0/attributes/f_n/0.bin ...n.bin
 /nodes/0/shared/SharedResource.json
 /nodes/0/textures/0_0.bin ...n_m.bin
+/nodes/0/textures/0_0_1.bin ...n_m.bin
 /nodes/0-1/3dNodeIndexDocument.json
 /nodes/0-1/features/0.json ...n.json
 /nodes/0-1/geometries/0.bin ...n.bin
+/nodes/0-1/attributes/f_0/0.bin ...n.bin
+/nodes/0-1/attributes/f_1/0.bin ...n.bin
+/nodes/0-1/attributes/f_2/0.bin ...n.bin
+/nodes/0-1/attributes/f_n/0.bin ...n.bin
 /nodes/0-1/shared/SharedResource.json
 /nodes/0-1/textures/0_0.bin ...n_m.bin
+/nodes/0-1/textures/0_0_1.bin ...n_m.bin
 ...
 </pre>
 

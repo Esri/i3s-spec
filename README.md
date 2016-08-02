@@ -49,7 +49,7 @@ does not constitute the creation and distribution of a derivative work. Please s
 
 ## License for Indexed 3D Scene Format and REST Endpoint Specification
 
-Copyright 2015 Esri
+Copyright 2016 Esri
 
 The specification is licensed under the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/).
 You can implement the specification in services, clients or processing tools without restrictions.

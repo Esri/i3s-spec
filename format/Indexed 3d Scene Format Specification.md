@@ -6,7 +6,7 @@ Format Specification</h2>
 <em>Thorsten Reitz</em><br>
 <em>Tamrat Belayneh</em>, Esri<br>
 <em>Contributors:</em> Javier Gutierrez, Markus Lipp, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon, Johannes Schmid, Simon Reinhard, Chengliang Shan, Ben Tan, Moxie Zhang<br>
-<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Johan Borg</p>
+<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
 <p>
 
 This document specifies the Indexed 3D Scene delivery

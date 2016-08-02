@@ -3,7 +3,7 @@ Scene Layers: Service and Package Specification
 
 [![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
 
-This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format (i3s) and the Scene Layer Package definition (spk). Both encoded using JSON and binary ArrayBuffers.
+This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format and the Scene Layer Package definition (both encoded using JSON and binary ArrayBuffers).
 
 A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a declarative, extendable design to encode different types of 3D data such as:
 
@@ -17,21 +17,17 @@ A Scene Layer is a container for arbitrarily large amounts of 3D geographic data
 - Analytics (e.g. from Sensor Data or Simulations)
 - ...
 
-## Can I Use...?  
+## Can I Use...?
 
-The specification for the [Indexed 3d Scene (i3s) Format and Scene Layer Package (spk)](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these i3s resources and operations, the [REST endpoint](./service/SceneService.md), are presented here as open formats.
+For the first release in ArcGIS 10.3.1, we support Scene Layers of the 3D Objects and Integrated Mesh types. All other layer types are in development. Access to these experimental specifications has to be requested separately.
 
-This table below shows the various i3s profile types that are supported by ArcGIS Software.
-The ArcGIS software products listed below support publishing as well as consuming Scene Layers and services. The versions indicated below show the current software version of each product that support scene layers.
+This table explains which implementations of the specification exist and what they support.
 
-ArcGIS Software       | 3D Objects | Integrated Mesh| Points
---------------------- | ---------- | ---------------| -------
-ArcGIS.com            | Current    | Current        | Current
-ArcGIS for Server     | 10.4.1     | 10.4.1         | 10.4.1
-Portal for ArcGIS     | 10.4.1     | 10.4.1         | 10.4.1
-ArcGIS Pro            | 1.3        | 1.3            | 1.3    
-ArcGIS Earth          | 1.2        | 1.2            | 1.2    
-
+Software / Layers     | 3D Objects | Integrated Mesh | ...
+--------------------- | ---------- | --------------- | -----------
+ArcGIS Server         | 10.3.1     | 10.3.1          | Planned for 10.4.0        
+ArcGIS Pro            | 1.1        | 1.1             | Planned for 1.2           
+ArcGIS Scene Viewer   | 3.7/10.3.1 | 3.7/10.3.1      | Planned for 3.9/10.4.0
 
 ## Structure
 
@@ -41,6 +37,7 @@ The specification explains how different types of Scene Layers are encoded using
 - [Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
 - Example JSON resources and validation rule files for each layer type
 
+We are also building a Validation Toolkit to support developers that is available upon request.
 
 ## Contributing
 
@@ -49,7 +46,7 @@ does not constitute the creation and distribution of a derivative work. Please s
 
 ## License for Indexed 3D Scene Format and REST Endpoint Specification
 
-Copyright 2015 Esri
+Copyright 2016 Esri
 
 The specification is licensed under the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/).
 You can implement the specification in services, clients or processing tools without restrictions.

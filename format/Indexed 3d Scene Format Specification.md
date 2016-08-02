@@ -374,6 +374,10 @@ following example:</p>
 <pre><code>
 "lodSelection": [
 	{
+		"metricType": "maxScreenThreshold",
+		"maxError": 0.0034  
+	},
+	{
 		"metricType": "removedFeatureDiameter",
 		"maxError": 17.59,			
 		"avgError": 12.34
@@ -382,10 +386,6 @@ following example:</p>
 		"metricType": "removedFaceDiameter",
 		"maxError": 11.11,
 		"avgError": 2.19			
-	},
-	{
-		"metricType": "maxScreenThreshold",
-		"maxError": 0.0034  
 	}
 ]
 </code></pre>
@@ -428,7 +428,7 @@ to the selection of spatial reference systems to use:</p>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<p>Begining i3s Version 1.5, meshpyramids profile supports outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both the index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
+<p>Begining i3s Version 1.5, meshpyramids profile supports outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
 
 <h2><a name="_6">Structure of i3s resources</a></h2>
 
@@ -1735,9 +1735,9 @@ attributes and params for the <code>"type": "standard"</code> material.</p>
 		<td><code>true</code> if features with this material should receive shadows</td>
 	</tr>
 	<tr>
-		<td>params.doubleSided</td>
-		<td>Boolean</td>
-		<td>Indicates whether the material should be rendered double-sided, i.e. without backface culling</td>
+		<td>params.cullFace</td>
+		<td>String</td>
+		<td>Indicates the material culling options {back, front, *none*}. Default being <code>none</code>.</td>
 	</tr>
 </table>
 

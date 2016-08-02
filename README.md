@@ -41,6 +41,7 @@ The specification explains how different types of Scene Layers are encoded using
 - [Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
 - Example JSON resources and validation rule files for each layer type
 
+We are also building a Validation Toolkit to support developers that is available upon request.
 
 ## Contributing
 

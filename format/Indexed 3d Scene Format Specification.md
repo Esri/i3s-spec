@@ -1,7 +1,7 @@
 <h2>Esri Indexed 3d Scene (*.i3s) and Scene Package (*.spk) <br>
 Format Specification</h2>
 
-<p>Version 1.5, 2015-12-04</p>
+<p>Version 1.5, Aug. 12, 2016</p>
 <p style="font-size:80%"><em>Editors:<br>
 <em>Thorsten Reitz</em><br>
 <em>Tamrat Belayneh</em>, Esri<br>
@@ -9,9 +9,8 @@ Format Specification</h2>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
 <p>
 
-This document specifies the Indexed 3D Scene delivery
-format used to stream 3D GIS data to mobile, web and desktop clients. It's the
-default format delivered by the ArcGIS Scene Service. The first sections of
+This document specifies the Indexed 3D Scene (i3s) format, an open 3d content delivery
+format used to disseminate 3D GIS data to mobile, web and desktop clients. I3s is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a> . The first sections of
 this specification explain the conceptual structure of i3s, while the latter
 sections provide a detailed implementation-level view.</p>
 
@@ -55,21 +54,19 @@ specified to fulfill this set of requirements:</p>
 
 <ol>
 	<li><strong>User Experience first:</strong> Support a very good user experience - high interactivity, fast display, rendering of visually relevant features first</li>
-	<li><strong>Scalability:</strong> Support very large scenes, with global extent and a very large number of features (up to 1 billion), as well as very heavy features</li>
-	<li><strong>Reusability:</strong> Be usable both as the delivery format of the ArcGIS Scene Service, the ArcGIS "MultiPatch" Feature Service and as a format stored in a local file or database</li>
-	<li><strong>Level of Detail:</strong> Support Level of Detail concepts for generalization of very large/heavy features and for "semantic" Level of Detail approaches</li>
-	<li><strong>Distribution:</strong> Allow distribution of resources in very large data sets</li>
-	<li><strong>Merging:</strong> Allow combination/merging with data from other scene data sets</li>
-	<li><strong>User-controllable symbology:</strong> Support client-side symbology rendering</li>
+	<li><strong>Scalability:</strong> Support very large scenes, with global extent and large amounts of features - as well as ability to handle highly detailed features</li>
+	<li><strong>Reusability:</strong> Be usable both as well as storage/exchange format in a local file or database</li>
+	<li><strong>Level of Detail:</strong> Support intrinsically a level of detail concept for generalization large/heavy features as well as allow for "semantic" Level of Detail approaches</li>
+	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets</li>
+	<li><strong>Merging:</strong> Allow combination/merging of heterogeneous data types from other scene data sets</li>
+	<li><strong>User-controllable symbology:</strong> Support client-side symbology/styling and its efficient rendering</li>
 	<li><strong>Extensibility:</strong> Be extensible to support new features (e.g. geometry types) and new platforms (e.g. by allowing definition of different materials/shaders)</li>
 	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards</li>
-	<li><strong>Compatibility:</strong> Have a single structure that is usable by all ArcGIS Desktop, Web and native apps, cross platform and cross device usage, map well to GL APIS</li>
+	<li><strong>Compatibility:</strong> Have a single structure that is usable by all ArcGIS Desktop, Web and native apps, across the platform</li>
 	<li><strong>Declarative:</strong> limit how much specific knowledge on the client-side is needed for format support (e.g. Index generation method only needs to be known while writing the format)</li>
 	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" - make all resources navigable using hrefs from relevant other resources.</li>
 </ol>
 
-<p>Some of these requirements (especially 8, 9, 10 and 12) are shared with the <a href="https://github.com/KhronosGroup/glTF">Khronos glTF format</a>, which is an upcoming standard for transferring 3D content. In this
-version of i3s, the two formats share the specification of Geometry TypedArrays.</p>
 
 <h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</a></h2>
 
@@ -139,7 +136,7 @@ supported are listed in the following Table.</p>
 
 <p>A single i3s store can contain data from multiple layers, but only one layer type (to be precise, implemented in one profile), as the
 different content types typically require different indexing and Level of
-Details methods to perform best. In many cases their schema also differs
+Details methods to perform best. In many cases, their schema also differs
 substantially. However, a single store can contain multiple layers that share
 the same content type. Effectively these layers will share the same index, but
 they can still be accessed individually. This reduces the number of calls to a
@@ -163,7 +160,7 @@ the spatial extent of each node will be.</p>
 i.e. the key directly indicates the position of the node in the tree. Treekeys
 allow sorting all resources on a single dimension and usually maintain 2D
 spatial proximity in the 1D ordering. Treekeys are strings in which levels are separated by dashes:
-"3-0-34-2-2" has 5 numeric elements, hence the node is on level 5 (root is level 1) and the node "3-0-34-2" is its parent.  
+"3-1-0" has 3 numeric elements, hence the node is on level 4 ("root" node is level 1) and the node "3-1" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
 <div>
@@ -201,9 +198,8 @@ authored representations to be used for different viewing ranges. </p>
   </tr>
 </table>
 
-<p>Different Levels of Detail are bound to the different levels of the index tree. The leaf nodes of that contain have the
-original representations with the highest detail. The closer nodes are to the root, the lower the level of detail will be.
-For each level up, the amount of data is typically reduced by a factor between 2 and 10 by employing methods
+<p>Different Levels of Detail are bound to the different levels of the index tree. Typically leaf nodes of an LOD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be.
+For each level up, the amount of data is typically reduced by a factor between 2 to 10 by employing methods
 such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also
 have a balanced weight.</p>
 
@@ -225,20 +221,20 @@ i3s currently supports the definition of two LoD switching models.</p>
 <h4>Node Switching</h4>
 
 <p>For homogeneous data sets such as dense meshes created from oblique imagery or pointclouds,
-i3s includes a <strong>node-switching</strong> LoD mechanism. Node-switching means that the geometry of an entire
+i3s includes a <code>node-switching</code> LoD mechanism. Node-switching means that the geometry of an entire
 Node is loaded at once and replaces all geometry representing the same set of features.
-<strong>node-switching</strong> is typically used in conjunction with LoD generation methods (see <a href="#_4_2"><code>lodMode</code></a>)
-that create Full Representation Pyramids, similarly to a pyramid of images with different resolutions is used for 2D mapping. From root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
+<code>node-switching</code> is typically used in conjunction with LoD generation methods (see <a href="#_4_2"><code>lodMode</code></a>)
+that create Full Representation Pyramids, similarly to a pyramid of images with different resolutions as used for 2D mapping. From root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
 
 <div>
 <img src="images/figure-03.png" title="Example Nodes + Mesh Pyramid" alt="Example Nodes + Mesh Pyramid">
 <p><em>Figure 2: Example Nodes + Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
 </div>
 
-<p>The main advantage of this mechanism is that clients require less information for performing
-the switch.</p>
+<p>When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature but rather for the entire content of the node (all features contained by that node). Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
 
-<p>When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature - the lodChildren field of feature therefore remains unpopulated. Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
+<p>The main advantage of this mechanism is that clients require less information for performing
+the switch.Node switching is the default Lod Switching model for layer types that implement  meshpyramids profile.</p>
 
 <h4>Feature Switching</h4>
 
@@ -314,10 +310,9 @@ e.g. by breaking down a heavy and large feature, or they are predefined by the d
 <h3><a name="_4_2">LoD Generation Types</a></h3>
 
 <p>If the input data doesn't come with authored Levels of Detail, different LoD
-Generation Types can be employed. As an example, the <code>MeshPyramid</code> type
-creates a full representation pyramid for all features and is built from aggregating,
-fusing and reducing individual features meshes.
-Different types are applicable to different 3D layer types:</p>
+Generation Types can be employed. As an example, layers based on the <code>meshpyramids</code> profile type create a full representation LoD pyramid for all features and is built from aggregating,
+fusing and reducing an individual features' mesh.
+Different types of LoD Generation techniques are applicable to different 3D layer types:</p>
 
 <table>
 	<tr>
@@ -375,17 +370,11 @@ following example:</p>
 "lodSelection": [
 	{
 		"metricType": "maxScreenThreshold",
+		"maxError": 486.91314697265625
+	},
+	{
+		"metricType": "screenSpaceRelative",
 		"maxError": 0.0034  
-	},
-	{
-		"metricType": "removedFeatureDiameter",
-		"maxError": 17.59,			
-		"avgError": 12.34
-	},
-	{
-		"metricType": "removedFaceDiameter",
-		"maxError": 11.11,
-		"avgError": 2.19			
 	}
 ]
 </code></pre>
@@ -393,7 +382,7 @@ following example:</p>
 <p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
 
 <p>
-The maxScreenThreshold, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the diameter the MBS of the node. In other words, the content referenced by this node will qualify to be rendered only when the screen size is between the maximum screen threshold and minimum – which is inferred from the parent node’s maxScreenThreshold value. </p>
+The maxScreenThreshold, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the diameter the MBS of the node. In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
 
 <h2><a name="_5">Coordinate Reference Systems</a></h2>
 

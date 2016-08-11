@@ -382,11 +382,11 @@ following example:</p>
 <p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
 
 <p>
-The maxScreenThreshold, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the diameter the MBS of the node. In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
+The <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
 
 <h2><a name="_5">Coordinate Reference Systems</a></h2>
 
-<p>Indexed 3D Scenes have to fulfill several in part conflicting requirements when it comes
+<p>Indexed 3D Scenes have to fulfill several, in part conflicting, requirements when it comes
 to the selection of spatial reference systems to use:</p>
 
 <ul>
@@ -407,33 +407,23 @@ to the selection of spatial reference systems to use:</p>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
 	</li>
-	<li>Use of a geographic or of various projected CRS, with meter-based x,y,z axes and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions. Allowed EPSG codes:
-		<ol>
-			<li>EPSG:4326 (WGS84)</li>
-			<li>EPSG:32601 to EPSG:32660, EPSG:32701 to EPSG:32760 (UTM WGS84)</li>
-			<li>EPSG:3857 (Web Mercator WGS84) or EPSG:32662 (Plate Carree WGS84) for large extent datasets (~12° to 360° horizontal extent)</li>
-		</ol>
+	<li>Use of a geographic or of various projected CRS, where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions.		
 	</li>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<p>Begining i3s Version 1.5, meshpyramids profile supports outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
+<p>Begining version 1.5, i3s profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
 
 <h2><a name="_6">Structure of i3s resources</a></h2>
 
-<p>The i3s format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures,
-Geometry and SharedResources across features of a given node.
-FeatureData, Textures, Geometry and SharedResources are all called resources
-and are always attached to a node.</p>
+<p>The i3s format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures, Geometry, Attributes and SharedResources, all representing a collection of features for a given node. These resources are always attached to a node.</p>
 
 <div>
 <img src="images/figure-04.png" title="Structure of a single Node and its attached Resources" alt="Structure of a single Node and its attached Resources">
 <p>Figure 4: Structure of a single Node and its attached Resources</p>
 </div>
 
-<p>Per node, there is exactly one 3dNodeIndexDocument and one SharedResources document. FeatureData,
-Geometry files and Texture files are split into bundles for optimal network
-transfer and client-side reactivity. This allows balancing between index size,
+<p>Per node, there is exactly one 3dNodeIndexDocument and one SharedResources document. FeatureData, Geometry, Texture and attributes files are split into bundles for optimal network transfer and client-side reactivity. This allows balancing between index size,
 feature splitting (with a relatively large node capacity between 1MB and 10MB)
 and optimal network usage (with a smaller bundle size, usually in the range of
 64kB to 512kB).</p>

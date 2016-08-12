@@ -1,5 +1,5 @@
-<h2>Esri Indexed 3d Scene (*.i3s) and Scene Package (*.spk) <br>
-Format Specification</h2>
+<h2>Esri Indexed 3d Scene Layer (*.i3s) and <br>
+Scene Layer Package (*.spk) Format Specification</h2>
 
 <p>Version 1.5, Aug. 12, 2016</p>
 <p style="font-size:80%"><em>Editors:<br>
@@ -54,11 +54,11 @@ specified to fulfill this set of requirements:</p>
 
 <ol>
 	<li><strong>User Experience first:</strong> Support a very good user experience - high interactivity, fast display, rendering of visually relevant features first</li>
-	<li><strong>Scalability:</strong> Support very large scenes, with global extent and large amounts of features - as well as ability to handle highly detailed features</li>
+	<li><strong>Scalability:</strong> Support very large scene layers, with global extent and large amounts of features - as well as ability to handle highly detailed features</li>
 	<li><strong>Reusability:</strong> Be usable both as well as storage/exchange format in a local file or database</li>
 	<li><strong>Level of Detail:</strong> Support intrinsically a level of detail concept for generalization large/heavy features as well as allow for "semantic" Level of Detail approaches</li>
 	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets</li>
-	<li><strong>Merging:</strong> Allow combination/merging of heterogeneous data types from other scene data sets</li>
+	<li><strong>Merging:</strong> Allow combination/merging of heterogeneous data types from other scene layer data sets</li>
 	<li><strong>User-controllable symbology:</strong> Support client-side symbology/styling and its efficient rendering</li>
 	<li><strong>Extensibility:</strong> Be extensible to support new features (e.g. geometry types) and new platforms (e.g. by allowing definition of different materials/shaders)</li>
 	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards</li>
@@ -68,9 +68,9 @@ specified to fulfill this set of requirements:</p>
 </ol>
 
 
-<h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene?</a></h2>
+<h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene Layer?</a></h2>
 
-<p>The basic unit of an Indexed 3D Scene is a Store, which contains individual resources (files) for a set of layers, index,
+<p>The basic unit of an Indexed 3D Scene Layer is a Store, which contains individual resources (files) for a set of layers, index,
 geometries, textures and more. Within such a store, the i3s format supports a wide range of types of 2D and 3D content
 needed for 3D GIS scenes via <strong>profiling</strong> of this format. All layer types
 supported are listed in the following Table.</p>
@@ -83,7 +83,7 @@ supported are listed in the following Table.</p>
   <td><strong>Symbology</strong></td>
  </tr>
  <tr>
-  <td>3D Objects <em>(Multipatch)</em></td>
+  <td>3D Object <em>(Multipatch)</em></td>
   <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>Yes</td>
   <td>Yes</td>
@@ -234,7 +234,7 @@ that create Full Representation Pyramids, similarly to a pyramid of images with 
 <p>When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature but rather for the entire content of the node (all features contained by that node). Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
 
 <p>The main advantage of this mechanism is that clients require less information for performing
-the switch.Node switching is the default Lod Switching model for layer types that implement  meshpyramids profile.</p>
+the switch.Node switching is the default Lod Switching model for layer types that implement  meshpyramid profile.</p>
 
 <h4>Feature Switching</h4>
 
@@ -310,7 +310,7 @@ e.g. by breaking down a heavy and large feature, or they are predefined by the d
 <h3><a name="_4_2">LoD Generation Types</a></h3>
 
 <p>If the input data doesn't come with authored Levels of Detail, different LoD
-Generation Types can be employed. As an example, layers based on the <code>meshpyramids</code> profile type create a full representation LoD pyramid for all features and is built from aggregating,
+Generation Types can be employed. As an example, layers based on the <code>meshpyramid</code> profile type create a full representation LoD pyramid for all features and is built from aggregating,
 fusing and reducing an individual features' mesh.
 Different types of LoD Generation techniques are applicable to different 3D layer types:</p>
 
@@ -382,7 +382,7 @@ following example:</p>
 <p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
 
 <p>
-The <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
+The <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramid profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
 
 <h2><a name="_5">Coordinate Reference Systems</a></h2>
 
@@ -719,7 +719,7 @@ applied.</p>
 		<td>profile</td>
 		<td>String</td>
 		<td>Indicates which profile this scene store fulfills.
-		One of <code>{features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}</code>.</td>
+		One of <code>{features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramid, pointclouds, symbols}</code>.</td>
 	</tr>
 	<tr>
 		<td>resourcePattern</td>
@@ -2117,9 +2117,9 @@ The 'Name' field is of 'esriFieldTypeString' and is represented as a _String-Arr
 
 The _attributes_ REST api of a scene layer gives access to all scene cache supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in [Fig. 4](images/Attribute_Legend_Support_Fig_4.png) will have 5 binary resources, as identified by keys <i>f_0_, f_1_, f_2_, f_3_ </i> and <i>f_4</i> and accessible by their respective rest resource URLs (_.../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc..).
 
-## Accessing the legend of a 3D Objects Layer
+## Accessing the legend of a 3D Object Layer
 
-Legends are essential for proper display (complete communication of represented information) of 3D Objects Layer (also equally applicable for other layer types).
+Legends are essential for proper display (complete communication of represented information) of 3D Object Layer (also equally applicable for other layer types).
 
 Clients are responsible for building legend information from the drawingInfo resource for the scene layer.
 In this scene layers and scene services behave identically to feature layers and feature services.

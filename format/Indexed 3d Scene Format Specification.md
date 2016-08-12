@@ -1244,7 +1244,7 @@ min/avg/max values, typically only one or two are used.</p>
 	<tr>
 		<td>metricType</td>
 		<td>String</td>
-		<td>The name of the error metric, one of <code>{removedFeatureDiameter, removedFaceDiameter, vertexMergeDistance, ...}</code></td>
+		<td>The name of the error metric, one of <code>{maxScreenThreshold, screenSpaceRelative, ...}</code></td>
 	</tr>
 	<tr>
 		<td>maxValue</td>
@@ -1254,7 +1254,7 @@ min/avg/max values, typically only one or two are used.</p>
 	<tr>
 		<td>avgValue</td>
 		<td>Float[0..1]</td>
-		<td>maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
+		<td>average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
 	</tr>
 	<tr>
 		<td>minValue</td>
@@ -1852,9 +1852,9 @@ atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle.</p>
 
 <p>Individual textures should be aggregated into texture atlases, where they become subtextures. Just as
 all texture resources, the atlas has to be 2<sup>n</sup>-sized on both
-dimensions, with n being in the range [3,16]. Width and height dimensions do
+dimensions, with n being in the range [3,12]. Width and height dimensions do
 not have to be equal, e.g. 512px x 256px. Subtextures contained within an atlas
-also need to be 2<sup>n</sup>-sized, with n being in the range [3,16].
+also need to be 2<sup>n</sup>-sized, with n being in the range [3,12].
 Otherwise if their width or height dimension is not 2<sup>n</sup>, border
 artifacts are likely to appear when filtering or MIP-mapping. If source subtexture
 dimensions do not match this requirement, they need to be padded (with nearest/interpolated
@@ -1884,8 +1884,8 @@ UInt64 BuildID(LONG id, int w, int h , int l, int al)
 {
     UInt64 l_al = ((UInt64)al)<<60;
     UInt64 l_l = ((UInt64)l)<<56;
-    UInt64 l_w = ((UInt64)w)<<44;
-    UInt64 l_h = ((UInt64)h)<<32;
+    UInt64 l_w = ((UInt64)(w - 1))<<44;
+    UInt64 l_h = ((UInt64)(h - 1))<<32;
     UInt64 id64 = l_al + l_l + l_w + l_h + (UInt64)id;
     return id64;
 }
@@ -2253,7 +2253,7 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	<tr>
 		<td>i3sVersion</td>
 		<td>True</td>
-		<td>One of {1.2, 1.3, *1.4*}</td>
+		<td>One of {1.2, 1.3, 1.4, *1.5*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>

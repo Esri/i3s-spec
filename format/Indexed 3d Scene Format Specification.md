@@ -402,7 +402,7 @@ to the selection of spatial reference systems to use:</p>
 <p>To match these requirements, the following approach is taken:</p>
 
 <ol>
-	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-relevant data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:
+	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-related data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>

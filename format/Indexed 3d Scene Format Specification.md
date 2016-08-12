@@ -84,13 +84,13 @@ supported are listed in the following Table.</p>
  </tr>
  <tr>
   <td>3D Object <em>(Multipatch)</em></td>
-  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
+  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramid</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
   <td>Integrated Meshes</td>
-  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
+  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramid</a></td>
   <td></td>
   <td></td>
  </tr>

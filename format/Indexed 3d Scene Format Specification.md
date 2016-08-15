@@ -649,48 +649,13 @@ Layer.</p>
 		<td>The relative URL to the 3dSceneLayerResource. Only present as part of the SceneServiceInfo resource.</td>
 	</tr>
 	<tr>
-		<td>layerType</td>
-		<td>String</td>
-		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, IntegratedMesh, Pointcloud}</td>
-	</tr>
-	<tr>
-		<td>ZFactor</td>
-		<td>Float</td>
-		<td>[deprecated] Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.</td>
-	</tr>
-	<tr>
-		<td>version</td>
-		<td>String</td>
-		<td>The ID of the last update session in which any resource belonging to this layer has been updated.</td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>String</td>
-		<td>The name of this layer.</td>
-	</tr>
-	<tr>
-		<td>alias</td>
-		<td>String[0..1]</td>
-		<td>The display alias to be used for this layer.</td>
-	</tr>
-	<tr>
-		<td>description</td>
-		<td>String[0..1]</td>
-		<td>Description string for this layer.</td>
-	</tr>
-	<tr>
-		<td>copyrightText</td>
-		<td>String[0..1]</td>
-		<td>Copyright and usage information for the data in this layer.</td>
-	</tr>
-	<tr>
-		<td>capabilities</td>
-		<td>String[1..3]</td>
-		<td>Capabilities from the Set <code>{View, Query, Edit}</code> that are possible on this layer. If not served by a 3DSceneServer (e.g. exported by CityEngine), "View" only.</td>
+		<td>. . .</td>
+		<td>. . .</td>
+		<td>. . .</td>
 	</tr>
 </table>
 
-<p><em>Table 5: Attributes of the Class <strong>3dSceneLayerInfo</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 5a: Attributes of the Class <strong>attributeStorageInfo</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h4>Class Store</h4>
 

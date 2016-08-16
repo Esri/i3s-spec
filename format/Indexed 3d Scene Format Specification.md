@@ -84,13 +84,13 @@ supported are listed in the following Table.</p>
  </tr>
  <tr>
   <td>3D Object <em>(Multipatch)</em></td>
-  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramid</a></td>
+  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
   <td>Integrated Meshes</td>
-  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramid</a></td>
+  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td></td>
   <td></td>
  </tr>
@@ -234,7 +234,7 @@ that create Full Representation Pyramids, similarly to a pyramid of images with 
 <p>When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature but rather for the entire content of the node (all features contained by that node). Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
 
 <p>The main advantage of this mechanism is that clients require less information for performing
-the switch.Node switching is the default Lod Switching model for layer types that implement  meshpyramid profile.</p>
+the switch.Node switching is the default Lod Switching model for layer types that implement  meshpyramids profile.</p>
 
 <h4>Feature Switching</h4>
 
@@ -382,7 +382,7 @@ following example:</p>
 <p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
 
 <p>
-The <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramid profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
+The <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
 
 <h2><a name="_5">Coordinate Reference Systems</a></h2>
 
@@ -684,7 +684,7 @@ applied.</p>
 		<td>profile</td>
 		<td>String</td>
 		<td>Indicates which profile this scene store fulfills.
-		One of <code>{features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramid, pointclouds, symbols}</code>.</td>
+		One of <code>{features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}</code>.</td>
 	</tr>
 	<tr>
 		<td>resourcePattern</td>
@@ -768,7 +768,7 @@ applied.</p>
 	<tr>
 		<td>defaultGeometrySchema</td>
 		<td>GeometrySchema[0..1]</td>
-		<td>A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramid caches.</td>
+		<td>A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.</td>
 	</tr>
 	<tr>
 		<td>defaultTextureDefinition</td>

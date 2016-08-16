@@ -377,7 +377,7 @@ following example:</p>
 		"maxError": 0.0034  
 	},
 	{
-		"metricType": "distancRangeFromDefaultCamera",
+		"metricType": "distanceRangeFromDefaultCamera",
 		"maxError": 750.00  
 	}
 ]

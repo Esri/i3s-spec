@@ -370,7 +370,7 @@ following example:</p>
 "lodSelection": [
 	{
 		"metricType": "maxScreenThreshold",
-		"maxError": 486.9131
+		"maxError": 486.00
 	},
 	{
 		"metricType": "screenSpaceRelative",

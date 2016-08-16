@@ -375,6 +375,10 @@ following example:</p>
 	{
 		"metricType": "screenSpaceRelative",
 		"maxError": 0.0034  
+	},
+	{
+		"metricType": "distancRangeFromDefaultCamera",
+		"maxError": 750.00  
 	}
 ]
 </code></pre>

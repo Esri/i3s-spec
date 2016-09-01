@@ -24,6 +24,8 @@ PointCloud profile follows the general I3S concepts with the folllowing restrict
 
 #### Node v.1.0 ###
 For version 1.0 of the node type, the following fields are available:
+
+ - `resourceID` : integer id needed to query resources of this node. 
  - `obb`    : bounding volume
  - `firstChild`: index of the first child of this node.
  - `childCount`: number of children for this node. 0 if node is a leaf node.

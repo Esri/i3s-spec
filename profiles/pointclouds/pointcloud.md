@@ -15,6 +15,8 @@ The node index represents a parent-to-children linked tree *without* neighbor no
 - Geometry buffer (XYZ)
 - Attribute buffers: One buffer per-attribute. Available attributes are declared in the `SceneLayer` document.
 
+Resources are identified by the `resourceID` specified in each node. 
+
 PointCloud profile follows the general I3S concepts with the folllowing restrictions:
 
 1. Index nodes may only be queried in page of 64 nodes. This is done using the index of the first node in the page (node-key naming pattern is *not* supported)
@@ -22,7 +24,6 @@ PointCloud profile follows the general I3S concepts with the folllowing restrict
 
 #### Node v.1.0 ###
 For version 1.0 of the node type, the following fields are available:
- - `NodeId` : Id of this node. **MUST** be monotonically increasing by 1. Needed to query node resources
  - `obb`    : bounding volume
  - `firstChild`: index of the first child of this node.
  - `childCount`: number of children for this node. 0 if node is a leaf node.
@@ -83,10 +84,10 @@ To query `NodePage` document:[[Example]](examples/example_1_node_page.js)
 `http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage}`
 
 To query `Geometry` Buffer:
-`http://my.server.com/layers/{layerId}/node/{nodeId}/geometries/0`
+`http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0`
 
 To query `Attribute` Buffer:
-`http://my.server.com/layers/{layerId}/node/{nodeId}/attributes/{AttribKey}`
+`http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}`
  *Node: `{AttribKey}` is listed at `scenelayer.attributeStorageInfo[].key`*
 
 

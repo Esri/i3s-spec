@@ -61,7 +61,7 @@ This is the REST API for retrieval of these resources:
 
 - *URL Pattern*: ```<node-url>/shared/```
 - *Method*: ```GET```
-- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/features/0">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/features/0</a>
+- *Example Service*: <a href="http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/shared">http://3dcities.esri.com/arcgis/rest/services/zurich/SceneServer/layers/0/nodes/5-1/shared</a>
 - *Returns*: A feature data resource (bundle)
 
 ### FeatureData

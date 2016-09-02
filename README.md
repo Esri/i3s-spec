@@ -1,47 +1,51 @@
 Scene Layers: Service and Package Specification
 ===============================================
 
-[![App](./teaser.jpg "Multiple Scene Services in a Web Viewer")] (http://www.arcgis.com/)
+![App](./sceneLayers.jpg "Multiple Scene Services in a WebViewer")[http://www.arcgis.com](http://www.arcgis.com/home/webscene/viewer.html?webscene=196b89953b2d4e7d9fb1ada5997d3391&viewpoint=cam:-4.18890092,34.70563622,20953545.907;358.044,0.117)
 
-This repository hosts the specification for the ArcGIS Scene Service, including the Indexed 3D Scene delivery format (i3s) and the Scene Layer Package definition (spk). Both encoded using JSON and binary ArrayBuffers.
+This repository hosts the specification for a Scene Layer, which is a container for arbitrarily large amounts of 3D geographic data. The delivery format for a Scene Layer, Indexed 3D Scene (i3s) and its persistency format, Scene Layer Package (.slpk), are also defined in this repository. Both formats are encoded using JSON and binary ArrayBuffers.
 
-A Scene Layer is a container for arbitrarily large amounts of 3D geographic data. The format is a declarative, extendable design to encode different types of 3D data such as:
+<p>i3s originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
+A single i3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. An i3S Layer is characterized by a combination of layer type and profile that fully describe the behavior of the layer and the manner in which it is realized within the specification.</p>
 
-- 3D Objects (e.g. from Esri Multipatch)
-- Integrated Meshes (e.g. from dense matching photogrammetric software)
-- Point Features (e.g. from GIS Data)
+<p>
+The format is declarative and extendable and has been used to represent different types of 3D data.
+The following layer types have been specified and the specifications validated via implementation and production deployments:
+- 3D Objects (e.g. Building Exteriors, from GIS Data  as well as 3D models in various formats)
+- Integrated Meshes (e.g. eg an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense  matching photogrammetric software)
+- Point Features (e.g. Hospitals or Schools, trees, street furniture, signs, from GIS Data) )
+
+The following layer types are planned for future inclusion:
+
 - Line Features (e.g. from GIS Data)
 - Polygon Features (e.g. from GIS Data)
 - Pointclouds (e.g. from LiDAR)
-- 3D Multirepresentation Objects (e.g. from CityGML files with multiple Levels of Detail)
-- Analytics (e.g. from Sensor Data or Simulations)
-- ...
 
-## Can I Use...?  
+The specification for the [Indexed 3d Scene (i3s)](./format/Indexed%203d%20Scene%20Format%20Specification.md)  and [Scene Layer Package](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these i3s resources and operations, as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
 
-The specification for the [Indexed 3d Scene (i3s) Format and Scene Layer Package (spk)](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these i3s resources and operations, the [REST endpoint](./service/SceneService.md), are presented here as open formats.
+</p>
+## Designed for Web, Mobile and Cloud  
 
-This table below shows the various i3s profile types that are supported by ArcGIS Software.
-The ArcGIS software products listed below support publishing as well as consuming Scene Layers and services. The versions indicated below show the current software version of each product that support scene layers.
+i3s is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. i3s is designed to stream large 3d datasets and is designed for performance and scalability.
 
-ArcGIS Software       | 3D Objects | Integrated Mesh| Points
---------------------- | ---------- | ---------------| -------
-ArcGIS.com            | Current    | Current        | Current
-ArcGIS for Server     | 10.4.1     | 10.4.1         | 10.4.1
-Portal for ArcGIS     | 10.4.1     | 10.4.1         | 10.4.1
-ArcGIS Pro            | 1.3        | 1.3            | 1.3    
-ArcGIS Earth          | 1.2        | 1.2            | 1.2    
+## Designed for 3D
+i3s is intrinsically designed to support 3D geospatial content and supports the requisite coordinate systems and height models in conjunction with a rich set of layer types.
+
+## Open Specification
+
+i3s is an open specification for the purpose of encouraging community adoption, encouraging feedback, and for ensuring that adopting organizations would have flexibility in access to 3D data. The specification is licensed under the Creative Commons Attribution-NoDerivs 3.0 Unported License. Implementers can use the specification in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
+
+## Where can I use...?
+
+This table below shows the various 3d layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a>
+The ArcGIS software products listed below support publishing as well as consuming Scene Layers . The versions indicated below show the current software version of each product that support scene layers.
+
+   ![App](./software_stack.png "Table showing the various ArcGIS software products that support Scene Layers")    
+Table.1 Shows scene layer support in various ArcGIS Software products (rows indicate software product and version)
+
+The list of supported scene layer types in the ArcGIS platform is growing at every release. For example, support for [Point Cloud](./profiles/pointcloud.md) data as a scene layer type is currently in active development. The complete specification is expected to be released in Q3 of 2016 and production software implementation shortly in Q4 of 2016.
 
 
-## Structure
-
-The specification explains how different types of Scene Layers are encoded using profiles. A profile is a common technique often used e.g. in JSON to encode format subsets. Each layer type maps to one profile.
-
-- [Indexed 3d Scene Format](./format/Indexed%203d%20Scene%20Format%20Specification.md) – Specification for the Indexed 3D Scene Format and Scene Layer Package
-- [Specification for the REST endpoint](./service/SceneService.md) of the Scene Service with resources and operations
-- Example JSON resources and validation rule files for each layer type
-
-We are also building a Validation Toolkit to support developers that is available upon request.
 
 ## Contributing
 

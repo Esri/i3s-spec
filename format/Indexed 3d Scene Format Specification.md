@@ -9,7 +9,7 @@ Scene Layer Package (*.spk) Format Specification</h2>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
 <p>
 
-This document specifies the Indexed 3D Scene (i3s) format, an open 3d content delivery
+This document specifies the Indexed 3D Scene layer (i3s) format, an open 3d content delivery
 format used to disseminate 3D GIS data to mobile, web and desktop clients. I3s is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a> . The first sections of
 this specification explain the conceptual structure of i3s, while the latter
 sections provide a detailed implementation-level view.</p>
@@ -49,7 +49,7 @@ sections provide a detailed implementation-level view.</p>
 
 <h2><a name="_1">Requirements</a></h2>
 
-<p>The Esri Indexed 3d Scene (i3s) format and the corresponding Scene Package format (spk) are
+<p>The Esri Indexed 3d Scene layer (i3s) format and the corresponding Scene Layer Package format (*.slpk) are
 specified to fulfill this set of requirements:</p>
 
 <ol>

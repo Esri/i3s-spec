@@ -233,36 +233,36 @@ including, splitting up very heavy features such as detailed building or very la
 <p><em>Table 2: Various level of detail methodologies and examples that implement them.</em></p>
 
 <h4>Discrete LoDs</h4>
-<p>With the <em>Discrete</em> approach, different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LOD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be.
-For each level up, the amount of data is typically reduced by a factor between 2 to 10 by employing methods
-such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also
-have a balanced weight. For Scene Layers that employ discrete levels of detail, generalization applies to the layer as a whole and the the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.</p>
 
-<p>During navigation and traversal of the I3S tree, clients consuming Discrete Semantic LoDs must decide to either
+With the <em>Discrete</em> approach, different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LOD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be. For each level up, the amount of data is typically reduced by a factor between 2 to 10 by employing methods such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also have a balanced weight. For Scene Layers that employ discrete levels of detail, generalization applies to the layer as a whole and the the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.  
+
+During navigation and traversal of the I3S tree, clients consuming Discrete Semantic LoDs must decide to either  
+
 <ol>
 <li>discontinue traversal to node’s children if the node is not visible in the current 3D view; or</li>
 <li>use/render the data within a node if its quality is appropriate to the current 3D view and discontinue further traversal to children nodes; or to </li>
 <li>continue traversal until children nodes with better quality are found.</li>
 </ol>
-These decisions are made using the advertised values for lod selection metrics that are part of the information payload of the node. The I3S specification supports multiple [LOD Selection Metrics](<a name="_4_4">LoD Selection Metrics</a>) and permits different [LOD Switching Models](<a href="#_4_1">LoD Switching Models</a>). An example lod selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LOD rendering (LoD Switching Model) is referred to in I3S as <code>node-switching</code>.<ol>
-</p>
 
-<p>
- I3S Scene Layers also include additional optional metadata on the LOD generation process (eg thinning, clustering, generalization) as non-actionable (to clients) information that is of interest to some service consumers.
-</p>
+These decisions are made using the advertised values for lod selection metrics that are part of the information payload of the node. The I3S specification supports multiple [LOD Selection Metrics](<a name="_4_4">LoD Selection Metrics</a>) and permits different [LOD Switching Models](<a href="#_4_1">LoD Switching Models</a>). An example lod selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LOD rendering (LoD Switching Model) is referred to in I3S as <code>node-switching</code>.
+
+I3S Scene Layers also include additional optional metadata on the LOD generation process (eg thinning, clustering, generalization) as non-actionable (to clients) information that is of interest to some service consumers.
+
 
 <h4>Semantic LoDs</h4>
-<P>As described above, in one implementation of a mesh-pyramids profile (i.e., 3D Object Layer), the leaf nodes of a discrete LOD schema contain the original (feature/object) representation with the highest detail where as the interior nodes contain automatically generalized/reduced detail versions of the same features/objects. Such a a layer type is recognized to have a <em>Discrete LoD</em>. </p>
-<p> Authored or <em>Semantic Lod </em> type of data sources such as a CityGML are also typically used as an input source of a 3D Object Layer. In such cases, there are two possibilities how the LoDs are modeled:
+
+As described above, in one implementation of a mesh-pyramids profile (i.e., 3D Object Layer), the leaf nodes of a discrete LOD schema contain the original (feature/object) representation with the highest detail where as the interior nodes contain automatically generalized/reduced detail versions of the same features/objects. Such a a layer type is recognized to have a <em>Discrete LoD</em>.
+
+Authored or <em>Semantic Lod </em> type of data sources such as a CityGML are also typically used as an input source of a 3D Object Layer. In such cases, there are two possibilities how the LoDs are modeled:
+
 <ol>
 <li>Only a single LoD (for eg. a cityGML <em>LOD 2</em> data representing city escapes) is available for that particular CityGML dataset. In such a case the resultant scene layer will still perform optimally at all visualization scales, since automatic LoD generation will be triggered on it when used (cooked) as a 3D Object layer with a Mesh-pyramids profile.</li>
 <li>The cityGML data provides multiscale models (with well-defined consecutive Levels of Detail). Here, such a data could be modeled as well authored multiple 3D Object layers, where each 3d Object layer corresponds to each available cityGML lod. With appropriate distance based visibilities, multiple 3D Object layers utilizing the mesh-pyramids profile, could work in unison to effectively and seamlessly model all available levels of Detail of a CityGML input source (for e.g. LOD0 thru LOD4 each corresponding to a single 3D Object layer).</li>
 </ol>
-</p>
 
-<p>Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree. In such instances, the I3S specification accommodates such types of LoD schemes with the mesh-pyramids profile. In addition, it also explicitly reserves an LoD switching model, feature-switching, catering to such types of LoDs.</P>
+Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree. In such instances, the I3S specification accommodates such types of LoD schemes with the mesh-pyramids profile. In addition, it also explicitly reserves an LoD switching model, feature-switching, catering to such types of LoDs.
 
-<p>Though navigation and traversal of I3S tree and pattern of usage uses the automatically generated discrete LoDS as its canonical example, similar consumption pattern and tree traversal applies for Semantic LoDs.</p>
+Though navigation and traversal of I3S tree and pattern of usage uses the automatically generated discrete LoDS as its canonical example, similar consumption pattern and tree traversal applies for Semantic LoDs.
 
 <h3><a name="_4_1">LoD Switching Models</a></h3>
 

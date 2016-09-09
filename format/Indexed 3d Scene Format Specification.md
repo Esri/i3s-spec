@@ -19,17 +19,17 @@ sections provide a detailed implementation-level view.</p>
 <ol>
 	<li><a href="#_1">Requirements</a></li>
 	<li><a href="#_2">3D Scene Layer</a></li>
-	<li><a href="#_3">Indexing Model</a></li>
-	<li><a href="#_4">Level of Detail Concept</a>
-	<ol>
-		<li><a href="#_4_1">LoD Switching Models</a></li>
-		<li><a href="#_4_2">LoD Generation Types</a></li>
-		<li><a href="#_4_4">LoD Selection Metrics</a></li>
-	</ol></li>
-	<li><a href="#_5">Coordinate Reference Systems</a>
+	<li><a href="#_3">Coordinate Reference Systems</a>
 		<ol>
-<li><a href="#_5_1">Height Models</a></li>
+<li><a href="#_3_1">Height Models</a></li>
 		</ol>
+	<li><a href="#_4">Indexing Model</a></li>
+	<li><a href="#_5">Level of Detail Concept</a>
+	<ol>
+		<li><a href="#_5_1">LoD Switching Models</a></li>
+		<li><a href="#_5_2">LoD Generation Types</a></li>
+		<li><a href="#_5_3">LoD Selection Metrics</a></li>
+	</ol></li>
 	<li><a href="#_6">Structure of I3S Resources</a></li>
 	<ol>
 	<li><a href="#_6_1">Geometry Model and Storage</a></li>
@@ -159,8 +159,63 @@ different content types typically require different indexing and level of
 details methods/consideration to perform best. In many cases, their schema also differs
 substantially. </p>
 
+<h2><a name="_3">Coordinate Reference Systems</a></h2>
 
-<h2><a name="_3">Indexing Model</a></h2>
+<p>Indexed 3D Scenes have to fulfill several, in part conflicting, requirements when it comes
+to the selection of spatial reference systems to use:</p>
+
+<ul>
+	<li>Minimal reprojection on client side needed (such as "bending" of large features to the ellipsoid from a projected CRS to an internal geocentric CRS)</li>
+	<li>Support true global extent data sets</li>
+	<li>Ensure consistency between nodes of a single layer</li>
+	<li>Ensure consistency of positions across multiple layers, potentially created from different source projections</li>
+	<li>Render easily in Planar (Projected Cartesian) and Globe (Geocentric Cartesian) modes</li>
+	<li>Support local data with very high positional accuracy</li>
+	<li>Support global data sets with high positional accuracy</li>
+</ul>
+
+<p>To match these requirements, the following approach is taken:</p>
+
+<ol>
+	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-related data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:
+		<ol>
+			<li>EPSG:4326 (WGS84)</li>
+		</ol>
+	</li>
+	<li>Use of a geographic or of various projected CRS, where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions.		
+	</li>
+	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
+</ol>
+
+<p>Begining version 1.5, I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
+
+<h3><a name="_3_1">Height Models</a></h3>
+
+The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
+
+<pre><code>
+	"spatialReference": // The spatial reference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
+	{
+		"wkid": 4326,
+		"latestWkid": 4326,
+		"vcsWkid": 3855,
+		"latestVcsWkid": 3855,
+		"wkt": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],
+		VERTCS[\"EGM2008_Geoid\",VDATUM[\"EGM2008_Geoid\"],PARAMETER[\"Vertical_Shift\",0.0],PARAMETER[\"Direction\",1.0],UNIT[\"Meter\",1.0]]}"
+		},
+		"heightModelInfo": { //enables consuming clients to perform quick test whether this layer is mashable or not with exisitng content they have.
+			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
+			"ellipsoid": "wgs84 (G1674)/", //datum realization
+			"heightUnit": "meter" //units
+		},  	
+
+</code></pre>
+
+
+An example illustrating the height model information within a 3dSceneLayerInfo. The example shows the spatial reference object (that includes definitions for both horizontal (wkid) and vertical (vcsWkid) coordinate systems) as well as a heightModelInfo object that client application could use to quickly determine layer mashability.
+
+
+<h2><a name="_4">Indexing Model</a></h2>
 
 <p>Esri I3S is, as the name implies, an indexed, partitioned 3D Scene format with some
 similarities to <a href="http://code.google.com/p/regionator/wiki/Welcome">regionated KML</a>
@@ -201,36 +256,12 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 
 An I3S profile can choose between a single text-based feature-data sub-resource that contains all geometry and attribute information (e.g. <em>Point</em> profile), or separate, binary and self-contained geometry and attribute sub-resources (e.g. <em>3D Object</em> and <em>IntegratedMesh</em> profile). Applications accessing the latter do not need to first fetch the feature-data resource in order to interpret them.
 
-<h2><a name="_4">Level of Detail Concept</a></h2>
+<h2><a name="_5">Level of Detail Concept</a></h2>
 <p>
 The concept of Level of Detail (LoD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as a whole - as generalized information across the different elements/features within the layer (analogous for eg. to an image pyramid), or, they may have levels of detail that apply to individual features within the layer, with the levels of detail present varying from feature to feature.</p>
 
 <p>Level of Detail with this format specification covers several use cases,
 including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization and support for semantic LoDs (via the usage of explicit, authored representations that could be used for different viewing ranges). In I3S, Level of Detail and aggregation of geometries into single bigger meshes for optimal rendering performance are orthogonal concepts. In all cases, geometries are pre-aggregated into Geometry Array Buffers. </p>
-
-<table>
-  <tr>
-    <td><strong>Concept</strong></td>
-    <td><strong>Definition</strong></td>
-    <td><strong>Examples</strong></td>
-  </tr>
-  <tr>
-    <td>Discrete</td>
-    <td><em>Multiple representations</em>, a more detailed one fully replaces a coarser representation</td>
-    <td>Image Pyramid, Mesh Pyramid, Height map pyramid, Line/Polygon generalization</td>
-  </tr>
-  <tr>
-    <td>Continous</td>
-    <td><em>Single representation</em> that is refined continuously</td>
-    <td>SMTerrain, TVTerrain, BitLOD, Progressive Meshes</td>
-  </tr>
-  <tr>
-    <td>Semantic</td>
-    <td>Independent models for the same feature</td>
-    <td>CityGML, BIM</td>
-  </tr>
-</table>
-<p><em>Table 2: Various level of detail methodologies and examples that implement them.</em></p>
 
 <h4>Discrete LoDs</h4>
 
@@ -260,11 +291,9 @@ Authored or <em>Semantic Lod </em> type of data sources such as a CityGML are al
 <li>The cityGML data provides multiscale models (with well-defined consecutive Levels of Detail). Here, such a data could be modeled as well authored multiple 3D Object layers, where each 3d Object layer corresponds to each available cityGML lod. With appropriate distance based visibilities, multiple 3D Object layers utilizing the mesh-pyramids profile, could work in unison to effectively and seamlessly model all available levels of Detail of a CityGML input source (for e.g. LOD0 thru LOD4 each corresponding to a single 3D Object layer).</li>
 </ol>
 
-Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree. In such instances, the I3S specification accommodates such types of LoD schemes with the mesh-pyramids profile. In addition, it also explicitly reserves an LoD switching model, feature-switching, catering to such types of LoDs.
+Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree.  
 
-Though navigation and traversal of I3S tree and pattern of usage uses the automatically generated discrete LoDS as its canonical example, similar consumption pattern and tree traversal applies for Semantic LoDs.
-
-<h3><a name="_4_1">LoD Switching Models</a></h3>
+<h3><a name="_5_1">LoD Switching Models</a></h3>
 
 <p>Depending on the properties of a 3D layer, a good user experience will necessitate
 different ways of switching out the prescribed LoD content of one node to another.
@@ -299,21 +328,7 @@ that create full representation pyramids, similarly to a pyramid of images with 
 <p>The main advantage of this mechanism is that clients require less information for performing
 the switch. <code> node-switching </code> is the default Lod Switching model for layer types that implement <code>meshpyramids</code> profile.</p>
 
-<h4>Feature Switching</h4>
-
-<p>Many GIS data sets are made of distinct, single objects, called features. The <code>feature-switching</code> LoD switching mechanism is optimized for such data. Furthermore it can be used to transition between multiple authored representations of features.</p>
-
-<p>In the <code>feature-switching</code> approach each feature in a node has explicit higher-detail or
-lower-detail representations. This approach maintains explicit LoD representations between different features.
-When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates ->
-Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained.
-This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a
-building actually consists of one set of individual features per LoD.
-
-<p>The links between all meshes participating in a LoD tree are either created during the store creation process,
-e.g. by breaking down a heavy and large feature, or they are predefined by the data provider.</p>
-
-<h3><a name="_4_2">LoD Generation Types</a></h3>
+<h3><a name="_5_2">LoD Generation Types</a></h3>
 
 <p>If the input data doesn't come with authored Levels of Detail, different LoD
 Generation Types can be employed. For example, a layer based on <code>mesh-pyramids</code> profile type creates a full representation LoD pyramid for all features and is built by aggregating, fusing and reducing an individual features' mesh. An example of a layer type that participates in such LoD generation is <em> 3d Object</em>. A 3D Object layer employs automatic level of detail generation technique for the collection of 3D GIS features that are typically used as an input data with some chosen resolution.</p>
@@ -367,7 +382,7 @@ As shown in Table 2 below, different types of LoD generation techniques are appl
 	</tr>
 </table>
 <p><em>Table 3: Different 3D Layer Types and various LoD generartion types they can employ.</em></p>
-<h3><a name="_4_4">LoD Selection Metrics</a></h3>
+<h3><a name="_5_3">LoD Selection Metrics</a></h3>
 
 <p>A client needs information to determine whether a node's contents are "good enough" to
 render under constraints such as resolution, screen size, bandwidth and
@@ -397,62 +412,6 @@ following example:</p>
 
 <p>
 <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
-
-<h2><a name="_5">Coordinate Reference Systems</a></h2>
-
-<p>Indexed 3D Scenes have to fulfill several, in part conflicting, requirements when it comes
-to the selection of spatial reference systems to use:</p>
-
-<ul>
-	<li>Minimal reprojection on client side needed (such as "bending" of large features to the ellipsoid from a projected CRS to an internal geocentric CRS)</li>
-	<li>Support true global extent data sets</li>
-	<li>Ensure consistency between nodes of a single layer</li>
-	<li>Ensure consistency of positions across multiple layers, potentially created from different source projections</li>
-	<li>Render easily in Planar (Projected Cartesian) and Globe (Geocentric Cartesian) modes</li>
-	<li>Support local data with very high positional accuracy</li>
-	<li>Support global data sets with high positional accuracy</li>
-</ul>
-
-<p>To match these requirements, the following approach is taken:</p>
-
-<ol>
-	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-related data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:
-		<ol>
-			<li>EPSG:4326 (WGS84)</li>
-		</ol>
-	</li>
-	<li>Use of a geographic or of various projected CRS, where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions.		
-	</li>
-	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
-</ol>
-
-<p>Begining version 1.5, I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
-
-<h3><a name="_5_1">Height Models</a></h3>
-
-The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
-
-<pre><code>
-	"spatialReference": // The spatial reference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
-	{
-		"wkid": 4326,
-		"latestWkid": 4326,
-		"vcsWkid": 3855,
-		"latestVcsWkid": 3855,
-		"wkt": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],
-		VERTCS[\"EGM2008_Geoid\",VDATUM[\"EGM2008_Geoid\"],PARAMETER[\"Vertical_Shift\",0.0],PARAMETER[\"Direction\",1.0],UNIT[\"Meter\",1.0]]}"
-		},
-		"heightModelInfo": { //enables consuming clients to perform quick test whether this layer is mashable or not with exisitng content they have.
-			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
-			"ellipsoid": "wgs84 (G1674)/", //datum realization
-			"heightUnit": "meter" //units
-		},  	
-
-</code></pre>
-
-
-An example illustrating the height model information within a 3dSceneLayerInfo. The example shows the spatial reference object (that includes definitions for both horizontal (wkid) and vertical (vcsWkid) coordinate systems) as well as a heightModelInfo object that client application could use to quickly determine layer mashability.
-
 
 <h2><a< name="_6">Structure of I3S resources</a></h2>
 
@@ -485,16 +444,7 @@ The physical organization of information within nodes is as follows:
 </div>
 <p>There are always an equal number <em>n</em> of FeatureData and Geometry resources, and each set contains
 the corresponding data elements to be able to render a complete feature. Some profiles, such as  meshpyramids, have a support for optimal access of all required attributes of the geometry data directly from the binary Geometry data resource, avoiding dependency on the FeatureData document. In such cases, all vertexAttributes (including position, normal,texture coordinates and color), vertex and feature counts, and mesh segmentation information (feaceRanges) are readily accessible from the <em>geometries</em> resource.
-<p>
-Textures are not tightly coupled to bundles due to the fact that they can also
-be in the node as part of a shared resource that bubbled up. For each texture
-(atlas) in the Node (<strong>m</strong>), the number of Texture resources
-created is then equal <strong>m*Texture LoD Steps</strong>. The following
-figure illustrates an example set of bundles within a node:</p>
-<div>
-<img src="images/figure-05.png" title="Detailed Node Structure" alt="Detailed Node Structure">
-<p>Figure 5: Node Structure</p>
-</div>
+
 
 <h3><a name="_6_1">Geometry Model and Storage</a></h3>
 
@@ -513,37 +463,37 @@ Geometries use binary storage and consumption representation, controlled by Arra
 
 <p>Both 3D Objects as well as Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.</p>
 
-<p>See [Geometry](<a name="_7_6">Geometry</a>) section for more discussion on the geometry format and storage models. </p>
+See [Geometry](<a name="_7_6">Geometry</a>) section for more discussion on the geometry format and storage models.
 
 <h3><a name="_6_2">Textures</a></h3>
-<p>Textures are stored as a binary resource associated with a node. The texture resource for a node contains the images that are used as textures for the features stored in the node. The mesh-pyramids profile supports either a single texture or a texture atlas per node.</p>
+Textures are stored as a binary resource associated with a node. The texture resource for a node contains the images that are used as textures for the features stored in the node. The mesh-pyramids profile supports either a single texture or a texture atlas per node.
 
-<p>By default, mesh-pyramids profile allow/support encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. In all cases, the specification provides flexibility by allowing authoring applications to provide additional texture formats via the <code>textureEncoding</code> declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding. </p>
+By default, mesh-pyramids profile allow/support encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. In all cases, the specification provides flexibility by allowing authoring applications to provide additional texture formats via the <code>textureEncoding</code> declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding.
 
-<p>See [Textures](<a name="_7_7">Textures</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.</p>
+See [Textures](<a name="_7_7">Textures</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
 
 <h3><a name="_6_3">Attribute Model and Storage </a></h3>
-<p>I3S supports the following two patterns of accessing the attribute data:</p>
+I3S supports the following two patterns of accessing the attribute data:  
+
 <ol>
 	<li>From optional paired services that expose queryable and updatable RESTful endpoints that enable direct access to dynamic source data, including attributes. The query in this case uses the unique feature-ID key – which is always maintained within each node and is also available as part of the descriptor for any segmented geometry.</li>
 	<li>From fully cached attribute information, in binary form, within I3S store.
 	I3S clients can still choose to use both of these modes even if the attributes are fully cached within I3S store.</li>
 </ol>
-</p>
 
-<p>Cached Attributes use binary storage representation based on Array Buffers which provide significant performance benefits relative to method 1. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays.
-</p>
+Cached Attributes use binary storage representation based on Array Buffers which provide significant performance benefits relative to method 1. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays.  
 
-<p>See [AttributeData](<a name="_7_8">AttributeData</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.</p>
+
+See [AttributeData](<a name="_7_8">AttributeData</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.  
 
 <h2><a name="_7">JSON Resources Schema and Documentation</a></h2>
 
-<p>This section provides a detailed, logical-level specification for each of the
-resource types.</p>
+This section provides a detailed, logical-level specification for each of the
+resource types.   
 
 <h3><a name="_7_0">Basic value types</a></h3>
 
-<p>Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:</p>
+Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
 
 <ul>
 <li><strong>String</strong>: An utf8 String.</li>

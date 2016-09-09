@@ -9,9 +9,16 @@ Scene Layer Package (*.slpk) Format Specification</h2>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
 <p>
 
+<<<<<<< HEAD
 This document specifies the Indexed 3D Scene (I3S) format, an open 3d content delivery
 format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a>. The first sections of this specification explain the conceptual structure of I3S, while the latter
 parts provide a detailed implementation-level view.</p>
+=======
+This document specifies the Indexed 3D Scene layer (i3s) format, an open 3d content delivery
+format used to disseminate 3D GIS data to mobile, web and desktop clients. I3s is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a> . The first sections of
+this specification explain the conceptual structure of i3s, while the latter
+sections provide a detailed implementation-level view.</p>
+>>>>>>> f5814e0e472a9515c5f9d392d9c05982e241a1d9
 
 <h2>Table of Contents</h2>
 
@@ -57,7 +64,11 @@ parts provide a detailed implementation-level view.</p>
 
 <h2><a name="_1">Requirements</a></h2>
 
+<<<<<<< HEAD
 <p>Esri's Indexed 3d Scene (I3S) format and the corresponding Scene Layer Package format (slpk) are
+=======
+<p>The Esri Indexed 3d Scene layer (i3s) format and the corresponding Scene Layer Package format (*.slpk) are
+>>>>>>> f5814e0e472a9515c5f9d392d9c05982e241a1d9
 specified to fulfill this set of requirements:</p>
 
 <ol>

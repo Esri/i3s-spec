@@ -21,7 +21,7 @@ The following layer types are planned for future inclusion:
 - Polygon Features (e.g. from GIS Data)
 - Pointclouds (e.g. from LiDAR)
 
-The specification for the [Indexed 3d Scene (I3S)](./format/Indexed%203d%20Scene%20Format%20Specification.md)  and [Scene Layer Package](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these I3S resources and operations, as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
+The specification for the [Indexed 3d Scene Layer (I3S)](./format/Indexed%203d%20Scene%20Format%20Specification.md)  and [Scene Layer Package](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these I3S resources and operations, as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
 
 
 ## Designed for Web, Mobile and Cloud  

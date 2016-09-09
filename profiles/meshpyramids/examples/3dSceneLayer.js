@@ -7,7 +7,19 @@
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the newest version (store update session ID) of this layer.
 	"ZFactor": 1.0, // Multiplier for z ordinate to arrive at meters.
 	"name": "PublicBuildings", // the name of this layer.
-	"spatialReference": {"wkid": 4326, "latestWkid": 4326}, // The spatialReference of the layer
+	"spatialReference": // The spatialReference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
+	{
+	"wkid": 4326,
+	"latestWkid": 4326,
+	"vcsWkid": 3855,
+	"latestVcsWkid": 3855,
+	"wkt": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],VERTCS[\"EGM2008_Geoid\",VDATUM[\"EGM2008_Geoid\"],PARAMETER[\"Vertical_Shift\",0.0],PARAMETER[\"Direction\",1.0],UNIT[\"Meter\",1.0]]}"
+  },
+	"heightModelInfo": { //enables consuming clients to perform quick test whether this layer is mashable or not with exisitng content they have.
+			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
+			"ellipsoid": "wgs84 (G1674)/", //datum realization
+			"heightUnit": "meter" //units
+	}, 
 	"alias": "Public Buildings", // the display alias to be used for this layer.
 	"description" : "This layer contains textured Building features for the City of Zurich.\n", // Cache description
 	"copyrightText" : "Vermessungsamt der Stadt Z�rich", // copyright/usage information

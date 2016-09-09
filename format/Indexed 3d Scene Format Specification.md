@@ -1,4 +1,4 @@
-<h2>Esri Indexed 3d Scene Layer (*.I3S) and <br>
+<h2>Esri Indexed 3d Scene Layer (I3S) and <br>
 Scene Layer Package (*.slpk) Format Specification</h2>
 
 <p>Version 1.5, Sep. 12, 2016</p>
@@ -429,9 +429,31 @@ to the selection of spatial reference systems to use:</p>
 <p>Begining version 1.5, I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
 
 <h3><a name="_5_1">Height Models</a></h3>
-The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.
 
-<h2><a name="_6">Structure of I3S resources</a></h2>
+The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
+
+
+	"spatialReference": // The spatial reference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
+	{
+		"wkid": 4326,
+		"latestWkid": 4326,
+		"vcsWkid": 3855,
+		"latestVcsWkid": 3855,
+		"wkt": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],
+		VERTCS[\"EGM2008_Geoid\",VDATUM[\"EGM2008_Geoid\"],PARAMETER[\"Vertical_Shift\",0.0],PARAMETER[\"Direction\",1.0],UNIT[\"Meter\",1.0]]}"
+		},
+		"heightModelInfo": { //enables consuming clients to perform quick test whether this layer is mashable or not with exisitng content they have.
+			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
+			"ellipsoid": "wgs84 (G1674)/", //datum realization
+			"heightUnit": "meter" //units
+		},  
+
+
+
+An example illustrating the height model information within a 3dSceneLayerInfo. The example shows the spatial reference object (that includes definitions for both horizontal (wkid) and vertical (vcsWkid) coordinate systems) as well as a heightModelInfo object that client application could use to quickly determine layer mashability.
+
+
+<h2><a< name="_6">Structure of I3S resources</a></h2>
 
 <p>The I3S format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures, Geometry, Attributes and Shared Descriptors, all representing a collection of features for a given node. These resources are always attached to a node.</p>
 
@@ -662,9 +684,19 @@ Layer.</p>
 		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, IntegratedMesh, Pointcloud}</td>
 	</tr>
 	<tr>
+		<td>spatialReference</td>
+		<td>spatialReference</td>
+		<td>The spatialReference of the layer including the vertical coordinate system. wkt is included to support custom spatial references. <code>{wkid, latestWkid, vcsWkid, latestVcsWkid, wkt}</code></td>
+	</tr>
+	<tr>
+		<td>heightModelInfo</td>
+		<td>heightModelInfo</td>
+		<td>enables consuming clients to perform quick test whether this layer is mashable or not with exisitng content they have. <code>{heightModel, geoid, heightUnit}</code></td>
+	</tr>
+	<tr>
 		<td>ZFactor</td>
 		<td>Float</td>
-		<td>[deprecated] Multiplier for z ordinate to arrive at meters; will be replaced with a vertical CRS declaration in store.</td>
+		<td>[deprecated] Multiplier for z ordinate to arrive at meters;replaced by the vertical CRS declaration (vcsWkid and latestVcsWkid) as part of spatialReference object.</td>
 	</tr>
 	<tr>
 		<td>version</td>

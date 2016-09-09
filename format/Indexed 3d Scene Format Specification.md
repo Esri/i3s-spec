@@ -432,7 +432,7 @@ to the selection of spatial reference systems to use:</p>
 
 The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
 
-
+<pre><code>
 	"spatialReference": // The spatial reference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
 	{
 		"wkid": 4326,
@@ -446,8 +446,9 @@ The specification accommodates declaration of a vertical coordinate system that 
 			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
 			"ellipsoid": "wgs84 (G1674)/", //datum realization
 			"heightUnit": "meter" //units
-		},  
+		},  	
 
+</code></pre>
 
 
 An example illustrating the height model information within a 3dSceneLayerInfo. The example shows the spatial reference object (that includes definitions for both horizontal (wkid) and vertical (vcsWkid) coordinate systems) as well as a heightModelInfo object that client application could use to quickly determine layer mashability.

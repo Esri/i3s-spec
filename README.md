@@ -7,8 +7,8 @@ This repository hosts the specification for a Scene Layer, which is a container 
 
 <p>i3s originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
 A single i3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. An i3S Layer is characterized by a combination of layer type and profile that fully describe the behavior of the layer and the manner in which it is realized within the specification.</p>
-
 <p>
+
 The format is declarative and extendable and has been used to represent different types of 3D data.
 The following layer types have been specified and the specifications validated via implementation and production deployments:
 - 3D Objects (e.g. Building Exteriors, from GIS Data  as well as 3D models in various formats)
@@ -38,7 +38,7 @@ i3s is an open specification for the purpose of encouraging community adoption, 
 ## Where can I use...?
 
 This table below shows the various 3d layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a>
-The ArcGIS software products listed below support publishing as well as consuming Scene Layers . The versions indicated below show the current software version of each product that support scene layers.
+The ArcGIS software products listed below support publishing as well as consuming Scene Layers. The rows below in Table. 1 indicate the current version of each software product that support scene layers.
 
    ![App](./software_stack.png "Table showing the various ArcGIS software products that support Scene Layers")    
 Table.1 Shows scene layer support in various ArcGIS Software products (rows indicate software product and version)
@@ -76,5 +76,5 @@ Under the following terms:
 
 The supplementary resources may be updated without notice and are provided for use under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license and may be used, under the terms of that license, at your own risk.
 
-[](Esri Tags: ArcGIS WebScene ArcGISOnline SceneService ArcGISServer ScenePackage SceneLayer)
+[](Esri Tags: ArcGIS WebScene ArcGISOnline SceneService ArcGISServer SceneLayerPackage Indexed SceneLayer, SceneLayer, 3D Object, Point, IntegreatedMesh, PointCloud)
 [](Esri Language: JavaScript)

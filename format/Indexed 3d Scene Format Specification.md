@@ -1,7 +1,7 @@
-<h2>Esri Indexed 3d Scene Layer (*.i3s) and <br>
-Scene Layer Package (*.spk) Format Specification</h2>
+<h2>Esri Indexed 3d Scene Layer (*.I3S) and <br>
+Scene Layer Package (*.slpk) Format Specification</h2>
 
-<p>Version 1.5, Aug. 12, 2016</p>
+<p>Version 1.5, Sep. 12, 2016</p>
 <p style="font-size:80%"><em>Editors:<br>
 <em>Thorsten Reitz</em><br>
 <em>Tamrat Belayneh</em>, Esri<br>
@@ -9,16 +9,16 @@ Scene Layer Package (*.spk) Format Specification</h2>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
 <p>
 
-This document specifies the Indexed 3D Scene (i3s) format, an open 3d content delivery
-format used to disseminate 3D GIS data to mobile, web and desktop clients. I3s is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a>. The first sections of this specification explain the conceptual structure of i3s, while the latter
+This document specifies the Indexed 3D Scene (I3S) format, an open 3d content delivery
+format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a>. The first sections of this specification explain the conceptual structure of I3S, while the latter
 parts provide a detailed implementation-level view.</p>
 
 <h2>Table of Contents</h2>
 
 <ol>
 	<li><a href="#_1">Requirements</a></li>
-	<li><a href="#_2">The i3s Store - what goes into an Indexed 3D Scene?</a></li>
-	<li><a href="#_3">The Index Structure</a></li>
+	<li><a href="#_2">3D Scene Layer</a></li>
+	<li><a href="#_3">Indexing Model</a></li>
 	<li><a href="#_4">Level of Detail Concept</a>
 	<ol>
 		<li><a href="#_4_1">LoD Switching Models</a></li>
@@ -29,7 +29,12 @@ parts provide a detailed implementation-level view.</p>
 		<ol>
 <li><a href="#_5_1">Height Models</a></li>
 		</ol>
-	<li><a href="#_6">Structure of i3s Resources</a></li>
+	<li><a href="#_6">Structure of I3S Resources</a></li>
+	<ol>
+	<li><a href="#_6_1">Geometry Model and Storage</a></li>
+	<li><a href="#_6_2">Textures</a></li>
+	<li><a href="#_6_3">Attribute Model and Storage</a></li>
+	</ol>
 	<li><a href="#_7">Resources Schema and Documentation</a>
 	<ol>
 		<li><a href="#_7_1">SceneServiceInfo</a></li>
@@ -41,17 +46,18 @@ parts provide a detailed implementation-level view.</p>
 		<li><a href="#_7_7">Geometry</a></li>
 		<li><a href="#_7_8">AttributeData</a></li>
 	</ol></li>
-	<li><a href="#_8">Persistence</a>
+	<li><a href="#_8">I3S Flexibility</a>
+	<li><a href="#_9">Persistence</a>
 	<ol>
-		<li><a href="#_8_1">File System</a></li>
-		<li><a href="#_8_2">CouchDB and other KV Stores</a></li>
-		<li><a href="#_8_3">Scene Layer Packages (slpk files)</a></li>
+		<li><a href="#_9_1">File System</a></li>
+		<li><a href="#_9_2">CouchDB and other KV Stores</a></li>
+		<li><a href="#_9_3">Scene Layer Packages (slpk files)</a></li>
 	</ol></li>
 </ol>
 
 <h2><a name="_1">Requirements</a></h2>
 
-<p>The Esri Indexed 3d Scene (i3s) format and the corresponding Scene Layer Package format (slpk) are
+<p>Esri's Indexed 3d Scene (I3S) format and the corresponding Scene Layer Package format (slpk) are
 specified to fulfill this set of requirements:</p>
 
 <ol>
@@ -70,10 +76,33 @@ specified to fulfill this set of requirements:</p>
 </ol>
 
 
-<h2><a name="_2">The i3s Store - what goes into an Indexed 3D Scene Layer?</a></h2>
+<h2><a name="_2">3D Scene Layer</a></h2>
 
-<p>Layers are described using two properties, type and profile. The type of a layer describes its semantic meaning to the consumer as 3d objects, Points, Pointcloud etc... The profile for a layer includes additional detail on the specific i3S implementation for the layer that is exposed to clients. In most cases the relationship between layer and profile is 1:1 but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles and also includes information on support for feature and vertex attributes.  
-</p>
+<p>
+I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
+A single I3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.
+
+<p>
+I3S Scene Layers are designed to provide clients access to data. Clients have the ability to then visualize the data for the layer independently according to their needs. Data here refers to both the geometry and the attributes for 3D Object, Point, Line and Polygon Features as well as the vertex geometry and vertex attributes for vertices represent fielded data like Integrated Meshes and point clouds. The degree of separation between data and implied visualization varies depending on the type of layer – at one extreme an integrated mesh layer, representing [in effect] “3d imagery”, has a strong implication that clients will display the mesh geometry using the textures that are advertised by and available with the layer. At the other end layers representing 3D features/entities including space occupying 3D objects as well as Points carry a full representation of their attributes allowing clients to thematically map and visualize the data according to their needs. In both cases the access API separates access to geometry from access to textures and attributes, giving clients needed flexibility.  It is also worth noting that in many cases the data on GIS features that is part of the I3S layer will itself be a cached, cooked or preprocessed version (the industry uses a variety of terms to  denote the process of generating 3D access-optimized representation) of primary data that resides in a transactional system of record.
+</P>
+
+<p>
+An I3S Layer is characterized by a combination of layer type and profile that fully describe the behavior of the layer and the manner in which it is realized within the specification.</p>
+
+The specification that follows below applies to the following layer types:
+<ul>
+<li> 3D Objects (e.g. Building Exteriors, from GIS data  as well as 3D models in various formats)</li>
+<li> Integrated Mesh (eg an integrated surface representing the skin of the earth including vegetation, buildings and roads; from satellite, aerial or drone imagery via dense matching photogrammetry) </li>
+<li> Points (e.g. Hospitals or Schools, trees, street furniture, signs, etc... from GIS data)</li>
+</ul>
+
+where as the following layer types are planned for future inclusion:
+<ul>
+<li>Line Features (e.g. from GIS data)</li>
+<li>Polygon Features (e.g. from GIS data)</li>
+<li>Pointclouds (e.g. from LiDAR)</li>
+</ul>
+Layers are described using two properties, type and profile. The type of a layer describes its semantic meaning to the consumer as 3d objects, Points, Pointcloud etc... The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. In most cases the relationship between layer and profile is 1:1 but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles and also includes information on support for feature and vertex attributes.  
 <table>
  <tr>
   <td><strong>Layer Type <em>(example)</em></strong></td>
@@ -82,70 +111,73 @@ specified to fulfill this set of requirements:</p>
   <td><strong>Attributes</strong></td>	  
  </tr>
  <tr>
-  <td>3D Object <em>(Multipatch)</em></td>
+  <td>3D Object</td>
   <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
-  <td>Integrated Meshes</td>
+  <td>Integrated Mesh</td>
   <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>No</td>
   <td>envisioned as Triangle Attributes</td>
  </tr>
   <tr>
-  <td>Point Features <em>(GIS Data)</em></td>
+  <td>Point</td>
   <td><a href="../profiles/points/points.md">points</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
-  <td>Pointclouds <em>(LiDAR)</em></td>
-  <td><a href="../profiles/pointclouds/pointclouds.md">pointclouds</a></td>
+  <td>Pointcloud</td>
+  <td>pointclouds</td>
   <td>No</td>
   <td>Vertex Attributes (VA)</td>
  </tr>
   <tr>
-  <td>Line Features <em>(GIS Data)</em></td>
-  <td><a href="../profiles/lines/lines.md">lines</a></td>
+  <td>Line</td>
+  <td>lines</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
-  <td>Polygon Features <em>(GIS Data)</em></td>
-  <td><a href="../profiles/polygons/polygons.md">polygons</a></td>
+  <td>Polygon</td>
+  <td>polygons</a></td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  </table>
 
-<p><em>Table 1: 3D Layer Types supported in i3s</em></p>
+<p><em>Table 1: 3D Layer Types supported in I3S</em></p>
 
-<p>The basic unit of an Indexed 3D Scene (i3s) layer is a Store, which contains individual resources (files) for a set of layers, index, geometries, textures and more. Within such a store, the i3s format supports a wide range of 2D and 3D content types needed for 3D GIS scenes via <strong>profiling</strong>.</p>
+<p>The basic unit of an Indexed 3D Scene (I3S) layer is a Store, which contains individual resources (files) for a set of layers, index, geometries, textures and more. Within such a store, the I3S format supports a wide range of 2D and 3D content types needed for 3D GIS scenes via profiling.</p>
 
-<p>In i3s each layer type is represented by a single i3s store, implemented as a particular type of profile. Each layer type necessitates its own i3s store as
+<p>In I3S each layer type is represented by a single I3S store, implemented as a particular type of profile. Each layer type necessitates its own I3S store as
 different content types typically require different indexing and level of
 details methods/consideration to perform best. In many cases, their schema also differs
 substantially. </p>
 
-see more discussion regarding the structure of an i3s store in <a href="#class-store">Class Store</a> discussion of a <a href="#_7_2">3dSceneLayerInfo</a>.
-<h2><a name="_3">The Index Structure</a></h2>
 
-<p>Esri i3s is, as the name implies, an indexed, partitioned 3D Scene format with some
+<h2><a name="_3">Indexing Model</a></h2>
+
+<p>Esri I3S is, as the name implies, an indexed, partitioned 3D Scene format with some
 similarities to <a href="http://code.google.com/p/regionator/wiki/Welcome">regionated KML</a>
 or X3D Earth. The purpose of any index is to allow fast access to (blocks of)
-relevant data. In an Indexed 3D Scene, the spatial extent is split into regions
+relevant data. In an Indexed 3D Scene layer, the spatial extent is split into regions
 with a roughly equal amount of data in them, and an access data structure - the
 actual index - allows the client and the server to quickly discover which data the
-client actually needs. Such a region of a 3D Scene is called a <em>Node</em>.
-Node creation is capacity driven - the smaller the node capacity is, the smaller
+client actually needs. Such a region of a 3D Scene is called a <code>Node</code>.
+Node creation is capacity driven - the smaller the node capacity is, typically the smaller
 the spatial extent of each node will be.</p>
 
 <p>
-i3s is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. quadtrees and octtrees) as well as density dependent partitioning of space (eg R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.
+I3S organizes information using a hierarchical, node-based spatial index structure in which each node’s payload may contain features with associated geometry, textures and attributes.</p>
+
+<p>
+I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (eg quadtrees and octtrees) as well as density dependent partitioning of space (eg R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.
 </p>
 
-<p>All Nodes have an ID that is unique throughout a store. There are two types of Node ID formats supported by an i3s store. As a string based treekeys or as an integer based fixed-size node id format.
+<p>All Nodes have an ID that is unique throughout a store. There are two types of Node ID formats supported by an I3S store. As a string based treekeys or as an integer based fixed-size node id format.
 
 <p> In the treekey format, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension and usually able to maintain 2D spatial proximity in the 1D ordering. Treekeys are strings in which levels are separated by dashes:
 "3-1-0" has 3 numeric elements, hence the node is on level 4 ("root" node is level 1) and the node "3-1" is its parent.  
@@ -157,17 +189,22 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 </div>
 <p>In fixed-size node id format, each node id is represented by an integer allowing client application to fetch a range of nodes as paged resources.</p>
 
-<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without  the need to  access the more voluminous content associated with a node (geometry, texture data, attributes),  where the decision to render the node is based on node’s bounding-volume visibility in the current 3D view and a ‘quality’ determination made by the client using the information included in the node index document. The node’s ‘quality’ is estimated as a function of (current view parameters, node’s bounding volume, LOD Selection ‘threshold’ value of the node).
-The specification supports both bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.
-Each interior node logically contains or covers the set of information covered by the nodes below it and participates in a path to the leaf nodes below it. Interior nodes may contain generalized or reduced detail versions of information contained in descendant nodes.
+<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without  the need to  access the more voluminous content associated with a node (geometry, texture data, attributes). The decision to render the node is based on node’s bounding-volume visibility in the current 3D view and a visual quality determination made by the client using the information included in the node index document. The node’s quality is estimated as a function of current view parameters, bounding volume and LoD selection metric value.</p>
+
+<p>The specification supports both bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.</p>
+
+<p>Each interior node logically contains or covers the set of information covered by the nodes below it and participates in a path to the leaf nodes below it. Interior nodes may contain generalized or reduced representation of the information contained in descendant nodes (referred to as children).
 </p>
+
+
+An I3S profile can choose between a single text-based feature-data sub-resource that contains all geometry and attribute information (e.g. <em>Point</em> profile), or separate, binary and self-contained geometry and attribute sub-resources (e.g. <em>3D Object</em> and <em>IntegratedMesh</em> profile). Applications accessing the latter do not need to first fetch the feature-data resource in order to interpret them.
+
 <h2><a name="_4">Level of Detail Concept</a></h2>
 <p>
-The concept of Level of Detail (LOD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as whole and generalize or summarize information across the different elements or features within the layer (analogous for eg. to an image pyramid) or they may have levels of detail that apply to individual features within the layer, with the levels of detail present varying from feature to feature.</p>
+The concept of Level of Detail (LoD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as a whole - as generalized information across the different elements/features within the layer (analogous for eg. to an image pyramid), or, they may have levels of detail that apply to individual features within the layer, with the levels of detail present varying from feature to feature.</p>
 
 <p>Level of Detail with this format specification covers several use cases,
-including splitting up very heavy features such as detailed buildings, very large features (coastlines, rivers, infrastructure),thinning/clustering for optimized visualization and semantic LODs, i.e. the usage of explicit,
-authored representations to be used for different viewing ranges. </p>
+including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization and support for semantic LoDs (via the usage of explicit, authored representations that could be used for different viewing ranges). In I3S, Level of Detail and aggregation of geometries into single bigger meshes for optimal rendering performance are orthogonal concepts. In all cases, geometries are pre-aggregated into Geometry Array Buffers. </p>
 
 <table>
   <tr>
@@ -178,7 +215,7 @@ authored representations to be used for different viewing ranges. </p>
   <tr>
     <td>Discrete</td>
     <td><em>Multiple representations</em>, a more detailed one fully replaces a coarser representation</td>
-    <td>Image Pyramid, Mesh Pyramid, Height map pyramid, Line/Polygon Generalization</td>
+    <td>Image Pyramid, Mesh Pyramid, Height map pyramid, Line/Polygon generalization</td>
   </tr>
   <tr>
     <td>Continous</td>
@@ -191,41 +228,74 @@ authored representations to be used for different viewing ranges. </p>
     <td>CityGML, BIM</td>
   </tr>
 </table>
+<p><em>Table 2: Various level of detail methodologies and examples that implement them.</em></p>
 
-<p>Different Levels of Detail are bound to the different levels of the index tree. Typically leaf nodes of an LOD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be.
+<h4>Discrete LoDs</h4>
+<p>With the <em>Discrete</em> approach, different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LOD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be.
 For each level up, the amount of data is typically reduced by a factor between 2 to 10 by employing methods
 such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also
-have a balanced weight.</p>
+have a balanced weight. For Scene Layers that employ discrete levels of detail, generalization applies to the layer as a whole and the the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.</p>
 
-<p>In i3s, Level of Detail and Aggregation of Geometries into single bigger meshes for
-optimal rendering performance are orthogonal concepts. In all cases, geometries are
-pre-aggregated into Geometry Array Buffers.</p>
+<p>During navigation and traversal of the I3S tree, clients consuming Discrete Semantic LoDs must decide to either
+<ol>
+<li>discontinue traversal to node’s children if the node is not visible in the current 3D view; or</li>
+<li>use/render the data within a node if its quality is appropriate to the current 3D view and discontinue further traversal to children nodes; or to </li>
+<li>continue traversal until children nodes with better quality are found.</li>
+</ol>
+These decisions are made using the advertised values for lod selection metrics that are part of the information payload of the node. The I3S specification supports multiple [LOD Selection Metrics](<a name="_4_4">LoD Selection Metrics</a>) and permits different [LOD Switching Models](<a href="#_4_1">LoD Switching Models</a>). An example lod selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LOD rendering (LoD Switching Model) is referred to in I3S as <code>node-switching</code>.<ol>
+</p>
 
+<p>
+ I3S Scene Layers also include additional optional metadata on the LOD generation process (eg thinning, clustering, generalization) as non-actionable (to clients) information that is of interest to some service consumers.
+</p>
+
+<h4>Semantic LoDs</h4>
+<P>As described above, in one implementation of a mesh-pyramids profile (i.e., 3D Object Layer), the leaf nodes of a discrete LOD schema contain the original (feature/object) representation with the highest detail where as the interior nodes contain automatically generalized/reduced detail versions of the same features/objects. Such a a layer type is recognized to have a <em>Discrete LoD</em>. </p>
+<p> Authored or <em>Semantic Lod </em> type of data sources such as a CityGML are also typically used as an input source of a 3D Object Layer. In such cases, there are two possibilities how the LoDs are modeled:
+<ol>
+<li>Only a single LoD (for eg. a cityGML <em>LOD 2</em> data representing city escapes) is available for that particular CityGML dataset. In such a case the resultant scene layer will still perform optimally at all visualization scales, since automatic LoD generation will be triggered on it when used (cooked) as a 3D Object layer with a Mesh-pyramids profile.</li>
+<li>The cityGML data provides multiscale models (with well-defined consecutive Levels of Detail). Here, such a data could be modeled as well authored multiple 3D Object layers, where each 3d Object layer corresponds to each available cityGML lod. With appropriate distance based visibilities, multiple 3D Object layers utilizing the mesh-pyramids profile, could work in unison to effectively and seamlessly model all available levels of Detail of a CityGML input source (for e.g. LOD0 thru LOD4 each corresponding to a single 3D Object layer).</li>
+</ol>
+</p>
+
+<p>Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree. In such instances, the i3s specification accommodates such types of LoD schemes with the mesh-pyramids profile. In addition, it also explicitly reserves an LoD switching model, feature-switching, catering to such types of LoDs.</P>
+
+<p>Though navigation and traversal of I3S tree and pattern of usage uses the automatically generated discrete LoDS as its canonical example, similar consumption pattern and tree traversal applies for Semantic LoDs.</p>
 
 <h3><a name="_4_1">LoD Switching Models</a></h3>
 
 <p>Depending on the properties of a 3D layer, a good user experience will necessitate
-different ways of switching out content from one LoD with content from another LoD.
-i3s currently supports the definition of two LoD switching models.</p>
+different ways of switching out the prescribed LoD content of one node to another.
+I3S currently supports the definition of two LoD switching models.</p>
 
 <h4>Node Switching</h4>
 
 <p>For homogeneous data sets such as dense meshes created from oblique imagery or pointclouds,
-i3s includes a <code>node-switching</code> LoD mechanism. Node-switching means that the geometry of an entire
-Node is loaded at once and replaces all geometry representing the same set of features.
-<code>node-switching</code> is typically used in conjunction with LoD generation methods (see <a href="#_4_2"><code>lodMode</code></a>)
-that create Full Representation Pyramids, similarly to a pyramid of images with different resolutions as used for 2D mapping. From root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
+I3S includes a <code>node-switching</code> LoD mechanism. Node switching means that the geometry of an entire <em>Node</em> is loaded at once and replaces all geometry representing the same set of features.
+<code>node-switching</code> is typically used in conjunction with LoD generation methods (see [LoD Generation Types](<a href="#_4_2">LoD Generation Types</a>))
+that create full representation pyramids, similarly to a pyramid of images with different resolutions as used for 2D mapping. In such LoD types, from root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
 
+<p>Figure 2 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. Examining the figure further one observers:</p>
+<ul>
+<li><code>Nodes</code> are in blue, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
+<li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
+<li>Each node has associated geometry, texture and attribute resources that compactly store the <code>geometries</code>, <code>attributes</code> and <code>textures</code> of all of the features explicitly represented by the node, as typed arrays and texture atlases.</li>
+<li>The turquoise boxes show the <code>geometry</code> resource associated with each node. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual features' range of triangles (faceRanges) is indexed along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding.</li>
+<li>Though for clarity, both attribute and texture resources are omitted from the figure deliberately, its worth to note that the attribute of all features of a given node are also stored following a similar storage model as the <code>attribute</code> resource of the node.</li>
+<li>Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. </li>
+<li>The figure also illustrates the case where “Feature 6” has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
+</ul>
+</p>
 <div>
 <img src="images/figure-03.png" title="Example Nodes in Mesh Pyramid" alt="Example Nodes in Mesh Pyramid">
-<p><em>Figure 2: Example Nodes in Mesh Pyramid. Turquoise boxes represent geometries, orange boxes represent features. Turquoise dotted lines indicate Geometry -> Feature relationships.</em></p>
+<p><em>Figure 2: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node, the hyphenated numbers represent node ids as string based treekeys.</em></p>
 </div>
 
 
-<p>When using a mesh pyramid based LOD approach each interior node in the i3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature but rather for the entire content of the node (all features contained by that node). Applications accessing the i3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
+<p>When using a mesh pyramid based LOD approach each interior node in the I3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature but rather for the entire content of the node (all features contained by that node). Applications accessing the I3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
 
 <p>The main advantage of this mechanism is that clients require less information for performing
-the switch. Node switching is the default Lod Switching model for layer types that implement meshpyramids profile.</p>
+the switch. <code> node-switching </code> is the default Lod Switching model for layer types that implement <code>meshpyramids</code> profile.</p>
 
 <h4>Feature Switching</h4>
 
@@ -236,18 +306,7 @@ lower-detail representations. This approach maintains explicit LoD representatio
 When authored or semantic LoDs, such as Quarter -> Block -> BuildingSolids -> Walls + Roofs + GroundPlates ->
 Balconies + Dormers + Chimneys are present, these explicit predefined relations are maintained.
 This is how CityGML, IFC, 3DCIM and other fixed LoD approaches look like - a feature such as a
-building actually consists of one set of individual features per LoD. A Feature in a Node has
-the following properties when using <code>feature-switching</code>:</p>
-
-<ul>
-	<li>A Feature can participate in a so-called LoD tree.</li>
-	<li>A LoD tree has a single root feature.</li>
-	<li>Each non-leaf participating Feature has a set of n <code>lodChildFeatures</code>. </li>
-	<li>The client receives LoD information with the Node Index Document already, allowing making a choice whether to load a certain resource or not, and also to later identify which features replace which other features.</li>
-	<li><code>lodChildFeatures</code> are guaranteed to be either in the same node or in a direct child node.</li>
-	<li>Each Feature that participates in a LoD tree has a rank from 0..d.</li>
-	<li>Each Feature that participates in a LoD tree and has a rank > 1 has a <code>rootFeature</code> reference. This reference enables the client to detect which features represent a single object, e.g. for picking purposes.</li>
-</ul>
+building actually consists of one set of individual features per LoD.
 
 <p>The links between all meshes participating in a LoD tree are either created during the store creation process,
 e.g. by breaking down a heavy and large feature, or they are predefined by the data provider.</p>
@@ -255,9 +314,13 @@ e.g. by breaking down a heavy and large feature, or they are predefined by the d
 <h3><a name="_4_2">LoD Generation Types</a></h3>
 
 <p>If the input data doesn't come with authored Levels of Detail, different LoD
-Generation Types can be employed. As an example, layers based on the <code>meshpyramid</code> profile type create a full representation LoD pyramid for all features and is built from aggregating,
-fusing and reducing an individual features' mesh.
-Different types of LoD generation techniques are applicable to different 3D layer types:</p>
+Generation Types can be employed. For example, a layer based on <code>mesh-pyramids</code> profile type creates a full representation LoD pyramid for all features and is built by aggregating, fusing and reducing an individual features' mesh. An example of a layer type that participates in such LoD generation is <em> 3d Object</em>. A 3D Object layer employs automatic level of detail generation technique for the collection of 3D GIS features that are typically used as an input data with some chosen resolution.</p>
+
+<p>
+The first step in the automatic LoD generation process is to build the I3S bounding volume tree based on the spatial distribution of the 3D GIS features. Once this has been completed generation of the lod content of interior nodes can proceed.</p>
+<p>
+As shown in Table 2 below, different types of LoD generation techniques are applicable to different 3D layers.
+</p>
 
 <table>
 	<tr>
@@ -269,7 +332,7 @@ Different types of LoD generation techniques are applicable to different 3D laye
 		<td><strong>Pointclouds</strong></td>
 	</tr>
 	<tr>
-		<td><strong>MeshPyramid</strong></td>
+		<td><strong>Mesh-pyramids</strong></td>
 		<td>yes</td>
 		<td></td>
 		<td></td>
@@ -301,7 +364,7 @@ Different types of LoD generation techniques are applicable to different 3D laye
 		<td></td>
 	</tr>
 </table>
-
+<p><em>Table 3: Different 3D Layer Types and various LoD generartion types they can employ.</em></p>
 <h3><a name="_4_4">LoD Selection Metrics</a></h3>
 
 <p>A client needs information to determine whether a node's contents are "good enough" to
@@ -328,7 +391,7 @@ following example:</p>
 ]
 </code></pre>
 
-<p>These metrics are used by clients to determine the optimal resource access patterns. Each i3s profile definition provides additional details on LoD Selection.</p>
+<p>These metrics are used by clients to determine the optimal resource access patterns. Each I3S profile definition provides additional details on LoD Selection.</p>
 
 <p>
 <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
@@ -361,18 +424,18 @@ to the selection of spatial reference systems to use:</p>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<p>Begining version 1.5, i3s profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
+<p>Begining version 1.5, I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
 
 <h3><a name="_5_1">Height Models</a></h3>
-The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows i3s to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.
+The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.
 
-<h2><a name="_6">Structure of i3s resources</a></h2>
+<h2><a name="_6">Structure of I3S resources</a></h2>
 
-<p>The i3s format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures, Geometry, Attributes and Shared Descriptors, all representing a collection of features for a given node. These resources are always attached to a node.</p>
+<p>The I3S format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures, Geometry, Attributes and Shared Descriptors, all representing a collection of features for a given node. These resources are always attached to a node.</p>
 
 <div>
 <img src="images/figure-04.png" title="Structure of a single Node and referenced resources" alt="Structure of a single Node and referenced resources.">
-<p>Figure 4: The relationship of a Node (3dNodeIndexDocument) – as identified by the its id (root, 0, 1, …, 3-2 etc..), with the resources it references.
+<p>Figure 3: The relationship of a Node (3dNodeIndexDocument) – as identified by the its id (root, 0, 1, …, 3-2 etc..), with the resources it references.
 </p>
 </div>
 
@@ -391,12 +454,12 @@ The physical organization of information within nodes is as follows:
 </p>
 
 <div>
-<img src="images/figure-node.png" title="The content of a single i3s Node" alt="The content of a single i3s Node.">
-<p>Figure 5: This diagram illustrates the content of an i3s node. A Shared Descriptors resource (shared), Geometries (geometryData), Textures (textureData) and Attributes (attributeData) are all a per-node resources, addressable as an array of expandable, node-relative references.
+<img src="images/figure-node.png" title="The content of a single I3S Node" alt="The content of a single I3S Node.">
+<p>Figure 4: This diagram illustrates the content of an I3S node. A Shared Descriptors resource (shared), Geometries (geometryData), Textures (textureData) and Attributes (attributeData) are all a per-node resources, addressable as an array of expandable, node-relative references.
 </p>
 </div>
 <p>There are always an equal number <em>n</em> of FeatureData and Geometry resources, and each set contains
-the corresponding data elements to be able to render a complete feature. Some profiles, such as  meshpyramids, have a support for optimal access of all required attributes of the geometry data directly from the binary Geometry data resource, avoiding dependency on the FeatureData document. In such cases, all vertexAttributes (including position, normal,texture coordinates and color), vertex and feature counts, and mesh segmentation information (feaceRanges) are readily accesible from the <em>geometries</em> resource.
+the corresponding data elements to be able to render a complete feature. Some profiles, such as  meshpyramids, have a support for optimal access of all required attributes of the geometry data directly from the binary Geometry data resource, avoiding dependency on the FeatureData document. In such cases, all vertexAttributes (including position, normal,texture coordinates and color), vertex and feature counts, and mesh segmentation information (feaceRanges) are readily accessible from the <em>geometries</em> resource.
 <p>
 Textures are not tightly coupled to bundles due to the fact that they can also
 be in the node as part of a shared resource that bubbled up. For each texture
@@ -405,8 +468,48 @@ created is then equal <strong>m*Texture LoD Steps</strong>. The following
 figure illustrates an example set of bundles within a node:</p>
 <div>
 <img src="images/figure-05.png" title="Detailed Node Structure" alt="Detailed Node Structure">
-<p>Figure 6: Detailed Node Structure</p>
+<p>Figure 5: Node Structure</p>
 </div>
+
+<h3><a name="_6_1">Geometry Model and Storage</a></h3>
+
+<p> All Scene Layer types make use of the same fundamental set of geometry types: </p>
+<ul>
+<li> points </li>
+<li> lines </li>
+<li> triangles </li>
+</ul>
+
+<p>
+Geometries use binary storage and consumption representation, controlled by Array Buffer View geometry property declarations. I3s provides full control over those properties, such as per-vertex layout of components (eg. position, normal and texture coordinates), in order to ensure the same pattern for face and vertex elements across the Scene Layer.
+</p>
+
+<p>I3S supports storage of triangle meshes via <em>triangles</em> geometry type.</p>
+
+<p>Both 3D Objects as well as Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.</p>
+
+<p>See [Geometry](<a name="_7_6">Geometry</a>) section for more discussion on the geometry format and storage models. </p>
+
+<h3><a name="_6_2">Textures</a></h3>
+<p>Textures are stored as a binary resource associated with a node. The texture resource for a node contains the images that are used as textures for the features stored in the node. The mesh-pyramids profile supports either a single texture or a texture atlas per node.</p>
+
+<p>By default, mesh-pyramids profile allow/support encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. In all cases, the specification provides flexibility by allowing authoring applications to provide additional texture formats via the <code>textureEncoding</code> declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding. </p>
+
+<p>See [Textures](<a name="_7_7">Textures</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.</p>
+
+<h3><a name="_6_3">Attribute Model and Storage </a></h3>
+<p>I3S supports the following two patterns of accessing the attribute data:</p>
+<ol>
+	<li>From optional paired services that expose queryable and updatable RESTful endpoints that enable direct access to dynamic source data, including attributes. The query in this case uses the unique feature-ID key – which is always maintained within each node and is also available as part of the descriptor for any segmented geometry.</li>
+	<li>From fully cached attribute information, in binary form, within I3S store.
+	I3S clients can still choose to use both of these modes even if the attributes are fully cached within I3S store.</li>
+</ol>
+</p>
+
+<p>Cached Attributes use binary storage representation based on Array Buffers which provide significant performance benefits relative to method 1. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays.
+</p>
+
+<p>See [AttributeData](<a name="_7_8">AttributeData</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.</p>
 
 <h2><a name="_7">JSON Resources Schema and Documentation</a></h2>
 
@@ -430,7 +533,7 @@ resource types.</p>
 
 <h4><a name="_7_0_1">Pointers</a></h4>
 
-<p>i3s uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
+<p>I3S uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
 The Pointer consists of two elements:</p>
 
 <ol>
@@ -472,7 +575,7 @@ sets offered by an instance of a Scene Service.</p>
 <p><em>Figure 6: Logical schema of the 3dSceneServiceInfo document</em></p>
 </div>
 
-<p>This file is not generated by the authoring tools and is not part of a spk package file.
+<p>This file is not generated by the authoring tools and is not part of a slpk package file.
 It is generated solely by the Scene Server for each service instance. Its
 description is contained here only for reference.</p>
 
@@ -595,35 +698,6 @@ Layer.</p>
 
 <p><em>Table 5: Attributes of the Class <strong>3dSceneLayerInfo</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class attributeStorageInfo</h4>
-
-<p>The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. An object that describes the structure of the binary attributeData resource of a node.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>Integer</td>
-		<td>Unique numeric ID of the Layer.</td>
-	</tr>
-	<tr>
-		<td>href</td>
-		<td>URL</td>
-		<td>The relative URL to the 3dSceneLayerResource. Only present as part of the SceneServiceInfo resource.</td>
-	</tr>
-	<tr>
-		<td>. . .</td>
-		<td>. . .</td>
-		<td>. . .</td>
-	</tr>
-</table>
-
-<p><em>Table 5a: Attributes of the Class <strong>attributeStorageInfo</strong> within the 3dSceneLayerInfo document</em></p>
-
 <h4>Class Store</h4>
 
 <p>While Layers are the user-visible entry point to the 3dSceneServer resources (for web
@@ -688,13 +762,13 @@ applied.</p>
 		<td>nidEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Node Index Documents; format:<br>
-		<code>application/vnd.esri.i3s.json+gzip; version=1.4</code></td>
+		<code>application/vnd.esri.I3S.json+gzip; version=1.4</code></td>
 	</tr>
 	<tr>
 		<td>featureEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Feature Data Resources; format:<br>
-		<code>application/vnd.esri.i3s.json+gzip; version=1.4</code></td>
+		<code>application/vnd.esri.I3S.json+gzip; version=1.4</code></td>
 	</tr>
 	<tr>
 		<td>geometryEncoding</td>
@@ -800,7 +874,7 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	<tr>
 		<td>featureAttributes</td>
 		<td>FeatureData::GeometryAttribute[0..*]</td>
-		<td>dDeclaration of the attributes per feature in the geometry, such as feature ID or face range</td>
+		<td>Declaration of the attributes per feature in the geometry, such as feature ID or face range</td>
 	</tr>
 </table>
 
@@ -861,10 +935,53 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 
 <p><em>Table 7: Attributes of the Class <strong>Field</strong> within the 3dSceneLayerInfo document</em></p>
 
+<h4>Class attributeStorageInfo</h4>
+
+<p>The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. An object that describes the structure of the binary attributeData resource of a node.</p>
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>key</td>
+		<td>string</td>
+		<td> The unique field identifier key.</td>
+	</tr>
+	<tr>
+		<td>name</td>
+		<td>string</td>
+		<td>The name of the field.</td>
+	</tr>
+	<tr>
+		<td>header</td>
+		<td>String[1..]</td>
+		<td>Declares the headers of the binary attribute data. One of {<code>count</code>, <code>attributeValuesByteCount</code>}. <code>count</code>, should always be present and indicates the count of features in the attribute storage. <code>attributeValuesByteCount</code> will only be present for strings data type and indicates the total byte count of the string data for all features in the binary attribute buffer.</td>
+	</tr>
+	<tr>
+		<td>ordering</td>
+		<td>String[1..]</td>
+		<td>Declares the ordering indicating the order in which the array of attribute byte counts and the array of attribute values are stored in the binary attribute data. One of {<code>attributeByteCounts</code>, <code>attributeValues</code>}. <code>attributeValues</code>, should always be present. <code>attributeByteCounts</code> should only be present when working with string data types.</td>
+	</tr>
+	<tr>
+		<td>attributeByteCounts</td>
+		<td>String</td>
+		<td>The element type of the attributeByteCounts property, from <code>{UInt32}</code>.</td>
+	</tr>
+	<tr>
+		<td>attributeValues</td>
+		<td>String</td>
+		<td>The element type of the attributeValues property, from <code>{UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64}</code></td>
+	</tr>
+</table>
+
+<p><em>Table 5a: Attributes of the Class <strong>attributeStorageInfo</strong> within the 3dSceneLayerInfo document</em></p>
 <h4>Class IndexScheme</h4>
 
 <p>The IndexScheme class declaratively describes computational and structural
-properties of the index used within an i3s store. This information can be used
+properties of the index used within an I3S store. This information can be used
 by clients to better understand how to work with the index.</p>
 
 <table>
@@ -1159,7 +1276,7 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 <h4>Class LodSelection</h4>
 
 <p>A LodSelection object provides information on a given metric determined during
-the cooking process of an i3s store. This metric can be used by the client to
+the cooking process of an I3S store. This metric can be used by the client to
 determine whether a representation is of the right quality level for rendering
 or whether a different representation is needed. </p>
 
@@ -1290,7 +1407,7 @@ representative of a feature present in the real, geographic world.</p>
 
 <h4>Class Geometry</h4>
 
-<p>This is the common container class for all types of geometry definitions used in i3s.</p>
+<p>This is the common container class for all types of geometry definitions used in I3S.</p>
 
 <table>
 	<tr>
@@ -1339,7 +1456,7 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>$ref</td>
 		<td>Pointer</td>
-		<td>In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the <a href="">i3s json pointer</a> syntax.</td>
+		<td>In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the <a href="">I3S json pointer</a> syntax.</td>
 	</tr>
 	<tr>
 		<td>faceRange</td>
@@ -1404,12 +1521,12 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>material</td>
 		<td>URI</td>
-		<td>i3s Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.</td>
+		<td>I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.</td>
 	</tr>
 	<tr>
 		<td>texture</td>
 		<td>URI</td>
-		<td>i3s Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.</td>
+		<td>I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.</td>
 	</tr>
 </table>
 
@@ -1702,7 +1819,7 @@ For details on texture organization, please refer to the section on <a href="#_7
 
 <h4>Class ShaderDefinition</h4>
 
-<p>ShaderDefinitions are, in this version of the i3s specification, an optional feature to provide
+<p>ShaderDefinitions are, in this version of the I3S specification, an optional feature to provide
 API-dependent shader programs with a layer.</p>
 
 <h4>Class Symbol</h4>
@@ -1727,12 +1844,11 @@ resources that are delivered as part of an Indexed 3D Scene.</p>
 
 <h4>Image Formats</h4>
 
-<p>At the current stage, the following texture formats are recommended - JPEG for RGB and
-PNG for RGBA. They were chosen over S3TC because of low bandwidth consumption
-and widespread adoption in all steps of the toolchain, such as supporting alpha
-transparency rendering in WebGL. However, with more wide-spread client support
-for next-generation texture compression formats such as <a href="http://en.wikipedia.org/wiki/Adaptive_Scalable_Texture_Compression">ASTC</a>
-and <a href="http://www.g-truc.net/post-0340.html ">BPTC</a> which will become available later on.</p>
+I3S supports multiple texture formats which are suitable for different scenarios. For example, a client application might prefer consuming the more compact JPEG (and/or PNG) formats over low bandwidth conditions since they are very efficient to transmit and have a widespread adoption. However, client applications that might be constrained for memory or computing resource might prefer to directly consume compressed textures such as S3TC for scalability and performance reasons.
+
+As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. The only requirement is the authoring application needs to provide the appropriate <code>textureEncoding</code> declaration by using MIME types such as, “image/jpeg” (for Jpeg) and “image/vnd-ms.dds” (for S3TC) etc...
+
+With more wide-spread client support for next-generation texture compression formats such as ASTC, ETC2, PVRTC etc..., I3S will include support for more compressed texture formats in the future to enable specific platforms.
 
 <h4>Texture Sets</h4>
 
@@ -1861,18 +1977,17 @@ the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
 <p><em>Figure 10b: Geometry Buffer Layout with headers</em></p>
 </div>
 
-<p><strong>Note: The expected triangle/face winding order in all geometry resources is
-counterclockwise (CCW).</strong></p>
+<p>Note: The expected triangle/face winding order in all geometry resources is
+counterclockwise (CCW).</p>
 
-<p><strong>Note: If normal vectors are present in a geometry, they need to be calculated based on uniform axis units.
+<p>Note: If normal vectors are present in a geometry, they need to be calculated based on uniform axis units.
 They are always given as if x,y and z axes all had metric units, as a unit vector.
-This means that if WGS84 is used as a horizontal CRS, the normal calculation cannot directly use the face's WGS84 coordinates,
-but needs to convert them to a local cartesian CRS first.</strong></p>
+This means that if WGS84 is used as a horizontal CRS, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local cartesian CRS first.</p>
 
 <h3><a name="_7_7">AttributeData</a></h3>
 
 <p>
-This section describes the format for storing attribute data within i3s layers as part of the scene service cache along with geometry, texture and material resources, in an optimized renderer friendly format.
+This section describes the format for storing attribute data within I3S layers as part of the scene service cache along with geometry, texture and material resources, in an optimized renderer friendly format.
 </p>
 
 <p>
@@ -1888,7 +2003,7 @@ A key concept of this storage model is that the order in which attribute values 
 </p>
 
 <p>
-For cases where object-id based access to attributes is needed, the _attribute_ resource representing the _object-id_ field stores the object-id values of each feature within the node - in the same storage order as the geometry resource. This facilitates object-id based access. Clients can also build an object-id to array-index dictionary for cases where large numbers of object-id based attribute or geometry look ups within a node are needed. (Note: the following ways of referring to the ObjectId of a feature are equivalent in these and other i3S specifications : ObjectId, object-id, OID, FID).
+For cases where object-id based access to attributes is needed, the _attribute_ resource representing the _object-id_ field stores the object-id values of each feature within the node - in the same storage order as the geometry resource. This facilitates object-id based access. Clients can also build an object-id to array-index dictionary for cases where large numbers of object-id based attribute or geometry look ups within a node are needed. (Note: the following ways of referring to the ObjectId of a feature are equivalent in these and other I3S specifications : ObjectId, object-id, OID, FID).
 </p>
 
 <p>
@@ -1896,7 +2011,7 @@ When the same feature is included in multiple nodes at different levels of detai
 </p>
 
 <p>
-Metadata on each _attribute_ resource is made available to clients via the [scene service layer]((https://github.com/Esri/i3s-spec/blob/master/profiles/meshpyramids/examples/3dSceneLayer.js). When attributes are present within the scene cache, the _resourcePattern_ array in the layers store (layers[id].store.resourcePattern) will include a value called _Attributes_, indicating attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the _resourcePattern_, additional metadata present in the _fields_ array (_layers[id].fields[id]_) and  _attributeStorageInfo_ array (_layers[id].attributeStorageInfo[id]_), further describe each attribute resource.
+Metadata on each _attribute_ resource is made available to clients via the [scene service layer]((https://github.com/Esri/I3S-spec/blob/master/profiles/meshpyramids/examples/3dSceneLayer.js). When attributes are present within the scene cache, the _resourcePattern_ array in the layers store (layers[id].store.resourcePattern) will include a value called _Attributes_, indicating attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the _resourcePattern_, additional metadata present in the _fields_ array (_layers[id].fields[id]_) and  _attributeStorageInfo_ array (_layers[id].attributeStorageInfo[id]_), further describe each attribute resource.
 </p>
 
 <p>
@@ -1986,7 +2101,7 @@ _Fig.4 A typical attribute (table) info of a feature class. The fields array tha
 
 As it could be inferred from [Fig. 1](images/Attribute_Legend_Support_Fig_2.png) and [Fig. 3](images/Attribute_Legend_Support_Fig_3.png), a scene service layer exposes/includes **only** supported attribute field value types of a feature class. As a result, the 'Shape' field ([see Fig. 4](images/Attribute_Legend_Support_Fig_4.png)), which is of _esriFieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
 
-[see Table 1](images/Attribute_Legend_Support_Table_1.png) below which lists a feature layer's field data types (including its values and description). The i3s valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
+[see Table 1](images/Attribute_Legend_Support_Table_1.png) below which lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
 
 ![App](./images/Attribute_Legend_Support_Table_1.png "Table.1 showing scene server supported attribute data types.")
 
@@ -2009,23 +2124,74 @@ The 'Name' field is of 'esriFieldTypeString' and is represented as a _String-Arr
 
 The _attributes_ REST api of a scene layer gives access to all scene cache supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in [Fig. 4](images/Attribute_Legend_Support_Fig_4.png) will have 5 binary resources, as identified by keys <i>f_0_, f_1_, f_2_, f_3_ </i> and <i>f_4</i> and accessible by their respective rest resource URLs (_.../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc..).
 
-## Accessing the legend of a 3D Object Layer
+#### Accessing the legend of a 3D Object Layer
 
 Legends are essential for proper display (complete communication of represented information) of 3D Object Layer (also equally applicable for other layer types).
 
 Clients are responsible for building legend information from the drawingInfo resource for the scene layer.
 In this scene layers and scene services behave identically to feature layers and feature services.
 
+<h2><a name="_9">I3S Flexibility</a></h2>
 
-</p>
 
-<h2><a name="_8">Persistence</a></h2>
+I3S is flexible and allows for different implementation choices for different types of 3D data or even for the same type of 3D data. The profile for a layer indicates the set of choices made. Choices supported by I3S and made use of by different profiles are described below. In each case the profile listed is the canonical profile for the corresponding layer-type.
 
-<p>All storage methods store the Indexed 3D Scene in a simple key-value structure, with the
-key representing the access URL and the value being the JSON document or other
-resource type.</p>
+1. The Minimum Bounding Volume (MBV) property can be represented as:  
+ a. Minimum Bounding Sphere (MBS)  
+ b. Oriented Bounding Box (OBB)  
 
-<h3><a name="_8_1">File System</a></h3>
+2. Node structure  
+ a. Expanded – in support of clients that want to gain more complete meta-information about node’s position within BVH topology and its immediate neighborhood  
+  - Each index node provides pointers to its parent, all its children, and sibling neighbors (including their MBVs)  
+	      Used by: mesh-pyramids and points profiles  
+
+ b. fixed-size in support of paged access pattern  
+  - A minimal structure – just the essentials: bounding volume; first-child reference; child-count; LOD selection data; etc.  
+	      Used by: the pointclouds profile.  
+
+3. Embedded versus Binary geometry content format  
+ a. Embedded geometry: as text (JSON) inlined with other metadata within featureData resource – to support profiles where run-length encoding of feature-IDs along the vertex data is suboptimal
+ 	      used by: the canonical points profile.  
+
+ b. Binary format: for voluminous, ready to render/use geometries and cached attributes. Both typed array buffer views as well as fixed format binary buffers are supported.  
+	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
+	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
+
+4. LOD Selection based on different metricTypes:  
+
+ 1.	maxScreenThreshold – LOD switching based on screen ‘size’ of the node’s MBV  
+ 	      used by: mesh-pyramids profile
+ 2.	screenSpaceRelative – LOD switching based on screen ‘scale’ of the node’s MBV  
+        used by: points profile
+ 3.	effectiveDensity – estimation of the point density covered by the node  
+        used by: pointclouds profile  
+
+
+#### Summary of I3S Defining Characteristics
+
+In summary, here are other characteristics, including content data formats, which the scene layer may include:  
+•	Attributes may be included on individual entities, on individual point cloud points, or on partial segments of meshes  
+•	Attribute-based stylization may be modified by client software  
+•	Multiple, alternative textures may be provided to optimize for per-platform performance and display  
+•	JSON format for index and metadata, binary for more voluminous geometry, texture and attribute data  
+•	A Scene Layer Package format for distribution, or direct use, of the scene layer as a single file (see illustrations below)  
+•	Optional paired services that expose queryable and updatable RESTful endpoints that enable direct access to dynamic source data  
+•	Explicit control over bounding index shape and per-node switching behavior to provide for optimized display and query  
+• BVH based on bounding spheres (MBS) as well as oriented bounding boxes (OBB) (planned)  
+•	Scene layers may be created in Cartesian 3D or in global 3D world coordinate systems  
+
+<h2><a name="_9">Persistence</a></h2>
+
+
+I3S scene layers can be delivered to web, mobile and desktop clients using a number of different patterns.
+Most users will interact with scene layers using applications that access cloud or server based information via RESTful interfaces/services.  In these cases the cache (the I3S nodes and their payloads)  for the scene layer reside on the server and is returned to clients via a RESTful interface that exposes the scene layer, its nodes and  their associated resources (geometries, attributes, textures) as web addressable resources. The I3S specification contains a complete description of the [web addressable resources](<a href="../service/SceneService.md">SceneService</a>) and their url scheme.
+Some users will also interact with a scene layer delivered to them as a single large Scene Layer Package – this is a single file that packages the complete node tree and its resources into an archive that supports direct access to the individual nodes and resources within it. [Scene Layer Packages](<a name="_9_3">Scene Layer Packages) are part of the current I3S implementation with multiple generators and the ability by clients to consume packages containing hundreds of GB of content.
+
+
+All storage methods store the Indexed 3D Scene in a simple key-value structure, with the key representing the access URL and the value being the JSON document or other
+resource type.
+
+<h3><a name="_9_1">File System</a></h3>
 
 <p>In this persistence schema, all resources reside in the file system as individual files. These files are organized in folders in the following scheme:</p>
 
@@ -2058,12 +2224,12 @@ resource type.</p>
 <p>This scheme is not recommended for very large stores, as there is a limit of 64K folders in several contexts such as FAT32 file systems,
 which are still used on mobile media.</p>
 
-<p><strong>Note: The example files that are part of this spec in the profiles contain comments,
-which are not allowed in JSON documents, and therefore use the *.js file extension.</strong></p>
+<p>Note: The example files that are part of this spec in the profiles contain comments,
+which are not allowed in JSON documents, and therefore use the *.js file extension.</p>
 
-<h3><a name="_8_2">CouchDB, IndexedDB and other Key-Value Stores</a></h3>
+<h3><a name="_9_2">CouchDB, IndexedDB and other Key-Value Stores</a></h3>
 
-<p>The Scene Server stores i3s resources in a document-oriented database. After
+<p>The Scene Server stores I3S resources in a document-oriented database. After
 testing, CouchDB was selected as being suitable. Especially large stores
 benefit from this type of storage. Especially when data is updated often
 or when highly distributed cooking processes are used, CouchDB storage is recommended.</p>
@@ -2078,9 +2244,9 @@ IndexedDB offers a method of storing data client-side and allows indexed
 database queries against JSON documents.
 It can be used to have persistent stores on the client side and uses an identical scheme as server-side, CouchDB storage.</p>
 
-<h3><a name="_8_3">Scene Packages (spk files)</a></h3>
+<h3><a name="_9_3">Scene Layer Packages (slpk files)</a></h3>
 
-<p>Scene Packages (spk) serve two purposes: They allow a complete i3s layer, with all resources, to be transported or exchanged as a single file,
+<p>Scene Layer Packages (slpk) serve two purposes: They allow a complete I3S layer, with all resources, to be transported or exchanged as a single file,
 and they optionally also allow to be directly consumed by applications such as clients or services.
 The file layout is identical to the <a href="#_8_1">File System layout</a> described before. This is referred to as the BASIC folder pattern.
 There is also an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.
@@ -2088,8 +2254,8 @@ This EXTENDED pattern is added as a keyword only in this specification for futur
 Within an archive, this BASIC folder pattern results in the following structure:</p>
 
 <div>
-<img src="images/figure-11.png" title="Structure of an spk file" alt="Structure of an spk file">
-<p><em>Figure 11: Structure of an spk file with BASIC folder layout</em></p>
+<img src="images/figure-11.png" title="Structure of an slpk file" alt="Structure of an slpk file">
+<p><em>Figure 11: An example of an slpk archive with BASIC folder layout. The contents of the archive at the top folder include a nodes subfolder that contains all node resources, a metadata.json that describes the content of the slpk and a 3dSceneLayer.json.gz that makes up the Scene Layer. Drilling into one of the nodes resource, node id “1-4-2-0” we observe that all file resources are individually compressed with GZIP compression (the file extension .gz indicates that), with the exception of texture resources that are in Jpeg (textures/0_0.bin) format. Resources such as <em>geometries/0.bin.gz</em> and <em>attributes/f_0/bin.gz…</em>, serialized as binary, correspond to the geometryData, and attributeData resources of a scene layer, respectively. Similarly, <em>features/0.json.gz</em> and <em>SharedResource.json.gz</em> correspond to the featureData and SharedResource document of a Scene Layer and are encoded in JSON and are also stored with a GZIP compression.</em></p>
 </div>
 
 <p>The format of the package itself is defined as follows:</p>
@@ -2099,18 +2265,20 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	<li>On this Archive, an overall compression scheme may be applied.
 	This compression scheme has to be either STORE or DEFLATE64.
 	Standard DEFLATE is acceptable as a fall-back if DEFLATE64 is not available, but will only work with smaller stores. </li>
-	<li>Every resource except textures may also be individually compressed. For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available anymore in browsers.</li>
+	<li>STORE is the preferred compression schema for an slpk intended for direct consumption by client application, especially if a resrouce compression is already applied on the individual resoruces (as shown in the figure above).</li>
+	<li>Every resource except textures may also be individually compressed. Compressed textures (such as S3TC) can additionally have GZIP compression applied to them.	</li>
+	<li>For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available anymore in browsers.</li>
 </ul>
 
-<p>For the two mentioned used cases, spk is employed as follows:</p>
+<p>For the two mentioned use cases, slpk is employed as follows:</p>
 
 <ol>
-	<li>spk as a transfer format:
+	<li>slpk as a transfer format:
 	<ol>
 		<li>ArchiveCompressionType: DEFLATE64</li>
 		<li>ResourceCompressionType: NONE</li>
 	</ol></li>
-	<li>spk as a serving format:
+	<li>slpk as a serving format:
 	<ol>
 		<li>ArchiveCompressionType: STORE</li>
 		<li>ResourceCompressionType: GZIP</li>
@@ -2119,7 +2287,7 @@ Within an archive, this BASIC folder pattern results in the following structure:
 
 <h4>Metadata</h4>
 
-<p>The following entries are permitted in the Metadata.json file that is part of every spk archive:</p>
+<p>The following entries are permitted in the Metadata.json file that is part of every slpk archive:</p>
 
 <table>
 	<tr>
@@ -2135,21 +2303,21 @@ Within an archive, this BASIC folder pattern results in the following structure:
 	<tr>
 		<td>ArchiveCompressionType</td>
 		<td>True</td>
-		<td>One of {*STORE*, DEFLATE64[, DEFLATE]}</td>
+		<td>One of {*STORE*, DEFLATE64[,DEFLATE]}</td>
 	</tr>
 	<tr>
 		<td>ResourceCompressionType</td>
 		<td>True</td>
-		<td>One of {*NONE*, GZIP}</td>
+		<td>One of {NONE, *GZIP*}</td>
 	</tr>
 	<tr>
-		<td>i3sVersion</td>
+		<td>I3SVersion</td>
 		<td>True</td>
 		<td>One of {1.2, 1.3, 1.4, *1.5*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>
 		<td>True</td>
-		<td>Total number of nodes stored in this spk.</td>
+		<td>Total number of nodes stored in this slpk.</td>
 	</tr>
 </table>

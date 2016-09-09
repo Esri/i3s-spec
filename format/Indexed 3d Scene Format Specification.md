@@ -556,9 +556,10 @@ description is contained here only for reference.</p>
 
 <h4>Class SceneServiceInfo</h4>
 
-<p>The SceneServiceInfo is the major object in the SceneServiceInfo document.
+The SceneServiceInfo is the major object in the SceneServiceInfo document.
 There is always exactly one SceneServiceInfo object in the document, which
-describes a running SceneService instance. </p>
+describes a running SceneService instance.  
+
 
 <table>
 	<tr>

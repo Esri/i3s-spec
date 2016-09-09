@@ -3,11 +3,11 @@ Scene Layers: Service and Package Specification
 
 ![App](./sceneLayers.jpg "Multiple Scene Services in a WebViewer")[http://www.arcgis.com](http://www.arcgis.com/home/webscene/viewer.html?webscene=196b89953b2d4e7d9fb1ada5997d3391&viewpoint=cam:-4.18890092,34.70563622,20953545.907;358.044,0.117)
 
-This repository hosts the specification for a Scene Layer, which is a container for arbitrarily large amounts of 3D geographic data. The delivery format for a Scene Layer, Indexed 3D Scene (i3s) and its persistency format, Scene Layer Package (.slpk), are also defined in this repository. Both formats are encoded using JSON and binary ArrayBuffers.
+This repository hosts the specification for a Scene Layer, which is a container for arbitrarily large amounts of 3D geographic data. The delivery format for a Scene Layer, Indexed 3D Scene (I3S) and its persistency format, Scene Layer Package (.slpk), are also defined in this repository. Both formats are encoded using JSON and binary ArrayBuffers.
 
-<p>i3s originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
-A single i3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. An i3S Layer is characterized by a combination of layer type and profile that fully describe the behavior of the layer and the manner in which it is realized within the specification.</p>
-<p>
+I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
+A single i3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. An i3S Layer is characterized by a combination of layer type and profile that fully describe the behavior of the layer and the manner in which it is realized within the specification.
+
 
 The format is declarative and extendable and has been used to represent different types of 3D data.
 The following layer types have been specified and the specifications validated via implementation and production deployments:
@@ -21,19 +21,19 @@ The following layer types are planned for future inclusion:
 - Polygon Features (e.g. from GIS Data)
 - Pointclouds (e.g. from LiDAR)
 
-The specification for the [Indexed 3d Scene (i3s)](./format/Indexed%203d%20Scene%20Format%20Specification.md)  and [Scene Layer Package](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these i3s resources and operations, as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
+The specification for the [Indexed 3d Scene (I3S)](./format/Indexed%203d%20Scene%20Format%20Specification.md)  and [Scene Layer Package](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing these I3S resources and operations, as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
 
-</p>
+
 ## Designed for Web, Mobile and Cloud  
 
-i3s is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. i3s is designed to stream large 3d datasets and is designed for performance and scalability.
+I3S is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. I3S is designed to stream large 3d datasets and is designed for performance and scalability.
 
 ## Designed for 3D
-i3s is intrinsically designed to support 3D geospatial content and supports the requisite coordinate systems and height models in conjunction with a rich set of layer types.
+I3S is intrinsically designed to support 3D geospatial content and supports the requisite coordinate systems and height models in conjunction with a rich set of layer types.
 
 ## Open Specification
 
-i3s is an open specification for the purpose of encouraging community adoption, encouraging feedback, and for ensuring that adopting organizations would have flexibility in access to 3D data. The specification is licensed under the Creative Commons Attribution-NoDerivs 3.0 Unported License. Implementers can use the specification in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
+I3S is an open specification for the purpose of encouraging community adoption, encouraging feedback, and for ensuring that adopting organizations would have flexibility in access to 3D data. The specification is licensed under the Creative Commons Attribution-NoDerivs 3.0 Unported License. Implementers can use the specification in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
 
 ## Where can I use...?
 

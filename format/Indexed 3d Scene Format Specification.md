@@ -9,9 +9,9 @@ Scene Layer Package (*.slpk) Format Specification</h2>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
 <p>
 
-This document specifies the Indexed 3D Scene layer (i3s) format, an open 3d content delivery
+This document specifies the Indexed 3D Scene layer (I3S) format, an open 3d content delivery
 format used to disseminate 3D GIS data to mobile, web and desktop clients. I3s is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Service</a> . The first sections of
-this specification explain the conceptual structure of i3s, while the latter
+this specification explain the conceptual structure of I3S, while the latter
 sections provide a detailed implementation-level view.</p>
 
 <h2>Table of Contents</h2>
@@ -60,7 +60,7 @@ sections provide a detailed implementation-level view.</p>
 
 <p>Esri's Indexed 3d Scene (I3S) format and the corresponding Scene Layer Package format (slpk) are
 =======
-<p>The Esri Indexed 3d Scene layer (i3s) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of requirements:</p>
+<p>The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of requirements:</p>
 
 <ol>
 	<li><strong>User Experience first:</strong> Support a very good user experience - high interactivity, fast display, support rendering of visually relevant features first</li>
@@ -260,7 +260,7 @@ These decisions are made using the advertised values for lod selection metrics t
 </ol>
 </p>
 
-<p>Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree. In such instances, the i3s specification accommodates such types of LoD schemes with the mesh-pyramids profile. In addition, it also explicitly reserves an LoD switching model, feature-switching, catering to such types of LoDs.</P>
+<p>Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree. In such instances, the I3S specification accommodates such types of LoD schemes with the mesh-pyramids profile. In addition, it also explicitly reserves an LoD switching model, feature-switching, catering to such types of LoDs.</P>
 
 <p>Though navigation and traversal of I3S tree and pattern of usage uses the automatically generated discrete LoDS as its canonical example, similar consumption pattern and tree traversal applies for Semantic LoDs.</p>
 

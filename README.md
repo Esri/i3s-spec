@@ -3,7 +3,7 @@ Scene Layers: Service and Package Specification
 
 ![App](./sceneLayers.jpg "Multiple Scene Layers in Web Scene Viewer")[http://www.arcgis.com](http://www.arcgis.com/home/webscene/viewer.html?webscene=196b89953b2d4e7d9fb1ada5997d3391&viewpoint=cam:-4.18890092,34.70563622,20953545.907;358.044,0.117)
 
-This repository hosts the specification for Scene Layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model of a Scene Layer, referred to as Indexed 3d Scene layer (I3S) and Scene Layer Package (\*.slpk) respectively, are specified in detail in this repository. Both formats are encoded using JSON and binary ArrayBuffers
+This repository hosts the specification for Scene Layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model of a Scene Layer, referred to as Indexed 3d Scene layer (I3S) and Scene Layer Package (\*.slpk) respectively, are specified in detail in this repository. Both formats are encoded using JSON and binary ArrayBuffers.
 
 I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
 

@@ -64,16 +64,15 @@ sections provide a detailed implementation-level view.</p>
 
 <ol>
 	<li><strong>User Experience first:</strong> Support a very good user experience - high interactivity, fast display, support rendering of visually relevant features first</li>
-	<li><strong>Scalability:</strong> Support very large scene layers, with global extent and large amounts of features - as well as ability to handle highly detailed features</li>
-	<li><strong>Reusability:</strong> Be usable both as a service delivery format as well as serve as a storage/exchange format in a local file or database</li>
-	<li><strong>Level of Detail:</strong> Support intrinsically a level of detail concept for generalization of  large/heavy features as well as support for "semantic" level of detail approaches</li>
+	<li><strong>Scalability:</strong> Support very large scene layers, with global extent and large amounts of features - as well as the ability to handle highly detailed features</li>
+	<li><strong>Reusability:</strong> Be usable both as a service delivery format as well a a storage/exchange format </li>
+	<li><strong>Level of Detail:</strong> Have intrinsic support for representing level of detail</li>
 	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets</li>
-	<li><strong>Merging:</strong> Allow combination/merging of heterogeneous data types from other scene layer data sets</li>
 	<li><strong>User-controllable symbology:</strong> Support client-side symbology/styling and its efficient rendering</li>
-	<li><strong>Extensibility:</strong> Be extensible to support new features (e.g. geometry types) and new platforms</li>
+	<li><strong>Extensibility:</strong> Be extensible to support new layer and geometry types as well as new platforms</li>
 	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards</li>
-	<li><strong>Compatibility:</strong> Have a single structure that is usable across the ArcGIS platform</li>
-	<li><strong>Declarative:</strong> limit how much specific knowledge on the client-side is needed for format support (e.g. Index generation method only needs to be known while writing the format)</li>
+	<li><strong>Compatibility:</strong> Have a single structure that is usable across a modern platform spanning web, mobile and desktop clients and cloud and on-premises servers</li>
+	<li><strong>Declarative:</strong> limit how much specific knowledge is needed by clients for format support</li>
 	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" - make all resources navigable using hrefs from relevant other resources</li>
 </ol>
 
@@ -85,11 +84,11 @@ I3S originated from investigations into technologies for rapidly streaming and d
 A single I3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.
 
 <p>
-I3S Scene Layers are designed to provide clients access to data. Clients have the ability to then visualize the data for the layer independently according to their needs. Data here refers to both the geometry and the attributes for 3D Object, Point, Line and Polygon Features as well as the vertex geometry and vertex attributes for vertices represent fielded data like Integrated Meshes and point clouds. The degree of separation between data and implied visualization varies depending on the type of layer – at one extreme an integrated mesh layer, representing [in effect] “3d imagery”, has a strong implication that clients will display the mesh geometry using the textures that are advertised by and available with the layer. At the other end layers representing 3D features/entities including space occupying 3D objects as well as Points carry a full representation of their attributes allowing clients to thematically map and visualize the data according to their needs. In both cases the access API separates access to geometry from access to textures and attributes, giving clients needed flexibility.  It is also worth noting that in many cases the data on GIS features that is part of the I3S layer will itself be a cached, cooked or preprocessed version (the industry uses a variety of terms to  denote the process of generating 3D access-optimized representation) of primary data that resides in a transactional system of record.
+I3S Scene Layers are designed to provide clients access to data. Clients have the ability to then visualize the data for the layer independently according to their needs. Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features as well as  vertex geometry and attributes for  Integrated Meshes and Point Cloud layers representing continuous or variable density geographic fields.
 </P>
 
 <p>
-An I3S Layer is characterized by a combination of layer type and profile that fully describe the behavior of the layer and the manner in which it is realized within the specification.</p>
+An I3S Layer is characterized by a combination of layer type and profile that fully describes the behavior of the layer and the manner in which it is realized within the specification.</p>
 
 The specification that follows below applies to the following layer types:
 <ul>
@@ -104,7 +103,7 @@ where as the following layer types are planned for future inclusion:
 <li>Polygon Features (e.g. from GIS data)</li>
 <li>Pointclouds (e.g. from LiDAR)</li>
 </ul>
-Layers are described using two properties, type and profile. The type of a layer describes its semantic meaning to the consumer as 3d objects, Points, Pointcloud etc... The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. In most cases the relationship between layer and profile is 1:1 but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles and also includes information on support for feature and vertex attributes.  
+Layers are described using two properties, type and profile. The type of a layer describes the  type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and Pointclouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles.  For each row it indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field discribed by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer). 
 <table>
  <tr>
   <td><strong>Layer Type <em>(example)</em></strong></td>
@@ -122,7 +121,7 @@ Layers are described using two properties, type and profile. The type of a layer
   <td>Integrated Mesh</td>
   <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
   <td>No</td>
-  <td>envisioned as Triangle Attributes</td>
+  <td>Triangle Attributes (planned)</td>
  </tr>
   <tr>
   <td>Point</td>
@@ -134,7 +133,7 @@ Layers are described using two properties, type and profile. The type of a layer
   <td>Pointcloud</td>
   <td>pointclouds</td>
   <td>No</td>
-  <td>Vertex Attributes (VA)</td>
+  <td>Vertex Attributes</td>
  </tr>
   <tr>
   <td>Line</td>
@@ -152,24 +151,16 @@ Layers are described using two properties, type and profile. The type of a layer
 
 <p><em>Table 1: 3D Layer Types supported in I3S</em></p>
 
-<p>The basic unit of an Indexed 3D Scene (I3S) layer is a Store, which contains individual resources (files) for a set of layers, index, geometries, textures and more. Within such a store, the I3S format supports a wide range of 2D and 3D content types needed for 3D GIS scenes via profiling.</p>
-
-<p>In I3S each layer type is represented by a single I3S store, implemented as a particular type of profile. Each layer type necessitates its own I3S store as
-different content types typically require different indexing and level of
-details methods/consideration to perform best. In many cases, their schema also differs
-substantially. </p>
 
 <h2><a name="_3">Coordinate Reference Systems</a></h2>
 
-<p>Indexed 3D Scenes have to fulfill several, in part conflicting, requirements when it comes
+<p>Indexed 3D Scene Layers have to fulfill several, in part conflicting, requirements when it comes
 to the selection of spatial reference systems to use:</p>
 
 <ul>
-	<li>Minimal reprojection on client side needed (such as "bending" of large features to the ellipsoid from a projected CRS to an internal geocentric CRS)</li>
-	<li>Support true global extent data sets</li>
-	<li>Ensure consistency between nodes of a single layer</li>
-	<li>Ensure consistency of positions across multiple layers, potentially created from different source projections</li>
-	<li>Render easily in Planar (Projected Cartesian) and Globe (Geocentric Cartesian) modes</li>
+	<li>Minimize the need for reprojection on the client side</li>
+	<li>Support data sets with global extent</li>
+	<li>Render easily in Planar (Projected Cartesian) as well as Globe (Geocentric Cartesian) modes</li>
 	<li>Support local data with very high positional accuracy</li>
 	<li>Support global data sets with high positional accuracy</li>
 </ul>
@@ -177,7 +168,7 @@ to the selection of spatial reference systems to use:</p>
 <p>To match these requirements, the following approach is taken:</p>
 
 <ol>
-	<li>Use of a single, global (bounds -180.0000, -90.0000, 180.0000, 90.0000) Geographic CRS for geographical location in all index-related data structures. Elevation and node minimum bounding sphere radius are given in meters. Allowed EPSG codes:
+	<li>Use of a single, global Geographic CRS for geographical location in all index-related data structures such as node bounding spheres. Coordinate bounds for such structures are in the range (-180.0000, -90.0000, 180.0000, 90.0000), Elevation and node minimum bounding sphere radius are specified in meters. Allowed EPSG codes:
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
@@ -217,9 +208,8 @@ An example illustrating the height model information within a 3dSceneLayerInfo. 
 
 <h2><a name="_4">Indexing Model</a></h2>
 
-<p>Esri I3S is, as the name implies, an indexed, partitioned 3D Scene format with some
-similarities to <a href="http://code.google.com/p/regionator/wiki/Welcome">regionated KML</a>
-or X3D Earth. The purpose of any index is to allow fast access to (blocks of)
+<p>Esri I3S is, as the name implies is an indexed, partitioned 3D Scene format. 
+The purpose of any index is to allow fast access to (blocks of)
 relevant data. In an Indexed 3D Scene layer, the spatial extent is split into regions
 with a roughly equal amount of data in them, and an access data structure - the
 actual index - allows the client and the server to quickly discover which data the
@@ -234,9 +224,9 @@ I3S organizes information using a hierarchical, node-based spatial index structu
 I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (eg quadtrees and octtrees) as well as density dependent partitioning of space (eg R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.
 </p>
 
-<p>All Nodes have an ID that is unique throughout a store. There are two types of Node ID formats supported by an I3S store. As a string based treekeys or as an integer based fixed-size node id format.
+<p>All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by  I3S. As  string based treekeys or as integers based on a fixed linearization of the nodes.
 
-<p> In the treekey format, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension and usually able to maintain 2D spatial proximity in the 1D ordering. Treekeys are strings in which levels are separated by dashes:
+<p> In the treekey format, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension . Treekeys are strings in which levels are separated by dashes:
 "3-1-0" has 3 numeric elements, hence the node is on level 4 ("root" node is level 1) and the node "3-1" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
@@ -244,7 +234,7 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 <img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys">
 <p><em>Figure 1: A sample Index Tree with Treekeys</em></p>
 </div>
-<p>In fixed-size node id format, each node id is represented by an integer allowing client application to fetch a range of nodes as paged resources.</p>
+
 
 <p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without  the need to  access the more voluminous content associated with a node (geometry, texture data, attributes). The decision to render the node is based on node’s bounding-volume visibility in the current 3D view and a visual quality determination made by the client using the information included in the node index document. The node’s quality is estimated as a function of current view parameters, bounding volume and LoD selection metric value.</p>
 
@@ -261,7 +251,10 @@ An I3S profile can choose between a single text-based feature-data sub-resource 
 The concept of Level of Detail (LoD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as a whole - as generalized information across the different elements/features within the layer (analogous for eg. to an image pyramid), or, they may have levels of detail that apply to individual features within the layer, with the levels of detail present varying from feature to feature.</p>
 
 <p>Level of Detail with this format specification covers several use cases,
-including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization and support for semantic LoDs (via the usage of explicit, authored representations that could be used for different viewing ranges). In I3S, Level of Detail and aggregation of geometries into single bigger meshes for optimal rendering performance are orthogonal concepts. In all cases, geometries are pre-aggregated into Geometry Array Buffers. </p>
+including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization as well as support for representing explicitly authored semantic LoDs. 
+ </p>
+ 
+ <p> Note that the I3S Level of Detail  concept  is orthogonal to the concept of consolidated storage for a set of geometries within a level of detail, based on for example the concatenation of geometries/meshes into larger geometry collections/meshes to assist in optimal rendering.  In all such cases the consolidated storage makes use of Geometry Array Buffers that provide access to individual geometries when needed, and include the preservation of feature to geometry element mapping within the consolidated geometries. </p>
 
 <h4>Discrete LoDs</h4>
 
@@ -280,33 +273,30 @@ These decisions are made using the advertised values for lod selection metrics t
 I3S Scene Layers also include additional optional metadata on the LOD generation process (eg thinning, clustering, generalization) as non-actionable (to clients) information that is of interest to some service consumers.
 
 
-<h4>Semantic LoDs</h4>
+<h4>Representation of input data that already has explicilty authored multiple representations</h4>
 
-As described above, in one implementation of a mesh-pyramids profile (i.e., 3D Object Layer), the leaf nodes of a discrete LOD schema contain the original (feature/object) representation with the highest detail where as the interior nodes contain automatically generalized/reduced detail versions of the same features/objects. Such a a layer type is recognized to have a <em>Discrete LoD</em>.
 
-Authored or <em>Semantic Lod </em> type of data sources such as a CityGML are also typically used as an input source of a 3D Object Layer. In such cases, there are two possibilities how the LoDs are modeled:
+I3S Layers can  be used to represent input data that already have multiple, semantically authored, levels of detail.
 
-<ol>
-<li>Only a single LoD (for eg. a cityGML <em>LOD 2</em> data representing city escapes) is available for that particular CityGML dataset. In such a case the resultant scene layer will still perform optimally at all visualization scales, since automatic LoD generation will be triggered on it when used (cooked) as a 3D Object layer with a Mesh-pyramids profile.</li>
-<li>The cityGML data provides multiscale models (with well-defined consecutive Levels of Detail). Here, such a data could be modeled as well authored multiple 3D Object layers, where each 3d Object layer corresponds to each available cityGML lod. With appropriate distance based visibilities, multiple 3D Object layers utilizing the mesh-pyramids profile, could work in unison to effectively and seamlessly model all available levels of Detail of a CityGML input source (for e.g. LOD0 thru LOD4 each corresponding to a single 3D Object layer).</li>
-</ol>
+The most common method for doing so is to represent each semantically authored input level of detail as its own I3S Layer with distance thresholds on the layer that capture the range of distances at which the layer should be used.  At further or closer distances applications  switch to using a different I3S layer representing a different input semantically authored level of detail.  The set of such I3S Layers representing a single modeled real world phenomena (such as buildings for city <xyz>) are grouped within the same I3S service.  For each I3S Layer within the set, the features in the leaf nodes of the index tree represent the modeled features at the level of detail presented in the input.  Additional automatically generated levels of detail can optionally be generated extending the viewing range of each semantically input level of detail if so desired.
 
-Modeling cityGML LODs using the above two paradigms is valid and actively supported with this specification. However, there might be situations where there is a need to model the all available LoDs of a cityGML dataset as a single 3D Scene layer, where multiple authored LOD representations of features occupy/populate the different levels of the I3S layers' node tree.  
+It is also possible to develop tools that load all of the input semantical level of detail information for the modeled entities in the input into a single I3S layer. In this case the height of the I3S index tree is fixed to the number of levels of detail present in the input and both the feature identities and geometries in each node are set based upon the input data.  
+
+The specific approach taken is influenced by the extent of the data, the number of levels of detail actually present in the input and the need for further additional automatically generated levels of detail.
+
+
 
 <h3><a name="_5_1">LoD Switching Models</a></h3>
 
 <p>Depending on the properties of a 3D layer, a good user experience will necessitate
-different ways of switching out the prescribed LoD content of one node to another.
-I3S currently supports the definition of two LoD switching models.</p>
+switching out the content for a node with the content of more detailed nodes.
 
 <h4>Node Switching</h4>
 
-<p>For homogeneous data sets such as dense meshes created from oblique imagery or pointclouds,
-I3S includes a <code>node-switching</code> LoD mechanism. Node switching means that the geometry of an entire <em>Node</em> is loaded at once and replaces all geometry representing the same set of features.
-<code>node-switching</code> is typically used in conjunction with LoD generation methods (see [LoD Generation Types](<a href="#_4_2">LoD Generation Types</a>))
-that create full representation pyramids, similarly to a pyramid of images with different resolutions as used for 2D mapping. In such LoD types, from root to leaf nodes, each node carries a single mesh representing one or multiple features.</p>
+<p>Node switching means that the content (features, geometry, attributes, textures) from child nodes is loaded to replace the content of an existing node as the user needs to be presented with more detailed information </p> 
 
-<p>Figure 2 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. Examining the figure further one observers:</p>
+
+<p>Figure 2 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramid. Examining the figure further one observes:</p>
 <ul>
 <li><code>Nodes</code> are in blue, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
 <li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
@@ -323,20 +313,19 @@ that create full representation pyramids, similarly to a pyramid of images with 
 </div>
 
 
-<p>When using a mesh pyramid based LOD approach each interior node in the I3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based purely on the ID of the feature.  With mesh pyramids there is no concept of an LOD tree for an individual feature but rather for the entire content of the node (all features contained by that node). Applications accessing the I3S tree are assumed to display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
+<p>When using a mesh pyramids each interior node in the I3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based on and established by feature IDs which are a key part of the storage model.  . Applications accessing the I3S tree can display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
 
-<p>The main advantage of this mechanism is that clients require less information for performing
-the switch. <code> node-switching </code> is the default Lod Switching model for layer types that implement <code>meshpyramids</code> profile.</p>
+<p>The main advantage of this mechanism is that clients can focus on the display criterion associated with nodes as a whole in making the decision to switch representations. <code> node-switching </code> is the default Lod Switching model for layer types that implement <code>meshpyramids</code> profile.</p>
 
-<h3><a name="_5_2">LoD Generation Types</a></h3>
+<h3><a name="_5_2">LoD Generation </a></h3>
 
 <p>If the input data doesn't come with authored Levels of Detail, different LoD
-Generation Types can be employed. For example, a layer based on <code>mesh-pyramids</code> profile type creates a full representation LoD pyramid for all features and is built by aggregating, fusing and reducing an individual features' mesh. An example of a layer type that participates in such LoD generation is <em> 3d Object</em>. A 3D Object layer employs automatic level of detail generation technique for the collection of 3D GIS features that are typically used as an input data with some chosen resolution.</p>
+Generation models can be employed. For example, layers  based on the <code>mesh-pyramids</code> profile type create a full representation LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features within a node while optionally preserving feature identity. An example of a layer type that participates in such LoD generation is the <em> 3D Objects</em> layer representing real world objects such as buildings. A 3D Object layer, by default leverages the automatic level of detail generation  for the collection of 3D GIS features that are typically used as an input data with some chosen resolution.</p>
 
 <p>
 The first step in the automatic LoD generation process is to build the I3S bounding volume tree based on the spatial distribution of the 3D GIS features. Once this has been completed generation of the lod content of interior nodes can proceed.</p>
 <p>
-As shown in Table 2 below, different types of LoD generation techniques are applicable to different 3D layers.
+As shown in Table 2 below, different models of LoD generation  are applicable to different 3D layers.
 </p>
 
 <table>
@@ -381,7 +370,7 @@ As shown in Table 2 below, different types of LoD generation techniques are appl
 		<td></td>
 	</tr>
 </table>
-<p><em>Table 3: Different 3D Layer Types and various LoD generartion types they can employ.</em></p>
+<p><em>Table 3: Different 3D Layer Types and the various models of LoD generartion they can employ.</em></p>
 <h3><a name="_5_3">LoD Selection Metrics</a></h3>
 
 <p>A client needs information to determine whether a node's contents are "good enough" to
@@ -433,17 +422,17 @@ The physical organization of information within nodes is as follows:
 <ul>
 <li> The node index document is a lightweight resource that contains references to a feature-data sub-resource that describe the features within the node, as well as geometry, texture and attribute sub-resources that describe the geometry, texture and attributes for those features. </li>
 <li>The description of a feature within the feature-data sub-resource for a node references the appropriate range of vertices within the corresponding geometry sub-resource for the node and the appropriate range of attribute values within the corresponding attribute sub-resource for the node </li>
-<li>Vertices within a geometry sub-resource for a node contain the appropriate texture coordinates and the reference to the corresponding texture sub-resource for a node </li>
+<li>Vertices within a geometry sub-resource for a node contain the appropriate texture coordinates</li>
 </ul>
 </p>
 
 <div>
 <img src="images/figure-node.png" title="The content of a single I3S Node" alt="The content of a single I3S Node.">
-<p>Figure 4: This diagram illustrates the content of an I3S node. A Shared Descriptors resource (shared), Geometries (geometryData), Textures (textureData) and Attributes (attributeData) are all a per-node resources, addressable as an array of expandable, node-relative references.
-</p>
+<p>Figure 4: This diagram illustrates the content of an I3S node. </p>
 </div>
+
 <p>There are always an equal number <em>n</em> of FeatureData and Geometry resources, and each set contains
-the corresponding data elements to be able to render a complete feature. Some profiles, such as  meshpyramids, have a support for optimal access of all required attributes of the geometry data directly from the binary Geometry data resource, avoiding dependency on the FeatureData document. In such cases, all vertexAttributes (including position, normal,texture coordinates and color), vertex and feature counts, and mesh segmentation information (feaceRanges) are readily accessible from the <em>geometries</em> resource.
+the corresponding data elements to be able to render a complete feature.  Optimal access to all required properties of the geometry data, including the feature to geometry mapping, is available directly from the binary Geometry data resource, avoiding unnecessary dependency on the FeatureData document. All vertexAttributes (including position, normal,texture coordinates and color), vertex and feature counts, and mesh segmentation information (faceRanges) are also readily accessible from the <em>geometries</em> resource. </p>
 
 
 <h3><a name="_6_1">Geometry Model and Storage</a></h3>

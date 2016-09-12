@@ -203,22 +203,25 @@ An example illustrating the height model information within a 3dSceneLayerInfo. 
 
 <h2><a name="_4">Indexing Model</a></h2>
 
-Esri I3S, as the name implies is an indexed, partitioned 3D Scene format.
-The purpose of any index is to allow fast access to (blocks of)
-relevant data. In an Indexed 3D Scene layer, the spatial extent is split into regions
-with a roughly equal amount of data in them, and an access data structure - the
-actual index - allows the client and the server to quickly discover which data the
-client actually needs. Such a region of a 3D Scene is called a <code>Node</code>.
+<p> I3S organizes information using a hierarchical, node-based spatial index structure in which each node’s payload may contain features with associated geometry, textures and attributes.  
+The purpose of any index is to allow fast access to blocks of
+relevant data. In an Indexed 3D Scene layer, the spatial extent of the data is split into regions, called <code> nodes </code>,
+with  roughly equal amounts of data, and organized into a hierarchical and navigable data structure - the
+index - that allows  the client to quickly discover which data it
+actually needs and the server to quickly locate the data requested by any client. 
 Node creation is capacity driven - the smaller the node capacity is, typically the smaller
 the spatial extent of each node will be.  
+</p>
 
-
-I3S organizes information using a hierarchical, node-based spatial index structure in which each node’s payload may contain features with associated geometry, textures and attributes.  
-
+<p>
 I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (eg quadtrees and octtrees) as well as density dependent partitioning of space (eg R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
+</p>
 
+<p>
 All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by  I3S. As  string based treekeys or as integers based on a fixed linearization of the nodes.  
+</p>
 
+<p>
 In the treekey format, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension. Treekeys are strings in which levels are separated by dashes:
 "3-1-0" has 3 numeric elements, hence the node is on level 4 ("root" node is level 1) and the node "3-1" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>

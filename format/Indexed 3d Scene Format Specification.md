@@ -21,22 +21,21 @@ sections provide a detailed implementation-level view.</p>
 	<li><a href="#_2">3D Scene Layer</a></li>
 	<li><a href="#_3">Coordinate Reference Systems</a>
 		<ol>
-<li><a href="#_3_1">Height Models</a></li>
+		<li><a href="#_3_1">Height Models</a></li>
 		</ol>
-	<li><a href="#_4">Indexing Model</a></li>
-	<li><a href="#_4">Indexed Scene Layers - Organization and Structure</a></li>
+	<li><a href="#_4">I3S - Organization and Structure</a></li>
+	<ol>
+		<li><a href="#_4_1">Indexing Model and Tree Structure</a></li>
+		<li><a href="#_4_2">Geometry Model and Storage</a></li>
+		<li><a href="#_4_3">Textures</a></li>
+		<li><a href="#_4_4">Attribute Model and Storage</a></li>
+	</ol>
 	<li><a href="#_5">Level of Detail Concept</a>
 	<ol>
-		<li><a href="#_5_1">LoD Switching Models</a></li>
-		<li><a href="#_5_2">LoD Generation Types</a></li>
+		<li><a href="#_5_1">LoD Switching</a></li>
+		<li><a href="#_5_2">LoD Generation</a></li>
 		<li><a href="#_5_3">LoD Selection Metrics</a></li>
 	</ol></li>
-	<li><a href="#_6">Structure of I3S Resources</a></li>
-	<ol>
-	<li><a href="#_6_1">Geometry Model and Storage</a></li>
-	<li><a href="#_6_2">Textures</a></li>
-	<li><a href="#_6_3">Attribute Model and Storage</a></li>
-	</ol>
 	<li><a href="#_7">Resources Schema and Documentation</a>
 	<ol>
 		<li><a href="#_7_1">SceneServiceInfo</a></li>
@@ -476,78 +475,7 @@ following example:</p>
 <p>
 <code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
 
-<h2><a< name="_6">Structure of I3S resources</a></h2>
 
-<p>The I3S format contains different components - 3dNodeIndexDocuments (NIDs), FeatureData, Textures, Geometry, Attributes and Shared Descriptors, all representing a collection of features for a given node. These resources are always attached to a node.</p>
-
-<div>
-<img src="images/figure-04.png" title="Structure of a single Node and referenced resources" alt="Structure of a single Node and referenced resources.">
-<p>Figure 3: The relationship of a Node (3dNodeIndexDocument) – as identified by the its id (root, 0, 1, …, 3-2 etc..), with the resources it references.
-</p>
-</div>
-
-<p>Per node, there is exactly one 3dNodeIndexDocument and one Shared Descriptors resource document. FeatureData, Geometry, Texture and attributes files are split into bundles for optimal network transfer and client-side reactivity. This allows balancing between index size,
-feature splitting (with a relatively large node capacity between 1MB and 10MB)
-and optimal network usage (with a smaller bundle size, usually in the range of
-64kB to 512kB).</p>
-<p>
-The physical organization of information within nodes is as follows:
-</p>
-<ul>
-<li> The node index document is a lightweight resource that contains references to a feature-data sub-resource that describe the features within the node, as well as geometry, texture and attribute sub-resources that describe the geometry, texture and attributes for those features. </li>
-<li>The description of a feature within the feature-data sub-resource for a node references the appropriate range of vertices within the corresponding geometry sub-resource for the node and the appropriate range of attribute values within the corresponding attribute sub-resource for the node </li>
-<li>Vertices within a geometry sub-resource for a node contain the appropriate texture coordinates</li>
-</ul>
-</p>
-
-<div>
-<img src="images/figure-node.png" title="The content of a single I3S Node" alt="The content of a single I3S Node.">
-<p>Figure 4: This diagram illustrates the content of an I3S node. </p>
-</div>
-
-<p>There are always an equal number <em>n</em> of FeatureData and Geometry resources, and each set contains
-the corresponding data elements to be able to render a complete feature.  Optimal access to all required properties of the geometry data, including the feature to geometry mapping, is available directly from the binary Geometry data resource, avoiding unnecessary dependency on the FeatureData document. All vertexAttributes (including position, normal,texture coordinates and color), vertex and feature counts, and mesh segmentation information (faceRanges) are also readily accessible from the <em>geometries</em> resource. </p>
-
-
-<h3><a name="_6_1">Geometry Model and Storage</a></h3>
-
-<p> All Scene Layer types make use of the same fundamental set of geometry types: </p>
-<ul>
-<li> points </li>
-<li> lines </li>
-<li> triangles </li>
-</ul>
-
-<p>
-Geometries use binary storage and consumption representation, controlled by Array Buffer View geometry property declarations. I3s provides full control over those properties, such as per-vertex layout of components (eg. position, normal and texture coordinates), in order to ensure the same pattern for face and vertex elements across the Scene Layer.
-</p>
-
-<p>I3S supports storage of triangle meshes via <em>triangles</em> geometry type.</p>
-
-<p>Both 3D Objects as well as Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.</p>
-
-See [Geometry](<a name="_7_6">Geometry</a>) section for more discussion on the geometry format and storage models.
-
-<h3><a name="_6_2">Textures</a></h3>
-Textures are stored as a binary resource associated with a node. The texture resource for a node contains the images that are used as textures for the features stored in the node. The mesh-pyramids profile supports either a single texture or a texture atlas per node.
-
-By default, mesh-pyramids profile allow/support encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. In all cases, the specification provides flexibility by allowing authoring applications to provide additional texture formats via the <code>textureEncoding</code> declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding.
-
-See [Textures](<a name="_7_7">Textures</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
-
-<h3><a name="_6_3">Attribute Model and Storage </a></h3>
-I3S supports the following two patterns of accessing the attribute data:  
-
-<ol>
-	<li>From optional paired services that expose queryable and updatable RESTful endpoints that enable direct access to dynamic source data, including attributes. The query in this case uses the unique feature-ID key – which is always maintained within each node and is also available as part of the descriptor for any segmented geometry.</li>
-	<li>From fully cached attribute information, in binary form, within I3S store.
-	I3S clients can still choose to use both of these modes even if the attributes are fully cached within I3S store.</li>
-</ol>
-
-Cached Attributes use binary storage representation based on Array Buffers which provide significant performance benefits relative to method 1. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays.  
-
-
-See [AttributeData](<a name="_7_8">AttributeData</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.  
 
 <h2><a name="_7">JSON Resources Schema and Documentation</a></h2>
 

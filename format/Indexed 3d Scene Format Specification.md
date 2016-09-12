@@ -278,7 +278,7 @@ the corresponding data elements to be able to render a complete feature.  Optima
 
 <div>
 <img src="images/figure-node.png" title="The content of a single I3S Node" alt="The content of a single I3S Node.">
-<p>Figure 4: This diagram illustrates the content of an I3S node. </p>
+<p>Figure 4: This diagram illustrates the content of an I3S node as stored in its node index document. </p>
 </div>
 
 

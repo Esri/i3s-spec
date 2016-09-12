@@ -314,7 +314,7 @@ Geometries use binary storage and consumption representation, controlled by Arra
 
 <p>Both 3D Objects as well as Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.</p>
 
-See [Geometry](<a href="#_6_7">Geometry</a>) section for more discussion on the geometry format and storage models.
+See <a href="#_6_7">Geometry</a> section for more discussion on the geometry format and storage models.
 
 <h3><a name="_4_3">Textures</a></h3>
 
@@ -322,7 +322,7 @@ Textures are stored as a binary resource associated with a node. The texture res
 
 By default, mesh-pyramids profile allow/support encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. In all cases, the specification provides flexibility by allowing authoring applications to provide additional texture formats via the <code>textureEncoding</code> declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding.  
 
-See [Textures](<a href="#_6_6">Textures</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
+See <a href="#_6_6">Textures</a> section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
 
 <h3><a name="_4_4">Attribute Model and Storage </a></h3>  
 
@@ -337,7 +337,7 @@ I3S supports the following two patterns of accessing the attribute data:
 Cached Attributes use binary storage representation based on Array Buffers which provide significant performance benefits relative to method 1. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays.  
 
 
-See [AttributeData](<a href="#_6_8">AttributeData</a>) section for more on texture format, texture coordinate, texture atlas usage and regions discussion.  
+See <a href="#_6_8">AttributeData</a> section for more on texture format, texture coordinate, texture atlas usage and regions discussion.  
 
 <h2><a name="_5">Level of Detail Concept</a></h2>
 <p>
@@ -365,7 +365,7 @@ These decisions are made using the advertised values for lod selection metrics t
 
 I3S Scene Layers also include additional optional metadata on the LOD generation process (eg thinning, clustering, generalization) as non-actionable (to clients) information that is of interest to some service consumers.  
 
-<h4>Representation of input data that already has explicilty authored multiple representations</h4>  
+<h4>Representation of input data that already has explicitly authored multiple representations</h4>  
 
 <p>I3S Layers can  be used to represent input data that already have multiple, semantically authored, levels of detail.</p>
 

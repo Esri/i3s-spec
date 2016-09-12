@@ -282,26 +282,20 @@ the corresponding data elements to be able to render a complete feature.  Optima
 </div>
 
 
-<p>
-Figure 5 below shows the tree structure for an Indexed Scene Layer whose layer type is 3D Objects and whose profile is mesh-pyramid.  Nodes are in blue, the numbers within the blue boxes represent the identifier or address for each node. The orange boxes indicate the features explicitly represented within the node, the numbers represent feature identifiers.  Each node has associated geometry, texture and attribute resources that compactly store the geometries, attributes and textures of all of the features explicitly represented by the node, as typed arrays and texture atlases.  The turquoise boxes show the geometry resource associated with each node, attribute and texture resources have been deliberately omitted.  Each geometry resource is an array of geometries.   The geometry resource also stores the mapping from each feature to the set of geometry elements within the larger geometry resource which is stored in a compact manner similar to run length encoding. A similar storage model is used for  the attributes and textures associated with the features explicitly stored within a node.
-</p>
-<p>
-Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision on using the representation within the node vs descending to more detailed nodes.  The specific example illustrated shows the situation within node “3” where “Feature 6” has been generalized away at this lower level of detail and is intentionally no longer explicitly represented within the payload of node 3.
-</p>
-<p>Figure 2 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramid. Examining the figure further one observes:</p>
+<p>Figure 5 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramid. Examining the figure  one observes:</p>
 <ul>
 <li><code>Nodes</code> are in blue, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
 <li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
 <li>Each node has associated geometry, texture and attribute resources that compactly store the <code>geometries</code>, <code>attributes</code> and <code>textures</code> of all of the features explicitly represented by the node, as typed arrays and texture atlases.</li>
 <li>The turquoise boxes show the <code>geometry</code> resource associated with each node. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual features' range of triangles (faceRanges) is indexed along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding.</li>
-<li>Though for clarity, both attribute and texture resources are omitted from the figure deliberately, its worth to note that the attribute of all features of a given node are also stored following a similar storage model as the <code>attribute</code> resource of the node.</li>
+<li>Though for clarity, both attribute and texture resources are omitted from the figure deliberately, it is worth noting that the attribute of all features of a given node are also stored following a similar storage model as the <code>attribute</code> resource of the node.</li>
 <li>Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. </li>
-<li>The figure also illustrates the case where “Feature 6” has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
+<li>The figure also illustrates the case where feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
 </ul>
 </p>
 <div>
 <img src="images/figure-03.png" title="Example Nodes in Mesh Pyramid" alt="Example Nodes in Mesh Pyramid">
-<p><em>Figure 2: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node, the hyphenated numbers represent node ids as string based treekeys.</em></p>
+<p><em>Figure 5: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node, the hyphenated numbers represent node ids as string based treekeys.</em></p>
 </div>
 
 
@@ -391,35 +385,22 @@ switching out the content for a node with the content of more detailed nodes.
 
 <p>Node switching means that the content (features, geometry, attributes, textures) from child nodes is loaded to replace the content of an existing node as the user needs to be presented with more detailed information </p>
 
-
-<p>Figure 2 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramid. Examining the figure further one observes:</p>
-<ul>
-<li><code>Nodes</code> are in blue, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
-<li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
-<li>Each node has associated geometry, texture and attribute resources that compactly store the <code>geometries</code>, <code>attributes</code> and <code>textures</code> of all of the features explicitly represented by the node, as typed arrays and texture atlases.</li>
-<li>The turquoise boxes show the <code>geometry</code> resource associated with each node. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual features' range of triangles (faceRanges) is indexed along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding.</li>
-<li>Though for clarity, both attribute and texture resources are omitted from the figure deliberately, its worth to note that the attribute of all features of a given node are also stored following a similar storage model as the <code>attribute</code> resource of the node.</li>
-<li>Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. </li>
-<li>The figure also illustrates the case where “Feature 6” has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
-</ul>
+<p>As shown in Figure 5 above, each interior node in the I3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node. Not all features may be present in reduced LOD nodes - omission of a feature at a reduced LOD node indicates that the entire feature has been intentionally generalized away at this level of detail. 
 </p>
-<div>
-<img src="images/figure-03.png" title="Example Nodes in Mesh Pyramid" alt="Example Nodes in Mesh Pyramid">
-<p><em>Figure 2: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node, the hyphenated numbers represent node ids as string based treekeys.</em></p>
-</div>
 
-
-<p>When using  mesh pyramids each interior node in the I3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node.  The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based on and established by feature IDs which are a key part of the storage model.  . Applications accessing the I3S tree can display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
+<p>
+The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based on and firmly established by feature IDs which are a key part of the storage model.  . Applications accessing the I3S tree can display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on the  desired level of detail.</p>
 
 <p>The main advantage of this mechanism is that clients can focus on the display criterion associated with nodes as a whole in making the decision to switch representations. <code> node-switching </code> is the default Lod Switching model for layer types that implement <code>meshpyramids</code> profile.</p>
 
-<h3><a name="_5_2">LoD Generation </a></h3>
+<h3><a name="_5_2">Levels of Detail - Generation </a></h3>
 
-<p>If the input data doesn't come with authored Levels of Detail, different LoD
-Generation models can be employed. For example, layers  based on the <code>mesh-pyramids</code> profile type create a full representation LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features within a node while optionally preserving feature identity. An example of a layer type that participates in such LoD generation is the <em> 3D Objects</em> layer representing real world objects such as buildings. A 3D Object layer, by default leverages the automatic level of detail generation  for the collection of 3D GIS features that are typically used as an input data with some chosen resolution.</p>
+<p>For input data that does not come with pre-authored Levels of Detail, different LoD generation models can be employed. For example, 3D Object layers  based on the <code>mesh-pyramid</code> profile may choose to create an LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features while optionally preserving feature identity. 
+The same approach can also be used with Integrated Mesh layers based on the <code>mesh-pyramid</code> profile - in this case there are no features and each node contains a generalized version of the mesh covered by its descendents</p>
+
 
 <p>
-The first step in the automatic LoD generation process is to build the I3S bounding volume tree based on the spatial distribution of the 3D GIS features. Once this has been completed generation of the lod content of interior nodes can proceed.</p>
+The first step in the automatic LoD generation process is to build the I3S bounding volume tree based on the spatial distribution of the 3D GIS features. Once this has been completed generation of the  reduced lod content for interior nodes can proceed.</p>
 <p>
 As shown in Table 2 below, different models of LoD generation  are applicable to different 3D layers.
 </p>

@@ -88,7 +88,7 @@ The specification that follows below applies to the following layer types:
 <li> Points (e.g. hospitals or Schools, trees, street furniture, signs, etc. from GIS data)</li>
 </ul>
 
-whereas the following layer types are planned for future inclusion:
+Whereas the following layer types are planned for future inclusion:
 <ul>
 <li>Line Features (e.g. from GIS data)</li>
 <li>Polygon Features (e.g. from GIS data)</li>
@@ -215,7 +215,7 @@ the spatial extent of each node will be.
 </p>
 
 <p>
-I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (eg quadtrees and octrees) as well as density dependent partitioning of space (eg R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
+I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. quadtrees and octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
 </p>
 
 <p>
@@ -233,7 +233,7 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 </div>
 
 
-<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture data, attributes). The decision to render the node is based on node’s bounding-volume visibility in the current 3D view and a visual quality determination made by the client using the information included in the node index document. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and the node's LoD selection metric value.</p>
+<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture data, attributes). The decision to render the node is based on node’s bounding-volume visibility in the current 3D view and a visual quality determination made by the client using the information included in the node index document. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.</p>
 
 <p>The specification supports both bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.</p>
 
@@ -244,8 +244,8 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 <p>
 The I3S format models node information using a set of resources - Node Index Documents, Feature Data, Geometry, Attributes, Textures and Shared Descriptors, all of which together represent the set of features or data elements for a given node. These resources are always attached to a node.</p>
 <ul>
-<li>The Node Index Document is a lightweight resource representing a node and describes its topology within the tree and includes references to other sub-resources. </li>
-<li> The Feature Data sub-resource for a node is a text resource that contains the identifiers for the set of features within a node. It can store the geometry and attributes for all of the features in the node either by value or as references into the geometry and attribute sub-resources for the node. In the latter case, each feature references the appropriate range of vertices within the geometry sub-resource for the node and the appropriate range of attribute values within the  attribute sub-resource for the node. </li>
+<li>The Node Index Document is a lightweight resource representing a node, its topology within the tree and includes references to other sub-resources. </li>
+<li> The Feature Data sub-resource for a node is a text resource that contains the identifiers for the set of features within a node. It can store the geometry and attributes for all of the features in the node either by value or as references into the geometry and attribute sub-resources for the node.</li>
 <li> The Geometry, Attribute and Texture sub-resources describe the geometry, attribute and texture for the node.  Geometry and attribute sub-resources represent the geometries and attributes of all of the features within the node and include the identifiers of the owning features within the node as well as the mapping between individual feature identifiers and their geometry segments.  Vertices within the geometry contain the appropriate texture coordinates. </li>
 </ul>
 </p>
@@ -280,7 +280,7 @@ the corresponding data elements to be able to render a complete feature.  Optima
 <li><code>Nodes</code> are in green, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
 <li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
 <li>Each node has associated geometry, texture and attribute resources that compactly store the <code>geometries</code>, <code>attributes</code> and <code>textures</code> of all of the features explicitly represented by the node, as typed arrays and texture atlases.</li>
-<li>The turquoise boxes show the <code>geometry</code> resource associated with each node. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual features' range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding.</li>
+<li>The turquoise boxes show the <code>geometry</code> resource associated with each node. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual feature's range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding.</li>
 <li>Though both attribute and texture resources are omitted from the figure for clarity, it is worth noting that the attribute of all features of a given node are also stored as <code>attribute</code> resource of the node, following a similar storage model.</li>
 <li>Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. </li>
 <li>The figure also illustrates the case where feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
@@ -288,7 +288,7 @@ the corresponding data elements to be able to render a complete feature.  Optima
 </p>
 <div>
 <img src="images/figure-04.png" title="Example Nodes in Mesh Pyramid" alt="Example Nodes in Mesh Pyramid">
-<p><em>Figure 4: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the nodes, the hyphenated numbers represent node ids as string based treekeys.</em></p>
+<p><em>Figure 4: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys.</em></p>
 </div>
 
 
@@ -302,7 +302,7 @@ the corresponding data elements to be able to render a complete feature.  Optima
 </ul>
 
 <p>
-Geometries use binary storage and consumption representation, controlled by Array Buffer View geometry property declarations. I3s provides full control over those properties, such as per-vertex layout of components (eg. position, normal and texture coordinates), in order to ensure the same pattern for face and vertex elements across the Scene Layer.
+Geometries use binary storage and consumption representation, controlled by Array Buffer View geometry property declarations. I3s provides full control over those properties, such as per-vertex layout of components (e.g. position, normal and texture coordinates), in order to ensure the same pattern for face and vertex elements across the Scene Layer.
 </p>
 
 <p>I3S supports storage of triangle meshes via <em>triangles</em> geometry type.</p>
@@ -336,16 +336,16 @@ See <a href="#_6_8">AttributeData</a> section for more on texture format, textur
 
 <h2><a name="_5">Level of Detail Concept</a></h2>
 
-The concept of Level of Detail (LOD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as whole and serve to generalize or summarize information for the layer, similar to image pyramids and also similar to raster and vector tiling schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene layers support levels of detail in a manner that preserves the identity and representation of the individual features that are retained within any level of detail.
+The concept of Level of Detail (LoD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as whole and serve to generalize or summarize information for the layer, similar to image pyramids and also similar to raster and vector tiling schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene layers support levels of detail in a manner that preserves the identity of the individual features that are retained within any level of detail.
 
 Level of Detail with this format specification covers several use cases,
-including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization as well as support for representing explicitly authored multiple LoDs.
+including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization as well as support for representing externally authored multiple LoDs.
 
 Note that the I3S Level of Detail concept  is orthogonal to the concept of consolidated storage for a set of geometries within a level of detail, based on for example the concatenation of geometries/meshes into larger geometry collections/meshes to assist in optimal rendering. In all such cases the consolidated storage makes use of Geometry Array Buffers that provide access to individual geometries when needed, and include the preservation of feature to geometry element mapping within the consolidated geometries.
 
 <h4>Discrete LoDs</h4>
 
-<p>With the <em>Discrete</em> LoD approach, different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LOD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be. For each level up, the amount of data is typically reduced by a factor between 2 to 10 by employing methods such as texture downsampling, feature reduction, mesh reduction, clustering or thinning, so that all inner nodes also have a balanced weight. For Scene Layers that employ discrete levels of detail, generalization applies to the layer as a whole and the the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.</p>
+<p>I3S supports the <em>Discrete</em> LoD approach, where different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LoD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be. For each next lower level, the amount of data is typically reduced by employing methods such as texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning, so that all inner nodes also have a balanced weight. Generalization applies to the Scene Layer as a whole and the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.</p>
 
 During navigation and traversal of the I3S tree nodes, clients must decide to either
 
@@ -355,15 +355,15 @@ During navigation and traversal of the I3S tree nodes, clients must decide to ei
 <li>continue traversal until children nodes with better quality are found.</li>
 </ol>
 
-These decisions are made using the advertised values for lod selection metrics that are part of the information payload of the node. The I3S specification supports multiple <a href="#_4_4">LoD Selection Metrics</a> and permits different <a href="#_4_1">LoD Switching Models</a>. An example lod selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LOD rendering (LoD Switching Model) is referred to in I3S as <code>node-switching</code>.
+These decisions are made using the advertised values for lod selection metrics that are part of the information payload of the node. The I3S specification supports multiple <a href="#_4_4">LoD Selection Metrics</a> and permits different <a href="#_4_1">LoD Switching Models</a>. An example lod selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LoD rendering (LoD Switching Model) is referred to in I3S as <code>node-switching</code>.
 
-I3S Scene Layers also include additional optional metadata on the LOD generation process (e.g. thinning, clustering and generalization) as non-actionable (to clients) information that is of interest to some service consumers.  
+I3S Scene Layers also include additional optional metadata on the LoD generation process (e.g. thinning, clustering and generalization) as non-actionable (to clients) information that is of interest to some service consumers.  
 
 <h4>Representation of input data that already has explicitly authored multiple representations</h4>  
 
 <p>I3S Layers can  be used to represent input data that already have multiple, semantically authored, levels of detail.</p>
 
-<p>The most common method for doing so is to represent each semantically authored input level of detail as its own I3S Layer with distance thresholds on the layer that capture the range of distances at which the layer should be used. At further or closer distances applications switch to using a different I3S layer representing a different input semantically authored level of detail. The set of such I3S Layers representing a single modeled real world phenomena (such as buildings for a city) are grouped within the same I3S service. For each I3S Layer within the set, the features in the leaf nodes of the index tree represent the modeled features at the level of detail presented in the input. Additional automatically generated levels of detail can optionally be generated extending the viewing range of each semantically input level of detail if so desired.</p>
+<p>The most common method for doing so is to represent each semantically authored input level of detail as its own I3S Layer with distance thresholds on the layer that capture the range of distances at which the layer should be used. At further or closer distances applications switch to using a different I3S layer representing a different input semantically authored level of detail. The set of such I3S Layers representing a single modeled real world phenomena (such as buildings for a city) can be grouped within the same I3S service. For each I3S Layer within the set, the features in the leaf nodes of the index tree represent the modeled features at the level of detail presented in the input. Additional automatically generated levels of detail can optionally be generated extending the viewing range of each semantically input level of detail if so desired.</p>
 
 <p>It is also possible to develop tools that load all of the input semantical level of detail information for the modeled entities in the input into a single I3S layer. In this case the height of the I3S index tree is fixed to the number of levels of detail present in the input and both the feature identities and geometries in each node are set based upon the input data. </p>
 
@@ -378,18 +378,17 @@ switching out the content for a node with the content of more detailed nodes.
 
 <p>Node switching means that the content (features, geometry, attributes, textures) from child nodes is loaded to replace the content of an existing node as the user needs to be presented with more detailed information </p>
 
-<p>As shown in Figure 4 above, each interior node in the I3S tree has a set of features that represent the reduced LOD representation of all of the features covered by that interior node. Not all features may be present in reduced LOD nodes - omission of a feature at a reduced LOD node indicates that the entire feature has been intentionally generalized away at this level of detail.
+<p>As shown in Figure 4 above, each interior node in the I3S tree has a set of features that represent the reduced LoD representation of all of the features covered by that interior node. Not all features may be present in reduced LoD nodes - omission of a feature at a reduced LoD node indicates that the entire feature has been intentionally generalized away at this level of detail.
 </p>
 
 <p>
-The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based on by feature IDs which are a key part of the storage model. Applications accessing the I3S tree can display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on desired quality.</p>
+The correspondence between a reduced LoD feature in an interior node and the same feature in descendant (children) nodes is based on by feature IDs which are a key part of the storage model. Applications accessing the I3S tree can display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on desired quality.</p>
 
 <p>The main advantage of this mechanism is that clients can focus on the display criterion associated with nodes as a whole in making the decision to switch representations. <code>node-switching</code> is the default Lod Switching model for layer types that implement <code>Mesh-pyramids</code> profile.</p>
 
 <h3><a name="_5_2">Levels of Detail - Generation </a></h3>
 
-<p>Integrated Mesh layer types typically come with pre-authored Levels of Detail. For input data that does not come with pre-authored Levels of Detail, different LoD generation models can be employed. For example, 3D Object layers based on the <code>Mesh-pyramids</code> profile may choose to create an LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features while optionally preserving feature identity.
-The same approach can also be used with Integrated Mesh layers based on the <code>mesh-pyramid</code> profile - in this case there are no features and each node contains a generalized version of the mesh covered by its descendants</p>
+<p>Integrated Mesh layer types typically come with pre-authored Levels of Detail. For input data that does not come with pre-authored LoDs, different LoD generation models can be employed. For example, 3D Object layers based on the <code>Mesh-pyramids</code> profile may choose to create an LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features while preserving feature identity. The same approach can also be used with Integrated Mesh layers based on the <code>mesh-pyramid</code> profile - in this case there are no features and each node contains a generalized version of the mesh covered by its descendants.</p>
 
 <p>
 The first step in the automatic LoD generation process is to build the I3S bounding volume tree hierarchy based on the spatial distribution of the 3D GIS features. Once this has been completed generation of the reduced lod content for interior nodes can proceed.</p>
@@ -965,7 +964,7 @@ by clients to better understand how to work with the index.</p>
 	<tr>
 		<td>childrenCardinality</td>
 		<td>Integer[2]</td>
-		<td>min/max number of children per node. Its <code>0, 255</code> for 3D Object Layer types.</td>
+		<td>min/max number of children per node.</td>
 	</tr>
 	<tr>
 		<td>neighborCardinality</td>
@@ -990,7 +989,7 @@ texture data resources, metadata such as metrics used for LoD selection, its
 spatial extent.</p>
 
 <p>Depending on the geometry and <code>lodModel</code> used, a node document can be tuned towards being light-weight or more heavy-weight. It is the means clients have to further
-decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, already provides sufficient data for simple visualization by rendering the centroids as point features.</p>
+decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, already provides sufficient data for simple visualization by rendering the centroids as point features for example.</p>
 
 <p>The 3dNodeIndexDocument has the following structure :</p>
 
@@ -1083,7 +1082,7 @@ object in a 3dNodeIndexDocument.</p>
 	<tr>
 		<td>lodSelection</td>
 		<td>LodSelection[0..*]</td>
-		<td>Metrics for LOD Selection, to be evaluated by the client.</td>
+		<td>Metrics for LoD Selection, to be evaluated by the client.</td>
 	</tr>
 	<tr>
 		<td>features</td>
@@ -1206,7 +1205,7 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 	<tr>
 		<td>lodChildFeatures</td>
 		<td>Integer[0..*]</td>
-		<td>IDs of features in a higher LOD level which together make up this feature.</td>
+		<td>IDs of features in a higher LoD level which together make up this feature.</td>
 	</tr>
 	<tr>
 		<td>lodChildNodes</td>
@@ -1216,12 +1215,12 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 	<tr>
 		<td>rank</td>
 		<td>Integer[0..1]</td>
-		<td>The LOD level of this feature. Only required for features that participate in a LOD tree. The lowest rank is 1.</td>
+		<td>The LoD level of this feature. Only required for features that participate in a LoD tree. The lowest rank is 1.</td>
 	</tr>
 	<tr>
 		<td>rootFeature</td>
 		<td>String</td>
-		<td>The Tree Key ID of the root node of a feature LOD tree that this feature participates in. Only required if the feature participates in a LOD tree and if it is not the rootFeature itself.</td>
+		<td>The Tree Key ID of the root node of a feature LoD tree that this feature participates in. Only required if the feature participates in a LoD tree and if it is not the rootFeature itself.</td>
 	</tr>
 </table>
 
@@ -1410,7 +1409,7 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>$ref</td>
 		<td>Pointer</td>
-		<td>In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the <a href="">I3S json pointer</a> syntax.</td>
+		<td>In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the <a href="#_6">I3S json pointer</a> syntax.</td>
 	</tr>
 	<tr>
 		<td>faceRange</td>
@@ -1420,7 +1419,7 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>lodGeometry</td>
 		<td>Boolean</td>
-		<td>True if this geometry participates in a LoD tree (thus, always true in meshpyramids); indicates that the referenced Geometry has no components and only a single material.</td>
+		<td>True if this geometry participates in an LoD tree. Always true in mesh-pyramids profile.</td>
 	</tr>
 </table>
 
@@ -2080,7 +2079,7 @@ I3S is flexible and allows for different implementation choices for different ty
 	      Used by: mesh-pyramids and points profiles  
 
  b. fixed-size in support of paged access pattern  
-  - A minimal structure – just the essentials: bounding volume; first-child reference; child-count; LOD selection data; etc.  
+  - A minimal structure – just the essentials: bounding volume; first-child reference; child-count; LoD selection data; etc.  
 	      Used by: the pointclouds profile.  
 
 3. Embedded versus Binary geometry content format  
@@ -2091,13 +2090,13 @@ I3S is flexible and allows for different implementation choices for different ty
 	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
 	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
 
-4. LOD Selection based on different metricTypes:  
+4. LoD Selection based on different metricTypes:  
 
- 1.	maxScreenThreshold – LOD switching based on screen ‘size’ of the node’s MBV  
+ 1.	maxScreenThreshold – LoD switching based on screen ‘size’ of the node’s MBV  
  	      Used by: mesh-pyramids profile
- 2.	screenSpaceRelative – LOD switching based on screen ‘scale’ of the node’s MBV  
+ 2.	screenSpaceRelative – LoD switching based on screen ‘scale’ of the node’s MBV  
         Used by: points profile
- 3.	distancRangeFromDefaultCamera – LOD switching based on normalized distance of the node’s MBV from the camera – used by: points profile
+ 3.	distancRangeFromDefaultCamera – LoD switching based on normalized distance of the node’s MBV from the camera – used by: points profile
  3.	effectiveDensity – estimation of the point density covered by the node  
         Used by: pointclouds profile  
 
@@ -2121,13 +2120,12 @@ In summary, here are other characteristics, including content data formats, whic
 
 I3S scene layers can be delivered to web, mobile and desktop clients using a number of different patterns.
 Most users will interact with scene layers using applications that access cloud or server based information via RESTful interfaces/services.  In these cases the cache (the I3S nodes and their payloads)  for the scene layer reside on the server and is returned to clients via a RESTful interface that exposes the scene layer, its nodes and  their associated resources (geometries, attributes, textures) as web addressable resources. The I3S specification contains a complete description of the <a href="../service/SceneService.md">web addressable resources</a> and their url scheme.
-Some users will also interact with a scene layer delivered to them as a single large Scene Layer Package – this is a single file that packages the complete node tree and its resources into an archive that supports direct access to the individual nodes and resources within it. <a href="#_8_1">Scene Layer Packages (slpk files)</a> are part of the current I3S implementation with multiple generators and the ability by clients to consume packages containing hundreds of GB of content.  
+Some users will also interact with a scene layer delivered to them as a single large Scene Layer Package – this is a single file that packages the complete node tree and its resources into an archive that supports direct access to the individual nodes and resources within it. <a href="#_8_1">Scene Layer Packages (SLPK files)</a> are part of the current I3S implementation with multiple generators and the ability by clients to consume packages containing hundreds of GB of content.  
 
 
-All storage methods store the Indexed 3D Scene in a simple key-value structure, with the key representing the access URL and the value being the JSON document or other
-resource type.
+All storage methods store the Indexed 3D Scene Layers in a simple key-value structure, with the key representing the access URL and the value being the JSON document or other resource type.
 
-<h3><a name="_8_1">Scene Layer Packages (slpk files)</a></h3>
+<h3><a name="_8_1">Scene Layer Packages (SLPK files)</a></h3>
 
 Scene Layer Packages (SLPK) serve two purposes: They allow a complete I3S layer, with all resources, to be transported or exchanged as a single file,
 and they optionally also allow to be directly consumed by applications such as clients or services.
@@ -2139,20 +2137,22 @@ The format of the package itself is defined as follows:
 	<li>On this Archive, an overall compression scheme may be applied.
 	This compression scheme has to be either STORE or DEFLATE64.
 	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. </li>
-	<li>STORE is the preferred compression schema for an SLPK intended for direct consumption by client application, especially if a resource compression is already applied on the individual resources (as shown in the figure 11 below).</li>
+	<li>STORE is the preferred compression schema for an SLPK intended for direct consumption by client application, especially if a resource compression is already applied on the individual resources (as shown in the figure 15 below).</li>
 	<li>Every resource except textures may also be individually compressed. Compressed textures (such as S3TC) can additionally have GZIP compression applied to them.	</li>
 	<li>For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available in all browsers.</li>
 </ul>
 
 The layout show in Figure 15 below is referred to as the BASIC folder pattern.
-The I3S specification allows also for an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.
+The I3S specification allows also for an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.  
 
-Within an SLPK archive, the BASIC folder pattern results in the following structure :
+<p>
 <div>
 <img src="images/figure-15.png" title="Structure of an SLPK file" alt="Structure of an SLPK file">
-<em>Figure 15: An example of an SLKPK archive with BASIC folder layout. The contents of the archive at the top folder include a nodes subfolder that contains all node resources, metadata.json that describes the content of the SLPK and a 3dSceneLayer.json.gz that makes up the Scene Layer. Drilling into one of the nodes resource, node id 1-4-2-0, notice that all file resources are individually compressed with GZIP compression (indicated by the file extension .gz), with the exception of texture resources that are in JPEG (textures/0_0.bin) format. Resources such as geometries/0.bin.gz and attributes/f_0/bin.gz…, serialized as binary, correspond to the geometryData, and attributeData resources of a scene layer, respectively. Similarly, features/0.json.gz and SharedResource.json.gz> correspond to the featureData and SharedResource document of a Scene Layer and are encoded in JSON and are also stored with a GZIP compression.</em>
-</div>
+<em>Figure 15: Example of an SLPK with BASIC folder layout.</em>   
+</div>  
+</p>
 
+The contents of the archive depicted in Figure 15 shows an SLPK with the BASIC folder pattern. At the top level, it has a <em>nodes</em> subfolder containing all node resources, a <em>metadata.json</em> file that describes the content of the SLPK and a <em>3dSceneLayer.json.gz</em> file that defines the Scene Layer. In the example, the <em>nodes</em> subfolder contains, nodes named <em>root</em>, <em>1-4-2-0</em>, etc. Drilling further into one of the nodes, <em>1-4-2-0</em>, notice that all file resources are individually compressed with GZIP compression (indicated by the file extension .gz), with the exception of the texture resource that is in JPEG format (<em>textures/0_0.bin</em>). The resources under the sub folders <em>geometries</em> (<em>geometries/0.bin.gz</em>) and <em>attributes</em> (<em>attributes/f_0/bin.gz</em>, <em>attributes/f_1/bin.gz</em>, ...), serialized as binary, correspond to the geometryData, and attributeData resources of a scene layer, respectively. Similarly, <em>3dNodeIndexDocument.json.gz</em>, <em>features/0.json.gz</em> and <em>SharedResource.json.gz</em> correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, respectively, and are encoded in JSON and are also stored with a GZIP compression.
 
 
 For the above mentioned two use cases, an SLPK file is employed as follows:
@@ -2218,58 +2218,58 @@ In the case of cloud blob stores, layer resources are stored as either simple ob
 		<th>Notes</th>
 	</tr>
 	<tr>
-		<td>/sceneserver</td>
+		<td>/SceneServer</td>
 		<td>False</td>
 		<td>The <a href="#_7_5">SceneServiceInfo</a> JSON that defines the service name and list the layers
 		offered by this Scene Service {content type: text/plain, content encoding {NONE, *GZIP*}}</td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0</td>
+		<td>/SceneServer/layers/0</td>
 		<td>False</td>
 		<td>The 3dSceneLayer JSON resource. The layer id (e.g. <code>0</code>) is used as the key of the document {content type: text/plain, content encoding {NONE, *GZIP*}}</td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0/nodes/root</td>
+		<td>/SceneServer/layers/0/nodes/root</td>
 		<td>False</td>
 		<td>The 3dNodeIndexDocument of the layer as a JSON resource. The node id (e.g. <code>root</code>) is used as the key of the document {content type: text/plain, content encoding: {NONE, *GZIP*}}</td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0/nodes/0</td>
+		<td>/SceneServer/layers/0/nodes/0</td>
 		<td>False</td>
 		<td>The 3dNodeIndexDocument of the layer as a JSON resource. The node id (e.g. <code>0</code>) is used as the key of the document {content type: text/plain, content encoding: {NONE, *GZIP*}}</td>
 	</tr>
         <tr>
-		<td>/sceneserver/layers/0/nodes/0/shared</td>
+		<td>/SceneServer/layers/0/nodes/0/shared</td>
 		<td>False</td>
 		<td>The SharedResource of the node as a JSON resource. The keyword <code>shared</code> is used as the key of the document {content type: text/plain, content encoding {NONE, *GZIP*}}</td>
 	</tr>
         <tr>
-		<td>/sceneserver/layers/0/nodes/0/features/0</td>
+		<td>/SceneServer/layers/0/nodes/0/features/0</td>
 		<td>True</td>
 		<td>The FeatureData document of the node as a JSON resource. The resource array id (e.g.<code>0</code>) is used as the key of the document {content type: text/plain, content encoding: {NONE, *GZIP*}}</td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0/nodes/0/geometries/0</td>
+		<td>/SceneServer/layers/0/nodes/0/geometries/0</td>
 		<td>False</td>
 		<td>The GeometryData of the node as a binary resource. The resource array id  (e.g.<code>0</code>) is used as the key of the resource {content type: application/octet-stream, content encoding {NONE, *GZIP*}}</td>
 	</tr>
     <tr>
-		<td>/sceneserver/layers/0/nodes/0/textures/0_0</td>
+		<td>/SceneServer/layers/0/nodes/0/textures/0_0</td>
 		<td>True</td>
 		<td>The Texture of the node as a binary resource. The resource id (e.g.<code>0_0</code>) is used as the key of the resource {content type: image/jpeg, content encoding {*NONE*}}</td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0/nodes/0/textures/0_0_1</td>
+		<td>/SceneServer/layers/0/nodes/0/textures/0_0_1</td>
 		<td>True</td>
 		<td>The compressed texture of the node as a binary resource. The resource id (e.g.<code>0_0_1</code>) is used as the key of the resource {content type: image/vnd-ms.dds, content encoding {NONE, *GZIP*}}</td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0/nodes/0/attributes/f_0/0</td>
+		<td>/SceneServer/layers/0/nodes/0/attributes/f_0/0</td>
 		<td>True</td>
 		<td>The AttributeData as a binary resource. The resource id (e.g.<code>0</code>) is used as the key of the resource  {content type: text/plain, content encoding: {NONE, *GZIP*}} </td>
 	</tr>
 	<tr>
-		<td>/sceneserver/layers/0/nodes/0/attributes/f_1/0</td>
+		<td>/SceneServer/layers/0/nodes/0/attributes/f_1/0</td>
 		<td>True</td>
 		<td>same as the attributeData resource <code>f_0/0</code> above</td>
 	</tr>
@@ -2280,9 +2280,9 @@ In the case of cloud blob stores, layer resources are stored as either simple ob
 		<td>....</td>
 	</tr>        
 	<tr>
-		<td>/sceneserver/layers/0/nodes/1-4-2-0</td>
+		<td>/SceneServer/layers/0/nodes/1-4-2-0</td>
 		<td>False</td>
 		<td>same as node resource <code>root</code> and <code>0</code></td>
 	</tr>
 </table>
-<em>Table 25: A typical example of the layout of an Indexed 3D Scene Layer in a key value store environment. The above example shows a 3D Object layer type (mesh-pyramids profile) containing textured geometries as well as attribute data.</em>
+<em>Table 25: A typical example showing the layout of a SceneService in a key value store environment. The example illustrates the structure of the service using a 3D Object scene layer containing textured geometries as well as attribute data.</em>

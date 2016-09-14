@@ -384,7 +384,7 @@ switching out the content for a node with the content of more detailed nodes.
 <p>
 The correspondence between a reduced LOD feature in an interior node and the same feature in descendant (children) nodes is based on by feature IDs which are a key part of the storage model. Applications accessing the I3S tree can display all of the features in an internal node and stop there or instead descend further and use the features found in its child nodes,  based on desired quality.</p>
 
-<p>The main advantage of this mechanism is that clients can focus on the display criterion associated with nodes as a whole in making the decision to switch representations. <code> node-switching </code> is the default Lod Switching model for layer types that implement <code>Mesh-pyramids</code> profile.</p>
+<p>The main advantage of this mechanism is that clients can focus on the display criterion associated with nodes as a whole in making the decision to switch representations. <code>node-switching</code> is the default Lod Switching model for layer types that implement <code>Mesh-pyramids</code> profile.</p>
 
 <h3><a name="_5_2">Levels of Detail - Generation </a></h3>
 

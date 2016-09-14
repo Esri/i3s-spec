@@ -11,9 +11,9 @@ A single I3S data set, referred to as a Scene Layer, is a container for arbitrar
 
 The I3S format is declarative and extendable and can be used to represent different types of 3D data.
 The following layer types have been specified and the specifications validated via implementation and production deployments:
-- 3D Objects (e.g. Building Exteriors, from GIS Data  as well as 3D models in various formats)
-- Integrated Meshes (e.g. eg an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense  matching photogrammetric software)
-- Point Features (e.g. Hospitals or Schools, trees, street furniture, signs, from GIS Data) )
+- 3D Objects (e.g. Building Exteriors, from GIS Data as well as 3D models in various formats)
+- Integrated Meshes (e.g. eg an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
+- Point Features (e.g. Hospitals or Schools, trees, street furniture, signs, from GIS Data)
 
 The following layer types are planned for future inclusion:
 
@@ -76,5 +76,5 @@ Under the following terms:
 
 The supplementary resources may be updated without notice and are provided for use under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license and may be used, under the terms of that license, at your own risk.
 
-[](Esri Tags: ArcGIS WebScene ArcGISOnline SceneService ArcGISServer SceneLayerPackage Indexed SceneLayer, SceneLayer, 3D Object, Point, IntegreatedMesh, PointCloud)
+[](Esri Tags: I3S, Indexed 3D Scene Layer, Scene Layer, ArcGIS WebScene, Mesh-Pyramids, ArcGISOnline Scene Service, ArcGISServer, Scene Layer Package, SceneLayer, 3D Object, Point, IntegreatedMesh, PointCloud)
 [](Esri Language: JavaScript)

@@ -79,7 +79,7 @@ A single I3S data set, referred to as a Scene Layer is a container for arbitrari
 
 I3S Scene Layers are designed to provide clients access to data. Clients have the ability to then visualize the data for the layer independently according to their needs. Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features as well as  vertex geometry and attributes for Integrated Meshes and Point Cloud layers representing continuous or variable density geographic fields.  
 
-An I3S Layer is characterized by a combination of layer type and profile that fully describes the behavior of the layer and the manner in which it is realized within the specification.</p>
+An I3S Layer is characterized by a combination of layer type and profile that fully describes the behavior of the layer and the manner in which it is realized within the specification.
 
 The specification that follows below applies to the following layer types:
 <ul>
@@ -252,7 +252,7 @@ The I3S format models node information using a set of resources - Node Index Doc
 
 
 <p>
-An I3S profile can choose between a single text-based feature-data sub-resource that contains all geometry and attribute information (e.g. <em>Point</em> profile), or separate, binary and self-contained geometry and attribute sub-resources (e.g. <em>3D Object</em> and <em>IntegratedMesh</em> profile). Applications accessing the latter do not need to first fetch the feature-data resource in order to interpret them.
+An I3S profile can choose between a single text-based feature-data sub-resource that contains all geometry and attribute information (e.g. <em>Point</em> profile), or separate, binary and self-contained geometry and attribute sub-resources (e.g. <em>mesh-pyramids</em> profile). Applications accessing the latter do not need to first fetch the feature-data resource in order to interpret them.
 </p>
 
 
@@ -285,7 +285,7 @@ the corresponding data elements to be able to render a complete feature.  Optima
 <li>Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. </li>
 <li>The figure also illustrates the case where feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
 </ul>
-</p>
+
 <div>
 <img src="images/figure-04.png" title="Example Nodes in Mesh Pyramid" alt="Example Nodes in Mesh Pyramid">
 <p><em>Figure 4: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys.</em></p>
@@ -1272,7 +1272,7 @@ min/avg/max values, typically only one or two are used.</p>
 <p>The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors
 to geometry attributes and other references to styling or materials.</p>
 
-<p>Features have the following structure :</p>
+<p>Features have the following structure : </p>
 
 <div>
 <img src="images/figure-08.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document">
@@ -1829,11 +1829,8 @@ with the R encoding the <code>[umin, vmin, umax, vmax]</code> of the region in 4
 
 <h4>Texture coordinates</h4>
 
-<p>Texture coordinates do not take atlas regions into account directly. They always range
-from <code>0...1</code> in U and V, except when using the
-"repeat" wrapping mode, where they may range from <code>0...n</code> (n being the number of repeats). The client is expected to use the <code>subimageRegion</code> values and the texture coordinates to best
-handle repeating textures in atlases. This approach has been selected since
-client capabilities in dealing with more complex UV cases vary greatly.</p>
+<p>Texture coordinates do not take atlas regions into account directly. They always range from <code>0...1</code> in U and V, except when using the
+"repeat" wrapping mode, where they may range from <code>0...n</code> (n being the number of repeats). The client is expected to use the <code>subimageRegion</code> values and the texture coordinates to best handle repeating textures in atlases. This approach has been selected since client capabilities in dealing with more complex UV cases vary greatly.</p>
 
 <h4>Generating Image IDs</h4>
 
@@ -1954,9 +1951,11 @@ Metadata on each _attribute_ resource is made available to clients via the <a hr
 
 These metadata allow clients to initialize and allocate any required client side resources prior to accessing any attributes of interest.  
 
-![App](./images/figure-11.png "An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.")  
+<div>
+<img src="images/figure-11.png" title="An example of the fields array." alt="An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.">
+<p>Figure 11: An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias.</p>
+</div>
 
-_Figure 11. An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias._
 
 Once a client application makes a decision regarding the field it is interested in accessing, it can use the _key_ property (_layers[id].attributeStorageInfo[].key_) of the _attributeStorageInfo_ metadata to uniquely identify and request the _attribute_ resource thru a new RESTful API, called **attributes.** The _attributeStorageInfo_ metadata in addtion contains all the information that a client application requires to decode the retrieved _attribute_ binary content.
 
@@ -1970,11 +1969,12 @@ Once a client application makes a decision regarding the field it is interested 
 _<a href="../profiles/meshpyramids/examples/3dSceneLayer.js">code 1.</a> A scene layer resource illustrating the metadata information found in the fields (layers[id].fields[id]) and attributeStorageInfo arrays (layers[id].attributeStorageInfo[id])._
 
 
-A client application will be able to find the URI of any attribute resource through its href reference from the **attributeData** array of the **Node Index Document** (similar access patterns exist for resources such as 'features', 'geometries', etc …). See Figure 12 below:
+A client application will be able to find the URI of any attribute resource through its href reference from the **attributeData** array of the **Node Index Document** (similar access patterns exist for resources such as 'features', 'geometries', etc …). See Figure 12 below:  
 
-![App](./images/figure-12.png "A node resource document illustrating attribute data content access urls (href).")
-
-_Figure 12. A node resource document illustrating attribute data content access urls (href)._
+<div>
+<img src="images/figure-12.png" title="A node resource document illustrating attribute data content access urls (href)" alt="A node resource document illustrating attribute data content access urls (href)">
+<p>Figure 12: A node resource document illustrating attribute data content access urls (href).</p>
+</div>
 
 #### REST API for Accessing Attribute Resources directly from a scene service layer
 
@@ -2004,9 +2004,11 @@ The _attributes_ REST api syntax is as follows:
 
   Note that the _key_ property (with values such as <i>f_0</i>, <i>f_1</i>, etc...) is **automatically** computed and that there shouldn't be any relationship _assumed_ to the field index of the source feature class (especially important when a user adds or deletes fields during the lifetime of a layer).  
 
-	![App](./images/figure-13.png "An expanded view of a scene layer resource showing the content of an _attributeStorageInfo_ resource. The example shows 5 objects each corresponding to the 5 field objects of the _fields_ resource (as matched by the 'key' and  'name' properties present in both arrays).")  
+	<div>
+	<img src="images/figure-13.png" title="An expanded view of a scene layer resource showing the content of an _attributeStorageInfo_ resource." alt="An expanded view of a scene layer resource showing the content of an _attributeStorageInfo_ resource. The example shows 5 objects each corresponding to the 5 field objects of the _fields_ resource (as matched by the 'key' and  'name' properties present in both arrays)">
+	<p>Figure 13: An expanded view of a scene layer resource showing the content of an attributeStorageInfo resource. The example shows 5 objects each corresponding to the 5 objects of the fields resource (as matched by the 'key' and  'name' properties present in both arrays).The JSON representation of the example is located in <a href="../profiles/meshpyramids/examples/3dSceneLayer.js">3D Scene Layer examples section</a>.</p>
+	</div>
 
-	_Figure 13. An expanded view of a scene layer resource showing the content of an attributeStorageInfo resource. The example shows 5 objects each corresponding to the 5 objects of the fields resource (as matched by the 'key' and  'name' properties present in both arrays).The JSON representation of the example is located in <a href="../profiles/meshpyramids/examples/3dSceneLayer.js">3D Scene Layer examples section</a>._  
 
 2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values of interest just by supplying the desired field _Key_ as part of the **attributes** REST request. Furthermore, it will also be capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
 
@@ -2025,20 +2027,21 @@ An _attribute_ resource consists of either a single one dimensional array in the
 
 The structure of each _attribute_ resource is declared upfront in the scene layer resource thru the _attributeStorageInfo_ object. The client application (as stated above in the typical usage pattern) is expected to read the _attributeStorageInfo_ metadata to get the header information, the ordering of the stored records (arrays) as well as their value types before consuming the binary attribute resource.
 
-Lets take a look at a sample scene service layer and its field types ([see Figure 14](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.
+Lets take a look at a sample scene service layer and its field types ([see Figure 14](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
 
-![App](./images/figure-14.png "A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in Figure 11 and the _attributeStorageInfo_ array in Figure 13 is derived from the attribute value of the above feature class.")  
-….  
-
-_Figure 14. A typical attribute (table) info of a feature class. The fields array that’s shown as an example in Figure 11 and the attributeStorageInfo array in Figure 13 is derived from the attribute value of the above feature class._
+<div>
+<img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in Figure 11 and the _attributeStorageInfo_ array in Figure 13 is derived from the attribute value of the above feature class.">
+<p>Figure 14: A typical attribute (table) info of a feature class. The fields array that’s shown as an example in Figure 11 and the attributeStorageInfo array in Figure 13 is derived from the attribute value of the above feature class.</p>
+</div>  
 
 As it could be inferred from [Figure 11](images/figure-11.png) and [Figure 13](images/figure-13.png), a scene service layer exposes/includes **only** supported attribute field value types of a feature class. As a result, the 'Shape' field ([see Figure 14](images/Attribute_Legend_Support_Fig_4.png)), which is of _esriFieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
 
 [see Table 24](Table_24.png) below which lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
 
-![App](./images/Table_24.png "Attribute data types supported by a scene service layer.")
-
-Table.24 Attribute data types supported by a scene service layer.
+<div>
+<img src="images/Table_24.png" title="Attribute data types supported by a scene service layer." alt="Attribute data types supported by a scene service layer.">
+<p>Table 24: Attribute data types supported by a scene service layer.</p>
+</div>  
 
 \* String – using UTF-8 Unicode character encoding scheme.
 
@@ -2145,12 +2148,10 @@ The format of the package itself is defined as follows:
 The layout show in Figure 15 below is referred to as the BASIC folder pattern.
 The I3S specification allows also for an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.  
 
-<p>
 <div>
 <img src="images/figure-15.png" title="Structure of an SLPK file" alt="Structure of an SLPK file">
-<em>Figure 15: Example of an SLPK with BASIC folder layout.</em>   
+<p><em>Figure 15: Example of an SLPK with BASIC folder layout.</em></p>   
 </div>  
-</p>
 
 The contents of the archive depicted in Figure 15 shows an SLPK with the BASIC folder pattern. At the top level, it has a <em>nodes</em> subfolder containing all node resources, a <em>metadata.json</em> file that describes the content of the SLPK and a <em>3dSceneLayer.json.gz</em> file that defines the Scene Layer. In the example, the <em>nodes</em> subfolder contains, nodes named <em>root</em>, <em>1-4-2-0</em>, etc. Drilling further into one of the nodes, <em>1-4-2-0</em>, notice that all file resources are individually compressed with GZIP compression (indicated by the file extension .gz), with the exception of the texture resource that is in JPEG format (<em>textures/0_0.bin</em>). The resources under the sub folders <em>geometries</em> (<em>geometries/0.bin.gz</em>) and <em>attributes</em> (<em>attributes/f_0/bin.gz</em>, <em>attributes/f_1/bin.gz</em>, ...), serialized as binary, correspond to the geometryData, and attributeData resources of a scene layer, respectively. Similarly, <em>3dNodeIndexDocument.json.gz</em>, <em>features/0.json.gz</em> and <em>SharedResource.json.gz</em> correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, respectively, and are encoded in JSON and are also stored with a GZIP compression.
 

@@ -1,7 +1,7 @@
 ﻿{
  "targetProfile": "features-meshes",
  "resource": "3dSceneLayer",
- "version": "1.4",
+ "version": "1.5",
  "rules": [
   {
    "qname": "id",
@@ -198,8 +198,8 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "application/vnd.esri.i3s.json+gzip; version=1.4",
-	"application/vnd.esri.i3s.json; version=1.4"
+    "application/vnd.esri.i3s.json+gzip; version=1.5",
+	"application/vnd.esri.i3s.json; version=1.5"
    ]
   },
   {
@@ -209,8 +209,8 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "application/vnd.esri.i3s.json+gzip; version=1.4",
-	"application/vnd.esri.i3s.json; version=1.4"
+    "application/vnd.esri.i3s.json+gzip; version=1.5",
+	"application/vnd.esri.i3s.json; version=1.5"
    ]
   },
   {
@@ -220,8 +220,8 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "application/octet-stream+gzip; version=1.4",
-	"application/octet-stream; version=1.4"
+    "application/octet-stream+gzip; version=1.5",
+	"application/octet-stream; version=1.5"
    ]
   },
   {
@@ -307,7 +307,7 @@
    "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/DefaultTextureDefinitionRules.json"
-  },  
+  },
   {
    "qname": "store.defaultMaterialDefinition",
    "required": true,

@@ -1,8 +1,8 @@
 /**
-	Example i3s 1.5 3d Node Index Document Resource for the Meshpyramids profile.
+	Example I3S 1.5 3d Node Index Document Resource for the Meshpyramids profile.
 */
 {
-	"id": "5-1", // Tree Key ID. This node is thus two levels below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.
+	"id": "5-1", // Tree Key ID. This node is thus is 3 levels below the root node (root node is at level 1).
 	"level": 3, // explicit level of this node within the index tree.
 	"version": "ee4fbf04-e882-444e-854d-cd519b68594a", // the version (store update session ID) of this node.
 	"mbs": [122.2, 39.9, 429.8, 2334.5], // x,y,z,r of the mbs of this node. x,y are expressed as geographical coordinates in the indexCRS, z and r are in meters, with Z being relative to the wgs84 geoid.
@@ -17,7 +17,7 @@
 	},
 	"featureData": [ // an optional array of feature data bundles belonging to this node.Note mesh-pyramids profile do not depend on this resoruce
 		{
-			"href": "./features/0", // an expandable, node-relative references to the feature data bundle.
+			"href": "./features/0", // **optional** an expandable, optional node-relative references to the feature data bundle.
 		}
 	],
 	"geometryData": [ // an array of expandable, node-relative references to the geometry bundles belonging to this node.

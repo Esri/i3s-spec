@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.5 3d Scene Layer Resource for the Meshpyramids profile.
+	Example I3S 1.5 3d Scene Layer Resource for the Meshpyramids profile.
 */
 {
 	"id": 0, // the ID of this layer, unique within a 3dSceneService.
@@ -19,7 +19,7 @@
 			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
 			"ellipsoid": "wgs84 (G1674)/", //datum realization
 			"heightUnit": "meter" //units
-	}, 
+	},
 	"alias": "Public Buildings", // the display alias to be used for this layer.
 	"description" : "This layer contains textured Building features for the City of Zurich.\n", // Cache description
 	"copyrightText" : "Vermessungsamt der Stadt Z�rich", // copyright/usage information

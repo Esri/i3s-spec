@@ -1,7 +1,7 @@
 ﻿{
- "targetProfile": "features-points",
+ "targetProfile": "points",
  "resource": "3dSceneLayer",
- "version": "1.4",
+ "version": "1.5",
  "rules": [
   {
    "qname": "id",
@@ -119,7 +119,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "features-points"
+    "points"
    ]
   },
   {

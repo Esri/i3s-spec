@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.5 FeatureData Resource using the meshpyramids Profile.
+	Example I3S 1.5 FeatureData Resource using the meshpyramids Profile. Optional Resource.
 */
 {
 	"featureData": [
@@ -17,12 +17,6 @@
 						"$ref": "/geometryData/123", // in-document absolute reference to full geometry definition (in-line or view) using JSON pointer syntax
 						"faceRange": [0,189] // inclusive range of faces in this geometry that belongs to this feature.
 					}
-				}
-			],
-			"attributes": [
-				{
-					"name": "type",
-					"value": "Business (Group B)"
 				}
 			]
 		}
@@ -56,23 +50,11 @@
 						"valueType": "Int16", // the element type, from {UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64, *Float32*, Float64}
 						"valuesPerElement": 2 // number of (Int16) values need to make a valid element (here a texture coordinate that will be normalized)
 					},
-					"classification": { // the name of the vertex attribute; here: vertex classification/colors
-						"byteOffset": 261876, // the starting byte position where the required bytes begin.
-						"count": 398, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-						"valueType": "UInt8", // the element type, from {UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64, *Float32*, Float64}
-						"valuesPerElement": 1 // number of (UInt8) values need to make a valid element (here a classification)
-					},
 					"color": { // vertex colors; must be present if the material property "vertexColors" is set to true
 						"byteOffset": 263976, // the starting byte position where the required bytes begin.
 						"count": 398, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
 						"valueType": "UInt8", // the element type, either UInt8, UInt16, UInt32, Int16, Int32, Int64 or Float32, Float64
 						"valuesPerElement": 3 // number of (UInt8) values need to make a valid element (here a RGB intensity)
-					},
-					"uv0region": { // region info for the 1st texture coordinates vertex attribue; must be present if the material property "vertexRegions" is set to true
-						"byteOffset": 265170, // the starting byte position where the required bytes begin.
-						"count": 398, // the number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read.
-						"valueType": "Int16", // the element type, must be Int16
-						"valuesPerElement": 4 // number of (Int16) values need to make a valid element (here a region info)
 					}
 				},
 				"featureAttributes": {//optional. An array  af feature ids and faceRanges of the features that make up this geometry.

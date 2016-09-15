@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.3 Feature Data Resource for the features-points profile.
+	Example i3s 1.3 Feature Data Resource for the points profile.
 */
 {
 	"featureData": [
@@ -36,7 +36,7 @@
 					"id": 2412332,
 					"type": "Embedded", // type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
 					"transformation" : [1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, -0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0],
-					"params": { 
+					"params": {
 						"type": "points",
 						"vertexAttributes": {
 							"position": [537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821, 537218.344, 5328647.27, 29.821]

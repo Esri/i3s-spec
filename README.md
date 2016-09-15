@@ -1,9 +1,9 @@
 Scene Layers: Service and Package Specification
 ===============================================
 
-![App](./sceneLayers.jpg "Multiple Scene Layers in Web Scene Viewer")[http://www.arcgis.com](http://www.arcgis.com/home/webscene/viewer.html?webscene=196b89953b2d4e7d9fb1ada5997d3391&viewpoint=cam:-4.18890092,34.70563622,20953545.907;358.044,0.117)
+![App](./sceneLayers.jpg "Multiple Scene Layers in Web Scene Viewer")[http://www.arcgis.com](http://www.arcgis.com)
 
-This repository hosts the specification for Scene Layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model of a Scene Layer, referred to as Indexed 3d Scene layer (I3S) and Scene Layer Package (\*.slpk) respectively, are specified in detail in this repository. Both formats are encoded using JSON and binary ArrayBuffers.
+This repository hosts the specification for Scene Layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model for Scene Layers, referred to as Indexed 3d Scene Layer (I3S) and Scene Layer Package (SLPK) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
 I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
 
@@ -21,7 +21,7 @@ The following layer types are planned for future inclusion:
 - Polygon Features (e.g. from GIS Data)
 - Pointclouds (e.g. from LiDAR)
 
-The specification for [Indexed 3d Scene Layer (I3S)](./format/Indexed%203d%20Scene%20Format%20Specification.md) and [Scene Layer Package (\*.slpk)](./format/Indexed%203d%20Scene%20Format%20Specification.md), as well as the specification for accessing I3S resources as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
+The specification for [Indexed 3d Scene Layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [Scene Layer Package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md), as well as the specification for accessing I3S resources as [Scene Service REST](./service/SceneService.md) endpoints, are presented here as open formats.
 
 
 ## Designed for Web, Mobile and Cloud  

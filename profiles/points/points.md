@@ -1,16 +1,16 @@
-# i3s profile: Features-Points (FP)
+# i3s profile: Points
 
 ## Summary
 
-*What this profile is for:* Support for points and multipoints with symbolisation and feature-tree-based LoD. Does not use external ArrayBufferGeometries. It is not recommended for massive multipoint features - these should use the pointclouds profile instead.
+*What this profile is for:* Support for points and multipoints with symbolization. Does not use external ArrayBufferGeometries.
 
 ## Access Pattern
 
-<p>The access pattern is identical to that of the Features-Meshes profile, only that no Geometry resources have to be loaded.</p>
+<p>The access pattern is identical to that of the mesh-pyramids profile. The profile utilizes different Lod selection metrics (<code>screenSpaceRelative</code>, <code>distanceRangeFromDefaultCamera</code>).</p>
 
 ## Schema
 
-The features-points profile makes use of 6 main resource types and allows a restricted set of properties.
+The points profile makes use of 5 main resource types and allows a restricted set of properties.
 
 ### SceneServiceInfo
 
@@ -18,16 +18,12 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[features-points 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
+[points 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
-[features-points 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+[points 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
 
 ### FeatureData
 
-[features-points FeatureData](./rules/docs/FeatureDataRules.html)
-
-### SharedResources
-
-[features-points SharedResources](./rules/docs/SharedResourceRules.html)
+[points FeatureData](./rules/docs/FeatureDataRules.html)

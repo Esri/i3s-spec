@@ -1,5 +1,5 @@
 ﻿{
- "targetProfile": "meshpyramids",
+ "targetProfile": "points",
  "resource": "3dSceneLayer",
  "version": "1.5",
  "rules": [
@@ -14,7 +14,7 @@
     1.7976931348623157e+308
    ]
   },
-  {
+    {
    "qname": "href",
    "required": false,
    "containerType": "None",
@@ -28,7 +28,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-     "3DObject"
+     "Point"
    ]
   },
   {
@@ -95,8 +95,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "View",
-	"Query"
+    "View", "Query", "Edit"
    ]
   },
   {
@@ -120,28 +119,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "meshpyramids"
-   ]
-  },
-  {
-   "qname": "store.resourcePattern",
-   "required": true,
-   "containerType": "Array",
-   "cardinality": [
-    1,
-    5
-   ],
-   "valueType": "object",
-   "valueSchema": "None"
-  },
-  {
-   "qname": "store.resourcePattern.*",
-   "required": true,
-   "containerType": "None",
-   "valueType": "string",
-   "valueSchema": "None",
-   "valueDomain": [
-     "3dNodeIndexDocument", "SharedResource", "FeatureData", "Geometry", "Texture"
+    "points"
    ]
   },
   {
@@ -158,7 +136,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "1.5"
+    "1.3"
    ]
   },
   {
@@ -183,22 +161,16 @@
    "required": true,
    "containerType": "None",
    "valueType": "string",
-   "valueSchema": "URL",
-   "valueDomain": [
-    "http://www.opengis.net/def/crs/EPSG/0/4326"
-   ]
+   "valueSchema": "URL"
   },
   {
    "qname": "store.vertexCRS",
    "required": true,
    "containerType": "None",
    "valueType": "string",
-   "valueSchema": "URL",
-   "valueDomain": [
-    "http://www.opengis.net/def/crs/EPSG/0/4326"
-   ]
+   "valueSchema": "URL"
   },
-  {
+   {
    "qname": "store.nidEncoding",
    "required": false,
    "containerType": "None",
@@ -259,7 +231,7 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "MeshPyramid", "None"
+    "FeatureTree", "None"
    ]
   },
   {
@@ -269,7 +241,27 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "node-switching"
+    "feature-switching", "None"
+   ]
+  },
+  {
+   "qname": "store.featureOrdering",
+   "required": false,
+   "containerType": "Array",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "store.featureOrdering.*",
+   "required": false,
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "ID", "Prominence", "Layer"
    ]
   },
   {
@@ -287,20 +279,6 @@
    "valueType": "object",
    "valueSchema": "NamedRuleset",
    "namedRuleset": "../../all/rules/IndexingSchemeRules.json"
-  },
-  {
-   "qname": "store.defaultTextureDefinition",
-   "required": false,
-   "valueType": "object",
-   "valueSchema": "NamedRuleset",
-   "namedRuleset": "../../all/rules/DefaultTextureDefinitionRules.json"
-  },
-  {
-   "qname": "store.defaultMaterialDefinition",
-   "required": false,
-   "valueType": "object",
-   "valueSchema": "NamedRuleset",
-   "namedRuleset": "../../all/rules/MaterialDefinitionRules.json"
   },
   {
    "qname": "fields",

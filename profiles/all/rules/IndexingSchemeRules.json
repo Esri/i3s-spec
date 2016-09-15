@@ -1,7 +1,7 @@
 {
  "targetProfile": "all",
  "resource": "IndexingScheme",
- "version": "1.4",
+ "version": "1.5",
  "rules": [
   {
    "qname": "name",

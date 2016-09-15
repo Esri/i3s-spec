@@ -1,7 +1,7 @@
 ﻿{
 	"targetProfile": "meshpyramids",
 	"resource": "3dNodeIndexDocument",
-	"version": "1.4",
+	"version": "1.5",
 	"rules":[
 	{
 		"qname" : "id",
@@ -14,7 +14,7 @@
 			"type" : "NOT",
 			"value" : 1
 		} ]
-	}, 
+	},
 	{
 		"qname" : "id",
 		"required" : true,
@@ -29,7 +29,7 @@
 			"type" : "IS",
 			"value" : 1
 		}]
-	}, 
+	},
 	{
 		"qname" : "level",
 		"required" : true,
@@ -40,28 +40,28 @@
 			1,
 			1.7976931348623157e+308
 		]
-	}, 
+	},
 	{
 		"qname" : "version",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, 
+	},
 	{
 		"qname" : "created",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "Date"
-	}, 
+	},
 	{
 		"qname" : "expires",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "Date"
-	}, 
+	},
 	{
 		"qname" : "mbs",
 		"required" : true,
@@ -72,13 +72,13 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "mbs.*",
 		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "lodSelection",
 		"required" : true,
@@ -89,7 +89,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "lodSelection.*",
 		"required" : true,
@@ -119,7 +119,7 @@
 		"containerType": "None",
 		"valueType" : "number",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "transform",
 		"required" : false,
@@ -130,27 +130,27 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "transform.*",
 		"required" : true,
 		"valueType" : "number",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "sharedResource",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "sharedResource.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "featureData",
 		"required" : true,
@@ -161,19 +161,19 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "featureData.*",
 		"required" : true,
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "featureData.*.href",
 		"required" : true,
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "featureData.*.featureRange",
 		"required" : false,
@@ -184,7 +184,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "featureData.*.featureRange.*",
 		"required" : true,
@@ -201,7 +201,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "featureData.*.layerContent.*",
 		"required" : false,
@@ -218,7 +218,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "geometryData.*",
 		"required" : true,
@@ -230,7 +230,7 @@
 		"required" : true,
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "textureData",
 		"required" : true,
@@ -241,7 +241,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "textureData.*",
 		"required" : true,
@@ -253,13 +253,13 @@
 		"required" : true,
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "textureData.*.multiTextureBundle",
 		"required" : false,
 		"valueType" : "boolean",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "parentNode",
 		"required" : true,
@@ -271,7 +271,7 @@
 			"type" : "NOT",
 			"value" : 1
 		} ]
-	}, 
+	},
 	{
 		"qname" : "parentNode.id",
 		"required" : true,
@@ -283,7 +283,7 @@
 			"type" : "NOT",
 			"value" : 2
 		} ]
-	}, 
+	},
 	{
 		"qname" : "parentNode.id",
 		"required" : true,
@@ -305,14 +305,14 @@
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, 
+	},
 	{
 		"qname" : "parentNode.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "parentNode.mbs",
 		"required" : true,
@@ -323,7 +323,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "parentNode.mbs.*",
 		"required" : true,
@@ -340,7 +340,7 @@
 			0,
 			1.7976931348623157e+308
 		]
-	}, 
+	},
 	{
 		"qname" : "children",
 		"required" : true,
@@ -351,7 +351,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "children.*",
 		"required" : true,
@@ -364,21 +364,21 @@
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "NodeID"
-	}, 
+	},
 	{
 		"qname" : "children.*.version",
 		"required" : false,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, 
+	},
 	{
 		"qname" : "children.*.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "children.*.mbs",
 		"required" : true,
@@ -389,7 +389,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "children.*.mbs.*",
 		"required" : true,
@@ -406,7 +406,7 @@
 			0,
 			1.7976931348623157e+308
 		]
-	}, 
+	},
 	{
 		"qname" : "neighbors",
 		"required" : true,
@@ -422,13 +422,13 @@
 			"type" : "NOT",
 			"value" : 1
 		} ]
-	},  
+	},
 	{
 		"qname" : "neighbors.*",
 		"required" : true,
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "neighbors.*.id",
 		"required" : true,
@@ -442,14 +442,14 @@
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "UUID"
-	}, 
+	},
 	{
 		"qname" : "neighbors.*.href",
 		"required" : true,
 		"containerType": "None",
 		"valueType" : "string",
 		"valueSchema" : "URL"
-	}, 
+	},
 	{
 		"qname" : "neighbors.*.mbs",
 		"required" : true,
@@ -460,7 +460,7 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	},  
+	},
 	{
 		"qname" : "neighbors.*.mbs.*",
 		"required" : true,

@@ -6,7 +6,7 @@
 
 ## Access Pattern
 
-<p>This section describes how a client is expected to load and handle resources from an Indexed 3D Scene using the Meshpyramids profile. 
+<p>This section describes how a client is expected to load and handle resources from an Indexed 3D Scene using the Meshpyramids profile.
 The general pattern consists of these phases:</p>
 
 1.	Handshake & capabilities negotiation: The client ensures that the service has the expected resources and that client and server have a common set of capabilities. Within this phase, the client utilizes the following resources:
@@ -30,7 +30,7 @@ Node traversal starts at the root node and recursively calls TraverseNodeTree(no
         if (node’s mbs is not visible) // see 1)
             // do nothing
         else if (node has no children or ScreenSize(mbs) < maxScreenThreshold) //see 2)
-            // render the node // see 3) 
+            // render the node // see 3)
         else
             for each child in children(node) // see 4)
                 TraverseNodeTree(child);
@@ -55,7 +55,7 @@ Additional notes:
 
 ## Schema
 
-The meshpyramids profile makes use of all 7 main resource types and allows a restricted set of properties. It takes away some flexibility and features for a gain in performance, e.g. by making the FeatureData resource optional. Note that since the FeatureData resource is optional and loaded lazily for certain actions, the 3dSCeneLayer resource must contain a DefaultGeometrySchema. If that is not present, clients wouldn't know how to interpret the Geometry resources.
+The meshpyramids profile makes use of all 7 main resource types and allows a restricted set of properties. It takes away some flexibility and features for a gain in performance, e.g. by making the FeatureData resource optional. Note the FeatureData resource is optional for this profile, hence the 3dSCeneLayer resource must contain a DefaultGeometrySchema.
 
 ### SceneServiceInfo
 
@@ -63,24 +63,22 @@ No specific profile.
 
 ### 3dSceneLayer
 
-Note that in this profile, the defaultGeometrySchema is mandatory. Otherwise this resource is highly similar to the 3dSceneLayer in the FM profile.
+Note that in this profile, the defaultGeometrySchema is mandatory.
 
 [Meshpyramid 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
-The main difference in MP 3dNodeIndexDocuments to FM 3dNodeIndexDocument is that the features list is not part of the document. Furthermore, there is always exactly 1 geometry and texture resource per node.
+There is always exactly 1 geometry and texture resource per node.
 
 [Meshpyramid 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
 
 ### FeatureData
 
-The FeatureData profile is similar to features-meshes, only there is no geometryData definition and that features do not have geometry definitions inline either, as a default schema is used. There are only backward references from the geometry itself, embedded as a face attribute, to features.
+The FeatureData is optional with this profile.
 
 [Meshpyramid FeatureData](./rules/docs/FeatureDataRules.html)
 
 ### SharedResources
-
-The Shared Resource profile is similar to features-meshes, only that symbols are not supported.
 
 [Meshpyramid SharedResources](./rules/docs/SharedResourceRules.html)

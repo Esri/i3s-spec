@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.3 Feature Data Resource for the points profile.
+	Example i3s 1.5 Feature Data Resource for the points profile.
 */
 {
 	"featureData": [

@@ -59,7 +59,7 @@
 				}
 			],
 			"topology": "PerAttributeArray", // one of ["PerAttributeArray", "Indexed"]. When "Indexed", the indices must also be declared in the geometry schema ("faces") and precede the vertexAttribute data.
-			"ordering": ["position", "normal", "uv0", "region"], // provides the order of the keys in vertexAttributes and faceAttributes, if present.
+			"ordering": ["position", "normal", "uv0", "color", "region"], // provides the order of the keys in vertexAttributes and faceAttributes, if present.
 			"vertexAttributes": { // the vertex attributes must appear in the order that they are declared here.
 				"position": { // the name of the vertex attribute; here: vertex positions
 					"valueType": "Float32", // the element type, from {UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64, *Float32*, Float64}
@@ -72,6 +72,10 @@
 				"uv0": { // the name of the vertex attribute; here: 1st texture coordinates, must be present if a textureID is referenced
 					"valueType": "Float32", // the element type, from {UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64, *Float32*, Float64}
 					"valuesPerElement": 2 // number of (Float32) values need to make a valid element (here a texture coordinate that will be normalized)
+				},
+				"color": { // the name of the vertex attribute; here: color as RGBA
+					"valueType": "UInt8", //  the element type, always UInt8 for color value
+					"valuesPerElement": 4 //number of (UInt8) values need to make a valid element (here a color in RGBA format)
 				},
 				"region": { // per-vertex region info. analogous to textureDefinitions.regions in sharedResource. Values define uv-coordinates of region borders: [umin, vmin, umax, vmax]
 					"valueType": "UInt16", // the element type, always UInt16 for region info

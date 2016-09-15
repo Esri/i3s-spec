@@ -1,12 +1,12 @@
-# i3s profile: Meshpyramids (MP)
+# i3s profile: Mesh-pyramids (MP)
 
 ## Summary
 
-*What this profile is for:* This profile implements the 3DObjects layer.
+*What this profile is for:* This profile is implemented by the 3D Object and Integrated Mesh layer types.
 
 ## Access Pattern
 
-<p>This section describes how a client is expected to load and handle resources from an Indexed 3D Scene using the Meshpyramids profile.
+<p>This section describes how a client is expected to load and handle resources from an Indexed 3D Scene Layer using the Mesh-pyramids profile.
 The general pattern consists of these phases:</p>
 
 1.	Handshake & capabilities negotiation: The client ensures that the service has the expected resources and that client and server have a common set of capabilities. Within this phase, the client utilizes the following resources:
@@ -18,8 +18,9 @@ The general pattern consists of these phases:</p>
     1.	SharedData: Material defintions, shared geometries for instancing
     1.	GeometryData: Geometry attributes such as positions and indices
     1.	TextureData: Images used as texture maps
-1.	Identify: Additional resoruces belonging to a node are accessed only if needed, e.g. for an Identify operation.
-    1.	FeatureData: Attributes of GIS features, accessors to GeometryData and TextureData
+    1.	AttributeData: Attribute data of features used for attribute-based symbolization (as indicated by the DrawingInfo object in the 3dSceneLayer resource)
+1.	Identify: Additional resources belonging to a node are accessed only if needed, e.g. for an Identify operation.
+    1.	AttributeData: If the AttributeData resources of the node have not already been fetched (in step 3 above) client application can request the desired attribute data.
 
 A familiar access pattern  based on a single tree data structure is proposed for view frustum culling, level-of-detail selection, and rendering. The following pseudo code illustrates the recommended pattern when navigating an index tree using Mesh Pyramids.
 
@@ -55,7 +56,7 @@ Additional notes:
 
 ## Schema
 
-The meshpyramids profile makes use of all 7 main resource types and allows a restricted set of properties. It takes away some flexibility and features for a gain in performance, e.g. by making the FeatureData resource optional. Note the FeatureData resource is optional for this profile, hence the 3dSCeneLayer resource must contain a DefaultGeometrySchema.
+The meshp-yramids profile makes use of all 7 main resource types and allows a restricted set of properties. Note that the FeatureData resource is optional for this profile, hence the 3dSceneLayer resource must contain a DefaultGeometrySchema.
 
 ### SceneServiceInfo
 
@@ -65,20 +66,24 @@ No specific profile.
 
 Note that in this profile, the defaultGeometrySchema is mandatory.
 
-[Meshpyramid 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
+[3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
 
 ### 3dNodeIndexDocument
 
 There is always exactly 1 geometry and texture resource per node.
 
-[Meshpyramid 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+[3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+
+### AttributeData
+
+Attribute data for all features in a node is stored and made available as discrete, per field resource called **_attribute_**. The number of attribute resources correspond to the number of feature data <em>fields</em> that are chosen to be included along with the 3d Scene Layer cache.  
 
 ### FeatureData
 
 The FeatureData is optional with this profile.
 
-[Meshpyramid FeatureData](./rules/docs/FeatureDataRules.html)
+[FeatureData](./rules/docs/FeatureDataRules.html)
 
 ### SharedResources
 
-[Meshpyramid SharedResources](./rules/docs/SharedResourceRules.html)
+[SharedResources](./rules/docs/SharedResourceRules.html)

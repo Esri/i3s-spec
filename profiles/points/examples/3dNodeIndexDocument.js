@@ -1,5 +1,5 @@
 /**
-	Example i3s 1.5 3d Node Index Document Resource for the points profile.
+	Example i3s 1.6 3d Node Index Document Resource for the points profile.
 */
 {
 	"id": "5-1", // Tree Key ID. This node is thus two level below the root node. On the first level, it's the fifth node, on the second level, it's the first. The 0 is always the root node.

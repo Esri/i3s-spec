@@ -1,7 +1,7 @@
 <h2>Esri Indexed 3d Scene Layer (I3S) and <br>
 Scene Layer Package (*.slpk) Format Specification</h2>
 
-<p>Version 1.5, Sep. 14, 2016</p>
+<p>Version 1.6, Sep. 14, 2016</p>
 <p style="font-size:80%">
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
@@ -174,7 +174,7 @@ to the selection of spatial reference systems to use:</p>
 
 <h3><a name="_3_1">Height Models</a></h3>
 
-The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
+The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance. At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
 
 <pre><code>
 	"spatialReference": // The spatial reference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
@@ -728,19 +728,19 @@ applied.</p>
 		<td>nidEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Node Index Documents; format:<br>
-		<code>application/vnd.esri.I3S.json+gzip; version=1.5</code></td>
+		<code>application/vnd.esri.I3S.json+gzip; version=1.6</code></td>
 	</tr>
 	<tr>
 		<td>featureEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Feature Data Resources; format:<br>
-		<code>application/vnd.esri.I3S.json+gzip; version=1.5</code></td>
+		<code>application/vnd.esri.I3S.json+gzip; version=1.6</code></td>
 	</tr>
 	<tr>
 		<td>geometryEncoding</td>
 		<td>MIMEType</td>
 		<td>MIME type for the encoding used for the Geometry Resources; format:<br>
-		<code>application/octet-stream; version=1.5</code></td>
+		<code>application/octet-stream; version=1.6</code></td>
 	</tr>
 	<tr>
 		<td>textureEncoding</td>
@@ -2199,7 +2199,7 @@ The following entries are permitted in the Metadata.json file that is part of ev
 	<tr>
 		<td>I3SVersion</td>
 		<td>True</td>
-		<td>One of {1.2, 1.3, 1.4, *1.5*}</td>
+		<td>One of {1.2, 1.3, 1.4, *1.6*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>

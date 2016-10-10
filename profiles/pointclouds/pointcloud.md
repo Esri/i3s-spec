@@ -51,17 +51,32 @@ For LiDAR derived point clouds, the following attributes are common:
 |Returns|UInt8|
 |PointID|UInt64|
   
-### Attribute Statistics ###
+### Attribute Statistics and Labels###
+#### Statistics ####
+Note: The following section relates to numeric attributes only since `string` attributes are not supported yet. 
+The following stats may be available **per attributes**:
+- `stats.min`: Minimum value for the entire layer.  
+- `stats.max`: Maximum value for the entire layer.
+- `stats.count`: Count for the entire layer.
+- `stats.sum`: Sum of the attribute values over the entire layer.
+- `stats.avg`: Average (or mean value): `sum/count`.
+- `stats.stddev`: standard deviation. *[optional]*
+- `stats.variance`: Variance (`stats.stddev *stats.stddev`)*[optional]*
+- `stats.histo` : Histogram *[optional]*
+- `mostFrequentValues` : Array of most frequent values sorted by descending frequency. *[optional]*
 
-For each attributes, the `LayerStats` document specifies:
-- Range (fields `minVal`, `maxVal`) represents the minimum/maximum values for this attribute for the entire layer. 
-- Histogram (fields `minHisto`, `maxHisto`,`histo`). This represent the (binned) histogram where the bin size may be computed as `(maxVal-minval) / bin count`. Please note that `minHisto/maxHisto` are not equivalent to `minVal/maxVal` since values smaller than `minHisto` and greater than `maxHisto` are counted in the first and last bin respectively. 
+Histogram has three fields (`min`, `max`,`counts`). Bin size may be computed as `(max-min) / bin count`. Please note that `stats.histo.min/max` are not equivalent to `stats.min/max` since values smaller than `stats.histo.min` and greater than `stats.histo.max` are counted in the first and last bin respectively. 
 - Notes:
-	- if `minVal=maxVal=0` range is not available for this attribute.
-	- if `histo` size =0, distribution is not available for this attribute. 
-	- Maximum array size for `histo` is 256.
+	- Maximum array size for `stats.histo.counts` is 256.
 	- `ELEVATION` pseudo-attribute is always present and represent Z-coordinate statistics
- 
+	
+#### Labeling ####
+Optionally, the statistics document may contain  labeling information for the attribute values:
+-`labels.labels` : array of string label/value pairs *[optional]*. Useful when attribute represent a set of values (e.g. `ClassCode`),
+-`labels.bitfieldLabels` : array of string label/bitNumber pairs. This useful when the attribute represent a bitfield (e.g. `FLAGS`)  *[optional]* - [see example](examples/example_1_stats_16.js)
+
+Labels for values/bits not present in the layer data may not be listed. 
+
 
 ### Layer Sources and `PointID` (optional) ###
 If available for the layer, `PointID` attribute refers back to the "original" record of each point. `PointID` is an 8 Bytes integer (`Byte0` is LSB, `Byte7` is MSB) where:	
@@ -76,10 +91,12 @@ The `LayerSource` document lists a `label` for each `SourceId`. This label may b
 To query `SceneLayer` document: [[Example]](examples/example_1_3dscenelayer.js)
 `http://my.server.com/layers/{layerId}`
 
-To query `LayerStats` document:[[Example]](examples/example_1_stats.js)
-`http://my.server.com/layers/{layerId}/stats`
+To query `Statistics` document:
+`http://my.server.com/layers/{layerId}/statistics` (All attributes stats in a single document)[[Example]](examples/example_1_stats.js)
+`http://my.server.com/layers/{layerId}/statistics/{AttribKey}`[[Example]](examples/example_1_stats_8.js)[[Example]](examples/example_1_stats_16.js)[[Example]](examples/example_1_stats_32.js) 
 
-To query `LayerSources` document (Optional):
+
+To query `LayerSources` document (Optional):[[Example]](examples/example_1_sources.js)
 `http://my.server.com/layers/{layerId}/sources`
 
 To query `NodePage` document:[[Example]](examples/example_1_node_page.js)

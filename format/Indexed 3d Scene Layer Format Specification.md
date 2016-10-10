@@ -2267,7 +2267,7 @@ In the case of cloud blob stores, layer resources are stored as either simple ob
 	<tr>
 		<td>/SceneServer/layers/0/nodes/0/attributes/f_0/0</td>
 		<td>True</td>
-		<td>The AttributeData as a binary resource. The resource id (e.g.<code>0</code>) is used as the key of the resource  {content type: text/plain, content encoding: {NONE, *GZIP*}} </td>
+		<td>The AttributeData as a binary resource. The resource id (e.g.<code>0</code>) is used as the key of the resource  {content type: application/octet-stream, content encoding: {NONE, *GZIP*}} </td>
 	</tr>
 	<tr>
 		<td>/SceneServer/layers/0/nodes/0/attributes/f_1/0</td>

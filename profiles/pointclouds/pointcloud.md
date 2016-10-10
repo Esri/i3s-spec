@@ -92,8 +92,8 @@ To query `SceneLayer` document: [[Example]](examples/example_1_3dscenelayer.js)
 `http://my.server.com/layers/{layerId}`
 
 To query `Statistics` document:
-`http://my.server.com/layers/{layerId}/statistics` (All attributes stats in a single document)[[Example]](examples/example_1_stats.js)
-`http://my.server.com/layers/{layerId}/statistics/{AttribKey}`[[Example]](examples/example_1_stats_8.js)[[Example]](examples/example_1_stats_16.js)[[Example]](examples/example_1_stats_32.js) 
+- `http://my.server.com/layers/{layerId}/statistics` (All attributes stats in a single document)[[Example]](examples/example_1.stats.js)
+- `http://my.server.com/layers/{layerId}/statistics/{AttribKey}`[[Example]](examples/example_1.stats_8.js)[[Example]](examples/example_1.stats_16.js)[[Example]](examples/example_1.stats_32.js) 
 
 
 To query `LayerSources` document (Optional):[[Example]](examples/example_1_sources.js)

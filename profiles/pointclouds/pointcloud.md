@@ -73,7 +73,7 @@ Histogram has three fields (`min`, `max`,`counts`). Bin size may be computed as 
 #### Labeling ####
 Optionally, the statistics document may contain  labeling information for the attribute values:
 -`labels.labels` : array of string label/value pairs *[optional]*. Useful when attribute represent a set of values (e.g. `ClassCode`),
--`labels.bitfieldLabels` : array of string label/bitNumber pairs. This useful when the attribute represent a bitfield (e.g. `FLAGS`)  *[optional]* - [see example](examples/example_1_stats_16.js)
+-`labels.bitfieldLabels` : array of string label/bitNumber pairs. This useful when the attribute represent a bitfield (e.g. `FLAGS`)  *[optional]* - [see example](examples/example_1.stats_16.js)
 
 Labels for values/bits not present in the layer data may not be listed. 
 

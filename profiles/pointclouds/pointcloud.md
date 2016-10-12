@@ -91,8 +91,7 @@ The `LayerSource` document lists a `label` for each `SourceId`. This label may b
 To query `SceneLayer` document: [[Example]](examples/example_1_3dscenelayer.js)
 `http://my.server.com/layers/{layerId}`
 
-To query `Statistics` document:
-- `http://my.server.com/layers/{layerId}/statistics` (All attributes stats in a single document)[[Example]](examples/example_1.stats.js)
+To query attribute `statistics` documents :
 - `http://my.server.com/layers/{layerId}/statistics/{AttribKey}`[[Example]](examples/example_1.stats_8.js)[[Example]](examples/example_1.stats_16.js)[[Example]](examples/example_1.stats_32.js) 
 
 

@@ -2199,7 +2199,7 @@ The following entries are permitted in the Metadata.json file that is part of ev
 	<tr>
 		<td>I3SVersion</td>
 		<td>True</td>
-		<td>One of {1.2, 1.3, 1.4, *1.6*}</td>
+		<td>One of {1.2, 1.3, 1.4, 1.5, *1.6*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>

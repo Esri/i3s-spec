@@ -30,17 +30,13 @@
 		"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent of this store, in the horizontal indexCRS
 		"indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
 		"vertexCRS": "http://www.opengis.net/def/crs/EPSG/0/32632", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL.
-		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.3", // MIME type for the encoding used for the Node Index Documents
-		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.3",  // MIME type for the encoding used for the Feature Data Resources
-		"geometryEncoding": "application/octet-stream+gzip; version=1.3", // MIME type for the encoding used for the Geometry Resources
-		"textureEncoding": "image/jpeg", // MIME type for the encoding used for the Texture Resources
+		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.5", // MIME type for the encoding used for the Node Index Documents
+		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.5",  // MIME type for the encoding used for the Feature Data Resources
+		"attributeEncoding": "application/octet-stream+gzip; version=1.5", // MIME type for the encoding used for the binnary Attribute Resources
 		"lodType": "node-switching", // optional field to indicate which LoD Scheme is used in this store.
-		"indexingScheme": { // Indexing Scheme properties
-			"name": "esriRTree", // name of the scheme, selected from {esriRTree, QuadTree, AGOLTilingScheme}
-			"inclusive": true, // true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs
-			"dimensionality": 3, // number of dimensions in which this index differentiates.
-			"childrenCardinality": [0,9], // min/max number of children per node.
-			"neighborCardinality": [0,9] // min/max number of neighbors per node.
+		"resourcePattern": ["3dNodeIndexDocument", //the minimum resource documents required for the scene layer
+			"featureDataDocument",
+			"Attributes"]
 		}
 	},
 	"fields" :	[ // schema definition for this layer, as with 2D Layers.

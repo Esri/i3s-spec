@@ -47,17 +47,17 @@ I3S can be used by any application as an exchange format for 3D geospatial conte
  <tr>
   <td>Bentley</td>  
   <td><a href="https://www.bentley.com/en/products/brands/contextcapture">ContextCapture</a></td>  
-  <td>IntegratedMesh</a></td>
+  <td>Integrated Mesh</a></td>
  </tr>
  <tr>
   <td>Vricon</td>
   <td><a href="http://www.vricon.com">Vricon</a></td>
-  <td>IntegratedMesh</td>
+  <td>Integrated Mesh</td>
  </tr>
   <tr>
   <td>Pix4D</td>
   <td><a href="https://pix4d.com/">Pix4D</a></td>
-  <td>IntegratedMesh</td>  
+  <td>Integrated Mesh</td>  
  </tr>
 </table>
 <p><em>Table 1: List of vendors and products that support generating I3S layer content.</em></p>
@@ -72,9 +72,9 @@ Table 2 below shows the various scene layer types that are currently supported b
     <th rowspan="2"><br>Consuming</th>
   </tr>
   <tr>
-    <td>3D Objects</td>
-    <td>Integrated Meshes</td>
-    <td>Points</td>
+    <td>3D Object</td>
+    <td>Integrated Mesh</td>
+    <td>Point</td>
   </tr>
   <tr>
     <td>ArcGIS.com</td>

@@ -37,15 +37,91 @@ I3S is an open specification for the purpose of encouraging community adoption, 
 
 ## Where can I use...?
 
-Table. 1 below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> The software products listed below support publishing as well as consuming Scene Layers.
+There are few applications that can create and consume I3S content. The tables below list some of those applications. This is an evolving list and will be updated frequently. If an application that's either consuming or generating I3S content is missing, please let us know so we can add it to the list.
+<table>
+ <tr>
+  <td><strong>Vendor</strong></td>  
+  <td><strong>Product/URL</strong></td>
+  <td><strong>Scene Layer Type</strong></td>
+ </tr>
+ <tr>
+  <td>Bentley</td>  
+  <td><a href="https://www.bentley.com/en/products/brands/contextcapture">ContextCapture</a></td>  
+  <td>IntegratedMesh</a></td>
+ </tr>
+ <tr>
+  <td>Vricon</td>
+  <td><a href="http://www.vricon.com">Vricon</a></td>
+  <td>IntegratedMesh</td>
+ </tr>
+  <tr>
+  <td>Pix4D</td>
+  <td><a href="https://pix4d.com/">Pix4D</a></td>
+  <td>IntegratedMesh</td>  
+ </tr>
+</table>
+<p><em>Table 1: List of vendors and products that support outputting I3S layers.</em></p>
 
-   ![App](./software_stack.png "Table showing the various ArcGIS software products that support Scene Layers")    
-Table.1 Various scene layer types as supported by different ArcGIS software products (rows indicate software product and version).
+The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> The software products listed below support publishing as well as consuming Scene Layers.
+
+<table>
+  <tr>
+    <th rowspan="2"><br>ArcGIS Software<br></th>
+    <th colspan="3">Scene Layer Types<br></th>
+    <th rowspan="2"><br>Publishing</th>
+    <th rowspan="2"><br>Consuming</th>
+  </tr>
+  <tr>
+    <td>3D Objects</td>
+    <td>Integrated Meshes</td>
+    <td>Points</td>
+  </tr>
+  <tr>
+    <td>ArcGIS.com</td>
+    <td>Current</td>
+    <td>Current</td>
+    <td>Current</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>ArcGIS for Server</td>
+    <td>10.4.1</td>
+    <td>10.4.1</td>
+    <td>10.4.1</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Portal for ArcGIS</td>
+    <td>10.4.1</td>
+    <td>10.4.1</td>
+    <td>10.4.1</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>ArcGIS Pro</td>
+    <td>1.3</td>
+    <td>1.3</td>
+    <td>1.3</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>ArcGIS Earth</td>
+    <td>1.2</td>
+    <td>1.2</td>
+    <td>Planned</td>
+    <td></td>
+    <td>Yes</td>
+  </tr>
+  </table>
+
+<em>Table 2: Scene layer types and current product versions supporting Scene Layers.</em>
 
 
 The list of supported scene layer types in the ArcGIS platform is growing at every release. For example, support for <em>PointCloud</em> scene layer is currently in active development. The complete specification is expected to be released in Q3 of 2016 and production software implementation shortly in Q4 of 2016.
-
-
 
 ## Contributing
 

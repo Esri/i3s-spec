@@ -584,7 +584,7 @@ definition of this default symbology with the web scene item JSON file. The
 3dSceneLayerInfo has the following structure :</p>
 
 <div>
-<img src="images/figure-07.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document">
+<img src="images/figure-06.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document">
 <p><em>Figure 6: Logical schema of the 3dSceneLayerInfo document</em></p>
 </div>
 

@@ -102,16 +102,16 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>ArcGIS Pro</td>
-    <td>1.3</td>
-    <td>1.3</td>
-    <td>1.3</td>
+    <td>1.4</td>
+    <td>1.4</td>
+    <td>1.4</td>
     <td>Yes</td>
     <td>Yes</td>
   </tr>
   <tr>
     <td>ArcGIS Earth</td>
-    <td>1.2</td>
-    <td>1.2</td>
+    <td>1.3</td>
+    <td>1.3</td>
     <td>Planned</td>
     <td></td>
     <td>Yes</td>

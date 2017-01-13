@@ -1,0 +1,50 @@
+﻿{
+ "targetProfile": "meshpyramids",
+ "resource": "SharedResource",
+ "version": "1.5",
+ "rules": [
+  {
+   "qname": "materialDefinitions",
+   "required": true,
+   "containerType": "Object",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "materialDefinitions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/MaterialDefinitionRules.json"
+  },
+  {
+   "qname": "textureDefinitions",
+   "required": true,
+   "containerType": "Object",
+   "cardinality": [
+    0,
+    -1
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "textureDefinitions.*",
+   "required": true,
+   "valueType": "object",
+   "valueSchema": "NamedRuleset",
+   "namedRuleset": "../../all/rules/TextureDefinitionRules.json"
+  },
+  {
+   "qname": "shaderDefinitions",
+   "required": false,
+   "containerType": "None",
+   "valueType": "object",
+   "valueSchema": "None"
+  }
+ ]
+}

@@ -1,0 +1,297 @@
+﻿{
+	"targetProfile": "all",
+	"resource": "GeometryArrayBufferView",
+	"version": "1.4",
+	"rules": [{
+		"qname": "id",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [0,
+		1.7976931348623157e+308]
+	},
+	{
+		"qname": "type",
+		"required": true,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "None",
+		"valueDomain": ["ArrayBufferView"]
+	},
+	{
+		"qname": "transformation",
+		"required": false,
+		"containerType": "Array",
+		"cardinality": [
+			16,
+			16
+		],
+		"valueType": "object",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "transformation.*",
+		"required": false,
+		"valueType": "number",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "params",
+		"required": true,
+		"containerType": "None",
+		"valueType": "object",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "params.type",
+		"required": true,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "None",
+		"valueDomain": [
+			"triangle_strip",
+			"triangles",
+			"line",
+			"point",
+			"polygon"
+		]
+	},
+	{
+		"qname": "params.topology",
+		"required": true,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "None",
+		"valueDomain": [
+			"PerAttributeArray", 
+			"Indexed"
+		]
+	},
+	{
+		"qname": "params.material",
+		"required": false,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "Pointer"
+	},
+	{
+		"qname": "params.texture",
+		"required": false,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "Pointer"
+	},
+	{
+		"qname": "params.rings",
+		"required": true,
+		"containerType": "Array",
+		"cardinality": [
+			1,
+			-1
+		],
+		"valueType": "object",
+		"valueSchema": "None",
+		"valueDependencies": [ {
+			"to" : "../type",
+			"type" : "IS",
+			"value" : "polygon"
+		} ] 
+	},
+	{
+		"qname": "params.rings.*",
+		"required": false,
+		"containerType": "None",
+		"valueType": "NamedRuleset",
+		"valueSchema": "./GeometryRingRules.json"
+	},
+	{
+		"qname": "params.vertexAttributes",
+		"required": true,
+		"containerType": "Object",
+		"cardinality": [
+			1,
+			-1
+		],
+		"valueType": "object",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "params.vertexAttributes.*",
+		"required": true,
+		"valueType": "object",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "params.vertexAttributes.*.byteOffset",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [0,
+		1.7976931348623157e+308]
+	},
+	{
+		"qname": "params.vertexAttributes.*.count",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [0,
+		1.7976931348623157e+308]
+	},
+	{
+		"qname": "params.vertexAttributes.*.valueType",
+		"required": true,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "None",
+		"valueDomain": [
+			"UInt8",
+			"UInt16",
+			"UInt32",
+			"Int16",
+			"Int32",
+			"Int64",
+			"Float32",
+			"Float64"
+		]
+	},
+	{
+		"qname": "params.vertexAttributes.*.valuesPerElement",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [0,
+		16]
+	},
+	{
+		"qname": "params.faces",
+		"required": true,
+		"containerType": "Object",
+		"cardinality": [
+			1,
+			-1
+		],
+		"valueType": "object",
+		"valueSchema": "None",
+		"valueDependencies": [ {
+			"to" : "../topology",
+			"type" : "IS",
+			"value" : "Indexed"
+		} ]
+	},
+	{
+		"qname": "params.faces.*",
+		"required": true,
+		"valueType": "object",
+		"valueSchema": "None"
+	},
+	{
+		"qname": "params.faces.*.byteOffset",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "None",
+		"valueRange": [5e-324,
+		1.7976931348623157e+308]
+	},
+	{
+		"qname": "params.faces.*.count",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [
+			0,
+			1.7976931348623157e+308
+		]
+	},
+	{
+		"qname": "params.faces.*.valueType",
+		"required": true,
+		"containerType": "None",
+		"valueType": "string",
+		"valueSchema": "None",
+		"valueDomain": [
+			"UInt8",
+			"UInt16",
+			"UInt32",
+			"Int16",
+			"Int32",
+			"Int64",
+			"Float32",
+			"Float64"
+		]
+	},
+	{
+		"qname": "params.faces.*.valuesPerElement",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [0,
+		1.7976931348623157e+308]
+	},
+	{
+		"qname" : "params.featureAttributes",
+		"required" : true,
+		"containerType" : "Object",
+		"cardinality" : [
+			1,
+			-1
+		],
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
+		"qname" : "params.featureAttributes.*",
+		"required" : true,
+		"valueType" : "object",
+		"valueSchema" : "None"
+	}, 
+	{
+		"qname": "params.featureAttributes.*.byteOffset",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "None",
+		"valueRange": [5e-324,
+		1.7976931348623157e+308]
+	},
+	{
+		"qname": "params.featureAttributes.*.count",
+		"required": true,
+		"containerType": "None",
+		"valueType": "number",
+		"valueSchema": "Integer",
+		"valueRange": [
+			0,
+			1.7976931348623157e+308
+		]
+	},
+	{
+		"qname" : "params.featureAttributes.*.valueType",
+		"required" : true,
+		"containerType" : "None",
+		"valueType" : "string",
+		"valueSchema" : "None",
+		"valueDomain" : [
+			"UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64"
+		]
+	}, 
+	{
+		"qname" : "params.featureAttributes.*.valuesPerElement",
+		"required" : true,
+		"containerType" : "None",
+		"valueType" : "number",
+		"valueSchema" : "Integer",
+		"valueRange" : [
+			0,
+			16
+		]
+	}
+	
+	]
+}

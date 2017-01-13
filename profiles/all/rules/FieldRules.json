@@ -1,0 +1,31 @@
+{
+ "targetProfile": "all",
+ "resource": "Field",
+ "version": "1.4",
+ "rules": [
+  {
+   "qname": "name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "type",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None",
+   "valueDomain": [
+    "esriFieldTypeOID", "esriFieldTypeGeometry", "esriFieldTypeString", "esriFieldTypeFloat", "esriFieldTypeDouble", "esriFieldTypeLong", "esriFieldTypeShort", "esriFieldTypeVertexAttribute"
+   ]
+  },
+  {
+   "qname": "alias",
+   "required": false,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  }
+ ]
+}

@@ -146,13 +146,12 @@ Layers are described using two properties, type and profile. The type of a layer
 
 <h2><a name="_3">Coordinate Reference Systems</a></h2>
 
-<p>Indexed 3D Scene Layers have to fulfill several, in part conflicting, requirements when it comes
-to the selection of spatial reference systems to use:</p>
+<p>Indexed 3D Scene Layers have to fulfill several requirements when it comes to the selection of spatial reference systems to use:</p>
 
 <ul>
 	<li>Minimize the need for re-projection on the client side</li>
 	<li>Support data sets with global extent</li>
-	<li>Render easily in Planar (Projected Cartesian) as well as Globe (Geocentric Cartesian) modes</li>
+	<li>Render easily in Planar (Projected Cartesian) as well as Globe (Spherical Coordinates) modes</li>
 	<li>Support local data with very high positional accuracy</li>
 	<li>Support global data sets with high positional accuracy</li>
 </ul>
@@ -160,7 +159,7 @@ to the selection of spatial reference systems to use:</p>
 <p>To match these requirements, the following approach is taken :</p>
 
 <ol>
-	<li>Use of a single, global Geographic CRS for geographical location in all index-related data structures such as node bounding spheres. Coordinate bounds for such structures are in the range (-180.0000, -90.0000, 180.0000, 90.0000), Elevation and node minimum bounding sphere radius are specified in meters. Allowed EPSG codes:
+	<li>Use of a single, global CRS for geographical location in all index-related data structures such as node bounding spheres. Coordinate bounds for such structures are in the range (-180.0000, -90.0000, 180.0000, 90.0000), Elevation and node minimum bounding sphere radius are specified in meters. Allowed EPSG codes:
 		<ol>
 			<li>EPSG:4326 (WGS84)</li>
 		</ol>
@@ -170,7 +169,7 @@ to the selection of spatial reference systems to use:</p>
 	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<p>Begining with version 1.5, I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
+<p>I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
 
 <h3><a name="_3_1">Height Models</a></h3>
 
@@ -215,15 +214,15 @@ the spatial extent of each node will be.
 </p>
 
 <p>
-I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. quadtrees and octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree via REST. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
+I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. quadtrees and octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree exposed as web resouces. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
 </p>
 
 <p>
-All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by  I3S. As  string based treekeys or as integers based on a fixed linearization of the nodes.  
+All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by I3S. As string based ids, refered here to as <i>treekeys</i>, or as integers based on a fixed linearization of the nodes.  
 </p>
 
 <p>
-In the treekey format, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension. Treekeys are strings in which levels are separated by dashes:
+In the <i>treekey</i> format, which is loosely modeled on binary search trees, where the key value is used to indicate both the level and sibling association of a given node, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension. Treekeys are strings in which levels are separated by dashes:
 "3-1-0" has 3 numeric elements, hence the node is on level 4 ("root" node is at level 1) and the node "3-1" is its parent.  
 The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
 
@@ -233,13 +232,12 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 </div>
 
 
-<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture data, attributes). The decision to render the node is based on node’s bounding-volume visibility in the current 3D view and a visual quality determination made by the client using the information included in the node index document. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.</p>
+<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture, attributes). The decision to render a node by the client application is based on its bounding-volume visibility in the current 3D view. Once the node's bounding volume is determined to be within the current 3D view of the application, then further evalution is performed by the client app to determine the visual quality of the node. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.</p>
 
-<p>The specification supports both bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.</p>
+<p>The specification supports both minimum bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.</p>
 
 <p>Each interior node logically contains or covers the set of information covered by the nodes below it and participates in a path to the leaf nodes below it. Interior nodes may contain generalized or reduced representation of the information contained in descendant nodes.
 </p>
-
 
 <p>
 The I3S format models node information using a set of resources - Node Index Documents, Feature Data, Geometry, Attributes, Textures and Shared Descriptors, all of which together represent the set of features or data elements for a given node. These resources are always attached to a node.</p>
@@ -261,8 +259,7 @@ An I3S profile can choose between a single text-based feature-data sub-resource 
 <p>Figure 2: Nodes and their attached resources.</p>
 </div>
 
-<p>Per node, there is exactly one Node Index Document and one Shared Descriptors resource document. FeatureData, Geometry, Texture and Attribute resources can be split into bundles for optimal network transfer and client-side reactivity. This allows balancing between index size,
-feature splitting (with a relatively large node capacity between 1MB and 10MB)
+<p>Per node, there is exactly one Node Index Document and one Shared Descriptors resource document. FeatureData, Geometry, Texture and Attribute resources can be split into bundles for optimal network transfer and client-side reactivity. This allows balancing between index size, feature splitting (with a relatively large node capacity between 1MB and 10MB)
 and optimal network usage (with a smaller bundle size, usually in the range of
 64kB to 512kB).</p>
 
@@ -363,7 +360,7 @@ I3S Scene Layers also include additional optional metadata on the LoD generation
 
 <p>I3S Layers can  be used to represent input data that already have multiple, semantically authored, levels of detail.</p>
 
-<p>The most common method for doing so is to represent each semantically authored input level of detail as its own I3S Layer with distance thresholds on the layer that capture the range of distances at which the layer should be used. At further or closer distances applications switch to using a different I3S layer representing a different input semantically authored level of detail. The set of such I3S Layers representing a single modeled real world phenomena (such as buildings for a city) can be grouped within the same I3S service. For each I3S Layer within the set, the features in the leaf nodes of the index tree represent the modeled features at the level of detail presented in the input. Additional automatically generated levels of detail can optionally be generated extending the viewing range of each semantically input level of detail if so desired.</p>
+<p>The most common method for doing so is to represent each semantically authored input level of detail as its own I3S Layer with visibility thresholds on the layer that capture the range of distances at which the layer should be used. At further or closer distances applications switch to using a different I3S layer representing a different input semantically authored level of detail. The set of such I3S Layers representing a single modeled real world phenomena (such as buildings for a city) can be grouped within the same I3S service. For each I3S Layer within the set, the features in the leaf nodes of the index tree represent the modeled features at the level of detail presented in the input. Additional automatically generated levels of detail can optionally be generated extending the viewing range of each semantically input level of detail if so desired.</p>
 
 <p>It is also possible to develop tools that load all of the input semantical level of detail information for the modeled entities in the input into a single I3S layer. In this case the height of the I3S index tree is fixed to the number of levels of detail present in the input and both the feature identities and geometries in each node are set based upon the input data. </p>
 
@@ -2199,7 +2196,7 @@ The following entries are permitted in the Metadata.json file that is part of ev
 	<tr>
 		<td>I3SVersion</td>
 		<td>True</td>
-		<td>One of {1.2, 1.3, 1.4, 1.5, *1.6*}</td>
+		<td>One of {1.2, 1.3, 1.4, *1.6*}</td>
 	</tr>
 	<tr>
 		<td>nodeCount</td>

@@ -126,13 +126,13 @@ The list of supported scene layer types in the ArcGIS platform is growing at eve
 ## Contributing
 
 You are very much invited to fork this repository to a public or private repository and to send Pull Requests if you have ideas for improvements or have found bugs in this documentation. Creating a Fork solely for this purpose
-does not constitute the creation and distribution of a derivative work. Please see our [guidelines for contributing](https://github.com/esri/contributing).
+does not constitute the creation and distribution of a derivative work. Please see our [guidelines for  contributing](https://github.com/esri/contributing).
 
 ## License for Indexed 3D Scene Format and REST Endpoint Specification
 
-Copyright 2016 Esri
+Copyright 2015 - 2017 Esri
 
-The specification is licensed under the [Creative Commons Attribution-NoDerivs 3.0 Unported License](http://creativecommons.org/licenses/by-nd/3.0/).
+The specification is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International Public License](https://creativecommons.org/licenses/by-nd/4.0/legalcode).
 You can implement the specification in services, clients or processing tools without restrictions.
 
 You may also extend or modify the specification using the built-in extension and profiling mechanisms, however modified or extended versions of the specification may not be redistributed. The specification may only be redistributed in its unmodified version, under the same license.
@@ -147,6 +147,12 @@ Under the following terms:
 - Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 - No derivatives — If you remix, transform, or build upon the material, you may not distribute (see Note below) the modified material.
 - No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+License History:  
+
+Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are licensed under the older Creative Commons Attribution-NoDerivs 3.0 Unported license.  
+Version 1.6 – present (dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
+Copies of both licenses are included in this repository.
 
 ## License for JSON resources, validator, and examples
 

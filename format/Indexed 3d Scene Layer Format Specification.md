@@ -1,10 +1,10 @@
 <h2>Esri Indexed 3d Scene Layer (I3S) and <br>
 Scene Layer Package (*.slpk) Format Specification</h2>
 
-<p>Version 1.6, Sep. 14, 2016</p>
+<p>Version 1.6, Feb. 1, 2017</p>
 <p style="font-size:80%">
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
-<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt </p>
+<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
 <p>
 
 This document specifies the Indexed 3D Scene layer (I3S) format, an open 3d content delivery
@@ -146,12 +146,12 @@ Layers are described using two properties, type and profile. The type of a layer
 
 <h2><a name="_3">Coordinate Reference Systems</a></h2>
 
-<p>Indexed 3D Scene Layers have to fulfill several requirements when it comes to the selection of spatial reference systems to use:</p>
+<p>Indexed 3D Scene Layers have to fulfill several requirements when it comes to the selection of Coordinate Reference Systems (CRS) to use:</p>
 
 <ul>
 	<li>Minimize the need for re-projection on the client side</li>
 	<li>Support data sets with global extent</li>
-	<li>Render easily in Planar (Projected Cartesian) as well as Globe (Spherical Coordinates) modes</li>
+	<li>Render easily in coordinate systems for projected CRSs as well as coordinate systems for geodetic CRSs</li>
 	<li>Support local data with very high positional accuracy</li>
 	<li>Support global data sets with high positional accuracy</li>
 </ul>
@@ -159,24 +159,30 @@ Layers are described using two properties, type and profile. The type of a layer
 <p>To match these requirements, the following approach is taken :</p>
 
 <ol>
-	<li>Use of a single, global CRS for geographical location in all index-related data structures such as node bounding spheres. Coordinate bounds for such structures are in the range (-180.0000, -90.0000, 180.0000, 90.0000), Elevation and node minimum bounding sphere radius are specified in meters. Allowed EPSG codes:
+	<li>Use of a single, geodetic CRS for geographical location in all index-related data structures such as node bounding spheres. Coordinate bounds for such structures are in the range (-180.0000, -90.0000, 180.0000, 90.0000), Elevation and node minimum bounding sphere (MBS) radius are specified in meters. Allowed Coordinate system using  EPSG code includes:
 		<ol>
-			<li>EPSG:4326 (WGS84)</li>
+			<li>EPSG: 4326</li>
 		</ol>
 	</li>
-	<li>Use of a geographic or of various projected CRS, where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) and using the WGS84 datum, for all vertex positions.		
+	<li>Use of various geodetic CRS (includig cartesian coordinate systems) is allowed where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's MBS) for all vertex positions.
 	</li>
-	<li>Axis Order: All positions, independent of the used geographic or projected CRS, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
+	<li>Axis Order: All positions, independent of the CRS used, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis points upwards towards the sky.
 </ol>
 
-<p>I3S profiles support outputting 3d content in two modes - <i>Global</i> and <i>Local</i> modes. In <i>Global</i> mode only EPSG:4326 (WGS84) is the supported CRS for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all other projected and geographic CRS are allowed. The only requirement is that both index and position vertex must have the same CRS.</p>
+<p>All I3S profiles support outputting 3d content in two modes - <i>Global</i> or  <i>Local</i> modes. In <i>Global</i> mode only EPSG code 4326 (WGS84) is the supported coordinate system for both index and vertex positions - represented as lon, lat, elev. In <i>Local</i> mode all geodetic CRS (includig cartesian coordinate systems) are allowed. The only requirement is that both index and position vertex must have the same coordinate system.</p>
+
+<p> All I3S layers indicate the coordinate system via the <code>spatialReference</code> property in the 3dSceneLayerInfo resource. This property is normative.</p>
 
 <h3><a name="_3_1">Height Models</a></h3>
 
-The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance. At version 1.5 I3S has added vertical coordinate system in the form of vcsWkid to the 3dSceneLayerInfo resource.
+The specification accommodates declaration of a vertical coordinate system that may be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows I3S to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  
+
+At version 1.5 I3S has added support for a vertical coordinate systems. The Well-known Text (wkt) string representation of the CRS now includes the vertical coordinate system utilized by the layer. The spatialReference property also includes a Well-known Id (wkid) and a Vertical Coordinate System Well-known ID (vcsWkid) representations, that could alternatively be utilized by a client applicaiton consuming the layer instead of the wkt.
+
+In addition to the detailed spatialReference property that describes the layers horizontal and vertical CRSs, the 3dSceneLayerInfo resource also includes a coarse metadata property called *heightModelInfo*, which can be used by a client application to quickly identify if the layers' height model is either orthometric or ellipsoidal.  
 
 <pre><code>
-	"spatialReference": // The spatial reference of the layer including the vertical coordinate system. wkt is included to support custom spatial references
+	"spatialReference": // the horizontal and vertical coordinate system of the layer
 	{
 		"wkid": 4326,
 		"latestWkid": 4326,
@@ -184,17 +190,16 @@ The specification accommodates declaration of a vertical coordinate system that 
 		"latestVcsWkid": 3855,
 		"wkt": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],
 		VERTCS[\"EGM2008_Geoid\",VDATUM[\"EGM2008_Geoid\"],PARAMETER[\"Vertical_Shift\",0.0],PARAMETER[\"Direction\",1.0],UNIT[\"Meter\",1.0]]}"
-		},
-		"heightModelInfo": { //enables consuming clients to perform quick test whether this layer is mashable or not with exisitng content they have.
-			"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
-			"ellipsoid": "wgs84 (G1674)/", //datum realization
-			"heightUnit": "meter" //units
-		},  	
-
+	},
+	"heightModelInfo":  // a coarse metadata indicating the layers height Model
+	{
+		"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
+		"ellipsoid": "wgs84 (G1674)/", //datum realization
+		"heightUnit": "meter" //units
+		}
 </code></pre>
 
-
-An example illustrating the height model information within a 3dSceneLayerInfo. The example shows the spatial reference object (that includes definitions for both horizontal (wkid) and vertical (vcsWkid) coordinate systems) as well as a heightModelInfo object that client application could use to quickly determine layer mash-ability.
+An example illustrating the coordinate system and hieght model of a layer in I3S. The spatialReference object includes a Well-known Text (wkt) string representation of the CRS for both horizontal and vertical coordinate systems. The heightModelInfo object that client application could use to quickly determine layer mash-ability.
 
 
 <h2><a name="_4">Indexed Scene Layers - Organization and Structure</a></h2>

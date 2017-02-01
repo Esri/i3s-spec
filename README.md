@@ -33,7 +33,7 @@ I3S is intrinsically designed to support 3D geospatial content and supports the 
 
 ## Open Specification
 
-I3S is an open specification for the purpose of encouraging community adoption, encouraging feedback, and for ensuring that adopting organizations would have flexibility in access to 3D data. The specification is licensed under the Creative Commons Attribution-NoDerivs 3.0 Unported License. Implementers can use the specification in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
+For the purpose of encouraging community adoption and feedback, I3S is an open specification. By being an open specification, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The specification is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the specification in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
 
 ## Where can I use...?
 
@@ -121,7 +121,7 @@ The Table below shows the various scene layer types that are currently supported
 <em>Table 2: Scene layer types and current product versions supporting Scene Layers.</em>
 
 
-The list of supported scene layer types in the ArcGIS platform is growing at every release. For example, support for <em>PointCloud</em> scene layer is currently in active development. The complete specification is expected to be released in Q3 of 2016 and production software implementation shortly in Q4 of 2016.
+The list of supported scene layer types in the ArcGIS platform is growing at every release. For example, support for <em>PointCloud</em> scene layer is currently in active development.
 
 ## Contributing
 

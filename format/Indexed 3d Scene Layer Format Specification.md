@@ -582,8 +582,7 @@ describes a an active SceneService instance.
 <h3><a name="_6_2">3dSceneLayerInfo</a></h3>
 
 The Class 3dSceneLayerInfo describes the properties of a single
-layer in a store, including the default symbology to use. It shares the
-definition of this default symbology with the *drawingInfo* object, an object which contains stylization information for a feature layer, and is specified as part of a web scene specification. For more infomation on web scene objects, including the *drawingInfo* object see the [web scene specification](https://developers.arcgis.com/web-scene-specification/objects/).
+layer in a store, including the default symbology, as specified in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>, which contains stylization information for a feature layer.
 The Class 3dSceneLayerInfo has the following structure :
 
 <div>
@@ -819,32 +818,32 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	</tr>
 	<tr>
 		<td>header</td>
-		<td>HeaderAttribute[0..*]</td>
+		<td>HeaderAttribute[0..\*]</td>
 		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
 	</tr>
 	<tr>
 		<td>ordering</td>
-		<td>String[1..*]</td>
+		<td>String[1..\*]</td>
 		<td>Provides the order of the keys in vertexAttributes and faceAttributes, if present.</td>
 	</tr>
 	<tr>
 		<td>vertexAttributes</td>
-		<td>FeatureData::GeometryAttribute[1..*]</td>
+		<td>FeatureData::GeometryAttribute[1..\*]</td>
 		<td>Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates</td>
 	</tr>
 	<tr>
 		<td>faces</td>
-		<td>FeatureData::GeometryAttribute[0..*]</td>
+		<td>FeatureData::GeometryAttribute[0..\*]</td>
 		<td>Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates</td>
 	</tr>
 	<tr>
 		<td>featureAttributeOrder</td>
-		<td>String[1..*]</td>
+		<td>String[1..\*]</td>
 		<td>Provides the order of the keys in featureAttributes, if present.</td>
 	</tr>
 	<tr>
 		<td>featureAttributes</td>
-		<td>FeatureData::GeometryAttribute[0..*]</td>
+		<td>FeatureData::GeometryAttribute[0..\*]</td>
 		<td>Declaration of the attributes per feature in the geometry, such as feature ID or face range</td>
 	</tr>
 </table>
@@ -928,12 +927,12 @@ Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses
 	</tr>
 	<tr>
 		<td>header</td>
-		<td>String[1..]</td>
+		<td>String[1..\*]</td>
 		<td>Declares the headers of the binary attribute data. One of {<code>count</code>, <code>attributeValuesByteCount</code>}. <code>count</code>, should always be present and indicates the count of features in the attribute storage. <code>attributeValuesByteCount</code> will only be present for strings data type and indicates the total byte count of the string data for all features in the binary attribute buffer.</td>
 	</tr>
 	<tr>
 		<td>ordering</td>
-		<td>String[1..]</td>
+		<td>String[1..*\]</td>
 		<td>Declares the ordering indicating the order in which the array of attribute byte counts and the array of attribute values are stored in the binary attribute data. One of {<code>attributeByteCounts</code>, <code>attributeValues</code>}. <code>attributeValues</code>, should always be present. <code>attributeByteCounts</code> should only be present when working with string data types.</td>
 	</tr>
 	<tr>
@@ -990,8 +989,200 @@ by clients to better understand how to work with the index.</p>
 
 <p><em>Table 8: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo document</em></p>
 
+<h4>Class DrawingInfo</h4>
+
+DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. When the *DrawingInfo* object is present in the <code>3dSceneLayerInfo</code> Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers, also allow capturing the *DrawingInfo* object as part of the binary I3S representation, in support of applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the <code>CachedDrawingInfo</code> Class, indicating the component of the *DrawingInfo* object that's captured as part of the binary I3S representation.  
+
+The Class DrawingInfo has the following structure :
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>renderer</td>
+		<td>DrawingInfo::Renderer</td>
+		<td>The renderer object encapsulates the drawing information of the layer.</td>
+	</tr>
+</table>
+<p><em>Table 9: Attributes of the Class <strong>DrawingInfo</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class Renderer</h4>
+
+<p>The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol and any label or descriptions associated with it.</p>
+
+The Class Renderer has the following structure :
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>String</td>
+		<td>The renderer type. One of <code>{\*Simple\*, UniqueValue, ClassBreaks}</code>. The default, <code>simple</code> renderer is a renderer that uses one symbol only. </td>
+	</tr>
+	<tr>
+		<td>symbol</td>
+		<td>Renderer::Symbol</td>
+		<td>An object that represents how all features of this I3S layer will be drawn.</td>
+	</tr>
+	<tr>
+		<td>label</td>
+		<td>String</td>
+		<td>The text string that may be used to label a symbol when displayed in a table of content of an application.</td>
+	</tr>
+	<tr>
+		<td>description</td>
+		<td>String</td>
+		<td>The text string that does not appear in the table of contents but may appear in the legend.</td>
+	</tr>
+</table>
+<p><em>Table 10: Attributes of the Class <strong>Renderer</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class Symbol</h4>
+
+<p>
+The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only supported type of Symbol.</p>
+
+The Class Symbol has the following structure :
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>String</td>
+		<td>Specifies the type of symbol used. Value of this property must be <code>{\*MeshSymbol3D\*}</code>. </td>
+	</tr>
+	<tr>
+		<td>symbolLayers</td>
+		<td>Renderer::SymbolLayers</td>
+		<td>An object that represents how all features of this I3S layer will be drawn.</td>
+	</tr>
+</table>
+<p><em>Table 11: Attributes of the Class <strong>Symbol</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class SymbolLayers</h4>
+
+<p>A Collection of symbol objects used to visualize the feature.</p>
+
+The Class SymbolLayers has the following structure :
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>type</td>
+		<td>String</td>
+		<td>Specifies the type of symbol used. Value of this property must be <code>{\*Fill\*}</code>.</td>
+	</tr>
+	<tr>
+		<td>material</td>
+		<td>SymbolLayers::Material</td>
+		<td>The material used to shade the geometry.</td>
+	</tr>
+	<tr>
+		<td>outline</td>
+		<td>SymbolLayers::Outline</td>
+		<td>The outline of the mesh fill symbol.</td>
+	</tr>
+</table>
+<p><em>Table 12: Attributes of the Class <strong>SymbolLayers</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class Material</h4>
+
+<p>The material used to shade the geometry.</p>
+
+The Class Material has the following structure :
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>Material::Color</td>
+		<td>Color is represented as a three-element array (RGB).</td>
+	</tr>
+	<tr>
+		<td>transparency</td>
+		<td>Integer</td>
+		<td>Indicates the transparency value associated with the symbol.The value has to lie between 100 (full transparency) and 0 (full opacity).</td>
+	</tr>
+</table>
+<p><em>Table 13: Attributes of the Class <strong>Material</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class Outline</h4>
+
+<p>The Class Outline defines the outline of the mesh fill symbol. It has properties such as color, size and transparency.</p>
+
+The Class Outline has the following structure :
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>Material::Color</td>
+		<td>Color is represented as a three-element array. The three elements represent values for red, green and blue in that order.</td>
+	</tr>
+	<tr>
+		<td>size</td>
+		<td>Integer</td>
+		<td>Outline size in points, positive only.</td>
+	</tr>
+	<tr>
+		<td>transparency</td>
+		<td>Integer</td>
+		<td>Indicates the transparency value associated with the outline of the symbol.The value has to lie between 100 (full transparency) and 0 (full opacity).</td>
+	</tr>
+</table>
+<p><em>Table 14: Attributes of the Class <strong>Material</strong> within the 3dSceneLayerInfo document</em></p>
+
+<h4>Class Color</h4>
+
+<p>The Color class defines the color of a symbol or the outline. Color is represented as a three-element array. The three elements represent values for red, green and blue in that order. Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.</p>
+
+The Class Color has the following structure :
+
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Type</strong></td>
+		<td><strong>Description</strong></td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>String</td>
+		<td>The renderer type. One of <code>{\*Simple\*, UniqueValue, ClassBreaks}</code>. The default, <code> simple</code> renderer is a renderer that uses one symbol only. </td>
+	</tr>
+	<tr>
+		<td>symbolLayers</td>
+		<td>Renderer::Symbol</td>
+		<td>An object that represents how all features of this I3S layer will be drawn.</td>
+	</tr>
+</table>
+<p><em>Table 15: Attributes of the Class <strong>Color</strong> within the 3dSceneLayerInfo document</em></p>
+
 <h4>Class CachedDrawingInfo</h4>
 
+<p> The Class CachedDrawingInfo is used to indicate if the *DrawingInfo* object is captured as part of the binary I3S representation.</p>
+
+The Class CachedDrawingInfo has the following structure :
 <table>
 	<tr>
 		<td><strong>Name</strong></td>
@@ -1005,11 +1196,7 @@ by clients to better understand how to work with the index.</p>
 	</tr>
 </table>
 
-<p><em>Table 9: Attributes of the Class <strong>CachedDrawingInfo</strong> within the 3dSceneLayerInfo document</em></p>
-
-<h4>Class DrawingInfo</h4>
-
-<p>DrawingInfo and the associated classes contain the default symbology for this Layer.</p>
+<p><em>Table 16: Attributes of the Class <strong>CachedDrawingInfo</strong> within the 3dSceneLayerInfo document</em></p>
 
 <h3><a name="_6_3">3dNodeIndexDocument</a></h3>
 
@@ -1121,7 +1308,7 @@ object in a 3dNodeIndexDocument.</p>
 	</tr>
 </table>
 
-<p><em>Table 9: Attributes of the Class <strong>Node</strong> within the NodeIndexDocument</em></p>
+<p><em>Table 17: Attributes of the Class <strong>Node</strong> within the NodeIndexDocument</em></p>
 
 <h4>Class NodeReference</h4>
 
@@ -1163,7 +1350,7 @@ whether to load that node or not, as well as maintaining store consistency.</p>
 	</tr>
 </table>
 
-<p><em>Table 10: Attributes of the Class <strong>NodeReference</strong> within the NodeIndexDocument</em></p>
+<p><em>Table 18: Attributes of the Class <strong>NodeReference</strong> within the NodeIndexDocument</em></p>
 
 <h4>Class Resource</h4>
 
@@ -1209,7 +1396,7 @@ resources.</p>
 	</tr>
 </table>
 
-<p><em>Table 11: Attributes of the Class <strong>Resource</strong> within the NodeIndexDocument</em></p>
+<p><em>Table 19: Attributes of the Class <strong>Resource</strong> within the NodeIndexDocument</em></p>
 
 <h4>Class Feature</h4>
 
@@ -1254,7 +1441,7 @@ In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking
 	</tr>
 </table>
 
-<p><em>Table 12: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
+<p><em>Table 20: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
 
 <h4>Class LodSelection</h4>
 
@@ -1295,7 +1482,7 @@ min/avg/max values, typically only one or two are used.</p>
 	</tr>
 </table>
 
-<p><em>Table 13: Attributes of the Class <strong>LodSelection</strong> within the NodeIndexDocument</em></p>
+<p><em>Table 21: Attributes of the Class <strong>LodSelection</strong> within the NodeIndexDocument</em></p>
 
 <h3><a name="_6_4">FeatureData</a></h3>
 
@@ -1357,7 +1544,7 @@ representative of a feature present in the real, geographic world.</p>
 	</tr>
 </table>
 
-<p><em>Table 14: Attributes of the Class <strong>Feature</strong> within the FeatureData document</em></p>
+<p><em>Table 22: Attributes of the Class <strong>Feature</strong> within the FeatureData document</em></p>
 
 <h4>Class FeatureAttribute</h4>
 
@@ -1386,7 +1573,7 @@ representative of a feature present in the real, geographic world.</p>
 	</tr>
 </table>
 
-<p><em>Table 15: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
+<p><em>Table 23: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
 
 <h4>Class Geometry</h4>
 
@@ -1420,7 +1607,7 @@ representative of a feature present in the real, geographic world.</p>
 	</tr>
 </table>
 
-<p><em>Table 16: Attributes of the Class <strong>Geometry</strong> within the FeatureData document</em></p>
+<p><em>Table 24: Attributes of the Class <strong>Geometry</strong> within the FeatureData document</em></p>
 
 <h4>Class GeometryParams</h4>
 
@@ -1453,7 +1640,7 @@ representative of a feature present in the real, geographic world.</p>
 	</tr>
 </table>
 
-<p><em>Table 17: Attributes of the Class <strong>GeometryReferenceParams</strong> within the FeatureData document</em></p>
+<p><em>Table 25: Attributes of the Class <strong>GeometryReferenceParams</strong> within the FeatureData document</em></p>
 
 <h4>Class VestedGeometryParams</h4>
 
@@ -1489,7 +1676,7 @@ representative of a feature present in the real, geographic world.</p>
 	</tr>
 </table>
 
-<p><em>Table 18: Attributes of the Class <strong>VestedGeometryParams</strong> within the FeatureData document</em></p>
+<p><em>Table 26: Attributes of the Class <strong>VestedGeometryParams</strong> within the FeatureData document</em></p>
 
 <h4>Class SingleComponentParams</h4>
 
@@ -1513,7 +1700,7 @@ representative of a feature present in the real, geographic world.</p>
 	</tr>
 </table>
 
-<p><em>Table 19: Attributes of the Class <strong>SingleComponentParams</strong> within the FeatureData document</em></p>
+<p><em>Table 27: Attributes of the Class <strong>SingleComponentParams</strong> within the FeatureData document</em></p>
 
 <h4><Class Component</a></h4>
 
@@ -1548,7 +1735,7 @@ belong to, specifically with which material and texture to render them.</p>
 	</tr>
 </table>
 
-<p><em>Table 21: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
+<p><em>Table 28: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
 
 <h4>Class GeometryAttribute</h4>
 
@@ -1596,7 +1783,7 @@ which vertex positions make up a face.</p>
 	</tr>
 </table>
 
-<p><em>Table 20: Attributes of the Class <strong>GeometryAttribute</strong> within the FeatureData document</em></p>
+<p><em>Table 29: Attributes of the Class <strong>GeometryAttribute</strong> within the FeatureData document</em></p>
 
 <h3><a name="_6_5">SharedResources</a></h3>
 
@@ -1711,7 +1898,7 @@ attributes and params for the <code>"type": "standard"</code> material.</p>
 	</tr>
 </table>
 
-<p><em>Table 21: Attributes of the Class <strong>Material</strong> within the SharedResources document</em></p>
+<p><em>Table 30: Attributes of the Class <strong>Material</strong> within the SharedResources document</em></p>
 
 <h4>Class Texture</h4>
 
@@ -1751,7 +1938,7 @@ geometries.</p>
 	</tr>
 </table>
 
-<p><em>Table 22: Attributes of the Class <strong>Texture</strong> within the SharedResources document</em></p>
+<p><em>Table 31: Attributes of the Class <strong>Texture</strong> within the SharedResources document</em></p>
 
 <h4>Class Image</h4>
 
@@ -1797,7 +1984,7 @@ For details on texture organization, please refer to the section on <a href="#_7
 	</tr>
 </table>
 
-<p><em>Table 23: Attributes of the Class <strong>Image</strong> within the SharedResources document</em></p>
+<p><em>Table 32: Attributes of the Class <strong>Image</strong> within the SharedResources document</em></p>
 
 <h4>Class ShaderDefinition</h4>
 

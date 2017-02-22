@@ -86,17 +86,17 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>ArcGIS for Server</td>
-    <td>10.4.1</td>
-    <td>10.4.1</td>
-    <td>10.4.1</td>
+    <td>10.5</td>
+    <td>10.5</td>
+    <td>10.5</td>
     <td>Yes</td>
     <td></td>
   </tr>
   <tr>
     <td>Portal for ArcGIS</td>
-    <td>10.4.1</td>
-    <td>10.4.1</td>
-    <td>10.4.1</td>
+    <td>10.5</td>
+    <td>10.5</td>
+    <td>10.5</td>
     <td>Yes</td>
     <td>Yes</td>
   </tr>

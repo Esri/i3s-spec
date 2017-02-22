@@ -164,12 +164,12 @@ Layers are described using two properties, type and profile. The type of a layer
 			<li>EPSG: 4326</li>
 		</ol>
 	</li>
-	<li> All vertex positions SHALL be specified using geodetic CRS (includig cartesian coordinate systems), where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) for all vertex positions.
+	<li> All vertex positions SHALL be specified using geodetic CRS (including cartesian coordinate systems), where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) for all vertex positions.
 	</li>
 	<li>Axis Order: All positions, independent of the CRS used, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis SHALL always point upwards towards the sky.
 </ol>
 
-<p>All I3S profiles support outputting 3d content in two modes - <i>Global</i> or  <i>Local</i> modes. In <i>Global</i> mode only EPSG code 4326 (WGS84) is the supported coordinate system for both index and vertex positions and SHALL be represented as longitude, latitude, elevation. In <i>Local</i> mode all geodetic CRS (includig cartesian coordinate systems) are allowed. The only requirement is that both index and position vertex SHALL have the same CRS.</p>
+<p>All I3S profiles support outputting 3d content in two modes - <i>Global</i> or  <i>Local</i> modes. In <i>Global</i> mode only EPSG code 4326 (WGS84) is the supported coordinate system for both index and vertex positions and SHALL be represented as longitude, latitude, elevation. In <i>Local</i> mode all geodetic CRS (including cartesian coordinate systems) are allowed. The only requirement is that both index and position vertex SHALL have the same CRS.</p>
 
 <p> All I3S layers indicate the coordinate system via the <code>spatialReference</code> property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.</p>
 
@@ -177,7 +177,7 @@ Layers are described using two properties, type and profile. The type of a layer
 
 The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows the I3S approach to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  
 
-At version 1.5 I3S has added support for a vertical coordinate systems. The Well-known Text (wkt) string representation of the CRS now includes the vertical coordinate system utilized by the layer. The spatialReference property also includes a Well-known Id (wkid) and a Vertical Coordinate System Well-known ID (vcsWkid) representations, that could alternatively be utilized by a client applicaiton consuming the layer instead of the wkt.
+At version 1.5 I3S has added support for a vertical coordinate systems. The Well-known Text (wkt) string representation of the CRS now includes the vertical coordinate system utilized by the layer. The spatialReference property also includes a Well-known Id (wkid) and a Vertical Coordinate System Well-known ID (vcsWkid) representations, which could alternatively be utilized by a client applicaiton consuming the layer instead of the wkt.
 
 In addition to the detailed spatialReference property that describes the layers horizontal and vertical CRSs, the 3dSceneLayerInfo resource also includes a coarse metadata property called *heightModelInfo*, which can be used by a client application to quickly identify if the layers' height model is either orthometric or ellipsoidal.  
 
@@ -199,7 +199,7 @@ In addition to the detailed spatialReference property that describes the layers 
 		}
 </code></pre>
 
-The above example illustrates the coordinate system and hieght information model of a layer in I3S. The spatialReference object includes a Well-known Text (wkt) string representation of the CRS for both horizontal and vertical coordinate systems. The heightModelInfo object is a coarse metadata that could be used by client application to quickly determine if the the layers' horizontal and vertical coordinate systems align with that of any base map data used by the application. See Class <a href="_6_2">3dSceneLayerInfo</a> for more information.
+The above example illustrates the coordinate system and height information model of a layer in I3S. The spatialReference object includes a Well-known Text (wkt) string representation of the CRS for both horizontal and vertical coordinate systems. The heightModelInfo object is a coarse metadata that could be used by client application to quickly determine if the the layers' horizontal and vertical coordinate systems align with that of any base map data used by the application. See Class <a href="_6_2">3dSceneLayerInfo</a> for more information.
 
 
 <h2><a name="_4">Indexed Scene Layers - Organization and Structure</a></h2>
@@ -219,11 +219,11 @@ the spatial extent of each node will be.
 </p>
 
 <p>
-I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. Quadtrees and Octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree exposed as web resouces. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
+I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. Quadtrees and Octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree exposed as web resources. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
 </p>
 
 <p>
-All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by I3S: As string based identifier, refered here to as <i>treekeys</i>, or as integers based on a fixed linearization of the nodes.  
+All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by I3S: As string based identifier, referred here to as <i>treekeys</i>, or as integers based on a fixed linearization of the nodes.  
 </p>
 
 <p>
@@ -237,7 +237,7 @@ The root node always gets ID <code>"root"</code>. An example of this numbering p
 </div>
 
 
-<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture, attributes). The decision to render a node by the client application is based on its bounding-volume visibility in the current 3D view. Once the node's bounding volume is determined to be within the current 3D view of the application, then further evalution is performed by the client app to determine the visual quality of the node. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.</p>
+<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture, attributes). The decision to render a node by the client application is based on its bounding-volume visibility in the current 3D view. Once the node's bounding volume is determined to be within the current 3D view of the application, then further evaluation is performed by the client app to determine the visual quality of the node. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.</p>
 
 <p>The standard supports both minimum bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.</p>
 
@@ -277,7 +277,7 @@ the corresponding data elements to be able to render a complete feature.  Optima
 </div>
 
 
-<p>Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. In the figure :</p>
+<p>Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. In the figure:</p>
 <ul>
 <li><code>Nodes</code> are in green, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
 <li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
@@ -446,7 +446,7 @@ As shown in Table 2 below, different models of LoD generation are applicable to 
 <h3><a name="_5_3">LoD Selection Metrics</a></h3>
 
 <p>A client needs information to determine whether a node's contents are "good enough" to
-render in the current 3D view under constraints such as resolution, screen size, bandwidth and available memory and target minimum quality goals. Multiple LoD selection metrics can be included, as in the following example :</p>
+render in the current 3D view under constraints such as resolution, screen size, bandwidth and available memory and target minimum quality goals. Multiple LoD selection metrics can be included, as in the following example:</p>
 
 <pre><code>
 "lodSelection": [
@@ -502,14 +502,14 @@ The Pointer consists of two elements :</p>
 		<ul>
 			<li><em>Absolute</em> references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by a name.
 				<ul>
-					<li>Example : <code>/materialDefinitions/*/type</code></li>
+					<li>Example: <code>/materialDefinitions/*/type</code></li>
 				</ul>
 			</li>
 		</ul>
 		<ul>
 			<li><em>Relative</em> references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
 				<ul>
-					<li>Example : <code>params/ambient/0</code></li>
+					<li>Example: <code>params/ambient/0</code></li>
 				</ul>
 			</li>
 		</ul>
@@ -528,7 +528,7 @@ The Pointer consists of two elements :</p>
 
 The SceneServiceInfo file is a JSON file that describes the capability and data
 sets offered by an instance of a Scene Service.
-The SceneServiceInfo has the following structure :
+The SceneServiceInfo has the following structure:
 
 <div>
 <img src="images/figure-05.png" title="Logical schema of the SceneServiceInfo document" alt="Logical schema of the SceneServiceInfo document">
@@ -583,7 +583,7 @@ describes a an active SceneService instance.
 
 The Class 3dSceneLayerInfo describes the properties of a single
 layer in a store, including the default symbology, as specified in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>, which contains stylization information for a feature layer.
-The Class 3dSceneLayerInfo has the following structure :
+The Class 3dSceneLayerInfo has the following structure:
 
 <div>
 <img src="images/figure-06.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document">
@@ -993,7 +993,7 @@ by clients to better understand how to work with the index.</p>
 
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. When the *DrawingInfo* object is present in the <code>3dSceneLayerInfo</code> Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers, also allow capturing the *DrawingInfo* object as part of the binary I3S representation, in support of applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the <code>CachedDrawingInfo</code> Class, indicating the component of the *DrawingInfo* object that's captured as part of the binary I3S representation.  
 
-The Class DrawingInfo has the following structure :
+The Class DrawingInfo has the following structure:
 <table>
 	<tr>
 		<td><strong>Name</strong></td>
@@ -1012,7 +1012,7 @@ The Class DrawingInfo has the following structure :
 
 <p>The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol and any label or descriptions associated with it.</p>
 
-The Class Renderer has the following structure :
+The Class Renderer has the following structure:
 
 <table>
 	<tr>
@@ -1048,7 +1048,7 @@ The Class Renderer has the following structure :
 <p>
 The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only supported type of Symbol.</p>
 
-The Class Symbol has the following structure :
+The Class Symbol has the following structure:
 
 <table>
 	<tr>
@@ -1073,7 +1073,7 @@ The Class Symbol has the following structure :
 
 <p>A Collection of symbol objects used to visualize the feature.</p>
 
-The Class SymbolLayers has the following structure :
+The Class SymbolLayers has the following structure:
 
 <table>
 	<tr>
@@ -1103,7 +1103,7 @@ The Class SymbolLayers has the following structure :
 
 <p>The material used to shade the geometry.</p>
 
-The Class Material has the following structure :
+The Class Material has the following structure:
 <table>
 	<tr>
 		<td><strong>Name</strong></td>
@@ -1127,7 +1127,7 @@ The Class Material has the following structure :
 
 <p>The Class Outline defines the outline of the mesh fill symbol. It has properties such as color, size and transparency.</p>
 
-The Class Outline has the following structure :
+The Class Outline has the following structure:
 
 <table>
 	<tr>
@@ -1157,7 +1157,7 @@ The Class Outline has the following structure :
 
 <p>The Color class defines the color of a symbol or the outline. Color is represented as a three-element array. The three elements represent values for red, green and blue in that order. Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.</p>
 
-The Class Color has the following structure :
+The Class Color has the following structure:
 
 <table>
 	<tr>
@@ -1182,7 +1182,7 @@ The Class Color has the following structure :
 
 <p> The Class CachedDrawingInfo is used to indicate if the *DrawingInfo* object is captured as part of the binary I3S representation.</p>
 
-The Class CachedDrawingInfo has the following structure :
+The Class CachedDrawingInfo has the following structure:
 <table>
 	<tr>
 		<td><strong>Name</strong></td>
@@ -1208,7 +1208,7 @@ spatial extent.</p>
 <p>Depending on the geometry and <code>lodModel</code> used, a node document can be tuned towards being light-weight or more heavy-weight. It is the means clients have to further
 decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, already provides sufficient data for simple visualization by rendering the centroids as point features for example.</p>
 
-<p>The 3dNodeIndexDocument has the following structure :</p>
+<p>The 3dNodeIndexDocument has the following structure:</p>
 
 <div>
 <img src="images/figure-07.png" title="Logical schema of the 3dNodeIndexDocument document" alt="Logical schema of the 3dNodeIndexDocument document">
@@ -1489,7 +1489,7 @@ min/avg/max values, typically only one or two are used.</p>
 <p>The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors
 to geometry attributes and other references to styling or materials.</p>
 
-<p>Features have the following structure : </p>
+<p>Features have the following structure: </p>
 
 <div>
 <img src="images/figure-08.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document">
@@ -2180,7 +2180,7 @@ Once a client application makes a decision regarding the field it is interested 
 
 - A header section of 4 bytes which indicates the count of features. The count value is present in all _attribute_ resources. For an _attribute_ resource of a string data type, the header has an additional 4 bytes indicating the total byte count of the string attribute values.
 - For all numerical field types, the header section will be followed by the attribute values array record. The attribute values must always begin at an offset that is divisible by the byte length of a single value. If the header does not end at such an offset, the necessary amount of padding is inserted between the header and the attribute values.
-- For string field types, the header section is followed by a fixed length array who's values are the byte counts of each string data, inclusive of the null termination character. This array is then followed by an array of actual string data. The strings are stored null terminated.
+- For string field types, the header section is followed by a fixed length array whose values are the byte counts of each string data, inclusive of the null termination character. This array is then followed by an array of actual string data. The strings are stored null terminated.
 
 
 _<a href="../profiles/meshpyramids/examples/3dSceneLayer.js">code 1.</a> A scene layer resource illustrating the metadata information found in the fields (layers[id].fields[id]) and attributeStorageInfo arrays (layers[id].attributeStorageInfo[id])._

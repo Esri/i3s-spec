@@ -1,5 +1,5 @@
 /**
-	Example I3S 1.5 3d Scene Layer Resource for the Meshpyramids profile.
+	Example I3S 1.6 3d Scene Layer Resource for the Meshpyramids profile.
 */
 {
 	"id": 0, // the ID of this layer, unique within a 3dSceneService.
@@ -29,16 +29,18 @@
 	"drawingInfo": {"renderer":{"type":"simple","symbol":{"type":"MeshSymbol3D","symbolLayers":[{"type":"Fill","material":{"color":[255,255,255],"transparency":0}}]},"label":"","description":""}} // the layer drawingInfo. Refrer to https://developers.arcgis.com/web-map-specification/objects/renderer/
 	"store": { // information on the store
 		"id" : "9f62cd8f-0ab7-451e-917a-65ec8e10a432", // store ID - unique across a SceneServer. Enables the client to discover which layers a part of a common store, if any.
-		"profile": "meshpyramids", // Indicates which profile this scene store fulfills. One of {features-meshes, features-polygons, features-points, features-lines, analytics, meshpyramids, pointclouds, symbols}.
+		"profile": "meshpyramids", // Indicates which profile this scene store fulfills. One of {polygons, points, lines, meshpyramids, pointclouds}.
 		"resourcePattern": ["3dNodeIndexDocument", "Geometry", "Texture"], // The resources need for rendering and the required order in which the client should load them.
 		"rootNode": "./nodes/root", // relative URL to root node resource.
-		"version": "1.5", // format version of this resource; used here again if this store hasn't been served by a 3D Scene Server.
-		"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent of this store, in the horizontal indexCRS
+		"version": "1.6", // format version of this resource; used here again if this store hasn't been served by a 3D Scene Server.
+		"extent": [8.54, 47.385, 8.72, 47.455], // the spatial extent of this store, in the horizontal indexCRS (xmin, ymin, xmax, ymax)
 		"indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
 		"vertexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL.
-		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.5", // MIME type for the encoding used for the Node Index Documents
-		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.5",  // MIME type for the encoding used for the Feature Data Resources
-		"geometryEncoding": "application/octet-stream+gzip; version=1.5", // MIME type for the encoding used for the Geometry Resources
+		"normalReferenceFrame": "earth-centered", // One of {east-north-up, *earth-centered*, vertex-reference-frame}.*east-north-up* indicates normals are stored with easting, northing and up directions; *earth-centered* indicates normals are stored in earth-centered, earth-fixed (ECEF) reference frame.
+		//*vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS.
+		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.6", // MIME type for the encoding used for the Node Index Documents
+		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.6",  // MIME type for the encoding used for the Feature Data Resources
+		"geometryEncoding": "application/octet-stream+gzip; version=1.6", // MIME type for the encoding used for the Geometry Resources
 		"textureEncoding": ["image/jpeg", "image/vnd-ms.dds"], // MIME types for the encoding used for the Texture Resources
 		"lodType": "MeshPyramid", // optional field to indicate which LoD Generation Scheme is used in this store. Selected from {*MeshPyramid*, FeatureTree, Thinning, Clustering, Generalizing}.
 		"lodModel": "node-switching", // optional field to indicate which LoD Switching mode clients have to use. One of {*node-switching*, feature-switching, none}.

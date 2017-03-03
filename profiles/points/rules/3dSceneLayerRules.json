@@ -1,7 +1,7 @@
 ﻿{
  "targetProfile": "points",
  "resource": "3dSceneLayer",
- "version": "1.5",
+ "version": "1.6",
  "rules": [
   {
    "qname": "id",
@@ -177,8 +177,8 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "application/vnd.esri.i3s.json+gzip; version=1.5",
-	"application/vnd.esri.i3s.json; version=1.5"
+    "application/vnd.esri.i3s.json+gzip; version=1.6",
+	"application/vnd.esri.i3s.json; version=1.6"
    ]
   },
   {
@@ -188,8 +188,8 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "application/vnd.esri.i3s.json+gzip; version=1.5",
-	"application/vnd.esri.i3s.json; version=1.5"
+    "application/vnd.esri.i3s.json+gzip; version=1.6",
+	"application/vnd.esri.i3s.json; version=1.6"
    ]
   },
   {
@@ -199,8 +199,8 @@
    "valueType": "string",
    "valueSchema": "None",
    "valueDomain": [
-    "application/octet-stream+gzip; version=1.5",
-	"application/octet-stream; version=1.5"
+    "application/octet-stream+gzip; version=1.6",
+	"application/octet-stream; version=1.6"
    ]
   },
   {

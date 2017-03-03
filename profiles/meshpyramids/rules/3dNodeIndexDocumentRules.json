@@ -1,7 +1,7 @@
 ﻿{
 	"targetProfile": "meshpyramids",
 	"resource": "3dNodeIndexDocument",
-	"version": "1.5",
+	"version": "1.6",
 	"rules":[
 	{
 		"qname" : "id",

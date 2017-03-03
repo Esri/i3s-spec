@@ -1,5 +1,5 @@
 /**
-	Example I3S 1.5 FeatureData Resource using the meshpyramids Profile. Optional Resource.
+	Example I3S 1.6 FeatureData Resource using the meshpyramids Profile. Optional Resource.
 */
 {
 	"featureData": [

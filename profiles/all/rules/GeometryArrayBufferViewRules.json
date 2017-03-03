@@ -1,7 +1,7 @@
 ﻿{
 	"targetProfile": "all",
 	"resource": "GeometryArrayBufferView",
-	"version": "1.5",
+	"version": "1.6",
 	"rules": [{
 		"qname": "id",
 		"required": true,

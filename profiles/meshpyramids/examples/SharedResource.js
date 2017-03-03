@@ -1,5 +1,5 @@
 /**
-	Example I3S 1.5 Shared Data Resource with Material Definitions and Texture Definitions.
+	Example I3S 1.6 Shared Data Resource with Material Definitions and Texture Definitions.
 */
 {
 	"materialDefinitions": { // a Map of all Material Definitions needed by features of this node.

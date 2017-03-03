@@ -67,9 +67,8 @@ The Table below shows the various scene layer types that are currently supported
 <table>
   <tr>
     <th rowspan="2"><br>ArcGIS Software<br></th>
-    <th colspan="3">Scene Layer Types<br></th>
-    <th rowspan="2"><br>Publishing</th>
-    <th rowspan="2"><br>Consuming</th>
+    <th rowspan="2"><br>Version</th>
+    <th colspan="3">Scene Layer Types<br></th>    
   </tr>
   <tr>
     <td>3D Objects</td>
@@ -77,48 +76,64 @@ The Table below shows the various scene layer types that are currently supported
     <td>Points</td>
   </tr>
   <tr>
-    <td>ArcGIS.com</td>
+    <td>ArcGIS Online</td>
     <td>Current</td>
-    <td>Current</td>
-    <td>Current</td>
-    <td>Yes</td>
-    <td>Yes</td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+  </tr>
+  <tr>
+    <td>ArcGIS API for JavaScript</td>
+    <td>4.0</td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS for Server</td>
     <td>10.5</td>
-    <td>10.5</td>
-    <td>10.5</td>
-    <td>Yes</td>
-    <td></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>Portal for ArcGIS</td>
     <td>10.5</td>
-    <td>10.5</td>
-    <td>10.5</td>
-    <td>Yes</td>
-    <td>Yes</td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Pro</td>
     <td>1.4</td>
-    <td>1.4</td>
-    <td>1.4</td>
-    <td>Yes</td>
-    <td>Yes</td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+  </tr>
+  <tr>
+    <td>Esri CityEngine</td>
+    <td>2016.1</td>
+    <td><ul><li>[x] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Earth</td>
     <td>1.3</td>
-    <td>1.3</td>
-    <td>Planned</td>
-    <td></td>
-    <td>Yes</td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+  </tr>
+  <tr>
+    <td>ArcGIS Runtime</td>
+    <td>100.0</td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   </table>
 
-<em>Table 2: Scene layer types and current product versions supporting Scene Layers.</em>
+<em>Table 2: ArcGIS platform support for diffrent scene layers types.</em>
 
 
 The list of supported scene layer types in the ArcGIS platform is growing at every release. For example, support for <em>PointCloud</em> scene layer is currently in active development.

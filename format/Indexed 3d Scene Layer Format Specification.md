@@ -2259,7 +2259,7 @@ Lets take a look at a sample scene service layer and its field types ([see Figur
 
 As it could be inferred from [Figure 11](images/figure-11.png) and [Figure 13](images/figure-13.png), a scene service layer exposes/includes **only** supported attribute field value types of a feature class. As a result, the 'Shape' field ([see Figure 14](images/figure-14.png)), which is of _esriFieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
 
-[see Table 34](Table_34.png) below which lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
+[see Table 34](images/Table_34.png) below which lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
 
 <div>
 <img src="images/Table_34.png" title="Attribute data types supported by a scene service layer." alt="Attribute data types supported by a scene service layer.">
@@ -2359,7 +2359,7 @@ and they optionally also allow to be directly consumed by applications such as c
 The format of the package itself is defined as follows:
 
 <ul>
-	<li>The Archive type is always <a href="https://en.wikipedia.org/wiki/Zip_(file_format)">Zip</a>.</li>
+	<li>The Archive type is always <a href="https://en.wikipedia.org/wiki/Zip_(file_format)">Zip64</a>.</li>
 	<li>On this Archive, an overall compression scheme may be applied.
 	This compression scheme has to be either STORE or DEFLATE64.
 	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. </li>

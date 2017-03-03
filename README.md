@@ -84,20 +84,13 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>ArcGIS API for JavaScript</td>
-    <td>4.0</td>
+    <td>4.x</td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
   </tr>
   <tr>
-    <td>ArcGIS for Server</td>
-    <td>10.5</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-  </tr>
-  <tr>
-    <td>Portal for ArcGIS</td>
+    <td>ArcGIS Enterprise</td>
     <td>10.5</td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>

@@ -3,7 +3,7 @@
 This page contains example download locations for the different types of layers supported in I3S. Wherever possible, the input source data as well as the resultant Scene Layer Package and Service are provided.
 
 
-## 3D Objects layer
+## 3D Object layer
 
 #### NYC 3-D Building Model
 
@@ -17,7 +17,7 @@ This page contains example download locations for the different types of layers 
 - *Scene Layer URL*: [Montreal 3-D Building Model](https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Building_Montreal/SceneServer)
 - *Scene Layer Package URL*: [Montreal 3-D Buildings Scene Layer Package](https://www.arcgis.com/home/item.html?id=3f4f5ac3037043b1a1e1f39b6fd99e49)
 
-## Integreated Mesh layer
+## Integrated Mesh layer
 
 
-## Point Scene layer
+## Point layer

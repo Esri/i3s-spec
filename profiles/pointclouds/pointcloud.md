@@ -6,8 +6,7 @@
 ### Layer documents ###
 In addition to the `SceneLayer` document, a point cloud layer may have the following layer documents:
 - `LayerStats` document describe the range, labels and distribution for each attribute in the layer
-- [optional] `LayerSources` document lists 'label' string identifying the source of each point in the data set. See `PointID` attribute for detail.
- 
+
 
 ### Node Index ###
 
@@ -76,14 +75,6 @@ Optionally, the statistics document may contain  labeling information for the at
 -`labels.bitfieldLabels` : array of string label/bitNumber pairs. This useful when the attribute represent a bitfield (e.g. `FLAGS`)  *[optional]* - [see example](examples/example_1.stats_16.js)
 
 Labels for values/bits not present in the layer data may not be listed. 
-
-
-### Layer Sources and `PointID` (optional) ###
-If available for the layer, `PointID` attribute refers back to the "original" record of each point. `PointID` is an 8 Bytes integer (`Byte0` is LSB, `Byte7` is MSB) where:	
-- `Byte0-4` represent the 40-bit pointID within the source
-- `Byte5-7` represent the 24-bit `SourceId`.  
-
-The `LayerSource` document lists a `label` for each `SourceId`. This label may be shown to the user when identifying points. 
 
 
 ###HTTP API Overview:###

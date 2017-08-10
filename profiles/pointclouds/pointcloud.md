@@ -87,10 +87,10 @@ To query `SceneLayer` document: [[Example]](examples/example_1_3dscenelayer.js)
 To query attribute `statistics` documents :
 - `http://my.server.com/layers/{layerId}/statistics/{AttribKey}`[[Example]](examples/example_1.stats_8.js)[[Example]](examples/example_1.stats_16.js)[[Example]](examples/example_1.stats_32.js) 
 
-
+<!--
 To query `LayerSources` document (Optional):[[Example]](examples/example_1_sources.js)
 `http://my.server.com/layers/{layerId}/sources`
-
+-->
 To query `NodePage` document:[[Example]](examples/example_1_node_page.js)
 `http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage}`
 

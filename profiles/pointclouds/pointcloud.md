@@ -41,14 +41,16 @@ Note:
 
 For LiDAR derived point clouds, the following attributes are common:
 
-| Type | Format |
-|------|--------|
-|Intensity|UInt16|
-|RGB color| 3xUInt8|
-|Class Code| UInt8|
-|Flags|UInt8|
-|Returns|UInt8|
-|PointID|UInt64|
+| Type | Format | Notes |
+|------|--------|-------|
+|Intensity|UInt16| |
+|RGB color| 3xUInt8| |
+|Class Code| UInt8| |
+|Flags|UInt8| bitfield: 0:`Synthetic`, 1:`Key-point`, 2:`Withheld`, 3:`Overlap`, 4:`Scan Channel0`,5:`Scan Channel1`,6:`Scan-direction`, 7:`Edge Of flight line`  |
+|Returns|UInt8| bits [0,3] return number, bits[4,7] number of returns |
+|User data| UInt8|  |
+|Point Source ID| UInt16|  |
+|Scan Angle| Int16|  |
   
 ### Attribute Statistics and Labels###
 #### Statistics ####

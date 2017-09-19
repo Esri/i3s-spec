@@ -32,25 +32,26 @@ For version 1.0 of the node type, the following fields are available:
  - `effectiveArea`: Estimation of the area covered by this node. Use to estimate LOD switching based on density.
 
 ### Geometry Buffer: ###
-Contains the absolute coordinates of all points in the node. For compactness, XYZ coordinates are compressed using [LEPCC](tbd) (Limited Error Point Cloud Compression) as a binary blob *without* I3S binary header.
+Contains the absolute coordinates of all points in the node. For compactness, XYZ coordinates are compressed using [LEPCC](https://devtopia.esri.com/ArcGISPro/LEPCC) (Limited Error Point Cloud Compression) as a binary blob *without* I3S binary header.
 
 ### Attribute Buffers: ###
-Each (available) attribute is stored in a little-endian binary buffer *without* I3S binary header. Buffers may be GZIP'ed but "attribute" specific compression is also possible. RGB, for instance, may be compressed using [color clustering](tdb) (8-bit color palette) and (optionally) GZIP'ed. 
+Each (available) attribute is stored in a little-endian binary buffer *without* I3S binary header. Buffers may be GZIP'ed but "attribute" specific compression is also possible. RGB, for instance, may be compressed using [color clustering](https://devtopia.esri.com/ArcGISPro/LEPCC) (8-bit color palette). 
+
 Note:
 - Attributes *must* be stored in point order (i.e. 1-to-1).   
 
 For LiDAR derived point clouds, the following attributes are common:
 
-| Type | Format | Notes |
-|------|--------|-------|
-|Intensity|UInt16| |
-|RGB color| 3xUInt8| |
-|Class Code| UInt8| |
-|Flags|UInt8| bitfield: 0:`Synthetic`, 1:`Key-point`, 2:`Withheld`, 3:`Overlap`, 4:`Scan Channel0`,5:`Scan Channel1`,6:`Scan-direction`, 7:`Edge Of flight line`  |
-|Returns|UInt8| bits [0,3] return number, bits[4,7] number of returns |
-|User data| UInt8|  |
-|Point Source ID| UInt16|  |
-|Scan Angle| Int16|  |
+| Type | Format | Name(key) | Notes |
+|------|--------|------|-------|
+|Intensity|UInt16|Intensity_U16(0x2) | Compressed using LEPCC-intensity |
+|RGB color| 3xUInt8|R8G8B8_U24(0x4)| Compressed using LEPCC-RGB |
+|Class Code| UInt8|ClassCode_U8(0x8)| |
+|Flags|UInt8|Flags_U8(0x10) |bitfield: 0:`Synthetic`, 1:`Key-point`, 2:`Withheld`, 3:`Overlap`, 4:`Scan Channel0`,5:`Scan Channel1`,6:`Scan-direction`, 7:`Edge Of flight line`  |
+|Returns|UInt8|Returns_U8(0x20)| bits [0,3] return number, bits[4,7] number of returns |
+|User data| UInt8| UserData_U8(0x80)| |
+|Point Source ID| UInt16| PointSrcId_U16(0x100) | |
+|Scan Angle| Int16| ScanRank_I16(0x400)||
   
 ### Attribute Statistics and Labels###
 #### Statistics ####

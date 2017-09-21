@@ -268,6 +268,8 @@ PCSL LOD are designed to be "switched" (not refined) when a threshold is met. Cl
 1. Screen space size of the parent node oriented bounding box is greater than threshold defined by the client. (e.g. 256 pixels)
 2. use `node.effectiveArea` to check the screen space density of point. This estimation works best when the point-cloud represent a surface and is not volumetric in nature. World space density would be `Dw = node.pointCount / node.effectiveArea` which we called `Ds` once converted to screen space. Client would switch LOD when `Ds` is less/greater than a threshold defined by the client (e.g. 0.1 point per pixel square) 
 
+**Note for PCSL creation:**
+If each point footprint is assumed to be identical (say 0.1x0.1 unit), then the effective area may be computed as`number_of_point * point_footprint` for a *leaf* node and `sum( children[i].effective_area)` for *inner* nodes.
 
 ### Geometry Buffer: ###
 Contains the absolute coordinates of all points in the node in binary form. 

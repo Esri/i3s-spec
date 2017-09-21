@@ -254,12 +254,18 @@ Important notes:
 
 2. Oriented bounded boxes (OBB) are the **only** supported bounding volumes.
 
-** Oriented Bounding boxes: **
+**Oriented Bounding boxes:**
 1. For **Projected Coordinate Systems** (cartesian): `obb.center` and `obb.halfSize` are in units of the PCS. Please note that XY and Z may have different units. 
 2. For **global scene**, only WGS84 (epsg:4326) is supported, in which case:  
 - `obb.center` is in longitude(decimal degrees), latitude(decimal degrees), elevation (meters)
 - `obb.halfSize` in meters
 - `obb.orientation` is in ECEF cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0 )
+
+**LOD selection:**
+PCSL LOD are designed to be "switched" (not refined) when a threshold is met. Client may choose to "refine" or "split" a parent node based on:
+1. Screen space size of the parent node oriented bounding box is greater than threshold defined by the client. (e.g. 256 pixels)
+2. use `node.effectiveArea` to check the screen space density of point. This estimation works best when the point-cloud represent a surface and is not volumetric in nature. World space density would be `Dw = node.pointCount / node.effectiveArea` which we called `Ds` once converted to screen space. Client would switch LOD when `Ds` is less/greater than a threshold defined by the client (e.g. 0.1 point per pixel square) 
+
 
 ### Geometry Buffer: ###
 Contains the absolute coordinates of all points in the node in binary form. 

@@ -39,13 +39,14 @@ The following tree describe the PCSL structure:
 ### Layer document:###
 The JSON document describing the PCSL:
 
-**Service URL**
+####Service URL####
+
 `<layer_url>/0`
 
-**SLPK path**
+####SLPK path####
 `<mypackage.slpk>/3dSceneLayer.json[.gz]`
 
-**Description**
+####Description####
 ```javascript
 {
 	// --------- General info (same as other I3S profiles) ----
@@ -200,21 +201,21 @@ The JSON document describing the PCSL:
 }
 ```
 
-### Layer Index ###
+###Layer Index###
 
 The layer index is a parent-to-children linked tree. This tree can be represented as "flat" array of nodes divided into "pages" of 64 nodes for effeciency.   
 
-**Service URL**
+####Service URL####
 
 `<layer_url>/nodepages/<page#>`
 
-**SLPK path**
+####SLPK path####
 
 `<mypackage.slpk>/nodepages/<page#>.json[.gz]`
 
 `<page#>` is the index of the first node of the page. If the page size if `64`, pages will be numbered `0,64,128, 192, ...`
 
-**Examples**
+####Examples####
 ```javascript
 {
     "actualCount": 64, //optional. "nodes" array may be sufficient
@@ -254,14 +255,15 @@ Important notes:
 
 2. Oriented bounded boxes (OBB) are the **only** supported bounding volumes.
 
-**Oriented Bounding boxes:**
+####Oriented Bounding boxes:####
+
 1. For **Projected Coordinate Systems** (cartesian): `obb.center` and `obb.halfSize` are in units of the PCS. Please note that XY and Z may have different units. 
 2. For **global scene**, only WGS84 (epsg:4326) is supported, in which case:  
 - `obb.center` is in longitude(decimal degrees), latitude(decimal degrees), elevation (meters)
 - `obb.halfSize` in meters
 - `obb.orientation` is in ECEF cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0 )
 
-**LOD selection:**
+####LOD selection:####
 PCSL LOD are designed to be "switched" (not refined) when a threshold is met. Client may choose to "refine" or "split" a parent node based on:
 1. Screen space size of the parent node oriented bounding box is greater than threshold defined by the client. (e.g. 256 pixels)
 2. use `node.effectiveArea` to check the screen space density of point. This estimation works best when the point-cloud represent a surface and is not volumetric in nature. World space density would be `Dw = node.pointCount / node.effectiveArea` which we called `Ds` once converted to screen space. Client would switch LOD when `Ds` is less/greater than a threshold defined by the client (e.g. 0.1 point per pixel square) 
@@ -270,10 +272,10 @@ PCSL LOD are designed to be "switched" (not refined) when a threshold is met. Cl
 ### Geometry Buffer: ###
 Contains the absolute coordinates of all points in the node in binary form. 
 
-**Service URL**
+####Service URL####
 
 `<layer_url>/nodes/<resource_id>/geometries/0`
-**SLPK path**
+####SLPK path####
 
 `<mypackage.slpk>/nodes/<resource_id>/geometries/0.bin.pccxyz`
 
@@ -282,11 +284,11 @@ For compactness, XYZ coordinates **must be compressed** using [LEPCC](https://de
 ### Attribute Buffers: ###
 Point attribute buffers are organized per-node, per-attribute. 
 
-**Service URL**
+####Service URL####
 
 `<layer_url>/nodes/<resource_id>/attributes/<attrib_key>`
 
-**SLPK path**
+####SLPK path####
 
 `<mypackage.slpk>/nodes/<resource_id>/geometries/attributes/<attrib_key>.json[.gz]`
 Notes:
@@ -313,15 +315,15 @@ For LiDAR derived point clouds, the following attributes may be available:
 
 Statistics about each attributes are useful to estimate attribute distribution and range.
 
-**Service URL** 
+#####Service URL##### 
 
 `<layer_url>/statistics/<attrib_key>`
 
-**SLPK path**
+#####SLPK path#####
 
 `<mypackage.slpk>/statistics/<attrib_key>.json[.gz]`
 
-**Example**
+#####Example#####
 
 ``` javascipt
 {
@@ -448,7 +450,7 @@ Statistics about each attributes are useful to estimate attribute distribution a
     }
 }
 ```
-Note: The following section relates to numeric attributes only since `string` attributes are not supported. 
+**Note**: The following section relates to numeric attributes only since `string` attributes are not supported. 
 The following stats may be available **per attributes**:
 - `stats.min`: Minimum value for the entire layer.  
 - `stats.max`: Maximum value for the entire layer.
@@ -460,7 +462,7 @@ The following stats may be available **per attributes**:
 - `stats.histo` : Histogram *[optional]*
 - `mostFrequentValues` : Array of most frequent values sorted by descending frequency. *[optional]*
 
-** Histogram **
+#####Histogram#####
 
 `Histo` has three fields (`min`, `max`,`counts`). Bin size may be computed as `(max-min) / bin count`. Please note that `stats.histo.min/max` are not equivalent to `stats.min/max` since values smaller than `stats.histo.min` and greater than `stats.histo.max` are counted in the first and last bin respectively. 
 - Notes:
@@ -468,7 +470,7 @@ The following stats may be available **per attributes**:
 	- `ELEVATION` pseudo-attribute is always present and represent Z-coordinate statistics
 	- `stats.min` and `stats.max` may be conservative estimates.
 	
-#### Labeling (optional) ####
+####Labeling (optional) ####
 Optionally, the statistics document may contain  labeling information for the attribute values:
 -`labels.labels` : array of string label/value pairs *[optional]*. Useful when attribute represent a set of values (e.g. `ClassCode`),
 -`labels.bitfieldLabels` : array of string label/bitNumber pairs. This useful when the attribute represent a bitfield (e.g. `FLAGS`)  *[optional]* - [see example](examples/example_1.stats_16.js)

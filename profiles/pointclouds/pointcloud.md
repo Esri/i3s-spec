@@ -1,6 +1,26 @@
 # Point cloud Profile I3S #
 
+##Proposed modifications from current implementation:##
 
+###Layer Definition:###
+
+|Modifications| field | description |
+|-------------|-------| ------------|
+| added |`store.index.lodSelectionMetricType` | specify the type of LOD switching metrics for the entire layer (i.e. defines what `nodepage.node[i].lodThreshold` means for this layer)|
+| renamed | `store.index.nodePerIndexBlock`   | renamed to `store.index.nodesPerPage`  |
+| modified|`defaultGeometrySchema.vertexAttributes.position.valueType = "double"` | Point XYZ are absolute. Since compression (LEPCC) is strongly recommended, data compactness is not an issue| 
+|removed| "statsHRef": "./statistics" | Implicit (per specs), stats are always at `/statistics` for simplicity |
+|removed|"attributeEncoding": "application/octet-stream+gzip"| replaced by `attributeStorageInfo[<attrib_key>].encoding` since encoding should be attribute specific  |
+|removed|"geometryEncoding": "application/octet-stream",| replaced by `defaultGeometrySchema.encoding`. (Gzip compression doesn't need to be specified here since it is handled at HTTP/SLPK level |
+|removed| "store.index.href" ="./nodepages" | Implicit (per specs), nodepages are always at `/nodepages` for simplicity |
+
+### NodePage changes:###
+|Modifications| field | description |
+|-------------|-------| ------------|
+| renamed |`nodes[i].pointCount` | renamed to `nodes[i].verticesCount` to be more generic|
+| replaced |`nodes[i].effectiveArea` | renamed `nodepage.node[i].lodThreshold` to work in conjunction with `layer.store.index.lodSelectionMetricType` |
+| removed |  `actualCount` | duplicated information since: `len(nodes ) == actualCount` |
+| changed | page numbering | Switch to sequential page numbers: `page_index = (int)(node_index /store.index.nodesPerPage )`| 
 ## Point Cloud Scene Layer Structure##
 
 The following tree describe the PCSL structure:
@@ -8,11 +28,11 @@ The following tree describe the PCSL structure:
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
 	+-- nodepages
-	|  +-- 0 
-	|  +-- 64
-	|  +-- 128
+	|  +-- 0		 
+	|  +-- 64   //proposed change: +--1
+	|  +-- 128  //proposed change: +--2
 	|  +-- (...)
-	|  +-- 256
+	|  +-- 256  //proposed change: +--4
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
@@ -32,8 +52,6 @@ The following tree describe the PCSL structure:
 	|  +-- 4
 	|  +-- 32
 	|  +-- (...)
- 
-
 ```
 
 ### Layer document:###
@@ -63,7 +81,7 @@ The JSON document describing the PCSL:
         "wkid": 4326
     },
 	// ---------------------------------
-    "statsHRef": "./statistics", //ignored
+    // "statsHRef": "./statistics", //PROPOSED change: REMOVED
     "store": {
         "id": "",
         "profile": "PointCloud",// mandatory for PCSL
@@ -77,23 +95,23 @@ The JSON document describing the PCSL:
         ],
         "index": {
             "nodeVersion": 1,
-            "nodePerIndexBlock": 64, //Mandatory. 
-            "href": "./nodepages",
+            "nodePerIndexBlock": 64, // PROPOSED CHANGE: rename "nodesPerPage" 
+            //"href": "./nodepages",   // PROPOSED CHANGE: REMOVED
+			lodSelectionMetricType :  "maxScreenThreshold" // PROPOSED ADDITION 
             "boundingVolumeType": "obb" //Mandatory. MBS not supported
         },
-        "attributeEncoding": "application/octet-stream+gzip",
-        "geometryEncoding": "application/octet-stream",
-		
+        //"attributeEncoding": "application/octet-stream+gzip",// PROPOSED CHANGE: REMOVED
+        //"geometryEncoding": "application/octet-stream",// PROPOSED CHANGE: REMOVED
 		//---- Only LEPCC compressed {x,y,z} geometry is supported ---- 
         "defaultGeometrySchema": {
             "geometryType": "points",
             "header": [],
             "topology": "PerAttributeArray",
-            "encoding": "lepcc-xyz", // mandatory 
+            "encoding": "lepcc-xyz", 	// NOTE: If missing, No Compression assumed
             "vertexAttributes": {
                 "position": {
-                    "valueType": "Int32", //ignored
-                    "valuesPerElement": 3 //mandatory
+                    "valueType": "Int32", // PROPOSED CHANGE: "double" ( absolute point coordinates)
+                    "valuesPerElement": 3 // mandatory
                 }
             },
             "ordering": [
@@ -162,7 +180,7 @@ The JSON document describing the PCSL:
                 "valueType": "UInt8",
                 "valuesPerElement": 3
             },
-            "encoding": "lepcc-rgb" //mandatory
+            "encoding": "lepcc-rgb" // preferred
         },
         {
             "key": "8",
@@ -201,6 +219,7 @@ The JSON document describing the PCSL:
 }
 ```
 
+
 ###Layer Index###
 
 The layer index is a parent-to-children linked tree. This tree can be represented as "flat" array of nodes divided into "pages" of 64 nodes for effeciency.   
@@ -213,12 +232,13 @@ The layer index is a parent-to-children linked tree. This tree can be represente
 
 `<mypackage.slpk>/nodepages/<page#>.json[.gz]`
 
-`<page#>` is the index of the first node of the page. If the page size if `64`, pages will be numbered `0,64,128, 192, ...`
+~~`<page#>` is the index of the first node of the page. If the page size if `64`, pages will be numbered `0,64,128, 192, ...`~~
+`<page#>` is `page_index = (int)(node_index /store.index.nodesPerPage)`
 
 ####Examples####
 ```javascript
 {
-    "actualCount": 64, //optional. "nodes" array may be sufficient
+    "actualCount": 64, //PROPOSED change: REMOVED. ("nodes" array issufficient)
     "nodes": [
         {
             "resourceId": 0, // required to query node resource: /nodes/<resourceId>/geometry/0 or /nodes/<resourceId>/attributes/<attrib_key>
@@ -230,7 +250,14 @@ The layer index is a parent-to-children linked tree. This tree can be represente
             "firstChild": 1, //INDEX  of the first child in the layer index. (**NOT** resourceId)  
             "childCount": 4, //number of consecutive children
             "pointCount": 14998, 
-            "effectiveArea": 1512157.125000 // LOD selection metrics. 
+            // "effectiveArea": 1512157.125000 // LOD selection metrics.
+			//PROPOSED CHANGE: (lodSelection would NOT be an array !)
+ 			"lodSelection" : 
+			{
+				"metricType": "maxScreenThreshold",
+				"maxError": 256
+ 
+			}
 		//(...)
 	]
 }
@@ -244,7 +271,8 @@ For version 1.0 of the node type, the following fields are available:
  - `firstChild`: index of the first child of this node.
  - `childCount`: number of children for this node. 0 if node is a leaf node.
  - `pointCount`: number of points for this node.
- - `effectiveArea`: Estimation of the area covered by this node. Use to estimate LOD switching based on density.
+ - ~~`effectiveArea`: Estimation of the area covered by this node. Use to estimate LOD switching based on density.~~
+ -  `lodThreshold` : Hint to the client for LOD switching. The switching stategy is declared globally at the layer level.
 
 
 Children **must be contiguous** (in index range) so they may be located using `firstChild` and `childrenCount` fields.
@@ -258,21 +286,17 @@ Important notes:
 ####Oriented Bounding boxes:####
 
 1. For **Projected Coordinate Systems** (cartesian): `obb.center` and `obb.halfSize` are in units of the PCS. Please note that XY and Z may have different units. 
-2. For **global scene**, only WGS84 (epsg:4326) is supported, in which case:  
+2. For **global scene**:  
 - `obb.center` is in longitude(decimal degrees), latitude(decimal degrees), elevation (meters)
-- `obb.halfSize` in meters
+- `obb.halfSize` in **meters**
 - `obb.orientation` is in ECEF cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0 )
 
-####LOD selection:####
-PCSL LOD are designed to be "switched" (not refined) when a threshold is met. Client may choose to "refine" or "split" a parent node based on:
-1. Screen space size of the parent node oriented bounding box is greater than threshold defined by the client. (e.g. 256 pixels)
-2. use `node.effectiveArea` to check the screen space density of point. This estimation works best when the point-cloud represent a surface and is not volumetric in nature. World space density would be `Dw = node.pointCount / node.effectiveArea` which we called `Ds` once converted to screen space. Client would switch LOD when `Ds` is less/greater than a threshold defined by the client (e.g. 0.1 point per pixel square) 
-
-**Note for PCSL creation:**
-If each point footprint is assumed to be identical (say 0.1x0.1 unit), then the effective area may be computed as`number_of_point * point_footprint` for a *leaf* node and `sum( children[i].effective_area)` for *inner* nodes.
+####Density based LOD switch :####
+if the layer defines `store.index.lodSelectionMetricType : "densityThreshold"`, then `nodes[i].lodThreshold` stores a *effectiveArea* for the node. This metrics may be used as a threshold to split a parent node into its children.  This estimation works best when the point-cloud represent a surface and is not volumetric in nature. World space density would be `Dw = node.pointCount / node.effectiveArea` which we called `Ds` once converted to screen space. Client would switch LOD when `Ds` is less/greater than a threshold defined by the client (e.g. 0.1 point per pixel square) 
+**Note for PCSL creation:**  If each point footprint is assumed to be identical (say 0.1x0.1 unit), then the `lodThreshold` may be computed as `number_of_point * point_footprint` for a *leaf* node and `sum( children[i].effective_area)` for *inner* nodes.
 
 ### Geometry Buffer: ###
-Contains the absolute coordinates of all points in the node in binary form. 
+Contains the absolute coordinates of all points in the node in binary form. {xyz} coordinate are absolute in the coordinate system of the layer, but compression (LEPCC) will exploit the locality of the data to reduce the number of bits used to encode point coordinates. 
 
 ####Service URL####
 
@@ -281,7 +305,7 @@ Contains the absolute coordinates of all points in the node in binary form.
 
 `<mypackage.slpk>/nodes/<resource_id>/geometries/0.bin.pccxyz`
 
-For compactness, XYZ coordinates **must be compressed** using [LEPCC](https://devtopia.esri.com/ArcGISPro/LEPCC) (Limited Error Point Cloud Compression) as a binary blob *without* I3S binary header.
+For compactness, XYZ coordinates may be compressed using [LEPCC](https://devtopia.esri.com/ArcGISPro/LEPCC) (Limited Error Point Cloud Compression) as a binary blob without additional header (LEPCC has its own header)
 
 ### Attribute Buffers: ###
 Point attribute buffers are organized per-node, per-attribute. 
@@ -296,7 +320,7 @@ Point attribute buffers are organized per-node, per-attribute.
 Notes:
 - Attributes *must* be stored in point order (i.e. 1-to-1).    
 - Each (available) attribute is stored in a little-endian binary buffer *without* I3S binary header. 
-- RGB buffer *must* be compressed using [LEPCC color clustering](https://devtopia.esri.com/ArcGISPro/LEPCC). Other attribute must used GZIP compression ( or optionally LEPCC-intensity compression for `intensity` buffer)
+- RGB buffer *may* be compressed using [LEPCC color clustering](https://devtopia.esri.com/ArcGISPro/LEPCC). Other attribute must used GZIP compression ( or optionally LEPCC-intensity compression for `intensity` buffer)
 
 
 For LiDAR derived point clouds, the following attributes may be available:

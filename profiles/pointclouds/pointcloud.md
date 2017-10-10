@@ -17,7 +17,7 @@
 ### NodePage changes:###
 |Modifications| field | description |
 |-------------|-------| ------------|
-| renamed |`nodes[i].pointCount` | renamed to `nodes[i].verticesCount` to be more generic|
+| renamed |`nodes[i].pointCount` | renamed to `nodes[i].vertexCount` to be more generic|
 | replaced |`nodes[i].effectiveArea` | renamed `nodepage.node[i].lodThreshold` to work in conjunction with `layer.store.index.lodSelectionMetricType` |
 | removed |  `actualCount` | duplicated information since: `len(nodes ) == actualCount` |
 | changed | page numbering | Switch to sequential page numbers: `page_index = (int)(node_index /store.index.nodesPerPage )`| 
@@ -251,7 +251,7 @@ The layer index is a parent-to-children linked tree. This tree can be represente
             }
             "firstChild": 1, //INDEX  of the first child in the layer index. (**NOT** resourceId)  
             "childCount": 4, //number of consecutive children
-            "pointCount": 14998, 
+            "vertexCount": 14998,  //RENAMED
             // "effectiveArea": 1512157.125000 // LOD selection metrics.
 			//PROPOSED CHANGE: (lodSelection would NOT be an array !)
  			"lodSelection" : 

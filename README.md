@@ -61,7 +61,7 @@ There are few applications that can create and consume I3S content. The tables b
  </tr>
   <tr>
   <td>Melown</td>
-  <td><a href="https://www.melown.com/">Melown</a></td>
+  <td><a href="https://www.melown.com/">Melown Photogrammetry</a></td>
   <td>Integrated Mesh</td>  
  </tr>
 </table>

@@ -19,16 +19,16 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[features-lines 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
+[features-lines 3dSceneLayer](./rules/docs/3dSceneLayerRules.md)
 
 ### 3dNodeIndexDocument
 
-[features-lines 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+[features-lines 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.md)
 
 ### FeatureData
 
-[features-lines FeatureData](./rules/docs/FeatureDataRules.html)
+[features-lines FeatureData](./rules/docs/FeatureDataRules.md)
 
 ### SharedResources
 
-[features-lines SharedResources](./rules/docs/SharedResourceRules.html)
+[features-lines SharedResources](./rules/docs/SharedResourceRules.md)

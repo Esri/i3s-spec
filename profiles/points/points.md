@@ -18,12 +18,12 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[points 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
+[points 3dSceneLayer](./rules/docs/3dSceneLayerRules.md)
 
 ### 3dNodeIndexDocument
 
-[points 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+[points 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.md)
 
 ### FeatureData
 
-[points FeatureData](./rules/docs/FeatureDataRules.html)
+[points FeatureData](./rules/docs/FeatureDataRules.md)

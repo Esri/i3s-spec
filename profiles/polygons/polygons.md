@@ -19,19 +19,19 @@ No specific profile.
 
 ### 3dSceneLayer
 
-[features-polygons 3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
+[features-polygons 3dSceneLayer](./rules/docs/3dSceneLayerRules.md)
 
 ### 3dNodeIndexDocument
 
-[features-polygons 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+[features-polygons 3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.md)
 
 ### FeatureData
 
-[features-polygons FeatureData](./rules/docs/FeatureDataRules.html)
+[features-polygons FeatureData](./rules/docs/FeatureDataRules.md)
 
 ### SharedResources
 
-[features-polygons SharedResources](./rules/docs/SharedResourceRules.html)
+[features-polygons SharedResources](./rules/docs/SharedResourceRules.md)
 
 ### Class RingDescriptor
 

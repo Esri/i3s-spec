@@ -96,42 +96,42 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>ArcGIS Enterprise</td>
-    <td>10.5</td>
+    <td>10.6</td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Pro</td>
-    <td>1.4</td>
+    <td>2.1</td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>Esri CityEngine</td>
-    <td>2016.1</td>
+    <td>2017.1</td>
     <td><ul><li>[x] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Earth</td>
-    <td>1.3</td>
+    <td>1.6</td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Runtime</td>
-    <td>100.0</td>
+    <td>100.2</td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   </table>
 
-<em>Table 2: ArcGIS platform support for diffrent scene layers types.</em>
+<em>Table 2: ArcGIS platform support for different scene layers types.</em>
 
 
 The list of supported scene layer types in the ArcGIS platform is growing at every release. For example, support for <em>PointCloud</em> scene layer is currently in active development.

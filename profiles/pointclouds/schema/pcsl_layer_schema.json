@@ -1,0 +1,120 @@
+{
+    "title": "I3S Point Cloud layer definition",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Describes the point cloud layer.",
+    "description-href" : "pcsl_layer_desc.md",        
+    "properties": {
+        "id": {
+            "type": "number",
+            "description": "A unique identifying string for the layer. For point cloud scene layer, only a single layer is supported, therefore, id is always 0."
+        },
+        "layerType": {
+            "type": "string",
+            "description": "String indicating the layer type.",
+            "enum": [
+                "PointCloud"
+            ]
+        },
+        "name": {
+            "type": "string",
+            "description": "Represents the layer name."
+        },
+        "alias": {
+            "type": "string",
+            "description": "Represents the alias layer name."
+        },
+        "desc": {
+            "type": "string",
+            "description": "Description for the layer."
+        },
+        "copyrightText": {
+            "type": "string",
+            "description": "Copyright information to be displayed with this layer."
+        },
+        "capabilities": {
+            "type": "array",
+            "items": {
+                "type": "string", 
+                "enum": [
+                    "View",
+                    "Query"
+                ],
+                "enum-description" : 
+                {
+                    "View" : "View is supported.",
+                    "Query" : "Query is supported."
+                },
+                "description" : "Describes the capabilities of the point cloud scene layer."
+            },
+            "description": "Capabilities supported by this layer."
+        },
+        "sourceHRef": {
+            "type": "string",
+            "description": "DEPRECATED, do not use."
+        },
+        "statsHRef": {
+            "type": "string",
+            "description": "DEPRECATED, Implicit per scene layer specification. Statistics are always described in '/statistics'."
+        },
+        "spatialReference": {
+            "type": "object",
+            "description": "An object containing the WKID or WKT identifying the spatial reference of the layer's geometry.",
+            "$ref": "../../common/schema/spatialReference_schema.json"
+        },
+        "heightModelInfo": {
+            "type": "object",
+            "description": "An object containing the vertical coordinate system information.",
+            "$ref": "../../common/schema/heightModelInfo_schema.json"
+        },
+        "store": {
+            "type": "object",
+            "description": "The storage for the layer.",
+            "$ref": "pcsl_store_schema.json"
+        },
+        "fields": {
+            "type": "array",
+            "items": {
+                "$ref": "pcsl_field_schema.json"
+            },
+            "description": "List of attributes describe as field."
+        },
+        "attributeStorageInfo": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "description": "Describes the attribute storage for this layer.",
+
+                
+                "$ref": "pcsl_attributeInfo_schema.json"
+            },
+            "description": "List of attributes included for this layer."
+        }
+    },
+    "drawingInfo": {
+        "type": "object",
+        "description": "An object containing drawing information.",
+        "$ref": "pcsl_drawingInfo_schema.md"
+    },
+    "elevationInfo": {
+        "type": "object",
+        "description": "An object containing elevation information.",
+        "$ref": "../../common/schema/elevationInfo_schema.json"
+    },
+    "required": [
+        "name",
+        "layerType",
+        "spatialReference",
+        "store",
+        "fields",
+        "attributeStorageInfo"
+    ],
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "Point cloud layer",
+                "code_href" : "../examples/pcsl/mile_high_3dSceneLayer.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "title": "I3S Point Cloud layer: vertexAttributes",
+    "type": "object",
+    "description": "The vertex buffer description.",
+    "properties": {
+        "position": {
+            "$ref": "pcsl_value_schema.json",
+            "description": "Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position."
+        }
+    }
+}

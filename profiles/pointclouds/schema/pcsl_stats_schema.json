@@ -1,0 +1,54 @@
+{
+"title": "I3S Point Cloud layer: stats",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",
+    "properties": {
+        "min": {
+            "type": "number",
+            "description": "Minimum attribute value for the entire layer." 
+        },   
+        "max": {
+            "type": "number",
+            "description": "Maximum attribute value for the entire layer." 
+        },  
+        "count": {
+            "type": "number",
+            "description": "Count for the entire layer." 
+        },  
+        "sum": {
+            "type": "number",
+            "description": "Sum of the attribute values over the entire layer." 
+        }, 
+        "avg": {
+            "type": "number",
+            "description": "Representing average or mean value. For example, sum/count." 
+        },  
+        "stddev": {
+            "type": "number",
+            "description": "Representing the standard deviation." 
+        },  
+        "variance ": {
+            "type": "number",
+            "description": "Representing variance. For example, stats.stddev *stats.stddev." 
+        },  
+        "histo": {
+            "type": "object",
+            "$ref": "pcsl_histo_schema.json",
+            "description": "Represents the histogram." 
+        },
+        "labels": {
+            "type": "object",
+            "$ref": "pcsl_label_schema.json",
+            "description": " The statistics document may contain labeling information for the attribute values." 
+        } 
+    },
+    "required": [
+        "min",
+        "max",
+        "count",
+        "sum",
+        "avg"
+    ]
+}
+

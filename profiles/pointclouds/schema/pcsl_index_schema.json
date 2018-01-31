@@ -1,0 +1,34 @@
+{
+    "title": "I3S Point Cloud layer: index",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Describes the index (i.e. bounding volume tree) of the layer.",
+    "properties": {
+        "nodeVersion": {
+            "type": "number",
+            "description": "The version of the individual nodes format."
+        },
+        "nodePerIndexBlock": {
+            "type": "number",
+            "description": "The page size describes the number of nodes per paged index document. 64 is currently expected."
+        },
+        "href": {
+            "type": "string",
+            "description": "DEPRECATED. The object './nodepages' will be assumed in the future."
+        },
+        "boundingVolumeType": {
+            "type": "string",
+            "enum": [
+                "obb"
+            ],
+            "enum-description" : {
+                "obb" : "Oriented bounding box"
+            },
+            "description": "The bounding volume type. Only OBB is currently supported"
+        }
+    },
+    "required": [
+        "nodeVersion",
+        "nodePerIndexBlock"
+    ]
+}

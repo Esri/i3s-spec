@@ -1,0 +1,27 @@
+{
+"title": "I3S Point Cloud layer: histo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The histogram of the point cloud scene layer. The bin size may be computed as (max-min)/bin count. Please note that stats.histo.min/max is not equivalent to stats.min/max since values smaller than stats.histo.min and greater than stats.histo.max are counted in the first and last bin respectively. The values stats.min and stats.max may be conservative estimates.",
+    "properties": {
+        "min": {
+            "type": "number",
+            "description": "Minimum attribute value for the entire layer." 
+        },   
+        "max": {
+            "type": "number",
+            "description": "Maximum attribute value for the entire layer. Maximum array size for stats.histo.counts is 256." 
+        },  
+        "count": {
+            "type": "number",
+            "description": "Count for the entire layer." 
+        } 
+    },
+    "required": [
+        "min",
+        "max",
+        "count"        
+    ]
+}
+
+

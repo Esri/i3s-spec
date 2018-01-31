@@ -1,0 +1,22 @@
+{
+"title": "I3S Point Cloud layer: obb",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Oriented bounding boxes organize nodes in a hierarchical tree.",
+    "properties": {
+        "center": {
+            "type": "number",
+            "description": "The center point of the oriented bounding box. For a global scene, i.e. XY coordinate system in WGS1984, center is in longitude of decimal degrees, latitude of decimal degrees, elevation in meters." 
+        },   
+        "halfSize ": {
+            "type": "number",
+            "description": "Half size of the oriented bounding box measured in meter." 
+        },  
+        "orientation ": {
+            "type": "integer",
+            "description": " Orientation of the oriented bounding box. Measured in ECEF Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0)." 
+        } 
+    }
+}
+
+

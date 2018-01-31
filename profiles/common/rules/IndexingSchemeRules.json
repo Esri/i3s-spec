@@ -1,0 +1,74 @@
+{
+ "targetProfile": "all",
+ "resource": "IndexingScheme",
+ "version": "1.4",
+ "rules": [
+  {
+   "qname": "name",
+   "required": true,
+   "containerType": "None",
+   "valueType": "string",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "inclusive",
+   "required": false,
+   "containerType": "None",
+   "valueType": "boolean",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "dimensionality",
+   "required": false,
+   "containerType": "None",
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    4
+   ]
+  },
+  {
+   "qname": "childrenCardinality",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    2,
+    2
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "childrenCardinality.*",
+   "required": true,
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    9
+   ]
+  },
+  {
+   "qname": "neighborCardinality",
+   "required": true,
+   "containerType": "Array",
+   "cardinality": [
+    2,
+    2
+   ],
+   "valueType": "object",
+   "valueSchema": "None"
+  },
+  {
+   "qname": "neighborCardinality.*",
+   "required": true,
+   "valueType": "number",
+   "valueSchema": "Integer",
+   "valueRange": [
+    0,
+    9
+   ]
+  }
+  ]
+}

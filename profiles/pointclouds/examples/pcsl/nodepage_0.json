@@ -1,0 +1,836 @@
+{
+"actualCount" : 64,
+"nodes" : [{
+"resourceId" : 0,
+"obb" : {
+"center" : [-105.017570, 39.748570, 1610.672543],
+"halfSize" : [500.318726, 945.284058, 44.164474],
+"quaternion" : [0.420958, -0.055540, -0.118199, 0.897630]
+}
+,
+"firstChild" : 1,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 8870.979492
+}
+, {
+"resourceId" : 1,
+"obb" : {
+"center" : [-105.017912, 39.744325, 1610.727267],
+"halfSize" : [470.837952, 472.653198, 44.164413],
+"quaternion" : [0.420991, -0.055546, -0.118200, 0.897614]
+}
+,
+"firstChild" : 5,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 4157.308105
+}
+, {
+"resourceId" : 2,
+"obb" : {
+"center" : [-105.012070, 39.744326, 1592.342736],
+"halfSize" : [29.453506, 472.624634, 18.401863],
+"quaternion" : [0.420997, -0.055500, -0.118206, 0.897613]
+}
+,
+"firstChild" : 9,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 259.138977
+}
+, {
+"resourceId" : 3,
+"obb" : {
+"center" : [-105.017914, 39.752815, 1610.727275],
+"halfSize" : [470.798401, 472.652039, 36.803658],
+"quaternion" : [0.420924, -0.055537, -0.118204, 0.897645]
+}
+,
+"firstChild" : 11,
+"childCount" : 4,
+"pointCount" : 14999,
+"effectiveArea" : 4175.689941
+}
+, {
+"resourceId" : 4,
+"obb" : {
+"center" : [-105.012071, 39.752815, 1599.703462],
+"halfSize" : [29.474119, 472.625061, 25.762581],
+"quaternion" : [0.420930, -0.055491, -0.118211, 0.897644]
+}
+,
+"firstChild" : 15,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 278.842285
+}
+, {
+"resourceId" : 5,
+"obb" : {
+"center" : [-105.020661, 39.742203, 1610.753426],
+"halfSize" : [235.421555, 236.319183, 36.803673],
+"quaternion" : [0.421006, -0.055558, -0.118220, 0.897603]
+}
+,
+"firstChild" : 391,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 995.337219
+}
+, {
+"resourceId" : 6,
+"obb" : {
+"center" : [-105.015162, 39.742204, 1603.392690],
+"halfSize" : [235.409317, 236.319489, 29.442932],
+"quaternion" : [0.421010, -0.055526, -0.118203, 0.897605]
+}
+,
+"firstChild" : 468,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 1106.404785
+}
+, {
+"resourceId" : 7,
+"obb" : {
+"center" : [-105.020662, 39.746447, 1610.753429],
+"halfSize" : [235.421509, 236.319000, 36.803665],
+"quaternion" : [0.420973, -0.055554, -0.118222, 0.897619]
+}
+,
+"firstChild" : 558,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 972.495605
+}
+, {
+"resourceId" : 8,
+"obb" : {
+"center" : [-105.015163, 39.746448, 1610.753424],
+"halfSize" : [235.410095, 236.320206, 44.164398],
+"quaternion" : [0.420977, -0.055521, -0.118205, 0.897621]
+}
+,
+"firstChild" : 634,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 1083.070435
+}
+, {
+"resourceId" : 9,
+"obb" : {
+"center" : [-105.012112, 39.742204, 1588.675529],
+"halfSize" : [25.770138, 236.312134, 14.721470],
+"quaternion" : [0.421013, -0.055502, -0.118206, 0.897605]
+}
+,
+"firstChild" : 379,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 118.493088
+}
+, {
+"resourceId" : 10,
+"obb" : {
+"center" : [-105.012070, 39.746448, 1592.355872],
+"halfSize" : [29.438751, 236.312225, 18.401859],
+"quaternion" : [0.420980, -0.055497, -0.118208, 0.897620]
+}
+,
+"firstChild" : 385,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 140.645889
+}
+, {
+"resourceId" : 11,
+"obb" : {
+"center" : [-105.020663, 39.750692, 1610.753431],
+"halfSize" : [235.408218, 236.318634, 29.442924],
+"quaternion" : [0.420940, -0.055549, -0.118224, 0.897634]
+}
+,
+"firstChild" : 29,
+"childCount" : 4,
+"pointCount" : 14999,
+"effectiveArea" : 974.466370
+}
+, {
+"resourceId" : 12,
+"obb" : {
+"center" : [-105.015164, 39.750693, 1607.073067],
+"halfSize" : [235.409485, 236.319489, 33.123306],
+"quaternion" : [0.420944, -0.055517, -0.118207, 0.897636]
+}
+,
+"firstChild" : 102,
+"childCount" : 4,
+"pointCount" : 14997,
+"effectiveArea" : 1078.764648
+}
+, {
+"resourceId" : 13,
+"obb" : {
+"center" : [-105.020621, 39.754936, 1621.794658],
+"halfSize" : [231.743530, 236.318604, 25.762569],
+"quaternion" : [0.420906, -0.055545, -0.118226, 0.897650]
+}
+,
+"firstChild" : 187,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 1010.227966
+}
+, {
+"resourceId" : 14,
+"obb" : {
+"center" : [-105.015165, 39.754937, 1607.073066],
+"halfSize" : [235.409210, 236.319061, 25.762566],
+"quaternion" : [0.420911, -0.055513, -0.118209, 0.897652]
+}
+,
+"firstChild" : 290,
+"childCount" : 4,
+"pointCount" : 14999,
+"effectiveArea" : 1112.230835
+}
+, {
+"resourceId" : 15,
+"obb" : {
+"center" : [-105.012071, 39.750693, 1599.716607],
+"halfSize" : [29.447899, 236.312607, 25.762562],
+"quaternion" : [0.420947, -0.055493, -0.118210, 0.897636]
+}
+,
+"firstChild" : 17,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 128.284027
+}
+, {
+"resourceId" : 16,
+"obb" : {
+"center" : [-105.012072, 39.754938, 1592.355882],
+"halfSize" : [29.447746, 236.311890, 18.401836],
+"quaternion" : [0.420914, -0.055489, -0.118212, 0.897652]
+}
+,
+"firstChild" : 23,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 150.558258
+}
+, {
+"resourceId" : 17,
+"obb" : {
+"center" : [-105.012071, 39.749632, 1592.359159],
+"halfSize" : [29.434711, 118.156044, 18.401840],
+"quaternion" : [0.420955, -0.055494, -0.118210, 0.897632]
+}
+,
+"firstChild" : 19,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 71.385399
+}
+, {
+"resourceId" : 18,
+"obb" : {
+"center" : [-105.012071, 39.751754, 1599.719894],
+"halfSize" : [29.434828, 118.156250, 25.762554],
+"quaternion" : [0.420939, -0.055492, -0.118211, 0.897640]
+}
+,
+"firstChild" : 21,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 56.898632
+}
+, {
+"resourceId" : 19,
+"obb" : {
+"center" : [-105.012071, 39.749101, 1584.999251],
+"halfSize" : [29.421793, 59.077900, 11.041101],
+"quaternion" : [0.420960, -0.055494, -0.118210, 0.897630]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 14966,
+"effectiveArea" : 34.946644
+}
+, {
+"resourceId" : 20,
+"obb" : {
+"center" : [-105.012071, 39.750162, 1592.359982],
+"halfSize" : [29.421860, 59.078018, 18.401831],
+"quaternion" : [0.420951, -0.055493, -0.118210, 0.897634]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 15605,
+"effectiveArea" : 36.438755
+}
+, {
+"resourceId" : 21,
+"obb" : {
+"center" : [-105.012071, 39.751224, 1599.720711],
+"halfSize" : [29.421926, 59.078148, 25.762566],
+"quaternion" : [0.420943, -0.055492, -0.118211, 0.897638]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 12671,
+"effectiveArea" : 29.587662
+}
+, {
+"resourceId" : 22,
+"obb" : {
+"center" : [-105.012071, 39.752285, 1599.720711],
+"halfSize" : [29.421925, 59.078125, 25.762558],
+"quaternion" : [0.420935, -0.055491, -0.118211, 0.897642]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 11696,
+"effectiveArea" : 27.310968
+}
+, {
+"resourceId" : 23,
+"obb" : {
+"center" : [-105.012071, 39.753876, 1588.678790],
+"halfSize" : [29.434727, 118.155838, 14.721468],
+"quaternion" : [0.420922, -0.055490, -0.118212, 0.897648]
+}
+,
+"firstChild" : 25,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 73.451935
+}
+, {
+"resourceId" : 24,
+"obb" : {
+"center" : [-105.012072, 39.755999, 1596.039523],
+"halfSize" : [29.434769, 118.155914, 14.721464],
+"quaternion" : [0.420905, -0.055487, -0.118213, 0.897655]
+}
+,
+"firstChild" : 27,
+"childCount" : 2,
+"pointCount" : 14999,
+"effectiveArea" : 77.106316
+}
+, {
+"resourceId" : 25,
+"obb" : {
+"center" : [-105.012071, 39.753346, 1584.999249],
+"halfSize" : [29.421783, 59.077843, 11.041095],
+"quaternion" : [0.420926, -0.055490, -0.118212, 0.897646]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 15507,
+"effectiveArea" : 36.209919
+}
+, {
+"resourceId" : 26,
+"obb" : {
+"center" : [-105.012072, 39.754407, 1592.359982],
+"halfSize" : [29.421822, 59.077908, 11.041098],
+"quaternion" : [0.420918, -0.055489, -0.118212, 0.897650]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 15949,
+"effectiveArea" : 37.242020
+}
+, {
+"resourceId" : 27,
+"obb" : {
+"center" : [-105.012072, 39.755468, 1592.359981],
+"halfSize" : [29.421810, 59.077888, 11.041099],
+"quaternion" : [0.420910, -0.055488, -0.118213, 0.897654]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 17111,
+"effectiveArea" : 39.955368
+}
+, {
+"resourceId" : 28,
+"obb" : {
+"center" : [-105.012072, 39.756529, 1596.040345],
+"halfSize" : [29.421848, 59.077950, 14.721462],
+"quaternion" : [0.420901, -0.055487, -0.118213, 0.897657]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 15910,
+"effectiveArea" : 37.150951
+}
+, {
+"resourceId" : 29,
+"obb" : {
+"center" : [-105.022037, 39.749630, 1610.759971],
+"halfSize" : [117.711449, 118.157349, 22.082197],
+"quaternion" : [0.420947, -0.055556, -0.118234, 0.897629]
+}
+,
+"firstChild" : 33,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 190.933929
+}
+, {
+"resourceId" : 30,
+"obb" : {
+"center" : [-105.019288, 39.749631, 1603.399235],
+"halfSize" : [117.708412, 118.157677, 22.082197],
+"quaternion" : [0.420949, -0.055540, -0.118225, 0.897630]
+}
+,
+"firstChild" : 37,
+"childCount" : 4,
+"pointCount" : 14999,
+"effectiveArea" : 290.188385
+}
+, {
+"resourceId" : 31,
+"obb" : {
+"center" : [-105.021995, 39.751753, 1614.440400],
+"halfSize" : [114.033646, 118.157272, 18.401829],
+"quaternion" : [0.420931, -0.055553, -0.118235, 0.897637]
+}
+,
+"firstChild" : 41,
+"childCount" : 4,
+"pointCount" : 14997,
+"effectiveArea" : 200.229843
+}
+, {
+"resourceId" : 32,
+"obb" : {
+"center" : [-105.019289, 39.751753, 1614.440330],
+"halfSize" : [117.708710, 118.157959, 25.762573],
+"quaternion" : [0.420933, -0.055538, -0.118226, 0.897638]
+}
+,
+"firstChild" : 45,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 293.114227
+}
+, {
+"resourceId" : 33,
+"obb" : {
+"center" : [-105.022725, 39.749100, 1610.761604],
+"halfSize" : [58.843853, 59.078156, 14.721464],
+"quaternion" : [0.420951, -0.055559, -0.118240, 0.897626]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 13387,
+"effectiveArea" : 31.259571
+}
+, {
+"resourceId" : 34,
+"obb" : {
+"center" : [-105.021350, 39.749100, 1607.081239],
+"halfSize" : [58.855125, 59.078392, 18.401829],
+"quaternion" : [0.420952, -0.055551, -0.118234, 0.897627]
+}
+,
+"firstChild" : 49,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 64.221405
+}
+, {
+"resourceId" : 35,
+"obb" : {
+"center" : [-105.022725, 39.750161, 1614.441968],
+"halfSize" : [58.843918, 59.078220, 18.401829],
+"quaternion" : [0.420943, -0.055558, -0.118240, 0.897630]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 13867,
+"effectiveArea" : 32.380405
+}
+, {
+"resourceId" : 36,
+"obb" : {
+"center" : [-105.021350, 39.750161, 1610.761603],
+"halfSize" : [58.855129, 59.078384, 14.721466],
+"quaternion" : [0.420944, -0.055550, -0.118235, 0.897631]
+}
+,
+"firstChild" : 53,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 63.072552
+}
+, {
+"resourceId" : 37,
+"obb" : {
+"center" : [-105.019975, 39.749100, 1603.400871],
+"halfSize" : [58.854332, 59.078339, 14.721466],
+"quaternion" : [0.420953, -0.055543, -0.118230, 0.897628]
+}
+,
+"firstChild" : 57,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 79.245239
+}
+, {
+"resourceId" : 38,
+"obb" : {
+"center" : [-105.018600, 39.749100, 1599.720506],
+"halfSize" : [58.853584, 59.078323, 18.401829],
+"quaternion" : [0.420954, -0.055535, -0.118226, 0.897628]
+}
+,
+"firstChild" : 61,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 65.360924
+}
+, {
+"resourceId" : 39,
+"obb" : {
+"center" : [-105.019975, 39.750161, 1610.761603],
+"halfSize" : [58.854385, 59.078384, 14.721464],
+"quaternion" : [0.420945, -0.055542, -0.118231, 0.897631]
+}
+,
+"firstChild" : 65,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 81.346802
+}
+, {
+"resourceId" : 40,
+"obb" : {
+"center" : [-105.018601, 39.750162, 1603.400870],
+"halfSize" : [58.853653, 59.078384, 22.082193],
+"quaternion" : [0.420946, -0.055534, -0.118227, 0.897632]
+}
+,
+"firstChild" : 69,
+"childCount" : 4,
+"pointCount" : 14997,
+"effectiveArea" : 64.235420
+}
+, {
+"resourceId" : 41,
+"obb" : {
+"center" : [-105.022682, 39.751222, 1618.122365],
+"halfSize" : [55.166176, 59.078217, 14.721465],
+"quaternion" : [0.420934, -0.055556, -0.118241, 0.897634]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 14458,
+"effectiveArea" : 33.760429
+}
+, {
+"resourceId" : 42,
+"obb" : {
+"center" : [-105.021350, 39.751222, 1614.441968],
+"halfSize" : [58.855198, 59.078438, 18.401833],
+"quaternion" : [0.420935, -0.055549, -0.118235, 0.897635]
+}
+,
+"firstChild" : 73,
+"childCount" : 6,
+"pointCount" : 14713,
+"effectiveArea" : 67.927162
+}
+, {
+"resourceId" : 43,
+"obb" : {
+"center" : [-105.022683, 39.752283, 1618.122368],
+"halfSize" : [55.166172, 59.078201, 14.721464],
+"quaternion" : [0.420926, -0.055555, -0.118241, 0.897638]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 14408,
+"effectiveArea" : 33.643677
+}
+, {
+"resourceId" : 44,
+"obb" : {
+"center" : [-105.021351, 39.752283, 1618.122331],
+"halfSize" : [58.855186, 59.078415, 14.721460],
+"quaternion" : [0.420927, -0.055548, -0.118236, 0.897639]
+}
+,
+"firstChild" : 79,
+"childCount" : 5,
+"pointCount" : 14917,
+"effectiveArea" : 64.898575
+}
+, {
+"resourceId" : 45,
+"obb" : {
+"center" : [-105.019976, 39.751223, 1610.761603],
+"halfSize" : [58.854385, 59.078362, 14.721460],
+"quaternion" : [0.420936, -0.055541, -0.118231, 0.897635]
+}
+,
+"firstChild" : 84,
+"childCount" : 4,
+"pointCount" : 14999,
+"effectiveArea" : 84.952148
+}
+, {
+"resourceId" : 46,
+"obb" : {
+"center" : [-105.018601, 39.751223, 1614.441967],
+"halfSize" : [58.853790, 59.078499, 25.762554],
+"quaternion" : [0.420938, -0.055532, -0.118227, 0.897636]
+}
+,
+"firstChild" : 88,
+"childCount" : 5,
+"pointCount" : 14850,
+"effectiveArea" : 61.568768
+}
+, {
+"resourceId" : 47,
+"obb" : {
+"center" : [-105.019976, 39.752284, 1614.441968],
+"halfSize" : [58.854462, 59.078453, 18.401829],
+"quaternion" : [0.420928, -0.055540, -0.118232, 0.897639]
+}
+,
+"firstChild" : 93,
+"childCount" : 5,
+"pointCount" : 14959,
+"effectiveArea" : 81.813820
+}
+, {
+"resourceId" : 48,
+"obb" : {
+"center" : [-105.018601, 39.752284, 1610.761604],
+"halfSize" : [58.853661, 59.078365, 14.721466],
+"quaternion" : [0.420929, -0.055531, -0.118228, 0.897640]
+}
+,
+"firstChild" : 98,
+"childCount" : 4,
+"pointCount" : 14998,
+"effectiveArea" : 64.779488
+}
+, {
+"resourceId" : 49,
+"obb" : {
+"center" : [-105.021693, 39.748835, 1607.081646],
+"halfSize" : [29.421886, 29.539043, 11.041097],
+"quaternion" : [0.420954, -0.055553, -0.118237, 0.897626]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 4066,
+"effectiveArea" : 9.494391
+}
+, {
+"resourceId" : 50,
+"obb" : {
+"center" : [-105.021006, 39.748835, 1607.081645],
+"halfSize" : [29.421917, 29.539082, 18.401825],
+"quaternion" : [0.420954, -0.055549, -0.118235, 0.897626]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 8981,
+"effectiveArea" : 20.971256
+}
+, {
+"resourceId" : 51,
+"obb" : {
+"center" : [-105.021694, 39.749365, 1610.762011],
+"halfSize" : [29.421921, 29.539078, 14.721462],
+"quaternion" : [0.420950, -0.055552, -0.118237, 0.897628]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 4996,
+"effectiveArea" : 11.666006
+}
+, {
+"resourceId" : 52,
+"obb" : {
+"center" : [-105.021006, 39.749365, 1610.762012],
+"halfSize" : [29.421917, 29.539078, 14.721460],
+"quaternion" : [0.420950, -0.055548, -0.118235, 0.897628]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 9460,
+"effectiveArea" : 22.089754
+}
+, {
+"resourceId" : 53,
+"obb" : {
+"center" : [-105.021694, 39.749896, 1607.081646],
+"halfSize" : [29.421886, 29.539043, 11.041098],
+"quaternion" : [0.420946, -0.055552, -0.118237, 0.897630]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 4786,
+"effectiveArea" : 11.175641
+}
+, {
+"resourceId" : 54,
+"obb" : {
+"center" : [-105.021006, 39.749896, 1610.762013],
+"halfSize" : [29.421925, 29.539082, 14.721465],
+"quaternion" : [0.420946, -0.055548, -0.118235, 0.897630]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 9215,
+"effectiveArea" : 21.517662
+}
+, {
+"resourceId" : 55,
+"obb" : {
+"center" : [-105.021694, 39.750426, 1610.762012],
+"halfSize" : [29.421917, 29.539074, 14.721462],
+"quaternion" : [0.420941, -0.055551, -0.118237, 0.897631]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 3681,
+"effectiveArea" : 8.595389
+}
+, {
+"resourceId" : 56,
+"obb" : {
+"center" : [-105.021007, 39.750426, 1610.762011],
+"halfSize" : [29.421913, 29.539070, 14.721459],
+"quaternion" : [0.420942, -0.055547, -0.118235, 0.897632]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 9329,
+"effectiveArea" : 21.783861
+}
+, {
+"resourceId" : 57,
+"obb" : {
+"center" : [-105.020319, 39.748835, 1603.401280],
+"halfSize" : [29.421883, 29.539051, 14.721464],
+"quaternion" : [0.420955, -0.055544, -0.118233, 0.897626]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 7922,
+"effectiveArea" : 18.498419
+}
+, {
+"resourceId" : 58,
+"obb" : {
+"center" : [-105.019631, 39.748835, 1599.720915],
+"halfSize" : [29.421854, 29.539019, 11.041099],
+"quaternion" : [0.420956, -0.055540, -0.118231, 0.897626]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 8712,
+"effectiveArea" : 20.343122
+}
+, {
+"resourceId" : 59,
+"obb" : {
+"center" : [-105.020319, 39.749365, 1607.081647],
+"halfSize" : [29.421886, 29.539047, 11.041098],
+"quaternion" : [0.420951, -0.055544, -0.118233, 0.897628]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 8343,
+"effectiveArea" : 19.481482
+}
+, {
+"resourceId" : 60,
+"obb" : {
+"center" : [-105.019632, 39.749366, 1603.401282],
+"halfSize" : [29.421883, 29.539043, 14.721462],
+"quaternion" : [0.420951, -0.055540, -0.118231, 0.897628]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 8960,
+"effectiveArea" : 20.922220
+}
+, {
+"resourceId" : 61,
+"obb" : {
+"center" : [-105.018944, 39.748835, 1596.040552],
+"halfSize" : [29.421846, 29.539013, 14.721462],
+"quaternion" : [0.420956, -0.055536, -0.118229, 0.897627]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 5842,
+"effectiveArea" : 13.641474
+}
+, {
+"resourceId" : 62,
+"obb" : {
+"center" : [-105.018257, 39.748835, 1596.040551],
+"halfSize" : [29.421848, 29.539017, 14.721463],
+"quaternion" : [0.420957, -0.055532, -0.118227, 0.897627]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 8097,
+"effectiveArea" : 18.907055
+}
+, {
+"resourceId" : 63,
+"obb" : {
+"center" : [-105.018944, 39.749366, 1603.401282],
+"halfSize" : [29.421883, 29.539047, 14.721461],
+"quaternion" : [0.420952, -0.055536, -0.118229, 0.897629]
+}
+,
+"firstChild" : 0,
+"childCount" : 0,
+"pointCount" : 6297,
+"effectiveArea" : 14.703931
+}
+]
+}

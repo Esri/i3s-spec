@@ -2,7 +2,7 @@
 
 Point cloud scene layers provide fast display of large volumes of symbolized and filtered point cloud data. They are optimized for the display and sharing of many kinds of sensor data, including lidar. Point cloud scene layers are scalable, allowing you to work with large point cloud datasets efficiently. Rendering very large point sets is generally slow, partially due to hardware limitations. Point cloud scene layers are efficient in that the areas you need to visualize are rendered at an optimized point resolution. Point cloud scene layers also support caching attributes such as RGB, Intensity, Flags, Class Code, Returns, User Data, Point Source ID, GPS Time, Scan Angle and Near Infrared. This allows client applications to update the symbology as well as query point information.
 
-![Point Cloud Scene Layer](/pcsl.jpeg)
+![Point Cloud Scene Layer](img/pcsl.jpeg)
 
 ## Point cloud scene layer structure
 The point cloud scene layer is structured into tree of multiple json files. Beside storing information in the json format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. Because a SLPK file can contain millions of documents 

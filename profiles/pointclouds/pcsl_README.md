@@ -5,7 +5,7 @@ Specification for the i3s point cloud scene layer scene layer format.
 Latest released version is available publicly at **please add the location of the public spec**
 
 # Content
-[Point cloud scene layer documentation](docs/pcsl_Documentation.md)
+[Point cloud scene layer documentation](docs/documentation.md)
 
 - ../schema/: The scene layer json schema files for each profile type. 
 - ../docs/: The documentation generated from the schema/ schema files for each profile type. 

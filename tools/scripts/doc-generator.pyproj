@@ -13,7 +13,7 @@
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
     <Name>doc-generator</Name>
-    <CommandLineArguments>-i ../schema -s pcsl_layer,heightModelInfo,pcsl_histo,pcsl_label,pcsl_obb,pcsl_stats,pcsl_nodes -o ../docs/</CommandLineArguments>
+    <CommandLineArguments>-p pointclouds</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />

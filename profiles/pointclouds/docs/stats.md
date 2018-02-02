@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: stats
+# I3S point cloud scene layer: stats
 
 Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.
 

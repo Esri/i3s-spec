@@ -1,22 +1,25 @@
-# i3s point cloud scene layer specification
+# I3S point cloud scene layer specification
 
-Specification for the i3s point cloud scene layer scene layer format.
-
-Latest released version is available publicly at **please add the location of the public spec**
+Specification for the I3S point cloud scene layer format.
 
 # Content
 [Point cloud scene layer documentation](docs/documentation.md)
 
-- ../schema/: The scene layer json schema files for each profile type. 
 - ../docs/: The documentation generated from the schema/ schema files for each profile type. 
 - examples/: Examples for reference and testing.
-- scripts/ contains various tools for schema and document validation, and markdown generation, and infos on deploying doc
 
 # Version / Releases
-i3s specification is versioned as major.minor, e.g. 1.5
-Major number denotes a breaking change: 2.x i3s cannot be read by a 1.x client, and must be rejected.
-To indicate patch releases between versions, i3s-spec releases are numbered with an additional patch number z, (x.y.z)
-Latest release: 1.6
+I3S specification is versioned as major.minor, e.g. 1.5
+Major number denotes a breaking change: 2.x I3S cannot be read by a 1.x client, and must be rejected.
+To indicate patch releases between versions, releases are numbered with an additional patch number z, (x.y.z)
 
-# i3s-schema
-Please see [i3s schema](../../../README.md") guide
+Latest I3S spec release: **1.6**
+
+## ArcGIS clients supporting latest release
+- ArcGIS Pro 2.2 (beta 1)
+- ArcGIS Enterprise 10.6.1
+- ArcGIS Javascript API
+- ArcGIS Web Scene Viewer
+
+# I3S-schema
+For general information about the I3S specification please see [I3S schema](../../../README.md") guide.

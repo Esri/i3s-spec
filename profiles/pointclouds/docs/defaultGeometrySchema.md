@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: defaultGeometrySchema
+# I3S point cloud scene layer: defaultGeometrySchema
 
 Attribute description as field.
 

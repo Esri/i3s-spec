@@ -1,8 +1,6 @@
-# I3S Point Cloud layer definition
+# I3S point cloud scene layer definition
 
-Describes the point cloud layer.
-
-
+Describes the point cloud scene layer.
 
 ### Properties
 
@@ -22,6 +20,8 @@ Describes the point cloud layer.
 | **store** | [pointcloud::store](store.md) | The storage for the layer. |
 | **fields** | [pointcloud::field](field.md)[] | List of attributes describe as field. |
 | **attributeStorageInfo** | [pointcloud::attributeInfo](attributeInfo.md)[] | List of attributes included for this layer. |
+| drawingInfo | [pointcloud::drawingInfo](drawingInfo.md) | An object containing drawing information. |
+| elevationInfo | [pointcloud::elevationInfo](elevationInfo.md) | An object containing elevation information. |
 
 *Note: properties in **bold** are required*
 

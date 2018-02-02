@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: attributeInfo
+# I3S point cloud scene layer: attributeInfo
 
 List of attributes included for this layer.
 

@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: labels
+# I3S point cloud scene layer: labels
 
 Optionally, the statistics document may contain labeling information for the attribute values.
 

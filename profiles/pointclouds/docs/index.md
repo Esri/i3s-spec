@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: index
+# I3S point cloud scene layer: index
 
 Describes the index (i.e. bounding volume tree) of the layer.
 

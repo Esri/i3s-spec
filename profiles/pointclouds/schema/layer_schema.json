@@ -1,9 +1,8 @@
 {
-    "title": "I3S Point Cloud layer definition",
+    "title": "I3S point cloud scene layer definition",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "Describes the point cloud layer.",
-    "description-href" : "layer_desc.md",        
+    "description": "Describes the point cloud scene layer.",
     "properties": {
         "id": {
             "type": "number",
@@ -89,18 +88,18 @@
                 "$ref": "attributeInfo_schema.json"
             },
             "description": "List of attributes included for this layer."
-        }
-    },
+        },
     "drawingInfo": {
         "type": "object",
         "description": "An object containing drawing information.",
-        "$ref": "drawingInfo_schema.md"
+        "$ref": "drawingInfo_schema.json"
     },
     "elevationInfo": {
         "type": "object",
         "description": "An object containing elevation information.",
-        "$ref": "../../common/schema/elevationInfo_schema.json"
-    },
+        "$ref": "elevationInfo_schema.json"
+    }
+},
     "required": [
         "name",
         "layerType",

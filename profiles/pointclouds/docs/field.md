@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: field
+# I3S point cloud scene layer: field
 
 Attribute description as a field
 

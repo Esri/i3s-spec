@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: obb
+# I3S point cloud scene layer: obb
 
 Oriented bounding boxes organize nodes in a hierarchical tree.
 

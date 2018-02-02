@@ -1,5 +1,5 @@
 {
-    "title": "I3S Point Cloud layer: field",
+    "title": "I3S point cloud scene layer: field",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Attribute description as a field",

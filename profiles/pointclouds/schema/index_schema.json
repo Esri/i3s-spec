@@ -1,5 +1,5 @@
 {
-    "title": "I3S Point Cloud layer: index",
+    "title": "I3S point cloud scene layer: index",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Describes the index (i.e. bounding volume tree) of the layer.",

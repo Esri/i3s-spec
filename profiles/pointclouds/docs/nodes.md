@@ -1,4 +1,4 @@
-# I3S Point Cloud layer: nodes
+# I3S point cloud scene layer: nodes
 
 Nodes represent the spatial extent of the data subdivided into regions. Nodes are organized in bounding volumes and define the tree hierarchy. Children must be contiguous, in index range, so they may be located using  firstChild  and  childrenCount  fields.
 

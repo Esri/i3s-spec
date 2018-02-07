@@ -18,16 +18,16 @@ an [SLPK hash table](../../common/docs/slpk_hash_table.md) improves performance 
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
 	+-- nodepages
 	|  +-- 0		 
-	|  +-- 64   //proposed change: +--1
-	|  +-- 128  //proposed change: +--2
+	|  +-- 1   
+	|  +-- 2  
 	|  +-- (...)
-	|  +-- 256  //proposed change: +--4
+	|  +-- 4  
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
-	|  |  |  +--2 
-	|  |  |  +--4
-	|  |  |  +--32
+	|  |  |  +--1 
+	|  |  |  +--2
+	|  |  |  +--3
 	|  |  |  +--(...)
 	|  |  +-- geometries
 	|  |  |  +-- 0

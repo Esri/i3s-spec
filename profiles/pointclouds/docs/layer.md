@@ -13,8 +13,6 @@ Describes the point cloud scene layer.
 | desc | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
 | capabilities | string[] | Capabilities supported by this layer. |
-| sourceHRef | string | DEPRECATED, do not use. |
-| statsHRef | string | DEPRECATED, Implicit per scene layer specification. Statistics are always described in '/statistics'. |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **store** | [pointcloud::store](store.md) | The storage for the layer. |

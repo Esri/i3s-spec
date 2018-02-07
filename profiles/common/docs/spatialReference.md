@@ -21,13 +21,15 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Examples 
 
-#### Example: wkid 
+#### Example: spatial reference 
 
 ```json
  {
   "spatialreference": {
-    "wkid": 102100,
-    "latestWkid": 3857
+    "wkid": 103142,
+    "latestWkid": 6565,
+    "vcsWkid": 105703,
+    "latestVcsWkid": 6360
   }
 } 
 ````

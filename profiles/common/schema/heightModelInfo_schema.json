@@ -42,7 +42,21 @@
           "kilometer"
       ],
       "description": "Represents the unit of the height."
+    },
+    "esriDocumentation": {
+     "examples": [
+        {
+          "title": "heightModelInfo",
+          "code": {
+            "heightModelInfo": {
+              "heightModel": "gravity_related_height",
+              "vertCRS": "NAVD88_height_(ftUS)",
+              "heightUnit": "us-foot"
+            }
+          }   
+        }
+      ]
     }
-}
   }
-
+}
+  

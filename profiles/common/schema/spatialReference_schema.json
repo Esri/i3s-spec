@@ -42,20 +42,19 @@
     "wkid",
     "wkt"
   ],
-  "additionalProperties": false,
-  "esriDocumentation": {
-    "additionalInformation": "All operational layers in the scene are drawn or requested in the spatial reference of the basemap layers.\n\nThe **basemap** defines the spatial reference and tiling scheme of the scene. Each **baseMapLayer** must be in the same spatial reference and tiling scheme.\n\n\n\nFor a complete list of supported IDs and their corresponding definition strings, see:\n\n[Projected Coordinate Systems Listing](http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Projected_coordinate_systems/02r3000000vt000000/)\n\n[Geographic Coordinate Systems Listing](http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Geographic_coordinate_systems/02r300000105000000/)\n\n[Vertical Coordinate Systems Listing](http://resources.arcgis.com/en/help/rest/apiref/vcs.html)\n\n\n\nAdditional information regarding how web scenes work with geometry and spatial reference can be found on the Resource Center:\n\n[ArcGIS Server REST API Geometry object](http://resources.arcgis.com/en/help/rest/apiref/geometry.html)\n\n[Using spatial references](http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Using_spatial_references/02r3000000qq000000/)\n\n[Working with Geometry Objects](http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Geometry_Objects/02r3000000n1000000/)",
-    "examples": [
+   "esriDocumentation": {
+     "examples": [
       {
-        "title": "wkid",
+        "title": "spatial reference",
         "code": {
           "spatialreference": {
-            "wkid": 102100,
-            "latestWkid": 3857
+            "wkid": 103142,
+            "latestWkid": 6565,
+            "vcsWkid": 105703, 
+            "latestVcsWkid": 6360
           }
         }
       }
     ]
   }
 }
-

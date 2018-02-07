@@ -31,14 +31,6 @@
         "index": {
             "$ref": "index_schema.json"
         },
-        "attributeEncoding": {
-            "type": "string",
-            "description": "DEPRECATED"
-        },
-        "geometryEncoding": {
-            "type": "string",
-            "description": "DEPRECATED"
-        },
         "defaultGeometrySchema": {
             "$ref": "defaultGeometrySchema_schema.json"
         }

@@ -12,10 +12,6 @@
             "type": "number",
             "description": "The page size describes the number of nodes per paged index document. 64 is currently expected."
         },
-        "href": {
-            "type": "string",
-            "description": "DEPRECATED. The object './nodepages' will be assumed in the future."
-        },
         "boundingVolumeType": {
             "type": "string",
             "enum": [

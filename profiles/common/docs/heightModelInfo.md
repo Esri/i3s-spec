@@ -12,6 +12,7 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 | heightModel | string | Represents the height model type. |
 | vertCRS | string | Represents the vertical coordinate system. |
 | heightUnit | string | Represents the unit of the height. |
+| esriDocumentation |  |  |
 
 *Note: properties in **bold** are required*
 

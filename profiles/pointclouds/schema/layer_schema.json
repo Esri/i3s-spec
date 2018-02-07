@@ -48,14 +48,6 @@
             },
             "description": "Capabilities supported by this layer."
         },
-        "sourceHRef": {
-            "type": "string",
-            "description": "DEPRECATED, do not use."
-        },
-        "statsHRef": {
-            "type": "string",
-            "description": "DEPRECATED, Implicit per scene layer specification. Statistics are always described in '/statistics'."
-        },
         "spatialReference": {
             "type": "object",
             "description": "An object containing the WKID or WKT identifying the spatial reference of the layer's geometry.",

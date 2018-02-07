@@ -13,3 +13,11 @@ The vertex buffer description.
 
 *Note: properties in **bold** are required*
 
+```json
+			"vertexAttributes": {
+				"position": {
+					"valueType": "Float64",
+					"valuesPerElement": 3
+				}
+			}
+```

@@ -18,3 +18,15 @@ Attribute description as field.
 
 *Note: properties in **bold** are required*
 
+```json
+		"defaultGeometrySchema": {
+			"geometryType": "points",
+			"header": [],
+			"topology": "PerAttributeArray",
+			"encoding": "lepcc-xyz",
+			"vertexAttributes": {
+				"position": {
+					"valueType": "Float64",
+					"valuesPerElement": 3
+				}
+```

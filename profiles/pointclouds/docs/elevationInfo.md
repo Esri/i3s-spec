@@ -9,8 +9,14 @@ The elevationInfo defines how content in a scene layer is aligned to the ground.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **mode** | string | The mode of the elevation. Point cloud scene layer support absolutHeight. |
-| offset | number | The offest the point cloud scene layer. The elevation unit is the coordinate systems units. |
+| **mode** | string | The mode of the elevation. Point cloud scene layer supports absoluteHeight. |
+| offset | number | The offset of the point cloud scene layer. The elevation unit is the coordinate systems unit. |
 
 *Note: properties in **bold** are required*
 
+```json
+	"elevationInfo": {
+		"mode": "absoluteHeight",
+		"offset": 0.0
+	}
+```

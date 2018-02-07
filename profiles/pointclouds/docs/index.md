@@ -15,3 +15,11 @@ Describes the index (i.e. bounding volume tree) of the layer.
 
 *Note: properties in **bold** are required*
 
+```json
+		"index": {
+			"nodeVersion": 1,
+			"boundingVolumeType": "obb",
+			"nodesPerPage": 64,
+			"lodSelectionMetricType": "density-threshold"
+		}
+```

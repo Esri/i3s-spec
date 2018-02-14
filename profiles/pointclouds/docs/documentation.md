@@ -5,7 +5,7 @@ Point cloud scene layers provide fast display of large volumes of symbolized and
 ![Point Cloud Scene Layer](img/pcsl.jpeg)
 
 ## Point cloud scene layer structure
-The point cloud scene layer is structured into tree of multiple json files. Beside storing information in the json format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. Because a SLPK file can contain millions of documents 
+The point cloud scene layer is structured into a tree of multiple json files. Beside storing information in the json format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. Because a *.slpk file can contain millions of documents 
 an [SLPK hash table](../../common/docs/slpk_hash_table.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
 
 - [Layer description](layer.md)

@@ -85,14 +85,14 @@ The requirements specified below apply to the following layer types:
 <ul>
 <li> 3D Objects (e.g., building Exteriors from GIS data  as well as 3D models in various formats)</li>
 <li> Integrated Mesh (e.g., an integrated surface representing the skin of the earth including vegetation, buildings and roads from satellite, aerial or drone imagery via dense matching photogrammetry) </li>
-<li> Points (e.g. hospitals or Schools, trees, street furniture, signs, etc. from GIS data)</li>
+<li> Points (e.g. hospitals or schools, trees, street furniture, signs, etc. from GIS data)</li>
+<li> <a href="../profiles/pointclouds/docs/Documentation.md">point clouds </a> (lidar data) </li>
 </ul>
 
 The following layer types are planned for future inclusion in the I3S standard (future work):
 <ul>
 <li>Line Features (e.g. from GIS data)</li>
 <li>Polygon Features (e.g. from GIS data)</li>
-<li>Point Clouds (e.g. from LiDAR)</li>
 </ul>
 
 Layers are described using two properties, type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and Pointclouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles.  For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
@@ -123,7 +123,7 @@ Layers are described using two properties, type and profile. The type of a layer
  </tr>
  <tr>
   <td>Pointcloud</td>
-  <td>pointclouds</td>
+  <td><a href="../profiles/pointclouds/docs/Documentation.md">pointclouds</td>
   <td>No</td>
   <td>Vertex Attributes</td>
  </tr>

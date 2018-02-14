@@ -69,7 +69,7 @@ The Table below shows the various scene layer types that are currently supported
   <tr>
     <th rowspan="2"><br>ArcGIS Software<br></th>
     <th rowspan="2"><br>Version</th>
-    <th colspan="3">Scene Layer Types<br></th>    
+    <th colspan="4">Scene Layer Types<br></th>    
   </tr>
   <tr>
     <td>3D Objects</td>
@@ -166,7 +166,7 @@ License history:
 
 Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are licensed under the older Creative Commons Attribution-NoDerivs 3.0 Unported license.  
 Version 1.6 – present integrated mesh, 3D object, point scene layer(dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
-Version 2.0 - present point cloud scene layer of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.
+
 Copies of both licenses are included in this repository.
 
 ## License for JSON resources, validator, and examples

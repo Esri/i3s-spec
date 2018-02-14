@@ -18,7 +18,7 @@
                     "minItems": 0,
                     "maxItems": 0
                 },
-                "description": "The header in binary buffers are not currently supported."
+                "description": "The header in binary buffers. Currently not supported for point cloud scene layer."
             },
             "topology": {
                 "type": "string",

@@ -26,23 +26,7 @@
       "description": "The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system."
     }
   },
-  "oneOf": [
-    {
-      "required": [
-        "wkt"
-      ]
-    },
-    {
-      "required": [
-        "wkid"
-      ]
-    }
-  ],
-  "required": [
-    "wkid",
-    "wkt"
-  ],
-   "esriDocumentation": {
+  "esriDocumentation": {
      "examples": [
       {
         "title": "spatial reference",

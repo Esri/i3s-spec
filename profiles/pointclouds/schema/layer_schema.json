@@ -63,13 +63,6 @@
             "description": "The storage for the layer.",
             "$ref": "store_schema.json"
         },
-        "fields": {
-            "type": "array",
-            "items": {
-                "$ref": "field_schema.json"
-            },
-            "description": "List of attributes describe as field."
-        },
         "attributeStorageInfo": {
             "type": "array",
             "items": {
@@ -97,7 +90,6 @@
         "layerType",
         "spatialReference",
         "store",
-        "fields",
         "attributeStorageInfo"
     ],
     "esriDocumentation": {

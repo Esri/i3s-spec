@@ -41,8 +41,9 @@
           "centimeter",
           "kilometer"
       ],
-      "description": "Represents the unit of the height."
-    },
+      "description": "Represents the unit of the height. Supported unit types: meter, us-foot, foot, clarke-foot, clarke-yard, clarke-link, sears-yard, sears-foot, sears-chain, benoit-1895-b-chain, indian-yard, indian-1937-yard, gold-coast-foot, sears-1922-truncated-chain, us-inch, us-mile, us-yard, millimeter, decimeter, centimeter, kilometer"
+    }
+  },
     "esriDocumentation": {
      "examples": [
         {
@@ -58,5 +59,5 @@
       ]
     }
   }
-}
+
   

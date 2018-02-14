@@ -6,7 +6,7 @@
     "properties": {
         "mode": {
             "type": "string",
-            "description": "The mode of the elevation. Point cloud scene layer support absolutHeight." 
+            "description": "The mode of the elevation. Point cloud scene layer support absoluteHeight." 
         },  
         "offset": {
             "type": "number",
@@ -15,5 +15,18 @@
     },
     "required": [
         "mode"
-    ]
+    ],
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "elevationInfo",
+             "code": {
+               "elevationInfo": {
+                "mode": "absoluteHeight",
+                "offset": 0.0
+                }
+             }   
+           }
+         ]
+       }
 }

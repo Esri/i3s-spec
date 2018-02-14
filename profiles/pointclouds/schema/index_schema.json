@@ -20,7 +20,7 @@
             "enum-description" : {
                 "obb" : "Oriented bounding box"
             },
-            "description": "The bounding volume type. Only OBB is currently supported"
+            "description": "The bounding volume type. Only OBB is currently supported."
         }
     },
     "required": [

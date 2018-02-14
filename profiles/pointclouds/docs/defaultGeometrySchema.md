@@ -10,7 +10,7 @@ Attribute description as field.
 | Property | Type | Description |
 | --- | --- | --- |
 | **geometryType** | string | The type of primitive. Only points are supported for point cloud scene layer. |
-| header | [] | The header in binary buffers are not currently supported. |
+| header | [] | The header in binary buffers. Currently not supported for point cloud scene layer. |
 | **topology** | string | This property is currently IGNORED for point cloud scene layer since it only conatains geometry position and not the vertex attributes. |
 | **encoding** | string | Only 'lepcc-xyz' compression is currently supported. |
 | **ordering** | string[] | Currently the geometry contains XYZ only, so vertex attribute must only list 'position'. |
@@ -18,15 +18,3 @@ Attribute description as field.
 
 *Note: properties in **bold** are required*
 
-```json
-		"defaultGeometrySchema": {
-			"geometryType": "points",
-			"header": [],
-			"topology": "PerAttributeArray",
-			"encoding": "lepcc-xyz",
-			"vertexAttributes": {
-				"position": {
-					"valueType": "Float64",
-					"valuesPerElement": 3
-				}
-```

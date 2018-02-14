@@ -16,7 +16,6 @@ Describes the point cloud scene layer.
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **store** | [pointcloud::store](store.md) | The storage for the layer. |
-| **fields** | [pointcloud::field](field.md)[] | List of attributes described as field. |
 | **attributeStorageInfo** | [pointcloud::attributeInfo](attributeInfo.md)[] | List of attributes included for this layer. |
 | drawingInfo | [pointcloud::drawingInfo](drawingInfo.md) | An object containing drawing information. |
 | elevationInfo | [pointcloud::elevationInfo](elevationInfo.md) | An object containing elevation information. |
@@ -28,141 +27,154 @@ Describes the point cloud scene layer.
 #### Example: Point cloud layer 
 
 ```json
-{
-	"id": 0,
-	"layerType": "PointCloud",
-	"name": "philly",
-	"alias": "",
-	"desc": "",
-	"copyrightText": "",
-	"capabilities": ["View"],
-	"spatialReference": {
-		"wkid": 103142,
-		"latestWkid": 6565,
-		"vcsWkid": 105703,
-		"latestVcsWkid": 6360
-	},
-	"store": {
-		"id": "",
-		"profile": "PointCloud",
-		"version": "2.0",
-		"extent": [2690584.17,
-		238213.85,
-		2693979.04,
-		240815.11],
-		"index": {
-			"nodeVersion": 1,
-			"boundingVolumeType": "obb",
-			"nodesPerPage": 64,
-			"lodSelectionMetricType": "density-threshold"
-		},
-		"defaultGeometrySchema": {
-			"geometryType": "points",
-			"header": [],
-			"topology": "PerAttributeArray",
-			"encoding": "lepcc-xyz",
-			"vertexAttributes": {
-				"position": {
-					"valueType": "Float64",
-					"valuesPerElement": 3
-				}
-			},
-			"ordering": ["position"]
-		}
-	},
-	"attributeStorageInfo": [{
-		"key": "1",
-		"name": "ELEVATION",
-		"encoding": "embedded-elevation"
-	},
-	{
-		"key": "2",
-		"name": "INTENSITY",
-		"ordering": ["attributeValues"],
-		"attributeValues": {
-			"valueType": "UInt16",
-			"valuesPerElement": 1
-		},
-		"encoding": "lepcc-intensity"
-	},
-	{
-		"key": "8",
-		"name": "CLASS_CODE",
-		"ordering": ["attributeValues"],
-		"attributeValues": {
-			"valueType": "UInt8",
-			"valuesPerElement": 1
-		}
-	},
-	{
-		"key": "16",
-		"name": "FLAGS",
-		"ordering": ["attributeValues"],
-		"attributeValues": {
-			"valueType": "UInt8",
-			"valuesPerElement": 1
-		}
-	},
-	{
-		"key": "32",
-		"name": "RETURNS",
-		"ordering": ["attributeValues"],
-		"attributeValues": {
-			"valueType": "UInt8",
-			"valuesPerElement": 1
-		}
-	},
-	{
-		"key": "1024",
-		"name": "SCAN_ANGLE",
-		"ordering": ["attributeValues"],
-		"attributeValues": {
-			"valueType": "Int16",
-			"valuesPerElement": 1
-		}
-	}],
-	"drawingInfo": {
-		"renderer": {
-			"pointSizeAlgorithm": {
-				"type": "pointCloudSplatAlgorithm",
-				"scaleFactor": 0.532883
-			},
-			"pointsPerInch": 15.0,
-			"field": "SCAN_ANGLE",
-			"fieldTransformType": "none",
-			"type": "pointCloudStretchRenderer",
-			"stops": [{
-				"value": -11.0,
-				"color": [230,
-				0,
-				0,
-				255]
-			},
-			{
-				"value": 0.0,
-				"color": [76,
-				230,
-				0,
-				255]
-			},
-			{
-				"value": 11.0,
-				"color": [230,
-				0,
-				0,
-				255]
-			}]
-		}
-	},
-	"elevationInfo": {
-		"mode": "absoluteHeight",
-		"offset": 0.0
-	},
-	"heightModelInfo": {
-		"heightModel": "gravity_related_height",
-		"vertCRS": "NAVD88_height_(ftUS)",
-		"heightUnit": "us-foot"
-	}
-}
-```
+ {
+    "id": 0,
+    "layerType": "PointCloud",
+    "name": "mile_high",
+    "alias": "",
+    "desc": "",
+    "copyrightText": "",
+    "capabilities": [
+        "View"
+    ],
+    "sourceHRef": "./sources",
+    "statsHRef": "./statistics",
+    "spatialReference": {
+        "wkid": 4326
+    },
+    "store": {
+        "id": "",
+        "profile": "PointCloud",
+        "version": "1.6",
+        "extent": [
+            -105.023403,
+            39.740089,
+            -105.011746,
+            39.757051
+        ],
+        "index": {
+            "nodeVersion": 1,
+            "nodePerIndexBlock": 64,
+            "href": "./nodepages",
+            "boundingVolumeType": "obb"
+        },
+        "attributeEncoding": "application/octet-stream+gzip",
+        "geometryEncoding": "application/octet-stream",
+        "defaultGeometrySchema": {
+            "geometryType": "points",
+            "header": [],
+            "topology": "PerAttributeArray",
+            "encoding": "lepcc-xyz",
+            "vertexAttributes": {
+                "position": {
+                    "valueType": "Int32",
+                    "valuesPerElement": 3
+                }
+            },
+            "ordering": [
+                "position"
+            ]
+        }
+    },
+    "fields": [
+        {
+            "name": "ELEVATION",
+            "type": "esriFieldTypeDouble",
+            "alias": "ELEVATION"
+        },
+        {
+            "name": "INTENSITY",
+            "type": "FieldTypeInteger",
+            "alias": "INTENSITY"
+        },
+        {
+            "name": "RGB",
+            "type": "esriFieldTypeInteger",
+            "alias": "RGB"
+        },
+        {
+            "name": "CLASS_CODE",
+            "type": "esriFieldTypeInteger",
+            "alias": "CLASS_CODE"
+        },
+        {
+            "name": "FLAGS",
+            "type": "esriFieldTypeInteger",
+            "alias": "FLAGS"
+        },
+        {
+            "name": "RETURNS",
+            "type": "esriFieldTypeInteger",
+            "alias": "RETURNS"
+        }
+    ],
+    "attributeStorageInfo": [
+        {
+            "key": "1",
+            "name": "ELEVATION",
+            "encoding": "embedded-elevation"
+        },
+        {
+            "key": "2",
+            "name": "INTENSITY",
+            "ordering": [
+                "attributeValues"
+            ],
+            "attributeValues": {
+                "valueType": "UInt16",
+                "valuesPerElement": 1
+            },
+            "encoding": "lepcc-intensity"
+        },
+        {
+            "key": "4",
+            "name": "RGB",
+            "ordering": [
+                "attributeValues"
+            ],
+            "attributeValues": {
+                "valueType": "UInt8",
+                "valuesPerElement": 3
+            },
+            "encoding": "lepcc-rgb"
+        },
+        {
+            "key": "8",
+            "name": "CLASS_CODE",
+            "ordering": [
+                "attributeValues"
+            ],
+            "attributeValues": {
+                "valueType": "UInt8",
+                "valuesPerElement": 1
+            }
+        },
+        {
+            "key": "16",
+            "name": "FLAGS",
+            "ordering": [
+                "attributeValues"
+            ],
+            "attributeValues": {
+                "valueType": "UInt8",
+                "valuesPerElement": 1
+            }
+        },
+        {
+            "key": "32",
+            "name": "RETURNS",
+            "ordering": [
+                "attributeValues"
+            ],
+            "attributeValues": {
+                "valueType": "UInt8",
+                "valuesPerElement": 1
+            }
+        }
+    ],
+    "drawingInfo": "",
+    "elevationInfo": "",
+    "heightModelInfo": ""
+} 
+````
 

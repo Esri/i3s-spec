@@ -17,7 +17,7 @@
         },
         "version": {
             "type": "string",
-            "description": "Point cloud scene layer specification version."
+            "description": "Point cloud scene layer store version."
         },
         "extent": {
             "type": "array",
@@ -26,7 +26,7 @@
             },
             "minItems": 4,
             "maxItems": 4,
-            "description": "2D extent of the layer in the layer spatial reference units."
+            "description": "2D extent of the point cloud scene layer in the layers spatial reference units."
         },
         "index": {
             "$ref": "index_schema.json"

@@ -6,13 +6,13 @@ Describes the point cloud scene layer.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| id | number | A unique identifying string for the layer. For point cloud scene layer, only a single layer is supported, therefore, id is always 0. |
-| **layerType** | string | String indicating the layer type. |
+| id | integer | A unique identifying number for the layer. For point cloud scene layer, only a single layer is supported, therefore, id is always 0. |
+| **layerType** | string | String indicating the layer type<div>Possible values are:<ul><li>`PointCloud`</li></ul></div> |
 | **name** | string | Represents the layer name. |
 | alias | string | Represents the alias layer name. |
 | desc | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
-| capabilities | string[] | Capabilities supported by this layer. |
+| capabilities | string[] | Capabilities supported by this layer.<div>Possible values for each array string:<ul><li>`View`: View is supported.</li><li>`Query`: Query is supported.</li></ul></div> |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **store** | [pointcloud::store](store.md) | The storage for the layer. |

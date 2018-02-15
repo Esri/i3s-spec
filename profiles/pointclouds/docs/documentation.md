@@ -10,14 +10,14 @@ an [SLPK hash table](../../common/docs/slpk_hash_table.md) improves performance 
 
 - [Layer description](layer.md)
 - Nodes containing [Geometry](geometry_buffer.md) and [Attributes](attribute_buffer.md)
-- [Node pages](nodes.md)
-- [Statistics](stats.md)
+- [Node pages](nodepage.md)
+- [Statistics](statistics.md)
 
 ```
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
 	+-- nodepages
-	|  +-- 0		 
+	|  +-- 0
 	|  +-- 1   
 	|  +-- 2  
 	|  +-- (...)
@@ -25,9 +25,9 @@ an [SLPK hash table](../../common/docs/slpk_hash_table.md) improves performance 
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
-	|  |  |  +--1 
-	|  |  |  +--2
-	|  |  |  +--3
+	|  |  |  +--2 
+	|  |  |  +--4
+	|  |  |  +--8
 	|  |  |  +--(...)
 	|  |  +-- geometries
 	|  |  |  +-- 0
@@ -39,7 +39,7 @@ an [SLPK hash table](../../common/docs/slpk_hash_table.md) improves performance 
 	+--statistics
 	|  +-- 2
 	|  +-- 4
-	|  +-- 32
+	|  +-- 8
 	|  +-- (...)
 ```
 *Example of point cloud scene layer structure.*

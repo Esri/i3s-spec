@@ -1,112 +1,123 @@
 {
-"attribute" : "CLASS_CODE",
-"stats" : {
-"min" : 1.000000,
-"max" : 12.000000,
-"avg" : 0.000000,
-"stddev" : 0.000000,
-"count" : 3799022.000000,
-"sum" : 0.000000,
-"variance" : 0.000000,
-"histogram" : {
-"minimum" : 1.000000,
-"maximum" : 12.000000,
-"counts" : [14, 802764, 681975, 3056, 153, 387412, 4948, 1904257, 9987, 4073, 383]
-}
-,
-"mostFrequentValues" : [{
-"value" : 8.000000,
-"count" : 1904257
-}
-, {
-"value" : 2.000000,
-"count" : 802764
-}
-, {
-"value" : 3.000000,
-"count" : 681975
-}
-, {
-"value" : 6.000000,
-"count" : 387412
-}
-, {
-"value" : 9.000000,
-"count" : 9987
-}
-, {
-"value" : 7.000000,
-"count" : 4948
-}
-, {
-"value" : 10.000000,
-"count" : 4073
-}
-, {
-"value" : 4.000000,
-"count" : 3056
-}
-, {
-"value" : 11.000000,
-"count" : 383
-}
-, {
-"value" : 5.000000,
-"count" : 153
-}
-, {
-"value" : 1.000000,
-"count" : 14
-}
-]
-}
-,
-"labels" : {
-"labels" : [{
-"value" : 1.000000,
-"label" : "Unclassified"
-}
-, {
-"value" : 2.000000,
-"label" : "Ground"
-}
-, {
-"value" : 3.000000,
-"label" : "Low Vegetation"
-}
-, {
-"value" : 4.000000,
-"label" : "Medium Vegetation"
-}
-, {
-"value" : 5.000000,
-"label" : "High Vegetation"
-}
-, {
-"value" : 6.000000,
-"label" : "Building"
-}
-, {
-"value" : 7.000000,
-"label" : "Low Point(noise)"
-}
-, {
-"value" : 8.000000,
-"label" : "Model Key"
-}
-, {
-"value" : 9.000000,
-"label" : "Water"
-}
-, {
-"value" : 10.000000,
-"label" : "Rail"
-}
-, {
-"value" : 11.000000,
-"label" : "Road Surface"
-}
-]
-}
-
+    "attribute": "CLASS_CODE",
+    "stats": {
+        "min": 1.0,
+        "max": 12.0,
+        "avg": 5.63104,
+        "stddev": 2.629335,
+        "count": 3799022.0,
+        "sum": 21392446.0,
+        "variance": 6.913403,
+        "histogram": {
+            "minimum": 1.0,
+            "maximum": 12.0,
+            "counts": [
+                14,
+                802764,
+                681975,
+                3056,
+                153,
+                387412,
+                4948,
+                1904257,
+                9987,
+                4073,
+                383
+            ]
+        },
+        "mostFrequentValues": [
+            {
+                "value": 8.0,
+                "count": 1904257
+            },
+            {
+                "value": 2.0,
+                "count": 802764
+            },
+            {
+                "value": 3.0,
+                "count": 681975
+            },
+            {
+                "value": 6.0,
+                "count": 387412
+            },
+            {
+                "value": 9.0,
+                "count": 9987
+            },
+            {
+                "value": 7.0,
+                "count": 4948
+            },
+            {
+                "value": 10.0,
+                "count": 4073
+            },
+            {
+                "value": 4.0,
+                "count": 3056
+            },
+            {
+                "value": 11.0,
+                "count": 383
+            },
+            {
+                "value": 5.0,
+                "count": 153
+            },
+            {
+                "value": 1.0,
+                "count": 14
+            }
+        ]
+    },
+    "labels": {
+        "labels": [
+            {
+                "value": 1.0,
+                "label": "Unclassified"
+            },
+            {
+                "value": 2.0,
+                "label": "Ground"
+            },
+            {
+                "value": 3.0,
+                "label": "Low Vegetation"
+            },
+            {
+                "value": 4.0,
+                "label": "Medium Vegetation"
+            },
+            {
+                "value": 5.0,
+                "label": "High Vegetation"
+            },
+            {
+                "value": 6.0,
+                "label": "Building"
+            },
+            {
+                "value": 7.0,
+                "label": "Low Point(noise)"
+            },
+            {
+                "value": 8.0,
+                "label": "Model Key"
+            },
+            {
+                "value": 9.0,
+                "label": "Water"
+            },
+            {
+                "value": 10.0,
+                "label": "Rail"
+            },
+            {
+                "value": 11.0,
+                "label": "Road Surface"
+            }
+        ]
+    }
 }

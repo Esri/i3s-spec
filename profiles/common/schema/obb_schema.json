@@ -1,0 +1,51 @@
+{
+  "title": "I3S point cloud scene layer: obb",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Oriented bounding boxes",
+  "properties": {
+    "center": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "The center point of the oriented bounding box. For a global scene, i.e. XY coordinate system in WGS1984, center is in longitude of decimal degrees, latitude of decimal degrees, elevation in meters."
+    },
+    "halfSize ": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "Half size of the oriented bounding box in spatial reference units (or meter for global scenes)."
+    },
+    "orientation ": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "Orientation of the oriented bounding box as a 4-component quaternion. For global scene, quaternion is in Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0)."
+    }
+  },
+  "required": [
+    "center",
+    "halfSize ",
+    "orientation "
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Global scene (WSG84) oriented-bounding box",
+        "code_href": "../examples/obb_1.json"
+      }
+    ]
+  }
+
+}
+
+

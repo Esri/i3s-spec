@@ -1,0 +1,56 @@
+{
+  "title": "I3S point cloud scene layer: node",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A single bounding volume hierarchy node",
+  "properties": {
+    "resourceId": {
+      "type": "integer",
+      "description": "Index of the first child of this node. The resourceID  must be used to query node resources, like geometry buffer (XYZ)  /nodes/<resourceId>/geometry/0  and attribute buffers. One buffer can have one attribute. Available attributes are declared in the  SceneLayer  document. /nodes/<resourceId>/attributes/<attrib_key>."
+    },
+    "firstChild": {
+      "type": "integer",
+      "description": "Index of the first child of this node."
+    },
+    "childCount": {
+      "type": "integer",
+      "description": "Number of children for this node. Value is 0 if node is a leaf node."
+    },
+    "vertexCount": {
+      "type": "integer",
+      "description": "Number of points for this node."
+    },
+    "lodThreshold": {
+      "type": "integer",
+      "description": "Estimation of the area covered by this node. Used to estimate LOD switching based on density."
+    },
+    "obb": {
+      "type": "object",
+      "$ref": "../../common/schema/obb_schema.json",
+      "description": "Oriented bounding boxes (OBB) are the only supported bounding volumes."
+    },
+    "lodThreshold": {
+      "type": "number",
+      "description": "This metric may be used as a threshold to split a parent node into its children. see [layer.store.index.lodSelectionMetricType](index.md)"
+    }
+  },
+  "required": [
+    "resourceId",
+    "firstChild",
+    "childCount",
+    "vertexCount",
+    "lodThreshold",
+    "obb"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Global scene (WSG84)",
+        "code_href": "../examples/node_1.json"
+      }
+    ]
+  }
+
+}
+
+

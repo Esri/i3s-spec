@@ -4,9 +4,9 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "",
   "properties": {
-    "value": {
-      "type": "number",
-      "description": "Value"
+    "bitNumber": {
+      "type": "integer",
+      "description": "Bit number (0 is LSB)"
     },
     "label": {
       "type": "string",
@@ -14,17 +14,19 @@
     }
   },
   "required": [
-    "value",
+    "bitNumber",
     "label"
   ],
   "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Class Code label",
+        "title": "Flag label",
         "code": {
-          "value": 2,
-          "label": "Ground"
+          
+            "bitNumber": 3,
+            "label": "Overlap"
+          
         }
       }
     ]

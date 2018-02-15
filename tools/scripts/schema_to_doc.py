@@ -206,17 +206,17 @@ class Schema_type :
                     prop.type.back_refs.append( self)
                 self.props.append( prop )
         
-            if self.json_type == 'string' and 'enum' in dom :
-                for en in dom['enum'] :
-                    self.enum[en]=''
-                if 'enum-description' in dom :
-                    for k, v in dom['enum-description'].items() :
-                        assert( k in self.enum )
-                        self.enum[k]= v
-            if 'esriDocumentation' in dom and 'examples' in dom['esriDocumentation'] :
-                self.example_dom  = dom['esriDocumentation']['examples']
-            if 'description-href' in dom :
-                self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
+        if self.json_type == 'string' and 'enum' in dom :
+            for en in dom['enum'] :
+                self.enum[en]=''
+            if 'enum-description' in dom :
+                for k, v in dom['enum-description'].items() :
+                    assert( k in self.enum )
+                    self.enum[k]= v
+        if 'esriDocumentation' in dom and 'examples' in dom['esriDocumentation'] :
+            self.example_dom  = dom['esriDocumentation']['examples']
+        if 'description-href' in dom :
+            self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
 
 
 class Property :
@@ -291,7 +291,7 @@ class Markdown_writer  :
         return ("`%s`" % key ) if val == ''  else ("`%s`: %s" % (key,val) )
  
     def get_unordered_list_http( enum ) :
-        return "<ul><li>%s</li></ul>" % ( "`%`</li><li>".join( [ Markdown_writer.get_one_enum_md( k,v ) for k,v in  enum.items() ] ) )
+        return "<ul><li>%s</li></ul>" % ( "</li><li>".join( [ Markdown_writer.get_one_enum_md( k,v ) for k,v in  enum.items() ] ) )
 
     def get_property_desc( self, prop ) :
         postfix = ''

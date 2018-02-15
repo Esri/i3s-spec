@@ -6,7 +6,7 @@
     "properties": {
         "valueType": {
             "type": "string",
-            "enums": [
+            "enum": [
                 "Int8",
                 "UInt8",
                 "Int16",

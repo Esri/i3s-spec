@@ -5,12 +5,12 @@
     "description": "Describes the point cloud scene layer.",
     "properties": {
         "id": {
-            "type": "number",
-            "description": "A unique identifying string for the layer. For point cloud scene layer, only a single layer is supported, therefore, id is always 0."
+            "type": "integer",
+            "description": "A unique identifying number for the layer. For point cloud scene layer, only a single layer is supported, therefore, id is always 0."
         },
         "layerType": {
             "type": "string",
-            "description": "String indicating the layer type.",
+            "description": "String indicating the layer type",
             "enum": [
                 "PointCloud"
             ]

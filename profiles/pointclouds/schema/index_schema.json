@@ -26,5 +26,21 @@
     "required": [
         "nodeVersion",
         "nodePerIndexBlock"
-    ]
+    ],
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "index",
+             "code": {
+                "index": 
+                {
+                    "nodeVersion": 1, 
+                    "boundingVolumeType": "obb", 
+                    "nodesPerPage": 64, 
+                    "lodSelectionMetricType": "density-threshold"
+                   }
+                }   
+            }
+        ]
+    }
 }

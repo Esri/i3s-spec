@@ -13,8 +13,41 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 | **avg** | number | Representing average or mean value. For example, sum/count. |
 | stddev | number | Representing the standard deviation. |
 | variance  | number | Representing variance. For example, stats.stddev *stats.stddev. |
-| histo | [pointcloud::histo](histo.md) | Represents the histogram. |
+| histogram | [pointcloud::histogram](histogram.md) | Represents the histogram. |
 | labels | [pointcloud::label](label.md) |  The statistics document may contain labeling information for the attribute values. |
 
 *Note: properties in **bold** are required*
+
+### Examples 
+
+#### Example: stats 
+
+```json
+ {
+  "stats": {
+    "min": 1567.597046,
+    "max": 1649.043945,
+    "avg": 1593.811809,
+    "stddev": 12.722517,
+    "count": 3799022.0,
+    "sum": 6054926127.557739,
+    "variance": 161.862445,
+    "histogram": {
+      "minimum": 1567.596482,
+      "maximum": 1644.937967,
+      "counts": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        3,
+        123,
+        1852
+      ]
+    }
+  }
+} 
+````
 

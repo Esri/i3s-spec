@@ -32,9 +32,9 @@
             "type": "number",
             "description": "Representing variance. For example, stats.stddev *stats.stddev." 
         },  
-        "histo": {
+        "histogram": {
             "type": "object",
-            "$ref": "histo_schema.json",
+            "$ref": "histogram_schema.json",
             "description": "Represents the histogram." 
         },
         "labels": {
@@ -49,6 +49,29 @@
         "count",
         "sum",
         "avg"
-    ]
+    ],
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "stats",
+             "code": {
+                "stats": {
+                    "min": 1567.597046, 
+                    "max": 1649.043945, 
+                    "avg": 1593.811809, 
+                    "stddev": 12.722517, 
+                    "count": 3799022.0, 
+                    "sum": 6054926127.557739, 
+                    "variance": 161.862445, 
+                    "histogram": 
+                    {
+                        "minimum": 1567.596482, 
+                        "maximum": 1644.937967, 
+                        "counts": [1, 1, 0, 0, 0, 1, 3, 123, 1852]
+                        }
+                    }
+                }   
+            }
+        ]
+    }
 }
-

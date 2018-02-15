@@ -58,5 +58,30 @@
             "vertexAttributes",
             "ordering",
             "encoding"
-        ]
+        ],
+        "esriDocumentation": {
+            "examples": [
+               {
+                 "title": "defaultGeometrySchema",
+                 "code": {
+                    "defaultGeometrySchema": 
+                    {
+                        "geometryType": "points", 
+                        "header": [], 
+                        "topology": "PerAttributeArray", 
+                        "encoding": "lepcc-xyz", 
+                        "vertexAttributes": 
+                        {
+                            "position": 
+                            {
+                                "valueType": "Float64", 
+                                "valuesPerElement": 3
+                                }
+                            }, 
+                        "ordering": ["position"]
+                        }
+                    }
+                }
+            ]
+        }
     }

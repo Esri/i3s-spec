@@ -7,5 +7,22 @@
             "$ref": "value_schema.json",
             "description": "Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position."
         }
+    },
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "vertexAttributes",
+             "code": {
+                "vertexAttributes": 
+                {
+                    "position": 
+                    {
+                        "valueType": "Float64", 
+                        "valuesPerElement": 3
+                        }
+                    }        
+                }
+            }
+        ]
     }
 }

@@ -14,7 +14,7 @@ The following layer types have been specified and the standard validated via imp
 - 3D objects (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - integrated meshes (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - points (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [point clouds](profiles/pointclouds/docs/Documentation.md) (e.g. large point data from LiDAR)
+- [point clouds](./profiles/pointclouds/docs/documentation.md) (e.g. large point data from LiDAR)
 
 The following layer types are planned for future inclusion:
 

@@ -1,7 +1,7 @@
 {
   "targetProfile": "all",
-  "resource": "MaterialDefinition",  
-  "version": "1.4",
+  "resource": "MaterialDefinition",
+  "version": "1.6",
   "rules": [
   {
    "qname": "$ref",
@@ -62,7 +62,7 @@
    "containerType": "None",
    "valueType": "boolean",
    "valueSchema": "None",
-   "valueDependencies": [ 
+   "valueDependencies": [
    {
     "to": "../vertexColors",
     "type": "NOT",

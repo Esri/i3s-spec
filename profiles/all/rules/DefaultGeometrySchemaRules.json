@@ -1,7 +1,7 @@
 {
  "targetProfile": "all",
  "resource": "DefaultGeometrySchema",
- "version": "1.4",
+ "version": "1.6",
  "rules": [
   {
     "qname": "geometryType",
@@ -20,7 +20,7 @@
     "valueType": "string",
     "valueSchema": "None",
     "valueDomain": [
-      "PerAttributeArray", 
+      "PerAttributeArray",
       "Indexed"
     ]
   },

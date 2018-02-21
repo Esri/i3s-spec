@@ -1,0 +1,48 @@
+{
+  "title": "I3S point cloud scene layer: Attribute Statistics",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",
+  "properties": {
+    "attribute": {
+      "type": "string",
+      "description": "Attribute name. Must match the name specified for this attribute in `layer.attributeStorageInfo`"
+    },
+    "stats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref":  "stats_schema.json"
+      },
+      "description": "Statistics for this attribute"
+    }
+  },
+   "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Elevation statistic (point.z statistics)",
+        "code_href": "../examples/stats_1.json"
+      },
+      {
+        "title": "Intensity statistics",
+        "code_href": "../examples/stats_2.json"
+      },
+      {
+        "title": "RGB color statistics ( please note that histogram is not required here)",
+        "code_href": "../examples/stats_4.json"
+      },
+      {
+        "title": "Class code statistics with labels",
+        "code_href": "../examples/stats_8.json"
+      },
+      {
+        "title": "Flags statistics (LIDAR point cloud)",
+        "code_href": "../examples/stats_16.json"
+      },
+      {
+        "title": "Returns statistics (LIDAR point cloud)",
+        "code_href": "../examples/stats_32.json"
+      }
+    ]
+  }
+}

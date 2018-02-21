@@ -36,6 +36,8 @@
 		"extent": [47.385, 8.54, 47.455, 8.72], // the spatial extent of this store, in the horizontal indexCRS
 		"indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all minimum bounding spheres (mbs) in this cache, identified by a OGC URL.
 		"vertexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326", // the horizontal CRS used for all "vertex positions" in this cache, identified by a OGC URL.
+		"normalReferenceFrame": "earth-centered", // One of {east-north-up, *earth-centered*, vertex-reference-frame}.*east-north-up* indicates normals are stored with easting, northing and up directions; *earth-centered* indicates normals are stored in earth-centered, earth-fixed (ECEF) reference frame.
+		//*vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS.
 		"nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.6", // MIME type for the encoding used for the Node Index Documents
 		"featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.6",  // MIME type for the encoding used for the Feature Data Resources
 		"geometryEncoding": "application/octet-stream+gzip; version=1.6", // MIME type for the encoding used for the Geometry Resources

@@ -1,7 +1,7 @@
 ﻿{
 	"targetProfile": "all",
 	"resource": "GeometryArrayBufferView",
-	"version": "1.4",
+	"version": "1.6",
 	"rules": [{
 		"qname": "id",
 		"required": true,
@@ -64,7 +64,7 @@
 		"valueType": "string",
 		"valueSchema": "None",
 		"valueDomain": [
-			"PerAttributeArray", 
+			"PerAttributeArray",
 			"Indexed"
 		]
 	},
@@ -96,7 +96,7 @@
 			"to" : "../type",
 			"type" : "IS",
 			"value" : "polygon"
-		} ] 
+		} ]
 	},
 	{
 		"qname": "params.rings.*",
@@ -244,13 +244,13 @@
 		],
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname" : "params.featureAttributes.*",
 		"required" : true,
 		"valueType" : "object",
 		"valueSchema" : "None"
-	}, 
+	},
 	{
 		"qname": "params.featureAttributes.*.byteOffset",
 		"required": true,
@@ -280,7 +280,7 @@
 		"valueDomain" : [
 			"UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64"
 		]
-	}, 
+	},
 	{
 		"qname" : "params.featureAttributes.*.valuesPerElement",
 		"required" : true,
@@ -292,6 +292,6 @@
 			16
 		]
 	}
-	
+
 	]
 }

@@ -66,13 +66,13 @@ No specific profile.
 
 Note that in this profile, the defaultGeometrySchema is mandatory.
 
-[3dSceneLayer](./rules/docs/3dSceneLayerRules.html)
+[3dSceneLayer](./rules/docs/3dSceneLayerRules.md)
 
 ### 3dNodeIndexDocument
 
 There is always exactly 1 geometry and texture resource per node.
 
-[3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.html)
+[3dNodeIndexDocument](./rules/docs/3dNodeIndexDocumentRules.md)
 
 ### AttributeData
 
@@ -82,8 +82,8 @@ Attribute data for all features in a node is stored and made available as discre
 
 The FeatureData is optional with this profile.
 
-[FeatureData](./rules/docs/FeatureDataRules.html)
+[FeatureData](./rules/docs/FeatureDataRules.md)
 
 ### SharedResources
 
-[SharedResources](./rules/docs/SharedResourceRules.html)
+[SharedResources](./rules/docs/SharedResourceRules.md)

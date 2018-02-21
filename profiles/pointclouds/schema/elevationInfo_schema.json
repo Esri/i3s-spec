@@ -1,0 +1,32 @@
+{
+"title": "I3S point cloud scene layer: elevationInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The elevationInfo defines how content in a scene layer is aligned to the ground.",
+    "properties": {
+        "mode": {
+            "type": "string",
+            "description": "The mode of the elevation. Point cloud scene layer support absoluteHeight." 
+        },  
+        "offset": {
+            "type": "number",
+            "description": "The offest the point cloud scene layer. The elevation unit is the coordinate systems units." 
+        } 
+    },
+    "required": [
+        "mode"
+    ],
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "elevationInfo",
+             "code": {
+               "elevationInfo": {
+                "mode": "absoluteHeight",
+                "offset": 0.0
+                }
+             }   
+           }
+         ]
+       }
+}

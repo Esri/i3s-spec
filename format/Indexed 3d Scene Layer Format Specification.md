@@ -1,7 +1,7 @@
 <h2>Esri Indexed 3d Scene Layer (I3S) and <br>
 Scene Layer Package (*.slpk) Format Specification</h2>
 
-<p>Version 1.6, Feb. 1, 2017</p>
+<p>Version 1.6, March 02, 2017</p>
 <p style="font-size:80%">
 <em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
@@ -85,14 +85,14 @@ The requirements specified below apply to the following layer types:
 <ul>
 <li> 3D Objects (e.g., building Exteriors from GIS data  as well as 3D models in various formats)</li>
 <li> Integrated Mesh (e.g., an integrated surface representing the skin of the earth including vegetation, buildings and roads from satellite, aerial or drone imagery via dense matching photogrammetry) </li>
-<li> Points (e.g. hospitals or Schools, trees, street furniture, signs, etc. from GIS data)</li>
+<li> Points (e.g. hospitals or schools, trees, street furniture, signs, etc. from GIS data)</li>
+<li> <a href="../profiles/pointclouds/docs/Documentation.md">point clouds </a> (lidar data) </li>
 </ul>
 
 The following layer types are planned for future inclusion in the I3S standard (future work):
 <ul>
 <li>Line Features (e.g. from GIS data)</li>
 <li>Polygon Features (e.g. from GIS data)</li>
-<li>Point Clouds (e.g. from LiDAR)</li>
 </ul>
 
 Layers are described using two properties, type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and Pointclouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles.  For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
@@ -123,7 +123,7 @@ Layers are described using two properties, type and profile. The type of a layer
  </tr>
  <tr>
   <td>Pointcloud</td>
-  <td>pointclouds</td>
+  <td><a href="../profiles/pointclouds/docs/Documentation.md">pointclouds</td>
   <td>No</td>
   <td>Vertex Attributes</td>
  </tr>
@@ -737,6 +737,11 @@ applied.</p>
 		<td>vertexCRS</td>
 		<td>URL</td>
 		<td>The horizontal CRS used for all "vertex positions" in this store, identified by an OGC URL.</td>
+	</tr>
+	<tr>
+		<td>normalReferenceFrame</td>
+		<td>String</td>
+		<td>Describes the coordinate reference frame used for storing normals. One of <code>{east-north-up, \*earth-centered\*, vertex-reference-frame}</code>. A value of *east-north-up* indicates that normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS. A value of *earth-centered* indicates that normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS. A value of *vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS. </td>
 	</tr>
 	<tr>
 		<td>nidEncoding</td>
@@ -2353,7 +2358,7 @@ and they optionally also allow to be directly consumed by applications such as c
 The format of the package itself is defined as follows:
 
 <ul>
-	<li>The Archive type is always <a href="http://www.enterag.ch/enterag/downloads/Zip64File_TechnicalDocumentation.pdf">Zip64</a>.</li>
+	<li>The Archive type is always <a href="https://en.wikipedia.org/wiki/Zip_(file_format)">Zip</a>.</li>
 	<li>On this Archive, an overall compression scheme may be applied.
 	This compression scheme has to be either STORE or DEFLATE64.
 	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. </li>

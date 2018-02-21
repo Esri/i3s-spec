@@ -1,0 +1,92 @@
+{
+    "title": "I3S point cloud scene layer: attributeInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "List of attributes included for this layer.",
+    "properties": {
+        "key": {
+            "type": "string",
+            "description": "Represents the attribute key. Key is the same as `id' used in the resource URL to fetch the binary buffers."
+        },
+        "name": {
+            "type": "string",
+            "description": "The attribute name. Must be unique for this layer."
+        },
+        "ordering": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "attributeValues"
+                ],
+                "description": "*Note:* Only 1-to-1 `attributeValues` mapping is supported."
+            },
+            "description": "Mapping between attribute to point. Only 1-to-1 is currently supported."
+        },
+        "encoding": {
+            "type": "string",
+            "enum": [
+                "embedded-elevation",
+                "lepcc-intensity",
+                "lepcc-rgb"
+            ],
+            "enum-description": {
+                "embedded-elevation": "No binary buffer but stats for this pseudo attribute will be available. For example, point.z from the geometry should be used.",
+                "lepcc-intensity": "LEPCC compression for scaled integral type.",
+                "lepcc-rgb": "LEPCC color compression for 3-channel RGB 8 bit."
+            },
+            "description": "Encoding (i.e. compression) for the attribute binary buffer if different from GZIP or no-compression."
+        },
+        "attributeValues": {
+            "type": "object",
+            "description": "Represents the description for value encoding, for example scalar or vector encoding.",
+            "$ref": "value_schema.json"
+        }
+    },
+    "required": [
+        "key",
+        "name"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "Elevation pseudo-attribute",
+                "code": {
+                    "key": "1",
+                    "name": "ELEVATION",
+                    "encoding": "embedded-elevation"
+                }
+            },
+            {
+                "title": "Color attribute",
+                "code": {
+                    "key": "4",
+                    "name": "RGB",
+                    "ordering": [
+                        "attributeValues"
+                    ],
+                    "attributeValues": {
+                        "valueType": "UInt8",
+                        "valuesPerElement": 3
+                    },
+                    "encoding": "lepcc-rgb"
+                }
+            },
+            {
+                "title": "8-bit uncompressed/GZIP compressed class-codes",
+                "code": {
+                    "key": "8",
+                    "name": "CLASS_CODE",
+                    "ordering": [
+                        "attributeValues"
+                    ],
+                    "attributeValues": {
+                        "valueType": "UInt8",
+                        "valuesPerElement": 1
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,7 +1,7 @@
 {
 	"targetProfile": "all",
 	"resource": "GeometryEmbedded",
-	"version": "1.4",
+	"version": "1.6",
 	"rules": [
 		{
 			"qname": "id",
@@ -50,13 +50,13 @@
 			"valueType": "string",
 			"valueSchema": "None",
 			"valueDomain": [
-				"triangle_strip", 
-				"triangles", 
-				"line", 
-				"point", 
+				"triangle_strip",
+				"triangles",
+				"line",
+				"point",
 				"polygon"
 			]
-		},	
+		},
 		{
 			"qname": "params.topology",
 			"required": true,
@@ -64,7 +64,7 @@
 			"valueType": "string",
 			"valueSchema": "None",
 			"valueDomain": [
-				"PerAttributeArray", 
+				"PerAttributeArray",
 				"Indexed"
 			]
 		},
@@ -96,7 +96,7 @@
 				"to" : "../type",
 				"type" : "IS",
 				"value" : "polygon"
-			} ] 
+			} ]
 		},
 		{
 			"qname": "params.rings.*",

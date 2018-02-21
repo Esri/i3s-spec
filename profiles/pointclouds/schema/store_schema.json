@@ -1,0 +1,84 @@
+{
+    "title": "I3S point cloud scene layer: store",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Describes storage for the layer.",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Id for the store. Not currently used by the point cloud scene layer."
+        },
+        "profile": {
+            "type": "string",
+            "enum": [
+                "PointCloud"
+            ],
+            "description": "Defines the profile type of the scene layer as point cloud scene layer."
+        },
+        "version": {
+            "type": "string",
+            "description": "Point cloud scene layer store version."
+        },
+        "extent": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "2D extent of the point cloud scene layer in the layers spatial reference units."
+        },
+        "index": {
+            "$ref": "index_schema.json"
+        },
+        "defaultGeometrySchema": {
+            "$ref": "defaultGeometrySchema_schema.json"
+        }
+    },
+    "required": [
+        "profile",
+        "version",
+        "extent",
+        "index",
+        "defaultGeometrySchema"
+    ],
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "store",
+             "code": {
+                "store": 
+                {
+                    "id": "", 
+                    "profile": "PointCloud", 
+                    "version": "2.0", 
+                    "extent": [-105.023403, 39.740089, -105.011746, 39.757051], 
+                    "index": 
+                    {
+                        "nodeVersion": 1, 
+                        "boundingVolumeType": "obb", 
+                        "nodesPerPage": 64, 
+                        "lodSelectionMetricType": "density-threshold"
+                        }, 
+                    "defaultGeometrySchema": 
+                    {
+                        "geometryType": "points", 
+                        "header": [], 
+                        "topology": "PerAttributeArray", 
+                        "encoding": "lepcc-xyz", 
+                        "vertexAttributes": 
+                        {
+                            "position": 
+                            {
+                                "valueType": "Float64", 
+                                "valuesPerElement": 3
+                                }
+                            }, "ordering": ["position"]
+                        }
+                    }
+                }   
+            }
+        ]
+    }
+}
+

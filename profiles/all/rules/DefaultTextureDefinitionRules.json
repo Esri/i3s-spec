@@ -1,7 +1,7 @@
 {
   "targetProfile": "all",
-  "resource": "DefaultTextureDefinition",  
-  "version": "1.4",
+  "resource": "DefaultTextureDefinition",
+  "version": "1.6",
   "rules": [
   {
    "qname": "encoding",

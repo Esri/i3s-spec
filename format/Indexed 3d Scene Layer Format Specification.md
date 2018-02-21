@@ -3,7 +3,7 @@ Scene Layer Package (*.slpk) Format Specification</h2>
 
 <p>Version 1.6, March 02, 2017</p>
 <p style="font-size:80%">
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
+<em>Contributors:</em> Tamrat Belayneh, Ronald Poirrier, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
 <p>
 
@@ -86,7 +86,7 @@ The requirements specified below apply to the following layer types:
 <li> 3D Objects (e.g., building Exteriors from GIS data  as well as 3D models in various formats)</li>
 <li> Integrated Mesh (e.g., an integrated surface representing the skin of the earth including vegetation, buildings and roads from satellite, aerial or drone imagery via dense matching photogrammetry) </li>
 <li> Points (e.g. hospitals or schools, trees, street furniture, signs, etc. from GIS data)</li>
-<li> <a href="../profiles/pointclouds/docs/Documentation.md">point clouds </a> (lidar data) </li>
+<li> <a href="../profiles/pointclouds/docs/documentation.md">point clouds</a> (lidar data) </li>
 </ul>
 
 The following layer types are planned for future inclusion in the I3S standard (future work):
@@ -123,7 +123,7 @@ Layers are described using two properties, type and profile. The type of a layer
  </tr>
  <tr>
   <td>Pointcloud</td>
-  <td><a href="../profiles/pointclouds/docs/Documentation.md">pointclouds</td>
+  <td><a href="../profiles/pointclouds/docs/documentation.md">pointclouds</td>
   <td>No</td>
   <td>Vertex Attributes</td>
  </tr>

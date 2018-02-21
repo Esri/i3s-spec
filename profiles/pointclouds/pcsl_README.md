@@ -2,10 +2,16 @@
 
 Specification for the I3S point cloud scene layer format.
 
+# Pending Items
+
+Currently as specified, the point cloud scene layer specification has a dependency on LEPCC (Limited Error Point Cloud Compression) algorithm for data compression. The LEPPC specification is planned to be released accompanying the publication of this PCL specification.
+
+However, a requirement has come up to decouple the PCL specification from LEPCC and only offer it as one of many compression algorithms supported by the PCL specification. This work is in progress and when complete, the specification will be updated to reflect this fact.
+
 # Content
 [Point cloud scene layer documentation](docs/documentation.md)
 
-- ../docs/: The documentation generated from the schema/ schema files for each profile type. 
+- ../docs/: The documentation generated from the schema/ schema files for each profile type.
 - examples/: Examples for reference and testing.
 
 # Version / Releases

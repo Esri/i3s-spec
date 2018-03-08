@@ -14,7 +14,7 @@ The following layer types have been specified and the standard validated via imp
 - 3D Objects (e.g. Building Exteriors, from GIS Data as well as 3D models in various formats)
 - Integrated Meshes (e.g. eg an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - Point Features (e.g. Hospitals or Schools, trees, street furniture, signs, from GIS Data)
-- Pointclouds (e.g. from LiDAR). A DRAFT specifciatoin for [PointClouds](https://github.com/esri/pointcloud) is put forward for consideration. A Point cloud scene layer provides fast display of large volumes of symbolized and filtered point cloud data. PointClouds are optimized for the display and sharing of many kinds of sensor data, including lidar. 
+- Pointclouds (e.g. from LiDAR). A DRAFT specification for [PointClouds](https://github.com/esri/pointcloud) is put forward for consideration. A Point cloud scene layer provides fast display of large volumes of symbolized and filtered point cloud data. PointClouds are optimized for the display and sharing of many kinds of sensor data, including lidar. 
 
 The following layer types are planned for future inclusion:
 

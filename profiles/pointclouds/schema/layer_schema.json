@@ -58,6 +58,11 @@
             "description": "An object containing the vertical coordinate system information.",
             "$ref": "../../common/schema/heightModelInfo_schema.json"
         },
+        "serviceUpdateTimeStamp": {
+            "type": "object",
+            "description": "Object to provide time stamp when the I3S service or the source of the service was created or updated.",
+            "$ref": "../../common/schema/serviceUpdateTimeStamp_schema.json"
+        },
         "store": {
             "type": "object",
             "description": "The storage for the layer.",

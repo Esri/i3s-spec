@@ -19,7 +19,7 @@ Optional:
 
 - FeatureData JSON (optional for Mesh-Pyramids profile)
 
-This is the REST API for retrieval of these resources:
+The schema of the individual endpoints is documented in the <a href="../format/Indexed 3d Scene Layer Format Specification.md#_6">JSON Resources Schema and Documentation of the I3S Format specification</a>. This is the REST API for retrieval of these resources:
 
 ### Common Services Information
 

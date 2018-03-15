@@ -6,21 +6,19 @@
   "properties": {
     "lastUpdate": {
       "type": "number",
-      "description": "Specifies the moment in unix epoch time when the I3S service was created or updated."
-    },
-    "sourceLastUpdate": {
-        "type": "number",
-        "description": "Specifies the moment in unix epoch time when the source of the I3S service was created or updated."
+      "description": "Specifies the moment in milliseconds when the I3S service was created or updated."
     }
   },
+  "required": [
+    "lastUpdate"   
+],
     "esriDocumentation": {
      "examples": [
         {
           "title": "serviceUpdateTimeStamp",
           "code": {
             "serviceUpdateTimeStamp": {
-              "lastUpdate": "1518827901926",
-              "sourceLastUpdate": "1520631394"
+              "lastUpdate": " 1518827901690"
             }
           }   
         }

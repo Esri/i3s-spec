@@ -15,6 +15,7 @@ Describes the point cloud scene layer.
 | capabilities | string[] | Capabilities supported by this layer.<div>Possible values for each array string:<ul><li>`View`: View is supported.</li><li>`Query`: Query is supported.</li></ul></div> |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
+| serviceUpdateTimeStamp | [common::serviceUpdateTimeStamp](../../common/docs/serviceUpdateTimeStamp.md) | Object to provide time stamp when the I3S service or the source of the service was created or updated. |
 | **store** | [pointcloud::store](store.md) | The storage for the layer. |
 | **attributeStorageInfo** | [pointcloud::attributeInfo](attributeInfo.md)[] | List of attributes included for this layer. |
 | drawingInfo | [pointcloud::drawingInfo](drawingInfo.md) | An object containing drawing information. |

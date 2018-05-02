@@ -15,7 +15,7 @@ sections provide a detailed implementation-level view.</p>
 <h2>Table of Contents</h2>
 
 <ol>
-	<li><a href="#_1">I3S Design Principals</a></li>
+	<li><a href="#_1">I3S Design Principles</a></li>
 	<li><a href="#_2">3D Scene Layer</a></li>
 	<li><a href="#_3">Coordinate Reference Systems</a>
 		<ol>
@@ -53,7 +53,7 @@ sections provide a detailed implementation-level view.</p>
 	</ol></li>
 </ol>
 
-<h2><a name="_1">I3S Design Principals</a></h2>
+<h2><a name="_1">I3S Design Principles</a></h2>
 
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 

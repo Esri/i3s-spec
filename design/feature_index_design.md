@@ -1,3 +1,6 @@
+for discussion on this design, please see :
+[issue 70](https://devtopia.esri.com/ArcGISPro/i3s-spec/issues/70)
+
 # Feature Index for I3S
 A `featureIndex` would map `feature_id` to a list of `node_id` representing this feature. This is a one-to-many mapping (in general) since a feature may be present in several LOD nodes. (even a leaf node may contains many features)
 

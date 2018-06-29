@@ -15,7 +15,8 @@ Both shortcoming lead to wasted video memory and network bandwidth. Issue 2) bei
 
 ![obb](img/jerusalem_obb.jpg)
 
-The obvious solutions are:
+
+**Implemented solution:**
 1. Used tied OBB for view-culling ("optimizer" -presented below- computes them from geometries and add them to each node-index) 
 2. 3D Viewer compute "perspective-correct" rectangular projection of OBB as the screen-size metric for LOD switching
 3. Use `OBB projected area/(texture.width*texture.heigh)` ("optimizer" adds `texture size` information to each `node_index` so texture payload does not need to be fetched.) 
@@ -25,7 +26,7 @@ The obvious solutions are:
 
 Request one node-index document per-request is very inefficient since index request must complete before the tree could be traverse further, in most cases. In high latency scenario, client-server "chattiness" is a major bottleneck. 
 
-**Solution:**
+**Implemented solution:**
 1. The optimizer tool (see "_implementation_" section) groups index-nodes into "pages" of 64 nodes
 2. All redundant information is stripped from the `Node-index` (i.e. `parentNode`, `neighbors`, resource references) to make JSON more compact. 
 3. `tree-keys` are replaced by integer `id`. 
@@ -79,26 +80,54 @@ Request one node-index document per-request is very inefficient since index requ
 GPU memory usage is a major limiting factor that can be mitigated through texture compression.  
 Three scenerios are possible
 
-
 | Network compresion| GPU compression | Download size | CPU usage | GPU Memory | 
 |--|--|--|--|--|
 | jpeg| none| lowest | high | highest | 
 | jpeg| DXT1 | lowest | highest | lowest | 
-| DDS (with mips) | DXT1 | highest | negligeable| lowest | 
+| DDS (with mips) | DXT1 | highest | negligible| lowest | 
 
- 
+Transmitting compressed textures the following drawbacks
+- Compression ratio is less than JPEG (even with extra GZIP compression)
+- Storage requirement for SLPK/Service (about 100% per support compression format). JPEG must always be present as a fallback. 
+- Format fragmentation: DDS (Microsoft), ETC2 (Android/WebGL) and PVRTC (Apple) means that SLPK/Service size may tripple to support all devices.  
+
+ **Implemented solution:**
+
+3D test viewer support all three texture management options. Please note that conclusions about DDS/DXT compression applies to other compression formats (ETC2 / PVRTC)
+
 ### 4. Smaller tile-size
 
-> Why is at top-down view using so much video memory ?
+> Why does top-down views use so much video memory ?
 
-If we take the Vricon dataset example, texture size is 1024x1024 which requires over 5MB of video memory (32 bit RGBA + mimaps), so even in a perfect case (`lodSelection` is correct and computed for an OBB, not a MBS and my viewport size is also 1024x1024), we would still need 4 tiles to cover a top-down view (viewport is -almost- always misaligned with tiling-scheme): that's a minumum of 20MB of memory. If the next LOD down is selected, memory usage could get close to 80 MB...
+#### Cause 1: large tile size
+![mecca_obb](img/mecca_top_down_view.jpg)
+As we can see on the screenshot above, a typical 1 Mpixel top-down view (1280x720) intersects six 1-Mpixel tiles (1024x1024). Texture memory usage will be over 30 MB (uncompressed). Smaller tiles (e.g. 256x256) would reduce the viewport intersection to 27 tiles for a memory usage of less than 9 MB (27x327kB), much closer to the 5MB theoretical minimum. Please note that texture compression will further reduce these 9 MB to a little over one MB.
 
-**solutions**:
+**Proposed solution**:
 - Using smaller node size (say 256x256) would reduce the cost of "partially" visible tiles on the edge of the viewport
 
 	->... and for "perspective" view, 3D clients will be able to swith to lower LOD sooner and reduce memory usage (better LOD granualarity)
 
-- Switch to GPU block-compressed texture format. ( 1:8 or 1:6 reduction in texture memory usage)  
+![mecca_obb](img/mecca_pizza_box.jpg)
+*Dataset showing poor LOD granularity due to large tile size*
+
+![granularity OBB](img/jerusalem_lod_granularity.jpg)
+*Scene with smaller tiles and improved LOD granularity*
+
+#### Cause 2: Invalid LOD Selection
+Since IM are created by 3rd party providers, we have no control over the correctness of their `lodSelection` metrics. For instance, if MBS projected area (the only currently supported bounding volume) is used, this threshold could be too conservative and force a switch to the next (more refined) lod. The same top-down view would now consume 2 to 4 times more memory (close to 80 MB in the example above!!).
+
+In addition, I3S specs for `lodSelection` can be an array of three different metrics which add unnecessary confusion for implementers. The actual meaning of these metrics is somewhat open to interpretation: "area" based metrics, for instance, assume an underlying bounding-volume (MBS or OBB?) AND a specific way of computing "projected area" (bounding rectangle of projection?, fixed-orientation projection ?, convex-hull projected area? etc.). The addition of OBB will compound this problem. 
+
+
+**Proposed solution**:
+
+Since GPU capabilities varies wildly (Workstation GPU to mobile device) and resources have to be shared across all visible layers in a scene, it's unrealistic to expect 3D clients  to follow `lodThreshold`. Even applying a "scale" to the LOD metric based on system capability won't help 3D clients figure out the resource cost of refining nodes. So instead of trying to impose unrealistic constrain on the Viewer, we should add meta-data to assist their resource management and LOD switching logic:
+  
+- Replace `lodThreshold` with the following (per-node) meta-data:
+	- `obb`: footprint computation
+	- `textureSize`: "texel resolution" and memory usage cost can be easily inferred (texture compression have a fix compression ratio)
+	- `vertexCount`: vertex-buffer memory cost can be inferred based on both rendering mode (shaded, textured, colored, etc.) and attribute encoding (float32, float16, uint8,etc.)
 
 
 
@@ -107,12 +136,12 @@ If we take the Vricon dataset example, texture size is 1024x1024 which requires 
 In order to evaluate the benefits of the proposed improvements, I've implemented the following tools:
 
 - **I3S Optimizer** (convert a service/SLPK to an "optimized" SLPK with change 1), 2)and 3). Optimization 4) may be implemented in the future).
-- **IO Testbench** with throttleable bandwidth and Time-to-first-byte (TTFB).
+- **IO Testbench** with throttleable bandwidth and adjustable Time-to-first-byte (TTFB).
 - **3D Viewer** which can render both "legacy" and "optimized" services.     
 - **Python scripts** to generate performance charts.
 
 ### 3D Viewer
-The test viewer is a 64-bit standalone application written in C++ using D3D11 as the graphic API. 
+The test viewer is a 64-bit standalone application written in C++ using D3D11 as the graphic API. This viewer was used to benchmark different node-access pattern and resource management techniques and identify techiques that maximize performance (Visual quality, frame-rate and memory consumption). 
 
 
 #### Resource loading / LOD switching
@@ -179,7 +208,7 @@ Israeli distributor complained about poor performance in WSV with this dataset. 
 
 
 #### Mecca (Vricon)
-Lower resolution dataset with large tiles. Texture visual quality is low. 
+Lower resolution dataset with large tiles. Texture quality is low. 
 ![mecca_quality](img/mecca_quality.jpg)
 **Stats:**
 - ~2GB (jpeg only), ~7.2GB (jpeg+DDS)
@@ -220,7 +249,7 @@ The benefits of the paged-index access are clearly visible here:
 #### Mecca dataset:
 ![benchmark_mecca_250ms](img/mecca.250ms.png)
 
-The benefit of the paged-index access are a bit less pronounced since this dataset uses bigger tiles (so fewer node-index requests), but the same observations hold: 
+The benefits of the paged-index access are a bit less pronounced since this dataset uses bigger tiles (so fewer node-index requests), but the same observations hold: 
 - "legacy" is especially hurt at the beginning of the run due to (mostly) depth-first traversal of the tree. This requires "serial" (i.e. dependent) requests which compound TTFB. `# of request` is the about the same, but "optimized" is able to discover many more useful nodes and figure out which tiles to query much quicker.  
 - "Legacy" is mostly latency bound.
 - "optimized" is maximizing available "bandwidth".
@@ -234,25 +263,25 @@ The benefit of the paged-index access are a bit less pronounced since this datas
 
 We measure the video memory usage in the three texture compression scenarios. (jpeg/uncompress, jpeg/dds, dds/dds)
 
-- DXT1 (DDS) as a 1:8 fixed compression ratio (RGBA8 with A=255 always, RGB8 is not practical since modern GPU require 4-byte aligned texture)
+- DXT1 (DDS) has a 1:8 fixed compression ratio (RGBA8 with A=255 always, RGB8 is not practical since modern GPU require 4-byte aligned texel)
 - DDS (over wire) is GZIP compressed and contains mipmaps (up to 4x4 mip)
-- Bandwidth limit is set to 4 MBytes per second
-- Time-to-first-byte (TTFB) set 250 milliseconds.
-- Quality setting is 1.25 (i.e.refine node if `screen pixels/texel > 1.25` ).
+- Bandwidth limit is set to 4 MBytes per second.
+- Time-to-first-byte (TTFB) set to 250 milliseconds.
+- Quality setting is set to 1.25 (i.e.refine node if `screen pixels/texel > 1.25` ).
 - Window size is 1280*720 (720p HD).
-- If using jepg, mipmaps are computed on GPU.  
+- When texture compression is not used (i.e.`jepg/raw`), mipmaps are computed on GPU.  
 
 ![girona_texture](img/girona.vram.png)
 
 - The benefit of compression on video memory usage is clearly visible in both Memory-per- frame and Memory-per-tile measurements. 
-- Surprisingly, download size for DDS/DDS scenario is not prohibitive (dds+gzip (over wire) size is higher than JPEG, but very reasonable). For high quality texture dataset, DDS-over-wire is clearly the best approach.
+- Surprisingly, download size for `DDS/DDS` scenario is not prohibitive (`dds+gzip` (over wire) size is higher than JPEG, but very reasonable). For high quality texture dataset, DDS-over-wire is clearly the best approach.
 - Reduction in visual quality due to DXT compression wasn't noticeable
 
 ![mecca_texture](img/mecca.vram.png)
 
 - DDS-over-wire bandwidth cost is must higher here. The reason is that Vricon's texture quality is low (with very little high-frequency information) so JPEG compressor achieve very high compression ratios while DDS+gzip doesn't. 
-- "jpg/raw" visual quality suffers quite a bit since tiles are constantly garbage-collected to stay within memory quota (see "drops" in blue lines). This cause the viewer to often drop to lower LOD when camera moves. 
-- In this case JPEG->DDS recompression would be best if CPU cycles are available. Otherwise DDS-over-wire is a better fallback since uncompress texture use too much memory.
+- `jpg/raw` visual quality suffers quite a bit since tiles are constantly garbage-collected to stay within memory quota (see "drops" in blue lines). This cause the viewer to often drop to lower LOD when camera moves. 
+- In this case JPEG->DDS recompression would be best if CPU cycles are available or -`dds/dds` otherwise- since `jpeg/raw` scenario degrades UX too much.
 - Reduction in visual quality due to DXT compression wasn't noticeable   
 
   

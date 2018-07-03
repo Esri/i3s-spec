@@ -1,8 +1,35 @@
 # I3S Mesh Performance 
 
+## Summary
+07/03/18 Meeting: The following action-items have been identified:
+### Action items:
+| Proposed change | Performance improvements | Impacted Party|
+|---|---| 
+| Oriented-Bounding Box | Fewer requests / Reduce GPU memory usage | 3D clients & IM provider |
+| Paged-access (implies `integer` ids, compact node) | Fewer requests |3D clients & IM provider
+| Deprecate `sharedResource` for IM| Fewer requests | 3D clients & IM provider |
+| Texture compression resources (DDS, ETC2) | Reduce GPU memory usage | IM provider
+| LOD selection meta-data in index (`textureSize`, `vertexCount`) | Fewer tile to load/draw | IM provider (3D clients)|
+| Mesh indexing | Reduce GPU memory | 3D clients & IM provider|
+| Mesh quantization (16bit) in addition to indexing **contingent on WebGL 1.0 support**| Reduce GPU memory | 3D clients & IM provider|
+| SDK / IM optimizer tooling for IM providers | Better control over UX/SLPK quality | Scene layer team|
+
+### Additional work:
+
+- Investigate feasibility for **forward-compatibility** with older services.  
+- "Universal" texture compression format. 
+- Investigate geometry transmission compression (predictive compression + quantization)
+- Investigate applicability to **"mesh-pyramid"** profile. (impact on `sharedResource`, multiple co-trees, non-power-of-two/small/repeated textures, etc.) 
+
+#### Notes:
+- I3S specs updates should be grouped into a single new revision of the format to avoid "incremental" specs changes.
+
+ 
+## Analysis
 
 Several changes to I3S and 3D clients have been proposed to address performance issues reported by customers and distributors. 
 These optimization candidates are:
+
 
 ### 1. Oriented-bounded box 
 
@@ -14,6 +41,8 @@ Many tiles - especially at lower LOD- have very large horizontal-over-vertical a
 Both shortcoming lead to wasted video memory and network bandwidth. Issue 2) being the lead cause.
 
 ![obb](img/jerusalem_obb.jpg)
+
+
 
 
 **Implemented solution:**
@@ -89,13 +118,29 @@ Three scenerios are possible
 Transmitting compressed textures the following drawbacks
 - Compression ratio is less than JPEG (even with extra GZIP compression)
 - Storage requirement for SLPK/Service (about 100% per support compression format). JPEG must always be present as a fallback. 
-- Format fragmentation: DDS (Microsoft), ETC2 (Android/WebGL) and PVRTC (Apple) means that SLPK/Service size may tripple to support all devices.  
+- Format fragmentation: DDS (Microsoft), ETC2 (Android/WebGL) and PVRTC (Apple) means that SLPK/Service size may triple in size to support all devices.  
 
  **Implemented solution:**
 
 3D test viewer support all three texture management options. Please note that conclusions about DDS/DXT compression applies to other compression formats (ETC2 / PVRTC)
 
-### 4. Smaller tile-size
+### 4. Geometry Compression
+At a minimum, we need `position XYZ` and `Texture Coordinate (UV)` per vertex to draw Integrated Meshes. This currently translate to 20 bytes per vertex using `float32` values.
+Once we enable texture compression, Geometry GPU memory usage becomes significant:
+    
+![geometry mem](img/geom_tex.250ms.png)
+
+As we can see from the figure above, the detailed geometry of high resolution IM (context capture, Acute3D) consumes as much memory as compressed textures!.
+
+ **Proposed solution:**
+
+GPUs do not support any compressed geometry format natively, so there is only two options to reduce geometry memory usage:
+
+- **Indexed mesh** : This lossless way to draw meshes reduce the overhead of repeated vertices in adjacent triangles. 
+- **Quantization** : Encode XYZ/UV using less than 32 bits. (lossy).
+
+
+### 5. Smaller tile-size
 
 > Why does top-down views use so much video memory ?
 
@@ -135,7 +180,7 @@ Since GPU capabilities varies wildly (Workstation GPU to mobile device) and reso
 
 In order to evaluate the benefits of the proposed improvements, I've implemented the following tools:
 
-- **I3S Optimizer** (convert a service/SLPK to an "optimized" SLPK with change 1), 2)and 3). Optimization 4) may be implemented in the future).
+- **I3S Optimizer** (convert a service/SLPK to an "optimized" SLPK with change 1), 2)and 3). Optimization 4) has been investigated but not used in benchmarks and 5) may be implemented in the future).
 - **IO Testbench** with throttleable bandwidth and adjustable Time-to-first-byte (TTFB).
 - **3D Viewer** which can render both "legacy" and "optimized" services.     
 - **Python scripts** to generate performance charts.
@@ -257,8 +302,6 @@ The benefits of the paged-index access are a bit less pronounced since this data
 **Visual quality comparative video**: 
 - [Mecca side-by-side 640x720 - 500 ms TTFB](https://esri.box.com/s/76o8ajl52s8c28sp3enfnjpm1rodzxmf)
 
- 
-
 ### Texture compression results:
 
 We measure the video memory usage in the three texture compression scenarios. (jpeg/uncompress, jpeg/dds, dds/dds)
@@ -285,11 +328,48 @@ We measure the video memory usage in the three texture compression scenarios. (j
 - Reduction in visual quality due to DXT compression wasn't noticeable   
 
   
+### Geometry compression results:
+
+#### Indexed mesh vs. bag of triangles : 
+To index each tile of the mesh, we assign a index to all identical xyz coordinates quantized to 16 bit. i.e:
+1. compute tile geometry extent (min/max)
+2. Quantize XYZ: i.e.  `Q(xyz) = ( xyz - min_xyz ) / (max_xyz-min_xyz) * 65535`
+3. Quantize UV to 16 bit. `Q(uv) = uv * 65535` 
+3. Hash `Q(xyz) | Q(uv)` to a unique 80-bit key 
+4. Vertices with the same `key` are assigned the same mesh index. (index are 16 bit )
+
+Notes:
+- This method may not return the optimal index for the mesh, but it's very fast to compute.
+- While 16 bit UV seems generous (especially for small textures), the non-contiguous mapping of IM requires this precision. 
+
+|Dataset|Compression Ratio* XYZ index only | Compression Ratio* XYZ+UV index| Compression Ratio* XYZ+UV index+16bit
+|---|---:|---:|---:|
+|Girona|33%|75%|~36%|
+|Jerusalem|33%|51%|~30%|
+|Mecca|33%|45%|~28%|
+
+_* compression ratio `compress/original` (less is better). All compressed size computed using a 16-bit index_ 
+
+Context Capture/Acute 3D meshes use highly dis-contiguous UV mapping. As a result the identical vertices get assigned very different UV coordinates which severely reduce the benefits of mesh indexing.
+    
+Given the relative simplicity and losslessness of indexing, we still recommend it, but if `normals` were added to the hashed key, mesh indexing may become ineffective. (Are normals useful for IM ? TBD) 
+
+
+#### Coordinate/UV quantization : 
+
+Encoding vertex data on 16-bit would further reduce the indexed mesh size by 40-50%. To achieve this, we encode and store `{xyz,uv}` per tile using 16-bit fixed point precision. In the vertex shader, we scale & offset back our `uint16` inputs to float tile-space for positions and [0.0, 1.0] for UV.  
  
+![indexed mesh](img/geom_indexed.png)
+ 
+This option has a couple of drawbacks:
+1. Lossy compression, but **no noticeable visual difference with 16-bit precision**. Only a (potential) issue if IM were used as input to analysis, but IM lack of topology makes this unlikely anyway.
+2. Web GL 1.0 does not seem to support 16-bit integer format for `position` and `float16` (half-float) may not work either. (TBD). Likely possible with WebGL 2.0 
+
+
 
 ## Future work
 
-- Geometry compression (Draco)
+- Geometry compression for transmission (Draco)
 - 3D object meshes optimization (including BIM scene layer) 
  
 

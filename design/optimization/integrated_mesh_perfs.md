@@ -4,11 +4,11 @@
 07/03/18 Meeting: The following action-items have been identified:
 ### Action items:
 | Proposed change | Performance improvements | Impacted Party|
-|---|---| 
+|---|---|--|
 | Oriented-Bounding Box | Fewer requests / Reduce GPU memory usage | 3D clients & IM provider |
-| Paged-access (implies `integer` ids, compact node) | Fewer requests |3D clients & IM provider
+| Paged-access (implies `integer` ids, compact node) | Fewer requests |3D clients & IM provider|
 | Deprecate `sharedResource` for IM| Fewer requests | 3D clients & IM provider |
-| Texture compression resources (DDS, ETC2) | Reduce GPU memory usage | IM provider
+| Texture compression resources (DDS, ETC2) | Reduce GPU memory usage | IM provider|
 | LOD selection meta-data in index (`textureSize`, `vertexCount`) | Fewer tile to load/draw | IM provider (3D clients)|
 | Mesh indexing | Reduce GPU memory | 3D clients & IM provider|
 | Mesh quantization (16bit) in addition to indexing **contingent on WebGL 1.0 support**| Reduce GPU memory | 3D clients & IM provider|

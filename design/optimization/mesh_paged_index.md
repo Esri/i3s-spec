@@ -42,6 +42,34 @@ Since node are now packed in pages (i.e. 64 nodes per page), we have to make eac
 	"children" : [23, 7890, 253] //Optional: array of node_id
 }
 ```
+
+### TBD: Example (with multiple mesh support):
+``` js
+{
+    "id": 4352, 			//required: Switch from tree key to integer id editing)
+    "lodThreshold": 3161.302979 //optional: see 3dSceneLayer.json for the type ( i.e. : "lodSelectionMetricType" : "maxScreenThreshold")
+    "obb": {				//required: only support OBB (no MBS) 
+        "center": [2.826423693,41.98850837,76.56204143],
+        "halfSize": [14.93290901,11.43357086,7.315065861],
+        "quaternion": [-0.07007025182,0.03053234331,-0.05699849501,0.9954441786]
+    },
+	"children" : [23, 7890, 253] //Optional: array of node_id
+	"meshes" : [				//Optional : 'empty' nodes are okay.
+	  {
+		"materialId" : 0,		//optional?: material definition ID 
+		"definitionId" : 0,		// definition will contain the vertex buffer layout and available attribute buffers and their type+encoding.
+		"resourceId" : 12488,	//required: de-couples index-id from buffer/resource ids
+		"transform"  : [ 1,0,0,0,
+						 0,1,0,0,
+						 0,0,1,0,
+						 0,0,0,1], // Optional: this would allow for mesh instancing  
+    	"textureWidth": 1024,  //optional (default=0 ->untextured): added "color" texture size 	(for memory estimation) 0 if un-textured
+    	"textureHeight": 1024,  //optional (default=0 ->untextured): added "color" texture size 	(for memory estimation) 0 if un-textured
+	    "vertexCount": 21792   //required(?): added "vertexCount" (for vertex buffer size estimation)
+	  }
+	]
+}
+```
 #### LodSelection
 
 - Replace "array" of selection objects ( `lodSelection[]` ) with single **scalar value**, the meaning of this value is defined by `lodSelectionMetricType` in `3dSceneLayer.json` (i.e. common for the entire layer).  
@@ -60,7 +88,7 @@ nodes/{resourceId}/geometries/0
 nodes/{resourceId}/attributes/16
 nodes/{resourceId}/texture/0
 ```
-using `resourceId` to access resource buffers -and not `nodeId`- de-couples the index nodes (light weight) from the (immutable & heavier) resources. This will greatly faciliate editing.
+using `resourceId` to access resource buffers -and not `nodeId`- de-couples the index nodes (light weight) from the (immutable & heavier) resources. This should greatly faciliate editing.
 If "forward" compatibility is not a concern, we could tentatively structure I3S to reflect this approach: 
 ```
 nodepages/{page_id}
@@ -119,9 +147,12 @@ For example:
 But if `featureId` info per triangle is very often needed, it should be part of the `geometry` payload. (except for Integrated Mesh)  
 
 
+#### TBD: Add 
+
 ### TODO:
 - "multi-mesh" nodes to avoid co-trees. (node= OBB + [0,m] mesh(es)). Each mesh has a `materialid`, `geometryDefinitionId`. TBD: support mesh intancing too ?
 - add `geometryDefinition` documents so that a SINGLE layer may use different vertex-buffer definitions ("index vs. unindexed", XYZ/NORMAL, XYZ/UV0/UV1, etc. )
+- Multi-texturing support (Vricon attributes)
   
 
    

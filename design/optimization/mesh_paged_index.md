@@ -57,17 +57,24 @@ Since node are now packed in pages (i.e. 64 nodes per page), we have to make eac
 	"meshes" : [				//Optional : 'empty' nodes are okay.
 	  {
 		"materialId" : 0,		//optional?: material definition ID 
-		"definitionId" : 0,		// definition will contain the vertex buffer layout and available attribute buffers and their type+encoding.
+		"meshDefinitionId" : 0,	// definition will contain the vertex buffer layout and available attribute buffers and their type+encoding.
 		"resourceId" : 12488,	//required: de-couples index-id from buffer/resource ids
 		"transform"  : [ 1,0,0,0,
 						 0,1,0,0,
 						 0,0,1,0,
 						 0,0,0,1], // Optional: this would allow for mesh instancing  
-    	"textureWidth": 1024,  //optional (default=0 ->untextured): added "color" texture size 	(for memory estimation) 0 if un-textured
-    	"textureHeight": 1024,  //optional (default=0 ->untextured): added "color" texture size 	(for memory estimation) 0 if un-textured
-	    "vertexCount": 21792   //required(?): added "vertexCount" (for vertex buffer size estimation)
+    	"texelCountHint": 1048576,  //optional (default=0 ->untextured):  "color" texture size (for memory estimation)
+	    "vertexCount": 21792   //required(?): added "vertexCount" (for vertex buffer size estimation). 
+								//TBD: for indexed-mesh, should this be the IB size instead ? (i.e. un-indexed mesh that will be drawn)
 	  }
 	]
+}
+```
+#####TBD: Mesh definition ID
+``` js
+{
+    "id": 3, 			//required:
+	
 }
 ```
 #### LodSelection

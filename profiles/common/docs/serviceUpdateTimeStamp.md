@@ -4,7 +4,7 @@ Object to provide time stamp when the I3S service or the source of the service w
 
 ### Related:
 
-[pointcloud::layer](../../pointclouds/docs/layer.md)
+[meshv2::layer](../../meshv2/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -23,5 +23,5 @@ Object to provide time stamp when the I3S service or the source of the service w
     "lastUpdate": " 1518827901690"
   }
 } 
-````
+```
 

@@ -1,0 +1,40 @@
+{
+  "title": "Mesh definition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "../docs/meshdefinition_desc.md",
+  "properties": {
+    "topology": {
+      "type": "string",
+      "enum" : [ "triangle", "point", "line"],
+      "description": "Topology of the mesh. Default is `triangle`"
+    },
+    "geometryBuffers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "geometrybuffer_schema.json"
+      },
+      "description": "defines the vertex attributes (position, normal,etc), mesh indexing and feature mapping"
+    },
+    "attributeBuffers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "attributebuffer_schema.json"
+      },
+      "description": "define the binary attribute buffers available for this class of meshes"
+    }
+  },
+  "required": [
+    "geometryBuffers"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Point cloud layer",
+        "code_href": "../examples/nodepage_1.json"
+      }
+    ]
+  }
+}

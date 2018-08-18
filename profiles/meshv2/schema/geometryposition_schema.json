@@ -1,0 +1,73 @@
+{
+  "title": "Position vertex attribute",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Relative the center of oriented-bounded box of the node",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "Float32", "UInt16"],
+      "description": "Vertex positions relative to Oriented-bounding-box center"
+    },
+    "component": {
+      "type": "integer",
+      "description": "Number of coordinates per vertex position. Must be 2 or 3. If 2, then `z=0.0`"
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "none", "fixed-point" ],
+      "enum-description": {
+        "none": "default",
+        "fixed-point": "**For integer format ONLY**. `scale` and `offset` will be applied: `XYZ_float= (float)XYZ_int * scale + offset`"
+      },
+      "description": "Encoding. "
+    },
+    "binding": {
+      "type": "string",
+      "enum": [ "per-vertex" ],
+      "enum-description": {
+        "per-vertex": "default. only mode supported"
+      },
+      "description": ""
+    },
+    "scale": {
+      "type": "number",
+      "description": "scale to be applied to **integer** type only (`encoding='fixed_point'`). ignored otherwise. `default=1`"
+    },
+    "offset": {
+      "type": "number",
+      "description": "offset to be applied to **integer** type only (`encoding='fixed_point'`). ignored otherwise. `default=0`"
+    }
+  },
+  "required": [
+    "type",
+    "component"
+
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "16-bit per coordinate XYZ. [0,65k] coordinates will be multiply by 0.0001 and shift by 14.2",
+        "code": {
+          "position": {
+            "type": "UInt16",
+            "component": 3,
+            "encoding": "fixed-point",
+            "scale": 0.0001,
+            "offset": 14.2,
+            "binding": "per-vertex"
+          }
+        }
+      },
+      {
+        "title": "{x,y} position as float32, z will be set to 0",
+        "code": {
+          "position": {
+            "type": "Float32",
+            "component": 2
+          }
+        }
+      }
+    ]
+  }
+}

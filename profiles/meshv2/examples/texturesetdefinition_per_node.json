@@ -1,0 +1,13 @@
+{
+  "formats": [
+    {
+      "index": 0,
+      "format": "jpeg"
+    },
+    {
+      "index": 1,
+      "format": "dds"
+    }
+  ],
+  "binding": "per-node"
+}

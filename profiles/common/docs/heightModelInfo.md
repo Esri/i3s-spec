@@ -4,7 +4,7 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 
 ### Related:
 
-[pointcloud::layer](../../pointclouds/docs/layer.md)
+[meshv2::layer](../../meshv2/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -27,5 +27,5 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
     "heightUnit": "us-foot"
   }
 } 
-````
+```
 

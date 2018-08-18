@@ -2,13 +2,23 @@
 
 ## Design goals:
 In order to improve I3S drawing/loading performances, the following changes have been identified:
+
+### Performance improvements
 1. Group (and streamline) `NodeIndex` object into page of `n` nodes
 2. Drop `sharedResource` extra request per node   
 3. More efficient mesh geometry (indexed-mesh, compressed normals, compressed positions)
 4. Texture compression support. (already in progress. Not covered in this document)
 
-Importantly, we would like to make these improvements "non-braking" and preserve forward compatibility (i.e. "old" 3D clients would "ignore" new features and still be able to draw the data correctly).
+### Forward-compatibility
+Importantly, we would like to make these improvements "non-breaking" and preserve forward compatibility (i.e. "old" 3D clients would "ignore" new features and still be able to draw the data correctly).
+This also implies that publishing "extended" SLPK to older server still works. In this case,  extended resources will be **ignored/dropped by older servers** so 3D client must be prepare to handle this. For example:
+1. Check if "extended" capabilities are present in 3DSceneLayer.json
+2. YES: request the first page `layers/0/nodepages/0`. 
+3. 404: -> back to legacy mode. 200 -> Extended feature are **actually** present. 
 
+With paged-access, nodes cannot be identified by `tree-key` anymore. Fortunately, existing clients do not require `node_ids`  to be `tree-keys`.  
+
+### Feature/specs improvements 
 We're also considering adding the following features to this new I3S extension:
 
 - Support for multi-mesh nodes with "per-mesh" material (avoid node duplication /co-trees for different materials) 
@@ -21,20 +31,12 @@ We're also considering adding the following features to this new I3S extension:
  
 ## Proposed design 
 
-All existing documents, buffers and textures will be left unchanged, except for an extra (optional) field added to the root of `3DSceneLayer.json`:
-``` js
-{//`3DSceneLayer.json`
-	// ...
-	"extentedFormat" : True; // optional, default = False.
-	// ...
-}
-```
-which indicates that an extra document called `extended.json` is available.
-Nodes cannot be identified by `tree-key` anymore. Fortunately, existing clients do no rely on this behavior.   
+For forward-compatibility, all existing resource will be left unchanged, but new resource will be added:
+
+
 The structure of an _extended_ I3S service is shown below (`*`: extended resources):
 ```
-+--3DSceneLayer.json (url: '/layer/0')
-+--extended.json* (url: '/layer/0/extended' )
++--3DSceneLayer.json (with added fields*) 
 +--nodes 
 |  +--0
 |  |  +--3dNodeIndexDocument (deprecated)
@@ -63,62 +65,72 @@ The structure of an _extended_ I3S service is shown below (`*`: extended resourc
 +-- statistics 
 ```
 
+and new fields will be added to `3DSceneLayer.json`:
+``` js
+{	//`3DSceneLayer.json`
+	// ... unchanged "legacy" v1.6 content
+	"nodePages" : 
+	{
+		"nodePerPage": 64,
+		"lodSelectionMetricType": "maxScreenThreshold",
+	}
+	"textureSetDefinitions" : [ ... ] // see below
+	"materialDefinitions" : [ ... ] // see below
+	"instanceBufferDefinitions"  : [...] //see below
+	"meshDefinitions": [ ... ] //see below.
+}
+```
+ 
+
 ## 1. Paged Access 
 Since nodes are now packed into pages (i.e. 64 nodes per page), we have to use integer ID to map a node to its page as follow:
 
 	page_id         = floor( node_id / node_per_page)
 	node_id_in_page = modulo( node_id, node_per_page)
 
- `extended.json` will indicate the number of nodes per page:
-``` js
-{ // layers/0/extended.json
-    "nodesPerPage" : 64,
-	//...
-}
-```
 
 Having many nodes in a single json document impose to keep each node object as compact as possible. Below a _single_ node object from a page:
 ``` js
 { // layers/0/nodepages/12.json
-"nodes":[
-	{
-    "index": 4352, 				//required: index of this node in the array of nodes.
-    "lodThreshold": 3161.302979 //optional: see 3dSceneLayer.json for the type ( i.e. : "lodSelectionMetricType" : "maxScreenThreshold")
-    "obb": {					//required: only support OBB (no MBS) 
-        "center": [2.826423693,41.98850837,76.56204143],
-        "halfSize": [14.93290901,11.43357086,7.315065861],
-        "quaternion": [-0.07007025182,0.03053234331,-0.05699849501,0.9954441786]
-    },
-	"children" : [23, 7890, 253] //Optional: array of node index in the array of nodes.
-	"meshes" : [				//Optional : 'empty' nodes are okay.
-	  {
-		"materialId" : 0,		//optional?: material definition ID 
-		"meshDefinitionId" : 0,	// definition will contain the vertex buffer layout and available attribute buffers and their type+encoding.
-		"resourceId" : 12488,	//required: de-couples index-id from buffer/resource ids
-		"transform"  : [ 1,0,0,0,
-						 0,1,0,0,
-						 0,0,1,0,
-						 0,0,0,1], // Optional: this would allow for mesh instancing  
-    	"texelCountHint": 1048576,  //optional (default=0 ->untextured):  "color" texture size (for memory estimation)
-	    "vertexCount": 526   //required: needed to interpret geometry buffer correctly.
-		"indexCount": 21750  //required (for indexed-mesh) needed to interpret geometry correctly.
-		"featureCount": 26   //required: needed to interpret geometry buffer correctly.
-	  }
-	]
-	}
-	//...
-	]
+    "nodes":[
+        {
+        "index": 4352, 				//required: index of this node in the array of nodes.
+        "lodThreshold": 3161.3, //optional: see 3dSceneLayer.json for the type ( i.e. : "lodSelectionMetricType" : "maxScreenThreshold")
+        "obb": {					//required: only support OBB (no MBS). 
+            "center": [2.82,41.988,76.56],
+            "halfSize": [14.93,11.4,7.3150],
+            "quaternion": [-0.070,0.0305,-0.0569,0.9]
+        },
+        "children" : [23, 7890, 253], //Optional: array of node index in the array of nodes.
+        "meshes" : [				//Optional : 'empty' nodes are okay.
+          {
+            "materialId" : 0,		//optional?: material definition ID 
+            "geometryDefinitionId" : 0,	// definition will contain the vertex buffer layout and available attribute buffers and their type+encoding.
+            "resourceId" : 12488,	//required: de-couples index-id from buffer/resource ids
+            // transformation order is 1) scale, 2) rotation and 3) translation
+            "scale": [ 1.0, 1.0, 1.0],          // optional, in local space (i.e. mesh space)
+            "rotation": [ 0.0, 0.0, 0.0],       // optional, in local space
+            "translation": [ 0.0, 0.0, 0.0],    // optional, in local space
+            "texelCountHint": 1048576,  //optional (default=0 ->untextured):  "color" texture size (for memory estimation)
+            "vertexCount": 526,   //required: needed to interpret geometry buffer correctly.
+            "indexCount": 21750,  //required (for indexed-mesh) needed to interpret geometry correctly.
+            "featureCount": 26   //required: needed to interpret geometry buffer correctly.
+          }
+        ],
+        "instances" : //optional. Instancing applies to all geometries in this node.  
+        {
+            "instanceDefinitionId" : 3,
+            "resourceId" : 1014,		//instance buffer at url: layers/0/nodes/1014/{instanceBufferDefinitions[3].index})
+            "instanceCount" : 142
+        }
+    }
+    //...
+    ]
 }
 ```
 
 #### LodSelection
-We replace the "array" of selection objects ( `lodSelection[]` ) with single **scalar value**, the meaning of this value is defined in `extended.json` as follow:
-``` js
-{ // layers/0/extended.json
-"lodSelectionMetricType": "maxScreenThreshold",
-//...
-}
-```
+We replace the "array" of selection objects ( `lodSelection[]` ) with single **scalar value**.
 _TBD_: 
 - Unless we have a strong case for supporting anything else, we should settle on a **single** `lodSelectionMetricType` ( i.e. projected pixel area?)
 - LOD selection type would become _per-layer_ instead of per node. 
@@ -126,17 +138,17 @@ _TBD_:
 #### OBB only
 We only support OBB in the extended format for performance reasons. (but deprecated `3DNodeIndexDocument.json` would still be written with MBS for compatibility)
 
-#### Meta-data to estimate node resource usage:
+#### Per-node meta-data
 `texelCountHint`, `vertexCount`, `indicesCount` and `featureCount` are required to:
-- Infer the GPU memory required for each node. (this could help with LOD selection)
+- Infer the GPU memory required for each node. (this could help 3D clients with LOD selection)
 - parse the geometry buffer (compute size in bytes of each attributes)
 
 ####  `resourceId` to facilitate editing. Drop `href` strings
 Switch to _implicit_ buffer reference : geometry, attributes and texture may be access using a **known paths**:
 ```
 nodes/{resourceId}/geometries/{buffer_id}
-nodes/{resourceId}/attributes/16
-nodes/{resourceId}/texture/{texture_id}
+nodes/{resourceId}/attributes/{attribute_id}
+nodes/{resourceId}/textures/{texture_id}
 ```
 using `resourceId` to access resource buffers -and not `index`- de-couples the index nodes (light weight) from the (immutable & heavier) resources. This should greatly faciliate editing.
 
@@ -144,7 +156,7 @@ using `resourceId` to access resource buffers -and not `index`- de-couples the i
 To avoid the extra `sharedResource` query, we introduce the concept of a `materialDefinition` that would indicate where to find textures based on their role.
 For example:
 ``` js
-{ // layers/0/extended.json
+{ 
 	// ...
    "textureSetDefinitions": [
         {
@@ -341,6 +353,32 @@ faceRange
                     "binding": "per-feature"
                 }
             ]
+			
+        }
+    ],
+    "instanceBufferDefinitions": [
+        {
+            "index": 5,
+            "scale": {
+                "type": "Float32",
+                "component": 3
+            },
+            "rotation": {
+                "type": "Float32",
+                "component": 3
+            },
+            "translation": {
+                "type": "Float32",
+                "component": 3
+            },
+            "color": {
+                "type": "UInt8",
+                "component": 3
+            },
+            "featureId": {
+                "type": "Uint32",
+                "component": 1
+            }
         }
     ]
  // ...

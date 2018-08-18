@@ -1,0 +1,58 @@
+{
+  "title": "Attribute buffer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Id used to query attribute buffers from nodes e.g. `layers/0/nodes/145/attributes/{id}`"
+    },
+    "name": {
+      "type": "string",
+      "description": "name of the field/attribute. Must be unique per the layer. "
+    },
+    "alias": {
+      "type": "string",
+      "description": "name for presentation purposes (UI). "
+    },
+    "type": {
+      "type": "string",
+      "enum": [ "Int8", "Uint8", "Int16", "UInt16", "Int32", "Uint32", "Float32", "String" ],
+      "description": "Type of the attribute. "
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "none", "fixed-point", "indexed-utf8-string" ],
+      "enum-description": {
+
+        "none": "default, if `type=string` then `indexed-utf8-string` is implied",
+        "fixed-point": "**For integer format ONLY**. `scale` and `offset` will be applied: `X_float= (float)X_int * scale + offset`",
+        "indexed-utf8-string": "Attribute buffer will contains a binary header (little-endian) { `string_count`: UInt32, `sum_of_all_strings_size_in_bytes`:Uint32} follow by an array of UInt32 string sizes (in bytes). Each string data follows."
+      },
+      "description": "Encoding of the attribute. "
+    },
+    "binding": {
+      "type": "string",
+      "enum": [ "per-feature", "per-vertex", "per-face" ],
+      "description": "Binding for attribute values. (`per-face` is valid if topology is `triangle` only)"
+    }
+  },
+  "required": [
+    "id", "name", "type", "binding"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "String attribute per feature",
+        "code": {
+            "id": 10,
+            "name": "owner",
+            "type": "String",
+            "encoding": "indexed-utf8-string",
+            "binding": "per-feature"
+        }
+      }
+    ]
+  }
+}

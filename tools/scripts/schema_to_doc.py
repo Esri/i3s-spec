@@ -14,8 +14,8 @@ def json_to_dom( path ) :
 
 
 class Schema_manifest :
-    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common'}
-    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common'}
+    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2"}
+    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2"}
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path) :
@@ -341,7 +341,9 @@ class Markdown_writer  :
                 self.write_line( "### Examples \n" )
                 for ex in schema_doc.example_dom  :
                     self.write_line( "#### Example: %s \n" % (ex['title'] if 'title' in ex else '' ))
-                    self.write_line( "```json\n %s \n````\n" % self.get_example_code( ex ))
+                    if 'description' in ex :
+                        self.write_line( "%s \n" % ex['description'] )
+                    self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
 
 

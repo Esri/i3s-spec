@@ -1,0 +1,39 @@
+{
+  "title": "I3S `Extended` Mesh Layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Describes a mesh layer with extended capabilities",
+  "properties": {
+    "<legacy v1.6 layer description>": {
+      "type": "object",
+      "description": "same as v1.6. not repeated in this document"
+    },
+    "textureSetDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "texturesetdefinition_schema.json"
+      },
+      "description": "define the set of textures that can be referenced by meshes"
+    },
+    "meshDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "meshdefinition_schema.json"
+      },
+      "description": "Define the geometry (vertex attributes) and attributes buffers available for a **class** of meshes"
+    }
+  },
+  "required": [
+    "meshDefinitions"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Point cloud layer",
+        "code_href": "../examples/nodepage_1.json"
+      }
+    ]
+  }
+}

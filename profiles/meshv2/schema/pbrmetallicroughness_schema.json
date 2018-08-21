@@ -1,0 +1,46 @@
+{
+  "title": "PBR Metalic Roughness material model",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) (with the exception of emissive texture?)",
+  "properties": {
+    "baseColorFactor": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "number"
+      },
+      "description": "The material's base color factor. default=`[1,1,1,1]`"
+    },
+    "baseColorTexture": {
+      "type": "object",
+      "$ref": "materialtexture_schema.json",
+      "description": "The base color texture."
+    },
+    "metallicFactor": {
+      "type": "number",
+      "description": "the metalness of the material. default=`1.0`"
+    },
+    "roughnessFactor": {
+      "type": "number",
+      "description": "the roughness of the material. default=`1.0`"
+    },
+    "metallicRoughnessTexture": {
+      "type": "object",
+      "$ref": "materialtexture_schema.json",
+      "description": "he metallic-roughness texture."
+    } 
+  },
+  "required": [
+    "meshDefinitions"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "",
+        "code":""
+      }
+    ]
+  }
+}

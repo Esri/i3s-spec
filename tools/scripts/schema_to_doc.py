@@ -133,6 +133,11 @@ class Schema_manifest :
             self.include_stack.pop()
             return ret;
 
+class Dummy_type :
+    def __init__(self, manifest ):
+        self.name = ""
+        self.manifest = manifest
+
 class Schema_type :
     def __init__(self, manifest) :
         # init data members:
@@ -150,6 +155,7 @@ class Schema_type :
         self.range = ["",""]
         self.example_dom=[];
         self.desc_href=''
+        self.custom_related = []
 
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
@@ -178,10 +184,15 @@ class Schema_type :
             prop.type.parse_from_dom( sub_dom )
         return prop
 
+   
+
     def parse_type(self, dom ) :
         if 'type' in dom :
             self.json_type = dom['type']
-
+        if 'related' in dom :
+            obj = Dummy_type( self.manifest);
+            obj.name = dom['related']
+            self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
 
         if 'description' in dom :
@@ -217,6 +228,8 @@ class Schema_type :
             self.example_dom  = dom['esriDocumentation']['examples']
         if 'description-href' in dom :
             self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
+
+
 
 
 class Property :
@@ -324,7 +337,9 @@ class Markdown_writer  :
             self.write_line( "# %s\n" % schema_doc.title )
             self.write_line( schema_doc.desc )
             self.write_line()
-            if len( schema_doc.back_refs ) > 0 :
+            #remove list duplicates:
+            schema_doc.back_refs = list( set(schema_doc.back_refs + schema_doc.custom_related) )
+            if len( schema_doc.back_refs ) > 0:
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
                 self.write_line( ", ".join( [ "[%s](%s)" %( x.name, manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )

@@ -28,6 +28,26 @@
       "type": "object",
       "$ref": "geometryuv_schema.json",
       "description": "Second set of UV coordinates (textured mesh only)"
+    },
+    "color": {
+      "type": "object",
+      "$ref": "geometrycolor_schema.json",
+      "description": "Colors attribute "
+    },
+    "uvRegion": {
+      "type": "object",
+      "$ref": "geometryuvregion_schema.json",
+      "description": "UV regions (for repeated textures in texture atlases)"
+    },
+    "featureId": {
+      "type": "object",
+      "$ref": "geometryfeatureid_schema.json",
+      "description": "FeatureId attribute"
+    },
+    "faceRange": {
+      "type": "object",
+      "$ref": "geometryfacerange_schema.json",
+      "description": "Face range for feature"
     }
   },
   "required": [
@@ -36,8 +56,73 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Point cloud layer",
-        "code_href": "../examples/nodepage_1.json"
+        "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
+        "code": {
+          "position": {
+            "type": "Float32",
+            "component": 3,
+            "binding": "per-vertex"
+          },
+          "normal": {
+            "type": "Float32",
+            "component": 3,
+            "binding": "per-vertex"
+          },
+          "uv0": {
+            "type": "Float32",
+            "component": 2,
+            "binding": "per-vertex"
+          },
+          "featureId": {
+            "type": "UInt32",
+            "component": 1,
+            "binding": "per-feature"
+          },
+          "faceRange": {
+            "type": "UInt32",
+            "component": 2,
+            "binding": "per-feature"
+          }
+        }
+      },
+      {
+        "title": "A compact mesh representation: indexed-geometry, 16-bit xyz, compressed-normals, no colors with UV regions",
+        "code": {
+          "indice": {
+            "type": "UInt32"
+          },
+          "position": {
+            "type": "UInt16",
+            "component": 3,
+            "encoding": "fixed-point",
+            "scale": 100.0,
+            "offset": 14500.0,
+            "binding": "per-vertex"
+          },
+          "normal": {
+            "type": "UInt16",
+            "component": 2,
+            "encoding": "normal-compression",
+            "binding": "per-face"
+          },
+          "uv0": {
+            "type": "UInt16",
+            "component": 2,
+            "encoding": "normalized",
+            "binding": "per-vertex"
+          },
+          "color": {
+            "type": "UInt8",
+            "component": 3,
+            "binding": "per-face"
+          },
+          "uvRegion": {
+            "type": "UInt16",
+            "component": 4,
+            "encoding": "normalized",
+            "binding": "per-vertex"
+          }
+        }
       }
     ]
   }

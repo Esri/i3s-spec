@@ -1,0 +1,37 @@
+{
+  "title": "Node pages definition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+
+  "description-href": "../docs/nodepages_desc.md",
+  "related": "meshv2::node",
+  "properties": {
+    "nodesPerPage": {
+      "type": "integer",
+      "description": "Number of node per page for this layer"
+    },
+    "lodSelectionMetricType": {
+      "type": "string",
+      "enum": [ "maxScreenThresholdSQ" ],
+      "enum-description": {
+        "maxScreenThresholdSQ": "_TBD_: Unless we have a strong case for supporting anything else, we should settle on a **single** type of lod metric"
+      },
+      "description": "Defines the meaning of `nodes[].lodThreshold` for this layer"
+    }
+  },
+  "required": [
+    "nodesPerPage",
+    "lodSelectionMetricType"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "64 nodes per page index",
+        "code": {
+          "nodePerPage": 64,
+          "lodSelectionMetricType": "maxScreenThresholdSQ"
+        }
+      }
+    ]
+  }
+}

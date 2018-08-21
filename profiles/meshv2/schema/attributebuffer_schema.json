@@ -6,7 +6,7 @@
   "properties": {
     "id": {
       "type": "integer",
-      "description": "Id used to query attribute buffers from nodes e.g. `layers/0/nodes/145/attributes/{id}`"
+      "description": "Id used to query attribute buffers from nodes e.g. `layers/0/nodes/{resource_id}/attributes/{id}`"
     },
     "name": {
       "type": "string",
@@ -19,7 +19,7 @@
     "type": {
       "type": "string",
       "enum": [ "Int8", "Uint8", "Int16", "UInt16", "Int32", "Uint32", "Float32", "String" ],
-      "description": "Type of the attribute. "
+      "description": "Type of the attribute. _(TBD: uint64?)_   "
     },
     "encoding": {
       "type": "string",
@@ -34,25 +34,44 @@
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-feature", "per-vertex", "per-face" ],
+      "enum": [ "per-vertex", "per-feature", "per-face" ],
+      "enum-description": {
+        "per-vertex": "",
+        "per-feature": "",
+        "per-face": "_TBD, to be removed if not useful_"
+      },
       "description": "Binding for attribute values. (`per-face` is valid if topology is `triangle` only)"
     }
   },
   "required": [
-    "id", "name", "type", "binding"
+    "id",
+    "name",
+    "type",
+    "binding"
   ],
   "esriDocumentation": {
     "examples": [
       {
-        "title": "String attribute per feature",
+        "title": "Declaration for per-feature string attribute buffers. Url: `layers/0/nodes/{resource_id}/attributes/12`",
         "code": {
-            "id": 10,
-            "name": "owner",
-            "type": "String",
-            "encoding": "indexed-utf8-string",
-            "binding": "per-feature"
+          "id": 12,
+          "name": "street_name",
+          "alias": "Nom de rue",
+          "type": "String",
+          "binding": "per-feature",
+          "encoding": "indexed-utf8-string"
+        }
+      },
+      {
+        "title": "Declaration for per-vertex integer attribute buffers.  Url: `layers/0/nodes/{resource_id}/attributes/14`",
+        "code": {
+          "id": 14,
+          "name": "class_code",
+          "alias": "Classification",
+          "type": "UInt8",
+          "binding": "per-vertex"
         }
       }
     ]
   }
-}
+  }

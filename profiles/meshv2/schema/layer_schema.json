@@ -1,12 +1,26 @@
 {
-  "title": "I3S `Extended` Mesh Layer",
+  "title": "Extended mesh layer for high performances",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Describes a mesh layer with extended capabilities",
+  "description-href": "../docs/layer_desc.md",
+  "related": "meshv2::nodes",
   "properties": {
     "<legacy v1.6 layer description>": {
       "type": "object",
       "description": "same as v1.6. not repeated in this document"
+    },
+    "nodePages": {
+      "type": "object",
+      "$ref": "nodepages_schema.json",
+      "description": "paged-access index description"
+    },
+    "materialDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "materialdefinitions_schema.json"
+      },
+      "description": "List of materials classes used in this layer. _TBD_ use a separated JSON resource?"
     },
     "textureSetDefinitions": {
       "type": "array",
@@ -22,7 +36,23 @@
         "type": "object",
         "$ref": "meshdefinition_schema.json"
       },
-      "description": "Define the geometry (vertex attributes) and attributes buffers available for a **class** of meshes"
+      "description": "Define the layouts of mesh geometry and its attributes"
+    },
+    "instanceBufferDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "instancebuffer_schema.json"
+      },
+      "description": "Define the layouts of instance buffers that may be used by meshes in this layer."
+    },
+    "instanceBufferDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "instancebuffer_schema.json"
+      },
+      "description": "Define the layouts of instance buffers that may be used by meshes in this layer."
     }
   },
   "required": [
@@ -31,8 +61,8 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Point cloud layer",
-        "code_href": "../examples/nodepage_1.json"
+        "title": "Mesh layer",
+        "code_href": "../examples/layerdefinition.json"
       }
     ]
   }

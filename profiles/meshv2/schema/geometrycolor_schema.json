@@ -1,0 +1,62 @@
+{
+  "title": "Color vertex attribute",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Colors for geometry .TBD: Assumed to be sRGB ??",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "UINT8" ],
+      "description": "color channel values"
+    },
+    "component": {
+      "type": "integer",
+      "description": "Number of colors. Must be in [1,4] i.e. Assumes: 0=red, 1=green, 2=blue, 3=alpha"
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "normalized" ],
+      "enum-description": {
+        "normalized": "default. Assume 8-bit unsigned color per channel [0,255] -> [0,1]"
+      },
+      "description": "Encoding"
+    },
+    "binding": {
+      "type": "string",
+      "enum": [ "per-vertex", "per-face", "per-feature" ],
+      "enum-description": {
+        "per-vertex": "default.",
+        "per-face": "color is per face (`topology` must be `triangle`)",
+        "per-feature": "color is per feature. **TBD: useful ? should we suppport this?**"
+      },
+      "description": ""
+    }
+  },
+  "required": [
+    "type",
+    "component"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "RGB colors per vertex",
+        "code": {
+          "color": {
+            "type": "UInt8",
+            "component": 3
+          }
+        }
+      },
+      {
+        "title": "RGBA colors per face. `triangle` topology is required",
+        "code": {
+          "color": {
+            "type": "UInt8",
+            "component": 4,
+            "binding" :  "per-face"
+          }
+        }
+      }
+    ]
+  }
+}

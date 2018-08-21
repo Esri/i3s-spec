@@ -4,7 +4,7 @@
 
 ### Related:
 
-[meshv2::geometrybuffer](geometrybuffer.md), [meshv2::geometrybuffer](geometrybuffer.md)
+[meshv2::geometrybuffer](geometrybuffer.md)
 ### Properties
 
 | Property | Type | Description |

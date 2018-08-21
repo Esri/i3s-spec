@@ -1,0 +1,49 @@
+{
+  "title": "Face Range",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "../docs/geometryfacerange_desc.md",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "UINT8", "UINT16", "UINT32" ],
+      "description": "Range id "
+    },
+    "component": {
+      "type": "integer",
+      "description": "must be `2` "
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "none" ],
+      "enum-description": {
+        "none": "default and only value supported"
+      },
+      "description": "Encoding"
+    },
+    "binding": {
+      "type": "string",
+      "enum": [  "per-feature" ],
+      "enum-description": {
+        "per-feature": "default and only value supported"
+      },
+      "description": "building is always per-feature"
+    }
+  },
+  "required": [
+    "type", "component"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "FaceRange",
+        "code": {
+          "faceRange": {
+            "type": "UInt16",
+            "component": 2
+          }
+        }
+      }
+    ]
+  }
+}

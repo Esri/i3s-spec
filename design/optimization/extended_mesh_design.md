@@ -53,6 +53,9 @@ The structure of an _extended_ I3S service is shown below (`*`: extended resourc
 |  |  |  +--0  (e.g. "jpeg")
 |  |  |  +--1  (e.g. "dds")
 |  |  |  +--(...) 
+|  |  +--instances*
+|  |  |  +--0* 
+|  |  |  +--(...)* 
 |  +--(...)
 +--nodepages*
 |  +--0*

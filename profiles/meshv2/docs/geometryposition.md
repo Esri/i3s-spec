@@ -4,7 +4,7 @@ Relative the center of oriented-bounded box of the node
 
 ### Related:
 
-[meshv2::geometrybuffer](geometrybuffer.md)
+[meshv2::instancebuffer](instancebuffer.md), [meshv2::geometrybuffer](geometrybuffer.md)
 ### Properties
 
 | Property | Type | Description |

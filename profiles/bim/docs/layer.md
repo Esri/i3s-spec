@@ -96,7 +96,6 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
  {
   "id": 10,
   "name": "esri_campus",
-  "href": "./layers/10",
   "layerType": "building",
   "alias": "Esri Campus 2018",
   "fullExtent": {

@@ -16,7 +16,7 @@ Please note that `sublayers` (but **not** `groups`!) may be referenced in multip
 
 
 
-Since a BIM layer may have a associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1], the featureService will have [0,n-1] _concrete_ sublayers, so the BIM layer itself and its `groups` must be assigned an `id` greater or equal to `n`
+Since a BIM layer may have a associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
 
 ``` 
 +-- layers
@@ -40,9 +40,32 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 
 ```
 
+#### Notes on _City_ scale BIM:
+BIM is not envisionned to represent many buildings (e.g. a city). In this case an single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene layers. Once a building is selected, its matching BIM scene layer will be open.
 
-
-
+**Edits**
+- group/layer names **must be unique**. 
+- `href` for `sublayers` and `groups` have been removed in favor of `ids`
+- `capabilities` have been removed:
+``` json
+    "capabilites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [ "view", "query" ]
+      },
+      "description": "Layer capabilites. **concreate sub-layers only**. ignored for `layerType`=`groups`. "
+    },
+```
+- Removed `fullExtent` from `group` object
+- Removed `modelName`. BIM filter will use layer names (or aliases) for filtering instead.
+``` json
+    "modelName": {
+      "type": "string",
+      "enum": [ "Architectural", "Structural", "Electrical", "Mechanical", "Piping", "ExteriorShell", "None" ],
+      "description": "(Values are _TBD_). String to give a hint of what type of scene layer sub layer it is. modelName is a unique string value that provides context to the content of the layer. This one is provided so that clients wont make assumptons based on name"
+    },
+```
 
 
 ### Properties
@@ -50,10 +73,9 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 | Property | Type | Description |
 | --- | --- | --- |
 | **id** | integer | Identifier for the layer. **Important**: clients should **not** assume it will be `0` |
-| **name** | string | Layer name |
-| alias | string | Name to be used in UI |
+| **name** | string | Layer name. |
+| alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Possible values are:<ul><li>`building`</li></ul></div> |
-| href | string | Layer URL. (_obsolete: IDs are the prefered way to access layer resources_) |
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
@@ -92,30 +114,23 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
     {
       "id": 100,
       "layerType": "group",
-      "name": "overview",
+      "name": "exterior_shell",
+      "alias": "Exterieur",
       "visibility": true,
       "groups": [
         {
           "id": 0,
           "layerType": "3DObject",
-          "name": "Overview",
-          "modeName": "overview",
+          "name": "overview",
           "alias": "External shell",
-          "href": "./sublayers/0",
-          "capabilities": [ "view", "query" ],
-          "visibility": true,
-          "fullExtent": {
-            "xmin": -117.855689264791,
-            "ymin": 32.5702577626442,
-            "xmax": -116.87086222794,
-            "ymax": 34.1460567673275,
-            "zmin": 0.1,
-            "zmax": 50.0,
-            "spatialReference": {
-              "wkid": 4326,
-              "latestWkid": 4326
-            }
-          }
+          "visibility": true
+        },
+        {
+          "id": 2,
+          "layerType": "3DObject",
+          "name": "roofs",
+          "alias": "Toiture exterieures",
+          "visibility": false
         }
       ]
     },
@@ -123,12 +138,14 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
       "id": 200,
       "layerType": "group",
       "name": "full_model",
+      "alias" :  "Model Complet",
       "visibility": true,
       "groups": [
         {
           "id": 210,
           "layerType": "group",
-          "name": "Architectural",
+          "name": "architectural",
+          "alias": "Elements d'architecture",
           "groupSelectionPolicy": "multiple-items",
           "visibility": true,
           "groups": [
@@ -136,43 +153,38 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
               "id": 1,
               "layerType": "3DObject",
               "name": "walls",
-              "alias": "Walls",
-              "href": "./sublayers/1",
-              "visibility": false,
-              "capabilities": [ "view", "query" ],
-              "fullExtent": {
-                "xmin": -117.855689264791,
-                "ymin": 32.5702577626442,
-                "xmax": -116.87086222794,
-                "ymax": 34.1460567673275,
-                "zmin": 0.1,
-                "zmax": 50.0,
-                "spatialReference": {
-                  "wkid": 4326,
-                  "latestWkid": 4326
-                }
-              }
+              "alias": "Murs porteurs",
+              "visibility": false
             },
             {
               "id": 2,
               "layerType": "3DObject",
               "name": "roofs",
-              "alias": "Roofs",
-              "href": "./sublayers/2",
-              "capabilities": [ "view", "query" ],
-              "visibility": true,
-              "fullExtent": {
-                "xmin": -117.855689264791,
-                "ymin": 32.5702577626442,
-                "xmax": -116.87086222794,
-                "ymax": 34.1460567673275,
-                "zmin": 0.1,
-                "zmax": 50.0,
-                "spatialReference": {
-                  "wkid": 4326,
-                  "latestWkid": 4326
-                }
-              }
+              "alias": "Toiture exterieures",
+              "visibility": true
+            }
+          ]
+        },
+        {
+          "id": 220,
+          "layerType": "group",
+          "name": "piping",
+          "alias": "Tuyauterie",
+          "visibility": true,
+          "groups": [
+            {
+              "id": 3,
+              "layerType": "3DObject",
+              "name": "small_pipes",
+              "alias": "Petits tuyaux",
+              "visibility": true
+            },
+            {
+              "id": 4,
+              "layerType": "3DObject",
+              "name": "big_pipes",
+              "alias": "Conduits (large)",
+              "visibility": true
             }
           ]
         }

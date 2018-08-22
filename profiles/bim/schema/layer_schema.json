@@ -10,19 +10,15 @@
     },
     "name": {
       "type": "string",
-      "description": "Layer name"
+      "description": "Layer name."
     },
     "alias": {
       "type": "string",
-      "description": "Name to be used in UI"
+      "description": "Alias of the layer name. Can be empty if alias and name are identical."
     },
     "layerType": {
       "type": "string",
       "enum": [ "building" ]
-    },
-    "href": {
-      "type": "string",
-      "description": "Layer URL. (_obsolete: IDs are the prefered way to access layer resources_)"
     },
     "description": {
       "type": "string",

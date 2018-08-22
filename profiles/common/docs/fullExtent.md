@@ -4,7 +4,7 @@ Id-> Feature-service mapping
 
 ### Related:
 
-[bim::layer](../../bim/docs/layer.md), [bim::group](../../bim/docs/group.md)
+[bim::layer](../../bim/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

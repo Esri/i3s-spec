@@ -21,30 +21,23 @@
     {
       "id": 100,
       "layerType": "group",
-      "name": "overview",
+      "name": "exterior_shell",
+      "alias": "Exterieur",
       "visibility": true,
       "groups": [
         {
           "id": 0,
           "layerType": "3DObject",
-          "name": "Overview",
-          "modeName": "overview",
+          "name": "overview",
           "alias": "External shell",
-          "href": "./sublayers/0",
-          "capabilities": [ "view", "query" ],
-          "visibility": true,
-          "fullExtent": {
-            "xmin": -117.855689264791,
-            "ymin": 32.5702577626442,
-            "xmax": -116.87086222794,
-            "ymax": 34.1460567673275,
-            "zmin": 0.1,
-            "zmax": 50.0,
-            "spatialReference": {
-              "wkid": 4326,
-              "latestWkid": 4326
-            }
-          }
+          "visibility": true
+        },
+        {
+          "id": 2,
+          "layerType": "3DObject",
+          "name": "roofs",
+          "alias": "Toiture exterieures",
+          "visibility": false
         }
       ]
     },
@@ -52,12 +45,14 @@
       "id": 200,
       "layerType": "group",
       "name": "full_model",
+      "alias" :  "Model Complet",
       "visibility": true,
       "groups": [
         {
           "id": 210,
           "layerType": "group",
-          "name": "Architectural",
+          "name": "architectural",
+          "alias": "Elements d'architecture",
           "groupSelectionPolicy": "multiple-items",
           "visibility": true,
           "groups": [
@@ -65,43 +60,38 @@
               "id": 1,
               "layerType": "3DObject",
               "name": "walls",
-              "alias": "Walls",
-              "href": "./sublayers/1",
-              "visibility": false,
-              "capabilities": [ "view", "query" ],
-              "fullExtent": {
-                "xmin": -117.855689264791,
-                "ymin": 32.5702577626442,
-                "xmax": -116.87086222794,
-                "ymax": 34.1460567673275,
-                "zmin": 0.1,
-                "zmax": 50.0,
-                "spatialReference": {
-                  "wkid": 4326,
-                  "latestWkid": 4326
-                }
-              }
+              "alias": "Murs porteurs",
+              "visibility": false
             },
             {
               "id": 2,
               "layerType": "3DObject",
               "name": "roofs",
-              "alias": "Roofs",
-              "href": "./sublayers/2",
-              "capabilities": [ "view", "query" ],
-              "visibility": true,
-              "fullExtent": {
-                "xmin": -117.855689264791,
-                "ymin": 32.5702577626442,
-                "xmax": -116.87086222794,
-                "ymax": 34.1460567673275,
-                "zmin": 0.1,
-                "zmax": 50.0,
-                "spatialReference": {
-                  "wkid": 4326,
-                  "latestWkid": 4326
-                }
-              }
+              "alias": "Toiture exterieures",
+              "visibility": true
+            }
+          ]
+        },
+        {
+          "id": 220,
+          "layerType": "group",
+          "name": "piping",
+          "alias": "Tuyauterie",
+          "visibility": true,
+          "groups": [
+            {
+              "id": 3,
+              "layerType": "3DObject",
+              "name": "small_pipes",
+              "alias": "Petits tuyaux",
+              "visibility": true
+            },
+            {
+              "id": 4,
+              "layerType": "3DObject",
+              "name": "big_pipes",
+              "alias": "Conduits (large)",
+              "visibility": true
             }
           ]
         }

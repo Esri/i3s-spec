@@ -10,33 +10,19 @@
     },
     "name": {
       "type": "string",
-      "description": "Layer name"
+      "description": "Layer name. **must be unique** per BIM layer"
     },
     "alias": {
       "type": "string",
-      "description": "Name to be used in UI"
+      "description": "Alias of the layer name. Can be empty if alias and name are identcal."
     },
     "layerType": {
       "type": "string",
       "enum": [ "group", "point", "3DObject" ]
     },
-    "href": {
-      "type": "string",
-      "description": "Layer URL. (_obsolete: IDs are the prefered way to access layer resources_)"
-    },
-    "modelName": {
-      "type": "string",
-      "enum": [ "architectural", "overview" ],
-      "description": "_TBD_. "
-    },
     "visibility": {
       "type": "boolean",
       "description": "item visibility. Default: `true`"
-    },
-    "fullExtent": {
-      "type": "object",
-      "$ref": "../../common/schema/fullExtent_schema.json",
-      "description": "Layer spatial reference and 3d extent.  **ignored or omit if** `layerType != 'group'` _TBD:remove and use layer.fullExtent only?_"
     },
     "groupSelectionPolicy": {
       "type": "string",
@@ -47,14 +33,7 @@
       },
       "description": "default: `multiple-items`"
     },
-    "capabilites": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [ "view", "query" ]
-      },
-      "description": "Layer capabilites. **concreate sub-layers only**. ignored for `layerType`=`groups`. _TBD: remnoved if nor needed here_"
-    },
+
     "groups": {
       "type": "array",
       "items": {
@@ -66,6 +45,7 @@
   },
   "required": [
     "id",
+    "modelName",
     "name",
     "layerType"
   ],
@@ -76,30 +56,24 @@
         "code": {
           "id": 100,
           "layerType": "group",
-          "name": "overview",
+          "name": "architectural",
+          "alias": "Architecture",
           "visibility": true,
+          "groupSelectionPolicy": "multiple-items",
           "groups": [
             {
               "id": 0,
               "layerType": "3DObject",
-              "name": "Overview",
-              "modeName": "overview",
-              "alias": "External shell",
-              "href": "./sublayers/0",
-              "capabilities": [ "view", "query" ],
-              "visibility": true,
-              "fullExtent": {
-                "xmin": -117.855689264791,
-                "ymin": 32.5702577626442,
-                "xmax": -116.87086222794,
-                "ymax": 34.1460567673275,
-                "zmin": 0.1,
-                "zmax": 50.0,
-                "spatialReference": {
-                  "wkid": 4326,
-                  "latestWkid": 4326
-                }
-              }
+              "name": "stairs",
+              "alias": "Escaliers",
+              "visibility": true
+            },
+            {
+              "id": 1,
+              "layerType": "3DObject",
+              "name": "roof",
+              "alias": "Toitures",
+              "visibility": true
             }
           ]
         }

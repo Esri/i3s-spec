@@ -12,7 +12,7 @@ Please note that `sublayers` (but **not** `groups`!) may be referenced in multip
 
 
 
-Since a BIM layer may have a associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1], the featureService will have [0,n-1] _concrete_ sublayers, so the BIM layer itself and its `groups` must be assigned an `id` greater or equal to `n`
+Since a BIM layer may have a associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
 
 ``` 
 +-- layers
@@ -36,6 +36,29 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 
 ```
 
+#### Notes on _City_ scale BIM:
+BIM is not envisionned to represent many buildings (e.g. a city). In this case an single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene layers. Once a building is selected, its matching BIM scene layer will be open.
 
-
-
+**Edits**
+- group/layer names **must be unique**. 
+- `sublayers.href` and `groups.href` have been removed in favor of `ids`
+- `capabilities` have been removed:
+``` json
+    "capabilites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [ "view", "query" ]
+      },
+      "description": "Layer capabilites. **concreate sub-layers only**. ignored for `layerType`=`groups`. "
+    },
+```
+- Removed `fullExtent` from `group` object
+- Removed `modelName`. BIM filters will use layer names for filtering instead.
+``` json
+    "modelName": {
+      "type": "string",
+      "enum": [ "Architectural", "Structural", "Electrical", "Mechanical", "Piping", "ExteriorShell", "None" ],
+      "description": "(Values are _TBD_). String to give a hint of what type of scene layer sub layer it is. modelName is a unique string value that provides context to the content of the layer. This one is provided so that clients wont make assumptons based on name"
+    },
+```

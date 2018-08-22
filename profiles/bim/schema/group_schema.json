@@ -1,0 +1,109 @@
+{
+  "title": "Group",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A group may contains sublayers or subgroups to form a nested structure",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...`"
+    },
+    "name": {
+      "type": "string",
+      "description": "Layer name"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Name to be used in UI"
+    },
+    "layerType": {
+      "type": "string",
+      "enum": [ "group", "point", "3DObject" ]
+    },
+    "href": {
+      "type": "string",
+      "description": "Layer URL. (_obsolete: IDs are the prefered way to access layer resources_)"
+    },
+    "modelName": {
+      "type": "string",
+      "enum": [ "architectural", "overview" ],
+      "description": "_TBD_. "
+    },
+    "visibility": {
+      "type": "boolean",
+      "description": "item visibility. Default: `true`"
+    },
+    "fullExtent": {
+      "type": "object",
+      "$ref": "../../common/schema/fullExtent_schema.json",
+      "description": "Layer spatial reference and 3d extent.  **ignored or omit if** `layerType != 'group'` _TBD:remove and use layer.fullExtent only?_"
+    },
+    "groupSelectionPolicy": {
+      "type": "string",
+      "enum": [ "single-item", "multiple-items" ],
+      "enum-description": {
+        "single-item": "A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)",
+        "multiple-items": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)"
+      },
+      "description": "default: `multiple-items`"
+    },
+    "capabilites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [ "view", "query" ]
+      },
+      "description": "Layer capabilites. **concreate sub-layers only**. ignored for `layerType`=`groups`. _TBD: remnoved if nor needed here_"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "group_schema.json"
+      },
+      "description": "sub-groups or layers"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "layerType"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer simple group",
+        "code": {
+          "id": 100,
+          "layerType": "group",
+          "name": "overview",
+          "visibility": true,
+          "groups": [
+            {
+              "id": 0,
+              "layerType": "3DObject",
+              "name": "Overview",
+              "modeName": "overview",
+              "alias": "External shell",
+              "href": "./sublayers/0",
+              "capabilities": [ "view", "query" ],
+              "visibility": true,
+              "fullExtent": {
+                "xmin": -117.855689264791,
+                "ymin": 32.5702577626442,
+                "xmax": -116.87086222794,
+                "ymax": 34.1460567673275,
+                "zmin": 0.1,
+                "zmax": 50.0,
+                "spatialReference": {
+                  "wkid": 4326,
+                  "latestWkid": 4326
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

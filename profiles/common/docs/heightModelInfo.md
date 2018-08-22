@@ -4,7 +4,7 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 
 ### Related:
 
-[meshv2::layer](../../meshv2/docs/layer.md)
+[bim::layer](../../bim/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

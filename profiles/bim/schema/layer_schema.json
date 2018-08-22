@@ -1,0 +1,84 @@
+{
+  "title": "Building Scene Layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "../docs/layer_desc.md",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Identifier for the layer. **Important**: clients should **not** assume it will be `0`"
+    },
+    "name": {
+      "type": "string",
+      "description": "Layer name"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Name to be used in UI"
+    },
+    "layerType": {
+      "type": "string",
+      "enum": [ "building" ]
+    },
+    "href": {
+      "type": "string",
+      "description": "Layer URL. (_obsolete: IDs are the prefered way to access layer resources_)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description for the layer."
+    },
+    "copyrightText": {
+      "type": "string",
+      "description": "Copyright information to be displayed with this layer."
+    },
+    "fullExtent": {
+      "type": "object",
+      "$ref": "../../common/schema/fullExtent_schema.json",
+      "description": "Layer spatial reference and 3d extent."
+    },
+    "heightModelInfo": {
+      "type": "object",
+      "description": "An object containing the vertical coordinate system information.",
+      "$ref": "../../common/schema/heightModelInfo_schema.json"
+    },
+    "groupSelectionPolicy": {
+      "type": "string",
+      "enum": [ "single-item", "multiple-items" ],
+      "enum-description": {
+        "single-item": "A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)",
+        "multiple-items": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)"
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "group_schema.json"
+      },
+      "description": "list of sublayers or group of sublayers."
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "filter_schema.json"
+      },
+      "description": "_TBD: BIM layer specific filters_"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "spatialReference",
+    "extent"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer",
+        "code_href": "../examples/bim_example1.json"
+      }
+    ]
+  }
+}

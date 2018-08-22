@@ -1,0 +1,20 @@
+{
+  "title": "Filters for Building Scene Layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "toto",
+  "properties": {
+    "toto": {
+      "type": "string",
+      "description": "todo"
+    }
+  },
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer",
+        "code": ""
+      }
+    ]
+  }
+}

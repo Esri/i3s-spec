@@ -14,8 +14,8 @@ def json_to_dom( path ) :
 
 
 class Schema_manifest :
-    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2"}
-    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2"}
+    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"bim":"bim"}
+    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","bim":"bim"}
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path) :
@@ -65,7 +65,7 @@ class Schema_manifest :
 
 
 
-    def get_schema_name_from_relative_path( rel_path ):
+    def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
         #pointclouds/schema/pcsl_attributeInfo_schema.json
         tok = rel_path.replace('\\','/').split('/')
         name = tok[-1];
@@ -73,6 +73,10 @@ class Schema_manifest :
             name = name[:-5]
         if name.endswith('_schema') :
             name = name[:-7]
+        if len(tok) ==1 :
+            tok.insert(0, default_namespace )
+        while( len(tok) > 0 and tok[0] == ".."):
+            del tok[0]
         assert( tok[0] in Schema_manifest.c_path_to_codes)
         return "%s::%s" % (Schema_manifest.c_path_to_codes[tok[0]], name )
 
@@ -134,6 +138,7 @@ class Schema_manifest :
             return ret;
 
 class Dummy_type :
+    """used only for custom_related"""
     def __init__(self, manifest ):
         self.name = ""
         self.manifest = manifest
@@ -163,30 +168,38 @@ class Schema_type :
         #self.name = os.path.basename( schema_path ).replace( "_schema.json", "" )
         self.parse_from_dom( json_to_dom( abs_path ) )
 
-    def parse_from_dom( self, dom  ) :
+    def parse_from_dom( self, dom, parent_type=None  ) :
         """ Parse a schema definition """
         if 'title' in dom :
             self.title = dom['title']
-        self.parse_type( dom )
+        self.parse_type( dom, parent_type )
         # todo: parse example & external md doc if any
 
-    def parse_property( self, field, sub_dom ) :
+    def parse_property( self, field, sub_dom, parent_type=None ) :
         prop = Property()
         prop.name = field
         if '$ref' in sub_dom :
-            prop.href = sub_dom['$ref']
-            if 'description' in sub_dom :
-                prop.prop_desc = sub_dom['description']
-            prop.type =  self.manifest.add_dependency(  sub_dom['$ref'])
+            #tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], self.name.split('::')[0] );
+            tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name.split('::')[0] );
+            if tmp != self.name and ( parent_type is None or tmp != parent_type.name ):
+                prop.href = sub_dom['$ref']
+                if 'description' in sub_dom :
+                    prop.prop_desc = sub_dom['description']
+                prop.type =  self.manifest.add_dependency(  sub_dom['$ref'])
+            else:
+                prop.href = sub_dom['$ref']
+                if 'description' in sub_dom :
+                    prop.prop_desc = sub_dom['description']
+                prop.type = self if tmp == self.name else parent_type
 
         else :
             prop.type = Schema_type( self.manifest)
-            prop.type.parse_from_dom( sub_dom )
+            prop.type.parse_from_dom( sub_dom, self )
         return prop
 
    
 
-    def parse_type(self, dom ) :
+    def parse_type(self, dom, parent_type=None ) :
         if 'type' in dom :
             self.json_type = dom['type']
         if 'related' in dom :
@@ -201,7 +214,7 @@ class Schema_type :
         if 'items' in dom :
             assert( self.json_type == 'array')
             item_dom =  dom['items'] 
-            self.item_prop = self.parse_property( 'items', item_dom )
+            self.item_prop = self.parse_property( 'items', item_dom, parent_type )
             if 'minItems' in dom :
                 self.range[0] = str(dom['minItems'])
             if 'maxItems' in dom :
@@ -209,7 +222,7 @@ class Schema_type :
 
         if 'properties' in dom :
             for field,sub_dom in dom['properties'].items() :
-                prop = self.parse_property( field, sub_dom )
+                prop = self.parse_property( field, sub_dom, self )
                 prop.is_required = True if 'required' in dom and field in dom['required'] else False
                 if prop.type.json_type == 'array' :
                     prop.type.item_prop.type.back_refs.append( self)
@@ -228,8 +241,6 @@ class Schema_type :
             self.example_dom  = dom['esriDocumentation']['examples']
         if 'description-href' in dom :
             self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
-
-
 
 
 class Property :

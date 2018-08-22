@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[meshv2::layer](../../meshv2/docs/layer.md)
+[common::fullExtent](fullExtent.md)
 ### Properties
 
 | Property | Type | Description |

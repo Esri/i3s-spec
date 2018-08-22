@@ -4,7 +4,7 @@ A group may contains sublayers or subgroups to form a nested structure
 
 ### Related:
 
-[bim::layer](layer.md), [bim::group](group.md)
+[bim::group](group.md), [bim::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |

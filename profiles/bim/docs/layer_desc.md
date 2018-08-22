@@ -36,6 +36,24 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 
 ```
 
+#### BIM service:
+The service definition is identical to other scene layer service definitions and will list a single layer (the BIM layer). e.g:
+``` js
+{
+  "serviceName" : "Esri Campus",
+  "serviceVersion" : "1.6"
+  "supportedBindings" : "REST"
+  "layers":
+  [
+    {
+     "id" : 10,
+     "layerType" : "building"
+     // ... same as of BIM layer JSON definition
+    }
+  ]
+}
+```
+
 #### Notes on _City_ scale BIM:
 BIM is not envisionned to represent many buildings (e.g. a city). In this case an single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene layers. Once a building is selected, its matching BIM scene layer will be open.
 
@@ -43,22 +61,6 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 - group/layer names **must be unique**. 
 - `sublayers.href` and `groups.href` have been removed in favor of `ids`
 - `capabilities` have been removed:
-``` json
-    "capabilites": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [ "view", "query" ]
-      },
-      "description": "Layer capabilites. **concreate sub-layers only**. ignored for `layerType`=`groups`. "
-    },
-```
 - Removed `fullExtent` from `group` object
 - Removed `modelName`. BIM filters will use layer names for filtering instead.
-``` json
-    "modelName": {
-      "type": "string",
-      "enum": [ "Architectural", "Structural", "Electrical", "Mechanical", "Piping", "ExteriorShell", "None" ],
-      "description": "(Values are _TBD_). String to give a hint of what type of scene layer sub layer it is. modelName is a unique string value that provides context to the content of the layer. This one is provided so that clients wont make assumptons based on name"
-    },
-```
+

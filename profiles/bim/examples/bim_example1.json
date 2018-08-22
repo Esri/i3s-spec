@@ -1,7 +1,6 @@
 {
   "id": 10,
   "name": "esri_campus",
-  "href": "./layers/10",
   "layerType": "building",
   "alias": "Esri Campus 2018",
   "fullExtent": {

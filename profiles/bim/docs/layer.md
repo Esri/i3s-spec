@@ -52,14 +52,14 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 | **id** | integer | Identifier for the layer. **Important**: clients should **not** assume it will be `0` |
 | **name** | string | Layer name |
 | alias | string | Name to be used in UI |
-| layerType | string | <div>Possible values are:<ul><li>`building`</li></ul></div> |
+| **layerType** | string | <div>Possible values are:<ul><li>`building`</li></ul></div> |
 | href | string | Layer URL. (_obsolete: IDs are the prefered way to access layer resources_) |
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
-| fullExtent | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
+| **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | groupSelectionPolicy | string | <div>Possible values are:<ul><li>`single-item`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`multiple-items`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li></ul></div> |
-| groups | [bim::group](group.md)[] | list of sublayers or group of sublayers. |
+| **groups** | [bim::group](group.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
 
 *Note: properties in **bold** are required*

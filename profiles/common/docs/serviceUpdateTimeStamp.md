@@ -2,9 +2,6 @@
 
 Object to provide time stamp when the I3S service or the source of the service was created or updated.
 
-### Related:
-
-[meshv2::layer](../../meshv2/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

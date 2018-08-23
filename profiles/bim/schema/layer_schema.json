@@ -38,7 +38,7 @@
       "description": "An object containing the vertical coordinate system information.",
       "$ref": "../../common/schema/heightModelInfo_schema.json"
     },
-    "groupSelectionPolicy": {
+    "visibilityPolicy": {
       "type": "string",
       "enum": [ "single-item", "multiple-items" ],
       "enum-description": {
@@ -46,11 +46,11 @@
         "multiple-items": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)"
       }
     },
-    "groups": {
+    "layers": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "group_schema.json"
+        "$ref": "sublayer_schema.json"
       },
       "description": "list of sublayers or group of sublayers."
     },
@@ -68,7 +68,7 @@
     "name",
     "layerType",
     "fullExtent",
-    "groups"
+    "layers"
   ],
   "esriDocumentation": {
     "examples": [

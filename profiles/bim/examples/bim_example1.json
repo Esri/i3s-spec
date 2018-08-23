@@ -15,15 +15,15 @@
       "latestWkid": 4326
     }
   },
-  "groupSelectionPolicy": "single-item",
-  "groups": [
+  "visibilityPolicy": "single-item",
+  "layers": [
     {
       "id": 100,
       "layerType": "group",
       "name": "exterior_shell",
       "alias": "Exterieur",
       "visibility": true,
-      "groups": [
+      "layers": [
         {
           "id": 0,
           "layerType": "3DObject",
@@ -46,15 +46,15 @@
       "name": "full_model",
       "alias" :  "Model Complet",
       "visibility": true,
-      "groups": [
+      "layers": [
         {
           "id": 210,
           "layerType": "group",
           "name": "architectural",
           "alias": "Elements d'architecture",
-          "groupSelectionPolicy": "multiple-items",
+          "visibilityPolicy": "multiple-items",
           "visibility": true,
-          "groups": [
+          "layers": [
             {
               "id": 1,
               "layerType": "3DObject",
@@ -77,7 +77,7 @@
           "name": "piping",
           "alias": "Tuyauterie",
           "visibility": true,
-          "groups": [
+          "layers": [
             {
               "id": 3,
               "layerType": "3DObject",

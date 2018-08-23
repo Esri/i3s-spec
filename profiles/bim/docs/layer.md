@@ -6,15 +6,13 @@
 
 In this proposal, a BIM model is represented as a single layer composed of sublayers ( see _Examples_ section below)
 
-The concept of a `group` has been added to organized `sublayers` into a nested tree structure that can be reflected in the table of content of 3D Clients. 
-Please note that `sublayers` (but **not** `groups`!) may be referenced in multiple `groups`. 
+The concept of a `group` (i.e. `layerType='group'`) has been added to organized `sublayers` into a nested tree structure that can be reflected in the table of content of 3D Clients. 
 
-`groups` objects do not have any resource associated with them and `sublayers` resource are located in the `sublayers` of the BIM layer:
-
-`layers/{bim_layer_id}/sublayers/{sub_layer_id}`
-
-
-
+Please note that:
+- `sublayers` may be listed in **multiple** `groups` (same layer `id`).
+- `group` may be referenced **once**.
+- `groups` sublayers do not have any resource associated with them.
+- `sublayers` resources are located in the `sublayers` of the BIM layer: `layers/{bim_layer_id}/sublayers/{sub_layer_id}/...`.
 
 Since a BIM layer may have a associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
 
@@ -52,7 +50,9 @@ The service definition is identical to other scene layer service definitions and
     {
      "id" : 10,
      "layerType" : "building"
-     // ... same as of BIM layer JSON definition
+     // ... 
+     // BIM layer JSON definitions (see example below)
+     // ...
     }
   ]
 }
@@ -82,8 +82,8 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 | copyrightText | string | Copyright information to be displayed with this layer. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
-| groupSelectionPolicy | string | <div>Possible values are:<ul><li>`single-item`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`multiple-items`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li></ul></div> |
-| **groups** | [bim::group](group.md)[] | list of sublayers or group of sublayers. |
+| visibilityPolicy | string | <div>Possible values are:<ul><li>`single-item`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`multiple-items`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li></ul></div> |
+| **layers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
 
 *Note: properties in **bold** are required*
@@ -110,15 +110,15 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
       "latestWkid": 4326
     }
   },
-  "groupSelectionPolicy": "single-item",
-  "groups": [
+  "visibilityPolicy": "single-item",
+  "layers": [
     {
       "id": 100,
       "layerType": "group",
       "name": "exterior_shell",
       "alias": "Exterieur",
       "visibility": true,
-      "groups": [
+      "layers": [
         {
           "id": 0,
           "layerType": "3DObject",
@@ -141,15 +141,15 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
       "name": "full_model",
       "alias" :  "Model Complet",
       "visibility": true,
-      "groups": [
+      "layers": [
         {
           "id": 210,
           "layerType": "group",
           "name": "architectural",
           "alias": "Elements d'architecture",
-          "groupSelectionPolicy": "multiple-items",
+          "visibilityPolicy": "multiple-items",
           "visibility": true,
-          "groups": [
+          "layers": [
             {
               "id": 1,
               "layerType": "3DObject",
@@ -172,7 +172,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
           "name": "piping",
           "alias": "Tuyauterie",
           "visibility": true,
-          "groups": [
+          "layers": [
             {
               "id": 3,
               "layerType": "3DObject",

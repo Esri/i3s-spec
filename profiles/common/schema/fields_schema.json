@@ -1,0 +1,26 @@
+{
+  "title": "fields",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A collection of objects describing each attribute field.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the field."
+    },
+    "type": {
+        "type": "string",
+        "description": "Type of the field."
+      },
+      "alias": {
+        "type": "string",
+        "description": "Alias of the field."
+      }
+  },
+  "required": [
+    "name",
+    "type "
+  ]
+}
+
+

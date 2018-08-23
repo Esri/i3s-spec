@@ -1,0 +1,22 @@
+{
+  "title": "I3S scene layer: objectIDs",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Oriented bounding boxes",
+  "properties": {
+    "valueType": {
+      "type": "string",
+      "description": "The element type of the value property, from from UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64."
+    },
+    "valuesPerElement ": {
+      "type": "number",
+      "description": "Number of values per element."
+    }
+  },
+  "required": [
+    "valueType",
+    "valuesPerElement "
+  ]
+ }
+
+

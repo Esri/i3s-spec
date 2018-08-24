@@ -1,0 +1,133 @@
+{
+  "title": "store",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The Class Store object describes the exact physical storage of a Layer and enables the client to detect when multiple Layers are served from the same Store. Storing multiple layers in a single store - and thus having them share resources - enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A Store ID, unique across a SceneServer. Enables the client to discover which layers a part of a common store, if any. {meshes, polygons, points, lines, analytics, meshpyramids, pointclouds, symbols}"
+    },
+    "profile": {
+      "type": "string",
+      "description": "Indicates which profile this scene store fulfills."
+    },
+    "resourcePattern": {
+      "type": "array",
+      "items":{
+          "type": "string"
+      },
+      "enum": [
+        "3dNodeIndexDocument",
+        "SharedResource", 
+        "FeatureData",
+        "Geometry",
+        "Texture"
+    ],
+    "enum-description" : 
+    {
+        "3dNodeIndexDocument": "JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent.",
+        "SharedResource": "Shared resources are models or textures that can be shared among features within the same layer.",
+        "FeatureData":"The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
+        "Geometry": "Each geometry resource is an array of geometries.",
+        "Texture": "The texture resource for a node contains the images that are used as textures for the features stored in the node."
+    },
+      "description": "Indicates the resources needed for rendering and the required order in which the client should load them. "
+    },
+    "rootNode": {
+        "type": "string",
+        "description": "Relative URL to root node resource"
+    },
+    "version": {
+        "type": "string",
+        "description": "Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server."
+    },
+    "extent": {
+      "type": "array",
+      "items":{
+          "type":"number" 
+      },
+      "enum": [
+        "xmin",
+        "ymin", 
+        "xmax",
+        "ymax"
+    ],
+    "enum-description" : 
+    {
+        "xmin": "xmin coordinate value.",
+        "ymin": "ymin coordinate value.",
+        "xmax":"xmax coordinate value.",
+        "ymax": "ymax coordinate value."
+    },
+      "description": "The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS."
+    },
+    "indexCRS": {
+        "type": "string",
+        "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL."
+    },
+    "vertexCRS": {
+        "type": "string",        
+        "description": "The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL."
+    },
+    "normalReferenceFrame": {
+        "type": "string",
+        "description": "Describes the coordinate reference frame used for storing normals. Can be one of the following values: east-north-up, earth-centered, or vertex-reference-frame. A value of *east-north-up* indicates that normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS. A value of *earth-centered* indicates that normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS. A value of *vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS."
+    },
+    "nidEncoding": {
+      "type": "string",
+      "description": "MIME type for the encoding used for the Node Index Documents. Example: application/vnd.esri.I3S.json+gzip; version=1.6"
+  },
+  "featureEncoding": {
+    "type": "string",
+    "description": "MIME type for the encoding used for the Feature Data Resources. For example: application/vnd.esri.I3S.json+gzip; version=1.6"
+},
+"geometryEncoding": {
+  "type": "string",
+  "description": "MIME type for the encoding used for the Geometry Resources. For example: application/octet-stream; version=1.6"
+},
+"textureEncoding": {
+  "type": "array",
+      "items":{
+          "type":"string" 
+      },
+  "description": "MIME type(s) for the encoding used for the Texture Resources."
+},
+"lodType": {
+  "type": "string",
+  "description": "Optional field to indicate which LoD Generation Scheme is used in this store. One of <code> {*MeshPyramid*, Thinning, Clustering, Generalizing}" 
+},
+"lodModel": {
+  "type": "string",
+  "description": "Optional field to indicate which LoD Switching mode clients have to use. One of <code>{*node-switching*, none}"
+},
+"indexingScheme": {
+  "type": "string",
+  "description": "Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used."
+},
+"defaultGeometrySchema": {
+  "type": "array",
+        "items": {
+            "type": "object"
+        }, 
+  "description": "A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.",
+  "$ref": "defaultGeometrySchema_schema.json"
+},
+"defaultTextureDefinition": {
+  "type": "array",
+        "items": {
+            "type": "object"
+        }, 
+  "description": "A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.",
+  "$ref": "textureDefinition_schema.json"
+},
+"defaultMaterialDefinition": {
+  "type": "array",
+        "items": {
+            "type": "object"
+        }, 
+  "description": "If a store uses only one material, it can be defined here entirely as a MaterialDefinition.",
+  "$ref": "textureDefinition_schema.json"
+}
+  }
+}

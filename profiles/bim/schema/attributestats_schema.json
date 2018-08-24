@@ -2,7 +2,7 @@
   "title": "BIM attribute statistics",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Concatenated attribute statistics",
+  "description": "Concatenated attribute statistics . Notes: if needed the type (string or number) of the attribute may be infer from the `mostFrequentValues` and/or `min`/`max` fields",
   "properties": {
     "name": {
       "type": "string",
@@ -12,36 +12,34 @@
       "type": "string",
       "description": "Alias of the Attribute name. Can be empty if alias and name are identical"
     },
-    "min": {
-      "type": "number",
-      "description": "Minimum value (numeric attributes only)"
+    "modelName": {
+      "type": "string",
+      "enum": [ "floorId", "buildingId", "roomType" ],
+      "description": "Useful fro BIM filters to map attribute semantic to attribute name (i.e. GDB fields). _TODO: get the full list_"
     },
-    "max": {
-      "type": "number",
-      "description": "Maximum value (numeric attributes only)"
-    },
-    "mostFrequentValues": {
-      "type": "array",
-      "items": {
-        "type": "integer"
+      "min": {
+        "type": "number",
+        "description": "Minimum value (numeric attributes only)"
       },
-      "description": "Most frequent unique integral value (if applicable for this attribute). Truncated to 256 entries"
-    },
-    "mostFrequentStrings": {
-      "type": "array",
-      "items": {
-        "type": "string"
+      "max": {
+        "type": "number",
+        "description": "Maximum value (numeric attributes only)"
       },
-      "description": "Most frequent unique string values (string attribute only). Truncated to 256 entries"
-    },
-    "layerIds": {
-      "type": "array",
-      "items": {
-        "type": "integer"
+      "mostFrequentValues": {
+        "type": "array",
+        "items": {
+          "type": [ "integer", "string" ]
+        },
+        "description": "Most frequent value (if applicable for this attribute). Truncated to 256 entries"
       },
-      "description": "List of sublayers where this attribute may be found"
-    }
-  },
+      "layerIds": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "description": "List of sublayers where this attribute may be found"
+      }
+    },
   "required": [
     "name",
     "layerIds"
@@ -53,17 +51,18 @@
         "code": {
           "name": "fournitures",
           "alias": "Meuble interieur",
-          "mostFrequentStrings": [ "chair", "table", "cubicle", "boxes" ],
+          "mostFrequentValues": [ "chair", "table", "cubicle", "boxes" ],
           "layerIds": [ 10, 4, 5 ]
         }
       },
       {
-        "title": "`integral` attribute",
+        "title": "`integral` attribute with `modelName` to specify filterable semantic ",
         "code": {
           "name": "floor",
           "alias": "Etages",
-          "mostFrequentValues": [ 1,2,3 ],
-          "layerIds": [ 10,15 ]
+          "modelName": "floorId",
+          "mostFrequentValues": [ 1, 2, 3 ],
+          "layerIds": [ 10, 15 ]
         }
       },
       {

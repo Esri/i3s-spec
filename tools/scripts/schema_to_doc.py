@@ -292,7 +292,31 @@ class Markdown_writer  :
 
         return ("**%s**" % prop.name) if prop.is_required else prop.name
 
-    def get_property_type( self, prop ) :
+
+    def get_property_type( self, prop, postfix='') :
+        if isinstance(prop.type.json_type,list) :
+            return ", ".join( [ "%s%s" %( x , postfix ) for x in prop.type.json_type] )
+        if prop.type.json_type == 'array' :
+            range = ''    
+            if prop.type.range[0] == prop.type.range[1] and prop.type.range[0] != '':
+                range = prop.type.range[0] 
+            if prop.type.range[0] != prop.type.range[1] :
+                range = "%s:%s" % prop.type 
+            postfix ='[%s]' % range
+            return self.get_property_type( prop.type.item_prop, postfix)
+        
+        typename = prop.type.json_type
+        if prop.type.json_type == 'object' :
+            if prop.href != '' :
+                #print a link to the type:
+                tn = prop.get_type_name(self.output_path)
+                typename = "[%s](%s)" % (prop.type.name, "%s" % tn.replace('\\','/') )
+            else :
+                typename = prop.type.name
+        return "%s%s" % (typename, postfix )
+
+
+    def get_property_type_old( self, prop ) :
         postfix = '';
         if prop.type.json_type == 'array' :
             range = ''    

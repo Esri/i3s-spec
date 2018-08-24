@@ -1,6 +1,6 @@
 # BIM attribute statistics
 
-Concatenated attribute statistics
+Concatenated attribute statistics . Notes: if needed the type (string or number) of the attribute may be infer from the `mostFrequentValues` and/or `min`/`max` fields
 
 ### Related:
 
@@ -11,10 +11,10 @@ Concatenated attribute statistics
 | --- | --- | --- |
 | **name** | string | Attribute name |
 | alias | string | Alias of the Attribute name. Can be empty if alias and name are identical |
+| modelName | string | Useful fro BIM filters to map attribute semantic to attribute name (i.e. GDB fields). _TODO: get the full list_<div>Possible values are:<ul><li>`floorId`</li><li>`buildingId`</li><li>`roomType`</li></ul></div> |
 | min | number | Minimum value (numeric attributes only) |
 | max | number | Maximum value (numeric attributes only) |
-| mostFrequentValues | integer[] | Most frequent unique integral value (if applicable for this attribute). Truncated to 256 entries |
-| mostFrequentStrings | string[] | Most frequent unique string values (string attribute only). Truncated to 256 entries |
+| mostFrequentValues | integer[], string[] | Most frequent value (if applicable for this attribute). Truncated to 256 entries |
 | **layerIds** | integer[] | List of sublayers where this attribute may be found |
 
 *Note: properties in **bold** are required*
@@ -27,7 +27,7 @@ Concatenated attribute statistics
  {
   "name": "fournitures",
   "alias": "Meuble interieur",
-  "mostFrequentStrings": [
+  "mostFrequentValues": [
     "chair",
     "table",
     "cubicle",
@@ -41,12 +41,13 @@ Concatenated attribute statistics
 } 
 ```
 
-#### Example: `integral` attribute 
+#### Example: `integral` attribute with `modelName` to specify filterable semantic  
 
 ```json
  {
   "name": "floor",
   "alias": "Etages",
+  "modelName": "floorId",
   "mostFrequentValues": [
     1,
     2,

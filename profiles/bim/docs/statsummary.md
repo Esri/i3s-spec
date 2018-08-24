@@ -23,6 +23,7 @@ Statistics for all BIM sublayers
     {
       "name": "floor",
       "alias": "Etage",
+      "modelName": "floorId",
       "mostFrequentValues": [
         1,
         2,
@@ -41,7 +42,7 @@ Statistics for all BIM sublayers
     {
       "name": "fournitures",
       "alias": "Meuble interieur",
-      "mostFrequentStrings": [
+      "mostFrequentValues": [
         "chair",
         "table",
         "cubicle",

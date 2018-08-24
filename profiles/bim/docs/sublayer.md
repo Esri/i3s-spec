@@ -4,7 +4,7 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 
 ### Related:
 
-[bim::layer](layer.md), [bim::sublayer](sublayer.md)
+[bim::sublayer](sublayer.md), [bim::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -12,11 +12,10 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 | **id** | integer | Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...` |
 | **name** | string | Layer name. **must be unique** per BIM layer |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identcal. |
-| **modelName** | string | Semantic for a layer or group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered<div>Possible values are:<ul><li>`Overview`</li><li>`FullModel`</li><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
+| modelName | string | Semantic for group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered. We currently do not assign a `modelName` to sublayers (i.e. 'component')<div>Possible values are:<ul><li>`Overview`</li><li>`FullModel`</li><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
 | **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`point`</li><li>`3DObject`</li></ul></div> |
 | visibility | boolean | item visibility. Default: `true` |
-| visibilityMode | string | default: `independent`<div>Possible values are:<ul><li>`exclusive`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`independent`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li><li>`inherited`: Same as parent group</li></ul></div> |
-| layers | [bim::sublayer](sublayer.md)[] | sub-layers |
+| sublayers | [bim::sublayer](sublayer.md)[] | sub-layers |
 
 *Note: properties in **bold** are required*
 
@@ -33,13 +32,12 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
   "modelName": "Architectural",
   "visibility": true,
   "visibilityMode": "independent",
-  "layers": [
+  "sublayers": [
     {
       "id": 0,
       "layerType": "3DObject",
       "name": "stairs",
       "alias": "Escaliers",
-      "modelName": "Architectural",
       "visibility": true
     },
     {
@@ -47,7 +45,6 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
       "layerType": "3DObject",
       "name": "roof",
       "alias": "Toitures",
-      "modelName": "Architectural",
       "visibility": true
     }
   ]

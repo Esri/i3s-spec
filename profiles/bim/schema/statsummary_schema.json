@@ -27,13 +27,14 @@
             {
               "name": "floor",
               "alias": "Etage",
+              "modelName": "floorId",
               "mostFrequentValues": [ 1, 2, 5, 4 ],
               "layerIds": [ 0, 2, 3, 5, 6, 10 ]
             },
             {
               "name": "fournitures",
               "alias": "Meuble interieur",
-              "mostFrequentStrings": [ "chair", "table", "cubicle", "boxes" ],
+              "mostFrequentValues": [ "chair", "table", "cubicle", "boxes" ],
               "layerIds": [ 10, 4, 5 ]
             },
             {

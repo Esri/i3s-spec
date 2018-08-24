@@ -91,8 +91,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 | copyrightText | string | Copyright information to be displayed with this layer. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
-| visibilityMode | string | default: `independent`<div>Possible values are:<ul><li>`exclusive`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`independent`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li><li>`inherited`: Same as parent group</li></ul></div> |
-| **layers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
+| **sublayers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
@@ -122,7 +121,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
   },
   "visibilityMode": "exclusive",
   "statisticsHRef": "statistics/summary",
-  "layers": [
+  "sublayers": [
 
     {
       "id": 0,
@@ -139,7 +138,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
       "alias": "Model Complet",
       "modelName": "FullModel",
       "visibility": true,
-      "layers": [
+      "sublayers": [
         {
           "id": 210,
           "layerType": "group",
@@ -147,7 +146,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
           "alias": "Elements d'architecture",
           "modelName": "Architectural",
           "visibility": true,
-          "layers": [
+          "sublayers": [
             {
               "id": 1,
               "layerType": "3DObject",
@@ -173,7 +172,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
           "alias": "Tuyauterie",
           "modelName": "Piping",
           "visibility": true,
-          "layers": [
+          "sublayers": [
             {
               "id": 3,
               "layerType": "3DObject",

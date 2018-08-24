@@ -19,7 +19,7 @@
     "modelName": {
       "type": "string",
       "enum": [ "Overview", "FullModel", "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
-      "description": "Semantic for a layer or group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered"
+      "description": "Semantic for group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered. We currently do not assign a `modelName` to sublayers (i.e. 'component')"
     },
     "layerType": {
       "type": "string",
@@ -29,18 +29,8 @@
       "type": "boolean",
       "description": "item visibility. Default: `true`"
     },
-    "visibilityMode": {
-      "type": "string",
-      "enum": [ "exclusive", "independent", "inherited" ],
-      "enum-description": {
-        "exclusive": "A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)",
-        "independent": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)",
-        "inherited": "Same as parent group"
-      },
-      "description": "default: `independent`"
-    },
 
-    "layers": {
+    "sublayers": {
       "type": "array",
       "items": {
         "type": "object",
@@ -51,7 +41,6 @@
   },
   "required": [
     "id",
-    "modelName",
     "name",
     "layerType"
   ],
@@ -67,13 +56,12 @@
           "modelName": "Architectural",
           "visibility": true,
           "visibilityMode": "independent",
-          "layers": [
+          "sublayers": [
             {
               "id": 0,
               "layerType": "3DObject",
               "name": "stairs",
               "alias": "Escaliers",
-              "modelName": "Architectural",
               "visibility": true
             },
             {
@@ -81,7 +69,6 @@
               "layerType": "3DObject",
               "name": "roof",
               "alias": "Toitures",
-              "modelName": "Architectural",
               "visibility": true
             }
           ]

@@ -17,7 +17,7 @@
   },
   "visibilityMode": "exclusive",
   "statisticsHRef": "statistics/summary",
-  "layers": [
+  "sublayers": [
 
     {
       "id": 0,
@@ -34,7 +34,7 @@
       "alias": "Model Complet",
       "modelName": "FullModel",
       "visibility": true,
-      "layers": [
+      "sublayers": [
         {
           "id": 210,
           "layerType": "group",
@@ -42,7 +42,7 @@
           "alias": "Elements d'architecture",
           "modelName": "Architectural",
           "visibility": true,
-          "layers": [
+          "sublayers": [
             {
               "id": 1,
               "layerType": "3DObject",
@@ -68,7 +68,7 @@
           "alias": "Tuyauterie",
           "modelName": "Piping",
           "visibility": true,
-          "layers": [
+          "sublayers": [
             {
               "id": 3,
               "layerType": "3DObject",

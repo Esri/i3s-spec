@@ -41,6 +41,10 @@
         "per-face": "_TBD, to be removed if not useful_"
       },
       "description": "Binding for attribute values. (`per-face` is valid if topology is `triangle` only)"
+    },
+    "offset": {
+      "type": "integer",
+      "description": "number of byte to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header). Default=`0`"
     }
   },
   "required": [

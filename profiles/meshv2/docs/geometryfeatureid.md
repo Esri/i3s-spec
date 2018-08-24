@@ -4,7 +4,7 @@ FeatureID helps to indentify part of mesh from belonging to a particular GIS `fe
 
 ### Related:
 
-[meshv2::instancebuffer](instancebuffer.md), [meshv2::geometrybuffer](geometrybuffer.md)
+[meshv2::geometrybuffer](geometrybuffer.md), [meshv2::instancebuffer](instancebuffer.md)
 ### Properties
 
 | Property | Type | Description |

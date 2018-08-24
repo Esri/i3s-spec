@@ -14,7 +14,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 ### Related:
 
-[meshv2::node](node.md), [meshv2::layer](layer.md)
+[meshv2::layer](layer.md), [meshv2::node](node.md)
 ### Properties
 
 | Property | Type | Description |

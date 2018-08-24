@@ -27,6 +27,7 @@ faceRange
 
 | Property | Type | Description |
 | --- | --- | --- |
+| offset | integer | number of byte to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`) |
 | index | [meshv2::geometryindex](geometryindex.md) | Vertex index (index buffer) |
 | **position** | [meshv2::geometryposition](geometryposition.md) | Vertex positions relative to Oriented-bounding-box center |
 | normal | [meshv2::geometrynormal](geometrynormal.md) | Face/vertex normal  |
@@ -45,6 +46,7 @@ faceRange
 
 ```json
  {
+  "offset": 4,
   "position": {
     "type": "Float32",
     "component": 3,

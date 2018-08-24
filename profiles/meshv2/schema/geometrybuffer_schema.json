@@ -4,6 +4,10 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "../docs/geometrybuffer_desc.md",
   "properties": {
+    "offset": {
+      "type": "integer",
+      "description": "number of byte to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`)"
+    },
     "index": {
       "type": "object",
       "$ref": "geometryindex_schema.json",
@@ -58,6 +62,7 @@
       {
         "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
         "code": {
+          "offset" :  4,
           "position": {
             "type": "Float32",
             "component": 3,

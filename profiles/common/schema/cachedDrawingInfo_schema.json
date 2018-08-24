@@ -1,0 +1,29 @@
+{
+"title": "I3S scene layer: cachedDrawingInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "CachedDrawingInfo indicates if the *DrawingInfo* object is captured as part of the binary I3S representation.",
+    "properties": {
+        "color": {
+            "type": "boolean",
+            "description": "If true the drawingInfo is captured as part of the binary I3S representation." 
+        }  
+        
+    },
+    "required": [
+        "color"
+    ],
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "cachedDrawingInfo for 3D Object scene layer.",
+             "code": {
+               "cachedDrawingInfo": {
+                "color": "true"
+               }
+            }   
+          }
+         ]
+       }
+}
+

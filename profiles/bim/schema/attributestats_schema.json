@@ -1,0 +1,82 @@
+{
+  "title": "BIM attribute statistics",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Concatenated attribute statistics",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Attribute name"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Alias of the Attribute name. Can be empty if alias and name are identical"
+    },
+    "min": {
+      "type": "number",
+      "description": "Minimum value (numeric attributes only)"
+    },
+    "max": {
+      "type": "number",
+      "description": "Maximum value (numeric attributes only)"
+    },
+    "mostFrequentValues": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "Most frequent unique integral value (if applicable for this attribute). Truncated to 256 entries"
+    },
+    "mostFrequentStrings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Most frequent unique string values (string attribute only). Truncated to 256 entries"
+    },
+    "layerIds": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "List of sublayers where this attribute may be found"
+    }
+  },
+  "required": [
+    "name",
+    "layerIds"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "`String` attribute",
+        "code": {
+          "name": "fournitures",
+          "alias": "Meuble interieur",
+          "mostFrequentStrings": [ "chair", "table", "cubicle", "boxes" ],
+          "layerIds": [ 10, 4, 5 ]
+        }
+      },
+      {
+        "title": "`integral` attribute",
+        "code": {
+          "name": "floor",
+          "alias": "Etages",
+          "mostFrequentValues": [ 1,2,3 ],
+          "layerIds": [ 10,15 ]
+        }
+      },
+      {
+        "title": "`float` attribute",
+        "code": {
+          "name": "diameter",
+          "alias": "Diametre de conduit",
+          "min": 0.2566,
+          "max": 2.256,
+          "layerIds": [ 3, 5 ]
+        }
+
+      }
+    ]
+  }
+}

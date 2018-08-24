@@ -1,0 +1,51 @@
+{
+  "title": "BIM Statistics",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Statistics for all BIM sublayers",
+  "related": "bim::layer",
+
+  "properties": {
+    "summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "attributestats_schema.json"
+      },
+      "description": "Per-attribute statistics for all sublayers "
+    }
+  },
+  "required": [
+    "summary"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer statistics",
+        "code": {
+          "summary": [
+            {
+              "name": "floor",
+              "alias": "Etage",
+              "mostFrequentValues": [ 1, 2, 5, 4 ],
+              "layerIds": [ 0, 2, 3, 5, 6, 10 ]
+            },
+            {
+              "name": "fournitures",
+              "alias": "Meuble interieur",
+              "mostFrequentStrings": [ "chair", "table", "cubicle", "boxes" ],
+              "layerIds": [ 10, 4, 5 ]
+            },
+            {
+              "name": "diameter",
+              "alias": "Diametre de conduit",
+              "min": 0.2566,
+              "max": 2.256,
+              "layerIds": [ 3, 5 ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

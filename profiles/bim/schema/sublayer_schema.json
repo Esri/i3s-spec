@@ -1,0 +1,92 @@
+{
+  "title": "A BIM sub-layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested structure",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...`"
+    },
+    "name": {
+      "type": "string",
+      "description": "Layer name. **must be unique** per BIM layer"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Alias of the layer name. Can be empty if alias and name are identcal."
+    },
+    "modelName": {
+      "type": "string",
+      "enum": [ "Overview", "FullModel", "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
+      "description": "Semantic for a layer or group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered"
+    },
+    "layerType": {
+      "type": "string",
+      "enum": [ "group", "point", "3DObject" ]
+    },
+    "visibility": {
+      "type": "boolean",
+      "description": "item visibility. Default: `true`"
+    },
+    "visibilityMode": {
+      "type": "string",
+      "enum": [ "exclusive", "independent", "inherited" ],
+      "enum-description": {
+        "exclusive": "A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)",
+        "independent": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)",
+        "inherited": "Same as parent group"
+      },
+      "description": "default: `independent`"
+    },
+
+    "layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "sublayer_schema.json"
+      },
+      "description": "sub-layers"
+    }
+  },
+  "required": [
+    "id",
+    "modelName",
+    "name",
+    "layerType"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer simple group",
+        "code": {
+          "id": 100,
+          "layerType": "group",
+          "name": "architectural",
+          "alias": "Architecture",
+          "modelName": "Architectural",
+          "visibility": true,
+          "visibilityMode": "independent",
+          "layers": [
+            {
+              "id": 0,
+              "layerType": "3DObject",
+              "name": "stairs",
+              "alias": "Escaliers",
+              "modelName": "Architectural",
+              "visibility": true
+            },
+            {
+              "id": 1,
+              "layerType": "3DObject",
+              "name": "roof",
+              "alias": "Toitures",
+              "modelName": "Architectural",
+              "visibility": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

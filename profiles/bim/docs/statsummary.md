@@ -4,7 +4,7 @@ Statistics for all BIM sublayers
 
 ### Related:
 
-[i](../../i.md), [:](../../:.md), [l](../../l.md), [a](../../a.md), [y](../../y.md), [r](../../r.md), [b](../../b.md), [e](../../e.md), [:](../../:.md), [m](../../m.md)
+[bim::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |

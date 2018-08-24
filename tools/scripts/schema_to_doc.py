@@ -203,7 +203,7 @@ class Schema_type :
         if 'type' in dom :
             self.json_type = dom['type']
         if 'related' in dom :
-            if not isinstance( dom['related'], collections.Sequence ) :
+            if not isinstance( dom['related'], list) :
                 dom['related'] = [dom['related']]
             for related in dom['related'] :
                 obj = Dummy_type( self.manifest);

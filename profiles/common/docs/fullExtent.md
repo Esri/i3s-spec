@@ -2,6 +2,9 @@
 
 Id-> Feature-service mapping
 
+### Related:
+
+[bim::layer](../../bim/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

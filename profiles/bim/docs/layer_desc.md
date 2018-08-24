@@ -15,6 +15,8 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 ``` 
 +-- layers
 |  +-- 10 (3dSceneLayer.json for layer10, layerType ='building' )
+|  |  +-- statistics
+|  |  |   +-- summary.json
 |  |  +-- sublayers
 |  |  |  +--0 (3dSceneLayer.json for layer0, layerType='3DObject')
 |  |  |  |  +--nodes
@@ -62,5 +64,9 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 - `sublayers.href` and `groups.href` have been removed in favor of `ids`
 - `capabilities` have been removed:
 - Removed `fullExtent` from `group` object
-- Removed `modelName`. BIM filters will use layer names for filtering instead.
+- added backed `modelName`.
+- Added statistics
+
+**TBD**
+- Update portal item JSON with mapping between FeatureServer layer ids and BIM SL id !?
 

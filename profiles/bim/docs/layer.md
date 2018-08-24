@@ -19,6 +19,8 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 ``` 
 +-- layers
 |  +-- 10 (3dSceneLayer.json for layer10, layerType ='building' )
+|  |  +-- statistics
+|  |  |   +-- summary.json
 |  |  +-- sublayers
 |  |  |  +--0 (3dSceneLayer.json for layer0, layerType='3DObject')
 |  |  |  |  +--nodes
@@ -66,10 +68,17 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 - `sublayers.href` and `groups.href` have been removed in favor of `ids`
 - `capabilities` have been removed:
 - Removed `fullExtent` from `group` object
-- Removed `modelName`. BIM filters will use layer names for filtering instead.
+- added backed `modelName`.
+- Added statistics
+
+**TBD**
+- Update portal item JSON with mapping between FeatureServer layer ids and BIM SL id !?
 
 
 
+### Related:
+
+[bim::statsummary](statsummary.md)
 ### Properties
 
 | Property | Type | Description |
@@ -82,9 +91,10 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 | copyrightText | string | Copyright information to be displayed with this layer. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
-| visibilityPolicy | string | <div>Possible values are:<ul><li>`single-item`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`multiple-items`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li></ul></div> |
+| visibilityMode | string | default: `independent`<div>Possible values are:<ul><li>`exclusive`: A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)</li><li>`independent`: Any number of items from `groups[]` may be selected (i.e. check-boxes UX)</li><li>`inherited`: Same as parent group</li></ul></div> |
 | **layers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
+| statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
 *Note: properties in **bold** are required*
 
@@ -110,36 +120,24 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
       "latestWkid": 4326
     }
   },
-  "visibilityPolicy": "single-item",
+  "visibilityMode": "exclusive",
+  "statisticsHRef": "statistics/summary",
   "layers": [
+
     {
-      "id": 100,
-      "layerType": "group",
-      "name": "exterior_shell",
-      "alias": "Exterieur",
-      "visibility": true,
-      "layers": [
-        {
-          "id": 0,
-          "layerType": "3DObject",
-          "name": "overview",
-          "alias": "External shell",
-          "visibility": true
-        },
-        {
-          "id": 2,
-          "layerType": "3DObject",
-          "name": "roofs",
-          "alias": "Toiture exterieures",
-          "visibility": false
-        }
-      ]
+      "id": 0,
+      "layerType": "3DObject",
+      "name": "overview",
+      "alias": "External shell",
+      "modelName": "Overview",
+      "visibility": true
     },
     {
       "id": 200,
       "layerType": "group",
       "name": "full_model",
-      "alias" :  "Model Complet",
+      "alias": "Model Complet",
+      "modelName": "FullModel",
       "visibility": true,
       "layers": [
         {
@@ -147,7 +145,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
           "layerType": "group",
           "name": "architectural",
           "alias": "Elements d'architecture",
-          "visibilityPolicy": "multiple-items",
+          "modelName": "Architectural",
           "visibility": true,
           "layers": [
             {
@@ -155,12 +153,14 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
               "layerType": "3DObject",
               "name": "walls",
               "alias": "Murs porteurs",
+              "modelName": "Architectural",
               "visibility": false
             },
             {
               "id": 2,
               "layerType": "3DObject",
               "name": "roofs",
+              "modelName": "Architectural",
               "alias": "Toiture exterieures",
               "visibility": true
             }
@@ -171,12 +171,15 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
           "layerType": "group",
           "name": "piping",
           "alias": "Tuyauterie",
+          "modelName": "Piping",
           "visibility": true,
           "layers": [
             {
               "id": 3,
               "layerType": "3DObject",
               "name": "small_pipes",
+              "modelName": "Piping",
+
               "alias": "Petits tuyaux",
               "visibility": true
             },
@@ -185,6 +188,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
               "layerType": "3DObject",
               "name": "big_pipes",
               "alias": "Conduits (large)",
+              "modelName": "Piping",
               "visibility": true
             }
           ]

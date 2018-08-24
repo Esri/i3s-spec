@@ -15,36 +15,24 @@
       "latestWkid": 4326
     }
   },
-  "visibilityPolicy": "single-item",
+  "visibilityMode": "exclusive",
+  "statisticsHRef": "statistics/summary",
   "layers": [
+
     {
-      "id": 100,
-      "layerType": "group",
-      "name": "exterior_shell",
-      "alias": "Exterieur",
-      "visibility": true,
-      "layers": [
-        {
-          "id": 0,
-          "layerType": "3DObject",
-          "name": "overview",
-          "alias": "External shell",
-          "visibility": true
-        },
-        {
-          "id": 2,
-          "layerType": "3DObject",
-          "name": "roofs",
-          "alias": "Toiture exterieures",
-          "visibility": false
-        }
-      ]
+      "id": 0,
+      "layerType": "3DObject",
+      "name": "overview",
+      "alias": "External shell",
+      "modelName": "Overview",
+      "visibility": true
     },
     {
       "id": 200,
       "layerType": "group",
       "name": "full_model",
-      "alias" :  "Model Complet",
+      "alias": "Model Complet",
+      "modelName": "FullModel",
       "visibility": true,
       "layers": [
         {
@@ -52,7 +40,7 @@
           "layerType": "group",
           "name": "architectural",
           "alias": "Elements d'architecture",
-          "visibilityPolicy": "multiple-items",
+          "modelName": "Architectural",
           "visibility": true,
           "layers": [
             {
@@ -60,12 +48,14 @@
               "layerType": "3DObject",
               "name": "walls",
               "alias": "Murs porteurs",
+              "modelName": "Architectural",
               "visibility": false
             },
             {
               "id": 2,
               "layerType": "3DObject",
               "name": "roofs",
+              "modelName": "Architectural",
               "alias": "Toiture exterieures",
               "visibility": true
             }
@@ -76,12 +66,15 @@
           "layerType": "group",
           "name": "piping",
           "alias": "Tuyauterie",
+          "modelName": "Piping",
           "visibility": true,
           "layers": [
             {
               "id": 3,
               "layerType": "3DObject",
               "name": "small_pipes",
+              "modelName": "Piping",
+
               "alias": "Petits tuyaux",
               "visibility": true
             },
@@ -90,6 +83,7 @@
               "layerType": "3DObject",
               "name": "big_pipes",
               "alias": "Conduits (large)",
+              "modelName": "Piping",
               "visibility": true
             }
           ]

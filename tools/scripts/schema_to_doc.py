@@ -203,9 +203,12 @@ class Schema_type :
         if 'type' in dom :
             self.json_type = dom['type']
         if 'related' in dom :
-            obj = Dummy_type( self.manifest);
-            obj.name = dom['related']
-            self.custom_related.append( obj )
+            if not isinstance( dom['related'], collections.Sequence ) :
+                dom['related'] = [dom['related']]
+            for related in dom['related'] :
+                obj = Dummy_type( self.manifest);
+                obj.name = related
+                self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
 
         if 'description' in dom :

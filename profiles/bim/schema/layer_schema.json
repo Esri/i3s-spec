@@ -3,6 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "../docs/layer_desc.md",
+  "related": [ "bim::statsummary"],
   "properties": {
     "id": {
       "type": "integer",
@@ -38,13 +39,15 @@
       "description": "An object containing the vertical coordinate system information.",
       "$ref": "../../common/schema/heightModelInfo_schema.json"
     },
-    "visibilityPolicy": {
+    "visibilityMode": {
       "type": "string",
-      "enum": [ "single-item", "multiple-items" ],
+      "enum": [ "exclusive", "independent", "inherited" ],
       "enum-description": {
-        "single-item": "A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)",
-        "multiple-items": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)"
-      }
+        "exclusive": "A single item from `groups[]` may be selected at any given time (i.e. radio-buttons UX)",
+        "independent": "Any number of items from `groups[]` may be selected (i.e. check-boxes UX)",
+        "inherited": "Same as parent group"
+      },
+      "description": "default: `independent`"
     },
     "layers": {
       "type": "array",
@@ -61,6 +64,10 @@
         "$ref": "filter_schema.json"
       },
       "description": "_TBD: BIM layer specific filters_"
+    },
+    "statisticsHRef": {
+      "type": "string",
+       "description": "url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md)"
     }
   },
   "required": [
@@ -68,7 +75,8 @@
     "name",
     "layerType",
     "fullExtent",
-    "layers"
+    "layers",
+    ""
   ],
   "esriDocumentation": {
     "examples": [

@@ -2,13 +2,44 @@
   "title": "Filters for Building Scene Layer",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "toto",
+  "description": "The filter object which can be applied to a building scene layer.",
   "properties": {
-    "toto": {
+    "id": {
       "type": "string",
-      "description": "todo"
+      "description": "Unique identifier of the filter."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the filter."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the filter."
+    },
+    "modelName": {
+      "type": "string",
+      "description": "Model name defines preset of the filter. For example if the modelName is Floor or Building the clients can build specific UI for this filter. Any other modelName is custom"
+    },
+    "filterQuery": {
+      "type": "string",
+      "description": "Definition query setting the filter for a building scene layer. From this query clients need to be able to rebuild the UI. For example if the field (filter type) is wall the UI needs to show all unique values of the filter type wall."
+    },
+    "visibleFilterType": {
+      "type": "array",
+        "items": {
+            "type": "string"        
+        },
+        "description": "List of visible filter types of the filter."
     }
   },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "modelName",
+    "filterQuery",
+    "visibleFilterType"
+  ],
   "esriDocumentation": {
     "examples": [
       {
@@ -18,3 +49,4 @@
     ]
   }
 }
+

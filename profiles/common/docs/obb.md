@@ -2,9 +2,6 @@
 
 Oriented bounding boxes
 
-### Related:
-
-[meshv2::node](../../meshv2/docs/node.md)
 ### Properties
 
 | Property | Type | Description |

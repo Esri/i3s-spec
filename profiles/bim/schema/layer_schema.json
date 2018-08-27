@@ -56,6 +56,24 @@
       },
       "description": "_TBD: BIM layer specific filters_"
     },
+    "currentFilter": {
+      "type": "number",
+      "description": "Filter id for the currently applied filter."
+    },
+    "filterStyle":
+    {
+      "type": "string",
+      "enum": [
+        "wireFrame",
+        "xRay"
+      ],
+      "enum-description" : 
+        {
+        "wireFrame" : "Shows all features that are not effected by the filter as wire frame.",
+        "xRay" : "Shows all features that are not effected by the filter as x-ray."
+    },
+      "description": "Filter style applied to the feature if filter is present."
+    },
     "statisticsHRef": {
       "type": "string",
        "description": "url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md)"

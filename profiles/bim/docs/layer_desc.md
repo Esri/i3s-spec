@@ -5,8 +5,7 @@ In this proposal, a BIM model is represented as a single layer composed of subla
 The concept of a `group` (i.e. `layerType='group'`) has been added to organized `sublayers` into a nested tree structure that can be reflected in the table of content of 3D Clients. 
 
 Please note that:
-- `sublayers` may be listed in **multiple** `groups` (same layer `id`).
-- `group` may be referenced **once**.
+- `groups` and `sublayers` may be referenced **once** (e.g. a sublayer may not be in multiple groups).
 - `groups` sublayers do not have any resource associated with them.
 - `sublayers` resources are located in the `sublayers` of the BIM layer: `layers/{bim_layer_id}/sublayers/{sub_layer_id}/...`.
 

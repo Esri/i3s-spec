@@ -1,0 +1,16 @@
+{
+  "title": "faceRange",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Declaration of the face range.",
+  "properties": {
+    "valueType": {
+      "type": "string",
+      "description": "value type for example UInt64."
+    },
+    "valuesPerElement": {
+        "type": "number",
+        "description": " "
+      }
+  }
+}

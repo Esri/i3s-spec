@@ -1,0 +1,18 @@
+{
+  "title": "geometryAttribute",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Declaration of the attributes per feature in the geometry, such as feature ID or face range.",
+  "properties": {
+    "id": {
+      "type": "object",
+      "description": " ",
+      "$href": "id_schema.json"
+    },
+    "faceRange": {
+        "type": "object",
+        "description": " ",
+        "$href": "faceRange_schema.json"
+      }
+  }
+}

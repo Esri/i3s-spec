@@ -1,0 +1,67 @@
+{
+  "title": "defaultGeometrySchema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.",
+  "properties": {
+    "geometryType": {
+      "type": "string",
+      "description": "Low-level default geometry type, one of {triangles, lines, points}. If defined, all geometries in the store are expected to have this type."
+    },
+    "topology": {
+      "type": "array",
+      "items":{
+          "type": "string"
+      },
+      "enum": [
+        "PerAttributeArray",
+        "Indexed"
+    ],
+    "enum-description" : 
+    {
+        "PerAttributeArray": "",
+        "Indexed": "When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data."
+    },
+      "description": " "
+    },
+    "header": {
+        "type": "array",
+              "items": {
+                  "type": "object"
+              }, 
+        "description": "Defines header fields in the Geometry resources of this store that precede the vertex (and index) data.",
+        "$ref": "headerAttribute_schema.json"
+      },
+      "vertexAttributes": {
+        "type": "array",
+              "items": {
+                  "type": "object"
+              }, 
+        "description": "Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates.",
+        "$ref": "geometryAttribute_schema.json"
+      },
+      "faces": {
+        "type": "array",
+              "items": {
+                  "type": "object"
+              }, 
+        "description": "Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates.",
+        "$ref": "geometryAttribute_schema.json"
+      },
+		"featureAttributeOrder": {
+        "type": "array",
+              "items": {
+                  "type": "string"
+              }, 
+        "description": "Provides the order of the keys in featureAttributes, if present."
+        },
+        "featureAttributes": {
+            "type": "array",
+                  "items": {
+                      "type": "object"
+                  }, 
+            "description": "Declaration of the attributes per feature in the geometry, such as feature ID or face range.",
+            "$ref": "geometryAttribute_schema.json"
+          }
+  }
+}

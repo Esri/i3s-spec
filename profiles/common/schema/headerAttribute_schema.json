@@ -1,0 +1,16 @@
+{
+  "title": "headerAttribute",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.",
+  "properties": {
+    "property": {
+      "type": "string",
+      "description": "The name of the property in the header. "
+    },
+    "type": {
+        "type": "string",
+        "description": "The element type of the header property, from <code>{UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64}."
+    }
+  }
+}

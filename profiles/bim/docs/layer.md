@@ -93,7 +93,7 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 | **sublayers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
 | currentFilter | number | Filter id for the currently applied filter. |
-| filterStyle | string | Filter style applied to the feature if filter is present.<div>Possible values are:<ul><li>`wireFrame`: Shows all features that are not effected by the filter as wire frame.</li><li>`xRay`: Shows all features that are not effected by the filter as x-ray.</li></ul></div> |
+| filterStyle | [bim::filterStyle](filterStyle.md) | Filter style applied to the feature if filter is present. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
 *Note: properties in **bold** are required*

@@ -62,17 +62,9 @@
     },
     "filterStyle":
     {
-      "type": "string",
-      "enum": [
-        "wireFrame",
-        "xRay"
-      ],
-      "enum-description" : 
-        {
-        "wireFrame" : "Shows all features that are not effected by the filter as wire frame.",
-        "xRay" : "Shows all features that are not effected by the filter as x-ray."
-    },
-      "description": "Filter style applied to the feature if filter is present."
+      "type": "object",
+      "description": "Filter style applied to the feature if filter is present.",
+      "$ref": "filterStyle_schema.json"
     },
     "statisticsHRef": {
       "type": "string",

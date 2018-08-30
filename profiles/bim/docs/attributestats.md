@@ -9,13 +9,13 @@ Concatenated attribute statistics . Notes: if needed the type (string or number)
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **name** | string | Attribute name |
-| alias | string | Alias of the Attribute name. Can be empty if alias and name are identical |
-| modelName | string | Useful fro BIM filters to map attribute semantic to attribute name (i.e. GDB fields). _TODO: get the full list_<div>Possible values are:<ul><li>`floorId`</li><li>`buildingId`</li><li>`roomType`</li></ul></div> |
-| min | number | Minimum value (numeric attributes only) |
-| max | number | Maximum value (numeric attributes only) |
-| mostFrequentValues | integer[], string[] | Most frequent value (if applicable for this attribute). Truncated to 256 entries |
-| **layerIds** | integer[] | List of sublayers where this attribute may be found |
+| **fieldname** | string | Name of the field. |
+| label | string | Label of the field name. If label is empty the label and fieldName are identical. Labels are shown in the UI for filter types, for example. |
+| modelName | string | Useful for building information such as filter or phases to be a fixed string. Used by client application to define specific behavior for the modelName _TODO: get the full list_<div>Possible values are:<ul><li>`floorId`</li><li>`buildingId`</li><li>`roomType`</li></ul></div> |
+| min | number | Minimum value. Nnumeric attributes only. |
+| max | number | Maximum value. Numeric attributes only. |
+| mostFrequentValues | integer[], string[] | Most frequent value, if applicable for this attribute. Truncated to 256 entries. |
+| **subLayerIds** | integer[] | List of sublayers where this attribute may be found. |
 
 *Note: properties in **bold** are required*
 
@@ -25,15 +25,15 @@ Concatenated attribute statistics . Notes: if needed the type (string or number)
 
 ```json
  {
-  "name": "fournitures",
-  "alias": "Meuble interieur",
+  "fieldName": "fournitures",
+  "label": "Meuble interieur",
   "mostFrequentValues": [
     "chair",
     "table",
     "cubicle",
     "boxes"
   ],
-  "layerIds": [
+  "subLayerIds": [
     10,
     4,
     5
@@ -45,15 +45,15 @@ Concatenated attribute statistics . Notes: if needed the type (string or number)
 
 ```json
  {
-  "name": "floor",
-  "alias": "Etages",
+  "fieldName": "floor",
+  "label": "Etages",
   "modelName": "floorId",
   "mostFrequentValues": [
     1,
     2,
     3
   ],
-  "layerIds": [
+  "subLayerIds": [
     10,
     15
   ]
@@ -64,11 +64,11 @@ Concatenated attribute statistics . Notes: if needed the type (string or number)
 
 ```json
  {
-  "name": "diameter",
-  "alias": "Diametre de conduit",
+  "fieldName": "diameter",
+  "label": "Diametre de conduit",
   "min": 0.2566,
   "max": 2.256,
-  "layerIds": [
+  "subLayerIds": [
     3,
     5
   ]

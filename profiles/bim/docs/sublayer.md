@@ -4,7 +4,7 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 
 ### Related:
 
-[bim::sublayer](sublayer.md), [bim::layer](layer.md)
+[bim::layer](layer.md), [bim::sublayer](sublayer.md)
 ### Properties
 
 | Property | Type | Description |

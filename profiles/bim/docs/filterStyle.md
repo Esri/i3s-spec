@@ -9,7 +9,7 @@ Filter style applied to the feature if filter is present.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| name | string | Name of the filter style |
+| **name** | string | Name of the filter style |
 
 *Note: properties in **bold** are required*
 

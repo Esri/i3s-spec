@@ -34,6 +34,10 @@
       "$ref": "../../common/schema/fullExtent_schema.json",
       "description": "Layer spatial reference and 3d extent."
     },
+    "spatialReference": {
+      "description": "The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references.",
+      "$ref": "../../common/schema/spatialReference_schema.json"
+    },
     "heightModelInfo": {
       "type": "object",
       "description": "An object containing the vertical coordinate system information.",

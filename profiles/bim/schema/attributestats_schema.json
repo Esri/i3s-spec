@@ -4,75 +4,75 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Concatenated attribute statistics . Notes: if needed the type (string or number) of the attribute may be infer from the `mostFrequentValues` and/or `min`/`max` fields",
   "properties": {
-    "name": {
+    "fieldname": {
       "type": "string",
-      "description": "Attribute name"
+      "description": "Name of the field."
     },
-    "alias": {
+    "label": {
       "type": "string",
-      "description": "Alias of the Attribute name. Can be empty if alias and name are identical"
+      "description": "Label of the field name. If label is empty the label and fieldName are identical. Labels are shown in the UI for filter types, for example."
     },
     "modelName": {
       "type": "string",
       "enum": [ "floorId", "buildingId", "roomType" ],
-      "description": "Useful fro BIM filters to map attribute semantic to attribute name (i.e. GDB fields). _TODO: get the full list_"
+      "description": "Useful for building information such as filter or phases to be a fixed string. Used by client application to define specific behavior for the modelName _TODO: get the full list_"
     },
       "min": {
         "type": "number",
-        "description": "Minimum value (numeric attributes only)"
+        "description": "Minimum value. Nnumeric attributes only."
       },
       "max": {
         "type": "number",
-        "description": "Maximum value (numeric attributes only)"
+        "description": "Maximum value. Numeric attributes only."
       },
       "mostFrequentValues": {
         "type": "array",
         "items": {
           "type": [ "integer", "string" ]
         },
-        "description": "Most frequent value (if applicable for this attribute). Truncated to 256 entries"
+        "description": "Most frequent value, if applicable for this attribute. Truncated to 256 entries."
       },
-      "layerIds": {
+      "subLayerIds": {
         "type": "array",
         "items": {
           "type": "integer"
         },
-        "description": "List of sublayers where this attribute may be found"
+        "description": "List of sublayers where this attribute may be found."
       }
     },
   "required": [
-    "name",
-    "layerIds"
+    "fieldname",
+    "subLayerIds"
   ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "`String` attribute",
         "code": {
-          "name": "fournitures",
-          "alias": "Meuble interieur",
+          "fieldName": "fournitures",
+          "label": "Meuble interieur",
           "mostFrequentValues": [ "chair", "table", "cubicle", "boxes" ],
-          "layerIds": [ 10, 4, 5 ]
+          "subLayerIds": [ 10, 4, 5 ]
         }
       },
       {
         "title": "`integral` attribute with `modelName` to specify filterable semantic ",
         "code": {
-          "name": "floor",
-          "alias": "Etages",
+          "fieldName": "floor",
+          "label": "Etages",
           "modelName": "floorId",
           "mostFrequentValues": [ 1, 2, 3 ],
-          "layerIds": [ 10, 15 ]
+          "subLayerIds": [ 10, 15 ]
         }
       },
       {
         "title": "`float` attribute",
         "code": {
-          "name": "diameter",
-          "alias": "Diametre de conduit",
+          "fieldName": "diameter",
+          "label": "Diametre de conduit",
           "min": 0.2566,
           "max": 2.256,
-          "layerIds": [ 3, 5 ]
+          "subLayerIds": [ 3, 5 ]
         }
 
       }

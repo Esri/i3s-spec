@@ -10,7 +10,7 @@
     }
     },
   "required": [
-    "visibleFilterType"
+    "name"
   ],
   "esriDocumentation": {
     "examples": [

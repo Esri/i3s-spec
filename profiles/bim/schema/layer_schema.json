@@ -39,6 +39,10 @@
       "$ref": "../../common/schema/fullExtent_schema.json",
       "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`"
     },
+    "spatialReference": {
+      "description": "The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references.",
+      "$ref": "../../common/schema/spatialReference_schema.json"
+    },
     "heightModelInfo": {
       "type": "object",
       "description": "An object containing the vertical coordinate system information.",
@@ -60,6 +64,16 @@
         "$ref": "filter_schema.json"
       },
       "description": "_TBD: BIM layer specific filters_"
+    },
+    "currentFilter": {
+      "type": "number",
+      "description": "Filter id for the currently applied filter."
+    },
+    "filterStyle":
+    {
+      "type": "object",
+      "description": "Filter style applied to the feature if filter is present.",
+      "$ref": "filterStyle_schema.json"
     },
     "statisticsHRef": {
       "type": "string",

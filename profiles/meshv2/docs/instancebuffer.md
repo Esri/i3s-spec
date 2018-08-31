@@ -13,7 +13,7 @@ Describes the layout of an instance buffer
 | rotation | [meshv2::geometryquaternion](geometryquaternion.md) | Unit 4-component quaternion defining the local mesh rotation.  _TBD_ ? |
 | translation | [meshv2::geometryposition](geometryposition.md) | local mesh offset. the absolute position will be `vertex_xyz+instanceBuffer[i].translation+node[j].obb.center` |
 | color | [meshv2::geometrycolor](geometrycolor.md) | `color.binding` is ignored. Instance colors will be used in place of `materialDefinitions[].pbrMetallicRoughness.baseColorFactor` for _all meshes_ of the geometry to be instanciated |
-| featureId | [meshv2::geometryfeatureid](geometryfeatureid.md) | `featureId.binding` must be omitted or `per-instance`. Each instance will have a single `featureID`. (i.e. primitives are assigned _one_ featureId per instance) |
+| featureId | [meshv2::geometryfeatureid](geometryfeatureid.md) | `featureId.binding` is ignored. Each instance will have a single `featureID`. (i.e. primitive are assigned _one_ featureId per instance) |
 
 *Note: properties in **bold** are required*
 

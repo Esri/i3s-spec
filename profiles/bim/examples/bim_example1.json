@@ -3,6 +3,10 @@
   "name": "esri_campus",
   "layerType": "building",
   "alias": "Esri Campus 2018",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
   "fullExtent": {
     "xmin": -117.855689264791,
     "ymin": 32.5702577626442,

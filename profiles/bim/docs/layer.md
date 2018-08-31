@@ -88,11 +88,13 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 | **layerType** | string | <div>Must be:<ul><li>`building`</li></ul></div> |
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
-| **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | Spatial reference for the layer |
+| **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference` |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **sublayers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
+| currentFilter | number | Filter id for the currently applied filter. |
+| filterStyle | [bim::filterStyle](filterStyle.md) | Filter style applied to the feature if filter is present. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
 *Note: properties in **bold** are required*
@@ -107,6 +109,10 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
   "name": "esri_campus",
   "layerType": "building",
   "alias": "Esri Campus 2018",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
   "fullExtent": {
     "xmin": -117.855689264791,
     "ymin": 32.5702577626442,

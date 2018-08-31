@@ -6,8 +6,7 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "UINT8", "UINT16", "UINT32" ],
-      "description": "Range id "
+      "enum": [  "UINT16", "UINT32" ]
     },
     "component": {
       "type": "integer",
@@ -15,19 +14,11 @@
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none" ],
-      "enum-description": {
-        "none": "default and only value supported"
-      },
-      "description": "Encoding"
+      "enum": [ "none" ]
     },
     "binding": {
       "type": "string",
-      "enum": [  "per-feature" ],
-      "enum-description": {
-        "per-feature": "default and only value supported"
-      },
-      "description": "building is always per-feature"
+      "enum": [  "per-feature" ]
     }
   },
   "required": [

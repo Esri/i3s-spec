@@ -2,33 +2,29 @@
   "title": "FeatureID attribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "FeatureID helps to indentify part of mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`",
+  "description": "FeatureID helps to indentify part of mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`. _TBD_: meaning when topology is `point` or `line` ",
   "properties": {
     "type": {
       "type": "string",
       "enum": [ "UInt16", "UInt32", "UInt64" ],
       "description": "A feature integer ID"
-    },
+    }, 
     "component": {
       "type": "integer",
       "description": "must be 1"
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none" ],
-      "enum-description": {
-        "none": "default and only value supported"
-      },
-      "description": "No encoding"
+      "enum": [ "none" ]
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex", "per-face" ],
+      "enum": [ "per-feature", "per-face","per-instance" ],
       "enum-description": {
-        "per-vertex": "default.",
-        "per-face": "Feature ID is per triangle. (`topology` must be `triangle`)"
-      },
-      "description": "binding for each featureID"
+        "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **[`FaceRange`](geometryfacerange.md) attribute must be present** to map features-to-faces and vertices must _be grouped by feature_ ",
+        "per-face": "one `feature_id` per triangle. (`topology` must be `triangle`) **FaceRange must be omitted** (and will be ignored)",
+        "per-instance": "Default and only valid value for `instanceBuffer.featureId` . **cannot** be used in `geometryBuffer.featureId`"
+      }
     }
   },
   "required": [
@@ -38,7 +34,7 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Feature_id less than 65k, per-vertex",
+        "title": "Feature_id less than 65k, per-feature. `faceRange` attribute will be required",
         "code": {
           "featureId": {
             "type": "UInt16",

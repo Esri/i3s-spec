@@ -11,7 +11,7 @@
     },
     "component": {
       "type": "integer",
-      "description": "Number of colors. Must be in [1,4] i.e. Assumes: 0=red, 1=green, 2=blue, 3=alpha"
+      "description": "Number of colors. Must be `1` (opaque grayscale: `{R,R,R,255}`),`3`(opaque color `{R,G,B,255}`) or `4` ( transparent color `{R,G,B,A}`)."
     },
     "encoding": {
       "type": "string",

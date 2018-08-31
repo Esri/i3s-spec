@@ -21,10 +21,10 @@
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **type** | string | color channel values<div>Possible values are:<ul><li>`UINT16`</li></ul></div> |
+| **type** | string | color channel values<div>Must be:<ul><li>`UINT16`</li></ul></div> |
 | **component** | integer | `default =4`, must be 4. |
-| encoding | string | Encoding<div>Possible values are:<ul><li>`normalized`: default and only value supported.</li></ul></div> |
-| binding | string | binding<div>Possible values are:<ul><li>`per-vertex`: default and only value supported</li></ul></div> |
+| encoding | string | Encoding<div>Must be:<ul><li>`normalized`: default and only value supported.</li></ul></div> |
+| binding | string | binding<div>Must be:<ul><li>`per-vertex`: default and only value supported</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

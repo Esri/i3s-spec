@@ -27,7 +27,7 @@
     "featureId": {
       "type": "object",
       "$ref": "geometryfeatureid_schema.json",
-      "description": "`featureId.binding` is ignored. Each instance will have a single `featureID`. (i.e. primitive are assigned _one_ featureId per instance)"
+      "description": "`featureId.binding` must be omitted or `per-instance`. Each instance will have a single `featureID`. (i.e. primitives are assigned _one_ featureId per instance)"
     }
   },
   "required": [

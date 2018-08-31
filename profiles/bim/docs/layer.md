@@ -85,10 +85,11 @@ BIM is not envisionned to represent many buildings (e.g. a city). In this case a
 | **id** | integer | Identifier for the layer. **Important**: clients should **not** assume it will be `0` |
 | **name** | string | Layer name. |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
-| **layerType** | string | <div>Possible values are:<ul><li>`building`</li></ul></div> |
+| **layerType** | string | <div>Must be:<ul><li>`building`</li></ul></div> |
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
-| **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | Layer spatial reference and 3d extent. |
+| **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | Spatial reference for the layer |
+| **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference` |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **sublayers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |

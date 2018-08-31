@@ -36,7 +36,6 @@
     }
   },
   "required": [
-    "spatialReference",
     "xmin",
     "ymin",
     "zmin",

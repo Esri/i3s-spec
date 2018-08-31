@@ -9,7 +9,7 @@
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **type** | string | Support only float32 quaternion<div>Possible values are:<ul><li>`Float32`</li></ul></div> |
+| **type** | string | Support only float32 quaternion<div>Must be:<ul><li>`Float32`</li></ul></div> |
 | **component** | integer | must be `4` |
 
 *Note: properties in **bold** are required*

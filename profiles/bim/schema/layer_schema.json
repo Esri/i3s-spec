@@ -29,17 +29,22 @@
       "type": "string",
       "description": "Copyright information to be displayed with this layer."
     },
+    "spatialReference": {
+      "type": "object",
+      "$ref": "../../common/schema/spatialReference_schema.json",
+      "description": "Spatial reference for the layer"
+    },
     "fullExtent": {
       "type": "object",
       "$ref": "../../common/schema/fullExtent_schema.json",
-      "description": "Layer spatial reference and 3d extent."
+      "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`"
     },
     "heightModelInfo": {
       "type": "object",
       "description": "An object containing the vertical coordinate system information.",
       "$ref": "../../common/schema/heightModelInfo_schema.json"
     },
-   
+
     "sublayers": {
       "type": "array",
       "items": {
@@ -58,7 +63,7 @@
     },
     "statisticsHRef": {
       "type": "string",
-       "description": "url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md)"
+      "description": "url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md)"
     }
   },
   "required": [
@@ -66,6 +71,7 @@
     "name",
     "layerType",
     "fullExtent",
+    "spatialReference",
     "sublayers",
     ""
   ],

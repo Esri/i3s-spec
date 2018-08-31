@@ -9,7 +9,7 @@ Id-> Feature-service mapping
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **spatialReference** | [common::spatialReference](spatialReference.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
+| spatialReference | [common::spatialReference](spatialReference.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
 | **xmin** | number | left |
 | **xmax** | number | right |
 | **ymin** | number | bottom |

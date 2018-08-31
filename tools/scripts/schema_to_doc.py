@@ -347,7 +347,10 @@ class Markdown_writer  :
     def get_property_desc( self, prop ) :
         postfix = ''
         if len( prop.type.enum ) > 0 :
-            postfix = "<div>Possible values are:%s</div>" % Markdown_writer.get_unordered_list_http( prop.type.enum  )
+            if len( prop.type.enum ) ==1 :
+                postfix = "<div>Must be:%s</div>" % Markdown_writer.get_unordered_list_http( prop.type.enum  )
+            else :
+                postfix = "<div>Possible values are:%s</div>" % Markdown_writer.get_unordered_list_http( prop.type.enum  )
         if prop.type.json_type == 'array' and len( prop.type.item_prop.type.enum ) > 0 :
             postfix = "<div>Possible values for each array string:%s</div>" % Markdown_writer.get_unordered_list_http( prop.type.item_prop.type.enum ) 
         return prop.get_desc() + postfix;

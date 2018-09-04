@@ -30,7 +30,7 @@ Statistics for all BIM sublayers
         5,
         4
       ],
-      "layerIds": [
+      "subLayerIds": [
         0,
         2,
         3,
@@ -48,7 +48,7 @@ Statistics for all BIM sublayers
         "cubicle",
         "boxes"
       ],
-      "layerIds": [
+      "subLayerIds": [
         10,
         4,
         5
@@ -59,7 +59,7 @@ Statistics for all BIM sublayers
       "alias": "Diametre de conduit",
       "min": 0.2566,
       "max": 2.256,
-      "layerIds": [
+      "subLayerIds": [
         3,
         5
       ]

@@ -1,0 +1,30 @@
+{
+  "title": "Compressed attributes",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "",
+  "properties": {
+    "encoding": {
+      "type": "string",
+      "enum": [ "draco", "lepcc" ],
+      "description": "TBD: Lepcc is only supported when `topology` is `point`"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [ "position", "normal", "uv0", "uv1", "color", "uvRegionIndex", "featureIndex" ],
+        "enum-description": {
+          "featureIndex": "index in the `featureId` attribute array. `featureId` attribute **must** be present and `featureId.binding` **must** be `per-feature`",
+          "uvRegionIndex": "index in the `uvRegion` attribute array. `uvRegion` attribute **must** be present and `uvRegion.binding` **must** be `per-uvregion`"
+        }
+      }
+    }
+  },
+  "required": [
+    "encoding"
+  ],
+  "esriDocumentation": {
+    
+  }
+}

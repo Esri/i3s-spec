@@ -15,7 +15,7 @@ This approach also solve a short-coming in legacy I3S for `uvRegions` attribute.
 | Property | Type | Description |
 | --- | --- | --- |
 | topology | string | Topology of the mesh. Default is `triangle`<div>Possible values are:<ul><li>`triangle`</li><li>`point`</li><li>`line`</li></ul></div> |
-| **geometryBuffers** | [meshv2::geometrybuffer](geometrybuffer.md)[] | defines the vertex attributes (position, normal,etc), mesh indexing and feature mapping |
+| **geometryBuffers** | [meshv2::geometrybuffer](geometrybuffer.md)[] | Array of geometry representation(s) for this class of mesh. When multiple representations are listed, Clients should select the most compact one (e.g. Draco compressed mesh) |
 | attributeBuffers | [meshv2::attributebuffer](attributebuffer.md)[] | define the binary attribute buffers available for this class of meshes |
 
 *Note: properties in **bold** are required*

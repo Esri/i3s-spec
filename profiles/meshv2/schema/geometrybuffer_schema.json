@@ -4,14 +4,13 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "../docs/geometrybuffer_desc.md",
   "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Index of this buffer in the resource URL: e.g. `/layers/0/nodes/{resourceId}/geometries/{this.id}`"
+    },
     "offset": {
       "type": "integer",
-      "description": "number of byte to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`)"
-    },
-    "index": {
-      "type": "object",
-      "$ref": "geometryindex_schema.json",
-      "description": "Vertex index (index buffer)"
+      "description": "number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`)"
     },
     "position": {
       "type": "object",
@@ -52,10 +51,14 @@
       "type": "object",
       "$ref": "geometryfacerange_schema.json",
       "description": "Face range for feature"
+    },
+    "compressedAttributes": {
+      "type": "object",
+      "$ref": "compressedAttributes_schema.json",
+      "description": "Compressed attributes"
     }
   },
   "required": [
-    "position"
   ],
   "esriDocumentation": {
     "examples": [
@@ -65,67 +68,23 @@
           "offset" :  4,
           "position": {
             "type": "Float32",
-            "component": 3,
-            "binding": "per-vertex"
+            "component": 3
           },
           "normal": {
             "type": "Float32",
-            "component": 3,
-            "binding": "per-vertex"
+            "component": 3
           },
           "uv0": {
             "type": "Float32",
-            "component": 2,
-            "binding": "per-vertex"
+            "component": 2
           },
           "featureId": {
             "type": "UInt32",
-            "component": 1,
-            "binding": "per-feature"
+            "component": 1
           },
           "faceRange": {
             "type": "UInt32",
-            "component": 2,
-            "binding": "per-feature"
-          }
-        }
-      },
-      {
-        "title": "A compact mesh representation: indexed-geometry, 16-bit xyz, compressed-normals, no colors with UV regions",
-        "code": {
-          "indice": {
-            "type": "UInt32"
-          },
-          "position": {
-            "type": "UInt16",
-            "component": 3,
-            "encoding": "fixed-point",
-            "scale": 100.0,
-            "offset": 14500.0,
-            "binding": "per-vertex"
-          },
-          "normal": {
-            "type": "UInt16",
-            "component": 2,
-            "encoding": "normal-compression",
-            "binding": "per-face"
-          },
-          "uv0": {
-            "type": "UInt16",
-            "component": 2,
-            "encoding": "normalized",
-            "binding": "per-vertex"
-          },
-          "color": {
-            "type": "UInt8",
-            "component": 3,
-            "binding": "per-face"
-          },
-          "uvRegion": {
-            "type": "UInt16",
-            "component": 4,
-            "encoding": "normalized",
-            "binding": "per-vertex"
+            "component": 2
           }
         }
       }

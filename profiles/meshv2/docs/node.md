@@ -4,7 +4,7 @@
 
 ### Related:
 
-[meshv2::layer](layer.md), [meshv2::nodes](nodes.md)
+[meshv2::nodes](nodes.md), [meshv2::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |

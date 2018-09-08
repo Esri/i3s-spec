@@ -16,16 +16,14 @@
     "encoding": {
       "type": "string",
       "enum": [ "normalized" ],
-      "enum-description": {
-        "normalized": "default and only value supported."
-      },
       "description": "Encoding"
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex" ],
+      "enum": [ "per-vertex","per-uvregion" ],
       "enum-description": {
-        "per-vertex": "default and only value supported"
+        "per-vertex":   "default",
+        "per-uvregion": "Only valid in conjonction with `compressedAttributes` when `uvRegionIndex` attribute is present" 
       },
       "description": "binding"
     }

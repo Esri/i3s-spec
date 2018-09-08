@@ -6,8 +6,7 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "Float32", "UInt16" ],
-      "description": "For `Uint16` `encoding=normalized` is implied"
+      "enum": [ "Float32" ]
     },
     "component": {
       "type": "integer",
@@ -15,20 +14,11 @@
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none", "normalized" ],
-      "enum-description": {
-        "none": "default",
-        "normalized": "`type` must be `UInt16`. [0,65k] will be mapped to [0,1]. Cannot be used with repeated-textures since UV could be in[0,n]"
-      },
-      "description": "Encoding. "
+      "enum": [ "none"]
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex" ],
-      "enum-description": {
-        "per-vertex": "default. only mode supported"
-      },
-      "description": ""
+      "enum": [ "per-vertex" ]
     }
   },
   "required": [
@@ -37,14 +27,6 @@
   ],
   "esriDocumentation": {
     "examples": [
-      {
-        "title": "16-bit per coordinate UV. ",
-        "code": {
-          "type": "UInt16",
-          "component": 2,
-          "encoding": "normalized"
-        }
-      },
       {
         "title": "Float 32 UV",
         "code": {

@@ -22,7 +22,6 @@
       "enum": [ "per-feature", "per-face","per-instance" ],
       "enum-description": {
         "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **[`FaceRange`](geometryfacerange.md) attribute must be present** to map features-to-faces and vertices must _be grouped by feature_ ",
-        "per-face": "one `feature_id` per triangle. (`topology` must be `triangle`) **FaceRange must be omitted** (and will be ignored)",
         "per-instance": "Default and only valid value for `instanceBuffer.featureId` . **cannot** be used in `geometryBuffer.featureId`"
       }
     }
@@ -39,16 +38,6 @@
           "featureId": {
             "type": "UInt16",
             "component": 1
-          }
-        }
-      },
-      {
-        "title": "Feature_id per-face",
-        "code": {
-          "featureId": {
-            "type": "UInt32",
-            "component": 1,
-            "binding": "per-face"
           }
         }
       }

@@ -6,7 +6,7 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [  "UINT16", "UINT32" ]
+      "enum": [  "UINT32" ]
     },
     "component": {
       "type": "integer",
@@ -30,7 +30,7 @@
         "title": "FaceRange",
         "code": {
           "faceRange": {
-            "type": "UInt16",
+            "type": "UInt32",
             "component": 2
           }
         }

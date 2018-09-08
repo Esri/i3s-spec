@@ -23,13 +23,7 @@
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex", "per-face", "per-feature" ],
-      "enum-description": {
-        "per-vertex": "default.",
-        "per-face": "color is per face (`topology` must be `triangle`)",
-        "per-feature": "color is per feature. **TBD: useful ? should we suppport this?**"
-      },
-      "description": ""
+      "enum": [ "per-vertex"]
     }
   },
   "required": [
@@ -44,16 +38,6 @@
           "color": {
             "type": "UInt8",
             "component": 3
-          }
-        }
-      },
-      {
-        "title": "RGBA colors per face. `triangle` topology is required",
-        "code": {
-          "color": {
-            "type": "UInt8",
-            "component": 4,
-            "binding" :  "per-face"
           }
         }
       }

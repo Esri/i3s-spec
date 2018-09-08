@@ -9,9 +9,17 @@ color
 uvRegion
 featureId
 faceRange
+compressedAttributes
 ```
- Attribute that are present are store contiguously. 
+ 
+ **Important:**
+- Each attribute must only be listed ONCE when `compressedAttributes` are present. (i.e. if `compressedAttributes` contains `position`, `geometryBuffer.position` **must not** be present )
+- Attribute that are present are store contiguously. (_TBD: memory alignment requirement ?_)
+- All vertex attributes ( **except** `compressedAttributes`) have a fixed size that may be computed as:
+      `#component * sizeof( type ) * {#vertices or #features}`
+
+
 
  **TBD**:
- - memory alignment requirement ?
- - support more that 2 UV sets?
+ - support more that 2 UV sets? 
+ - I've simplified "uncompressed" specs to march "legacy" buffers since we'll rely on Draco for mesh compression.

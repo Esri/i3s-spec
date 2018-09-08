@@ -2,9 +2,6 @@
 
 Index are useful to reduce the number of vertices to be transmitted
 
-### Related:
-
-[meshv2::geometrybuffer](geometrybuffer.md)
 ### Properties
 
 | Property | Type | Description |

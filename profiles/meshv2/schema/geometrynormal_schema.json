@@ -6,48 +6,29 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "Float32", "Int16" ],
+      "enum": [ "Float32" ],
       "description": ""
     },
     "component": {
       "type": "integer",
-      "description": "Number of coordinates per vertex position. Must be 2 or 3. If 2, then `encoding` **must** be `normal-compression` with `type`=`Int16`"
+      "description": "Number of coordinates per vertex position. Must be 3."
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none", "normal-compression" ],
-      "enum-description": {
-        "none": "default",
-        "normal-compression": "Normal are compressed to 2x16bit using [this technique](https://knarkowicz.wordpress.com/2014/04/16/octahedron-normal-vector-encoding). `type` must be`Int16`, `component` must be 2"
-      },
+      "enum": [ "none"],
       "description": "Encoding"
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex", "per-face" ],
-      "enum-description": {
-        "per-vertex": "default.",
-        "per-face": "`topology` must be `triangle`"
-      },
-      "description": "binding for the normals"
+      "enum": [ "per-vertex" ]
     }
   },
   "required": [
     "type",
     "component"
-
   ],
   "esriDocumentation": {
     "examples": [
-      {
-        "title": "2x 16-bit compressed normals. One normal per face (flat-shading)",
-        "code": {
-          "type": "UInt16",
-          "component": 2,
-          "encoding": "normal-compression",
-          "binding": "per-face"
-        }
-      },
       {
         "title": "Float32 x,y,z  **per-vertex** normals ",
         "code": {

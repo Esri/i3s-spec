@@ -15,7 +15,7 @@
         "type": "object",
         "$ref": "geometrybuffer_schema.json"
       },
-      "description": "defines the vertex attributes (position, normal,etc), mesh indexing and feature mapping"
+      "description": "Array of geometry representation(s) for this class of mesh. When multiple representations are listed, Clients should select the most compact one (e.g. Draco compressed mesh)"
     },
     "attributeBuffers": {
       "type": "array",

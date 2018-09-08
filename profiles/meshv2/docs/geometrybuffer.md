@@ -35,7 +35,7 @@ compressedAttributes
 
 | Property | Type | Description |
 | --- | --- | --- |
-| id | integer | Index of this buffer in the resource URL: e.g. `/layers/0/nodes/{resourceId}/geometries/{this.id}` |
+| **id** | integer | Index of this buffer in the resource URL: e.g. `/layers/0/nodes/{resourceId}/geometries/{this.id}` |
 | offset | integer | number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`) |
 | position | [meshv2::geometryposition](geometryposition.md) | Vertex positions relative to Oriented-bounding-box center |
 | normal | [meshv2::geometrynormal](geometrynormal.md) | Face/vertex normal  |
@@ -55,6 +55,7 @@ compressedAttributes
 
 ```json
  {
+  "id": 0,
   "offset": 4,
   "position": {
     "type": "Float32",
@@ -75,6 +76,28 @@ compressedAttributes
   "faceRange": {
     "type": "UInt32",
     "component": 2
+  }
+} 
+```
+
+#### Example: A compressed geometry buffer definition with featureId (without UV regions) 
+
+```json
+ {
+  "id": 1,
+  "featureId": {
+    "type": "UInt32",
+    "component": 1,
+    "binding": "per-feature"
+  },
+  "compressedAttributes": {
+    "encoding": "draco",
+    "attributes": [
+      "position",
+      "normal",
+      "uv0",
+      "featureIndex"
+    ]
   }
 } 
 ```

@@ -59,13 +59,15 @@
     }
   },
   "required": [
+    "id"
   ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
         "code": {
-          "offset" :  4,
+          "id": 0,
+          "offset": 4,
           "position": {
             "type": "Float32",
             "component": 3
@@ -85,6 +87,21 @@
           "faceRange": {
             "type": "UInt32",
             "component": 2
+          }
+        }
+      },
+      {
+        "title": "A compressed geometry buffer definition with featureId (without UV regions)",
+        "code": {
+          "id": 1,
+          "featureId": {
+            "type": "UInt32",
+            "component": 1,
+            "binding": "per-feature"
+          },
+          "compressedAttributes": {
+            "encoding": "draco",
+            "attributes": [ "position", "normal", "uv0", "featureIndex" ]
           }
         }
       }

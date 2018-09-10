@@ -74,7 +74,8 @@ class Schema_manifest :
         if name.endswith('_schema') :
             name = name[:-7]
         if len(tok) ==1 :
-            tok.insert(0, default_namespace )
+            assert( default_namespace in Schema_manifest.c_code_to_paths)
+            tok.insert(0, Schema_manifest.c_code_to_paths[ default_namespace])
         while( len(tok) > 0 and tok[0] == ".."):
             del tok[0]
         assert( tok[0] in Schema_manifest.c_path_to_codes)

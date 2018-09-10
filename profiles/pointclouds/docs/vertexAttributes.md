@@ -26,5 +26,5 @@ The vertex buffer description.
     }
   }
 } 
-````
+```
 

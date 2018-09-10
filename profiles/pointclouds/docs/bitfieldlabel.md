@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: Statistics Label
+# I3S point cloud scene layer: Bit Field Label
 
 
 
@@ -23,5 +23,5 @@
   "bitNumber": 3,
   "label": "Overlap"
 } 
-````
+```
 

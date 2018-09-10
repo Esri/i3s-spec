@@ -27,7 +27,7 @@ List of attributes included for this layer.
   "name": "ELEVATION",
   "encoding": "embedded-elevation"
 } 
-````
+```
 
 #### Example: Color attribute 
 
@@ -44,7 +44,7 @@ List of attributes included for this layer.
   },
   "encoding": "lepcc-rgb"
 } 
-````
+```
 
 #### Example: 8-bit uncompressed/GZIP compressed class-codes 
 
@@ -60,5 +60,5 @@ List of attributes included for this layer.
     "valuesPerElement": 1
   }
 } 
-````
+```
 

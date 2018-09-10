@@ -7,7 +7,7 @@ Describes the point cloud scene layer.
 | Property | Type | Description |
 | --- | --- | --- |
 | id | integer | A unique identifying number for the layer. For point cloud scene layer, only a single layer is supported, therefore, id is always 0. |
-| **layerType** | string | String indicating the layer type<div>Possible values are:<ul><li>`PointCloud`</li></ul></div> |
+| **layerType** | string | String indicating the layer type<div>Must be:<ul><li>`PointCloud`</li></ul></div> |
 | **name** | string | Represents the layer name. |
 | alias | string | Represents the alias layer name. |
 | desc | string | Description for the layer. |
@@ -166,5 +166,5 @@ Describes the point cloud scene layer.
         "heightUnit": "meter"
         }
 } 
-````
+```
 

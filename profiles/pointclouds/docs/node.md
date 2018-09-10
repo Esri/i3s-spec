@@ -48,5 +48,5 @@ A single bounding volume hierarchy node
     "vertexCount": 7872,
     "lodThreshold": 8979.959961
 } 
-````
+```
 

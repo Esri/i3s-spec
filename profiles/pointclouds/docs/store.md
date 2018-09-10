@@ -10,7 +10,7 @@ Describes storage for the layer.
 | Property | Type | Description |
 | --- | --- | --- |
 | id | string | Id for the store. Not currently used by the point cloud scene layer. |
-| **profile** | string | Defines the profile type of the scene layer as point cloud scene layer.<div>Possible values are:<ul><li>`PointCloud`</li></ul></div> |
+| **profile** | string | Defines the profile type of the scene layer as point cloud scene layer.<div>Must be:<ul><li>`PointCloud`</li></ul></div> |
 | **version** | string | Point cloud scene layer store version. |
 | **extent** | number[4] | 2D extent of the point cloud scene layer in the layers spatial reference units. |
 | **index** | [pointcloud::index](index.md) | Describes the index (i.e. bounding volume tree) of the layer. |
@@ -57,5 +57,5 @@ Describes storage for the layer.
     }
   }
 } 
-````
+```
 

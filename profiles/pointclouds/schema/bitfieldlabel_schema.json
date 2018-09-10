@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: Statistics Label",
+  "title": "I3S point cloud scene layer: Bit Field Label",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "",

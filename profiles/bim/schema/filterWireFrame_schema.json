@@ -1,0 +1,20 @@
+{
+  "title": "Filter style wire frame",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Shows all features that do not comply to the filter of the BIM Building Scene Layer as wire frame with an edge line.",
+  "properties": {
+    "type": {
+        "type": "string",
+        "enum":[
+          "wireFrame"
+        ],
+      "description": "Declares filter style of type hide."
+    },
+    "edge":{
+        "type": "object",
+        "description": "An object defining the solid edge of a feature. [See more](https://developers.arcgis.com/web-scene-specification/objects/solidEdges/) information on supported renderer types in ArcGIS clients." 
+    }
+} 
+  
+}

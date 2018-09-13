@@ -4,7 +4,7 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 
 ### Related:
 
-[pointcloud::layer](../../pointclouds/docs/layer.md)
+[bim::layer](../../bim/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

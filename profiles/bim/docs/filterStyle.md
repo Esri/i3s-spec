@@ -1,6 +1,6 @@
 # Filter style
 
-Filter style applied to the feature if filter is present.
+Filter style applied to the feature if filter is present. Can be hide or wireFrame.
 
 ### Related:
 
@@ -9,15 +9,7 @@ Filter style applied to the feature if filter is present.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **name** | string | Name of the filter style |
+| **type** |  | Type of filter style that can be used for the BIM Building Scene layer. Currently supported are [layer.filterStyle.filterHide](filterhide.md) and [layer.filterStyle.filterWireFrame](filterWireFrame.md) |
 
 *Note: properties in **bold** are required*
-
-### Examples 
-
-#### Example: Building Scene Layer filter style 
-
-```json
- "" 
-```
 

@@ -9,11 +9,11 @@ A single bounding volume hierarchy node
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **resourceId** | integer | Index of the first child of this node. The resourceID  must be used to query node resources, like geometry buffer (XYZ)  /nodes/<resourceId>/geometry/0  and attribute buffers. One buffer can have one attribute. Available attributes are declared in the  SceneLayer  document. /nodes/<resourceId>/attributes/<attrib_key>. |
+| **resourceId** | integer | Index of the first child of this node. The resourceID must be used to query node resources, like geometry buffer (XYZ)  /nodes/<resourceId>/geometry/0  and attribute buffers. One buffer can have one attribute. Available attributes are declared in the SceneLayer document. /nodes/<resourceId>/attributes/<attrib_key>. |
 | **firstChild** | integer | Index of the first child of this node. |
 | **childCount** | integer | Number of children for this node. Value is 0 if node is a leaf node. |
 | **vertexCount** | integer | Number of points for this node. |
-| **lodThreshold** | number | This metric may be used as a threshold to split a parent node into its children. see [layer.store.index.lodSelectionMetricType](index.md) |
+| **lodThreshold** | number | This metric may be used as a threshold to split a parent node into its children. See [layer.store.index.lodSelectionMetricType](index.md) |
 | **obb** | [common::obb](../../common/docs/obb.md) | Oriented bounding boxes (OBB) are the only supported bounding volumes. |
 
 *Note: properties in **bold** are required*

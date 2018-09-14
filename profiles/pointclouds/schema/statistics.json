@@ -36,11 +36,11 @@
         "code_href": "../examples/stats_8.json"
       },
       {
-        "title": "Flags statistics (LIDAR point cloud)",
+        "title": "Flags statistics (LiDAR point cloud)",
         "code_href": "../examples/stats_16.json"
       },
       {
-        "title": "Returns statistics (LIDAR point cloud)",
+        "title": "Returns statistics (LiDAR point cloud)",
         "code_href": "../examples/stats_32.json"
       }
     ]

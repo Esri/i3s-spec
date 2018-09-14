@@ -216,7 +216,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 } 
 ```
 
-#### Example: Flags statistics (LIDAR point cloud) 
+#### Example: Flags statistics (LiDAR point cloud) 
 
 ```json
  {
@@ -406,7 +406,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 } 
 ```
 
-#### Example: Returns statistics (LIDAR point cloud) 
+#### Example: Returns statistics (LiDAR point cloud) 
 
 ```json
  {

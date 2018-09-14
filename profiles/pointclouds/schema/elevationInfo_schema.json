@@ -6,11 +6,11 @@
     "properties": {
         "mode": {
             "type": "string",
-            "description": "The mode of the elevation. Point cloud scene layer support absoluteHeight." 
+            "description": "The mode of the elevation. Point cloud scene layer supports absoluteHeight." 
         },  
         "offset": {
             "type": "number",
-            "description": "The offest the point cloud scene layer. The elevation unit is the coordinate systems units." 
+            "description": "The offset the point cloud scene layer. The elevation unit is the coordinate systems units." 
         } 
     },
     "required": [

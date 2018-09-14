@@ -1,6 +1,6 @@
 # Filter style wire frame
 
-Shows all features, that do not comply to the filter of the BIM Building Scene Layer, as wire frame with an edge line.
+Shows all features that do not comply to the filter of the BIM Building Scene Layer.  For example, a wire frame with an edge line.
 
 ### Properties
 

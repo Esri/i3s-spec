@@ -60,7 +60,7 @@ The service definition is identical to other scene layer service definitions and
 ```
 
 #### Notes on _City_ scale BIM:
-BIM is not envisionned to represent many buildings (e.g. a city). In this case an single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene layers. Once a building is selected, its matching BIM scene layer will be open.
+BIM is not envisioned to represent many buildings (e.g. a city). In this case an single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene layers. Once a building is selected, its matching BIM scene layer will be open.
 
 **Edits**
 - group/layer names **must be unique**. 

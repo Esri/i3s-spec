@@ -1,6 +1,6 @@
 # Filter authoring info for Building Scene Layer
 
-The filter authoring info object contains metadata about hte authoring process for creating a filter object. This allows the authoring client to save specific overridable settings so that the next time it is accessed via an authoring client, their selections are remembered. Non-authoring clients can ignore it. Includes properties such as enabled categories or slider.
+The filter authoring info object contains metadata about the authoring process for creating a filter object. This allows the authoring client to save specific, overridable settings.  The next time it is accessed via an authoring client, their selections are remembered. Non-authoring clients can ignore it. Includes properties such as enabled categories or slider.
 
 ### Related:
 

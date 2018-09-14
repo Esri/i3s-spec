@@ -10,7 +10,7 @@ A scalar or vector value.
 | Property | Type | Description |
 | --- | --- | --- |
 | **value** | number | Type of the attribute values after decompression, if applicable. Please note that `string` is not supported for point cloud scene layer attributes. |
-| **count** | number | count the number of values. May exceed 32 bit. |
+| **count** | number | Count the number of values. May exceed 32 bit. |
 
 *Note: properties in **bold** are required*
 

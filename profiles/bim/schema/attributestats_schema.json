@@ -2,7 +2,7 @@
   "title": "BIM attribute statistics",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Concatenated attribute statistics . Notes: if needed the type (string or number) of the attribute may be infer from the `mostFrequentValues` and/or `min`/`max` fields",
+  "description": "Concatenated attribute statistics . If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields",
   "properties": {
     "fieldname": {
       "type": "string",
@@ -10,16 +10,16 @@
     },
     "label": {
       "type": "string",
-      "description": "Label of the field name. If label is empty the label and fieldName are identical. Labels are shown in the UI for filter types, for example."
+      "description": "Label of the field name. If label is empty, the label and fieldName are identical. Labels are shown in the UI for filter types."
     },
     "modelName": {
       "type": "string",
       "enum": [ "floorId", "buildingId", "roomType" ],
-      "description": "Useful for building information such as filter or phases to be a fixed string. Used by client application to define specific behavior for the modelName _TODO: get the full list_"
+      "description": "A fixed string useful for building information like filter or phases. Used by client applications to define specific behavior for the modelName _TODO: get the full list_"
     },
       "min": {
         "type": "number",
-        "description": "Minimum value. Nnumeric attributes only."
+        "description": "Minimum value. Numeric attributes only."
       },
       "max": {
         "type": "number",

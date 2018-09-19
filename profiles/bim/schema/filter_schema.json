@@ -20,9 +20,10 @@
       "type": "string",
       "description": "Model name defines preset of the filter. For example if the modelName is Floor or Building the clients can build specific UI for this filter. Any other modelName is custom"
     },
-    "filterExpression": {
-      "type": "string",
-      "description": "Filter query expression for a building scene layer. From this expression clients need to be able to rebuild the UI. For example if the field (filter type) is wall the UI needs to show all unique values of the filter type wall."
+    "filterMode": {
+      "type": "object",
+      "description": "Filter mode that defines how features are drawn.",
+      "$ref":"filterMode_schema.json"
     },
     "filterAuthoringInfo": {
       "description": "List of visible filter types of the filter.",
@@ -34,7 +35,7 @@
     "name",
     "description",
     "modelName",
-    "filterExpression",
+    "filterMode",
     "filterAuthoringInfo"
   ],
   "esriDocumentation": {

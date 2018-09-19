@@ -4,7 +4,7 @@ The filter authoring info object contains metadata about the authoring process f
 
 ### Related:
 
-[bim::filter](filter.md)
+[bim::filter](filter.md), [bim::filterMode](filterMode.md)
 ### Properties
 
 | Property | Type | Description |

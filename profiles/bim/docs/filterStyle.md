@@ -4,7 +4,7 @@ Filter style applied to the feature if filter is present. Can be hidden or wire 
 
 ### Related:
 
-[bim::layer](layer.md)
+[bim::filterMode](filterMode.md), [bim::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |

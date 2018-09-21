@@ -4,17 +4,30 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The filter authoring info object contains metadata about the authoring process for creating a filter object. This allows the authoring client to save specific, overridable settings.  The next time it is accessed via an authoring client, their selections are remembered. Non-authoring clients can ignore it. Includes properties such as enabled categories or slider.",
   "properties": {
-    "visibleFilterType": {
-        "type": "array",
-          "items": {
-              "type": "string"        
-          },
-          "description": "List of visible filter types of the filter."
-      }
+    "type": {
+      "type": "string",
+      "enum":[
+        "checkbox"
+      ],
+      "enum-description" : 
+                {
+                    "checkbox" : "Allows client to build UI with checkbox.",
+                },
+    "description": "Declares type or authoring infoilter style of type wire frame."
     },
+    "filterValue":{
+      "type":"array",
+      "items": {
+        "type": "string", 
+        "description" : "Represents a value that a filter type can have.Filter values are the attributes that can be stored for individual fields in a layer."
+    },
+    "description": "Array of defined filter types."
+    }
+  },
+   
   "required": [
-    "visibleFilterType"
-  ],
+    "type"
+      ],
   "esriDocumentation": {
     "examples": [
       {

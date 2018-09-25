@@ -29,11 +29,6 @@
       "type": "string",
       "description": "Copyright information to be displayed with this layer."
     },
-    "spatialReference": {
-      "type": "object",
-      "$ref": "../../common/schema/spatialReference_schema.json",
-      "description": "Spatial reference for the layer"
-    },
     "fullExtent": {
       "type": "object",
       "$ref": "../../common/schema/fullExtent_schema.json",
@@ -48,7 +43,6 @@
       "description": "An object containing the vertical coordinate system information.",
       "$ref": "../../common/schema/heightModelInfo_schema.json"
     },
-
     "sublayers": {
       "type": "array",
       "items": {
@@ -65,15 +59,13 @@
       },
       "description": "_TBD: BIM layer specific filters_"
     },
-    "currentFilter": {
-      "type": "number",
-      "description": "Filter id for the currently applied filter."
-    },
-    "filterStyle":
-    {
-      "type": "object",
-      "description": "Filter style applied to the feature if filter is present.",
-      "$ref": "filterStyle_schema.json"
+    "activeFilter": {
+      "type": "array",
+      "items":{
+        "type": "number",
+        "description": "Filter id for the currently applied filter."
+      },
+      "description": "List of active filter id's currently applied to the building scene layer."
     },
     "statisticsHRef": {
       "type": "string",
@@ -86,8 +78,7 @@
     "layerType",
     "fullExtent",
     "spatialReference",
-    "sublayers",
-    ""
+    "sublayers"    
   ],
   "esriDocumentation": {
     "examples": [

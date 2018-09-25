@@ -1,46 +1,16 @@
 {
-  "title": "Filter mode for Building Scene Layer",
+  "title": "Filter Mode",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The filter mode object which can be applied to a building scene layer. A filter mode can use hidden or wire frame style.",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "Name of the filter mode. Unique identifier of the filter mode."
-    },
-    "label": {
-      "type": "string",
-      "description": "Name of the filter."
-    },
-    "filterStyle":{
-        "type": "object",
-        "description": "FilterStyle used for the mode wire frame or hide",
-        "$ref": "filterStyle_schema.json"
-    },
-    "filterExpression": {
-      "type": "string",
-      "description": "Filter query expression for a building scene layer. From this expression clients need to be able to rebuild the UI. For example if the field (filter type) is wall the UI needs to show all unique values of the filter type wall."
-    },
-    "filterAuthoringInfo": {
-      "description": "List of visible filter types of the filter.",
-      "$ref": "filterAuthoringInfo_schema.json"
-    }
-  },
-  "required": [
-    "id",
-    "name",
-    "description",
-    "modelName",
-    "filterExpression",
-    "filterAuthoringInfo"
-  ],
-  "esriDocumentation": {
-    "examples": [
-      {
-        "title": "Building Scene Layer",
-        "code": ""
-      }
-    ]
-  }
+  "description": "Filter mode represents the way features draw when participating in a filter.",
+    "oneOf": [
+        {
+
+          "$ref": "filterHidden_schema.json"
+        },
+        {
+          "$ref": "filterWireFrame_schema.json"
+        }
+      ]
 }
 

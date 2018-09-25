@@ -20,23 +20,27 @@
       "type": "string",
       "description": "Model name defines the filter. For example, if the modelName is Floor or Building the clients can build specific UI for this filter. Any other modelName is custom. This would be important for web scene viewer so they can identify filter that are not floor or others that they will have UI for."
     },
-    "defaultFilterMode": {
+    "filterMode": {
       "type": "object",
       "description": "Filter mode that defines how features are drawn.",
       "$ref":"filterMode_schema.json"
     },
-    "overwriteFilterMode": {
-      "type": "object",
-      "description": "Filter mode that user can overwrite individual values with. For example if the user wants to see all filtered out features in wirframe just all other phases than 1 should be hidden.",
-      "$ref":"filterMode_schema.json"
-    }    
+    "filterExpression": {
+      "type": "string",
+      "description": "Filter query expression for a building scene layer. From this expression clients need to be able to rebuild the UI. For example if the field (filter type) is wall the UI needs to show all unique values of the filter type wall."
+    },
+    "filterAuthoringInfo": {
+      "description": "List of visible filter types of the filter.",
+      "$ref": "filterAuthoringInfo_schema.json"
+    }
   },
   "required": [
     "id",
     "name",
     "description",
     "modelName",
-    "defaultFilterMode"
+    "filterMode",
+    "filterExpression"
   ],
   "esriDocumentation": {
     "examples": [

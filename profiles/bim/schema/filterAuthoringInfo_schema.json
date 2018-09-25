@@ -11,17 +11,16 @@
       ],
       "enum-description" : 
                 {
-                    "checkbox" : "Allows client to build UI with checkbox.",
+                    "checkbox" : "Allows client to build UI with checkbox."
                 },
     "description": "Declares type or authoring infoilter style of type wire frame."
     },
     "filterValue":{
       "type":"array",
       "items": {
-        "type": "string", 
-        "description" : "Represents a value that a filter type can have.Filter values are the attributes that can be stored for individual fields in a layer."
-    },
-    "description": "Array of defined filter types."
+        "type": "string" 
+      },
+    "description": "Array of defined filter values. Represents a value that a filter type can have. Filter values are the attributes that can be stored for individual fields in a layer."
     }
   },
    

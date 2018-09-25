@@ -1,5 +1,5 @@
 {
-  "title": "Filters for Building Scene Layer",
+  "title": "Filter",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The filter object which can be applied to a building scene layer.",
@@ -22,15 +22,15 @@
     },
     "filterMode": {
       "type": "object",
-      "description": "Filter mode that defines how features are drawn.",
+      "description": "Filter mode defines how features are drawn. For example, the filter mode of a filter can be wire frame.",
       "$ref":"filterMode_schema.json"
     },
     "filterExpression": {
       "type": "string",
-      "description": "Filter query expression for a building scene layer. From this expression clients need to be able to rebuild the UI. For example if the field (filter type) is wall the UI needs to show all unique values of the filter type wall."
+      "description": "Filter query expression for a building scene layer."
     },
     "filterAuthoringInfo": {
-      "description": "List of visible filter types of the filter.",
+      "description": "Authoring info used to generate user interface for authoring clients.",
       "$ref": "filterAuthoringInfo_schema.json"
     }
   },

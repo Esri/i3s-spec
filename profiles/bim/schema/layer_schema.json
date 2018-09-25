@@ -7,7 +7,7 @@
   "properties": {
     "id": {
       "type": "integer",
-      "description": "Identifier for the layer. **Important**: clients should **not** assume it will be `0`"
+      "description": "Identifier for the layer. **Important**: clients should **not** assume it will be `0`."
     },
     "name": {
       "type": "string",
@@ -32,7 +32,7 @@
     "fullExtent": {
       "type": "object",
       "$ref": "../../common/schema/fullExtent_schema.json",
-      "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`"
+      "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`."
     },
     "spatialReference": {
       "description": "The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references.",
@@ -49,7 +49,7 @@
         "type": "object",
         "$ref": "sublayer_schema.json"
       },
-      "description": "list of sublayers or group of sublayers."
+      "description": "List of sublayers or group of sublayers."
     },
     "filters": {
       "type": "array",
@@ -57,13 +57,13 @@
         "type": "object",
         "$ref": "filter_schema.json"
       },
-      "description": "_TBD: BIM layer specific filters_"
+      "description": "Array of filters defined for the building scene layer."
     },
     "activeFilter": {
       "type": "array",
       "items":{
         "type": "number",
-        "description": "Filter id for the currently applied filter."
+        "description": "Filter id for applied filter."
       },
       "description": "List of active filter id's currently applied to the building scene layer."
     },

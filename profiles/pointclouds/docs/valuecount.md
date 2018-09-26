@@ -18,10 +18,12 @@ A scalar or vector value.
 
 #### Example: Scalar value definition 
 
+An unsigned 16 bit value. 
+
 ```json
  {
   "value": 145,
   "count": 14789654
 } 
-````
+```
 

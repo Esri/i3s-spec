@@ -1,6 +1,6 @@
 **Important**: The order of the vertex attributes in the buffer is **fixed** to simplify binary parsing:
 ```
-index
+compressedAttributes
 position
 normal
 uv0
@@ -9,7 +9,6 @@ color
 uvRegion
 featureId
 faceRange
-compressedAttributes
 ```
  
  **Important:**
@@ -19,7 +18,7 @@ compressedAttributes
       `#component * sizeof( type ) * {#vertices or #features}`
 
 
-
  **TBD**:
+ - `compressedAttributes` is listed first in the hope that 3rd party Draco readers would ignore the rest of the binary stream. If this prove to not be the case, we should probably move it to last.
  - support more that 2 UV sets? 
  - I've simplified "uncompressed" specs to march "legacy" buffers since we'll rely on Draco for mesh compression.

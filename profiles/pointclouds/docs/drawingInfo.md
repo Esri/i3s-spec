@@ -68,5 +68,5 @@ The drawingInfo object contains drawing information for a point cloud scene laye
     ]
   }
 } 
-````
+```
 

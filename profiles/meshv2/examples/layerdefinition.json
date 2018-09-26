@@ -1,6 +1,7 @@
 {
   "nodePages": {
     "nodePerPage": 64,
+    "rootIndex" :  0,
     "lodSelectionMetricType": "maxScreenThresholdSQ"
   },
   "textureSetDefinitions": [
@@ -108,7 +109,7 @@
           "alias": "Nom de rue",
           "type": "String",
           "binding": "per-feature",
-          "encoding": "indexed-utf8-string"
+          "encoding": "string-utf8"
         },
         {
           "id": 14,

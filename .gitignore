@@ -1,3 +1,4 @@
 tools/scripts/.vs/
 *.suo
 design/optimization/~*
+/design/~$mesh_v2.pptx

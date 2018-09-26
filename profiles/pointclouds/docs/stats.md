@@ -291,7 +291,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
         ]
     }
 } 
-````
+```
 
 #### Example: Intensity statistics 
 
@@ -343,7 +343,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
         ]
     }
 } 
-````
+```
 
 #### Example: RGB color statistics ( please note that histogram is not required here) 
 
@@ -362,7 +362,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
         "counts": []
     }
 } 
-````
+```
 
 #### Example: Class code statistics with labels 
 
@@ -487,7 +487,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
         }
     ]
 } 
-````
+```
 
 #### Example: Flags statistics (LIDAR point cloud) 
 
@@ -674,7 +674,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
         ]
     }
 } 
-````
+```
 
 #### Example: Returns statistics (LIDAR point cloud) 
 
@@ -755,5 +755,5 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
         }
     ]
 } 
-````
+```
 

@@ -25,5 +25,5 @@ The elevationInfo defines how content in a scene layer is aligned to the ground.
     "offset": 0.0
   }
 } 
-````
+```
 

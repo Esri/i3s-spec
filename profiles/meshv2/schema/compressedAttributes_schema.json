@@ -15,14 +15,16 @@
         "type": "string",
         "enum": [ "position", "normal", "uv0", "uv1", "color", "uvRegionIndex", "featureIndex" ],
         "enum-description": {
-          "featureIndex": "index in the `featureId` attribute array. `featureId` attribute **must** be present and `featureId.binding` **must** be `per-feature`",
-          "uvRegionIndex": "index in the `uvRegion` attribute array. `uvRegion` attribute **must** be present and `uvRegion.binding` **must** be `per-uvregion`"
+          "position": "`Draco` meta-data `scale_x`, `scale_y` (if present) must be apply to `x` and `y` coordinates since vertices may be scaled before compression to preserve `XY`/`Z` ratio and avoid quantization issue (i.e. `XY` in degress, `Z` in meters)",
+          "featureIndex": "index in the [`featureId`](geometryfeatureid.md) attribute array. `featureId` attribute **must** be present and `featureId.binding` **must** be `per-feature`",
+          "uvRegionIndex": "index in the `uvRegion` attribute array. [`uvRegion`](geometryuvregion.md) attribute **must** be present and `uvRegion.binding` **must** be `per-uvregion`"
         }
       }
     }
   },
   "required": [
-    "encoding"
+    "encoding",
+    "attributes"
   ],
   "esriDocumentation": {
     

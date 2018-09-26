@@ -18,6 +18,8 @@ A scalar or vector value.
 
 #### Example: Scalar value definition 
 
+An unsigned 16 bit value. 
+
 ```json
  {
   "attributeValues": {
@@ -25,9 +27,11 @@ A scalar or vector value.
     "valuesPerElement": 1
   }
 } 
-````
+```
 
 #### Example: Vector value definition 
+
+The vector value can only be RGB-8 value. 
 
 ```json
  {
@@ -36,5 +40,5 @@ A scalar or vector value.
     "valuesPerElement": 3
   }
 } 
-````
+```
 

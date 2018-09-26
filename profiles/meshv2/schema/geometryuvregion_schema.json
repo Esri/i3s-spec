@@ -3,6 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "../docs/geometryuvregion_desc.md",
+  "related": "meshv2::geometryCompressedAttribute",
   "properties": {
     "type": {
       "type": "string",
@@ -20,10 +21,10 @@
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex","per-uvregion" ],
+      "enum": [ "per-vertex", "per-uvregion" ],
       "enum-description": {
-        "per-vertex":   "default",
-        "per-uvregion": "Only valid in conjonction with `compressedAttributes` when `uvRegionIndex` attribute is present" 
+        "per-vertex": "default",
+        "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present"
       },
       "description": "binding"
     }

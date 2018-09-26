@@ -69,7 +69,7 @@ Optionally, the statistics document may contain labeling information for the att
         ]
     }
 } 
-````
+```
 
 #### Example: Flags labels (LIDAR data) 
 
@@ -88,5 +88,5 @@ Optionally, the statistics document may contain labeling information for the att
         ]
     }
 } 
-````
+```
 

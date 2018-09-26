@@ -72,7 +72,7 @@
               "alias": "Nom de rue",
               "type": "String",
               "binding": "per-feature",
-              "encoding": "indexed-utf8-string"
+              "encoding": "indexed-string-utf8"
 
             },
             {

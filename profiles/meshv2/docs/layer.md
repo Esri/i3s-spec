@@ -94,6 +94,7 @@ For forward-compatibility, existing v1.6 fields/resources will be left unchanged
  {
   "nodePages": {
     "nodePerPage": 64,
+    "rootIndex" :  0,
     "lodSelectionMetricType": "maxScreenThresholdSQ"
   },
   "textureSetDefinitions": [
@@ -201,7 +202,7 @@ For forward-compatibility, existing v1.6 fields/resources will be left unchanged
           "alias": "Nom de rue",
           "type": "String",
           "binding": "per-feature",
-          "encoding": "indexed-utf8-string"
+          "encoding": "string-utf8"
         },
         {
           "id": 14,

@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[common::fullExtent](fullExtent.md), [bim::layer](../../bim/docs/layer.md)
+[pointcloud::layer](../../pointclouds/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

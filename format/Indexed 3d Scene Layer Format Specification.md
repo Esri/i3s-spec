@@ -1665,7 +1665,7 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>topology</td>
 		<td>TopologyType</td>
-		<td>Declares the typology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
+		<td>Declares the topology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
 	</tr>
 	<tr>
 		<td>vertexAttributes</td>

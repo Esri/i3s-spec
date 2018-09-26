@@ -42,8 +42,9 @@
       "items": {
         "type": "object",
         "$ref": "valuecount_schema.json",
-        "description": "List of the most frequent values"
-      }
+        "description": "An array of most frequently used values within the point cloud scene layer."
+      },
+      "description": "An array of most frequently used values within the point cloud scene layer."
     },
     "labels": {
       "type": "object",

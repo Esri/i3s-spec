@@ -17,7 +17,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 | stddev | number | Representing the standard deviation. |
 | variance  | number | Representing variance. For example, stats.stddev *stats.stddev. |
 | histogram | [pointcloud::histogram](histogram.md) | Represents the histogram. |
-| mostFrequentValues | [pointcloud::valuecount](valuecount.md)[] |  |
+| mostFrequentValues | [pointcloud::valuecount](valuecount.md)[] | An array of most frequently used values within the point cloud scene layer. |
 | labels | [pointcloud::labels](labels.md) |  The statistics document may contain labeling information for the attribute values. |
 
 *Note: properties in **bold** are required*

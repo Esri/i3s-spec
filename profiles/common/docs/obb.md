@@ -4,7 +4,7 @@ Oriented bounding boxes
 
 ### Related:
 
-[meshv2::node](../../meshv2/docs/node.md)
+[pointcloud::node](../../pointclouds/docs/node.md)
 ### Properties
 
 | Property | Type | Description |

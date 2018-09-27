@@ -5,7 +5,7 @@
   "description": "The filter object which can be applied to a building scene layer.",
   "properties": {
     "id": {
-      "type": "string",
+      "type": "number",
       "description": "Unique identifier of the filter."
     },
     "name": {

@@ -15,17 +15,19 @@
                 },
     "description": "Declares type or authoring infoilter style of type wire frame."
     },
-    "filterValue":{
+    "filterTypes":{
       "type":"array",
       "items": {
-        "type": "string" 
+        "type": "object" 
       },
-    "description": "Array of defined filter values. Represents a value that a filter type can have. Filter values are the attributes that can be stored for individual fields in a layer."
+    "description": "Array of defined filter types. Each filter type has an array of filter values.",
+    "$ref": "filterTypes_schema.json"
     }
   },
    
   "required": [
-    "type"
+    "type",
+    "filterTypes"
       ],
   "esriDocumentation": {
     "examples": [

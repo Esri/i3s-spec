@@ -10,7 +10,7 @@ The filter authoring info object contains metadata about the authoring process f
 | Property | Type | Description |
 | --- | --- | --- |
 | **type** | string | Declares type or authoring infoilter style of type wire frame.<div>Must be:<ul><li>`checkbox`: Allows client to build UI using checkbox for each filter value presented to the user.</li></ul></div> |
-| filterValue | string[] | Array of defined filter values. Represents a value that a filter type can have. Filter values are the attributes that can be stored for individual fields in a layer. |
+| **filterTypes** | [bim::filterTypes](filterTypes.md) | Array of defined filter types. Each filter type has an array of filter values. |
 
 *Note: properties in **bold** are required*
 

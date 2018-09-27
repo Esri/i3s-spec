@@ -59,7 +59,7 @@
       },
       "description": "Array of filters defined for the building scene layer."
     },
-    "activeFilter": {
+    "activeFilters": {
       "type": "array",
       "items":{
         "type": "number",

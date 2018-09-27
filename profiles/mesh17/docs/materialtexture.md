@@ -4,7 +4,7 @@
 
 ### Related:
 
-[mesh17::pbrmetallicroughness](pbrmetallicroughness.md), [mesh17::materialdefinitions](materialdefinitions.md)
+[mesh17::materialdefinitions](materialdefinitions.md), [mesh17::pbrmetallicroughness](pbrmetallicroughness.md)
 ### Properties
 
 | Property | Type | Description |

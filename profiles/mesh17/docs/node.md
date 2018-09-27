@@ -9,11 +9,11 @@
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **index** | integer | index in the node array. may be **different that** [`mesh[0].resourceId`](mesh.md) |
+| **index** | integer | index in the node array. may be **different than** [`mesh[0].resourceId`](mesh.md) |
 | lodThreshold | number | When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.md)  |
 | **obb** | [common::obb](../../common/docs/obb.md) | Oriented bounding box for this node.  |
 | children | integer[] | index of the children nodes indices |
-| meshes | [mesh17::mesh](mesh.md)[] | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
+| meshes | [mesh17::mesh](mesh.md)[1] | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
 
 *Note: properties in **bold** are required*
 
@@ -47,6 +47,7 @@
     {
       "materialId": 0,
       "geometryDefinitionId": 0,
+      "attributeDefinitionId": 0,
       "resourceId": 478,
       "vertexCount": 526,
       "featureCount": 0
@@ -87,6 +88,7 @@
     {
       "materialId": 0,
       "geometryDefinitionId": 0,
+      "attributeDefinitionId": 0,
       "resourceId": 478,
       "vertexCount": 526,
       "featureCount": 26

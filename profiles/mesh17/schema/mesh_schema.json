@@ -10,38 +10,15 @@
     },
     "geometryDefinitionId": {
       "type": "integer",
-      "description": "index in [layer.meshDefinitions](layer.md) array."
+      "description": "index in [layer.geometryDefinitions](layer.md) array. default is `0`"
+    },
+    "attributeDefinitionId": {
+      "type": "integer",
+      "description": "index in [layer.attributeSetDefinitions](layer.md) array. Must be `null` (or omit) if mesh as no attributes"
     },
     "resourceId": {
       "type": "integer",
       "description": "resource locator to be used to query texture and geometry resources `layers/0/nodes/{this.resourceId}/...` **IMPORTANT**: unrelated to `node.index`!"
-    },
-    "scale": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "number"
-      },
-      "description": "Scale on local mesh X,Y and Z axis respectively (Applied first)"
-    },
-    "rotation": {
-      "type": "array",
-      "minItems": 4,
-      "maxItems": 4,
-      "items": {
-        "type": "number"
-      },
-      "description": "Quaternion rotation in local mesh reference. Applied after scaling (_TBD_: vector + angle instead?)"
-    },
-    "translation": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "number"
-      },
-      "description": "offset on local mesh X,Y and Z axis respectively. Applied after scaling and rotation."
     },
     "texelCountHint": {
       "type": "integer",
@@ -50,10 +27,6 @@
     "vertexCount": {
       "type": "integer",
       "description": "Number of vertices in the geometry buffer of this mesh"
-    },
-    "indexCount": {
-      "type": "integer",
-      "description": "Number of indices in the geometry buffer of this mesh (must omit or set to `0` for un-indexed meshes)"
     },
     "featureCount": {
       "type": "integer",
@@ -68,35 +41,22 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Simple un-textured, un-indexed mesh ",
+        "title": "Simple un-textured mesh without  any attributes nor feature and using `geometryDefinitionSet[0]` ",
         "code": {
-          "geometryDefinitionId": 0,
           "resourceId": 124,
           "vertexCount": 526
         }
       },
       {
-        "title": "Simple textured, indexed mesh ",
+        "title": "Simple textured mesh with attribute(s)",
         "code": {
           "materialId": 0,
           "geometryDefinitionId": 0,
+          "attributeDefinitionId": 0,
           "resourceId": 124,
           "texelCountHint": 1048576,
           "vertexCount": 526,
-          "indexCount": 21750
-        }
-      },
-      {
-        "title": "Transformed indexed mesh. Transformations are always applied in scale/rotation/translation order",
-        "code": {
-          "materialId": 0,
-          "geometryDefinitionId": 0,
-          "resourceId": 124,
-          "texelCountHint": 1048576,
-          "vertexCount": 526,
-          "indexCount": 21750,
-          "rotation": [ -0.070, 0.0305, -0.0569, 0.9 ],
-          "translation": [ 500.0, 0.0, 24.0 ]
+          "featureCount":  12
         }
       }
     ]

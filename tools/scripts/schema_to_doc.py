@@ -14,8 +14,8 @@ def json_to_dom( path ) :
 
 
 class Schema_manifest :
-    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"bim":"bim"}
-    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","bim":"bim"}
+    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"bim":"bim", "mesh17":"mesh17"}
+    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","bim":"bim","mesh17":"mesh17"}
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path) :
@@ -302,7 +302,7 @@ class Markdown_writer  :
             if prop.type.range[0] == prop.type.range[1] and prop.type.range[0] != '':
                 range = prop.type.range[0] 
             if prop.type.range[0] != prop.type.range[1] :
-                range = "%s:%s" % prop.type 
+                range = "%s:%s" % (prop.type.range[0],prop.type.range[1])
             postfix ='[%s]' % range
             return self.get_property_type( prop.type.item_prop, postfix)
         

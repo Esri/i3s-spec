@@ -1,0 +1,105 @@
+{
+  "title": "Mesh geometry description",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "../docs/geometrybuffer_desc.md",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Index of this buffer in the resource URL: e.g. `/layers/0/nodes/{resourceId}/geometries/{this.id}`"
+    },
+    "offset": {
+      "type": "integer",
+      "description": "number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`)"
+    },
+    "position": {
+      "type": "object",
+      "$ref": "geometryposition_schema.json",
+      "description": "Vertex positions relative to Oriented-bounding-box center"
+    },
+    "normal": {
+      "type": "object",
+      "$ref": "geometrynormal_schema.json",
+      "description": "Face/vertex normal "
+    },
+    "uv0": {
+      "type": "object",
+      "$ref": "geometryuv_schema.json",
+      "description": "First set of UV coordinates (textured mesh only)"
+    },
+    "color": {
+      "type": "object",
+      "$ref": "geometrycolor_schema.json",
+      "description": "Colors attribute "
+    },
+    "uvRegion": {
+      "type": "object",
+      "$ref": "geometryuvregion_schema.json",
+      "description": "UV regions (for repeated textures in texture atlases)"
+    },
+    "featureId": {
+      "type": "object",
+      "$ref": "geometryfeatureid_schema.json",
+      "description": "FeatureId attribute"
+    },
+    "faceRange": {
+      "type": "object",
+      "$ref": "geometryfacerange_schema.json",
+      "description": "Face range for feature"
+    },
+    "compressedAttributes": {
+      "type": "object",
+      "$ref": "compressedAttributes_schema.json",
+      "description": "Compressed attributes"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
+        "code": {
+          "id": 0,
+          "offset": 4,
+          "position": {
+            "type": "Float32",
+            "component": 3
+          },
+          "normal": {
+            "type": "Float32",
+            "component": 3
+          },
+          "uv0": {
+            "type": "Float32",
+            "component": 2
+          },
+          "featureId": {
+            "type": "UInt32",
+            "component": 1
+          },
+          "faceRange": {
+            "type": "UInt32",
+            "component": 2
+          }
+        }
+      },
+      {
+        "title": "A compressed geometry buffer definition with featureId (without UV regions)",
+        "code": {
+          "id": 1,
+          "featureId": {
+            "type": "UInt32",
+            "component": 1,
+            "binding": "per-feature"
+          },
+          "compressedAttributes": {
+            "encoding": "draco",
+            "attributes": [ "position", "normal", "uv0", "featureIndex" ]
+          }
+        }
+      }
+    ]
+  }
+}

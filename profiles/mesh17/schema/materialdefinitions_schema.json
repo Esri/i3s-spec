@@ -1,0 +1,95 @@
+{
+  "title": "Material definition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) (_TBD: with the exception of emissive texture?_)",
+  "properties": {
+    "alphaMode": {
+      "type": "string",
+      "enum": [ "opaque", "mask", "blend" ],
+      "enum-description": {
+        "opaque": "The rendered output is fully opaque and any alpha value is ignored",
+        "mask": "The rendered output is either fully opaque or fully transparent depending on the alpha value and the specified alpha cutoff value. This mode is used to simulate geometry such as tree leaves or wire fences.",
+        "blend": "The rendered output is combined with the background using the normal painting operation (i.e. the Porter and Duff over operator)."
+      },
+      "description": "define the meaning of the alpha-channel/alpha-mask"
+    },
+    "alphaCutoff": {
+      "type": "number",
+      "description": "The alpha cutoff value of the material (alphaMode=`mask`) default = `0.25`"
+    },
+    "doubleSided": {
+      "type": "boolean",
+      "description": "Specifies whether the material is double sided. For lightning, the opposite normals will be used when original normals are facing away from the camera. default=`false`"
+    },
+    "normalTexture": {
+      "type": "object",
+      "$ref": "materialtexture_schema.json",
+      "description": "The normal map texture."
+    },
+    "occlusionTexture": {
+      "type": "object",
+      "$ref": "materialtexture_schema.json",
+      "description": "The normal map texture."
+    },
+    "emissiveTexture": {
+      "type": "object",
+      "$ref": "materialtexture_schema.json",
+      "description": "_TBD_: may not support this"
+    },
+    "emissiveFactor": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      },
+      "description": "_TBD_: may not support this"
+    },
+    "pbrMetallicRoughness": {
+      "type": "object",
+      "$ref": "pbrmetallicroughness_schema.json",
+      "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
+    }
+  },
+  "required": [
+    "meshDefinitions"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Metal material",
+        "code": {
+          "alphaMode": "mask", 
+          "alphaCutoff": 0.25, 
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.5,
+              0.5,
+              0.5,
+              1.0
+            ],
+            "baseColorTexture": {
+              "textureSetDefinitionId": 0, 
+              "texCoord": 0 
+            },
+            "metallicFactor": 1,
+            "roughnessFactor": 1,
+            "metallicRoughnessTexture": {
+              "textureSetDefinitionId": 2, 
+              "texCoord": 1 
+            }
+          },
+          "normalTexture": {
+            "textureSetDefinitionId": 1, 
+            "factor": 2.0,
+            "texCoord": 1 
+          }
+        }
+      }
+    ]
+
+  }
+
+
+}

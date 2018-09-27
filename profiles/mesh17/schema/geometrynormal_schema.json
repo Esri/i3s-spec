@@ -1,0 +1,41 @@
+{
+  "title": "Normal attribute",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Normals",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "Float32" ],
+      "description": ""
+    },
+    "component": {
+      "type": "integer",
+      "description": "Number of coordinates per vertex position. Must be 3."
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "none"],
+      "description": "Encoding"
+    },
+    "binding": {
+      "type": "string",
+      "enum": [ "per-vertex" ]
+    }
+  },
+  "required": [
+    "type",
+    "component"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Float32 x,y,z  **per-vertex** normals ",
+        "code": {
+          "type": "Float32",
+          "component": 3
+        }
+      }
+    ]
+  }
+}

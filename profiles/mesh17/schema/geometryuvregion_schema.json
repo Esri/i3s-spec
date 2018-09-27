@@ -1,0 +1,49 @@
+{
+  "title": "UV region for repeated textures",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "../docs/geometryuvregion_desc.md",
+  "related": "meshv2::geometryCompressedAttribute",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "UINT16" ],
+      "description": "color channel values"
+    },
+    "component": {
+      "type": "integer",
+      "description": "`default =4`, must be 4."
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "normalized" ],
+      "description": "Encoding"
+    },
+    "binding": {
+      "type": "string",
+      "enum": [ "per-vertex", "per-uvregion" ],
+      "enum-description": {
+        "per-vertex": "default",
+        "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present"
+      },
+      "description": "binding"
+    }
+  },
+  "required": [
+    "type",
+    "component"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "UV region for repeated textures in atlas",
+        "code": {
+          "uvRegion": {
+            "type": "UInt16",
+            "component": 4
+          }
+        }
+      }
+    ]
+  }
+}

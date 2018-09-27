@@ -1,0 +1,29 @@
+{
+  "title": "Node page index document",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "related" :  "meshv2::nodepages",
+  "description": "",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "node_schema.json"
+      },
+      "description": "Array of nodes"
+    }
+  },
+  "required": [
+    "nodes"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "FaceRange",
+        "code": ""
+      }
+
+    ]
+  }
+}

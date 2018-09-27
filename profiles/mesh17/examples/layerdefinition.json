@@ -1,0 +1,128 @@
+{
+  "nodePages": {
+    "nodePerPage": 64,
+    "rootIndex": 0,
+    "lodSelectionMetricType": "maxScreenThresholdSQ"
+  },
+  "textureSetDefinitions": [
+    {
+      "formats": [
+        {
+          "index": 0,
+          "format": "jpeg"
+        },
+        {
+          "index": 1,
+          "format": "dds"
+        },
+        {
+          "index": 2,
+          "format": "ktx"
+        }
+      ],
+      "binding": "per-node"
+    },
+    {
+      "formats": [
+        {
+          "index": 10,
+          "format": "jpeg"
+        }
+      ],
+      "binding": "per-layer"
+    },
+    {
+      "formats": [
+        {
+          "index": 20,
+          "format": "png"
+        }
+      ],
+      "binding": "per-layer"
+    }
+  ],
+  "materialDefinitions": [
+    {
+      "alphaMode": "mask",
+      "alphaCutoff": 0.25,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "baseColorTexture": {
+          "textureSetDefinitionId": 0,
+          "texCoord": 0
+        },
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "metallicRoughnessTexture": {
+          "textureSetDefinitionId": 2,
+          "texCoord": 1
+        }
+      },
+      "normalTexture": {
+        "textureSetDefinitionId": 1,
+        "factor": 2.0,
+        "texCoord": 1
+      }
+    }
+  ],
+  "geometryDefinitions": [
+    {
+      "topology": "triangle",
+      "geometryBuffers": [
+        {
+          "position": {
+            "type": "Float32",
+            "component": 3,
+            "binding": "per-vertex"
+          },
+          "normal": {
+            "type": "Float32",
+            "component": 3,
+            "binding": "per-vertex"
+          },
+          "uv0": {
+            "type": "Float32",
+            "component": 2,
+            "binding": "per-vertex"
+          },
+          "featureId": {
+            "type": "UInt32",
+            "component": 1,
+            "binding": "per-feature"
+          },
+          "faceRange": {
+            "type": "UInt32",
+            "component": 2,
+            "binding": "per-feature"
+          }
+        }
+      ]
+    }
+  ],
+  "attributeDefinitions": [
+    {
+      "attributeBuffers": [
+        {
+          "id": 12,
+          "name": "street_name",
+          "alias": "Nom de rue",
+          "type": "String",
+          "binding": "per-feature",
+          "encoding": "string-utf8"
+        },
+        {
+          "id": 14,
+          "name": "class_code",
+          "alias": "Classification",
+          "type": "UInt8",
+          "binding": "per-feature"
+        }
+      ]
+    }
+  ]
+}

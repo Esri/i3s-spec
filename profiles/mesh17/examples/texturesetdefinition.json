@@ -1,0 +1,31 @@
+{
+  "formats": [
+    {
+      "index": 0,
+      "format": "jpeg"
+    },
+    {
+      "index": 1,
+      "format": "dds"
+    }
+  ],
+  "binding": "per-node"
+}
+
+{
+  "formats": [
+    {
+      "index": 10,
+      "format": "jpeg"
+    }
+  ],
+  "binding": "per-layer"
+}, {
+  "formats": [
+    {
+      "index": 30,
+      "format": "jpeg"
+    }
+  ],
+  "binding": "per-layer"
+}

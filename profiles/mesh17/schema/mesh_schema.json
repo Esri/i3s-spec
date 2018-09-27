@@ -1,0 +1,104 @@
+{
+  "title": "Mesh object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Mesh geometry for a node",
+  "properties": {
+    "materialId": {
+      "type": "integer",
+      "description": "index in [layer.materialDefinitions](layer.md) array."
+    },
+    "geometryDefinitionId": {
+      "type": "integer",
+      "description": "index in [layer.meshDefinitions](layer.md) array."
+    },
+    "resourceId": {
+      "type": "integer",
+      "description": "resource locator to be used to query texture and geometry resources `layers/0/nodes/{this.resourceId}/...` **IMPORTANT**: unrelated to `node.index`!"
+    },
+    "scale": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      },
+      "description": "Scale on local mesh X,Y and Z axis respectively (Applied first)"
+    },
+    "rotation": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "number"
+      },
+      "description": "Quaternion rotation in local mesh reference. Applied after scaling (_TBD_: vector + angle instead?)"
+    },
+    "translation": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      },
+      "description": "offset on local mesh X,Y and Z axis respectively. Applied after scaling and rotation."
+    },
+    "texelCountHint": {
+      "type": "integer",
+      "description": "Estimated number of texel for the highest resolution base color texture. i.e. `texture.mip0.width*texture.mip0.height`. Useful to estimate the resource cost of this node and/or texel-resolution based LOD switching. Ignored for un-textured meshes"
+    },
+    "vertexCount": {
+      "type": "integer",
+      "description": "Number of vertices in the geometry buffer of this mesh"
+    },
+    "indexCount": {
+      "type": "integer",
+      "description": "Number of indices in the geometry buffer of this mesh (must omit or set to `0` for un-indexed meshes)"
+    },
+    "featureCount": {
+      "type": "integer",
+      "description": "Number of features for this mesh (must omit or set to `0` if mesh doesn't use `features`)"
+    }
+  },
+  "required": [
+    "resourceId",
+    "geometryDefinitionId",
+    "vertexCount"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Simple un-textured, un-indexed mesh ",
+        "code": {
+          "geometryDefinitionId": 0,
+          "resourceId": 124,
+          "vertexCount": 526
+        }
+      },
+      {
+        "title": "Simple textured, indexed mesh ",
+        "code": {
+          "materialId": 0,
+          "geometryDefinitionId": 0,
+          "resourceId": 124,
+          "texelCountHint": 1048576,
+          "vertexCount": 526,
+          "indexCount": 21750
+        }
+      },
+      {
+        "title": "Transformed indexed mesh. Transformations are always applied in scale/rotation/translation order",
+        "code": {
+          "materialId": 0,
+          "geometryDefinitionId": 0,
+          "resourceId": 124,
+          "texelCountHint": 1048576,
+          "vertexCount": 526,
+          "indexCount": 21750,
+          "rotation": [ -0.070, 0.0305, -0.0569, 0.9 ],
+          "translation": [ 500.0, 0.0, 24.0 ]
+        }
+      }
+    ]
+  }
+}

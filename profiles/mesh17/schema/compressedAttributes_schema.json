@@ -1,0 +1,31 @@
+{
+  "title": "Compressed attributes",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "See [libdraco](https://github.com/google/draco) for more details",
+  "properties": {
+    "encoding": {
+      "type": "string",
+      "enum": [ "draco" ]
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [ "position", "normal", "uv0", "uv1", "color", "uvRegionIndex", "featureIndex" ],
+        "enum-description": {
+          "position": "`Draco` meta-data `scale_x`, `scale_y` (if present) must be applied to `x` and `y` coordinates to reverse `XY`/`Z` ratio preserving scaling that may have been applied before encoding. (i.e.avoid quantization issue when `XY` is in degrees and `Z` is in meters)",
+          "featureIndex": "index in the [`featureId`](geometryfeatureid.md) attribute array. `featureId` attribute **must** be present and `featureId.binding` **must** be `per-feature`",
+          "uvRegionIndex": "index in the `uvRegion` attribute array. [`uvRegion`](geometryuvregion.md) attribute **must** be present and `uvRegion.binding` **must** be `per-uvregion`"
+        }
+      }
+    }
+  },
+  "required": [
+    "encoding",
+    "attributes"
+  ],
+  "esriDocumentation": {
+
+  }
+}

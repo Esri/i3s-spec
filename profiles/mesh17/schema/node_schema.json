@@ -1,0 +1,88 @@
+{
+  "title": "Node object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "",
+  "related": "mesh17::layer",
+  "properties": {
+    "index": {
+      "type": "integer",
+      "description": "index in the node array. may be **different that** [`mesh[0].resourceId`](mesh.md)"
+    },
+    "lodThreshold": {
+      "type": "number",
+      "description": "When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.md) "
+    },
+    "obb": {
+      "type": "string",
+      "$ref": "../../common/schema/obb_schema.json",
+      "description": "Oriented bounding box for this node. "
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "index of the children nodes indices"
+    },
+    "meshes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "mesh_schema.json"
+      },
+      "description": "WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1)"
+    }
+  },
+  "required": [
+    "index",
+    "obb"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Leaf node",
+        "code": {
+          "index": 12,
+          "lodThreshold": 50.43,
+          "obb": {
+            "center": [ 20.82, 41.988, 76.56 ],
+            "halfSize": [ 64.93, 11.4, 70.3150 ],
+            "quaternion": [ -0.00, 0.030, -0.20569, 10.9 ]
+          },
+          "meshes": [
+            {
+              "materialId": 0,
+              "geometryDefinitionId": 0,
+              "resourceId": 478,
+              "vertexCount": 526,
+              "featureCount": 0
+            }
+          ]
+        }
+      },
+      {
+        "title": "Node with un-textured mesh and two children nodes",
+        "code": {
+          "index": 1024,
+          "lodThreshold": 50.43,
+          "obb": {
+            "center": [ 20.82, 41.988, 76.56 ],
+            "halfSize": [ 64.93, 11.4, 70.3150 ],
+            "quaternion": [ -0.00, 0.030, -0.20569, 10.9 ]
+          },
+          "children": [ 1025, 1026 ],
+          "meshes": [
+            {
+              "materialId": 0,
+              "geometryDefinitionId": 0,
+              "resourceId": 478,
+              "vertexCount": 526,
+              "featureCount": 26
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

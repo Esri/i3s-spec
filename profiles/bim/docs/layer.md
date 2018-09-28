@@ -82,19 +82,18 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case an
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | integer | Identifier for the layer. **Important**: clients should **not** assume it will be `0` |
+| **id** | integer | Identifier for the layer. **Important**: clients should **not** assume it will be `0`. |
 | **name** | string | Layer name. |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Must be:<ul><li>`building`</li></ul></div> |
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed with this layer. |
+| **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references. |
-| **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference` |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
-| **sublayers** | [bim::sublayer](sublayer.md)[] | list of sublayers or group of sublayers. |
-| filters | [bim::filter](filter.md)[] | _TBD: BIM layer specific filters_ |
-| currentFilter | number | Filter id for the currently applied filter. |
-| filterStyle | [bim::filterStyle](filterStyle.md) | Filter style applied to the feature if filter is present. |
+| **sublayers** | [bim::sublayer](sublayer.md)[] | List of sublayers or group of sublayers. |
+| filters | [bim::filter](filter.md)[] | Array of filters defined for the building scene layer. |
+| activeFilters | number[] | List of active filter id's currently applied to the building scene layer. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
 *Note: properties in **bold** are required*

@@ -1,10 +1,10 @@
-# Filter style
+# Filter Mode
 
-Filter style applied to the feature if filter is present. Can be hidden or wire frame.
+Filter mode represents the way features draw when participating in a filter.
 
 ### Related:
 
-[bim::layer](layer.md)
+[bim::filter](filter.md)
 ### Properties
 
 | Property | Type | Description |

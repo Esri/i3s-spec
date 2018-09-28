@@ -7,7 +7,7 @@
   "properties": {
     "id": {
       "type": "integer",
-      "description": "Identifier for the layer. **Important**: clients should **not** assume it will be `0`"
+      "description": "Identifier for the layer. **Important**: clients should **not** assume it will be `0`."
     },
     "name": {
       "type": "string",
@@ -29,15 +29,10 @@
       "type": "string",
       "description": "Copyright information to be displayed with this layer."
     },
-    "spatialReference": {
-      "type": "object",
-      "$ref": "../../common/schema/spatialReference_schema.json",
-      "description": "Spatial reference for the layer"
-    },
     "fullExtent": {
       "type": "object",
       "$ref": "../../common/schema/fullExtent_schema.json",
-      "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`"
+      "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`."
     },
     "spatialReference": {
       "description": "The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references.",
@@ -48,14 +43,13 @@
       "description": "An object containing the vertical coordinate system information.",
       "$ref": "../../common/schema/heightModelInfo_schema.json"
     },
-
     "sublayers": {
       "type": "array",
       "items": {
         "type": "object",
         "$ref": "sublayer_schema.json"
       },
-      "description": "list of sublayers or group of sublayers."
+      "description": "List of sublayers or group of sublayers."
     },
     "filters": {
       "type": "array",
@@ -63,17 +57,15 @@
         "type": "object",
         "$ref": "filter_schema.json"
       },
-      "description": "_TBD: BIM layer specific filters_"
+      "description": "Array of filters defined for the building scene layer."
     },
-    "currentFilter": {
-      "type": "number",
-      "description": "Filter id for the currently applied filter."
-    },
-    "filterStyle":
-    {
-      "type": "object",
-      "description": "Filter style applied to the feature if filter is present.",
-      "$ref": "filterStyle_schema.json"
+    "activeFilters": {
+      "type": "array",
+      "items":{
+        "type": "number",
+        "description": "Filter id for applied filter."
+      },
+      "description": "List of active filter id's currently applied to the building scene layer."
     },
     "statisticsHRef": {
       "type": "string",
@@ -86,8 +78,7 @@
     "layerType",
     "fullExtent",
     "spatialReference",
-    "sublayers",
-    ""
+    "sublayers"    
   ],
   "esriDocumentation": {
     "examples": [

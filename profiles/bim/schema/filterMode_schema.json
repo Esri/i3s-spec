@@ -1,0 +1,16 @@
+{
+  "title": "Filter Mode",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Filter mode represents the way features draw when participating in a filter.",
+    "oneOf": [
+        {
+
+          "$ref": "filterHidden_schema.json"
+        },
+        {
+          "$ref": "filterWireFrame_schema.json"
+        }
+      ]
+}
+

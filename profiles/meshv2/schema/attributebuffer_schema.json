@@ -18,33 +18,36 @@
     },
     "type": {
       "type": "string",
-      "enum": [ "Int8", "Uint8", "Int16", "UInt16", "Int32", "Uint32", "Float32", "String" ],
+      "enum": [ "Int8", "Uint8", "Int16", "UInt16", "Int32", "Uint32", "Float32", "Float64", "String" ],
       "description": "Type of the attribute. _(TBD: uint64?)_   "
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none", "fixed-point", "indexed-utf8-string" ],
+      "enum": [ "none", "string-utf8", "indexed-string-utf8" ],
       "enum-description": {
 
-        "none": "default, if `type=string` then `indexed-utf8-string` is implied",
-        "fixed-point": "**For integer format ONLY**. `scale` and `offset` will be applied: `X_float= (float)X_int * scale + offset`",
-        "indexed-utf8-string": "Attribute buffer will contains a binary header (little-endian) { `string_count`: UInt32, `sum_of_all_strings_size_in_bytes`:Uint32} follow by an array of UInt32 string sizes (in bytes). Each string data follows."
+        "none": "default, if `type=string` then `string-utf8` is implied",
+        "string-utf8": "Attribute buffer will contains a binary header (little-endian) `{ _string_count_: UInt32, _sum_of_all_strings_size_in_bytes_:Uint32}` follow by an array of UInt32 string sizes (in bytes). Each string data follows. (i.e. identical to I3S v1.6)",
+        "indexed-string-utf8": "Attribute buffer contains a binary header (little-endian) { `string_count`: UInt32,`sum_of_all_strings_size_in_bytes`:Uint32 } followed by a `uint` array of `string_count` _offsets_. The _offset_ of the first string stored after the index is `0`. Please note that this layout avoid string duplication since identical strings may be stored only once and referenced multiple times. Also, string may be found by index in constant time. _TBD: is this needed?_"
       },
       "description": "Encoding of the attribute. "
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex", "per-feature", "per-face" ],
+      "enum": [ "per-vertex", "per-feature" ],
       "enum-description": {
-        "per-vertex": "",
-        "per-feature": "",
-        "per-face": "_TBD, to be removed if not useful_"
+        "per-vertex": "e.g point cloud could use this",
+        "per-feature": ""
       },
       "description": "Binding for attribute values. (`per-face` is valid if topology is `triangle` only)"
     },
     "offset": {
       "type": "integer",
-      "description": "number of byte to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header). Default=`0`"
+      "description": "number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header). Default=`0`"
+    },
+    "hasNullMask": {
+      "type": "boolean",
+      "description": "**Integer types ONLY** (default=`false`). A 1-bit mask to indicate `null` integer values (`1`->masked, `0`->not-masked). The buffer must be to 4-bytes-aligned and its size must be a multiple-of-4 bytes. Floating point buffer should use IEEE Not-a-Number and string _zero-length_ string"
     }
   },
   "required": [
@@ -63,7 +66,7 @@
           "alias": "Nom de rue",
           "type": "String",
           "binding": "per-feature",
-          "encoding": "indexed-utf8-string"
+          "encoding": "indexed-string-utf8"
         }
       },
       {
@@ -73,7 +76,8 @@
           "name": "class_code",
           "alias": "Classification",
           "type": "UInt8",
-          "binding": "per-vertex"
+          "binding": "per-vertex",
+          "hasNullMask" :  false
         }
       }
     ]

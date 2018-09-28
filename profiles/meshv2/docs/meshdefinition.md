@@ -63,7 +63,7 @@ This approach also solve a short-coming in legacy I3S for `uvRegions` attribute.
       "alias": "Nom de rue",
       "type": "String",
       "binding": "per-feature",
-      "encoding": "indexed-utf8-string"
+      "encoding": "indexed-string-utf8"
     },
     {
       "id": 14,

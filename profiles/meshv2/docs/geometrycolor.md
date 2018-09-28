@@ -4,7 +4,7 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 ### Related:
 
-[meshv2::geometrybuffer](geometrybuffer.md), [meshv2::instancebuffer](instancebuffer.md)
+[meshv2::instancebuffer](instancebuffer.md), [meshv2::geometrybuffer](geometrybuffer.md)
 ### Properties
 
 | Property | Type | Description |

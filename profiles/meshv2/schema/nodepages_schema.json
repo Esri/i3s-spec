@@ -8,7 +8,11 @@
   "properties": {
     "nodesPerPage": {
       "type": "integer",
-      "description": "Number of node per page for this layer"
+      "description": "Number of nodes per page for this layer"
+    },
+    "rootIndex": {
+      "type": "integer",
+      "description": "Index of the root node"
     },
     "lodSelectionMetricType": {
       "type": "string",
@@ -21,7 +25,8 @@
   },
   "required": [
     "nodesPerPage",
-    "lodSelectionMetricType"
+    "lodSelectionMetricType",
+    "rootIndex"
   ],
   "esriDocumentation": {
     "examples": [
@@ -29,6 +34,7 @@
         "title": "64 nodes per page index",
         "code": {
           "nodePerPage": 64,
+          "rootIndex": 0,
           "lodSelectionMetricType": "maxScreenThresholdSQ"
         }
       }

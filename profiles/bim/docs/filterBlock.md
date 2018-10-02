@@ -9,8 +9,8 @@ The filter blocks that are contained in a filter for a building scene layer.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | number | Unique identifier of the filter. |
-| **name** | string | Name of the filter. |
+| **id** | number | Unique identifier of the filter block. |
+| **name** | string | Name of the filter block. |
 | **filterMode** | [bim::filterMode](filterMode.md) | Filter mode defines how features are drawn. For example, the filter mode of a filter can be wire frame. |
 | **filterExpression** | string | Filter query expression for a building scene layer. |
 | filterAuthoringInfo | [bim::filterAuthoringInfo](filterAuthoringInfo.md) | Authoring info used to generate user interface for authoring clients. |

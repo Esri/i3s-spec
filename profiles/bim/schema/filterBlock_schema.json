@@ -6,11 +6,11 @@
   "properties": {
     "id": {
       "type": "number",
-      "description": "Unique identifier of the filter."
+      "description": "Unique identifier of the filter block."
     },
     "name": {
       "type": "string",
-      "description": "Name of the filter."
+      "description": "Name of the filter block."
     },
     "filterMode": {
       "type": "object",

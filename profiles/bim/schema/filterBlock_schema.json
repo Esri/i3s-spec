@@ -1,0 +1,44 @@
+{
+  "title": "Filter blocks",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The filter blocks that are contained in a filter for a building scene layer.",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "Unique identifier of the filter."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the filter."
+    },
+    "filterMode": {
+      "type": "object",
+      "description": "Filter mode defines how features are drawn. For example, the filter mode of a filter can be wire frame.",
+      "$ref":"filterMode_schema.json"
+    },
+    "filterExpression": {
+      "type": "string",
+      "description": "Filter query expression for a building scene layer."
+    },
+    "filterAuthoringInfo": {
+      "description": "Authoring info used to generate user interface for authoring clients.",
+      "$ref": "filterAuthoringInfo_schema.json"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "filterMode",
+    "filterExpression"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer",
+        "code": ""
+      }
+    ]
+  }
+}
+

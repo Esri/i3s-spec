@@ -6,10 +6,10 @@
     "oneOf": [
         {
 
-          "$ref": "filterHidden_schema.json"
+          "$ref": "filterModeSolid_schema.json"
         },
         {
-          "$ref": "filterWireFrame_schema.json"
+          "$ref": "filterModeWireFrame_schema.json"
         }
       ]
 }

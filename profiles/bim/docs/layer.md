@@ -93,7 +93,7 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case an
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **sublayers** | [bim::sublayer](sublayer.md)[] | List of sublayers or group of sublayers. |
 | filters | [bim::filter](filter.md)[] | Array of filters defined for the building scene layer. |
-| activeFilters | number[] | List of active filter id's currently applied to the building scene layer. |
+| activeFilterID | number | Filter id of the currently active filter for the building scene layer. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
 *Note: properties in **bold** are required*

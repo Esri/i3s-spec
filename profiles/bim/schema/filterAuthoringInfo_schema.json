@@ -21,7 +21,7 @@
         "type": "object" 
       },
     "description": "Array of defined filter types. Each filter type has an array of filter values.",
-    "$ref": "filterTypes_schema.json"
+    "$ref": "filterType_schema.json"
     }
   },
    

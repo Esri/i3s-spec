@@ -59,13 +59,9 @@
       },
       "description": "Array of filters defined for the building scene layer."
     },
-    "activeFilters": {
-      "type": "array",
-      "items":{
-        "type": "number",
-        "description": "Filter id for applied filter."
-      },
-      "description": "List of active filter id's currently applied to the building scene layer."
+    "activeFilterID": {
+      "type": "number",
+      "description": "Filter id of the currently active filter for the building scene layer."
     },
     "statisticsHRef": {
       "type": "string",

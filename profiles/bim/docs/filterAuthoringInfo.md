@@ -4,13 +4,13 @@ The filter authoring info object contains metadata about the authoring process f
 
 ### Related:
 
-[bim::filter](filter.md)
+[bim::filterBlock](filterBlock.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
 | **type** | string | Declares type or authoring infoilter style of type wire frame.<div>Must be:<ul><li>`checkbox`: Allows client to build UI using checkbox for each filter value presented to the user.</li></ul></div> |
-| **filterTypes** | [bim::filterTypes](filterTypes.md) | Array of defined filter types. Each filter type has an array of filter values. |
+| **filterTypes** | [bim::filterType](filterType.md) | Array of defined filter types. Each filter type has an array of filter values. |
 
 *Note: properties in **bold** are required*
 

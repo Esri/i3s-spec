@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[common::fullExtent](fullExtent.md), [bim::layer](../../bim/docs/layer.md)
+[bim::layer](../../bim/docs/layer.md), [common::fullExtent](fullExtent.md)
 ### Properties
 
 | Property | Type | Description |
@@ -16,6 +16,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 | vcsWkid | integer | The wkid value of the vertical coordinate system. |
 | wkid | integer | The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system. |
 | wkt | string | The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both) |
+
 
 *Note: properties in **bold** are required*
 

@@ -162,6 +162,7 @@ class Schema_type :
         self.example_dom=[];
         self.desc_href=''
         self.custom_related = []
+        self.oneOf = []
 
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
@@ -245,6 +246,11 @@ class Schema_type :
             self.example_dom  = dom['esriDocumentation']['examples']
         if 'description-href' in dom :
             self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
+
+        if 'oneOf' in dom :
+            for schema in dom['oneOf']:
+                for field, sub_dom in schema.items():
+                    self.oneOf.append( {field: sub_dom} )
 
 
 class Property :
@@ -373,7 +379,7 @@ class Markdown_writer  :
     def write_to_md( self, manifest, schema_doc ):
         self.output_path  =manifest.get_output_path_from_schema_name( schema_doc.name )
         #output_path  = os.path.join( self.output_folder, "%s.md" % schema_doc.name)
-        print( "Writting %s" % self.output_path )
+        print( "Writing %s" % self.output_path )
         with open( self.output_path,'w') as output:
             self.out = output
             self.write_line( "# %s\n" % schema_doc.title )
@@ -390,6 +396,18 @@ class Markdown_writer  :
             # to property table:
             for prop in  schema_doc.props :
                 self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
+            self.write_line()
+
+            if (len(schema_doc.oneOf) > 0) :
+                self.write_line( "### oneOf\n" )
+                for item in schema_doc.oneOf :
+                    for key, value in item.items() :
+                        namespace =  schema_doc.name.split('::')[0]
+                        name = Schema_manifest.get_schema_name_from_relative_path( value, namespace )
+                        link = manifest.get_relative_output_path_from_schema_name(name, self.output_path)
+                        self.write_line("- [%s](%s)" % (name, link))
+
+
             self.write_line()
             self.write_line( "*Note: properties in **bold** are required*" )
             self.write_line()

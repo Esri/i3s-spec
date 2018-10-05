@@ -17,7 +17,6 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 | visibility | boolean | item visibility. Default: `true` |
 | sublayers | [bim::sublayer](sublayer.md)[] | sub-layers |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

@@ -391,26 +391,30 @@ class Markdown_writer  :
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
                 self.write_line( ", ".join( [ "[%s](%s)" %( x.name, manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
-            self.write_line( "### Properties\n" )
-            self.write_table_header( ["Property", "Type", "Description" ]);
-            # to property table:
-            for prop in  schema_doc.props :
-                self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
-            self.write_line()
+            
+            # only print properties if any exist
+            if ( len(schema_doc.props) ) :
+                self.write_line( "### Properties\n" )
+                self.write_table_header( ["Property", "Type", "Description" ]);
+                # to property table:
+                for prop in  schema_doc.props :
+                    self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
+                self.write_line()
+                self.write_line( "*Note: properties in **bold** are required*" )
+                self.write_line()
 
-            if (len(schema_doc.oneOf) > 0) :
-                self.write_line( "### oneOf\n" )
+            # only print oneOf option if it exists
+            if ( len(schema_doc.oneOf) ) :
+                self.write_line( "### oneOf:\n" )
                 for item in schema_doc.oneOf :
                     for key, value in item.items() :
                         namespace =  schema_doc.name.split('::')[0]
                         name = Schema_manifest.get_schema_name_from_relative_path( value, namespace )
                         link = manifest.get_relative_output_path_from_schema_name(name, self.output_path)
                         self.write_line("- [%s](%s)" % (name, link))
+                self.write_line()
+                self.write_line()
 
-
-            self.write_line()
-            self.write_line( "*Note: properties in **bold** are required*" )
-            self.write_line()
             # Examples:
             if len( schema_doc.example_dom ) :
                 self.write_line( "### Examples \n" )

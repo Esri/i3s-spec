@@ -8,6 +8,5 @@ Hides all features that do not comply to the filter of the BIM Building Scene La
 | --- | --- | --- |
 | type | string | Declares filter style of type hidden.<div>Must be:<ul><li>`hidden`</li></ul></div> |
 
-
 *Note: properties in **bold** are required*
 

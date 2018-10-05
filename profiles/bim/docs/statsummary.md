@@ -11,7 +11,6 @@ Statistics for all BIM sublayers
 | --- | --- | --- |
 | **summary** | [bim::attributestats](attributestats.md)[] | Per-attribute statistics for all sublayers  |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

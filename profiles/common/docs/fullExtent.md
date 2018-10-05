@@ -17,7 +17,6 @@ Id-> Feature-service mapping
 | **zmin** | number | lowest elevation |
 | **zmax** | number | highest elevation |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

@@ -14,7 +14,6 @@ The filter blocks that are contained in a filter for a building scene layer.
 | **filterExpression** | string | Filter query expression for a building scene layer. |
 | filterAuthoringInfo | [bim::filterAuthoringInfo](filterAuthoringInfo.md) | Authoring info used to generate user interface for authoring clients. |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

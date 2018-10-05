@@ -12,7 +12,6 @@ Represents the filter type and the filter value settings for a filter as it is s
 | **filterType** | string | Represents the filter type name. Name is a unique identifier. |
 | **filterValues** | string[] | Array of defined filter values. Filter values are the attributes that can be stored for individual fields in a layer. |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

@@ -17,7 +17,6 @@ Concatenated attribute statistics . If needed, the type of the attribute (string
 | mostFrequentValues | integer[], string[] | Most frequent value, if applicable for this attribute. Truncated to 256 entries. |
 | **subLayerIds** | integer[] | List of sublayers where this attribute may be found. |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

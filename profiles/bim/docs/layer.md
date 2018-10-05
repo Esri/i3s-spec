@@ -96,7 +96,6 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case an
 | activeFilterID | number | Filter id of the currently active filter for the building scene layer. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 
-
 *Note: properties in **bold** are required*
 
 ### Examples 

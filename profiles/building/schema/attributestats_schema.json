@@ -1,23 +1,23 @@
 {
-  "title": "BIM attribute statistics",
+  "title": "Building scene layer attribute statistics",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Concatenated attribute statistics . If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields",
+  "description": "Concatenated attribute statistics. If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields.",
   "properties": {
-    "fieldname": {
+    "fieldName": {
       "type": "string",
       "description": "Name of the field."
     },
     "label": {
       "type": "string",
-      "description": "Label of the field name. If label is empty, the label and fieldName are identical. Labels are shown in the UI for filter types."
+      "description": "Label of the field name. If label is empty, the label and fieldName are identical."
     },
     "modelName": {
       "type": "string",
-      "enum": [ "floorId", "buildingId", "roomType" ],
-      "description": "A fixed string useful for building information like filter or phases. Used by client applications to define specific behavior for the modelName _TODO: get the full list_"
+      "enum": ["category","family", "familyType", "bldgLevel", "createdPhase", "demolishedPhase", "discipline", "assemblyCode", "omniClass" ,"systemClassifications", "ystemType","custom"],
+      "description": "A fixed string of building information like filter. Used by client applications to define specific behavior for the modelName. Please review the list of [default filter types](defaultFilterTypes.md) that would define the modelName for the attribute statistics."
     },
-      "min": {
+    "min": {
         "type": "number",
         "description": "Minimum value. Numeric attributes only."
       },
@@ -41,32 +41,33 @@
       }
     },
   "required": [
-    "fieldname",
+    "fieldName",
     "subLayerIds"
   ],
   "esriDocumentation": {
     "examples": [
       {
-        "title": "`String` attribute",
+        "title": "`String` attribute with `modelName` to specify filterable semantic",
         "code": {
           "fieldName": "fournitures",
           "label": "Meuble interieur",
+          "modelName": "custom",
           "mostFrequentValues": [ "chair", "table", "cubicle", "boxes" ],
           "subLayerIds": [ 10, 4, 5 ]
         }
       },
       {
-        "title": "`integral` attribute with `modelName` to specify filterable semantic ",
+        "title": "`Integral` attribute with `modelName` to specify filterable semantic ",
         "code": {
           "fieldName": "floor",
           "label": "Etages",
-          "modelName": "floorId",
+          "modelName": "bldgLevel",
           "mostFrequentValues": [ 1, 2, 3 ],
           "subLayerIds": [ 10, 15 ]
         }
       },
       {
-        "title": "`float` attribute",
+        "title": "`Float` attribute",
         "code": {
           "fieldName": "diameter",
           "label": "Diametre de conduit",

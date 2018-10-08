@@ -1,6 +1,6 @@
-# BIM attribute statistics
+# Building scene layer attribute statistics
 
-Concatenated attribute statistics . If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields
+Concatenated attribute statistics. If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields.
 
 ### Related:
 
@@ -9,9 +9,9 @@ Concatenated attribute statistics . If needed, the type of the attribute (string
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **fieldname** | string | Name of the field. |
-| label | string | Label of the field name. If label is empty, the label and fieldName are identical. Labels are shown in the UI for filter types. |
-| modelName | string | A fixed string useful for building information like filter or phases. Used by client applications to define specific behavior for the modelName _TODO: get the full list_<div>Possible values are:<ul><li>`floorId`</li><li>`buildingId`</li><li>`roomType`</li></ul></div> |
+| **fieldName** | string | Name of the field. |
+| label | string | Label of the field name. If label is empty, the label and fieldName are identical. |
+| modelName | string | A fixed string of building information like filter. Used by client applications to define specific behavior for the modelName. Please review the list of [default filter types](defaultFilterTypes.md) that would define the modelName for the attribute statistics.<div>Possible values are:<ul><li>`category`</li><li>`family`</li><li>`familyType`</li><li>`bldgLevel`</li><li>`createdPhase`</li><li>`demolishedPhase`</li><li>`discipline`</li><li>`assemblyCode`</li><li>`omniClass`</li><li>`systemClassifications`</li><li>`ystemType`</li><li>`custom`</li></ul></div> |
 | min | number | Minimum value. Numeric attributes only. |
 | max | number | Maximum value. Numeric attributes only. |
 | mostFrequentValues | integer[], string[] | Most frequent value, if applicable for this attribute. Truncated to 256 entries. |
@@ -21,12 +21,13 @@ Concatenated attribute statistics . If needed, the type of the attribute (string
 
 ### Examples 
 
-#### Example: `String` attribute 
+#### Example: `String` attribute with `modelName` to specify filterable semantic 
 
 ```json
  {
   "fieldName": "fournitures",
   "label": "Meuble interieur",
+  "modelName": "custom",
   "mostFrequentValues": [
     "chair",
     "table",
@@ -41,13 +42,13 @@ Concatenated attribute statistics . If needed, the type of the attribute (string
 } 
 ```
 
-#### Example: `integral` attribute with `modelName` to specify filterable semantic  
+#### Example: `Integral` attribute with `modelName` to specify filterable semantic  
 
 ```json
  {
   "fieldName": "floor",
   "label": "Etages",
-  "modelName": "floorId",
+  "modelName": "bldgLevel",
   "mostFrequentValues": [
     1,
     2,
@@ -60,7 +61,7 @@ Concatenated attribute statistics . If needed, the type of the attribute (string
 } 
 ```
 
-#### Example: `float` attribute 
+#### Example: `Float` attribute 
 
 ```json
  {

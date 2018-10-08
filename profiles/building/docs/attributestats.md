@@ -9,10 +9,9 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
 
 | Property | Type | Description |
 | --- | --- | --- |
-| fieldName | string | Name of the field. |
+| **fieldName** | string | Name of the field. |
 | label | string | Label of the field name. If label is empty, the label and fieldName are identical. |
 | modelName | string | A fixed string of building information like filter. Used by client applications to define specific behavior for the modelName. Please review the list of [default filter types](defaultFilterTypes.md) that would define the modelName for the attribute statistics.<div>Possible values are:<ul><li>`category`</li><li>`family`</li><li>`familyType`</li><li>`bldgLevel`</li><li>`createdPhase`</li><li>`demolishedPhase`</li><li>`discipline`</li><li>`assemblyCode`</li><li>`omniClass`</li><li>`systemClassifications`</li><li>`ystemType`</li><li>`custom`</li></ul></div> |
-| count | number | Count of elements with the attribute statistics fieldName. |
 | min | number | Minimum value. Numeric attributes only. |
 | max | number | Maximum value. Numeric attributes only. |
 | mostFrequentValues | integer[], string[] | Most frequent value, if applicable for this attribute. Truncated to 256 entries. |
@@ -29,7 +28,6 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
   "fieldName": "fournitures",
   "label": "Meuble interieur",
   "modelName": "custom",
-  "count": 10,
   "mostFrequentValues": [
     "chair",
     "table",
@@ -51,7 +49,6 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
   "fieldName": "floor",
   "label": "Etages",
   "modelName": "bldgLevel",
-  "count": 15,
   "mostFrequentValues": [
     1,
     2,
@@ -70,7 +67,6 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
  {
   "fieldName": "diameter",
   "label": "Diametre de conduit",
-  "count": 15,
   "min": 0.2566,
   "max": 2.256,
   "subLayerIds": [

@@ -17,11 +17,7 @@
       "enum": ["category","family", "familyType", "bldgLevel", "createdPhase", "demolishedPhase", "discipline", "assemblyCode", "omniClass" ,"systemClassifications", "ystemType","custom"],
       "description": "A fixed string of building information like filter. Used by client applications to define specific behavior for the modelName. Please review the list of [default filter types](defaultFilterTypes.md) that would define the modelName for the attribute statistics."
     },
-    "count": {
-      "type": "number",
-      "description": "Count of elements with the attribute statistics fieldName."
-    },
-      "min": {
+    "min": {
         "type": "number",
         "description": "Minimum value. Numeric attributes only."
       },
@@ -45,7 +41,7 @@
       }
     },
   "required": [
-    "fieldname",
+    "fieldName",
     "subLayerIds"
   ],
   "esriDocumentation": {
@@ -56,7 +52,6 @@
           "fieldName": "fournitures",
           "label": "Meuble interieur",
           "modelName": "custom",
-          "count": 10,
           "mostFrequentValues": [ "chair", "table", "cubicle", "boxes" ],
           "subLayerIds": [ 10, 4, 5 ]
         }
@@ -67,7 +62,6 @@
           "fieldName": "floor",
           "label": "Etages",
           "modelName": "bldgLevel",
-          "count": 15,
           "mostFrequentValues": [ 1, 2, 3 ],
           "subLayerIds": [ 10, 15 ]
         }
@@ -77,7 +71,6 @@
         "code": {
           "fieldName": "diameter",
           "label": "Diametre de conduit",
-          "count": 15,
           "min": 0.2566,
           "max": 2.256,
           "subLayerIds": [ 3, 5 ]

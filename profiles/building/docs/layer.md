@@ -77,7 +77,7 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case an
 
 ### Related:
 
-[bim::statsummary](statsummary.md)
+[building::statsummary](statsummary.md)
 ### Properties
 
 | Property | Type | Description |
@@ -91,8 +91,8 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case an
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
-| **sublayers** | [bim::sublayer](sublayer.md)[] | List of sublayers or group of sublayers. |
-| filters | [bim::filter](filter.md)[] | Array of filters defined for the building scene layer. |
+| **sublayers** | [building::sublayer](sublayer.md)[] | List of sublayers or group of sublayers. |
+| filters | [building::filter](filter.md)[] | Array of filters defined for the building scene layer. |
 | activeFilterID | number | Filter id of the currently active filter for the building scene layer. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
 

@@ -3,7 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Statistics for all BIM sublayers",
-  "related": "bim::layer",
+  "related": "building::layer",
 
   "properties": {
     "summary": {

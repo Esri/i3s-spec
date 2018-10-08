@@ -4,7 +4,7 @@ Concatenated attribute statistics . If needed, the type of the attribute (string
 
 ### Related:
 
-[bim::statsummary](statsummary.md)
+[building::statsummary](statsummary.md)
 ### Properties
 
 | Property | Type | Description |

@@ -4,7 +4,7 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 
 ### Related:
 
-[bim::sublayer](sublayer.md), [bim::layer](layer.md)
+[building::layer](layer.md), [building::sublayer](sublayer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -15,7 +15,7 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 | modelName | string | Semantic for group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered. We currently do not assign a `modelName` to sublayers (i.e. 'component')<div>Possible values are:<ul><li>`Overview`</li><li>`FullModel`</li><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
 | **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`point`</li><li>`3DObject`</li></ul></div> |
 | visibility | boolean | item visibility. Default: `true` |
-| sublayers | [bim::sublayer](sublayer.md)[] | sub-layers |
+| sublayers | [building::sublayer](sublayer.md)[] | sub-layers |
 
 *Note: properties in **bold** are required*
 

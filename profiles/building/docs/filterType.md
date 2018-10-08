@@ -4,7 +4,7 @@ Represents the filter type and the filter value settings for a filter as it is s
 
 ### Related:
 
-[bim::filterAuthoringInfo](filterAuthoringInfo.md)
+[building::filterAuthoringInfo](filterAuthoringInfo.md)
 ### Properties
 
 | Property | Type | Description |

@@ -4,12 +4,12 @@ Statistics for all BIM sublayers
 
 ### Related:
 
-[bim::layer](layer.md)
+[building::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **summary** | [bim::attributestats](attributestats.md)[] | Per-attribute statistics for all sublayers  |
+| **summary** | [building::attributestats](attributestats.md)[] | Per-attribute statistics for all sublayers  |
 
 *Note: properties in **bold** are required*
 

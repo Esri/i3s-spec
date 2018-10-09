@@ -4,16 +4,16 @@
 
 #### BIM scene layer structure
 
-In this proposal, a BIM model is represented as a single layer composed of sublayers ( see _Examples_ section below)
+In this proposal, a BIM model is represented as a single layer composed of sublayers (see _Examples_ section below)
 
 The concept of a `group` (i.e. `layerType='group'`) has been added to organized `sublayers` into a nested tree structure that can be reflected in the table of content of 3D Clients. 
 
 Please note that:
-- `groups` and `sublayers` may be referenced **once** (e.g. a sublayer may not be in multiple groups).
-- `groups` sublayers do not have any resource associated with them.
+- `groups` and `sublayers` may be referenced **once** (e.g. a sublayer may not be in multiple groups)
+- `groups` sublayers do not have any resource associated with them
 - `sublayers` resources are located in the `sublayers` of the BIM layer: `layers/{bim_layer_id}/sublayers/{sub_layer_id}/...`.
 
-Since a BIM layer may have a associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
+Since a BIM layer may have an associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
 
 ``` 
 +-- layers
@@ -40,7 +40,7 @@ Since a BIM layer may have a associated featureService, care must be taken to ma
 ```
 
 #### BIM service:
-The service definition is identical to other scene layer service definitions and will list a single layer (the BIM layer). e.g:
+The service definition is identical to other scene layer service definitions and will list a single layer (the BIM layer) e.g:
 ``` js
 {
   "serviceName" : "Esri Campus",
@@ -60,7 +60,7 @@ The service definition is identical to other scene layer service definitions and
 ```
 
 #### Notes on _City_ scale BIM:
-BIM is not envisioned to represent many buildings (e.g. a city). In this case an single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene layers. Once a building is selected, its matching BIM scene layer will be open.
+BIM is not envisioned to represent many buildings (e.g. a city). In this case, a single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene Layers. Once a building is selected, its matching BIM scene layer will be open.
 
 **Edits**
 - group/layer names **must be unique**. 
@@ -87,7 +87,7 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case an
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Must be:<ul><li>`building`</li></ul></div> |
 | description | string | Description for the layer. |
-| copyrightText | string | Copyright information to be displayed with this layer. |
+| copyrightText | string | Copyright information to be displayed. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |

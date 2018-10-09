@@ -2,7 +2,7 @@
   "title": "Filter mode solid",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Shows all elements that comply to the filter block of a filter in a building scene layer.",
+  "description": "Shows all elements that comply with the filter block of a filter in a building scene layer.",
   "properties": {
     "type": {
         "type": "string",

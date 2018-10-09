@@ -1,6 +1,6 @@
 # Filter mode wire frame
 
-Shows all elements that comply to the filter block of a filter in a building scene layer.  The elements are drawn with an edge line.
+Shows all elements that comply with the filter block of a filter in a building scene layer.  The elements are drawn with an edge line.
 
 ### Properties
 

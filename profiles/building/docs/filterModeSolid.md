@@ -1,6 +1,6 @@
 # Filter mode solid
 
-Shows all elements that comply to the filter block of a filter in a building scene layer.
+Shows all elements that comply with the filter block of a filter in a building scene layer.
 
 ### Properties
 

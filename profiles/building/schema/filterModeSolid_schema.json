@@ -1,15 +1,15 @@
 {
-  "title": "Filter style hidden",
+  "title": "Filter mode solid",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Hides all features that do not comply to the filter of the BIM Building Scene Layer.",
+  "description": "Shows all elements that comply to the filter block of a filter in a building scene layer.",
   "properties": {
     "type": {
         "type": "string",
         "enum": [
-          "hidden"
+          "solid"
         ],
-      "description": "Declares filter style of type hidden."
+      "description": "Declares filter mode of type solid."
     }
   }
 }

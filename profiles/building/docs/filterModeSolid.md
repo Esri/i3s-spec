@@ -1,12 +1,12 @@
-# Filter style hidden
+# Filter mode solid
 
-Hides all features that do not comply to the filter of the BIM Building Scene Layer.
+Shows all elements that comply to the filter block of a filter in a building scene layer.
 
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| type | string | Declares filter style of type hidden.<div>Must be:<ul><li>`hidden`</li></ul></div> |
+| type | string | Declares filter mode of type solid.<div>Must be:<ul><li>`solid`</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

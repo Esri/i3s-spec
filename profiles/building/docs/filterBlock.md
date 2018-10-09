@@ -10,7 +10,7 @@ The filter blocks that are contained in a filter for a building scene layer.
 | Property | Type | Description |
 | --- | --- | --- |
 | **title** | string | Title of the filter block. |
-| **filterMode** | [building::filterMode](filterMode.md) | Filter mode defines how features are drawn. For example, the filter mode of a filter can be wire frame. |
+| **filterMode** | [building::filterMode](filterMode.md) | Filter mode defines how features are drawn. For example, the filter mode can be wire frame or solid. |
 | **filterExpression** | string | Filter query expression for a building scene layer. |
 | filterAuthoringInfo | [building::filterAuthoringInfo](filterAuthoringInfo.md) | Authoring info used to generate user interface for authoring clients. |
 

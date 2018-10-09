@@ -10,7 +10,7 @@
     },
     "filterMode": {
       "type": "object",
-      "description": "Filter mode defines how features are drawn. For example, the filter mode of a filter can be wire frame.",
+      "description": "Filter mode defines how features are drawn. For example, the filter mode can be wire frame or solid.",
       "$ref":"filterMode_schema.json"
     },
     "filterExpression": {

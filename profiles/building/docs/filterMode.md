@@ -1,6 +1,6 @@
 # Filter Mode
 
-Filter mode represents the way features draw when participating in a filter.
+Filter mode represents the way elements draw when participating in a filter block.
 
 ### Related:
 

@@ -1,12 +1,12 @@
-# Filter style wire frame
+# Filter mode wire frame
 
-Shows all features that do not comply to the filter of the BIM Building Scene Layer.  For example, a wire frame with an edge line.
+Shows all elements that comply to the filter block of a filter in a building scene layer.  The elements are drawn with an edge line.
 
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| type | string | Declares filter style of type wire frame.<div>Must be:<ul><li>`wireFrame`</li></ul></div> |
+| type | string | Declares filter mode of type wire frame.<div>Must be:<ul><li>`wireFrame`</li></ul></div> |
 | edges |  | An object defining solid edges of a feature. [See more](https://developers.arcgis.com/web-scene-specification/objects/edges/) information on supported edges in ArcGIS clients. |
 
 *Note: properties in **bold** are required*

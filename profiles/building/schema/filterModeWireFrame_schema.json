@@ -1,15 +1,15 @@
 {
-  "title": "Filter style wire frame",
+  "title": "Filter mode wire frame",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Shows all features that do not comply to the filter of the BIM Building Scene Layer.  For example, a wire frame with an edge line.",
+  "description": "Shows all elements that comply to the filter block of a filter in a building scene layer.  The elements are drawn with an edge line.",
   "properties": {
     "type": {
         "type": "string",
         "enum":[
           "wireFrame"
         ],
-      "description": "Declares filter style of type wire frame."
+      "description": "Declares filter mode of type wire frame."
     },
     "edges":{
         "type": "object",

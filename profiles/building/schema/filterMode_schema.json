@@ -2,7 +2,7 @@
   "title": "Filter Mode",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Filter mode represents the way features draw when participating in a filter.",
+  "description": "Filter mode represents the way elements draw when participating in a filter block.",
     "oneOf": [
         {
 

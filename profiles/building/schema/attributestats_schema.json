@@ -14,7 +14,7 @@
     },
     "modelName": {
       "type": "string",
-      "enum": ["category","family", "familyType", "bldgLevel", "createdPhase", "demolishedPhase", "discipline", "assemblyCode", "omniClass" ,"systemClassifications", "ystemType","custom"],
+      "enum": ["category","family", "familyType", "bldgLevel", "createdPhase", "demolishedPhase", "discipline", "assemblyCode", "omniClass" ,"systemClassifications", "systemType","custom"],
       "description": "A fixed string of building information like filter. Used by client applications to define specific behavior for the modelName. Please review the list of [default filter types](defaultFilterTypes.md) that would define the modelName for the attribute statistics."
     },
     "min": {

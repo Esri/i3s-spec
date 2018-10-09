@@ -87,7 +87,7 @@ BIM is not envisioned to represent many buildings (e.g. a city). In this case, a
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Must be:<ul><li>`building`</li></ul></div> |
 | description | string | Description for the layer. |
-| copyrightText | string | Copyright information to be displayed with this layer. |
+| copyrightText | string | Copyright information to be displayed. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
 | **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |

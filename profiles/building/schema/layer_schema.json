@@ -27,7 +27,7 @@
     },
     "copyrightText": {
       "type": "string",
-      "description": "Copyright information to be displayed with this layer."
+      "description": "Copyright information to be displayed."
     },
     "fullExtent": {
       "type": "object",

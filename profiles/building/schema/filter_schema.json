@@ -2,7 +2,7 @@
   "title": "Filter",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The filter object which can be applied to a building scene layer.",
+  "description": "The filter object which can be applied to a building scene layer. Filter allow client application to reduce the shown elements of a building to specific filter types and values.",
   "properties": {
     "id": {
       "type": "number",
@@ -18,9 +18,9 @@
     },
     "modelName": {
       "type": "string",
-      "description": "Model name defines the filter. For example, if the modelName is Floor or Building the clients can build specific UI for this filter. Any other modelName is custom. This would be important for web scene viewer so they can identify filter that are not floor or others that they will have UI for."
+      "description": "Model name of the filter. Used by client applications to define special behavior for a give modelName. For example, the modelName 'currentState' describes the default filter all ArcGIS client application are expecting to show the current state of a building. In the 'currentState' filer all elements in the created phases are drawn while elements in the demolished phases are invisible.can build specific UI for this filter."
     },
-    "filterblocks":{
+    "filterBlocks":{
       "type": "array",
       "items": {
         "type": "object",
@@ -33,8 +33,7 @@
     "id",
     "name",
     "description",
-    "modelName",
-    "filterblocks"
+    "filterBlocks"
   ],
   "esriDocumentation": {
     "examples": [

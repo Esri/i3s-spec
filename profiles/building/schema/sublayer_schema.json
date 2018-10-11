@@ -1,8 +1,8 @@
 {
-  "title": "A BIM sub-layer",
+  "title": "Building scene layer sublayer",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested structure",
+  "description": "A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayer (i.e `group`) to form a nested structure.",
   "properties": {
     "id": {
       "type": "integer",
@@ -10,7 +10,7 @@
     },
     "name": {
       "type": "string",
-      "description": "Layer name. **must be unique** per BIM layer"
+      "description": "Layer name. **Must be unique** per building scene layer"
     },
     "alias": {
       "type": "string",
@@ -19,15 +19,15 @@
     "modelName": {
       "type": "string",
       "enum": [ "Overview", "FullModel", "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
-      "description": "Semantic for group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered. We currently do not assign a `modelName` to sublayers (i.e. 'component')"
+      "description": "Semantic for groups which refine the user experience. `Overview` will indicate that this layer may not be filtered."
     },
     "layerType": {
       "type": "string",
-      "enum": [ "group", "point", "3DObject" ]
+      "enum": [ "group", "3DObject" ]
     },
     "visibility": {
       "type": "boolean",
-      "description": "item visibility. Default: `true`"
+      "description": "Visibility of the sublayer. Default: `true`"
     },
 
     "sublayers": {
@@ -36,7 +36,7 @@
         "type": "object",
         "$ref": "sublayer_schema.json"
       },
-      "description": "sub-layers"
+      "description": "Sublayers contained in this layer."
     }
   },
   "required": [

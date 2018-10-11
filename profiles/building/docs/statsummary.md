@@ -1,6 +1,6 @@
-# BIM Statistics
+# Building scene layer Statistics
 
-Statistics for all BIM sublayers
+Statistics for all building scene layer sublayers. Captures statistical information for each field in the building scene layer and the sublayers containing this fields.
 
 ### Related:
 

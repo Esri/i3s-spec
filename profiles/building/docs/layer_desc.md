@@ -1,15 +1,15 @@
-#### BIM scene layer structure
+#### Building scene layer structure
 
-In this proposal, a BIM model is represented as a single layer composed of sublayers (see _Examples_ section below)
+A building scene layer represents a 3D BIM model as a single layer composed of sublayers (see _Examples_ section below). A building scene layer is organized in discipline layers (groups) such as Architectural, Electrial, Mechnical, Piping and Structural and category layers representing content such as walls or windows. A building scene layer may contain an overview.
 
 The concept of a `group` (i.e. `layerType='group'`) has been added to organized `sublayers` into a nested tree structure that can be reflected in the table of content of 3D Clients. 
 
 Please note that:
-- `groups` and `sublayers` may be referenced **once** (e.g. a sublayer may not be in multiple groups)
-- `groups` sublayers do not have any resource associated with them
-- `sublayers` resources are located in the `sublayers` of the BIM layer: `layers/{bim_layer_id}/sublayers/{sub_layer_id}/...`.
+- `Groups` and `sublayers` may be referenced **once** (e.g. a sublayer may not be in multiple groups).
+- `Groups` sublayers do not have any resource associated with them.
+- `Sublayers` resources are located in the `sublayers` of the builidng scene layer: `layers/{bim_layer_id}/sublayers/{sub_layer_id}/...`.
 
-Since a BIM layer may have an associated featureService, care must be taken to match BIM sublayer IDs with the service. In practice, if the BIM model has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
+Since a building scene layer may have an associated featureService, care must be taken to match building scene layer sublayer IDs with the service. In practice, if the building scene layer has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
 
 ``` 
 +-- layers
@@ -35,7 +35,7 @@ Since a BIM layer may have an associated featureService, care must be taken to m
 
 ```
 
-#### BIM service:
+#### Building scene layer service:
 The service definition is identical to other scene layer service definitions and will list a single layer (the BIM layer) e.g:
 ``` js
 {
@@ -46,17 +46,17 @@ The service definition is identical to other scene layer service definitions and
   [
     {
      "id" : 10,
-     "layerType" : "building"
+     "layerType" : "Building"
      // ... 
-     // BIM layer JSON definitions (see example below)
+     // building scene layer JSON definitions (see example below)
      // ...
     }
   ]
 }
 ```
 
-#### Notes on _City_ scale BIM:
-BIM is not envisioned to represent many buildings (e.g. a city). In this case, a single `3DObject` layer will be used as a placeholder to visualize and select individual BIM Scene Layers. Once a building is selected, its matching BIM scene layer will be open.
+#### Notes on _City_ scale building scene layer:
+Building scene layer is not envisioned to represent many buildings (e.g. a city). In this case, a single `3DObject` layer will be used as a placeholder to visualize and select individual building scene layers. Once a building is selected, its matching building scene layer will be open.
 
 **Edits**
 - group/layer names **must be unique**. 

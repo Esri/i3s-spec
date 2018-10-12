@@ -1,6 +1,6 @@
-# A BIM sub-layer
+# Building scene layer sublayer
 
-A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested structure
+A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayer (i.e `group`) to form a nested structure.
 
 ### Related:
 
@@ -10,12 +10,12 @@ A sub-layer may contains other layers or sublayer (i.e `group`) to form a nested
 | Property | Type | Description |
 | --- | --- | --- |
 | **id** | integer | Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...` |
-| **name** | string | Layer name. **must be unique** per BIM layer |
+| **name** | string | Layer name. **Must be unique** per building scene layer |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identcal. |
-| modelName | string | Semantic for group that may help refine the UX. For example, `Overview` will indicate that this layer may not be filtered. We currently do not assign a `modelName` to sublayers (i.e. 'component')<div>Possible values are:<ul><li>`Overview`</li><li>`FullModel`</li><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
-| **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`point`</li><li>`3DObject`</li></ul></div> |
-| visibility | boolean | item visibility. Default: `true` |
-| sublayers | [building::sublayer](sublayer.md)[] | sub-layers |
+| modelName | string | Semantic for groups which refine the user experience. `Overview` will indicate that this layer may not be filtered.<div>Possible values are:<ul><li>`Overview`</li><li>`FullModel`</li><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
+| **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`3DObject`</li></ul></div> |
+| visibility | boolean | Visibility of the sublayer. Default: `true` |
+| sublayers | [building::sublayer](sublayer.md)[] | Sublayers contained in this layer. |
 
 *Note: properties in **bold** are required*
 

@@ -1,8 +1,8 @@
 {
-  "title": "BIM Statistics",
+  "title": "Building scene layer Statistics",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Statistics for all BIM sublayers",
+  "description": "Statistics for all building scene layer sublayers. Captures statistical information for each field in the building scene layer and the sublayers containing this fields.",
   "related": "building::layer",
 
   "properties": {

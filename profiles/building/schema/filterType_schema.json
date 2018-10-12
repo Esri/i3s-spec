@@ -1,8 +1,8 @@
 {
-  "title": "Filter type for authoring info of Building Scene Layer",
+  "title": "Filter type used in filter authoring inf",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Represents the filter type and the filter value settings for a filter as it is stored in the filter authoring info.",
+  "description": "Represents the filter type and its filter value settings for a filter as it is stored in the filter authoring info.",
   "properties": {
     "filterType": {
       "type": "string",
@@ -13,7 +13,7 @@
       "items": {
         "type": "string" 
       },
-    "description": "Array of defined filter values. Filter values are the attributes that can be stored for individual fields in a layer."
+    "description": "Array of filter values. Filter values are the attributes that can be stored for individual fields in a layer."
     }
   },
    

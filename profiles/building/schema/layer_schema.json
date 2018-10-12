@@ -7,7 +7,7 @@
   "properties": {
     "id": {
       "type": "integer",
-      "description": "Identifier for the layer. **Important**: clients should **not** assume it will be `0`."
+      "description": "Identifier for the layer. Building scene layer id is not in the same namespace as sublayer id. **Important**: clients should **not** assume it will be `0`."
     },
     "name": {
       "type": "string",
@@ -19,7 +19,7 @@
     },
     "layerType": {
       "type": "string",
-      "enum": [ "building" ]
+      "enum": [ "Building" ]
     },
     "description": {
       "type": "string",

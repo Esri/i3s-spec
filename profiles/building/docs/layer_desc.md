@@ -2,14 +2,14 @@
 
 A building scene layer represents a 3D BIM model as a single layer composed of sublayers (see _Examples_ section below). A building scene layer is organized in discipline layers (groups) such as Architectural, Electrial, Mechnical, Piping and Structural and category layers representing content such as walls or windows. A building scene layer may contain an overview.
 
-The concept of a `group` (i.e. `layerType='group'`) has been added to organized `sublayers` into a nested tree structure that can be reflected in the table of content of 3D Clients. 
+The concept of a group (i.e. `layerType='group'`) has been added to organized sublayers into a nested tree structure that can be reflected in the table of content of 3D Clients. 
 
 Please note that:
-- `Groups` and `sublayers` may be referenced **once** (e.g. a sublayer may not be in multiple groups).
-- `Groups` sublayers do not have any resource associated with them.
-- `Sublayers` resources are located in the `sublayers` of the builidng scene layer: `layers/{bim_layer_id}/sublayers/{sub_layer_id}/...`.
+- Groups and sublayers may be referenced **once** (e.g. a sublayer may not be in multiple groups).
+- Groups sublayers do not have any resource associated with them.
+- Sublayers resources are located in the sublayers of the builidng scene layer: layers/{bim_layer_id}/sublayers/{sub_layer_id}/....
 
-Since a building scene layer may have an associated featureService, care must be taken to match building scene layer sublayer IDs with the service. In practice, if the building scene layer has  `n` sublayers numbered [0,n-1] matching the featureService sublayers, then the `ids` for the scene layer and its groups must be greater or equal to `n`
+Since a building scene layer may have an associated featureService, care must be taken to match building scene layer sublayer IDs with the service. In practice, if the building scene layer has  n sublayers numbered [0,n-1] they need to match the featureService sublayers IDs. Any group layers ID in the scenelayer need to be greater.
 
 ``` 
 +-- layers
@@ -60,8 +60,8 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 
 **Edits**
 - group/layer names **must be unique**. 
-- `sublayers.href` and `groups.href` have been removed in favor of `ids`
-- `capabilities` have been removed:
+- `sublayers.href` and `groups.href` have been removed in favor of IDs
+- capabilities have been removed:
 - Removed `fullExtent` from `group` object
 - added backed `modelName`.
 - Added statistics

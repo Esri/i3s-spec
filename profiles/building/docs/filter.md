@@ -12,8 +12,9 @@ The filter object can be applied to a building scene layer. Filter allows client
 | **id** | number | Unique identifier of the filter. |
 | **name** | string | Name of the filter. |
 | **description** | string | Description of the filter. |
-| modelName | string | Model name of the filter. Used by client applications to define special behavior. For example, the modelName 'currentState' describes the default filter for all ArcGIS client applications expect a building to have a current state. In the 'currentState' filter, all elements in the 'created' phases are drawn, while elements in the 'demolished' phases are invisible. can build specific UI for this filter. |
+| isDefaultFilter | boolean | Indicates if a filter is the default filter. Clients use the default filter to show the current state of a building. All elements in the 'created' phases are drawn, while elements in the 'demolished' phases are invisible. can build specific UI for this filter. The default filter is not shown in the UI and has no authoringInfo. |
 | **filterBlocks** | [building::filterBlock](filterBlock.md)[] | Array of filter blocks defining the filter. A filter contains at least one filter block. |
+| filterAuthoringInfo | [building::filterAuthoringInfo](filterAuthoringInfo.md) | Authoring info used to generate user interface for authoring clients. |
 
 *Note: properties in **bold** are required*
 

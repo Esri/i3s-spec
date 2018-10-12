@@ -60,8 +60,8 @@
       "description": "Array of filters defined for the building scene layer."
     },
     "activeFilterID": {
-      "type": "number",
-      "description": "Filter id of the currently active filter for the building scene layer."
+      "type": "string",
+      "description": "Global ID, filter ID of the currently active filter for the building scene layer."
     },
     "statisticsHRef": {
       "type": "string",

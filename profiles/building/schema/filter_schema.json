@@ -5,8 +5,8 @@
   "description": "The filter object can be applied to a building scene layer. Filter allows client applications to reduce the drawn elements of a building to specific filter types and values.",
   "properties": {
     "id": {
-      "type": "number",
-      "description": "Unique identifier of the filter."
+      "type": "string",
+      "description": "Global ID as unique identifier of the filter."
     },
     "name": {
       "type": "string",
@@ -15,6 +15,11 @@
     "description": {
       "type": "string",
       "description": "Description of the filter."
+    },
+    "isVisible": 
+    {
+      "type":"boolean",
+      "description": "Defines if a filter will be visible within the client application. Used to exclude filter that are overwritten from array of filters shown in the client application."
     },
     "modelName": {
       "type": "string",

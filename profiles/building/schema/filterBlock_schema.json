@@ -16,10 +16,6 @@
     "filterExpression": {
       "type": "string",
       "description": "Filter query expression for a building scene layer."
-    },
-    "filterAuthoringInfo": {
-      "description": "Authoring info used to generate user interface for authoring clients.",
-      "$ref": "filterAuthoringInfo_schema.json"
     }
   },
   "required": [

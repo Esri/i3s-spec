@@ -2,7 +2,7 @@
   "title": "Filter authoring info for building scene layer",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The filter authoring info object contains metadata about the authoring process for creating a filter block object. This allows the authoring client to save specific, overridable settings.  The next time it is accessed via an authoring client, their selections are remembered. Non-authoring clients can ignore it.",
+  "description": "The filter authoring info object contains metadata about the authoring process for creating a filter object. This allows the authoring client to save specific, overridable settings.  The next time it is accessed via an authoring client, their selections are remembered. Non-authoring clients can ignore it.",
   "properties": {
     "type": {
       "type": "string",
@@ -15,13 +15,13 @@
                 },
     "description": "Declares type or filter authoring info."
     },
-    "filterTypes":{
+    "filterblocks":{
       "type":"array",
       "items": {
         "type": "object" 
       },
-    "description": "Array of defined filter types. Each filter type has an array of filter values.",
-    "$ref": "filterType_schema.json"
+    "description": "Array of filter block authoring info.",
+    "$ref": "filterBlockAuthoringInfo_schema.json"
     }
   },
    

@@ -5,8 +5,8 @@
   "description": "The filter object can be applied to a building scene layer. Filter allows client applications to reduce the drawn elements of a building to specific filter types and values.",
   "properties": {
     "id": {
-      "type": "number",
-      "description": "Unique identifier of the filter."
+      "type": "string",
+      "description": "Global ID as unique identifier of the filter."
     },
     "name": {
       "type": "string",
@@ -19,6 +19,11 @@
     "isDefaultFilter": {
       "type": "boolean",
       "description": "Indicates if a filter is the default filter. Clients use the default filter to show the current state of a building. All elements in the 'created' phases are drawn, while elements in the 'demolished' phases are invisible. can build specific UI for this filter. The default filter is not shown in the UI and has no authoringInfo."
+    },
+    "isVisible": 
+    {
+      "type":"boolean",
+      "description": "Defines if a filter will be visible within the client application. Used to exclude filter that are overwritten from array of filters shown in the client application."
     },
     "filterBlocks":{
       "type": "array",

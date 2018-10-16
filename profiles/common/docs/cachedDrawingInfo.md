@@ -1,15 +1,15 @@
 # I3S scene layer: cachedDrawingInfo
 
-CachedDrawingInfo indicates if the *DrawingInfo* object is captured as part of the binary I3S representation.
+ The cachedDrawingInfo object indicates if the *drawingInfo* object is captured as part of the binary scene layer representation. This object is used for 3d object and integrated mesh scene layer.
 
 ### Related:
 
-[common::3DSceneLayerInfo](3DSceneLayerInfo.md)
+[common::3DSceneLayer](3DSceneLayer.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **color** | boolean | If true the drawingInfo is captured as part of the binary I3S representation. |
+| **color** | boolean | If true, the drawingInfo is captured as part of the binary scene layer representation. |
 
 *Note: properties in **bold** are required*
 

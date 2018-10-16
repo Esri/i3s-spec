@@ -34,5 +34,36 @@
       },
       "description": "An optional array that indicates how many of the elements in this view belong to the first, second and consecutive components of the geometry. The number of entries in this array, when present, has to be equal to the number of entries in the components List of the enclosing Geometry object. The entire field is optional when no components have been declared for this Geometry."
     }
-  }
+  },
+  "required": [
+    "valueType",
+    "valuesPerElement"
+],
+"esriDocumentation": {
+    "examples": [
+       {
+         "title": "Vertex attributes for 3d objects and integrated mesh defaultGeometrySchema",
+         "code": {
+          "vertexAttributes": {
+            "position": {
+              "valueType": "Float32",
+              "valuesPerElement": 3
+            },
+            "normal": {
+              "valueType": "Float32",
+              "valuesPerElement": 3
+            },
+            "uv0": {
+             "valueType": "Float32",
+              "valuesPerElement": 2
+            },
+            "color": {
+              "valueType": "UInt8",
+              "valuesPerElement": 4
+            }
+          }
+        }   
+      }
+    ]
+   }
 }

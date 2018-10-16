@@ -2,9 +2,6 @@
 
 Oriented bounding boxes
 
-### Related:
-
-[pointcloud::node](../../pointclouds/docs/node.md)
 ### Properties
 
 | Property | Type | Description |

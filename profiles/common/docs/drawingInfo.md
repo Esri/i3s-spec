@@ -4,7 +4,7 @@ The drawingInfo object contains drawing information for a scene layer.
 
 ### Related:
 
-[common::3DSceneLayerInfo](3DSceneLayerInfo.md)
+[common::3DSceneLayer](3DSceneLayer.md)
 ### Properties
 
 | Property | Type | Description |

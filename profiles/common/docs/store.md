@@ -2,6 +2,9 @@
 
 The Class Store object describes the exact physical storage of a Layer and enables the client to detect when multiple Layers are served from the same Store. Storing multiple layers in a single store - and thus having them share resources - enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.
 
+### Related:
+
+[common::3DSceneLayer](3DSceneLayer.md)
 ### Properties
 
 | Property | Type | Description |

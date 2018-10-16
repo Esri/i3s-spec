@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[building::layer](../../building/docs/layer.md), [common::fullExtent](fullExtent.md)
+[common::fullExtent](fullExtent.md), [common::3DSceneLayer](3DSceneLayer.md)
 ### Properties
 
 | Property | Type | Description |

@@ -2,6 +2,9 @@
 
 An object that describes the structure of the binary attributeData resource of a node.
 
+### Related:
+
+[common::3DSceneLayer](3DSceneLayer.md)
 ### Properties
 
 | Property | Type | Description |

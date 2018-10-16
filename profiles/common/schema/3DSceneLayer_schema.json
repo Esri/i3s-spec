@@ -2,7 +2,7 @@
   "title": "3DSceneLayerInfo",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The object 3dSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3dSceneLayerInfo. For feature based scene layer such as 3D objects or point scene layer it may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
+  "description": "The object 3dSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3dSceneLayerInfo. For feature based scene layers such as 3D objects or point scene layer it may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
   "properties": {
     "id": {
       "type": "integer",
@@ -78,7 +78,7 @@
     },
     "cachedDrawingInfo": {
         "type": "object",
-        "description": "Indicates if any stylization infomraton represented as drawingInfo is addtionally captured as part of the binnary mesh representation for optimal client side access. Currently color component of the drawingInfo is supported.",
+        "description": "Indicates if any stylization information represented as drawingInfo is addtionally captured as part of the binary mesh representation for optimal client side access. Currently color component of the drawingInfo is supported.",
         "$ref": "cachedDrawingInfo_schema.json"
     },
     "drawingInfo": {
@@ -88,7 +88,7 @@
     },
     "elevationInfo": {
         "type": "object",
-        "description": "An object containing elevation information drawing information. If absent any content of the scene layer is drawn at its z coordinate.",
+        "description": "An object containing elevation drawing information. If absent any content of the scene layer is drawn at its z coordinate.",
         "$ref": "elevationInfo_schema.json"
     },
     "popupInfo": {
@@ -117,7 +117,7 @@
     },
     "statisticsInfo": {
         "type": "object",
-        "description": "Containing the statistical information for a layer.",
+        "description": "Contains the statistical information for a layer.",
         "$ref": "statisticsInfo_schema.json"
     }
   },

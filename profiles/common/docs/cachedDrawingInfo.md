@@ -9,7 +9,7 @@
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **color** | boolean | If true the drawingInfo is captured as part of the binary scene layer representation. |
+| **color** | boolean | If true, the drawingInfo is captured as part of the binary scene layer representation. |
 
 *Note: properties in **bold** are required*
 

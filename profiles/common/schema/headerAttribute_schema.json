@@ -11,7 +11,7 @@
     "type": {
         "type": "string",
         "enum": [ "UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64" ],
-        "description": "The element type of the header property.."
+        "description": "The element type of the header property."
     }
   },
   "required": [

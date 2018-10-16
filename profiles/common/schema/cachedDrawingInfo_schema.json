@@ -2,11 +2,11 @@
 "title": "I3S scene layer: cachedDrawingInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": " The cachedDrawingInfo object indicates if the *drawingInfo* object is captured as part of the binary scene layer representation. This object is used for 3d object and integrated mesh scene layer.",
+    "description": " The cachedDrawingInfo object indicates if the *drawingInfo* object is captured as part of the binary scene layer representation. This object is used for 3dObject and integrated mesh scene layer.",
     "properties": {
         "color": {
             "type": "boolean",
-            "description": "If true the drawingInfo is captured as part of the binary scene layer representation." 
+            "description": "If true, the drawingInfo is captured as part of the binary scene layer representation." 
         }  
         
     },

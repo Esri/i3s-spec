@@ -10,7 +10,7 @@ Headers to geometry resources must be uniform across a cache and may only contai
 | Property | Type | Description |
 | --- | --- | --- |
 | **property** | string | The name of the property in the header.  |
-| **type** | string | The element type of the header property..<div>Possible values are:<ul><li>`UInt8`</li><li>`UInt16`</li><li>`UInt32`</li><li>`UInt64`</li><li>`Int16`</li><li>`Int32`</li><li>`Int64`</li><li>`Float32`</li><li>`Float64`</li></ul></div> |
+| **type** | string | The element type of the header property.<div>Possible values are:<ul><li>`UInt8`</li><li>`UInt16`</li><li>`UInt32`</li><li>`UInt64`</li><li>`Int16`</li><li>`Int32`</li><li>`Int64`</li><li>`Float32`</li><li>`Float64`</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

@@ -27,7 +27,6 @@ The object 3dSceneLayerInfo describes the properties of a layer in a store. Ever
 | fields | [common::field](field.md) | A collection of objects that describe each attribute field regarding its field name, datatype and a user friendly name {name,type,alias}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer. |
 | attributeStorageInfo | [common::attributeStorageInfo](attributeStorageInfo.md) | Provides the schema and layout used for storing attribute content in binary format in I3S. |
 | statisticsInfo | [common::statisticsInfo](statisticsInfo.md) | Contains the statistical information for a layer. |
-| domainHRef | string | relative URL to the domain JSON resource (see [domain](domains.md)) |
 
 *Note: properties in **bold** are required*
 

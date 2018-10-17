@@ -28,8 +28,13 @@
       "description": "Alias of the field."
     },
     "domain": {
-      "type": "string",
-      "description": "Name of the domain. see [domains](domains.md)"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "domain_schema.json"
+      },
+      "description": "Array of domains defined for a field."
+ 
     }
   },
   "required": [

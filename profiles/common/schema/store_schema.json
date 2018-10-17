@@ -14,26 +14,25 @@
     },
     "resourcePattern": {
       "type": "array",
-      "items":{
-          "type": "string",
-          "enum": [
-            "3dNodeIndexDocument",
-            "SharedResource", 
-            "FeatureData",
-            "Geometry",
-            "Texture"
-          ],
-        "enum-description" : 
-        {
+      "items": {
+        "type": "string",
+        "enum": [
+          "3dNodeIndexDocument",
+          "SharedResource",
+          "FeatureData",
+          "Geometry",
+          "Texture"
+        ],
+        "enum-description": {
           "3dNodeIndexDocument": "JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent.",
           "SharedResource": "Shared resources are models or textures that can be shared among features within the same layer.",
-          "FeatureData":"The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
+          "FeatureData": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
           "Geometry": "Each geometry resource is an array of geometries.",
           "Texture": "The texture resource for a node contains the images that are used as textures for the features stored in the node."
-        }
+       }
       },
       "description": "Indicates the resources needed for rendering and the required order in which the client should load them. "
-    },
+   },
     "rootNode": {
       "type": "string",
       "description": "Relative URL to root node resource."
@@ -138,29 +137,28 @@
     },
     "defaultGeometrySchema": {
       "type": "array",
-        "items": {
-            "type": "object"
-        }, 
-        "description": "A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.",
-        "$ref": "defaultGeometrySchema_schema.json"
+      "items": {
+        "type": "object"
       },
+      "description": "A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.",
+      "$ref": "defaultGeometrySchema_schema.json"
+    },
     "defaultTextureDefinition": {
       "type": "array",
-        "items": {
-            "type": "object"
-        }, 
+      "items": {
+        "type": "object"
+      },
       "description": "A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.",
       "$ref": "textureDefinition_schema.json"
     },
     "defaultMaterialDefinition": {
-        "type": "array",
-          "items": {
-            "type": "object"
-          }, 
-        "description": "If a store uses only one material, it can be defined here entirely as a MaterialDefinition.",
-        "$ref": "textureDefinition_schema.json"
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "If a store uses only one material, it can be defined here entirely as a MaterialDefinition.",
+      "$ref": "textureDefinition_schema.json"
     }
   }
 }
 
- 

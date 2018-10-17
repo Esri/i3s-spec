@@ -9,13 +9,33 @@
       "description": "Name of the field."
     },
     "type": {
-        "type": "string",
+      "type": "string",
+      "enum": [
+        "esriFieldTypeDate",
+        "esriFieldTypeSingle",
+        "esriFieldTypeDouble",
+        "esriFieldTypeGUID",
+        "esriFieldTypeGlobalID",
+        "esriFieldTypeInteger",
+        "esriFieldTypeOID",
+        "esriFieldTypeSmallInteger",
+        "esriFieldTypeString"
+      ],
         "description": "Type of the field."
       },
-      "alias": {
-        "type": "string",
-        "description": "Alias of the field."
-      }
+    "alias": {
+      "type": "string",
+      "description": "Alias of the field."
+    },
+    "domain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "domain_schema.json"
+      },
+      "description": "Array of domains defined for a field."
+ 
+    }
   },
   "required": [
     "name",

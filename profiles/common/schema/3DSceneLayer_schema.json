@@ -116,9 +116,13 @@
         "$ref": "attributeStorageInfo_schema.json"
     },
     "statisticsInfo": {
-        "type": "object",
-        "description": "Contains the statistical information for a layer.",
-        "$ref": "statisticsInfo_schema.json"
+      "type": "object",
+      "description": "Contains the statistical information for a layer.",
+      "$ref": "statisticsInfo_schema.json"
+    },
+    "domainHRef": {
+      "type": "string",
+      "description": "relative URL to the domain JSON resource (see [domain](domains.md))"
     }
   },
   "required": [

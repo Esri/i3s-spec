@@ -1,0 +1,79 @@
+{
+  "title": "I3S Attribute (i.e. Field) domain",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "see [A quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains",
+  "related": "common::field",
+
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "codedValue", "range" ],
+      "description": "type of domain"
+    },
+    "name": {
+      "type": "string",
+      "description": "name of the domain. must be unique per Scene Layer"
+    },
+    "fieldType": {
+      "type": "string",
+      "enum": [
+        "esriFieldTypeDate",
+        "esriFieldTypeSingle",
+        "esriFieldTypeDouble",
+        "esriFieldTypeInteger",
+        "esriFieldTypeSmallInteger",
+        "esriFieldTypeString"
+      ],
+      "description": "The field type is the type of attribute field with which the domain can be associated."
+    },
+    "range": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "number"
+      },
+      "description": "Range of the domain (numeric types only)"
+    },
+    "codedValues": {
+      "type": "array",
+      "items": {
+        "$ref": "domainCodedValue_schema.json"
+      },
+      "description": "Range of the domain (string types only)"
+    },
+    "mergePolicy": {
+      "type": "string",
+      "enum": [ "esriMPTDefaultValue", "esriMPTSumValues", "esriMPTAreaWeighted" ],
+      "description": "Merge policy for the domain. (unused by Scene Layers) "
+    },
+    "splitPolicy": {
+      "type": "string",
+      "enum": [ "esriSPTGeometryRatio", "esriSPTDuplicate", "esriSPTDefaultValue" ],
+      "description": "Split policy for the domain. (unused by Scene Layers) "
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "fieldType"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "todo",
+        "code": {
+          "type": "range",
+          "name": "RDOM_1",
+          "fieldType": "esriFieldTypeInteger",
+          "range": [
+            1,
+            50
+          ]
+        }
+
+      }
+    ]
+  }
+}

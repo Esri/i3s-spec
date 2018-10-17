@@ -10,7 +10,7 @@ Used in stores where all ArrayBufferView geometry declarations use the same patt
 | Property | Type | Description |
 | --- | --- | --- |
 | **geometryType** | string | Low-level default geometry type. If defined, all geometries in the store are expected to have this type.<div>Possible values are:<ul><li>`triangles`</li><li>`lines`</li><li>`points`</li></ul></div> |
-| **topology** | string[] | Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data. |
+| **topology** | string[] | Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data.<div>Possible values for each array string:<ul><li>`PerAttributeArray`</li><li>`Indexed`: When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data.</li></ul></div> |
 | **header** | [common::headerAttribute](headerAttribute.md) | Defines header fields in the geometry resources of this store that precede the vertex (and index) data. |
 | **vertexAttributes** | [common::geometryAttribute](geometryAttribute.md) | Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates. |
 | faces | [common::geometryAttribute](geometryAttribute.md) | Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates. |

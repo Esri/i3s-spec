@@ -12,15 +12,15 @@
     "topology": {
       "type": "array",
       "items":{
-          "type": "string"
-      },
-      "enum": [
-        "PerAttributeArray",
-        "Indexed"
-    ],
-    "enum-description" : {
-        "PerAttributeArray": "",
-        "Indexed": "When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data."
+          "type": "string",
+            "enum": [
+                "PerAttributeArray",
+                "Indexed"
+            ],
+            "enum-description" : {
+                "PerAttributeArray": "",
+                "Indexed": "When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data."
+            }
         },
        "description": "Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data."
     },

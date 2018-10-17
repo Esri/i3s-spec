@@ -30,116 +30,108 @@
           "FeatureData":"The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
           "Geometry": "Each geometry resource is an array of geometries.",
           "Texture": "The texture resource for a node contains the images that are used as textures for the features stored in the node."
+        }
       },
       "description": "Indicates the resources needed for rendering and the required order in which the client should load them. "
     },
     "rootNode": {
-        "type": "string",
-        "description": "Relative URL to root node resource."
-    },
-    "version": {
-        "type": "string",
-        "description": "Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server."
-    },
-    "extent": {
-      "type": "array",
-      "items":{
-          "type":"number", 
-          "enum": [
-            "xmin",
-            "ymin", 
-            "xmax",
-            "ymax"
-    ],
-    "enum-description" : 
-    {
-        "xmin": "xmin coordinate value.",
-        "ymin": "ymin coordinate value.",
-        "xmax": "xmax coordinate value.",
-        "ymax": "ymax coordinate value."
-    },
-      "description": "The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS."
-    },
-    "indexCRS": {
-        "type": "string",
-        "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL."
-    },
-    "vertexCRS": {
-        "type": "string",        
-        "description": "The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL."
-    },
-    "normalReferenceFrame": {
-        "type": "string",
-        "items":{
-          "type":"number", 
-          "enum": [
-           "east-north-up", 
-            "earth-centered",
-            "vertex-reference-frame"
-    ],
-    "enum-description" : 
-    {
-        "east-north-up": "A value of *east-north-up* indicates that normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS.",
-        "earth-centered": "A value of *earth-centered* indicates that normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.",
-        "vertex-reference-frame": "A value of *vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS."
-    },
-        "description": "Describes the coordinate reference frame used for storing normals.  "
-    },
-    "nidEncoding": {
       "type": "string",
-      "description": "MIME type for the encoding used for the Node Index Documents. Example: application/vnd.esri.I3S.json+gzip; version=1.6."
-    },
-    "featureEncoding": {
-      "type": "string",
-      "description": "MIME type for the encoding used for the Feature Data Resources. For example: application/vnd.esri.I3S.json+gzip; version=1.6."
-    },
-    "geometryEncoding": {
-      "type": "string",
-      "description": "MIME type for the encoding used for the Geometry Resources. For example: application/octet-stream; version=1.6."
-    },
-    "textureEncoding": {
-      "type": "array",
-      "items":{
-          "type":"string" 
-    },
-    "description": "MIME type(s) for the encoding used for the Texture Resources."
+      "description": "Relative URL to root node resource."
   },
-  "lodType": {
-    "type": "string",
-    "items":{
-      "type":"number", 
-      "enum": [
-        "MeshPyramid",
-        "Thinning", 
-        "Clustering",
-        "Generalizing"
-      ],
-      "enum-description" : 
-      {
-        "MeshPyramid": "Used for integrated mesh and 3D scene layer.",
-        "Thinning": "Use for point scene layer.",
-        "Clustering": "Fill in which profile types are using this lodType",
-        "Generalizing": "Fill in which profile types are using this lodType"
-      }
-    },
-      "description": "Optional field to indicate which LoD generation scheme is used in this store." 
-    },
-    "lodModel": {
+  "version": {
       "type": "string",
-      "items":{
+      "description": "Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server."
+  },
+  "extent": {
+    "type": "array",
+    "items":{
         "type":"number", 
         "enum": [
-          "node-switching",
-          "none"
+          "xmin",
+          "ymin", 
+          "xmax",
+          "ymax"
         ],
-      "enum-description" : 
-      {
-        "node-switching": "Definition missing!",
-        "none": "Definition missing!"
-      }
-      },
-      "description": "Optional field to indicate which LoD switching mode clients have to use."
-      },
+        "enum-description" : 
+        {
+          "xmin": "xmin coordinate value.",
+          "ymin": "ymin coordinate value.",
+          "xmax": "xmax coordinate value.",
+          "ymax": "ymax coordinate value."
+        }
+    },
+      "description": "The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS."
+  },
+  "indexCRS": {
+    "type": "string",
+    "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL."
+},"vertexCRS": {
+  "type": "string",        
+  "description": "The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL."
+},
+"normalReferenceFrame":{ 
+  "type": "string",
+   "enum": [
+     "east-north-up", 
+      "earth-centered",
+      "vertex-reference-frame"
+    ],
+"enum-description" : 
+{
+  "east-north-up": "A value of *east-north-up* indicates that normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS.",
+  "earth-centered": "A value of *earth-centered* indicates that normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.",
+  "vertex-reference-frame": "A value of *vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS."
+},
+"description": "Describes the coordinate reference frame used for storing normals.  "
+},
+"nidEncoding": {
+  "type": "string",
+  "description": "MIME type for the encoding used for the Node Index Documents. Example: application/vnd.esri.I3S.json+gzip; version=1.6."
+},
+"featureEncoding": {
+  "type": "string",
+  "description": "MIME type for the encoding used for the Feature Data Resources. For example: application/vnd.esri.I3S.json+gzip; version=1.6."
+},
+"geometryEncoding": {
+  "type": "string",
+  "description": "MIME type for the encoding used for the Geometry Resources. For example: application/octet-stream; version=1.6."
+},
+"textureEncoding": {
+  "type": "array",
+  "items":{
+      "type":"string" 
+},
+"description": "MIME type(s) for the encoding used for the Texture Resources."
+}, "lodType": {
+  "type": "string",
+  "enum": [
+     "MeshPyramid",
+    "Thinning", 
+    "Clustering",
+    "Generalizing"
+  ],
+  "enum-description" : 
+    {
+      "MeshPyramid": "Used for integrated mesh and 3D scene layer.",
+      "Thinning": "Use for point scene layer.",
+      "Clustering": "Fill in which profile types are using this lodType",
+      "Generalizing": "Fill in which profile types are using this lodType"
+    },
+    "description": "Optional field to indicate which LoD generation scheme is used in this store." 
+  },
+  "lodModel": {
+    "type": "string",
+     "enum": [
+      "node-switching",
+      "none"
+      ],
+    "enum-description" : 
+    {
+      "node-switching": "Definition missing!",
+      "none": "Definition missing!"
+    },
+    "description": "Optional field to indicate which LoD switching mode clients have to use."
+    },
     "indexingScheme": {
       "type": "string",
       "description": "Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used."
@@ -169,4 +161,6 @@
         "$ref": "textureDefinition_schema.json"
     }
   }
- }
+}
+
+ 

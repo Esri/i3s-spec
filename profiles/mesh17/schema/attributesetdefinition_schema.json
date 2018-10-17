@@ -2,7 +2,7 @@
   "title": "Mesh definition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "",
+  "description": "Statistics for the attribute will be at `statistics/{attribute_set_index}/{attribute_index_in_set}`",
   "properties": {
     "attributeBuffers": {
       "type": "array",
@@ -21,11 +21,8 @@
       {
         "title": "",
         "code": {
-
-          "attributeBuffers": [
+        "attributeBuffers": [
             {
-
-              "id": 12,
               "name": "street_name",
               "alias": "Nom de rue",
               "type": "String",
@@ -34,7 +31,6 @@
 
             },
             {
-              "id": 14,
               "name": "class_code",
               "alias": "Classification",
               "type": "UInt8",

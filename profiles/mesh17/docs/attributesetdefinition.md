@@ -1,6 +1,6 @@
 # Mesh definition
 
-
+Statistics for the attribute will be at `statistics/{attribute_set_index}/{attribute_index_in_set}`
 
 ### Related:
 
@@ -21,7 +21,6 @@
  {
   "attributeBuffers": [
     {
-      "id": 12,
       "name": "street_name",
       "alias": "Nom de rue",
       "type": "String",
@@ -29,7 +28,6 @@
       "encoding": "indexed-string-utf8"
     },
     {
-      "id": 14,
       "name": "class_code",
       "alias": "Classification",
       "type": "UInt8",

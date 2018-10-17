@@ -4,7 +4,7 @@
 
 ### Related:
 
-[mesh17::nodes](nodes.md), [mesh17::layer](layer.md)
+[mesh17::layer](layer.md), [mesh17::nodes](nodes.md)
 ### Properties
 
 | Property | Type | Description |

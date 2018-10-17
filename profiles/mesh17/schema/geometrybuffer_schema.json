@@ -51,6 +51,16 @@
       "type": "object",
       "$ref": "compressedAttributes_schema.json",
       "description": "Compressed attributes"
+    },
+    "normalReferenceFrame": {
+      "type": "string",
+      "enum": [ "east-north-up", "earth-centered", "vertex-reference-frame" ],
+      "enum-description": {
+        "east-north-up": "normals are stored in a node local reference frame defined by the easting, northing and up directions at the OBB/MBS center, and is only valid for geographic(WGS84)",
+        "earth-centered": "normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic",
+        "vertex-reference-frame": "normals are stored in the same reference frame as vertices and is only valid for projected spatial reference"
+      },
+      "description": "Frame of reference for normals. default is `earth-centered` for GCS (geographic), and `vertex-reference-frame` for PCS (projected) "
     }
   },
   "required": [

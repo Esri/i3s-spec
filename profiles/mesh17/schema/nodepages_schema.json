@@ -20,7 +20,7 @@
       "enum-description": {
         "maxScreenThresholdSQ": "_TBD_: Unless we have a strong case for supporting anything else, we should settle on a **single** type of lod metric"
       },
-      "description": "Defines the meaning of `nodes[].lodThreshold` for this layer"
+      "description": "Defines the meaning of `nodes[].lodThreshold` for this layer."
     }
   },
   "required": [

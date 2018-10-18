@@ -149,7 +149,7 @@
         "type": "object"
       },
       "description": "A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.",
-      "$ref": "textureDefinition_schema.json"
+      "$ref": "texture_schema.json"
     },
     "defaultMaterialDefinition": {
       "type": "array",
@@ -157,7 +157,7 @@
         "type": "object"
       },
       "description": "If a store uses only one material, it can be defined here entirely as a MaterialDefinition.",
-      "$ref": "textureDefinition_schema.json"
+      "$ref": "material_schema.json"
     }
   }
 }

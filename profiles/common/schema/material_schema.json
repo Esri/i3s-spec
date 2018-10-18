@@ -1,0 +1,106 @@
+{
+  "title": "materialDefinition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Materials describe how a feature or a set of features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the 'type': 'standard' material.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "A name for the material as assigned in the creating application."
+      },
+      "type": {
+        "type": "string",
+        "description": "Indicates the material type, chosen from the supported values {standard, water, billboard, leafcard, reference}."
+        },
+        "$ref": {
+            "type": "string",
+            "description": "JSONPointer - The href that resolves to the shared resource bundle in which the material definition is contained."
+            },
+  "params.vertexRegions": {
+    "type": "array",
+    "items": {
+        "type": "boolean", 
+        
+     "description": "Indicates whether this Material uses per-vertex regions. Defaults to false."
+      }
+  },
+  "params.vertexColors": {
+    "type": "array",
+    "items": {
+        "type": "boolean", 
+        
+     "description": "Indicates whether this Material use Vertex Colors. Defaults to false."
+      }
+  },
+  "params.useVertexColorAlpha": {
+    "type": "array",
+    "items": {
+        "type": "boolean", 
+        
+     "description": "Indicates whether Vertex Colors also contain a transparency channel. Defaults to false."
+      }
+  },
+"params.transparency": {
+  "type": "number",
+  "description": "Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent."
+},
+"params.reflectivity": {
+    "type": "number",
+    "description": "Indicates reflectivity of this Material."
+  },
+  "params.shininess": {
+    "type": "number",
+    "description": "Indicates shininess of this Material."
+  },
+  "params.ambient": {
+    "type": "array",
+    "items": {
+        "type": "number", 
+        
+     "description": "Ambient color of this Material."
+      }
+  },
+  "params.diffuse": {
+    "type": "array",
+    "items": {
+        "type": "number", 
+        
+     "description": "Diffuse color of this Material."
+      }
+  },
+  "params.specular": {
+    "type": "array",
+    "items": {
+        "type": "number", 
+        
+     "description": "Specular color of this Material."
+      }
+  },
+"params.renderMode": {
+  "type": "string",
+  "description": "Rendering mode, any one of {textured, solid, untextured, wireframe}"
+},
+"params.castShadows": {
+    "type": "boolean",
+    "description": "true if features with this material should cast shadows."
+  },
+  "params.receiveShadows": {
+    "type": "boolean",
+    "description": "true if features with this material should receive shadows."
+  },
+"params.cullFace": {
+    "type": "string", 
+    "description": "Indicates the material culling options {back, front, *none*}. Default being none."
+  }
+}
+}
+
+
+	
+		
+	
+
+	
+	
+
+	

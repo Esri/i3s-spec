@@ -1,0 +1,156 @@
+{
+  "title": "3DNodeIndexDocument",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent. Depending on the geometry and lodModel used, a node document can be tuned towards being light-weight or more heavy-weight. Clients have to further decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, already provides sufficient data for simple visualization by rendering the centroids as point features for example. The node is the root object in the 3dNodeIndexDocument. There is always exactly one Node object in a 3dNodeIndexDocument.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Tree Key ID, unique within the store. The root node is always 'root', all others follow the pattern '2-4-0-15-2'. At each level in a subtree, numbering starts at 0."
+    },
+    "level": {
+      "type": "integer",
+      "description": "Explicit level of this node within the index tree. The lowest level is 1."
+    },
+    "version": {
+      "type": "number",
+      "description": "The version (store update session ID) of this node."
+    },
+    "mbs": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+        "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node."
+    },
+    "obb": {
+        "type": "object",
+        "description": "Describes oriented bounding box.",
+        "$ref": "obb_schema.json"
+      },
+    "created": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+        "description": "Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' timezone (see http://www.w3.org/TR/NOTE-datetime)."
+    },
+    "expires": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+        "description": "Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' timezone (see http://www.w3.org/TR/NOTE-datetime)."
+    },
+    "transform": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+        "description": "Optional, 3D (4x4) transformation matrix expressed as a linear array of 16 values."
+    },
+    "parentNode": {
+        "type": "array",
+        "maxItems": 2,
+        "items": {
+            "type": "object"        
+        },
+        "description": "Reference to the parent node of a node.",
+        "$ref": "../../common/schema/nodeReference_schema.json"
+    },
+    "children": {
+        "type": "array",
+         "items": {
+            "type": "object"        
+        },
+        "description": "Reference to the child nodes of a node.",
+        "$ref": "../../common/schema/nodeReference_schema.json"
+    },
+    "neighbors": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Reference to the neighbor (same level, spatial proximity) nodes of a node.",
+        "$ref": "../../common/schema/nodeReference_schema.json"
+    },
+    "sharedResource": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Resource reference describing a shared resource document.",
+        "$ref": "../../common/schema/Resource_schema.json"
+    },
+    "featureData": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Resource reference describing a FeatureData document.",
+        "$ref": "../../common/schema/Resource_schema.json"
+    },
+    "geometryData": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Resource reference describing a geometry resource.",
+        "$ref": "../../common/schema/Resource_schema.json"
+    },
+    "textureData": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Resource reference describing a texture resource.",
+        "$ref": "../../common/schema/Resource_schema.json"
+    },
+    "attributeData": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Resource reference describing a FeatureData document.",
+        "$ref": "../../common/schema/Resource_schema.json"
+    },
+    "lodSelection": {
+        "type": "array",
+        "items": {
+            "type": "object"        
+        },
+        "description": "Metrics for LoD Selection, to be evaluated by the client.",
+        "$ref": "../../common/schema/LodSelection_schema.json"
+    },
+    "features": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+            "type": "object"        
+        },
+        "description": "A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores.",
+        "$ref": "../../common/schema/LodSelection_schema.json"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "3D Scene Layer info for point scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for 3D object scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for integrated mesh scene layer"
+        
+
+      }
+    ]
+  }
+}
+

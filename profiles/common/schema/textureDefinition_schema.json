@@ -1,0 +1,58 @@
+{
+  "title": "materialDefinition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Materials describe how a Feature or a set of Features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the 'type': 'standard' material.",
+  "properties": {
+    "encoding": {
+        "type": "array",
+        "items": {
+            "type": "string"        
+        },
+      "description": "MIMEtype - The encoding/content type that is used by all images in this map"
+    },
+    "wrap": {
+        "type": "array",
+        "items": {
+            "type": "string"        
+        },
+      "description": "UV wrapping modes, from {none, repeat, mirror}."
+    },
+    "atlas": {
+        "type": "boolean",
+        "description": "TRUE if the Map represents a texture atlas."
+      },
+      "uvSet": {
+        "type": "string",
+        "description": "The name of the UV set to be used as texture coordinates."
+      },
+      "channels": {
+        "type": "array",
+        "items": {
+            "type": "string"        
+        },
+      "description": "indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement,etc."
+    }   
+  },
+  "required": [
+    "encoding"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "3D Scene Layer info for point scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for 3D object scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for integrated mesh scene layer"
+        
+
+      }
+    ]
+  }
+}
+

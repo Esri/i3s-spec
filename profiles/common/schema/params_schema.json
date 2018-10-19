@@ -1,0 +1,81 @@
+{
+  "title": "params",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Parameter describing the material.",
+  "properties": {
+    "transparency": {
+        "type": "number",
+        "description": "Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent."
+      },
+      "reflectivity": {
+        "type": "number",
+        "description": "Indicates reflectivity of this Material."
+      },
+      "shininess": {
+        "type": "number",
+        "description": "Indicates shininess of this material."
+      },
+    "ambient": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+      "description": "Ambient color of this material."
+    },
+    "diffuse": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+      "description": "Diffuse color of this material."
+    },
+    "specular": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+      "description": "Specular color of this material."
+    },
+    "renderMode": {
+        "type": "string",
+        "enum": [
+            "textured", "solid", "untextured", "wireframe"
+        ],
+        "description": "Rendering mode."
+      },
+      "castShadows": {
+        "type": "boolean",
+        "description": "TRUE if features with this material should cast shadows."
+      },
+      "receiveShadows": {
+        "type": "boolean",
+        "description": "TRUE if features with this material should receive shadows"
+      },
+      "cullFace": {
+        "type": "string",
+        "description": "Indicates the material culling options {back, front, *none*}. Default being none."
+      }
+  },
+  "required": [
+    "renderMode"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "3D Scene Layer info for point scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for 3D object scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for integrated mesh scene layer"
+        
+
+      }
+    ]
+  }
+}
+

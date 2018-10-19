@@ -4,7 +4,7 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Related:
 
-[common::defaultGeometrySchema](defaultGeometrySchema.md)
+[common::vestedGeometryParams](vestedGeometryParams.md), [common::defaultGeometrySchema](defaultGeometrySchema.md)
 ### Properties
 
 | Property | Type | Description |

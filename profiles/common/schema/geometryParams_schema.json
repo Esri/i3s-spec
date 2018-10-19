@@ -1,0 +1,36 @@
+{
+  "title": "GeometryParams",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "This is the abstract parent object for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.",
+  "oneOf": [
+    {
+
+      "$ref": "geometryReferenceParams_schema.json"
+    },
+    {
+      "$ref": "vestedGeometryParams_schema.json"
+    },
+    {
+        "$ref": "singleComponentParams_schema.json"
+      }
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "info for point scene layer"
+        
+      },
+      {
+        "title": " info for 3D object scene layer"
+        
+      },
+      {
+        "title": " info for integrated mesh scene layer"
+        
+
+      }
+    ]
+  }
+}
+

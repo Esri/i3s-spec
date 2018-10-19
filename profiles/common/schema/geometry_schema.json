@@ -1,0 +1,49 @@
+{
+  "title": "Geometry",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "This is the common container class for all types of geometry definitions used in I3S.",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "Reference-able, unique ID of the Geometry in this store."
+    },
+    "type": {
+        "type": "string",
+        "description": "The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as an internal reference (GeometryReference), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded)."
+      },
+    "transformation": {
+        "type": "array",
+        "items": {
+            "type": "number"        
+        },
+        "description": "3D (4x4) transformation matrix expressed as a linear array of 16 values."
+    },
+    "params": {
+        "type": "object",
+        "description": "The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.      ",
+        "$ref": "../../common/schema/geometryParams_schema.json"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "info for point scene layer"
+        
+      },
+      {
+        "title": " info for 3D object scene layer"
+        
+      },
+      {
+        "title": " info for integrated mesh scene layer"
+        
+
+      }
+    ]
+  }
+}
+

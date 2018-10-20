@@ -1,5 +1,5 @@
 {
-  "title": "materialDefinition",
+  "title": "textureDefinition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Materials describe how a Feature or a set of Features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the 'type': 'standard' material.",
@@ -32,7 +32,17 @@
             "type": "string"        
         },
       "description": "indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement,etc."
-    }   
+    },
+    "images": {
+      "type": "array",
+      "items":{
+      "type": "object",
+      "$ref": "image_schema.json"
+      },
+      "description": "An image is a binary resource, containing a single raster that can be used to texture a feature or symbol."
+
+    }    
+    
   },
   "required": [
     "encoding"

@@ -1,0 +1,39 @@
+{
+  "title": "SharedResources",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Shared resources are models or textures that can be shared among features within the same layer. They are stored as a JSON file entirely. Each node has a shared resource which contains materials and symbols used by more than a single feature in that node or in features which are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process. The SharedResource class collects Material definitions, Texture definitions, Shader definitions and geometry symbols that need to be instanced.",
+  "properties": {
+    "materialDefinitions": {
+      "type": "object",
+      "description": "Materials describe how a Feature or a set of Features is to be rendered.",
+      "$ref": "materialDefinition_schema.json"
+    },
+    "textureDefinitions": {
+        "type": "object",
+        "description": "A Texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.",
+        "$ref": "textureDefinition_schema.json"
+      }
+  },
+  "required": [
+    "materialDefinitions"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "3D Scene Layer info for point scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for 3D object scene layer"
+        
+      },
+      {
+        "title": "3D Scene Layer info for integrated mesh scene layer"
+        
+
+      }
+    ]
+  }
+}
+

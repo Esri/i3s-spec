@@ -4,7 +4,7 @@ A scalar or vector value.
 
 ### Related:
 
-[pointcloud::attributeInfo](attributeInfo.md), [pointcloud::vertexAttributes](vertexAttributes.md)
+[pointcloud::vertexAttributes](vertexAttributes.md), [pointcloud::attributeInfo](attributeInfo.md)
 ### Properties
 
 | Property | Type | Description |

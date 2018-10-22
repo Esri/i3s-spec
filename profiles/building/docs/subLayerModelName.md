@@ -13,9 +13,10 @@ Building scene layers are defined by category layers, which are further grouped 
 | Casework |  |
 | Ceilings |  |
 | Columns | |
-| CurtainWallPanels |  |
-| Doors |  |
-| Entourage |  |
+|CurtainWallMullions| |
+|CurtainWallPanels |  |
+|Doors |  |
+|Entourage |  |
 |Floors| |
 |Furniture| |
 |FurnitureSystems| |
@@ -28,7 +29,7 @@ Building scene layers are defined by category layers, which are further grouped 
 |Site| |
 |SpecialtyEquipment| |
 |Stairs| |
-|Topography|
+|Topography||
 |Walls| |
 |Windows| |
 |StructuralColumns| |
@@ -47,4 +48,7 @@ Building scene layers are defined by category layers, which are further grouped 
 |DuctAccessories|
 |FlexDucts|
 |FlexPipes|
+|Sprinkler| |
+|Overview| |
+|FullModel| |
 

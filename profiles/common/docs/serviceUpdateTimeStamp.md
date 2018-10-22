@@ -2,6 +2,9 @@
 
 Object to provide time stamp when the I3S service or the source of the service was created or updated.
 
+### Related:
+
+[pointcloud::layer](../../pointclouds/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

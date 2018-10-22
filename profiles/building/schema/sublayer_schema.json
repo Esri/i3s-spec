@@ -18,8 +18,8 @@
     },
     "discipline": {
       "type": "string",
-      "enum": [ "Overview", "FullModel", "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
-      "description": "Semantic for groups which refine the user experience. `Overview` will indicate that this layer may not be filtered."
+      "enum": [ "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
+      "description": "Semantic for work discipline groups which refine the user experience. "
     },
     "modelName": {
       "type": "string",

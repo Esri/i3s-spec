@@ -16,10 +16,14 @@
       "type": "string",
       "description": "Alias of the layer name. Can be empty if alias and name are identcal."
     },
-    "modelName": {
+    "discipline": {
       "type": "string",
       "enum": [ "Overview", "FullModel", "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
       "description": "Semantic for groups which refine the user experience. `Overview` will indicate that this layer may not be filtered."
+    },
+    "modelName": {
+      "type": "string",
+      "description": "A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](sublayerModelName.md) for sublayers."
     },
     "layerType": {
       "type": "string",

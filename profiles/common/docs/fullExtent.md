@@ -2,6 +2,9 @@
 
 Id-> Feature-service mapping
 
+### Related:
+
+[building::layer](../../building/docs/layer.md)
 ### Properties
 
 | Property | Type | Description |

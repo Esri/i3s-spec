@@ -4,7 +4,7 @@ A building scene layer is composed of an overview and the full model containing 
 
 ### Related:
 
-[building::sublayer](sublayer.md), [building::layer](layer.md)
+[building::layer](layer.md), [building::sublayer](sublayer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -12,7 +12,8 @@ A building scene layer is composed of an overview and the full model containing 
 | **id** | integer | Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...` |
 | **name** | string | Layer name. **Must be unique** per building scene layer |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identcal. |
-| modelName | string | Semantic for groups which refine the user experience. `Overview` will indicate that this layer may not be filtered.<div>Possible values are:<ul><li>`Overview`</li><li>`FullModel`</li><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
+| discipline | string | Semantic for work discipline groups which refine the user experience. <div>Possible values are:<ul><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
+| modelName | string | A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](sublayerModelName.md) for sublayers. |
 | **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`3DObject`</li></ul></div> |
 | visibility | boolean | Visibility of the sublayer. Default: `true` |
 | sublayers | [building::sublayer](sublayer.md)[] | Sublayers contained in this layer. |

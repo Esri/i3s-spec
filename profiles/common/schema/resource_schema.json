@@ -49,7 +49,15 @@
        {
          "title": "Resource example",
          "code": {
-          
+          "featureData": [
+            {
+                "href": "./features/0",
+                "featureRange": [
+                    0,
+                    3
+                ]
+            }
+        ]
            }
         }   
       ]

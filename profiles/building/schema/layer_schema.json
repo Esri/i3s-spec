@@ -35,7 +35,7 @@
       "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`."
     },
     "spatialReference": {
-      "description": "The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references.",
+      "description": "The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references.",
       "$ref": "../../common/schema/spatialReference_schema.json"
     },
     "heightModelInfo": {

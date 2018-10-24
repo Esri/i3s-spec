@@ -1,6 +1,6 @@
 # Building Scene Layer sub-layer element hints
 
-Building scene layers are defined by category layers, which are further grouped by discipline layers. Category layers contain a specific group of features.  For example, the category layer "windows" contains all the windows of a building. When creating a building scene layer, the input category layers need to include an "element hint" for optimal caching. The elementClassCodeHint represents the relative size of the category layer to the building. If you are writing out building scene layers as a SLPK or a scene service, the category layers need to include the elementClassCodeHint as metadata to take advantage of the caching optimization when using ArcGIS. The follow list describes the element hints currently defined for the caching of building scene layers.
+Building scene layers are defined by category layers, which are further grouped by discipline layers. Category layers contain a specific group of features.  For example, the category layer "windows" contains all the windows of a building. When creating a building scene layer, the input category layer needs to include an "element hint" as metadata for optimal caching when using ArcGIS. The elementClassCodeHint represents the relative size of the category layer to the building. Building scene layers written as an SLPK or a scene service also need to include the elementClassCodeHint. The following list describes the element hints currently defined for the building scene layer caching.
 
 ### Related:
 

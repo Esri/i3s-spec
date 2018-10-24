@@ -1,6 +1,6 @@
-# Filter type used in filter authoring inf
+# Filter Type used in filter authoring info
 
-Represents the filter type and its filter value settings for a filter as it is stored in the filter authoring info.
+The file authoring information for a filter, including the filter type and its value settings.
 
 ### Related:
 

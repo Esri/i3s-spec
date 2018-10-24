@@ -1,4 +1,4 @@
-# Filter mode solid
+# Filter Mode: solid
 
 Shows all elements that comply with the filter block of a filter in a building scene layer.
 

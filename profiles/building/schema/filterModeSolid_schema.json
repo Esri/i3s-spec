@@ -1,5 +1,5 @@
 {
-  "title": "Filter mode solid",
+  "title": "Filter Mode: solid",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Shows all elements that comply with the filter block of a filter in a building scene layer.",

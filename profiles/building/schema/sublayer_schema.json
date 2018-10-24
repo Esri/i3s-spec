@@ -1,8 +1,8 @@
 {
-  "title": "Building scene layer sublayer",
+  "title": "Building Scene Layer Sublayer",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayer (i.e `group`) to form a nested structure.",
+  "description": "A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayers (i.e `group`) to form a nested structure.",
   "properties": {
     "id": {
       "type": "integer",
@@ -14,7 +14,7 @@
     },
     "alias": {
       "type": "string",
-      "description": "Alias of the layer name. Can be empty if alias and name are identcal."
+      "description": "Alias of the layer name. Can be empty if alias and name are identical."
     },
     "discipline": {
       "type": "string",
@@ -31,7 +31,7 @@
     },
     "visibility": {
       "type": "boolean",
-      "description": "Visibility of the sublayer. Default: `true`"
+      "description": "Visibility of the sublayer. Default is `true`"
     },
 
     "sublayers": {

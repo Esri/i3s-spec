@@ -29,12 +29,78 @@ Materials describe how a Feature or a set of Features is to be rendered. This in
 #### Example: 3D Scene Layer info for 3D object scene layer 
 
 ```json
- None 
+ {
+  "525": {
+    "encoding": [
+      "image/jpeg",
+      "image/vnd-ms.dds"
+    ],
+    "wrap": [
+      "none",
+      "none"
+    ],
+    "atlas": false,
+    "uvSet": "uv0",
+    "channels": "rgb",
+    "images": [
+      {
+        "id": "525",
+        "size": 64,
+        "pixelInWorldUnits": 0,
+        "href": [
+          "../textures/0_0",
+          "../textures/0_0_1"
+        ],
+        "byteOffset": [
+          0,
+          0
+        ],
+        "length": [
+          737,
+          400
+        ]
+      }
+    ]
+  }
+} 
 ```
 
 #### Example: 3D Scene Layer info for integrated mesh scene layer 
 
 ```json
- None 
+ {
+  "32": {
+    "encoding": [
+      "image/jpeg",
+      "image/vnd-ms.dds"
+    ],
+    "wrap": [
+      "none",
+      "none"
+    ],
+    "atlas": false,
+    "uvSet": "uv0",
+    "channels": "rgb",
+    "images": [
+      {
+        "id": "1161930902884843552",
+        "size": 512,
+        "pixelInWorldUnits": 0,
+        "href": [
+          "../textures/0_0",
+          "../textures/0_0_1"
+        ],
+        "byteOffset": [
+          0,
+          0
+        ],
+        "length": [
+          7461,
+          174904
+        ]
+      }
+    ]
+  }
+} 
 ```
 

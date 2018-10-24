@@ -47,8 +47,6 @@
         "code": {
           "params": {
             "type": "triangles",
-            "material": "/materialDefinitions/Mat525",
-            "texture": "/textureDefinitions/525",
             "vertexAttributes": {
                 "position": {
                     "byteOffset": 8,

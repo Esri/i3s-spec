@@ -9,46 +9,64 @@
       "description": "A unique ID for each image. Generated using the BuildID function."
     },
     "size": {
-        "type": "number",
-        "description": "x size of this image."
-      },
-      "pixelInWorldUnits": {
-        "type": "number",
-        "description": "maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)."
-      },
-      "href": {
-        "type": "array",
-      "items":{
-          "type": "string"
+      "type": "number",
+      "description": "x size of this image."
+    },
+    "pixelInWorldUnits": {
+      "type": "number",
+      "description": "maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)."
+    },
+    "href": {
+      "type": "array",
+      "items": {
+        "type": "string"
       },
       "description": "The href to the image(s), one per encoding, in the same order as the encodings."
     },
     "byteOffset": {
-        "type": "array",
-      "items":{
-          "type": "number"
+      "type": "array",
+      "items": {
+        "type": "number"
       },
       "description": "The byte offset of this image's encodings (one per encoding, in the same order as the encodings.) in the block in which this texture image resides."
     },
     "length": {
-        "type": "array",
-      "items":{
-          "type": "number"
+      "type": "array",
+      "items": {
+        "type": "number"
       },
       "description": "The length in bytes of this image's encodings (one per encoding, in the same order as the encodings)."
     }
   },
   "required": [
     "id"
-],
-"esriDocumentation": {
+  ],
+  "esriDocumentation": {
     "examples": [
-       {
-         "title": "Image",
-         "code": {
-          
-        }   
+      {
+        "title": "Image",
+        "code": {
+          "images": [
+            {
+              "id": "1170940301162943632",
+              "size": 1024,
+              "pixelInWorldUnits": 0,
+              "href": [
+                "../textures/0_0",
+                "../textures/0_0_1"
+              ],
+              "byteOffset": [
+                0,
+                0
+              ],
+              "length": [
+                167267,
+                699192
+              ]
+            }
+          ]
+        }
       }
     ]
-   }
+  }
 }

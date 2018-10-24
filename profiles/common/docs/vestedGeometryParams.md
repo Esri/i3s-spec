@@ -27,8 +27,6 @@ This object extends GeometryParams and is the abstract parent object for all con
  {
   "params": {
     "type": "triangles",
-    "material": "/materialDefinitions/Mat525",
-    "texture": "/textureDefinitions/525",
     "vertexAttributes": {
       "position": {
         "byteOffset": 8,

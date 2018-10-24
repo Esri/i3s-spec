@@ -23,7 +23,7 @@
     },
     "modelName": {
       "type": "string",
-      "description": "A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](sublayerModelName.md) for sublayers."
+      "description": "A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](subLayerModelName.md) for sublayers."
     },
     "layerType": {
       "type": "string",

@@ -4,16 +4,16 @@
 
 #### Building scene layer structure
 
-A building scene layer represents a 3D BIM model as a single layer composed of sublayers (see _Examples_ section below). A building scene layer is organized in discipline layers (groups) such as Architectural, Electrial, Mechnical, Piping and Structural and category layers representing content such as walls or windows. A building scene layer may contain an overview.
+A building scene layer represents a 3D BIM model as a single layer composed of sublayers. A building scene layer is organized in discipline layers (groups) such as Architectural, Electrical, Mechanical, Piping and Structural and category layers representing content such as walls or windows. A building scene layer may contain an overview.
 
 The concept of a group (i.e. `layerType='group'`) has been added to organized sublayers into a nested tree structure that can be reflected in the table of content of 3D Clients. 
 
 Please note that:
 - Groups and sublayers may be referenced **once** (e.g. a sublayer may not be in multiple groups).
-- Groups sublayers do not have any resource associated with them.
-- Sublayers resources are located in the sublayers of the builidng scene layer: layers/{bim_layer_id}/sublayers/{sub_layer_id}/....
+- Groups and sublayers do not have any resource associated with them.
+- Sublayer resources are located in the sublayers of the building scene layer: layers/{bim_layer_id}/sublayers/{sub_layer_id}/....
 
-Since a building scene layer may have an associated featureService, care must be taken to match building scene layer sublayer IDs with the service. In practice, if the building scene layer has  n sublayers numbered [0,n-1] they need to match the featureService sublayers IDs. Any group layers ID in the scenelayer need to be greater.
+Since a building scene layer may have an associated featureService, care must be taken to match building scene layer sublayer IDs with the service. In practice, if the building scene layer has n sublayers numbered [0,n-1] they need to match the featureService sublayers IDs. Any group layers ID in the scene layer need to be greater.
 
 ``` 
 +-- layers
@@ -64,10 +64,10 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 
 **Edits**
 - group/layer names **must be unique**. 
-- `sublayers.href` and `groups.href` have been removed in favor of IDs
-- capabilities have been removed:
-- Removed `fullExtent` from `group` object
-- added backed `modelName`.
+- capabilities that have been removed
+  - `sublayers.href` and `groups.href` have been removed in favor of IDs
+  - Removed `fullExtent` from `group` object
+- Added backed `modelName`.
 - Added statistics
 
 **TBD**
@@ -89,7 +89,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed. |
 | **fullExtent** | [common::fullExtent](../../common/docs/fullExtent.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
-| **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references. |
+| **spatialReference** | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | An object containing the vertical coordinate system information. |
 | **sublayers** | [building::sublayer](sublayer.md)[] | List of sublayers or group of sublayers. |
 | filters | [building::filter](filter.md)[] | Array of filters defined for the building scene layer. |

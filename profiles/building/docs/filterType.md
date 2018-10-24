@@ -1,4 +1,4 @@
-# Filter Type used in filter authoring info
+# Filter Type
 
 The file authoring information for a filter, including the filter type and its value settings.
 

@@ -24,12 +24,30 @@ Instead of owning a Geometry exclusively, a Feature can also reference a (part o
 #### Example:  info for 3D object scene layer 
 
 ```json
- None 
+ {
+  "type": "GeometryReference",
+  "params": {
+    "$ref": "/geometryData/1",
+    "faceRange": [
+      0,
+      195
+    ]
+  }
+} 
 ```
 
 #### Example:  info for integrated mesh scene layer 
 
 ```json
- None 
+ {
+  "type": "GeometryReference",
+  "params": {
+    "$ref": "/geometryData/13752",
+    "faceRange": [
+      0,
+      3526
+    ]
+  }
+} 
 ```
 

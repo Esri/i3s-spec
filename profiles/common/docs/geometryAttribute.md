@@ -4,7 +4,7 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Related:
 
-[common::defaultGeometrySchema](defaultGeometrySchema.md), [common::vestedGeometryParams](vestedGeometryParams.md)
+[common::vestedGeometryParams](vestedGeometryParams.md), [common::defaultGeometrySchema](defaultGeometrySchema.md)
 ### Properties
 
 | Property | Type | Description |
@@ -20,24 +20,65 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Examples 
 
-#### Example: Vertex attributes for 3d objects and integrated mesh defaultGeometrySchema 
+#### Example: Vertex attributes for 3dObject 
 
 ```json
  {
   "vertexAttributes": {
     "position": {
+      "byteOffset": 8,
+      "count": 222,
       "valueType": "Float32",
       "valuesPerElement": 3
     },
     "normal": {
+      "byteOffset": 2672,
+      "count": 222,
       "valueType": "Float32",
       "valuesPerElement": 3
     },
     "uv0": {
+      "byteOffset": 5336,
+      "count": 222,
       "valueType": "Float32",
       "valuesPerElement": 2
     },
     "color": {
+      "byteOffset": 7112,
+      "count": 222,
+      "valueType": "UInt8",
+      "valuesPerElement": 4
+    }
+  }
+} 
+```
+
+#### Example: Vertex attributes for integrated mesh 
+
+```json
+ {
+  "vertexAttributes": {
+    "position": {
+      "byteOffset": 8,
+      "count": 23622,
+      "valueType": "Float32",
+      "valuesPerElement": 3
+    },
+    "normal": {
+      "byteOffset": 283472,
+      "count": 23622,
+      "valueType": "Float32",
+      "valuesPerElement": 3
+    },
+    "uv0": {
+      "byteOffset": 566936,
+      "count": 23622,
+      "valueType": "Float32",
+      "valuesPerElement": 2
+    },
+    "color": {
+      "byteOffset": 755912,
+      "count": 23622,
       "valueType": "UInt8",
       "valuesPerElement": 4
     }

@@ -7,42 +7,41 @@
     "metricType": {
       "type": "string",
       "description": "The name of the error metric, one of {maxScreenThreshold, screenSpaceRelative, ...}"
+    },
+    "maxValue": {
+      "type": "array",
+      "items": {
+        "type": "number"
       },
-      "maxValue": {
-        "type": "array",
-        "items": {
-            "type": "number"        
-        },
-        "description": "Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
-        },
-        "avgValue": {
-            "type": "array",
-            "items": {
-                "type": "number"        
-            },
-            "description": "Average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
-            },
-            "minValue": {
-                "type": "array",
-                "items": {
-                    "type": "number"        
-                },
-                "description": "Minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
-                }
+      "description": "Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
+    },
+    "avgValue": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
+    },
+    "minValue": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
+    }
   },
   "required": [
     "href"
   ],
   "esriDocumentation": {
     "examples": [
-       {
-         "title": "LOD Selection example",
-         "code": {
-          
-           }
-        }   
-      ]
-   }
+      {
+        "title": "LOD Selection example",
+        "code": {
+          "metricType": "maxScreenThreshold",
+          "maxError": 34.875501894809808
+        }
+      }
+    ]
+  }
 }
-
-

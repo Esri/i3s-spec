@@ -18,6 +18,9 @@ A LodSelection object provides information on a given metric determined during t
 #### Example: LOD Selection example 
 
 ```json
- {} 
+ {
+  "metricType": "maxScreenThreshold",
+  "maxError": 34.87550189480981
+} 
 ```
 

@@ -26,8 +26,12 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Building Scene Layer",
-        "code": ""
+        "title": "Filter block",
+        "code": {
+          "title": "Created Phase 1",
+          "filterMode": "solid",
+          "filterExpression": "CreatedPhase=1"
+        }
       }
     ]
   }

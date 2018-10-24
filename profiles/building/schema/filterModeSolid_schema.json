@@ -5,11 +5,27 @@
   "description": "Shows all elements that comply with the filter block of a filter in a building scene layer.",
   "properties": {
     "type": {
-        "type": "string",
-        "enum": [
-          "solid"
-        ],
+      "type": "string",
+      "enum": [
+        "solid"
+      ],
       "description": "Declares filter mode of type solid."
     }
+  },
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "filterMode solid",
+        "code": {
+          "filterBlocks": [
+            {
+              "title": "Created Phase 1",
+              "filterMode": "solid",
+              "filterExpression": "CreatedPhase=1"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

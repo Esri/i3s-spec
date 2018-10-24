@@ -48,7 +48,24 @@
     "examples": [
       {
         "title": "Building Scene Layer",
-        "code": ""
+        "code": {
+          "filters": [
+            {
+                "id": "6339E293-B52E-4F49-899A-E177DEC0D644",
+                "name": "Default",
+                "description": "Filter by all created phases.",
+                "isDefaultFilter": true,
+                "isVisible": false,
+                "filterBlocks": [
+                    {
+                        "title": "Created Phase 1",
+                        "filterMode": "solid",
+                        "filterExpression": "CreatedPhase=1"
+                    }
+                ]
+            }
+        ]
+        }
       }
     ]
   }

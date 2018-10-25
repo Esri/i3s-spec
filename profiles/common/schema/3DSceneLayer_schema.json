@@ -2,7 +2,7 @@
   "title": "3DSceneLayerInfo",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The object 3dSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3dSceneLayerInfo. For feature based scene layers such as 3D objects or point scene layer it may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
+  "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
   "properties": {
     "id": {
       "type": "integer",
@@ -10,18 +10,39 @@
     },
     "href": {
       "type": "string",
-      "description": "The relative URL to the 3DSceneLayerResource. Only presnt as part of the SceneServiceInfo resource."
+      "description": "The relative URL to the 3DSceneLayerResource. Only present as part of the SceneServiceInfo resource."
     },
     "layerType": {
-      "type": "string",
-      "description": "The user-visible type of this layer, one of {Point, Line, Polygon, 3DObject, IntegratedMesh, Pointcloud}."
+      "type": "array",
+      "items": {
+        "type": "string", 
+        "enum": [
+            "Point",
+            "Line", 
+            "Polygon",
+            "3DObject",
+            "IntegratedMesh",
+            "PointCloud"
+        ],
+        "enum-description" :
+        {
+            "Point" : "Point",
+            "Line" : "Line",
+            "Polygon" : "Polygon",
+            "3DObject" : "3DObject",
+            "IntegratedMesh" : "IntegratedMesh",
+            "PointCloud" : "PointCloud"
+        },
+        "description" : "The user-visible layer type"
+    },
+      "description": "The user-visible layer type"
     },
     "spatialReference": {
-        "description": "The spatialReference of the layer including the vertical coordinate system. Wkt is included to support custom spatial references.",
+        "description": "The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references.",
         "$ref": "../../common/schema/spatialReference_schema.json"
     },
     "heightModelInfo": {
-        "description": "Enables consuming clients to perform quick test to determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content.",
+        "description": "Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content.",
         "$ref": "../../common/schema/heightModelInfo_schema.json"
     },
     "version": {
@@ -78,7 +99,7 @@
     },
     "cachedDrawingInfo": {
         "type": "object",
-        "description": "Indicates if any stylization information represented as drawingInfo is addtionally captured as part of the binary mesh representation for optimal client side access. Currently color component of the drawingInfo is supported.",
+        "description": "Indicates if any stylization information represented as drawingInfo is captured as part of the binary mesh representation.  This helps provide optimal client-side access. Currently the color component of the drawingInfo is supported.",
         "$ref": "cachedDrawingInfo_schema.json"
     },
     "drawingInfo": {
@@ -88,7 +109,7 @@
     },
     "elevationInfo": {
         "type": "object",
-        "description": "An object containing elevation drawing information. If absent any content of the scene layer is drawn at its z coordinate.",
+        "description": "An object containing elevation drawing information. If absent, any content of the scene layer is drawn at its z coordinate.",
         "$ref": "elevationInfo_schema.json"
     },
     "popupInfo": {
@@ -107,7 +128,7 @@
     },
     "fields": {
         "type": "object",
-        "description": "A collection of objects that describe each attribute field regarding its field name, datatype and a user friendly name {name,type,alias}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer.",
+        "description": "A collection of objects that describe each attribute field regarding its field name, datatype, and a user friendly name {name,type,alias}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer.",
         "$ref": "field_schema.json"
     },
     "attributeStorageInfo": {
@@ -122,7 +143,8 @@
     }
   },
   "required": [
-    "id"
+    "id",
+    "statisticsInfo"
   ],
   "esriDocumentation": {
     "examples": [

@@ -17,9 +17,13 @@ A filter block defines what elements will be filtered with a specific filter mod
 
 ### Examples 
 
-#### Example: Building Scene Layer 
+#### Example: Filter block 
 
 ```json
- "" 
+ {
+  "title": "Created Phase 1",
+  "filterMode": "solid",
+  "filterExpression": "CreatedPhase=1"
+} 
 ```
 

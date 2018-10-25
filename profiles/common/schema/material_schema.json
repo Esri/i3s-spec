@@ -42,7 +42,7 @@
   },
 "params.transparency": {
   "type": "number",
-  "description": "Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent."
+  "description": "Indicates the transparency of the material; 0 = opaque, 1 = fully transparent."
 },
 "params.reflectivity": {
     "type": "number",

@@ -1,6 +1,6 @@
 # FeatureData
 
-The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.
+The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials.
 
 ### Properties
 

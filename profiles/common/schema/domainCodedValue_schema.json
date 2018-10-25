@@ -1,8 +1,8 @@
 {
-  "title": "Domain coded value",
+  "title": "Domain Coded Value",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "see [A quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains",
+  "description": "See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains.",
   "properties": {
     "name": {
       "type": "string",

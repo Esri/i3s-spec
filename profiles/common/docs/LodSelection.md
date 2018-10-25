@@ -1,6 +1,6 @@
 # LOD selection
 
-A LodSelection object provides information on a given metric determined during the cooking process of an I3S store. This metric can be used by the client to determine whether a representation is of the right quality level for rendering or whether a different representation is needed. Cookers can add as many LodSelection objects as desired but must provide one as soon as the layer's lodType is not null. Of the three min/avg/max values, typically only one or two are used.
+A LodSelection object provides metric information determined during the cooking process of an I3S store. This metric can be used by the client to determine whether a representation is of the correct quality. Cookers can add as many LodSelection objects as desired, but must provide one as soon as the layer's lodType is not null. Of the three min/avg/max values, typically only one or two are used.
 
 ### Properties
 

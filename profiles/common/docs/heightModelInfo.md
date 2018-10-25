@@ -1,6 +1,6 @@
 # heightModelInfo
 
-The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal or gravity-related. This allows for a diverse range of fields and applications where the particular definition of elevation/height is of importance.
+The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal or gravity-related. This allows for a diverse range of fields and applications where the definition of elevation/height is important.
 
 ### Related:
 

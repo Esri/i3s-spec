@@ -1,4 +1,4 @@
-# I3S scene layer: attributeStorageInfo
+# I3S Scene Layer: attributeStorageInfo
 
 An object that describes the structure of the binary attribute data resource of a node.
 
@@ -13,8 +13,8 @@ An object that describes the structure of the binary attribute data resource of 
 | **name** | string | The name of the field. |
 | **header** | string[] | <div>Possible values for each array string:<ul><li>`property`: Should always be present and indicates the count of features in the attribute storage.</li><li>`valueType`: The element type of the attributeValues property, from UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64.</li></ul></div> |
 | ordering | string[] | <div>Possible values for each array string:<ul><li>`attributeByteCounts`: Should only be present when working with string data types.</li><li>`attributeValues`: Should always be present. </li></ul></div> |
-| attributeValues | [common::value](value.md) | Represents the description for value encoding, for example scalar or vector encoding. |
-| attributeByteCounts | [common::value](value.md) | Represents the description for value encoding, for example scalar or vector encoding. |
+| attributeValues | [common::value](value.md) | Represents the description for value encoding. For example: scalar or vector encoding. |
+| attributeByteCounts | [common::value](value.md) | Represents the description for value encoding. For example: scalar or vector encoding. |
 | objectIds | [common::value](value.md) | Stores the object-id values of each feature within the node. |
 
 *Note: properties in **bold** are required*

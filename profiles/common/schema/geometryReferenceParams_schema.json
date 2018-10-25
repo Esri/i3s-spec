@@ -2,7 +2,7 @@
   "title": "GeometryReferenceParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Instead of owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.",
+  "description": "Instead of owning a Geometry exclusively, a Feature can reference part of a Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, GeometryReferenceParams must be used.",
   "properties": {
     "href": {
       "type": "string",
@@ -10,7 +10,7 @@
     },
     "type": {
         "type": "string",
-        "description": "The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as an internal reference (GeometryReference), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded)."
+        "description": "The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), an internal reference (GeometryReference), a reference to a shared Resource (SharedResourceReference) or embedded (Embedded)."
       },
     "faceRange": {
         "type": "array",

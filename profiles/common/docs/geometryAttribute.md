@@ -1,6 +1,6 @@
 # geometryAttribute
 
-Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. While the first describe properties that are valid for a single vertex, the second are used to describe faces and other structures by providing a set of indices. As an example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face.
+Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face.
 
 ### Related:
 

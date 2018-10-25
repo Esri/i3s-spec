@@ -2,7 +2,7 @@
   "title": "FeatureData",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
+  "description": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials.",
   "properties": {
     "id": {
       "type": "number",

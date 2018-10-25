@@ -1,5 +1,5 @@
 {
-"title": "I3S scene layer: drawingInfo",
+"title": "I3S Scene Layer: drawingInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "The drawingInfo object contains drawing information for a scene layer. ",

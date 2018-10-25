@@ -4,7 +4,7 @@ Oriented bounding boxes
 
 ### Related:
 
-[common::3DSNodeIndexDocument](3DSNodeIndexDocument.md), [pointcloud::node](../../pointclouds/docs/node.md)
+[common::3DSNodeIndexDocument](3DSNodeIndexDocument.md)
 ### Properties
 
 | Property | Type | Description |

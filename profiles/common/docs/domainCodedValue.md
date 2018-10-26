@@ -1,6 +1,6 @@
-# Domain coded value
+# Domain Coded Value
 
-see [A quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains
+See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains.
 
 ### Related:
 

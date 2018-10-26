@@ -8,7 +8,7 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 | --- | --- | --- |
 | **id** | integer | Unique numeric ID of the layer. |
 | href | string | The relative URL to the 3DSceneLayerResource. Only present as part of the SceneServiceInfo resource. |
-| layerType | string[] | The user-visible layer type<div>Possible values for each array string:<ul><li>`Point`: Point</li><li>`Line`: Line</li><li>`Polygon`: Polygon</li><li>`3DObject`: 3DObject</li><li>`IntegratedMesh`: IntegratedMesh</li><li>`PointCloud`: PointCloud</li></ul></div> |
+| layerType | string[] | The user-visible layer type<div>Possible values for each array string:<ul><li>`Point`</li><li>`Line`</li><li>`Polygon`</li><li>`3DObject`</li><li>`IntegratedMesh`</li><li>`PointCloud`</li></ul></div> |
 | spatialReference | [common::spatialReference](../../common/docs/spatialReference.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
 | heightModelInfo | [common::heightModelInfo](../../common/docs/heightModelInfo.md) | Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content. |
 | version | string | The ID of the last update session in which any resource belonging to this layer has been updated. |

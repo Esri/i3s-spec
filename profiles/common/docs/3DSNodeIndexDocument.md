@@ -1,6 +1,8 @@
 # 3DNodeIndexDocument
 
-The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent. Depending on the geometry and lodModel used, a node document can be tuned towards being light-weight or more heavy-weight. Clients have to further decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, already provides sufficient data for simple visualization by rendering the centroids as point features for example. The node is the root object in the 3dNodeIndexDocument. There is always exactly one Node object in a 3dNodeIndexDocument.
+The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one Node object in a 3dNodeIndexDocument. 
+
+Depending on the geometry and LoD Model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, neighbors, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
 
 ### Properties
 
@@ -11,8 +13,8 @@ The 3dNodeIndexDocument JSON file describes a single index node within a store. 
 | version | number | The version (store update session ID) of this node. |
 | mbs | number[] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |
 | obb | [common::obb](obb.md) | Describes oriented bounding box. |
-| created | number[] | Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' timezone (see http://www.w3.org/TR/NOTE-datetime). |
-| expires | number[] | Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' timezone (see http://www.w3.org/TR/NOTE-datetime). |
+| created | number[] | Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
+| expires | number[] | Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
 | transform | number[] | Optional, 3D (4x4) transformation matrix expressed as a linear array of 16 values. |
 | parentNode | [common::nodeReference](../../common/docs/nodeReference.md) | Reference to the parent node of a node. |
 | children | [common::nodeReference](../../common/docs/nodeReference.md) | Reference to the child nodes of a node. |

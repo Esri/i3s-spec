@@ -1,5 +1,5 @@
 {
-    "title": "I3S scene layer: attributeStorageInfo",
+    "title": "I3S Scene Layer: attributeStorageInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "An object that describes the structure of the binary attribute data resource of a node.",
@@ -47,12 +47,12 @@
             },
         "attributeValues": {
                 "type": "object",
-                "description": "Represents the description for value encoding, for example scalar or vector encoding.",
+                "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
                 "$ref": "value_schema.json"
             },
         "attributeByteCounts": {
                  "type": "object",
-                 "description": "Represents the description for value encoding, for example scalar or vector encoding.",
+                 "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
                  "$ref": "value_schema.json"
             },
         "objectIds": 

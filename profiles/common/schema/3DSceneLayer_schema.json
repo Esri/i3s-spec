@@ -24,15 +24,7 @@
             "IntegratedMesh",
             "PointCloud"
         ],
-        "enum-description" :
-        {
-            "Point" : "Point",
-            "Line" : "Line",
-            "Polygon" : "Polygon",
-            "3DObject" : "3DObject",
-            "IntegratedMesh" : "IntegratedMesh",
-            "PointCloud" : "PointCloud"
-        },
+
         "description" : "The user-visible layer type"
     },
       "description": "The user-visible layer type"

@@ -2,18 +2,18 @@
   "title": "I3S Attribute (i.e. Field) domain",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "see [A quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains",
+  "description": "See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains.",
   "related": "common::field",
 
   "properties": {
     "type": {
       "type": "string",
       "enum": [ "codedValue", "range" ],
-      "description": "type of domain"
+      "description": "Type of domain"
     },
     "name": {
       "type": "string",
-      "description": "name of the domain. must be unique per Scene Layer"
+      "description": "Name of the domain. Must be unique per Scene Layer."
     },
     "fieldType": {
       "type": "string",

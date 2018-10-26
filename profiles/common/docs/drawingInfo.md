@@ -1,4 +1,4 @@
-# I3S scene layer: drawingInfo
+# I3S Scene Layer: drawingInfo
 
 The drawingInfo object contains drawing information for a scene layer. 
 

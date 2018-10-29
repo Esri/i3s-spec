@@ -33,7 +33,7 @@ I3S is intrinsically designed to support 3D geospatial content and supports the 
 
 ## Open Standard
 
-For the purpose of encouraging community adoption and feedback, I3S is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
+For the purpose of encouraging community adoption and feedback, I3S is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [License](#license-for-indexed-3d-scene-format-and-rest-endpoint-specification) section below for more information.
 
 ## Where can I use...?
 
@@ -143,7 +143,7 @@ does not constitute the creation and distribution of a derivative work. Please s
 
 ## License for Indexed 3D Scene Format and REST Endpoint Specification
 
-Copyright 2015 - 2017 Esri
+Copyright &copy; 2015 - 2018 Esri
 
 The specification is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International Public License](https://creativecommons.org/licenses/by-nd/4.0/legalcode).
 You can implement the specification in services, clients or processing tools without restrictions.
@@ -170,6 +170,3 @@ Copies of both licenses are included in this repository.
 ## License for JSON resources, validator, and examples
 
 The supplementary resources may be updated without notice and are provided for use under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license and may be used, under the terms of that license, at your own risk.
-
-[](Esri Tags: I3S, Indexed 3D Scene Layer, Scene Layer, ArcGIS WebScene, Mesh-Pyramids, ArcGISOnline Scene Service, ArcGISServer, Scene Layer Package, SceneLayer, 3D Object, Point, IntegreatedMesh, PointCloud)
-[](Esri Language: JavaScript)

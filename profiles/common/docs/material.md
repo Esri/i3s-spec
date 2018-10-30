@@ -1,6 +1,6 @@
 # materialDefinition
 
-Materials describe how a feature or a set of features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the 'type': 'standard' material.
+The materialDefinition describes how a feature or a set of features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the `type`: `standard` material.
 
 ### Related:
 

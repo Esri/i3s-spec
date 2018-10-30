@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: obb",
+  "title": "I3S Point Cloud Scene Layer: Oriented Bounding Boxes",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Oriented bounding boxes",
@@ -20,7 +20,7 @@
       },
       "minItems": 3,
       "maxItems": 3,
-      "description": "Half size of the oriented bounding box in spatial reference units (or meter for global scenes)."
+      "description": "Half size of the oriented bounding box in spatial reference units (or meters for global scenes)."
     },
     "orientation ": {
       "type": "array",

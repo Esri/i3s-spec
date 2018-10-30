@@ -1,5 +1,5 @@
 {
-"title": "I3S scene layer: popupInfo",
+"title": "I3S Scene Layer: popupInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Defines the look and feel of popup windows when a user clicks or queries a feature. [See more](https://developers.arcgis.com/web-scene-specification/objects/popupInfo/) information on popup information in ArcGIS clients."

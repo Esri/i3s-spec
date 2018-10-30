@@ -1,6 +1,6 @@
 # nodeReference
 
-A NodeReference is a pointer to another node - the parent, a child or a neighbor. NodeReferences contain a relative URL pointing to the referenced NID, as well as a set of meta information that can be used by the client to determine whether to load that node or not, as well as maintaining store consistency.
+A NodeReference is a pointer to another node - the parent, a child or a neighbor. A nodeReference contains a relative URL to the referenced NID, and a set of meta information which helps determines if a client loads the data and maintains store consistency.
 
 ### Related:
 

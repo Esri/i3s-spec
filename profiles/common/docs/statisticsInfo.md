@@ -1,4 +1,4 @@
-# I3S scene layer: statisticsInfo
+# I3S Scene Layer: statisticsInfo
 
 Describes the statistics for the scene layer.
 

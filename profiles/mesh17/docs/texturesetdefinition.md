@@ -46,10 +46,105 @@ JPEG texture will be at `/layers/0/shared/textures/10`
   "formats": [
     {
       "index": 10,
-      "format": "jpeg"
+      "format": "jpg"
     }
   ],
   "binding": "per-layer"
+} 
+```
+
+#### Example: PNG bundled texture on 3rd slot of bundle at  `/layers/0/nodes/{resource_id}/textures/1` 
+
+```json
+ {
+  "formats": [
+    {
+      "index": 1,
+      "format": "bundle",
+      "bundle": {
+        "slot": 2,
+        "format": "png"
+      }
+    }
+  ],
+  "binding": "per-node"
+} 
+```
+
+#### Example: Advanced material definition where all textures are part of the same bundles (so 1 texture query per node) 
+
+```json
+ {
+  "textureSetDefinitions": [
+    {
+      "formats": [
+        {
+          "index": 0,
+          "format": "bundle",
+          "bundle": {
+            "slot": 0,
+            "format": "jpg"
+          }
+        }
+      ],
+      "binding": "per-node"
+    },
+    {
+      "formats": [
+        {
+          "index": 0,
+          "format": "bundle",
+          "bundle": {
+            "slot": 1,
+            "format": "png"
+          }
+        }
+      ],
+      "binding": "per-node"
+    },
+    {
+      "formats": [
+        {
+          "index": 0,
+          "format": "bundle",
+          "bundle": {
+            "slot": 2,
+            "format": "png"
+          }
+        }
+      ],
+      "binding": "per-node"
+    }
+  ],
+  "materialDefinitions": [
+    {
+      "alphaMode": "mask",
+      "alphaCutoff": 0.25,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1.0
+        ],
+        "baseColorTexture": {
+          "textureSetDefinitionId": 0,
+          "texCoord": 0
+        },
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "metallicRoughnessTexture": {
+          "textureSetDefinitionId": 1,
+          "texCoord": 1
+        }
+      },
+      "normalTexture": {
+        "textureSetDefinitionId": 2,
+        "factor": 2.0,
+        "texCoord": 1
+      }
+    }
+  ]
 } 
 ```
 

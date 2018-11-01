@@ -4,10 +4,6 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "../docs/geometrybuffer_desc.md",
   "properties": {
-    "id": {
-      "type": "integer",
-      "description": "Index of this buffer in the resource URL: e.g. `/layers/0/nodes/{resourceId}/geometries/{this.id}`"
-    },
     "offset": {
       "type": "integer",
       "description": "number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`)"
@@ -50,7 +46,7 @@
     "compressedAttributes": {
       "type": "object",
       "$ref": "compressedAttributes_schema.json",
-      "description": "Compressed attributes"
+      "description": "Compressed attributes. **Cannot** be combined with any other attributes"
     },
     "normalReferenceFrame": {
       "type": "string",

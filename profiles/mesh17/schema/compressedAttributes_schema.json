@@ -2,7 +2,7 @@
   "title": "Compressed attributes",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "See [libdraco](https://github.com/google/draco) for more details",
+  "description-href": "../docs/compressedAttributes_desc.md",
   "properties": {
     "encoding": {
       "type": "string",
@@ -12,11 +12,11 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": [ "position", "normal", "uv0", "uv1", "color", "uvRegionIndex", "featureIndex" ],
+        "enum": [ "position", "normal", "uv0", "color", "uv-region", "feature-index" ],
         "enum-description": {
-          "position": "`Draco` meta-data `scale_x`, `scale_y` (if present) must be applied to `x` and `y` coordinates to reverse `XY`/`Z` ratio preserving scaling that may have been applied before encoding. (i.e.avoid quantization issue when `XY` is in degrees and `Z` is in meters)",
-          "featureIndex": "index in the [`featureId`](geometryfeatureid.md) attribute array. `featureId` attribute **must** be present and `featureId.binding` **must** be `per-feature`",
-          "uvRegionIndex": "index in the `uvRegion` attribute array. [`uvRegion`](geometryuvregion.md) attribute **must** be present and `uvRegion.binding` **must** be `per-uvregion`"
+          "position": "`Draco` _double_ meta-data `i3s-scale_x`, `i3s-scale_y` (if present) must be applied to `x` and `y` coordinates to reverse `XY`/`Z` ratio preserving scaling that may have been applied before encoding. (i.e.avoid quantization issue when `XY` is in degrees and `Z` is in meters)",
+          "uv-region": "Uses `draco::GeometryAttribute::Type::GENERIC` with type `4xUINT16`. The attribute meta-data key `i3s-attribute-type` *must* be set to `\"uv-region\"` (string).",
+          "feature-index": "Uses `draco::GeometryAttribute::Type::GENERIC` with type `1xUINT32`. The attribute meta-data key `i3s-attribute-type` *must* be set to `\"feature-index\"` (string). The `feature-ids` values must be stored in the `feature-index` attribute meta-data with `key:\"i3s-feature-ids\" (metata data entry type is array of int32)"
         }
       }
     }

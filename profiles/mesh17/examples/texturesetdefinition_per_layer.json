@@ -2,7 +2,7 @@
   "formats": [
     {
       "index": 10,
-      "format": "jpeg"
+      "format": "jpg"
     }
   ],
   "binding": "per-layer"

@@ -16,7 +16,7 @@
 
 ### Related:
 
-[mesh17::geometrybuffer](geometrybuffer.md), [meshv2::geometryCompressedAttribute](../../meshv2/docs/geometryCompressedAttribute.md)
+[meshv2::geometryCompressedAttribute](../../meshv2/docs/geometryCompressedAttribute.md), [mesh17::geometrybuffer](geometrybuffer.md)
 ### Properties
 
 | Property | Type | Description |

@@ -14,7 +14,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 ### Related:
 
-[mesh17::node](node.md), [mesh17::layer](layer.md)
+[mesh17::layer](layer.md), [mesh17::node](node.md)
 ### Properties
 
 | Property | Type | Description |

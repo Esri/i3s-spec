@@ -23,12 +23,88 @@ The abstract parent object for all GeometryParams classes (GeometryReferencePara
 #### Example:  info for 3D object scene layer 
 
 ```json
- None 
+ {
+  "params": {
+    "type": "triangles",
+    "material": "/materialDefinitions/Mat525",
+    "texture": "/textureDefinitions/525",
+    "vertexAttributes": {
+      "position": {
+        "byteOffset": 8,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "normal": {
+        "byteOffset": 2672,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "uv0": {
+        "byteOffset": 5336,
+        "valueType": "Float32",
+        "valuesPerElement": 2
+      },
+      "color": {
+        "byteOffset": 7112,
+        "valueType": "UInt8",
+        "valuesPerElement": 4
+      }
+    }
+  }
+} 
 ```
 
 #### Example:  info for integrated mesh scene layer 
 
 ```json
- None 
+ {
+  "id": 1,
+  "type": "ArrayBufferView",
+  "params": {
+    "type": "triangles",
+    "material": "/materialDefinitions/Mat525",
+    "texture": "/textureDefinitions/525",
+    "vertexAttributes": {
+      "position": {
+        "byteOffset": 8,
+        "count": 222,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "normal": {
+        "byteOffset": 2672,
+        "count": 222,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "uv0": {
+        "byteOffset": 5336,
+        "count": 222,
+        "valueType": "Float32",
+        "valuesPerElement": 2
+      },
+      "color": {
+        "byteOffset": 7112,
+        "count": 222,
+        "valueType": "UInt8",
+        "valuesPerElement": 4
+      }
+    },
+    "featureAttributes": {
+      "id": {
+        "byteOffset": 8000,
+        "count": 1,
+        "valueType": "UInt64",
+        "valuesPerElement": 1
+      },
+      "faceRange": {
+        "byteOffset": 8008,
+        "count": 1,
+        "valueType": "UInt32",
+        "valuesPerElement": 2
+      }
+    }
+  }
+} 
 ```
 

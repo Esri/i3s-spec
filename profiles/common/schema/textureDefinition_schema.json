@@ -5,44 +5,42 @@
   "description": "Materials describe how a feature or a set of features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the `type`: `standard` material.",
   "properties": {
     "encoding": {
-        "type": "array",
-        "items": {
-            "type": "string"        
-        },
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
       "description": "MIMEtype - The encoding/content type that is used by all images in this map"
     },
     "wrap": {
-        "type": "array",
-        "items": {
-            "type": "string"        
-        },
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
       "description": "UV wrapping modes, from {none, repeat, mirror}."
     },
     "atlas": {
-        "type": "boolean",
-        "description": "TRUE if the Map represents a texture atlas."
-      },
-      "uvSet": {
-        "type": "string",
-        "description": "The name of the UV set to be used as texture coordinates."
-      },
-      "channels": {
-        "type": "array",
-        "items": {
-            "type": "string"        
-        },
-      "description": "indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement, etc."
+      "type": "boolean",
+      "description": "TRUE if the Map represents a texture atlas."
     },
+    "uvSet": {
+      "type": "string",
+      "description": "The name of the UV set to be used as texture coordinates."
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement,etc."
+      },
     "images": {
       "type": "array",
-      "items":{
-      "type": "object",
-      "$ref": "image_schema.json"
+      "items": {
+        "type": "object",
+        "$ref": "image_schema.json"
       },
       "description": "An image is a binary resource, containing a single raster that can be used to texture a feature or symbol."
-
-    }    
-    
+    }
   },
   "required": [
     "encoding"
@@ -51,18 +49,81 @@
     "examples": [
       {
         "title": "3D Scene Layer info for point scene layer"
-        
       },
       {
-        "title": "3D Scene Layer info for 3D object scene layer"
-        
+        "title": "3D Scene Layer info for 3D object scene layer",
+        "code": {
+          "525": {
+            "encoding": [
+              "image/jpeg",
+              "image/vnd-ms.dds"
+            ],
+            "wrap": [
+              "none",
+              "none"
+            ],
+            "atlas": false,
+            "uvSet": "uv0",
+            "channels": "rgb",
+            "images": [
+              {
+                "id": "525",
+                "size": 64,
+                "pixelInWorldUnits": 0,
+                "href": [
+                  "../textures/0_0",
+                  "../textures/0_0_1"
+                ],
+                "byteOffset": [
+                  0,
+                  0
+                ],
+                "length": [
+                  737,
+                  400
+                ]
+              }
+            ]
+          }
+        }
       },
       {
-        "title": "3D Scene Layer info for integrated mesh scene layer"
-        
-
+        "title": "3D Scene Layer info for integrated mesh scene layer",
+        "code": {
+          "32": {
+            "encoding": [
+              "image/jpeg",
+              "image/vnd-ms.dds"
+            ],
+            "wrap": [
+              "none",
+              "none"
+            ],
+            "atlas": false,
+            "uvSet": "uv0",
+            "channels": "rgb",
+            "images": [
+              {
+                "id": "1161930902884843552",
+                "size": 512,
+                "pixelInWorldUnits": 0,
+                "href": [
+                  "../textures/0_0",
+                  "../textures/0_0_1"
+                ],
+                "byteOffset": [
+                  0,
+                  0
+                ],
+                "length": [
+                  7461,
+                  174904
+                ]
+              }
+            ]
+          }
+        }
       }
     ]
   }
 }
-

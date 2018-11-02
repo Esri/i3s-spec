@@ -9,19 +9,19 @@
       "description": "In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the I3S json pointer syntax. For example /geometryData/1"
     },
     "type": {
-        "type": "string",
-        "description": "The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), an internal reference (GeometryReference), a reference to a shared Resource (SharedResourceReference) or embedded (Embedded)."
-      },
+      "type": "string",
+      "description": "The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as an internal reference (GeometryReference), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded)."
+    },
     "faceRange": {
-        "type": "array",
-        "items": {
-            "type": "number"        
-        },
-        "description": "Inclusive range of faces in this geometry that belongs to this feature."
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Inclusive range of faces in this geometry that belongs to this feature."
     },
     "lodGeometry": {
-        "type": "boolean",
-        "description": "True if this geometry participates in an LoD tree. Always true in mesh-pyramids profile."
+      "type": "boolean",
+      "description": "True if this geometry participates in an LoD tree. Always true in mesh-pyramids profile."
     }
   },
   "required": [
@@ -31,18 +31,33 @@
     "examples": [
       {
         "title": "info for point scene layer"
-        
       },
       {
-        "title": " info for 3D object scene layer"
-        
+        "title": " info for 3D object scene layer",
+        "code": {
+          "type": "GeometryReference",
+          "params": {
+            "$ref": "/geometryData/1",
+            "faceRange": [
+              0,
+              195
+            ]
+          }
+        }
       },
       {
-        "title": " info for integrated mesh scene layer"
-        
-
+        "title": " info for integrated mesh scene layer",
+        "code": {
+          "type": "GeometryReference",
+          "params": {
+            "$ref": "/geometryData/13752",
+            "faceRange": [
+              0,
+              3526
+            ]
+          }
+        }
       }
     ]
   }
 }
-

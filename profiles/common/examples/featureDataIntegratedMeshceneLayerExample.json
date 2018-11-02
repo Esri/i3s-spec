@@ -1,0 +1,108 @@
+{
+  "featureData": [
+    {
+      "id": 0,
+      "position": [
+        -119.61204566699678,
+        37.730869080000808,
+        1920.951396978965
+      ],
+      "pivotOffset": [
+        0,
+        0,
+        0
+      ],
+      "mbb": [
+        -119.77125610411167,
+        37.635582022368908,
+        1023.2551879882812,
+        -119.45293022692204,
+        37.826044507324696,
+        2819.0902099609375
+      ],
+      "layer": "Building",
+      "geometries": [
+        {
+          "id": 0,
+          "type": "GeometryReference",
+          "params": {
+            "$ref": "/geometryData/0",
+            "faceRange": [
+              0,
+              107
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "geometryData": [
+    {
+      "id": 0,
+      "type": "ArrayBufferView",
+      "transformation": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "params": {
+        "type": "triangles",
+        "material": "/materialDefinitions/Mat0",
+        "texture": "/textureDefinitions/0",
+        "vertexAttributes": {
+          "position": {
+            "byteOffset": 8,
+            "count": 324,
+            "valueType": "Float32",
+            "valuesPerElement": 3
+          },
+          "normal": {
+            "byteOffset": 3896,
+            "count": 324,
+            "valueType": "Float32",
+            "valuesPerElement": 3
+          },
+          "uv0": {
+            "byteOffset": 7784,
+            "count": 324,
+            "valueType": "Float32",
+            "valuesPerElement": 2
+          },
+          "color": {
+            "byteOffset": 10376,
+            "count": 324,
+            "valueType": "UInt8",
+            "valuesPerElement": 4
+          }
+        },
+        "featureAttributes": {
+          "id": {
+            "byteOffset": 11672,
+            "count": 1,
+            "valueType": "UInt64",
+            "valuesPerElement": 1
+          },
+          "faceRange": {
+            "byteOffset": 11680,
+            "count": 1,
+            "valueType": "UInt32",
+            "valuesPerElement": 2
+          }
+        }
+      }
+    }
+  ]
+}

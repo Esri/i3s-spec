@@ -9,30 +9,30 @@
       "description": "URL - I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry."
     },
     "texture": {
-        "type": "string",
-        "description": "URL - I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry."
-      },
-      "id": {
-        "type": "number",
-        "description": "The ID of the component, only unique within the Geometry."
-      },
-      "materialID": {
-        "type": "number",
-        "description": "UUID of the material, as defined in the shared resources bundle, to use for rendering this component."
-      },
+      "type": "string",
+      "description": "URL - I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry."
+    },
+    "id": {
+      "type": "number",
+      "description": "The ID of the component, only unique within the Geometry."
+    },
+    "materialID": {
+      "type": "number",
+      "description": "UUID of the material, as defined in the shared resources bundle, to use for rendering this component."
+    },
     "textureID": {
-        "type": "array",
-        "items": {
-            "type": "number"        
-        },
-        "description": "Optional ID of the texture, as defined in shared resources, to use with the material to render this component."
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Optional ID of the texture, as defined in shared resources, to use with the material to render this component."
     },
     "regionID": {
-        "type": "array",
-        "items": {
-            "type": "number"        
-        },
-        "description": "Optional ID of a texture atlas region which to use with the texture to render this component."
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Optional ID of a texture atlas region which to use with the texture to render this component."
     }
   },
   "required": [
@@ -42,18 +42,111 @@
     "examples": [
       {
         "title": "info for point scene layer"
-        
       },
       {
-        "title": " info for 3D object scene layer"
-        
+        "title": " info for 3D object scene layer",
+        "code": {
+          "id": 1,
+          "type": "ArrayBufferView",
+          "params": {
+            "type": "triangles",
+            "material": "/materialDefinitions/Mat525",
+            "texture": "/textureDefinitions/525",
+            "vertexAttributes": {
+              "position": {
+                "byteOffset": 8,
+                "count": 222,
+                "valueType": "Float32",
+                "valuesPerElement": 3
+              },
+              "normal": {
+                "byteOffset": 2672,
+                "count": 222,
+                "valueType": "Float32",
+                "valuesPerElement": 3
+              },
+              "uv0": {
+                "byteOffset": 5336,
+                "count": 222,
+                "valueType": "Float32",
+                "valuesPerElement": 2
+              },
+              "color": {
+                "byteOffset": 7112,
+                "count": 222,
+                "valueType": "UInt8",
+                "valuesPerElement": 4
+              }
+            },
+            "featureAttributes": {
+              "id": {
+                "byteOffset": 8000,
+                "count": 1,
+                "valueType": "UInt64",
+                "valuesPerElement": 1
+              },
+              "faceRange": {
+                "byteOffset": 8008,
+                "count": 1,
+                "valueType": "UInt32",
+                "valuesPerElement": 2
+              }
+            }
+          }
+        }
       },
       {
-        "title": " info for integrated mesh scene layer"
-        
-
+        "title": " info for integrated mesh scene layer",
+        "code": {
+          "id": 8,
+          "type": "ArrayBufferView",
+          "params": {
+            "type": "triangles",
+            "material": "/materialDefinitions/Mat8",
+            "texture": "/textureDefinitions/8",
+            "vertexAttributes": {
+              "position": {
+                "byteOffset": 8,
+                "count": 396,
+                "valueType": "Float32",
+                "valuesPerElement": 3
+              },
+              "normal": {
+                "byteOffset": 4760,
+                "count": 396,
+                "valueType": "Float32",
+                "valuesPerElement": 3
+              },
+              "uv0": {
+                "byteOffset": 9512,
+                "count": 396,
+                "valueType": "Float32",
+                "valuesPerElement": 2
+              },
+              "color": {
+                "byteOffset": 12680,
+                "count": 396,
+                "valueType": "UInt8",
+                "valuesPerElement": 4
+              }
+            },
+            "featureAttributes": {
+              "id": {
+                "byteOffset": 14264,
+                "count": 1,
+                "valueType": "UInt64",
+                "valuesPerElement": 1
+              },
+              "faceRange": {
+                "byteOffset": 14272,
+                "count": 1,
+                "valueType": "UInt32",
+                "valuesPerElement": 2
+              }
+            }
+          }
+        }
       }
     ]
   }
 }
-

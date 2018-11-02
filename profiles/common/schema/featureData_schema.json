@@ -56,17 +56,17 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "3D Scene Layer info for point scene layer"
+        "title": "3D Scene Layer info for point scene layer",
+        "code_href": "../examples/featureDataPointSceneLayerExample.json"
+      },
+      {
+        "title": "3D Scene Layer info for 3D object scene layer",
+        "code_href": "../examples/featureData3dObjectSceneLayerExample.json"
         
       },
       {
-        "title": "3D Scene Layer info for 3D object scene layer"
-        
-      },
-      {
-        "title": "3D Scene Layer info for integrated mesh scene layer"
-        
-
+        "title": "3D Scene Layer info for integrated mesh scene layer",
+        "code_href": "../examples/featureDataIntegratedMeshceneLayerExample.json"
       }
     ]
   }

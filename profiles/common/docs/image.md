@@ -23,6 +23,26 @@ An image is a binary resource, containing a single raster that can be used to te
 #### Example: Image 
 
 ```json
- {} 
+ {
+  "images": [
+    {
+      "id": "1170940301162943632",
+      "size": 1024,
+      "pixelInWorldUnits": 0,
+      "href": [
+        "../textures/0_0",
+        "../textures/0_0_1"
+      ],
+      "byteOffset": [
+        0,
+        0
+      ],
+      "length": [
+        167267,
+        699192
+      ]
+    }
+  ]
+} 
 ```
 

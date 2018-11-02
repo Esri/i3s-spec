@@ -14,5 +14,22 @@
         "description": "Describes the face range of the feature attribute.",
         "$ref": "value_schema.json"
       }
-  }
+  },
+  "esriDocumentation": {
+    "examples": [
+       {
+         "title": "featureAttribute example",
+         "code": {
+          "id": {
+            "valueType": "UInt64",
+            "valuesPerElement": 1
+        },
+        "faceRange": {
+            "valueType": "UInt32",
+            "valuesPerElement": 2
+        }
+           }
+        }   
+      ]
+   }
 }

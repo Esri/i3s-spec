@@ -1,6 +1,6 @@
 # I3S Attribute (i.e. Field) domain
 
-see [A quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains
+See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains.
 
 ### Related:
 
@@ -9,8 +9,8 @@ see [A quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **type** | string | type of domain<div>Possible values are:<ul><li>`codedValue`</li><li>`range`</li></ul></div> |
-| **name** | string | name of the domain. must be unique per Scene Layer |
+| **type** | string | Type of domain<div>Possible values are:<ul><li>`codedValue`</li><li>`range`</li></ul></div> |
+| **name** | string | Name of the domain. Must be unique per Scene Layer. |
 | **fieldType** | string | The field type is the type of attribute field with which the domain can be associated.<div>Possible values are:<ul><li>`esriFieldTypeDate`</li><li>`esriFieldTypeSingle`</li><li>`esriFieldTypeDouble`</li><li>`esriFieldTypeInteger`</li><li>`esriFieldTypeSmallInteger`</li><li>`esriFieldTypeString`</li></ul></div> |
 | range | number[2] | Range of the domain (numeric types only) |
 | codedValues | [common::domainCodedValue](domainCodedValue.md)[] | Range of the domain (string types only) |

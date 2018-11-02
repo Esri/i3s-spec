@@ -1,6 +1,6 @@
 # defaultGeometrySchema
 
-Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.
+The defaultGeometry schema is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of ArrayBufferView geometry declarations in a store, and reuses the GeometryAttribute type from FeatureData. Only valueType and valuesPerElement are required.
 
 ### Related:
 

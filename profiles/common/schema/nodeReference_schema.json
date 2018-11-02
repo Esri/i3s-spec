@@ -2,45 +2,54 @@
   "title": "nodeReference",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "A NodeReference is a pointer to another node - the parent, a child or a neighbor. NodeReferences contain a relative URL pointing to the referenced NID, as well as a set of meta information that can be used by the client to determine whether to load that node or not, as well as maintaining store consistency.",
+  "description": "A NodeReference is a pointer to another node - the parent, a child or a neighbor. A nodeReference contains a relative URL to the referenced NID, and a set of meta information which helps determines if a client loads the data and maintains store consistency.",
   "properties": {
     "id": {
       "type": "string",
       "description": "Tree Key ID (e.g. '1-3-0-5') of the referenced node."
+    },
+    "mbs": {
+      "type": "array",
+      "items": {
+        "type": "number"
       },
-      "mbs": {
-        "type": "array",
-        "items": {
-            "type": "number"        
-        },
-        "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node."
-        },
-      "href":{
-        "type": "string",
-        "description": "Number of values per element."
-      },
-      "version":{
-        "type": "number",
-        "description": "Version (store update session ID) of the referenced node."
-      },
-      "featureCount":{
-        "type": "number",
-        "description": "Number of features in the referenced node and its descendants, down to the leaf nodes."
-      }
+      "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node."
+    },
+    "href": {
+      "type": "string",
+      "description": "Number of values per element."
+    },
+    "version": {
+      "type": "number",
+      "description": "Version (store update session ID) of the referenced node."
+    },
+    "featureCount": {
+      "type": "number",
+      "description": "Number of features in the referenced node and its descendants, down to the leaf nodes."
+    }
   },
   "required": [
     "id"
   ],
   "esriDocumentation": {
     "examples": [
-       {
-         "title": "cachedDrawingInfo for 3D Object scene layer.",
-         "code": {
-          
-           }
-        }   
-      ]
-   }
+      {
+        "title": "cachedDrawingInfo for 3D Object scene layer.",
+        "code": {
+          "children": [
+            {
+              "id": "2-0-0-0",
+              "href": "../2-0-0-0",
+              "mbs": [
+                0.027173397137801203,
+                0.0049950922109050205,
+                139.15166463702917,
+                133.99739074707031
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
 }
-
-

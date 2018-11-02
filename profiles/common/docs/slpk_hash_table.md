@@ -23,7 +23,7 @@ Scanning an SLPK (ZIP store) containing millions of documents is usually ineffic
 	 return a[0] == b[0] ? a[1] < b[1] : a[0] < b[0];
 	}
 ```
-5. Write this sorted array as the last file of the SLPK archive (last entry in the ZIP central directory). the file must be named  @specialIndexFileHASH128@. Each array element is 24-bytes long:
+5. Write this sorted array as the last file of the SLPK archive (last entry in the ZIP central directory). The file must be named  @specialIndexFileHASH128@. Each array element is 24-bytes long:
   - 16 bytes for the MD5-digest and 8 bytes for the offset
   - In little-endian order
   - No padding

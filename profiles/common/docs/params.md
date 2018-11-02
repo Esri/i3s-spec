@@ -9,8 +9,8 @@ Parameter describing the material.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| transparency | number | Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent. |
-| reflectivity | number | Indicates reflectivity of this Material. |
+| transparency | number | Indicates transparency of this material; 0 = opaque, 1 = fully transparent. |
+| reflectivity | number | Indicates reflectivity of this material. |
 | shininess | number | Indicates shininess of this material. |
 | ambient | number[] | Ambient color of this material. |
 | diffuse | number[] | Diffuse color of this material. |
@@ -18,7 +18,7 @@ Parameter describing the material.
 | **renderMode** | string | Rendering mode.<div>Possible values are:<ul><li>`textured`</li><li>`solid`</li><li>`untextured`</li><li>`wireframe`</li></ul></div> |
 | castShadows | boolean | TRUE if features with this material should cast shadows. |
 | receiveShadows | boolean | TRUE if features with this material should receive shadows |
-| cullFace | string | Indicates the material culling options {back, front, *none*}. Default being none. |
+| cullFace | string | Indicates the material culling options {back, front, *none*}. Default is none. |
 
 *Note: properties in **bold** are required*
 

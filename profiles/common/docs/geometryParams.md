@@ -1,6 +1,6 @@
 # GeometryParams
 
-This is the abstract parent object for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
+The abstract parent object for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
 
 ### Related:
 

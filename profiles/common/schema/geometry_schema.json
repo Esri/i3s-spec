@@ -6,7 +6,7 @@
   "properties": {
     "id": {
       "type": "number",
-      "description": "Reference-able, unique ID of the Geometry in this store."
+      "description": "Unique ID of the geometry in this store."
     },
     "type": {
       "type": "string",

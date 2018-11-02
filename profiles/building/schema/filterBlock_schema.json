@@ -1,5 +1,5 @@
 {
-  "title": "Filter block",
+  "title": "Filter Block",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A filter block defines what elements will be filtered with a specific filter mode.  To ensure performance on client applications, it is not recommended to declare multiple filter blocks with the same filter mode. Filter blocks are contained in a filter for a building scene layer. Each filter includes at least one filter block.",
@@ -26,8 +26,12 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Building Scene Layer",
-        "code": ""
+        "title": "Filter block",
+        "code": {
+          "title": "Created Phase 1",
+          "filterMode": "solid",
+          "filterExpression": "CreatedPhase=1"
+        }
       }
     ]
   }

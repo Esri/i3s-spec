@@ -1,4 +1,4 @@
-# Filter block
+# Filter Block
 
 A filter block defines what elements will be filtered with a specific filter mode.  To ensure performance on client applications, it is not recommended to declare multiple filter blocks with the same filter mode. Filter blocks are contained in a filter for a building scene layer. Each filter includes at least one filter block.
 
@@ -17,9 +17,13 @@ A filter block defines what elements will be filtered with a specific filter mod
 
 ### Examples 
 
-#### Example: Building Scene Layer 
+#### Example: Filter block 
 
 ```json
- "" 
+ {
+  "title": "Created Phase 1",
+  "filterMode": "solid",
+  "filterExpression": "CreatedPhase=1"
+} 
 ```
 

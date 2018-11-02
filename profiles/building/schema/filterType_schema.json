@@ -1,8 +1,8 @@
 {
-  "title": "Filter type used in filter authoring inf",
+  "title": "Filter Type",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Represents the filter type and its filter value settings for a filter as it is stored in the filter authoring info.",
+  "description": "The file authoring information for a filter, including the filter type and its value settings.",
   "properties": {
     "filterType": {
       "type": "string",

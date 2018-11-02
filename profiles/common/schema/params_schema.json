@@ -6,11 +6,11 @@
   "properties": {
     "transparency": {
         "type": "number",
-        "description": "Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent."
+        "description": "Indicates transparency of this material; 0 = opaque, 1 = fully transparent."
       },
       "reflectivity": {
         "type": "number",
-        "description": "Indicates reflectivity of this Material."
+        "description": "Indicates reflectivity of this material."
       },
       "shininess": {
         "type": "number",
@@ -54,7 +54,7 @@
       },
       "cullFace": {
         "type": "string",
-        "description": "Indicates the material culling options {back, front, *none*}. Default being none."
+        "description": "Indicates the material culling options {back, front, *none*}. Default is none."
       }
   },
   "required": [

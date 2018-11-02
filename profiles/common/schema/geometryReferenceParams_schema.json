@@ -2,7 +2,7 @@
   "title": "GeometryReferenceParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Instead of owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.",
+  "description": "Instead of owning a Geometry exclusively, a Feature can reference part of a Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, GeometryReferenceParams must be used.",
   "properties": {
     "href": {
       "type": "string",

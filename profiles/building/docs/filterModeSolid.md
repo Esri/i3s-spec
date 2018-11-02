@@ -1,4 +1,4 @@
-# Filter mode solid
+# Filter Mode: solid
 
 Shows all elements that comply with the filter block of a filter in a building scene layer.
 
@@ -9,4 +9,20 @@ Shows all elements that comply with the filter block of a filter in a building s
 | type | string | Declares filter mode of type solid.<div>Must be:<ul><li>`solid`</li></ul></div> |
 
 *Note: properties in **bold** are required*
+
+### Examples 
+
+#### Example: filterMode solid 
+
+```json
+ {
+  "filterBlocks": [
+    {
+      "title": "Created Phase 1",
+      "filterMode": "solid",
+      "filterExpression": "CreatedPhase=1"
+    }
+  ]
+} 
+```
 

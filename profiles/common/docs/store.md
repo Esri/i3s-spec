@@ -31,3 +31,94 @@ The store object describes the exact physical storage of a layer and enables the
 
 *Note: properties in **bold** are required*
 
+### Examples 
+
+#### Example: Store example 
+
+```json
+ {
+  "store": {
+    "id": "e9ecfade-0d85-4dd7-abb5-a3b0a07b9fd7",
+    "profile": "meshpyramids",
+    "resourcePattern": [
+      "3dNodeIndexDocument",
+      "SharedResource",
+      "Geometry",
+      "Attributes"
+    ],
+    "rootNode": "./nodes/root",
+    "version": "1.4",
+    "extent": [
+      -106.5054122583675,
+      38.99467780548919,
+      -103.99630101552692,
+      39.99697134061471
+    ],
+    "indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326",
+    "vertexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326",
+    "nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.4",
+    "featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.4",
+    "geometryEncoding": "application/octet-stream; version=1.4",
+    "attributeEncoding": "application/octet-stream; version=1.4",
+    "textureEncoding": [
+      "image/jpeg",
+      "image/vnd-ms.dds"
+    ],
+    "lodType": "MeshPyramid",
+    "lodModel": "node-switching",
+    "defaultGeometrySchema": {
+      "geometryType": "triangles",
+      "header": [
+        {
+          "property": "vertexCount",
+          "type": "UInt32"
+        },
+        {
+          "property": "featureCount",
+          "type": "UInt32"
+        }
+      ],
+      "topology": "PerAttributeArray",
+      "ordering": [
+        "position",
+        "normal",
+        "uv0",
+        "color"
+      ],
+      "vertexAttributes": {
+        "position": {
+          "valueType": "Float32",
+          "valuesPerElement": 3
+        },
+        "normal": {
+          "valueType": "Float32",
+          "valuesPerElement": 3
+        },
+        "uv0": {
+          "valueType": "Float32",
+          "valuesPerElement": 2
+        },
+        "color": {
+          "valueType": "UInt8",
+          "valuesPerElement": 4
+        }
+      },
+      "featureAttributeOrder": [
+        "id",
+        "faceRange"
+      ],
+      "featureAttributes": {
+        "id": {
+          "valueType": "UInt64",
+          "valuesPerElement": 1
+        },
+        "faceRange": {
+          "valueType": "UInt32",
+          "valuesPerElement": 2
+        }
+      }
+    }
+  }
+} 
+```
+

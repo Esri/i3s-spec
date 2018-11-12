@@ -25,55 +25,27 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 ```json
  {
-  "domains": [
-    {
-      "type": "range",
-      "name": "RDOM_1",
-      "fieldType": "esriFieldTypeInteger",
-      "range": [
-        1,
-        50
-      ],
-      "mergePolicy": "esriMPTDefaultValue",
-      "splitPolicy": "esriSPTDefaultValue"
-    },
-    {
-      "type": "range",
-      "name": "RDOM_3",
-      "fieldType": "esriFieldTypeDouble",
-      "range": [
-        100,
-        150.5
-      ],
-      "mergePolicy": "esriMPTDefaultValue",
-      "splitPolicy": "esriSPTDefaultValue"
-    },
-    {
-      "type": "codedValue",
-      "name": "CDOM_1",
-      "fieldType": "esriFieldTypeDouble",
-      "codedValues": [
-        {
-          "name": "code 1 description",
-          "code": 1
-        },
-        {
-          "name": "code 1.5 description",
-          "code": 1.5
-        },
-        {
-          "name": "code 2 description",
-          "code": 2
-        },
-        {
-          "name": "code 2.5 description",
-          "code": 2.5
-        }
-      ],
-      "mergePolicy": "esriMPTDefaultValue",
-      "splitPolicy": "esriSPTDefaultValue"
-    }
-  ]
+  "domain": {
+    "type": "codedValue",
+    "name": "Phases",
+    "description": "Phases",
+    "codedValues": [
+      {
+        "name": "Existing",
+        "code": 0
+      },
+      {
+        "name": "Baby Room Overhaul",
+        "code": 1
+      },
+      {
+        "name": "Roof Garden",
+        "code": 2
+      }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+  }
 } 
 ```
 

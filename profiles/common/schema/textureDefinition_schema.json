@@ -32,7 +32,7 @@
         "type": "string"
       },
       "description": "Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement,etc."
-      },
+    },
     "images": {
       "type": "array",
       "items": {
@@ -48,47 +48,7 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "3D Scene Layer info for point scene layer"
-      },
-      {
-        "title": "3D Scene Layer info for 3D object scene layer",
-        "code": {
-          "525": {
-            "encoding": [
-              "image/jpeg",
-              "image/vnd-ms.dds"
-            ],
-            "wrap": [
-              "none",
-              "none"
-            ],
-            "atlas": false,
-            "uvSet": "uv0",
-            "channels": "rgb",
-            "images": [
-              {
-                "id": "525",
-                "size": 64,
-                "pixelInWorldUnits": 0,
-                "href": [
-                  "../textures/0_0",
-                  "../textures/0_0_1"
-                ],
-                "byteOffset": [
-                  0,
-                  0
-                ],
-                "length": [
-                  737,
-                  400
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": "3D Scene Layer info for integrated mesh scene layer",
+        "title": "textureDefinition",
         "code": {
           "32": {
             "encoding": [

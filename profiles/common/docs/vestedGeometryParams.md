@@ -15,13 +15,7 @@ This object extends GeometryParams and is the abstract parent object for all con
 
 ### Examples 
 
-#### Example: info for point scene layer 
-
-```json
- None 
-```
-
-#### Example:  info for 3D object scene layer 
+#### Example: vestedGeometryParams 
 
 ```json
  {
@@ -45,38 +39,6 @@ This object extends GeometryParams and is the abstract parent object for all con
       },
       "color": {
         "byteOffset": 7112,
-        "valueType": "UInt8",
-        "valuesPerElement": 4
-      }
-    }
-  }
-} 
-```
-
-#### Example:  info for integrated mesh scene layer 
-
-```json
- {
-  "params": {
-    "type": "triangles",
-    "vertexAttributes": {
-      "position": {
-        "byteOffset": 8,
-        "valueType": "Float32",
-        "valuesPerElement": 3
-      },
-      "normal": {
-        "byteOffset": 126980,
-        "valueType": "Float32",
-        "valuesPerElement": 3
-      },
-      "uv0": {
-        "byteOffset": 253952,
-        "valueType": "Float32",
-        "valuesPerElement": 2
-      },
-      "color": {
-        "byteOffset": 338600,
         "valueType": "UInt8",
         "valuesPerElement": 4
       }

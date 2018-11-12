@@ -30,10 +30,7 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "info for point scene layer"
-      },
-      {
-        "title": " info for 3D object scene layer",
+        "title": "geomtryReferenceParams",
         "code": {
           "type": "GeometryReference",
           "params": {
@@ -41,19 +38,6 @@
             "faceRange": [
               0,
               195
-            ]
-          }
-        }
-      },
-      {
-        "title": " info for integrated mesh scene layer",
-        "code": {
-          "type": "GeometryReference",
-          "params": {
-            "$ref": "/geometryData/13752",
-            "faceRange": [
-              0,
-              3526
             ]
           }
         }

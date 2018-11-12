@@ -21,8 +21,8 @@
         "esriFieldTypeSmallInteger",
         "esriFieldTypeString"
       ],
-        "description": "Type of the field."
-      },
+      "description": "Type of the field."
+    },
     "alias": {
       "type": "string",
       "description": "Alias of the field."
@@ -34,13 +34,43 @@
         "$ref": "domain_schema.json"
       },
       "description": "Array of domains defined for a field."
- 
     }
   },
   "required": [
     "name",
     "type "
-  ]
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Fields example",
+        "code": {
+          "name": "CreatedPhase",
+            "type": "esriFieldTypeInteger",
+            "alias": "CreatedPhase",
+            "domain": {
+                "type": "codedValue",
+                "name": "Phases",
+                "description": "Phases",
+                "codedValues": [
+                    {
+                        "name": "Existing",
+                        "code": 0
+                    },
+                    {
+                        "name": "Baby Room Overhaul",
+                        "code": 1
+                    },
+                    {
+                        "name": "Roof Garden",
+                        "code": 2
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+        }
+      }
+    }
+    ]
+  }
 }
-
-

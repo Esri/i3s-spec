@@ -4,7 +4,7 @@
 
 ### Related:
 
-[meshv2::nodepages](../../meshv2/docs/nodepages.md)
+[mesh17::nodepages](nodepages.md)
 ### Properties
 
 | Property | Type | Description |

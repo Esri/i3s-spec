@@ -4,7 +4,7 @@
 
 ### Related:
 
-[mesh17::layer](layer.md), [mesh17::nodes](nodes.md)
+[mesh17::nodes](nodes.md), [mesh17::layer](layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -13,7 +13,7 @@
 | lodThreshold | number | When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.md)  |
 | **obb** | [common::obb](../../common/docs/obb.md) | Oriented bounding box for this node.  |
 | children | integer[] | index of the children nodes indices |
-| meshes | [mesh17::mesh](mesh.md)[1] | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
+| meshes | [mesh17::mesh](mesh.md)[0:1] | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
 
 *Note: properties in **bold** are required*
 

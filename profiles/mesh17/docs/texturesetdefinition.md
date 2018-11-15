@@ -1,6 +1,13 @@
 # Texture set definition 
 
-Texture set definition
+
+
+###  Sharing texture between nodes
+
+Texture may be shared between nodes:
+
+
+ 
 
 ### Related:
 
@@ -10,15 +17,15 @@ Texture set definition
 | Property | Type | Description |
 | --- | --- | --- |
 | **formats** | [mesh17::texturesetdefinitionformat](texturesetdefinitionformat.md)[] | List of formats that are available for this texture set |
-| **binding** | string | texture binding<div>Possible values are:<ul><li>`per-node`: Textures are per-node and located at `/layers/0/nodes/{resource_id}/textures/{index}` where `{index}` is `this.formats[i].index`</li><li>`per-layer`: Texture is shared (i.e. 'global' for the layer) and located at `/layers/0/shared/textures/{index}` where `{index}` is `this.formats[i].index`</li></ul></div> |
+| sampler | [mesh17::texturesampler](texturesampler.md) | Optional texture sampler (_TBD_) |
 
 *Note: properties in **bold** are required*
 
 ### Examples 
 
-#### Example: Per node texture set definition 
+#### Example: Texture set definition (desktop: jpg+dds) 
 
-For a mesh with `resource_id=888`, JPEG will be at `/layers/0/nodes/888/textures/0` and DDS at `/layers/0/nodes/888/textures/1` 
+For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/textures/0` and DDS at `/layers/0/nodes/888/textures/1` 
 
 ```json
  {
@@ -31,15 +38,13 @@ For a mesh with `resource_id=888`, JPEG will be at `/layers/0/nodes/888/textures
       "index": 1,
       "format": "dds"
     }
-  ],
-  "binding": "per-node"
-}
- 
+  ]
+} 
 ```
 
-#### Example: Per-layer texture (shared) definition 
+#### Example: Texture set definition with ETC2 compresses image (Mobile: jpg+ktx) 
 
-JPEG texture will be at `/layers/0/shared/textures/10` 
+JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/10`. Same texture in KTX format will be at  `/layers/0/nodes/{nodes[i].material.resource}/textures/11` 
 
 ```json
  {
@@ -47,13 +52,16 @@ JPEG texture will be at `/layers/0/shared/textures/10`
     {
       "index": 10,
       "format": "jpg"
+    },
+    {
+      "index": 11,
+      "format": "ktx"
     }
-  ],
-  "binding": "per-layer"
+  ]
 } 
 ```
 
-#### Example: PNG bundled texture on 3rd slot of bundle at  `/layers/0/nodes/{resource_id}/textures/1` 
+#### Example: PNG bundled texture on 3rd slot of bundle at  `/layers/0/nodes/{resource}/textures/1` 
 
 ```json
  {
@@ -66,8 +74,7 @@ JPEG texture will be at `/layers/0/shared/textures/10`
         "format": "png"
       }
     }
-  ],
-  "binding": "per-node"
+  ]
 } 
 ```
 
@@ -86,8 +93,7 @@ JPEG texture will be at `/layers/0/shared/textures/10`
             "format": "jpg"
           }
         }
-      ],
-      "binding": "per-node"
+      ]
     },
     {
       "formats": [
@@ -99,8 +105,7 @@ JPEG texture will be at `/layers/0/shared/textures/10`
             "format": "png"
           }
         }
-      ],
-      "binding": "per-node"
+      ]
     },
     {
       "formats": [
@@ -112,8 +117,7 @@ JPEG texture will be at `/layers/0/shared/textures/10`
             "format": "png"
           }
         }
-      ],
-      "binding": "per-node"
+      ]
     }
   ],
   "materialDefinitions": [

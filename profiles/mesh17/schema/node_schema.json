@@ -27,7 +27,7 @@
     },
     "meshes": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "maxItems": 1,
       "items": {
         "type": "object",

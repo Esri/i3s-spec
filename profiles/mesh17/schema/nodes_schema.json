@@ -2,7 +2,7 @@
   "title": "Node page index document",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "related" :  "meshv2::nodepages",
+  "related" :  "mesh17::nodepages",
   "description": "",
   "properties": {
     "nodes": {

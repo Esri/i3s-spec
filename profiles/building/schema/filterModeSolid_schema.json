@@ -17,13 +17,9 @@
       {
         "title": "filterMode solid",
         "code": {
-          "filterBlocks": [
-            {
-              "title": "Created Phase 1",
-              "filterMode": "solid",
-              "filterExpression": "CreatedPhase=1"
-            }
-          ]
+          "filterMode": {
+            "type": "solid"
+          }
         }
       }
     ]

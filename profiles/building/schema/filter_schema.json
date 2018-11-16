@@ -59,7 +59,9 @@
                 "filterBlocks": [
                     {
                         "title": "Created Phase 1",
-                        "filterMode": "solid",
+                        "filterMode": {
+                          "type": "solid"
+                        },
                         "filterExpression": "CreatedPhase=1"
                     }
                 ]

@@ -21,8 +21,8 @@ Statistics for all building scene layer sublayers. Captures statistical informat
  {
   "summary": [
     {
-      "name": "floor",
-      "alias": "Etage",
+      "fieldName": "floor",
+      "label": "Etage",
       "modelName": "floorId",
       "mostFrequentValues": [
         1,
@@ -40,8 +40,8 @@ Statistics for all building scene layer sublayers. Captures statistical informat
       ]
     },
     {
-      "name": "fournitures",
-      "alias": "Meuble interieur",
+      "fieldName": "fournitures",
+      "label": "Meuble interieur",
       "mostFrequentValues": [
         "chair",
         "table",
@@ -55,8 +55,8 @@ Statistics for all building scene layer sublayers. Captures statistical informat
       ]
     },
     {
-      "name": "diameter",
-      "alias": "Diametre de conduit",
+      "fieldName": "diameter",
+      "label": "Diametre de conduit",
       "min": 0.2566,
       "max": 2.256,
       "subLayerIds": [

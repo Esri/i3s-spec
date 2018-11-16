@@ -22,7 +22,9 @@ A filter block defines what elements will be filtered with a specific filter mod
 ```json
  {
   "title": "Created Phase 1",
-  "filterMode": "solid",
+  "filterMode": {
+    "type": "solid"
+  },
   "filterExpression": "CreatedPhase=1"
 } 
 ```

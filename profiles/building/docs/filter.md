@@ -35,7 +35,9 @@ The filter object can be applied to a building scene layer. Filter allows client
       "filterBlocks": [
         {
           "title": "Created Phase 1",
-          "filterMode": "solid",
+          "filterMode": {
+            "type": "solid"
+          },
           "filterExpression": "CreatedPhase=1"
         }
       ]

@@ -20,17 +20,19 @@ Shows all elements that comply with the filter block of a filter in a building s
   "filterBlocks": [
     {
       "title": "Created Phase 1",
-      "filterMode": "wireFrame",
-      "edges": {
-        "type": "solid",
-        "color": [
-          255,
-          0,
-          0
-        ],
-        "size": 0.75,
-        "transparency": 10,
-        "extensionLength": 5
+      "filterMode": {
+        "type": "wireFrame",
+        "edges": {
+          "type": "solid",
+          "color": [
+            255,
+            0,
+            0
+          ],
+          "size": 0.75,
+          "transparency": 10,
+          "extensionLength": 5
+        }
       },
       "filterExpression": "CreatedPhase=1"
     }

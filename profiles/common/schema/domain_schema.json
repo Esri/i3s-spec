@@ -66,8 +66,7 @@
   },
   "required": [
     "name",
-    "type",
-    "fieldType"
+    "type"
   ],
   "esriDocumentation": {
     "examples": [

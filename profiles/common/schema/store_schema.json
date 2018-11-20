@@ -19,16 +19,18 @@
         "enum": [
           "3dNodeIndexDocument",
           "SharedResource",
-          "FeatureData",
+          "featureData",
           "Geometry",
-          "Texture"
+          "Texture",
+          "Attributes"
         ],
         "enum-description": {
           "3dNodeIndexDocument": "JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent.",
           "SharedResource": "Shared resources are models or textures that can be shared among features within the same layer.",
           "FeatureData": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
           "Geometry": "Each geometry resource is an array of geometries.",
-          "Texture": "The texture resource for a node contains the images that are used as textures for the features stored in the node."
+          "Texture": "The texture resource for a node contains the images that are used as textures for the features stored in the node.",
+          "Attributes": "Attribute resource for node containing feature data attributes"
         }
       },
       "description": "Indicates the resources needed for rendering and the required order in which the client should load them. "
@@ -43,20 +45,10 @@
     },
     "extent": {
       "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
       "items": {
-        "type": "number",
-        "enum": [
-          "xmin",
-          "ymin",
-          "xmax",
-          "ymax"
-        ],
-        "enum-description": {
-          "xmin": "xmin coordinate value.",
-          "ymin": "ymin coordinate value.",
-          "xmax": "xmax coordinate value.",
-          "ymax": "ymax coordinate value."
-        }
+        "type": "number"
       },
       "description": "The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS."
     },
@@ -105,7 +97,7 @@
       "type": "string",
       "enum": [
         "MeshPyramid",
-        "Thinning",
+        "AutoThinning",
         "Clustering",
         "Generalizing"
       ],

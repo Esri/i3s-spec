@@ -12,7 +12,7 @@
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
-    <CommandLineArguments>-s ../schema/pcsl_layer_schema.json -d k:/dev/i3s-schema/examples/pcsl/3dscenelayer.json</CommandLineArguments>
+    <CommandLineArguments>-s E:\Repos\i3s-spec\profiles\common\schema\3DSNodeIndexDocument_schema.json -d C:\Users\juan9976\Desktop\3dNodeIndexDocument.json</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <Name>schema-validator</Name>
   </PropertyGroup>

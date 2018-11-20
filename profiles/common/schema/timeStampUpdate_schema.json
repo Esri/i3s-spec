@@ -1,0 +1,18 @@
+{
+  "title": "Building Scene Layer service time stamp",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The time the service was last updated",
+  "properties": {
+    "lastUpdate": {
+      "type": "number",
+      "description": "Defines the time of the last update."
+    }
+  },
+  "required": [
+    "lastUpdate"
+  ],
+  "esriDocumentation": {
+    "examples": []
+  }
+}

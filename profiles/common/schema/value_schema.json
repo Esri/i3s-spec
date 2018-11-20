@@ -7,43 +7,20 @@
     "valueType": {
       "type": "string",
       "description": "Defines the value type."
-      },
-      "encoding":{
-        "type": "string",
-        "description": "Encoding method for the value."
-      },
-      "valuesPerElement":{
-        "type": "number",
-        "description": "Number of values per element."
-      }
+    },
+    "encoding": {
+      "type": "string",
+      "description": "Encoding method for the value."
+    },
+    "valuesPerElement": {
+      "type": "number",
+      "description": "Number of values per element."
+    }
   },
   "required": [
-    "valueType",
-    "encoding ",
-    "valuesPerElement "
+    "valueType"
   ],
   "esriDocumentation": {
-    "examples": [
-       {
-         "title": "cachedDrawingInfo for 3D Object scene layer.",
-         "code": {
-          "attributeByteCounts": {
-              "valueType": "UInt32",
-              "valuesPerElement": 1
-            },
-          "attributeValues": {
-            "valueType": "String",
-            "encoding": "UTF-8",
-            "valuesPerElement": 1
-            },
-          "objectIds": {
-            "valueType": "UInt32",
-            "valuesPerElement": 1
-              }
-           }
-        }   
-      ]
-   }
+    "examples": []
+  }
 }
-
-

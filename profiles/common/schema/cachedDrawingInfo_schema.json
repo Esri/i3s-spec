@@ -13,6 +13,7 @@
     "required": [
         "color"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
            {

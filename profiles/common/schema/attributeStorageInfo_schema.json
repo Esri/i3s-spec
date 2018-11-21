@@ -57,6 +57,7 @@
         "name",
         "header"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
             {

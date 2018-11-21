@@ -17,6 +17,10 @@
       "type": "string",
       "description": "Name of the domain. Must be unique per Scene Layer."
     },
+    "description": {
+      "type": "string",
+      "description": "Description of the domain"
+    },
     "fieldType": {
       "type": "string",
       "enum": [
@@ -68,6 +72,7 @@
     "name",
     "type"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

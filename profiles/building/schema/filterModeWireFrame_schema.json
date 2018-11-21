@@ -16,6 +16,7 @@
       "description": "An object defining solid edges of a feature. [See more](https://developers.arcgis.com/web-scene-specification/objects/edges/) information on supported edges in ArcGIS clients."
     }
   },
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

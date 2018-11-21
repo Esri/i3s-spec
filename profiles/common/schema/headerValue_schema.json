@@ -35,5 +35,6 @@
     "valueType",
     "property"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {}
 }

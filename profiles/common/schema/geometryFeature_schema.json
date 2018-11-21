@@ -19,6 +19,7 @@
     "id",
     "faceRange"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     
   }

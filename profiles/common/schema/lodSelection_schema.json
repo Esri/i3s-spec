@@ -17,6 +17,7 @@
     "metricType",
     "maxError"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

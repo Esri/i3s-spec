@@ -6,29 +6,28 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum":[
+      "enum": [
         "checkbox"
       ],
-      "enum-description" : 
-                {
-                    "checkbox" : "Client UI with checkbox representation for each filter type and filter value."
-                },
-    "description": "Declares type or filter authoring info."
-    },
-    "filterblocks":{
-      "type":"array",
-      "items": {
-        "type": "object" 
+      "enum-description": {
+        "checkbox": "Client UI with checkbox representation for each filter type and filter value."
       },
-    "description": "Array of filter block authoring info.",
-    "$ref": "filterBlockAuthoringInfo_schema.json"
+      "description": "Declares type or filter authoring info."
+    },
+    "filterblocks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Array of filter block authoring info.",
+      "$ref": "filterBlockAuthoringInfo_schema.json"
     }
   },
-   
   "required": [
     "type",
     "filterTypes"
-      ],
+  ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

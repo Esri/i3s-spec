@@ -12,6 +12,7 @@
       "description": "Declares filter mode of type solid."
     }
   },
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

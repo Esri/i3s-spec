@@ -33,6 +33,13 @@
             },
             "description": "Defines header fields in the geometry resources of this store that precede the vertex (and index) data."
         },
+        "ordering": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "Defines the ordering of the vertex Attributes"
+            }   
+        },
         "vertexAttributes": {
             "type": "object",
             "$ref": "vertexAttribute_schema.json",
@@ -65,6 +72,7 @@
         "featureAttributeOrder",
         "featureAttributes"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
             {

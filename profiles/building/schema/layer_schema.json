@@ -76,6 +76,7 @@
     "spatialReference",
     "sublayers"    
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

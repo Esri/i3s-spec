@@ -6,6 +6,7 @@ import argparse
 import re
 import errno
 import collections
+from slpk_validator import validate_json_string
 
 
 def json_to_dom( path ) :
@@ -27,9 +28,9 @@ class Schema_manifest :
         tok = name.split('::')
         assert( len(tok) <=2 )
         fn = tok[-1] + "_schema.json"
-        if len(tok) >1 :
+        if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( [Schema_manifest.c_code_to_paths[tok[0]], "schema", fn] ) 
+            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
         return os.path.realpath( os.path.join( self.ref_path, fn ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
@@ -418,11 +419,22 @@ class Markdown_writer  :
             # Examples:
             if len( schema_doc.example_dom ) :
                 self.write_line( "### Examples \n" )
+                # get abs path to schema to validate examples against it
+                schema = manifest.get_abs_path_from_schema_name(schema_doc.name)
+                temp_file_name = schema_doc.name.replace('::', '_')                   # change folder::file -> folder_file to avoid colons in file names
+                error_output = {}
                 for ex in schema_doc.example_dom  :
+                    successful_validation = True
                     self.write_line( "#### Example: %s \n" % (ex['title'] if 'title' in ex else '' ))
-                    if 'description' in ex :
-                        self.write_line( "%s \n" % ex['description'] )
-                    self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
+                    # validate example code if it exists in the current schema
+                    ex_code = self.get_example_code( ex )
+                    if (ex_code != "") :                # no example code returns empty string, e.g. ""
+                        successful_validation, error_output[schema_doc.name.split('::')[1]] = validate_json_string(schema, ex_code, temp_file_name)
+                        # only print the example and description if it successfully validates
+                        if (successful_validation) :
+                            if 'description' in ex :
+                                self.write_line( "%s \n" % ex['description'] )
+                            self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
 
 

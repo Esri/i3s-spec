@@ -21,7 +21,8 @@
     "valueType",
     "valuesPerElement"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
-    "examples": [    ]
+    "examples": []
   }
 }

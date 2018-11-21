@@ -39,6 +39,7 @@
     "name",
     "type"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

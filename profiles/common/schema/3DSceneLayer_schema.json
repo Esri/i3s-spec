@@ -43,7 +43,7 @@
         "serviceUpdateTimeStamp": {
             "type": "object",
             "description": "The time of the last update",
-            "$ref": "timeStampUpdate_schema.json"
+            "$ref": "serviceUpdateTimeStamp_schema.json"
         },
         "featureidMappedFromFS": {
             "type": "number"

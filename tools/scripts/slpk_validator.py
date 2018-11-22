@@ -207,9 +207,8 @@ def get_schema_type(length, object):
 # returns path to created file
 def create_file_to_validate(file_name, data):
     #create file to pass to validator
-    json_file = open(file_name, "w", encoding="utf-8")
-    json_file.write(data)
-    json_file.close()
+    with open(file_name, "w", encoding="utf-8") as f:
+        f.write(data)
 
     # temporary file name to pass to schema validator
     current_dir = os.getcwd()
@@ -228,9 +227,15 @@ def validate_json_string(json_schema, data, temp_file_name = "temp"):
     temp_file_name = temp_file_name + ".json"
     #create file for validator
     data_file_path = create_file_to_validate(temp_file_name, data)
+
     #validate the file
-    successful_validation, error_output = validate(data_file_path, json_schema)
-    remove_file(temp_file_name)
+    try:
+        successful_validation, error_output = validate(data_file_path, json_schema)
+    except Exception as e:
+        print(e)
+    finally:
+        remove_file(temp_file_name)
+
     return successful_validation, error_output
 
 ############################################################################

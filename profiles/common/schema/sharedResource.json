@@ -18,6 +18,7 @@
   "required": [
     "materialDefinitions"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

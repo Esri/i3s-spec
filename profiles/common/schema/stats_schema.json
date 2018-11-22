@@ -8,5 +8,6 @@
       "type": "object",
       "$ref": "statsInfo_schema.json"
     }
-  }
+  },
+  "additionalProperties": false
 }

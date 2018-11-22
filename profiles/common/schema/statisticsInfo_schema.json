@@ -23,6 +23,7 @@
         "name",
         "href"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
            {

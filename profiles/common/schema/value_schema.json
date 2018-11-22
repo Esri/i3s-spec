@@ -20,6 +20,7 @@
   "required": [
     "valueType"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": []
   }

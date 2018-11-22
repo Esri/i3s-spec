@@ -430,6 +430,8 @@ class Markdown_writer  :
                     ex_code = self.get_example_code( ex )
                     if (ex_code != "") :                # no example code returns empty string, e.g. ""
                         successful_validation, error_output[schema_doc.name.split('::')[1]] = validate_json_string(schema, ex_code, temp_file_name)
+                        if (not successful_validation) :
+                            raise BaseException(("Example did not successfully validate against schema"))
                         # only print the example and description if it successfully validates
                         if (successful_validation) :
                             if 'description' in ex :
@@ -482,8 +484,24 @@ if __name__ == "__main__" :
         for file in os.listdir( search_folder) :
             if file.endswith(".json"):
                 abs_path = os.path.join(search_folder, file)
-                manifest.get_type_from_abs_path( abs_path )    
-    
+                manifest.get_type_from_abs_path( abs_path )
+                
+   
+    ## validate examples before writing to schema
+    for profile in manifest.types:
+        examples = manifest.types[profile].example_dom
+        if ( len(examples) ) :
+            schema = manifest.get_abs_path_from_schema_name(profile)
+            temp_file_name = profile.replace('::', '_')                   # change folder::file -> folder_file to avoid colons in file names
+            error_output = {}
+            for example in examples:
+                successful_validation = True
+                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
+                if (ex_code != "") :                # no example code is an empty string, e.g. ""
+                    successful_validation, error_output[profile.split('::')[1]] = validate_json_string(schema, ex_code, temp_file_name)
+                    if (not successful_validation) :
+                        raise BaseException(("Example did not successfully validate against schema"))
+
     #write all profiles:
     output_path =os.path.join( root )
     writer = Markdown_writer( output_path);

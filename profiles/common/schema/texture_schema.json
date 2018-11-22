@@ -42,6 +42,7 @@
   }
 }
 },
+"additionalProperties": false,
 "esriDocumentation": {
   "examples": [
     {

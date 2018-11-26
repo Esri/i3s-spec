@@ -419,24 +419,12 @@ class Markdown_writer  :
             # Examples:
             if len( schema_doc.example_dom ) :
                 self.write_line( "### Examples \n" )
-                # get abs path to schema to validate examples against it
-                schema = manifest.get_abs_path_from_schema_name(schema_doc.name)
-                temp_file_name = schema_doc.name.replace('::', '_')                   # change folder::file -> folder_file to avoid colons in file names
-                error_output = {}
                 for ex in schema_doc.example_dom  :
-                    successful_validation = True
                     self.write_line( "#### Example: %s \n" % (ex['title'] if 'title' in ex else '' ))
                     # validate example code if it exists in the current schema
-                    ex_code = self.get_example_code( ex )
-                    if (ex_code != "") :                # no example code returns empty string, e.g. ""
-                        successful_validation, error_output[schema_doc.name.split('::')[1]] = validate_json_string(schema, ex_code, temp_file_name)
-                        if (not successful_validation) :
-                            raise BaseException(("Example did not successfully validate against schema"))
-                        # only print the example and description if it successfully validates
-                        if (successful_validation) :
-                            if 'description' in ex :
-                                self.write_line( "%s \n" % ex['description'] )
-                            self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
+                    if 'description' in ex :
+                        self.write_line( "%s \n" % ex['description'] )
+                        self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
 
 
@@ -492,18 +480,21 @@ if __name__ == "__main__" :
         examples = manifest.types[profile].example_dom
         if ( len(examples) ) :
             schema = manifest.get_abs_path_from_schema_name(profile)
-            temp_file_name = profile.replace('::', '_')                   # change folder::file -> folder_file to avoid colons in file names
-            error_output = {}
+            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
             for example in examples:
                 successful_validation = True
                 ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
-                if (ex_code != "") :                # no example code is an empty string, e.g. ""
-                    successful_validation, error_output[profile.split('::')[1]] = validate_json_string(schema, ex_code, temp_file_name)
-                    if (not successful_validation) :
-                        raise BaseException(("Example did not successfully validate against schema"))
+                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                    try:
+                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
+                        if (not successful_validation) :
+                            bad_example_file = profile.split('::')[1] + ".json"
+                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
+                    except BaseException as e:
+                        print(e)
 
     #write all profiles:
-    output_path =os.path.join( root )
+    output_path = os.path.join( root )
     writer = Markdown_writer( output_path);
     for name, obj  in manifest.types.items() :
         writer.write_to_md( manifest, obj );

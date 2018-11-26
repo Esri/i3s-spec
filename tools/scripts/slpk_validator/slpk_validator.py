@@ -5,7 +5,6 @@ import sys
 import json
 import jsonschema
 from functools import singledispatch # for removing null in the json data files
-#from validate_json import validate
 
 ############################################################################
 ############### Decompress an slpk file for reading ########################
@@ -66,60 +65,60 @@ def load_json_content_without_null_objects( src_path ) :
 ############################################################################
 ################## Validate a file against schema ##########################
 ############################################################################
-#def format_path(path):
-#    data_path = ''
-#    for item in path:
-#        data_path += '.' + str(item)
-#    return data_path    
+def format_path(path):
+    data_path = ''
+    for item in path:
+        data_path += '.' + str(item)
+    return data_path    
 
-#def format_error( error, errors, input_data ):
-#    global verbose
+def format_error( error, errors, input_data ):
+    global verbose
 
-#    data = {}
-#    data['keyword'] = error.validator
-#    data['dataPath'] = format_path(error.absolute_path)
-#    data['message'] = error.message 
-#    data['schemaPath'] = format_path(error.schema_path)
-#    data['params'] = {}
-#    data['params'][error.validator] = error.validator_value
+    data = {}
+    data['keyword'] = error.validator
+    data['dataPath'] = format_path(error.absolute_path)
+    data['message'] = error.message 
+    data['schemaPath'] = format_path(error.schema_path)
+    data['params'] = {}
+    data['params'][error.validator] = error.validator_value
     
-#    if verbose:
-#        data['parentSchema'] = error.schema
-#        data['data'] = input_data
+    if verbose:
+        data['parentSchema'] = error.schema
+        data['data'] = input_data
 
-#    return data
+    return data
 
-#def process_error_json(errors, data):
-#    error_array = []
+def process_error_json(errors, data):
+    error_array = []
 
-#    for error in errors:
-#        error_array.append(format_error(error, errors, data))
-#    return error_array
+    for error in errors:
+        error_array.append(format_error(error, errors, data))
+    return error_array
 
-#def process_error_console(errors, data_file_name):
-#    for error in errors:
-#        uprint("\n\n\n\n~~~~~~~~~~~~~~~~~ " + data_file_name + " ~~~~~~~~~~~~~~~~~~~~~~~\n\n")
-#        uprint(error)
-#        for suberror in sorted(error.context, key=lambda e: e.schema_path):
-#            try:
-#                uprint(list(suberror.schema_path), suberror.message, sep=", ")  
-#            except Exception as e:
-#                print("\n\n\n\n" + e + "\n\n")
+def process_error_console(errors, data_file_name):
+    for error in errors:
+        uprint("\n\n\n\n~~~~~~~~~~~~~~~~~ " + data_file_name + " ~~~~~~~~~~~~~~~~~~~~~~~\n\n")
+        uprint(error)
+        for suberror in sorted(error.context, key=lambda e: e.schema_path):
+            try:
+                uprint(list(suberror.schema_path), suberror.message, sep=", ")  
+            except Exception as e:
+                print("\n\n\n\n" + e + "\n\n")
 
-#def process_error_json_output(json_errors, file_write):
-#    json_data = json.dumps(json_errors)
-#    if file_write:
-#        if os.path.isdir(file_write):
-#            file_write = os.path.join(file_write, 'validation_errors.json')
+def process_error_json_output(json_errors, file_write):
+    json_data = json.dumps(json_errors)
+    if file_write:
+        if os.path.isdir(file_write):
+            file_write = os.path.join(file_write, 'validation_errors.json')
 
-#        with open(file_write, mode='w', encoding='utf-8') as output:
-#            output.write(json_data)
+        with open(file_write, mode='w', encoding='utf-8') as output:
+            output.write(json_data)
 
-#    else:
-#        uprint( str(json_data) )
+    else:
+        uprint( str(json_data) )
 
 
-#def validate( data_file_name, schema_file, json_output=False ):
+def validate( data_file_name, schema_file, json_output=False ):
     successful_validation = True
     json_errors = {}
     json_errors['errors'] = []
@@ -231,10 +230,8 @@ def validate_json_string(json_schema, data, temp_file_name = "temp"):
     data_file_path = create_file_to_validate(temp_file_name, data)
 
     #validate the file, then remove it
-    try:
-        successful_validation, error_output = validate(data_file_path, json_schema)
-    finally:
-        remove_file(temp_file_name)
+    successful_validation, error_output = validate(data_file_path, json_schema)
+    remove_file(temp_file_name)
 
     return successful_validation, error_output
 
@@ -287,19 +284,14 @@ def validate_slpk(path_to_slpk, path_to_specs_folder):
 ############################################################################
 # Testing validator
 
-if __name__ == "__main__" :
 ### slpks ###
-    #slpk = "C:/Users/juan9976/Desktop/COTTAGE_MODEL_bad_stats.slpk"     # original slpk, bad statistic summary
-    slpk = "C:\\Users\\juan9976/Desktop\\COTTAGE_MODEL.slpk"              
-    #slpk = "C:/Users/juan9976/Desktop/11JaySt2015.slpk"
-    #slpk = "C:/Users/juan9976/Desktop/ArmyCorp.slpk"
-    #slpk = "C:/Users/juan9976/Desktop/COTTAGE_MODEL_no_filter.slpk"
+#slpk = "C:/Users/juan9976/Desktop/COTTAGE_MODEL_bad_stats.slpk"     # original slpk, bad statistic summary
+#slpk = "C:\\Users\\juan9976/Desktop\\COTTAGE_MODEL.slpk"              
+#slpk = "C:/Users/juan9976/Desktop/11JaySt2015.slpk"
+#slpk = "C:/Users/juan9976/Desktop/ArmyCorp.slpk"
+slpk = "C:/Users/juan9976/Desktop/COTTAGE_MODEL_no_filter.slpk"
 
-    specs = "E:\\Repos\\i3s-spec"
+specs = "E:\\Repos\\i3s-spec"
 
-    validate_slpk(slpk, specs)
-
-    # testing individual file validation
-    #validate("C:/Users/juan9976/Desktop/schema_data_files/3dSceneLayer.json", "E:/Repos/i3s-spec/profiles/building/schema/layer_schema.json")
-    #validate("C:/Users/juan9976/Desktop/schema_data_files/3dNodeIndexDocument.json", "E:/Repos/i3s-spec/profiles/common/schema/3DSNodeIndexDocument_schema.json")
-    #validate("C:\\Users\\juan9976\\Desktop\\schema_data_files\\3dNodeIndexDocument.json", "E:\\Repos\\i3s-spec\\profiles\\common\\schema\\3DSNodeIndexDocument_schema.json")
+validate_slpk(slpk, specs)
+#validate("C:/Users/juan9976/Desktop/schema_data_files/3dSceneLayer.json", "E:/Repos/i3s-spec/profiles/building/schema/layer_schema.json")

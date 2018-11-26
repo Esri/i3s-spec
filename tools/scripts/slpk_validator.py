@@ -1,16 +1,21 @@
-import zipfile
-import zlib
-import os
-import sys
+import argparse
+import glob
 import json
 import jsonschema
-from functools import singledispatch # for removing null in the json data files
-#from validate_json import validate
+import os
+import sys
+import zipfile
+import zlib
+#from functools import singledispatch # for removing null in the json data files
+from validate_json import validate
+
+# part of main
+files = []
+verbose = ''
 
 ############################################################################
 ############### Decompress an slpk file for reading ########################
 ############################################################################
-
 def to_gzip( content  ) :
     if type( content ) == type( "" ) :
         content = content.encode('utf-8')
@@ -41,23 +46,23 @@ class Reader :
 ############################################################################
 ######## Remove null from the json schema to successfully validate #########
 ############################################################################
-@singledispatch
-def remove_null(ob):
-    return ob
+#@singledispatch
+#def remove_null(ob):
+#    return ob
 
-@remove_null.register(list)
-def _process_list(ob):
-    return [remove_null(v) for v in ob]
+#@remove_null.register(list)
+#def _process_list(ob):
+#    return [remove_null(v) for v in ob]
 
-@remove_null.register(dict)
-def _process_list(ob):
-    return {k: remove_null(v) for k, v in ob.items()
-            if v is not None}
+#@remove_null.register(dict)
+#def _process_list(ob):
+#    return {k: remove_null(v) for k, v in ob.items()
+#            if v is not None}
 
-def load_json_content_without_null_objects( src_path ) :
-    with open(src_path, 'r') as source :
-        data = json.load(source)
-        return remove_null(data)
+#def load_json_content_without_null_objects( src_path ) :
+#    with open(src_path, 'r') as source :
+#        data = json.load(source)
+#        return remove_null(data)
 
 # testing remove null
 #print( load_json_content_without_null_objects( "k:/temp/test-null.json" ) )
@@ -120,43 +125,43 @@ def load_json_content_without_null_objects( src_path ) :
 
 
 #def validate( data_file_name, schema_file, json_output=False ):
-    successful_validation = True
-    json_errors = {}
-    json_errors['errors'] = []
-    data = {}
+#    successful_validation = True
+#    json_errors = {}
+#    json_errors['errors'] = []
+#    data = {}
 
-    with open(data_file_name, 'r', encoding="utf8") as data_file:
-        try: 
-            data = json.load(data_file)
-            data = remove_null(data)
+#    with open(data_file_name, 'r', encoding="utf8") as data_file:
+#        try: 
+#            data = json.load(data_file)
+#            data = remove_null(data)
 
-        except ValueError as e:
-            syntax_error = {}
-            syntax_error['message'] = 'JSON data file syntax error: ' + str(e)
-            json_errors['errors'].append(syntax_error)
-            return False, json_errors
+#        except ValueError as e:
+#            syntax_error = {}
+#            syntax_error['message'] = 'JSON data file syntax error: ' + str(e)
+#            json_errors['errors'].append(syntax_error)
+#            return False, json_errors
 
-    try:
-        absolute_path_to_base_directory = os.path.dirname(os.path.join(os.path.dirname(__file__), schema_file))
-        schema_abs_path =os.path.realpath( os.path.join(os.path.dirname(__file__), schema_file))
-        with open(schema_abs_path, 'r', encoding="utf-8") as file_object:
-           schema = json.load(file_object)
+#    try:
+#        absolute_path_to_base_directory = os.path.dirname(os.path.join(os.path.dirname(__file__), schema_file))
+#        schema_abs_path =os.path.realpath( os.path.join(os.path.dirname(__file__), schema_file))
+#        with open(schema_abs_path, 'r', encoding="utf-8") as file_object:
+#           schema = json.load(file_object)
 
-        resolver = jsonschema.RefResolver('file:///' + absolute_path_to_base_directory + '/', schema)
-    except:
-        raise # Exception("RefResolver")
+#        resolver = jsonschema.RefResolver('file:///' + absolute_path_to_base_directory + '/', schema)
+#    except:
+#        raise # Exception("RefResolver")
 
-    validator = jsonschema.Draft4Validator(schema, resolver=resolver)
+#    validator = jsonschema.Draft4Validator(schema, resolver=resolver)
 
-    errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
-    if errors:
-        successful_validation = False
-        if json_output:
-            json_errors['errors'] = process_error_json(errors, data)
-        else:
-            process_error_console(errors, data_file_name)
+#    errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
+#    if errors:
+#        successful_validation = False
+#        if json_output:
+#            json_errors['errors'] = process_error_json(errors, data)
+#        else:
+#            process_error_console(errors, data_file_name)
 
-    return successful_validation, json_errors
+#    return successful_validation, json_errors
 
 def uprint(*objects, sep=' ', end='\n', file=sys.stdout):
     try:
@@ -248,6 +253,7 @@ def validate_slpk(path_to_slpk, path_to_specs_folder):
     error_output = {}
     error_count = 0
     success_count = 0
+    successful_validation = True
     for file in paths:
         # check if path points to json file
         # if so, decompress file and validate schema
@@ -265,39 +271,106 @@ def validate_slpk(path_to_slpk, path_to_specs_folder):
             if (not schema):
                 continue       
 
-            print("Now validating: " + file)
+            print("validating file: " + file)
 
             path_to_json_schema = path_to_specs_folder + "/profiles/" + schema
             
             # validate the data file against the schema           
-            successful_validation, error_output[current_file] = validate_json_string(path_to_json_schema, file_contents, current_file)
+            successful__file_validation, error_output[current_file] = validate_json_string(path_to_json_schema, file_contents, current_file)
+            if (not successful__file_validation) :
+                successful_validation = False
+    
+    #        if not successful__file_validation:
+    #            error_count += 1
+    #        else:
+    #            success_count += 1
 
-            if not successful_validation:
-                error_count += 1
-            else:
-                success_count += 1
+    #print("Number of errors: " + str(error_count))
+    #print("Number of successful files: " + str(success_count))
+    #print()
 
-            # remove the temporary file
-            remove_file(current_file)
+    return successful_validation, error_output
 
-    print("Number of errors: " + str(error_count))
-    print("Number of successful files: " + str(success_count))
+
+def main():
+    parser = argparse.ArgumentParser(description='This program validates data given a schema.',
+                                epilog='',
+                                add_help=True,
+                                argument_default=None, # Global argument default
+                                usage=__doc__)
+    parser.add_argument('-s', '--schema', action='store', dest='schema_file', required=True, help='The path of the i3s schema folder.')
+    parser.add_argument('-d', '--data', action='store', dest='data_path', default='./', help='The slpk file being validated.')
+    parser.add_argument('-j', '--json', action='store_true', dest='json_output', default=False, help='Setting this outputs the errors in a json compatible format')
+    parser.add_argument('-w', '--write', action='store', dest='file_write', default=False, help='May only be set alongside -j. Writes file into specified directory.')
+    parser.add_argument('-v', '--verbose', action='store_true', dest='verbose', help='Output verbose error information.')
+
+    error_output = {}
+    error_count = 0
+    global verbose
+
+    try:
+        arguments = parser.parse_args()
+ 
+        json_output = arguments.json_output
+        file_write = arguments.file_write
+        verbose = arguments.verbose
+
+        if os.path.isfile(arguments.schema_file):
+            raise FileNotFoundError("Please provide to i3s spec folder. Not a schema file")
+            #schema_file = arguments.schema_file
+        elif os.path.isdir(arguments.schema_file):
+            #raise FileNotFoundError("Please provide schema file rather than folder.")
+            schema_dir = arguments.schema_file
+        else:
+            raise FileNotFoundError("Schema file not found.")
+
+	    #this is the data/slpk file being validated
+        if os.path.isfile(arguments.data_path):
+            files.append(arguments.data_path)
+        elif os.path.isdir(arguments.data_path):
+            for data_file_name in glob.glob(os.path.join(arguments.data_path, '*.slpk')):
+                files.append(data_file_name)
+        else:
+            raise FileNotFoundError("Slpk or folder not found.")
+            
+    except FileNotFoundError as e:
+        raise e
+    except Exception as e:
+        print (e)
+
+    for data_file_name in files:
+        head, tail = os.path.split(data_file_name)
+        root, ext = os.path.splitext(tail)
+        print("Now validating: %s" % tail)
+        successful_validation, error_output[root] = validate_slpk( data_file_name, schema_dir )
+        if not successful_validation:
+            error_count += 1
+
+    if json_output:
+        process_error_json_output(error_output, file_write)
+    else:
+        print("Statistics:")
+        print("Number of errors: " + str(error_count))
+        print("Number of successful files: " + str(len(files) - error_count))
 
 
 ############################################################################
 # Testing validator
 
 if __name__ == "__main__" :
+    main()
+
+# this is for testing
 ### slpks ###
     #slpk = "C:/Users/juan9976/Desktop/COTTAGE_MODEL_bad_stats.slpk"     # original slpk, bad statistic summary
-    slpk = "C:\\Users\\juan9976/Desktop\\COTTAGE_MODEL.slpk"              
+    #slpk = "C:\\Users\\juan9976/Desktop\\COTTAGE_MODEL.slpk"              
     #slpk = "C:/Users/juan9976/Desktop/11JaySt2015.slpk"
     #slpk = "C:/Users/juan9976/Desktop/ArmyCorp.slpk"
     #slpk = "C:/Users/juan9976/Desktop/COTTAGE_MODEL_no_filter.slpk"
 
-    specs = "E:\\Repos\\i3s-spec"
+    #specs = "E:\\Repos\\i3s-spec"
 
-    validate_slpk(slpk, specs)
+    #validate_slpk(slpk, specs)
 
     # testing individual file validation
     #validate("C:/Users/juan9976/Desktop/schema_data_files/3dSceneLayer.json", "E:/Repos/i3s-spec/profiles/building/schema/layer_schema.json")

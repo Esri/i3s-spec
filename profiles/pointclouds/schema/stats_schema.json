@@ -57,6 +57,7 @@
     "max",
     "count"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

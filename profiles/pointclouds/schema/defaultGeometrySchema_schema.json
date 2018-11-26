@@ -58,6 +58,7 @@
             "vertexAttributes",
             "encoding"
         ],
+        "additionalProperties": false,
         "esriDocumentation": {
             "examples": [
                {

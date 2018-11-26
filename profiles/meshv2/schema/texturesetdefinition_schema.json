@@ -26,6 +26,7 @@
     "binding",
     "formats"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

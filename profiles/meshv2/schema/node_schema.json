@@ -43,6 +43,7 @@
     "index",
     "obb"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

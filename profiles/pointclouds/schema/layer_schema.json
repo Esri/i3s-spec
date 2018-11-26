@@ -97,6 +97,7 @@
         "store",
         "attributeStorageInfo"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
             {

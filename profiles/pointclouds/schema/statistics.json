@@ -17,6 +17,7 @@
       "description": "Statistics for this attribute"
     }
   },
+  "additionalProperties": false,
    "esriDocumentation": {
     "examples": [
       {

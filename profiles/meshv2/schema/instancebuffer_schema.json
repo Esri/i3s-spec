@@ -33,6 +33,7 @@
   "required": [
     "index"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

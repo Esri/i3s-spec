@@ -42,6 +42,7 @@
     "lodThreshold",
     "obb"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
@@ -50,7 +51,4 @@
       }
     ]
   }
-
 }
-
-

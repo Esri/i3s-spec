@@ -13,7 +13,10 @@
       }
     }
   },
-  "required": [ "nodes" ],
+  "required": [
+    "nodes"
+  ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
@@ -23,5 +26,3 @@
     ]
   }
 }
-
-

@@ -42,6 +42,7 @@
         "index",
         "defaultGeometrySchema"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
            {

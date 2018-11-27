@@ -48,17 +48,24 @@ class Reader :
  # e.g [sublayers / 0 / nodes / root / 3dNodeIndexDocument.json.gz] has length 5
 def get_schema_type( length, object ):
     if (length == 1 and object == "3dSceneLayer.json.gz"):
-        return "building/schema/layer_schema.json"
-        #return "common/schema/3dScenelayer_schema.json"
+        return os.path.join("building", "schema", "layer_schema.json")
+        #return "building/schema/layer_schema.json"
     
     if (length == 2):
-        return "building/schema/statsummary_schema.json"
+        return os.path.join("building", "schema", "statsummary_schema.json")
+        #return "building/schema/statsummary_schema.json"
 
     if (length == 3):
-        return "common/schema/3dScenelayer_schema.json"
+        return os.path.join("common", "schema", "3dScenelayer_schema.json")
+        #return "common/schema/3dScenelayer_schema.json"
 
     if (length == 5 and object == "3dNodeIndexDocument.json.gz"):
-        return "common/schema/3DSNodeIndexDocument_schema.json"
+        return os.path.join("common", "schema", "3DSNodeIndexDocument_schema.json")
+        #return "common/schema/3DSNodeIndexDocument_schema.json"
+
+    if (length == 5 and object == "0.json.gz" ) :
+        return os.path.join("common", "schema", "stats_schema.json")
+        #return "common/schema/stats_schema.json"
 
     #ignore shared resource
     #if (length == 6 and object == "sharedResource.json.gz") :
@@ -69,11 +76,8 @@ def get_schema_type( length, object ):
     # slows down the process
     #if (length == 6 and object == "0.json.gz") :
     #    return "common/schema/featureData_schema.json"
-    
-    if (length == 5 and object == "0.json.gz" ) :
-        return "common/schema/stats_schema.json"
 
-    # bad file
+    # wrong type of file
     return None
 
 
@@ -85,17 +89,17 @@ def create_file_to_validate( file_name, data ):
         f.write(data)
 
     current_dir = os.getcwd()
-    data_file_path = current_dir + "\\" + file_name
+    data_file_path = os.path.join(current_dir, file_name)
 
     return data_file_path
 
 
-# removes file_name if within same directory as project
+# removes file_name, if within same directory as project
 def remove_file( file_name ):
      if (os.path.exists(file_name) and os.path.isfile(file_name)) :
          os.remove(file_name)
 
-
+        
 # creates temporary file to validate data
 # validates data against json_schema
 def validate_json_string( json_schema, data, temp_file_name = "temp" ):
@@ -104,7 +108,7 @@ def validate_json_string( json_schema, data, temp_file_name = "temp" ):
 
     #validate the file, then remove it
     try:
-        successful_validation, error_output = validate(data_file_path, json_schema)
+        successful_validation, error_output = validate(data_file_path, json_schema.replace('\\', '/'))
     finally:
         remove_file(temp_file_name)
 
@@ -121,6 +125,9 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
     error_count = 0
     success_count = 0
     successful_validation = True
+
+    current_layer = -1                  # used for printing current layer information / checking when sublayer has changed
+
     for file in paths:
         # check if path points to json file
         # if so, decompress file and validate schema
@@ -138,12 +145,21 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
             if (not schema):
                 continue       
 
-            print("validating file: " + file)
+            # print out the current sublayer
+            # also helps to know that program is still running
+            if (len(file_paths) > 2) :
+                if ((int(file_paths[1]) != current_layer)) :
+                    print("Checking sublayer: %s" % file_paths[1])
+                    current_layer = int(file_paths[1])
+            elif (len(file_paths) == 2) :
+                print("Checking statistics")
+            else :
+                print ("Checking root")
 
-            path_to_json_schema = path_to_specs_folder + "/profiles/" + schema
+            path_to_json_schema = os.path.join(path_to_specs_folder, "profiles", schema)
             
             # validate the data file against the schema           
-            successful__file_validation, error_output[current_file] = validate_json_string(path_to_json_schema, file_contents, current_file)
+            successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, current_file)
             if (not successful__file_validation) :
                 successful_validation = False
     
@@ -151,7 +167,7 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
                 error_count += 1
             else:
                 success_count += 1
-
+                
     print("Results for slpk:")
     print("Number of errors: " + str(error_count))
     print("Number of successful files: " + str(success_count))
@@ -185,13 +201,11 @@ def main():
         verbose = arguments.verbose
 
         if os.path.isfile(arguments.schema_file):
-            raise FileNotFoundError("Please provide the i3s spec folder, not a schema file")
-            #schema_file = arguments.schema_file
+            raise FileNotFoundError("Please provide the i3s-spec folder, not a schema file")
         elif os.path.isdir(arguments.schema_file):
-            #raise FileNotFoundError("Please provide schema file rather than folder.")
             schema_dir = arguments.schema_file
         else:
-            raise FileNotFoundError("Schema file not found.")
+            raise FileNotFoundError("Schema folder not found.")
 
 	    #this is the data/slpk file being validated
         if os.path.isfile(arguments.data_path):
@@ -221,7 +235,6 @@ def main():
         print("Results:")
         print("Number of errors: " + str(error_count))
         print("Number of successful files: " + str(len(files) - error_count))
-
 
 
 if __name__ == "__main__" :

@@ -23,6 +23,7 @@ def _process_list(ob):
     return {k: remove_null(v) for k, v in ob.items()
             if v is not None}
 
+
 def format_path(path):
     data_path = ''
     for item in path:

@@ -10,6 +10,8 @@
         },
         "position": {
             "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
             "items": {
                 "type": "number"
             },
@@ -17,6 +19,8 @@
         },
         "pivotOffset": {
             "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
             "items": {
                 "type": "number"
             },

@@ -10,7 +10,7 @@
     },
     "stats": {
       "type": "object",
-      "$ref": "stats_schema.json",
+      "$ref": "../../common/schema/statsInfo_schema.json",
       "description": "Statistics for this attribute"
     },
     "labels": {

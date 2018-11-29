@@ -20,12 +20,17 @@
       "description": "Number of values per element."
     },
     "version": {
-      "type": "number",
+      "type": "string",
       "description": "Version (store update session ID) of the referenced node."
     },
     "featureCount": {
       "type": "number",
       "description": "Number of features in the referenced node and its descendants, down to the leaf nodes."
+    },
+    "obb": {
+      "type": "object",
+      "description": "Describes oriented bounding box.",
+      "$ref": "obb_schema.json"
     }
   },
   "required": [

@@ -24,7 +24,7 @@
       "description": "",
       "$ref": "geometryAttribute_schema.json"
     },
-    "uvRegion": {
+    "region": {
       "type": "object",
       "description": "",
       "$ref": "geometryAttribute_schema.json"

@@ -135,8 +135,7 @@
         }
     },
     "required": [
-        "id",
-        "statisticsInfo"
+        "id"
     ],
     "additionalProperties": false,
     "esriDocumentation": {

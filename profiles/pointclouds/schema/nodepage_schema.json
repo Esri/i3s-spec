@@ -11,6 +11,9 @@
         "type": "object",
         "$ref": "node_schema.json"
       }
+    },
+    "actualCount": {
+      "type": "number"
     }
   },
   "required": [

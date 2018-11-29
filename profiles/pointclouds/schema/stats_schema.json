@@ -28,7 +28,7 @@
       "type": "number",
       "description": "Representing the standard deviation."
     },
-    "variance ": {
+    "variance": {
       "type": "number",
       "description": "Representing variance. For example, stats.stddev *stats.stddev."
     },
@@ -45,11 +45,6 @@
         "description": "An array of most frequently used values within the point cloud scene layer."
       },
       "description": "An array of most frequently used values within the point cloud scene layer."
-    },
-    "labels": {
-      "type": "object",
-      "$ref": "labels_schema.json",
-      "description": " The statistics document may contain labeling information for the attribute values."
     }
   },
   "required": [
@@ -86,5 +81,4 @@
       }
     ]
   }
-
 }

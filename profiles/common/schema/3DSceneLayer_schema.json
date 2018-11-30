@@ -3,6 +3,7 @@
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
+    "related": "common::nodes",
     "properties": {
         "id": {
             "type": "integer",
@@ -124,7 +125,6 @@
                 "$ref": "attributeStorageInfo_schema.json"
             },
             "description": "Provides the schema and layout used for storing attribute content in binary format in I3S."
-           
         },
         "statisticsInfo": {
             "type": "array",
@@ -132,10 +132,51 @@
                 "$ref": "statisticsInfo_schema.json"
             },
             "description": "Contains the statistical information for a layer."
+        },
+        "nodePages": {
+            "type": "object",
+            "$ref": "nodepages_schema.json",
+            "description": "paged-access index description"
+        },
+        "materialDefinitions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "materialdefinitions_schema.json"
+            },
+            "description": "List of materials classes used in this layer. _TBD_ use a separated JSON resource?"
+        },
+        "textureSetDefinitions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "texturesetdefinition_schema.json"
+            },
+            "description": "define the set of textures that can be referenced by meshes"
+        },
+        "geometryDefinitions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "geometrydefinition_schema.json"
+            },
+            "description": "Define the layouts of mesh geometry and its attributes"
+        },
+        "attributeSetDefinitions": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 1,
+            "items": {
+                "type": "object",
+                "$ref": "attributesetdefinition_schema.json"
+            },
+            "description": "Define the layouts of mesh geometry and its attributes. WARNING: only **SINGLE** definition is supported at v1.7. length must 0 or 1"
         }
     },
     "required": [
-        "id"
+        "id",
+        "nodePages",
+        "geometryDefinitions"
     ],
     "additionalProperties": false,
     "esriDocumentation": {

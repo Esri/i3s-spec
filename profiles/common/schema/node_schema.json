@@ -3,7 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "",
-  "related": "mesh17::layer",
+  "related": "common::layer",
   "properties": {
     "index": {
       "type": "integer",

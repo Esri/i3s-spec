@@ -28,18 +28,18 @@
       "description": "Alias of the field."
     },
     "domain": {
-      "type": "array",
-      "items": {
+    
         "type": "object",
-        "$ref": "domain_schema.json"
-      },
+        "$ref": "domain_schema.json",
+      
       "description": "Array of domains defined for a field."
     }
   },
   "required": [
     "name",
-    "type "
+    "type"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

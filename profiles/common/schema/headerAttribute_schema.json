@@ -18,6 +18,7 @@
     "type",
     "property"
 ],
+"additionalProperties": false,
 "esriDocumentation": {
     "examples": [
        {

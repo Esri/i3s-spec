@@ -88,6 +88,19 @@
         "type": "object",
         "description": "An object containing elevation information.",
         "$ref": "elevationInfo_schema.json"
+    },
+    "sourceHRef": {
+        "type": "string"
+    },
+    "statsHRef": {
+        "type": "string"
+    },
+    "fields": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "$ref": "../../common/schema/field_schema.json"
+        }
     }
 },
     "required": [
@@ -97,6 +110,7 @@
         "store",
         "attributeStorageInfo"
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
             {

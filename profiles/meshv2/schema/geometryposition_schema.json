@@ -28,6 +28,7 @@
     "component"
 
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

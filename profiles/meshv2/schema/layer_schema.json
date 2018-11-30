@@ -45,19 +45,12 @@
         "$ref": "instancebuffer_schema.json"
       },
       "description": "Define the layouts of instance buffers that may be used by meshes in this layer."
-    },
-    "instanceBufferDefinitions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "instancebuffer_schema.json"
-      },
-      "description": "Define the layouts of instance buffers that may be used by meshes in this layer."
     }
   },
   "required": [
     "meshDefinitions"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

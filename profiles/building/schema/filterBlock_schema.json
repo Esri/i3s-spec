@@ -23,6 +23,7 @@
     "filterMode",
     "filterExpression"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

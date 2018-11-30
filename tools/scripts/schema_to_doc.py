@@ -6,6 +6,7 @@ import argparse
 import re
 import errno
 import collections
+from slpk_validator import validate_json_string
 
 
 def json_to_dom( path ) :
@@ -27,9 +28,9 @@ class Schema_manifest :
         tok = name.split('::')
         assert( len(tok) <=2 )
         fn = tok[-1] + "_schema.json"
-        if len(tok) >1 :
+        if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( [Schema_manifest.c_code_to_paths[tok[0]], "schema", fn] ) 
+            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
         return os.path.realpath( os.path.join( self.ref_path, fn ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
@@ -420,9 +421,10 @@ class Markdown_writer  :
                 self.write_line( "### Examples \n" )
                 for ex in schema_doc.example_dom  :
                     self.write_line( "#### Example: %s \n" % (ex['title'] if 'title' in ex else '' ))
+                    # validate example code if it exists in the current schema
                     if 'description' in ex :
                         self.write_line( "%s \n" % ex['description'] )
-                    self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
+                        self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
 
 
@@ -470,10 +472,29 @@ if __name__ == "__main__" :
         for file in os.listdir( search_folder) :
             if file.endswith(".json"):
                 abs_path = os.path.join(search_folder, file)
-                manifest.get_type_from_abs_path( abs_path )    
-    
+                manifest.get_type_from_abs_path( abs_path )
+                
+   
+    ## validate examples before writing to schema
+    for profile in manifest.types:
+        examples = manifest.types[profile].example_dom
+        if ( len(examples) ) :
+            schema = manifest.get_abs_path_from_schema_name(profile)
+            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
+            for example in examples:
+                successful_validation = True
+                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
+                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                    try:
+                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
+                        if (not successful_validation) :
+                            bad_example_file = profile.split('::')[1] + ".json"
+                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
+                    except BaseException as e:
+                        print(e)
+
     #write all profiles:
-    output_path =os.path.join( root )
+    output_path = os.path.join( root )
     writer = Markdown_writer( output_path);
     for name, obj  in manifest.types.items() :
         writer.write_to_md( manifest, obj );

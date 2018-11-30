@@ -27,7 +27,7 @@
     },
     "layerType": {
       "type": "string",
-      "enum": [ "group", "3DObject" ]
+      "enum": [ "group", "3DObject", "Point" ]
     },
     "visibility": {
       "type": "boolean",
@@ -48,6 +48,7 @@
     "name",
     "layerType"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

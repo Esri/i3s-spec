@@ -45,6 +45,7 @@
   "required": [
     "encoding"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

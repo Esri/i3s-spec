@@ -17,6 +17,7 @@
     "name",
     "code"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

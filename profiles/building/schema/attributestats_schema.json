@@ -14,36 +14,53 @@
     },
     "modelName": {
       "type": "string",
-      "enum": ["category","family", "familyType", "bldgLevel", "createdPhase", "demolishedPhase", "discipline", "assemblyCode", "omniClass" ,"systemClassifications", "systemType","custom"],
+      "enum": [
+        "category",
+        "family",
+        "familyType",
+        "bldgLevel",
+        "createdPhase",
+        "demolishedPhase",
+        "discipline",
+        "assemblyCode",
+        "omniClass",
+        "systemClassifications",
+        "systemType",
+        "custom"
+      ],
       "description": "A fixed string of building information, similar to a filter. Used by client applications to define specific behavior for the modelName. The [default filter types](defaultFilterTypes.md) define the modelName for the attribute statistics."
     },
     "min": {
-        "type": "number",
-        "description": "Minimum value. Numeric attributes only."
-      },
-      "max": {
-        "type": "number",
-        "description": "Maximum value. Numeric attributes only."
-      },
-      "mostFrequentValues": {
-        "type": "array",
-        "items": {
-          "type": [ "integer", "string" ]
-        },
-        "description": "Most frequent value, if applicable for this attribute. Truncated to 256 entries."
-      },
-      "subLayerIds": {
-        "type": "array",
-        "items": {
-          "type": "integer"
-        },
-        "description": "List of sublayers where this attribute may be found."
-      }
+      "type": "number",
+      "description": "Minimum value. Numeric attributes only."
     },
+    "max": {
+      "type": "number",
+      "description": "Maximum value. Numeric attributes only."
+    },
+    "mostFrequentValues": {
+      "type": "array",
+      "items": {
+        "type": [
+          "integer",
+          "string"
+        ]
+      },
+      "description": "Most frequent value, if applicable for this attribute. Truncated to 256 entries."
+    },
+    "subLayerIds": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "List of sublayers where this attribute may be found."
+    }
+  },
   "required": [
     "fieldName",
     "subLayerIds"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
@@ -52,8 +69,17 @@
           "fieldName": "fournitures",
           "label": "Meuble interieur",
           "modelName": "custom",
-          "mostFrequentValues": [ "chair", "table", "cubicle", "boxes" ],
-          "subLayerIds": [ 10, 4, 5 ]
+          "mostFrequentValues": [
+            "chair",
+            "table",
+            "cubicle",
+            "boxes"
+          ],
+          "subLayerIds": [
+            10,
+            4,
+            5
+          ]
         }
       },
       {
@@ -62,8 +88,15 @@
           "fieldName": "floor",
           "label": "Etages",
           "modelName": "bldgLevel",
-          "mostFrequentValues": [ 1, 2, 3 ],
-          "subLayerIds": [ 10, 15 ]
+          "mostFrequentValues": [
+            1,
+            2,
+            3
+          ],
+          "subLayerIds": [
+            10,
+            15
+          ]
         }
       },
       {
@@ -73,9 +106,11 @@
           "label": "Diametre de conduit",
           "min": 0.2566,
           "max": 2.256,
-          "subLayerIds": [ 3, 5 ]
+          "subLayerIds": [
+            3,
+            5
+          ]
         }
-
       }
     ]
   }

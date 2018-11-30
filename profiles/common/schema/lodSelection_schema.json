@@ -8,31 +8,16 @@
       "type": "string",
       "description": "The name of the error metric, one of {maxScreenThreshold, screenSpaceRelative, ...}"
     },
-    "maxValue": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
+    "maxError": {
+      "type": "number",
       "description": "Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
-    },
-    "avgValue": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "description": "Average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
-    },
-    "minValue": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "description": "Minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size."
     }
   },
   "required": [
-    "href"
+    "metricType",
+    "maxError"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

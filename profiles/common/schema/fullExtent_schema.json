@@ -43,6 +43,7 @@
     "ymax",
     "zmax"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

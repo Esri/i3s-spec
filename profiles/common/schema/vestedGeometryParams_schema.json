@@ -37,6 +37,7 @@
   "required": [
     "href"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

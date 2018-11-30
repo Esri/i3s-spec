@@ -8,6 +8,7 @@
             "description": "Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position."
         }
     },
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
            {

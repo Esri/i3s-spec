@@ -28,6 +28,7 @@
     "lodSelectionMetricType",
     "rootIndex"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

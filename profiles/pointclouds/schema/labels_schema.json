@@ -21,6 +21,7 @@
       "description": "Array of string label/bitNumber pairs. This is useful when the attribute represent a bitfield. For example, FLAGS."
     }
   },
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

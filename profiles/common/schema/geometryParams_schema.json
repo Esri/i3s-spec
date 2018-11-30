@@ -15,6 +15,7 @@
         "$ref": "singleComponentParams_schema.json"
       }
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

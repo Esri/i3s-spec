@@ -28,6 +28,7 @@
   "required": [
     "id"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

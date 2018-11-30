@@ -9,15 +9,18 @@
       "description": "Attribute name. Must match the name specified for this attribute in `layer.attributeStorageInfo`"
     },
     "stats": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref":  "stats_schema.json"
-      },
+      "type": "object",
+      "$ref": "../../common/schema/statsInfo_schema.json",
       "description": "Statistics for this attribute"
+    },
+    "labels": {
+      "type": "object",
+      "$ref": "labels_schema.json",
+      "description": " The statistics document may contain labeling information for the attribute values."
     }
   },
-   "esriDocumentation": {
+  "additionalProperties": false,
+  "esriDocumentation": {
     "examples": [
       {
         "title": "Elevation statistic (point.z statistics)",

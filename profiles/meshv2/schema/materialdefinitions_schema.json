@@ -55,6 +55,7 @@
   "required": [
     "meshDefinitions"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

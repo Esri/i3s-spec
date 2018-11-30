@@ -1,0 +1,77 @@
+{
+    "title": "FeatureData",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials.",
+    "properties": {
+        "id": {
+            "type": "number",
+            "description": "Feature ID, unique within the Node. If lodType is FeatureTree, the ID must be unique in the store."
+        },
+        "position": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+                "type": "number"
+            },
+            "description": "An array of two or three doubles, giving the x,y(,z) (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the vertexCRS."
+        },
+        "pivotOffset": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+                "type": "number"
+            },
+            "description": "An array of three doubles, providing an optional, 'semantic' pivot offset that can be used to e.g. correctly drape tree symbols."
+        },
+        "mbb": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
+            "description": "An array of six doubles, corresponding to xmin, ymin, zmin, xmax, ymax and zmax of the minimum bounding box of the feature, expressed in the vertexCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes."
+        },
+        "layer": {
+            "type": "string",
+            "description": "The name of the Feature Class this feature belongs to."
+        },
+        "attributes": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "description": "The list of GIS attributes the feature has.",
+            "$ref": "../../common/schema/featureAttribute_schema.json"
+        },
+        "geometries": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "description": "The list of geometries the feature has. A feature always has at least one Geometry.",
+            "$ref": "../../common/schema/geometry_schema.json"
+        }
+    },
+    "required": [
+        "id"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "3D Scene Layer info for point scene layer",
+                "code_href": "../examples/featureDataPointSceneLayerExample.json"
+            },
+            {
+                "title": "3D Scene Layer info for 3D object scene layer",
+                "code_href": "../examples/featureData3dObjectSceneLayerExample.json"
+            },
+            {
+                "title": "3D Scene Layer info for integrated mesh scene layer",
+                "code_href": "../examples/featureDataIntegratedMeshceneLayerExample.json"
+            }
+        ]
+    }
+}

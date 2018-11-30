@@ -29,6 +29,7 @@
   "required": [
     "geometryBuffers"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

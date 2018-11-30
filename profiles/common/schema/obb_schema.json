@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: obb",
+  "title": "I3S Point Cloud Scene Layer: Oriented Bounding Boxes",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Oriented bounding boxes",
@@ -13,16 +13,16 @@
       "maxItems": 3,
       "description": "The center point of the oriented bounding box. For a global scene, i.e. XY coordinate system in WGS1984, center is in longitude of decimal degrees, latitude of decimal degrees, elevation in meters."
     },
-    "halfSize ": {
+    "halfSize": {
       "type": "array",
       "items": {
         "type": "number"
       },
       "minItems": 3,
       "maxItems": 3,
-      "description": "Half size of the oriented bounding box in spatial reference units (or meter for global scenes)."
+      "description": "Half size of the oriented bounding box in spatial reference units (or meters for global scenes)."
     },
-    "orientation ": {
+    "quaternion": {
       "type": "array",
       "items": {
         "type": "number"
@@ -34,9 +34,10 @@
   },
   "required": [
     "center",
-    "halfSize ",
-    "orientation "
+    "halfSize",
+    "quaternion"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

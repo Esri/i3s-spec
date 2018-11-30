@@ -17,6 +17,7 @@
   "required": [
     "type"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

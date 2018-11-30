@@ -1,0 +1,84 @@
+{
+  "title": "Building Scene Layer Sublayer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayers (i.e `group`) to form a nested structure.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...`"
+    },
+    "name": {
+      "type": "string",
+      "description": "Layer name. **Must be unique** per building scene layer"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Alias of the layer name. Can be empty if alias and name are identical."
+    },
+    "discipline": {
+      "type": "string",
+      "enum": [ "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
+      "description": "Semantic for work discipline groups which refine the user experience. "
+    },
+    "modelName": {
+      "type": "string",
+      "description": "A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](subLayerModelName.md) for sublayers."
+    },
+    "layerType": {
+      "type": "string",
+      "enum": [ "group", "3DObject", "Point" ]
+    },
+    "visibility": {
+      "type": "boolean",
+      "description": "Visibility of the sublayer. Default is `true`"
+    },
+
+    "sublayers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "sublayer_schema.json"
+      },
+      "description": "Sublayers contained in this layer."
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "layerType"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer simple group",
+        "code": {
+          "id": 100,
+          "layerType": "group",
+          "name": "architectural",
+          "alias": "Architecture",
+          "modelName": "Architectural",
+          "visibility": true,
+          "visibilityMode": "independent",
+          "sublayers": [
+            {
+              "id": 0,
+              "layerType": "3DObject",
+              "name": "stairs",
+              "alias": "Escaliers",
+              "visibility": true
+            },
+            {
+              "id": 1,
+              "layerType": "3DObject",
+              "name": "roof",
+              "alias": "Toitures",
+              "visibility": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

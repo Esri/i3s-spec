@@ -1,77 +1,69 @@
 {
-    "title": "I3S scene layer: attributeStorageInfo",
+    "title": "I3S Scene Layer: attributeStorageInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "An object that describes the structure of the binary attributeData resource of a node.",
-    "properties": 
-    {
-        "key": 
-        {
+    "description": "An object that describes the structure of the binary attribute data resource of a node.",
+    "properties": {
+        "key": {
             "type": "string",
             "description": "The unique field identifier key."
         },
-        "name": 
-        {
+        "name": {
             "type": "string",
             "description": "The name of the field."
         },
-        "header": 
-        {
+        "header": {
             "type": "array",
-            "items": 
-            {
-                "type": "string",
-                "enum": [
-                    "property",
-                    "valueType"
-                ],
-                "enum-description" : 
-                {
-                    "property" : "Should always be present and indicates the count of features in the attribute storage.",
-                    "valueType" : "The element type of the attributeValues property, from UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64."
-                },
-            "description": "Declares the headers of the binary attribute data."
-            },
-        "ordering": 
-            {
-            "type": "aray",
-            "items": 
-                {
+            "items": {
+                "type": "object",
+                "$ref": "headerValue_schema.json",
+                "description": "Declares the headers of the binary attribute data."
+            }
+        },
+        "ordering": {
+            "type": "array",
+            "items": {
                 "type": "string",
                 "enum": [
                     "attributeByteCounts",
-                    "attributeValues"
+                    "attributeValues",
+                    "ObjectIds"
                 ],
-                    "enum-description" : 
-                    {
-                    "attributeByteCounts" : "Should only be present when working with string data types.",
-                    "attributeValues" : "Should always be present. "
-                    },
+                "enum-description": {
+                    "attributeByteCounts": "Should only be present when working with string data types.",
+                    "attributeValues": "Should always be present. "
+                },
                 "description": "Declares the ordering indicating the order in which the array of attribute byte counts and the array of attribute values are stored in the binary attribute data."
-                },
-                "attributeValues": {
-                    "type": "object",
-                    "description": "Represents the description for value encoding, for example scalar or vector encoding.",
-                    "$ref": "value_schema.json"
-                },
-                "attributeByteCounts": {
-                    "type": "object",
-                    "description": "Represents the description for value encoding, for example scalar or vector encoding.",
-                    "$ref": "value_schema.json"
-                },
-            "objectIds": 
-                {
-                "type": "object",
-                "description": "Stores the object-id values of each feature within the node.",
-                "$ref": "objectIDs_schema.json"
-                }
-            },
-        "required": 
-            [
-            "key",
-            "name"
-            ]
+            }
+        },
+        "attributeValues": {
+            "type": "object",
+            "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
+            "$ref": "value_schema.json"
+        },
+        "attributeByteCounts": {
+            "type": "object",
+            "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
+            "$ref": "value_schema.json"
+        },
+        "objectIds": {
+            "type": "object",
+            "description": "Stores the object-id values of each feature within the node.",
+            "$ref": "value_schema.json"
         }
+    },
+    "required": [
+        "key",
+        "name",
+        "header"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "attributeStorageInfo for 3d object scene layer",
+                "code_href": "../examples/attributeStorageExample.json"
+            }
+        ]
     }
 }
-    

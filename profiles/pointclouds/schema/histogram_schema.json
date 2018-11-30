@@ -13,7 +13,10 @@
             "description": "Maximum attribute value for the entire layer. Maximum array size for stats.histo.counts is 256." 
         },  
         "counts": {
-            "type": "number",
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
             "description": "Count for the entire layer." 
         } 
     },
@@ -22,6 +25,7 @@
         "maximum",
         "counts"        
     ],
+    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
            {

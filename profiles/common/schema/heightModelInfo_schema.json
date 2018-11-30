@@ -2,7 +2,7 @@
   "title": "heightModelInfo",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal or gravity-related. This allows for a diverse range of fields and applications where the particular definition of elevation/height is of importance.",
+  "description": "The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal or gravity-related. This allows for a diverse range of fields and applications where the definition of elevation/height is important.",
   "properties": {
     "heightModel": {
       "type": "string",
@@ -44,6 +44,7 @@
       "description": "Represents the unit of the height."
     }
   },
+  "additionalProperties": false,
     "esriDocumentation": {
      "examples": [
         {

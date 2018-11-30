@@ -4,9 +4,25 @@ import os
 import json
 import jsonschema
 import sys
+from functools import singledispatch # for removing null in the json data files
 
 files = []
 verbose = ''
+
+# for removing 'None' from schema
+@singledispatch
+def remove_null(ob):
+    return ob
+
+@remove_null.register(list)
+def _process_list(ob):
+    return [remove_null(v) for v in ob]
+
+@remove_null.register(dict)
+def _process_list(ob):
+    return {k: remove_null(v) for k, v in ob.items()
+            if v is not None}
+
 
 def format_path(path):
     data_path = ''
@@ -69,6 +85,7 @@ def validate( data_file_name, schema_file, json_output=False ):
     with open(data_file_name, 'r', encoding="utf8") as data_file:
         try: 
             data = json.load(data_file)
+            data = remove_null(data)
         except ValueError as e:
             syntax_error = {}
             syntax_error['message'] = 'JSON data file syntax error: ' + str(e)

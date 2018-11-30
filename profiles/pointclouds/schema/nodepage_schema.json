@@ -11,9 +11,15 @@
         "type": "object",
         "$ref": "node_schema.json"
       }
+    },
+    "actualCount": {
+      "type": "number"
     }
   },
-  "required": [ "nodes" ],
+  "required": [
+    "nodes"
+  ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
@@ -23,5 +29,3 @@
     ]
   }
 }
-
-

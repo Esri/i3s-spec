@@ -1,0 +1,39 @@
+{
+  "title": "Filter Authoring Info for building scene layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The filter authoring info object contains metadata about the authoring process for creating a filter object. This allows the authoring client to save specific, overridable settings.  The next time it is accessed with an authoring client, the selections are remembered. Non-authoring clients can ignore it.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "checkbox"
+      ],
+      "enum-description": {
+        "checkbox": "Client UI with checkbox representation for each filter type and filter value."
+      },
+      "description": "Declares type or filter authoring info."
+    },
+    "filterblocks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Array of filter block authoring info.",
+      "$ref": "filterBlockAuthoringInfo_schema.json"
+    }
+  },
+  "required": [
+    "type",
+    "filterTypes"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer filter authoring info",
+        "code": ""
+      }
+    ]
+  }
+}

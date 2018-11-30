@@ -24,6 +24,7 @@
     "index",
     "format"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

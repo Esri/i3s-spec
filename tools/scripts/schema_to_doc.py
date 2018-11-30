@@ -6,6 +6,7 @@ import argparse
 import re
 import errno
 import collections
+from slpk_validator import validate_json_string
 
 
 def json_to_dom( path ) :
@@ -14,8 +15,8 @@ def json_to_dom( path ) :
 
 
 class Schema_manifest :
-    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"bim":"bim", "mesh17":"mesh17"}
-    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","bim":"bim","mesh17":"mesh17"}
+    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"building":"building"}
+    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","building":"building"}
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path) :
@@ -27,9 +28,9 @@ class Schema_manifest :
         tok = name.split('::')
         assert( len(tok) <=2 )
         fn = tok[-1] + "_schema.json"
-        if len(tok) >1 :
+        if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( [Schema_manifest.c_code_to_paths[tok[0]], "schema", fn] ) 
+            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
         return os.path.realpath( os.path.join( self.ref_path, fn ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
@@ -162,6 +163,7 @@ class Schema_type :
         self.example_dom=[];
         self.desc_href=''
         self.custom_related = []
+        self.oneOf = []
 
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
@@ -246,6 +248,11 @@ class Schema_type :
         if 'description-href' in dom :
             self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
 
+        if 'oneOf' in dom :
+            for schema in dom['oneOf']:
+                for field, sub_dom in schema.items():
+                    self.oneOf.append( {field: sub_dom} )
+
 
 class Property :
     def __init__(self) :
@@ -302,7 +309,7 @@ class Markdown_writer  :
             if prop.type.range[0] == prop.type.range[1] and prop.type.range[0] != '':
                 range = prop.type.range[0] 
             if prop.type.range[0] != prop.type.range[1] :
-                range = "%s:%s" % (prop.type.range[0],prop.type.range[1])
+                range = "%s:%s" % prop.type 
             postfix ='[%s]' % range
             return self.get_property_type( prop.type.item_prop, postfix)
         
@@ -373,7 +380,7 @@ class Markdown_writer  :
     def write_to_md( self, manifest, schema_doc ):
         self.output_path  =manifest.get_output_path_from_schema_name( schema_doc.name )
         #output_path  = os.path.join( self.output_folder, "%s.md" % schema_doc.name)
-        print( "Writting %s" % self.output_path )
+        print( "Writing %s" % self.output_path )
         with open( self.output_path,'w') as output:
             self.out = output
             self.write_line( "# %s\n" % schema_doc.title )
@@ -385,22 +392,39 @@ class Markdown_writer  :
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
                 self.write_line( ", ".join( [ "[%s](%s)" %( x.name, manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
-            self.write_line( "### Properties\n" )
-            self.write_table_header( ["Property", "Type", "Description" ]);
-            # to property table:
-            for prop in  schema_doc.props :
-                self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
-            self.write_line()
-            self.write_line( "*Note: properties in **bold** are required*" )
-            self.write_line()
+            
+            # only print properties if any exist
+            if ( len(schema_doc.props) ) :
+                self.write_line( "### Properties\n" )
+                self.write_table_header( ["Property", "Type", "Description" ]);
+                # to property table:
+                for prop in  schema_doc.props :
+                    self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
+                self.write_line()
+                self.write_line( "*Note: properties in **bold** are required*" )
+                self.write_line()
+
+            # only print oneOf option if it exists
+            if ( len(schema_doc.oneOf) ) :
+                self.write_line( "### oneOf:\n" )
+                for item in schema_doc.oneOf :
+                    for key, value in item.items() :
+                        namespace =  schema_doc.name.split('::')[0]
+                        name = Schema_manifest.get_schema_name_from_relative_path( value, namespace )
+                        link = manifest.get_relative_output_path_from_schema_name(name, self.output_path)
+                        self.write_line("- [%s](%s)" % (name, link))
+                self.write_line()
+                self.write_line()
+
             # Examples:
             if len( schema_doc.example_dom ) :
                 self.write_line( "### Examples \n" )
                 for ex in schema_doc.example_dom  :
                     self.write_line( "#### Example: %s \n" % (ex['title'] if 'title' in ex else '' ))
+                    # validate example code if it exists in the current schema
                     if 'description' in ex :
                         self.write_line( "%s \n" % ex['description'] )
-                    self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
+                        self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
 
 
@@ -448,10 +472,29 @@ if __name__ == "__main__" :
         for file in os.listdir( search_folder) :
             if file.endswith(".json"):
                 abs_path = os.path.join(search_folder, file)
-                manifest.get_type_from_abs_path( abs_path )    
-    
+                manifest.get_type_from_abs_path( abs_path )
+                
+   
+    ## validate examples before writing to schema
+    for profile in manifest.types:
+        examples = manifest.types[profile].example_dom
+        if ( len(examples) ) :
+            schema = manifest.get_abs_path_from_schema_name(profile)
+            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
+            for example in examples:
+                successful_validation = True
+                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
+                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                    try:
+                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
+                        if (not successful_validation) :
+                            bad_example_file = profile.split('::')[1] + ".json"
+                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
+                    except BaseException as e:
+                        print(e)
+
     #write all profiles:
-    output_path =os.path.join( root )
+    output_path = os.path.join( root )
     writer = Markdown_writer( output_path);
     for name, obj  in manifest.types.items() :
         writer.write_to_md( manifest, obj );

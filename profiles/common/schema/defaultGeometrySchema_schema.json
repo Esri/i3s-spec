@@ -1,67 +1,137 @@
 {
-  "title": "defaultGeometrySchema",
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.",
-  "properties": {
-    "geometryType": {
-      "type": "string",
-      "description": "Low-level default geometry type, one of {triangles, lines, points}. If defined, all geometries in the store are expected to have this type."
-    },
-    "topology": {
-      "type": "array",
-      "items":{
-          "type": "string"
-      },
-      "enum": [
-        "PerAttributeArray",
-        "Indexed"
-    ],
-    "enum-description" : 
-    {
-        "PerAttributeArray": "",
-        "Indexed": "When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data."
-    },
-      "description": " "
-    },
-    "header": {
-        "type": "array",
-              "items": {
-                  "type": "object"
-              }, 
-        "description": "Defines header fields in the Geometry resources of this store that precede the vertex (and index) data.",
-        "$ref": "headerAttribute_schema.json"
-      },
-      "vertexAttributes": {
-        "type": "array",
-              "items": {
-                  "type": "object"
-              }, 
-        "description": "Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates.",
-        "$ref": "geometryAttribute_schema.json"
-      },
-      "faces": {
-        "type": "array",
-              "items": {
-                  "type": "object"
-              }, 
-        "description": "Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates.",
-        "$ref": "geometryAttribute_schema.json"
-      },
-		"featureAttributeOrder": {
-        "type": "array",
-              "items": {
-                  "type": "string"
-              }, 
-        "description": "Provides the order of the keys in featureAttributes, if present."
+    "title": "defaultGeometrySchema",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The defaultGeometry schema is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of ArrayBufferView geometry declarations in a store, and reuses the GeometryAttribute type from FeatureData. Only valueType and valuesPerElement are required.",
+    "properties": {
+        "geometryType": {
+            "type": "string",
+            "enum": [
+                "triangles",
+                "lines",
+                "points"
+            ],
+            "description": "Low-level default geometry type. If defined, all geometries in the store are expected to have this type."
+        },
+        "topology": {
+            "type": "string",
+            "enum": [
+                "PerAttributeArray",
+                "Indexed"
+            ],
+            "enum-description": {
+                "PerAttributeArray": "",
+                "Indexed": "When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data."
+            },
+            "description": "Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data."
+        },
+        "header": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "headerAttribute_schema.json"
+            },
+            "description": "Defines header fields in the geometry resources of this store that precede the vertex (and index) data."
+        },
+        "ordering": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "Defines the ordering of the vertex Attributes"
+            }   
+        },
+        "vertexAttributes": {
+            "type": "object",
+            "$ref": "vertexAttribute_schema.json",
+            "description": "Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates."
+        },
+        "faces": {
+            "type": "object",
+            "$ref": "vertexAttribute_schema.json",
+            "description": "Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates."
+        },
+        "featureAttributeOrder": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Provides the order of the keys in featureAttributes, if present."
         },
         "featureAttributes": {
-            "type": "array",
-                  "items": {
-                      "type": "object"
-                  }, 
-            "description": "Declaration of the attributes per feature in the geometry, such as feature ID or face range.",
-            "$ref": "geometryAttribute_schema.json"
-          }
-  }
+            "type": "object",
+            "$ref": "geometryFeature_schema.json",
+            "description": "Declaration of the attributes per feature in the geometry, such as feature ID or face range."
+        }
+    },
+    "required": [
+        "geometryType",
+        "header",
+        "topology",
+        "ordering",
+        "vertexAttributes",
+        "featureAttributeOrder",
+        "featureAttributes"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "defaultGeometrySchema for 3D Object and integrated mesh scene layer",
+                "code": {
+                    "defaultGeometrySchema": {
+                        "geometryType": "triangles",
+                        "header": [
+                            {
+                                "property": "vertexCount",
+                                "type": "UInt32"
+                            },
+                            {
+                                "property": "featureCount",
+                                "type": "UInt32"
+                            }
+                        ],
+                        "topology": "PerAttributeArray",
+                        "ordering": [
+                            "position",
+                            "normal",
+                            "uv0",
+                            "color"
+                        ],
+                        "vertexAttributes": {
+                            "position": {
+                                "valueType": "Float32",
+                                "valuesPerElement": 3
+                            },
+                            "normal": {
+                                "valueType": "Float32",
+                                "valuesPerElement": 3
+                            },
+                            "uv0": {
+                                "valueType": "Float32",
+                                "valuesPerElement": 2
+                            },
+                            "color": {
+                                "valueType": "UInt8",
+                                "valuesPerElement": 4
+                            }
+                        },
+                        "featureAttributeOrder": [
+                            "id",
+                            "faceRange"
+                        ],
+                        "featureAttributes": {
+                            "id": {
+                                "valueType": "UInt64",
+                                "valuesPerElement": 1
+                            },
+                            "faceRange": {
+                                "valueType": "UInt32",
+                                "valuesPerElement": 2
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
 }

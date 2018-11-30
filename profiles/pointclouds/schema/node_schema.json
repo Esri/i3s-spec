@@ -20,10 +20,6 @@
       "type": "integer",
       "description": "Number of points for this node."
     },
-    "lodThreshold": {
-      "type": "integer",
-      "description": "Estimation of the area covered by this node. Used to estimate LOD switching based on density."
-    },
     "obb": {
       "type": "object",
       "$ref": "../../common/schema/obb_schema.json",
@@ -32,16 +28,21 @@
     "lodThreshold": {
       "type": "number",
       "description": "This metric may be used as a threshold to split a parent node into its children. See [layer.store.index.lodSelectionMetricType](index.md)"
+    },
+    "effectiveArea": {
+      "type": "number"
+    },
+    "pointCount": {
+      "type": "number"
     }
   },
   "required": [
     "resourceId",
     "firstChild",
     "childCount",
-    "vertexCount",
-    "lodThreshold",
     "obb"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
@@ -50,7 +51,4 @@
       }
     ]
   }
-
 }
-
-

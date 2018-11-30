@@ -1,0 +1,25 @@
+{
+    "title": "I3S Scene Layer: fieldInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Defines how a field in the dataset participates (or does not participate) in a popup window.",
+    "properties": {
+        "fieldName": {
+            "type": "string",
+            "description": "A string containing the field name as defined by the service. Anywhere that a fieldname is referenced as {field-name} in popupInfo, an Arcade expression can also be referenced as{expression/}`."
+        },
+        "label": {
+            "type": "string",
+            "description": "A string containing the field alias. This can be overridden by the web map author. Not applicable to Arcade expressions as title is used instead."
+        },
+        "isEditable": {
+            "type": "boolean",
+            "description": "A Boolean determining whether users can edit this field. Not applicable to Arcade expressions."
+        },
+        "visible": {
+            "type": "boolean",
+            "description": "A Boolean determining whether the field is visible in the popup window."
+        }
+    },
+    "additionalProperties": false
+}

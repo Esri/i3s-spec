@@ -65,6 +65,7 @@
     "geometryDefinitionId",
     "vertexCount"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

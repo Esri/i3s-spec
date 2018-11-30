@@ -1,0 +1,41 @@
+{
+  "title": "Domain Coded Value",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/an-overview-of-attribute-domains.htm) for more info on domains.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Text representation of the domain value"
+    },
+    "code": {
+      "type": [ "string", "number" ],
+      "description": "coded value (i.e. field value)"
+    }
+  },
+  "required": [
+    "name",
+    "code"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Example 1",
+        "code": {
+          "name": "code 1.5 description",
+          "code": 1.5
+        }
+      },
+      {
+        "title": "Example 1",
+        "code": {
+          "name": "coded 3000.1 desc",
+          "code": 3000.3000000000002
+        }
+      }
+    ]
+  }
+}
+
+

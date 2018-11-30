@@ -10,20 +10,19 @@
     }
   },
   "required": [
-    "lastUpdate"   
-],
-    "esriDocumentation": {
-     "examples": [
-        {
-          "title": "serviceUpdateTimeStamp",
-          "code": {
-            "serviceUpdateTimeStamp": {
-              "lastUpdate": " 1518827901690"
-            }
-          }   
+    "lastUpdate"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "serviceUpdateTimeStamp",
+        "code": {
+          "serviceUpdateTimeStamp": {
+            "lastUpdate": " 1518827901690"
+          }
         }
-      ]
-    }
+      }
+    ]
   }
-
-  
+}

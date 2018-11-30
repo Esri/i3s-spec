@@ -91,6 +91,7 @@
     }
 },
     "required": [
+        "id",
         "name",
         "layerType",
         "spatialReference",

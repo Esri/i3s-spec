@@ -4,7 +4,7 @@
   "$schema": "http://json-schema.org/draft-04/schema",
 
   "description-href": "../docs/nodepages_desc.md",
-  "related": "mesh17::node",
+  "related": "common::node",
   "properties": {
     "nodesPerPage": {
       "type": "integer",

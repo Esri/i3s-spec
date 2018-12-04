@@ -6,7 +6,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 
 | Property | Type | Description |
 | --- | --- | --- |
-| stats | number | these are stats |
+| stats | [statsInfo](statsInfo.cmn.0106.md) | these are stats |
 
 *Note: properties in **bold** are required*
 

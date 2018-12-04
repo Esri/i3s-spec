@@ -35,13 +35,13 @@ class Schema_manifest :
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
-        assert( len(tok) <=2 )
+        assert( len(tok) <= 2 )
         fn = tok[-1] + ".md"
-        if len(tok) >1 :
+        if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
             fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", fn ) 
         if abs_ref_path != None :
-            fn = os.path.relpath( os.path.join(self.ref_path, fn), os.path.dirname( abs_ref_path) )
+            fn = os.path.relpath( os.path.join(self.ref_path, "docs", fn,), os.path.dirname( abs_ref_path) )
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
@@ -71,7 +71,10 @@ class Schema_manifest :
     def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
         #pointclouds/schema/pcsl_attributeInfo_schema.json
         tok = rel_path.replace('\\','/').split('/')
-        name = tok[1]
+        if ( len(tok) > 1 ):
+            name = tok[1]
+        else:
+            name = tok[0]
         if name.endswith('.json') :
             name = name[:-5]
         #if name.endswith('_schema') :
@@ -104,7 +107,8 @@ class Schema_manifest :
 
         folders.reverse()
         folders = [ (x if x !='schema' else replace_by ) for x in folders ]
-        folders[-1] = folders[-1].replace('_schema.json', '.md')
+        #folders[-1] = folders[-1].replace('_schema.json', '.md')
+        folders[-1] = folders[-1].replace('.json', '.md')
         #if 'schema' in folders :
         #    folders = folders.replace( 'schema', 'docs')
         rel_path  = os.path.join(*folders )
@@ -321,7 +325,9 @@ class Markdown_writer  :
             if prop.href != '' :
                 #print a link to the type:
                 tn = prop.get_type_name(self.output_path)
-                typename = "[%s](%s)" % (prop.type.name, "%s" % tn.replace('\\','/') )
+                obj = tn.split('.')
+                obj = obj[0]
+                typename = "[%s](%s)" % (obj, "%s" % tn.replace('\\','/') )
             else :
                 typename = prop.type.name
         return "%s%s" % (typename, postfix )
@@ -394,7 +400,7 @@ class Markdown_writer  :
             if len( schema_doc.back_refs ) > 0:
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
-                self.write_line( ", ".join( [ "[%s](%s)" %( x.name, manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
+                self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[0], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
             
             # only print properties if any exist
             if ( len(schema_doc.props) ) :

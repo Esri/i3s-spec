@@ -38,15 +38,15 @@
     },
     "histogram": {
       "type": "object",
-
+      "$ref": "histogram.cmn.0106.json",
       "description": "Represents the histogram."
     },
     "mostFrequentValues": {
       "type": "array",
       "items": {
         "type": "object",
-
-        "description": "An array of most frequently used values within the point cloud scene layer."
+        "$ref": "valuecount.cmn.0106.json",
+        "maxItems": 256
       },
       "description": "An array of most frequently used values within the point cloud scene layer."
     }

@@ -38,7 +38,7 @@ class Schema_manifest :
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
         assert( len(tok) <= 2 )
-        fn = tok[-1] + ".md"
+        fn = tok[-1].split('.')[0] + ".md"
         version_num = Schema_manifest.c_path_to_docs[version]
         if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
@@ -48,15 +48,15 @@ class Schema_manifest :
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
-        #tok = name.split('::')
-        #assert( len(tok) <=2 )
-        fn = name + ".md"
-        #if len(tok) >1 :
-        #    assert( tok[0] in Schema_manifest.c_code_to_paths)
-        #    fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", fn ) 
-        #return os.path.realpath( os.path.join( self.ref_path, fn ) );
-        #return os.path.realpath( os.path.join( self.ref_path, self.get_relative_output_path_from_schema_name(name) ) )
-        return os.path.realpath( os.path.join( self.ref_path, "docs", manifest.c_path_to_docs[version], fn ) )
+        fn = name.split('.')[0] + ".md"
+        #check if output directory exists
+        dir = os.path.join( self.ref_path, "docs", manifest.c_path_to_docs[version] )
+        if ( not os.path.isdir(dir) ) :
+            try:
+                os.mkdir(dir)
+            except OSError:
+                print("Could not create %s" % dir)
+        return os.path.realpath( os.path.join(dir, fn ) )
        
 
     def read_href_resource( self, href) :
@@ -68,7 +68,6 @@ class Schema_manifest :
     def get_schema_name_from_abs_path( self, abs_path ) :
         rel_path = os.path.relpath(abs_path,start=self.ref_path  );
         return Schema_manifest.get_schema_name_from_relative_path( rel_path );
-
 
 
     def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
@@ -330,7 +329,8 @@ class Markdown_writer  :
                 tn = prop.get_type_name(self.output_path)
                 obj = tn.split('.')
                 obj = obj[0]
-                typename = "[%s](%s)" % (obj, "%s" % tn.replace('\\','/') )
+                fn = obj + ".md"
+                typename = "[%s](%s)" % (obj, "%s" % fn )
             else :
                 typename = prop.type.name
         return "%s%s" % (typename, postfix )

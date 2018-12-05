@@ -1,17 +1,15 @@
 # I3S point cloud scene layer: stats
 
-a version 2.0
+e version 1.6
 
 ### Related:
 
-[a](a.cmn.0200.md)
+[d](d.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| stats | [b](b.cmn.0107.md) | 2.0 |
-| additionalProp | [g](g.cmn.0200.md) | 2.0 |
-| recursiveProp | [a](a.cmn.0200.md) | self |
+| stats | number | 1.6 |
 
 *Note: properties in **bold** are required*
 

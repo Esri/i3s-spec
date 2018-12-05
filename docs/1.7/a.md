@@ -6,7 +6,7 @@ a version 1.7
 
 | Property | Type | Description |
 | --- | --- | --- |
-| stats | [b](b.cmn.0107.md) | 1.7 |
+| stats | [b](b.md) | 1.7 |
 
 *Note: properties in **bold** are required*
 

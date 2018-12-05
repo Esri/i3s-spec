@@ -1,0 +1,24 @@
+{
+  "title": "I3S point cloud scene layer: stats",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "a version 2.0",
+  "properties": {
+    "stats": {
+      "type": "object",
+      "description": "2.0",
+      "$ref": "b.cmn.0107.json"
+    },
+    "additionalProp": {
+      "type": "object",
+      "description": "2.0",
+      "$ref": "g.cmn.0200.json"
+    },
+    "recursiveProp": {
+      "type": "object",
+      "description": "self",
+      "$ref": "a.cmn.0200.json"
+    }
+  },
+  "additionalProperties": false
+}

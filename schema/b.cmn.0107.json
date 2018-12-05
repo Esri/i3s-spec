@@ -1,0 +1,14 @@
+{
+  "title": "I3S point cloud scene layer: stats",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "b version 1.7",
+  "properties": {
+    "stats": {
+      "type": "object",
+      "description": "1.7",
+      "$ref": "c.cmn.0107.json"
+    }
+  },
+  "additionalProperties": false
+}

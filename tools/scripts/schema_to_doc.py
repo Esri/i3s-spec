@@ -17,12 +17,14 @@ def json_to_dom( path ) :
 class Schema_manifest :
     c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"building":"building"}
     c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","building":"building"}
+    c_path_to_docs = { '0106' : '1.6', '0107' : '1.7', '0200' : '2.0' }
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path) :
         self.ref_path = schema_reference_path
         self.types = {} # key: schema name, value : type object
         self.include_stack = []
+        version = None
 
     def get_abs_path_from_schema_name( self, name ) :
         tok = name.split('::')
@@ -37,11 +39,12 @@ class Schema_manifest :
         tok = name.split('::')
         assert( len(tok) <= 2 )
         fn = tok[-1] + ".md"
+        version_num = Schema_manifest.c_path_to_docs[version]
         if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", fn ) 
+            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", version_num, fn ) 
         if abs_ref_path != None :
-            fn = os.path.relpath( os.path.join(self.ref_path, "docs", fn,), os.path.dirname( abs_ref_path) )
+            fn = os.path.relpath( os.path.join(self.ref_path, "docs", version_num, fn,), os.path.dirname( abs_ref_path) )
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
@@ -53,7 +56,7 @@ class Schema_manifest :
         #    fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", fn ) 
         #return os.path.realpath( os.path.join( self.ref_path, fn ) );
         #return os.path.realpath( os.path.join( self.ref_path, self.get_relative_output_path_from_schema_name(name) ) )
-        return os.path.realpath( os.path.join( self.ref_path, "docs", fn ) )
+        return os.path.realpath( os.path.join( self.ref_path, "docs", manifest.c_path_to_docs[version], fn ) )
        
 
     def read_href_resource( self, href) :
@@ -122,7 +125,7 @@ class Schema_manifest :
         if not os.path.exists( abs_path ) :
             raise BaseException( "Schema %s references %s but file %s doesnt exists. Please check href" %( self.include_stack, child_href, abs_path  ))
         #print("Dependency:",child_href)
-        child_type = self.get_type_from_abs_path( abs_path)
+        child_type = self.get_type_from_abs_path( abs_path, version)
         return child_type;
 
     def load_schema( self, abs_path ) :
@@ -134,10 +137,11 @@ class Schema_manifest :
         self.types[sch.name] = sch
         return sch;
 
-    def get_type_from_abs_path( self, abs_path ) :
+    def get_type_from_abs_path( self, abs_path, doc_version ) :
         
         # have it already ?
         name = self.get_schema_name_from_abs_path( abs_path )
+        version = doc_version
         if name in self.types :
             return self.types[name]
         else :
@@ -388,6 +392,7 @@ class Markdown_writer  :
 
     def write_to_md( self, manifest, schema_doc ):
         self.output_path  = manifest.get_output_path_from_schema_name( schema_doc.name )
+
         #output_path  = os.path.join( self.output_folder, "%s.md" % schema_doc.name)
         print( "Writing %s" % self.output_path )
         with open( self.output_path,'w') as output:
@@ -473,16 +478,27 @@ if __name__ == "__main__" :
     print( "Profile root folder is:", root )
     assert( os.path.exists(root))
 
-    manifest = Schema_manifest(root);
+
 
     search_folder = os.path.join(root, "schema")
+    manifest_folder = os.path.join(root, "manifests")
 
     #for profile in args.profiles :
     #scan the schema sub-folder:
-    for file in os.listdir( search_folder) :
-        if file.endswith(".json"):
-            abs_path = os.path.join(search_folder, file)
-            manifest.get_type_from_abs_path( abs_path )
+    for file in os.listdir( manifest_folder) :
+        manifest = Schema_manifest(root);
+        version = file.split('.')[1]
+        dom = json_to_dom( os.path.join(manifest_folder, file) )
+        entryPoints = dom['entryPoints']
+        for entry in entryPoints :
+            if file.endswith(".json"):
+                abs_path = os.path.join(search_folder, entry)
+                manifest.get_type_from_abs_path( abs_path, version )
+        #write all profiles:
+        output_path = os.path.realpath(__file__ + "../../../../docs")
+        writer = Markdown_writer( output_path);
+        for name, obj  in manifest.types.items() :
+            writer.write_to_md( manifest, obj );
                 
    
     ## validate examples before writing to schema
@@ -503,11 +519,7 @@ if __name__ == "__main__" :
     #                except BaseException as e:
     #                    print(e)
 
-    #write all profiles:
-    output_path = os.path.realpath(__file__ + "../../../../docs")
-    writer = Markdown_writer( output_path);
-    for name, obj  in manifest.types.items() :
-        writer.write_to_md( manifest, obj );
+
        
 
 

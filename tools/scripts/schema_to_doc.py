@@ -43,8 +43,8 @@ class Schema_manifest :
         if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
             fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", version_num, fn ) 
-        if abs_ref_path != None :
-            fn = os.path.relpath( os.path.join(self.ref_path, "docs", version_num, fn,), os.path.dirname( abs_ref_path) )
+        #if abs_ref_path != None :
+        #    fn = os.path.relpath( os.path.join(self.ref_path, "docs", version_num, fn,), os.path.dirname( abs_ref_path) )
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
@@ -260,6 +260,8 @@ class Schema_type :
         if 'oneOf' in dom :
             for schema in dom['oneOf']:
                 for field, sub_dom in schema.items():
+                    prop = self.parse_property(field, schema)
+                    prop.type.back_refs.append( self)
                     self.oneOf.append( {field: sub_dom} )
 
 
@@ -425,7 +427,7 @@ class Markdown_writer  :
                         namespace =  schema_doc.name.split('::')[0]
                         name = Schema_manifest.get_schema_name_from_relative_path( value, namespace )
                         link = manifest.get_relative_output_path_from_schema_name(name, self.output_path)
-                        self.write_line("- [%s](%s)" % (name, link))
+                        self.write_line("- [%s](%s)" % (name.split('.')[0], link))
                 self.write_line()
                 self.write_line()
 
@@ -512,7 +514,7 @@ if __name__ == "__main__" :
                 abs_path = os.path.join(search_folder, entry)
                 manifest.get_type_from_abs_path( abs_path )
         # validate examples
-        validate_examples(manifest)
+#        validate_examples(manifest)
         #write all profiles:
         writer = Markdown_writer( output_path);
         for name, obj  in manifest.types.items() :

@@ -39,7 +39,8 @@ class Schema_manifest :
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
         assert( len(tok) <= 2 )
-        fn = tok[-1].split('.')[0] + ".md"
+        name = tok[-1].split('.')
+        fn = name[0] + '.' + name[1] + '.md'
         version_num = Schema_manifest.c_code_to_versions[version]
         if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
@@ -49,7 +50,8 @@ class Schema_manifest :
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
-        fn = name.split('.')[0] + ".md"
+        name = name.split('.')
+        fn = name[0] + '.' + name[1] + '.md'
         #check if output directory exists
         dir = os.path.join( self.ref_path, "docs", manifest.c_code_to_versions[version] )
         if ( not os.path.isdir(dir) ) :
@@ -331,9 +333,9 @@ class Markdown_writer  :
                 #print a link to the type:
                 tn = prop.get_type_name(self.output_path)
                 obj = tn.split('.')
-                obj = obj[0]
-                fn = obj + ".md"
-                typename = "[%s](%s)" % (obj, "%s" % fn )
+                link = obj[0]
+                fn = obj[0] + '.' + obj[1] + ".md"
+                typename = "[%s](%s)" % (link, "%s" % fn )
             else :
                 typename = prop.type.name
         return "%s%s" % (typename, postfix )
@@ -408,7 +410,7 @@ class Markdown_writer  :
             if len( schema_doc.back_refs ) > 0:
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
-                self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[0], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
+                self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[0] +'.'+x.name.split('.')[1], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
             
             # only print properties if any exist
             if ( len(schema_doc.props) ) :

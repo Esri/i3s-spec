@@ -1,0 +1,37 @@
+{
+  "title": "I3S point cloud scene layer: labels",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Optionally, the statistics document may contain labeling information for the attribute values.",
+  "properties": {
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "label_schema.json"
+      },
+      "description": "Array of string label/value pairs. Used when attribute represents a set of values. For example, ClassCode."
+    },
+    "bitfieldLabels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "bitfieldlabel.pcsl.0106.json"
+      },
+      "description": "Array of string label/bitNumber pairs. This is useful when the attribute represent a bitfield. For example, FLAGS."
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Class Code labels (LIDAR data)",
+        "code_href": "../examples/stats_8_labels.json"
+      },
+      {
+        "title": "Flags labels (LIDAR data)",
+        "code_href": "../examples/stats_16_labels.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "title": "I3S point cloud scene layer: Bit Field Label",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "",
+  "properties": {
+    "bitNumber": {
+      "type": "integer",
+      "description": "Bit number (0 is LSB)"
+    },
+    "label": {
+      "type": "string",
+      "description": "Label string"
+    }
+  },
+  "required": [
+    "bitNumber",
+    "label"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Flag label",
+        "code": {
+          
+            "bitNumber": 3,
+            "label": "Overlap"
+          
+        }
+      }
+    ]
+  }
+}

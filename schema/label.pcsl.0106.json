@@ -1,0 +1,32 @@
+{
+  "title": "I3S point cloud scene layer: Statistics Label",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "",
+  "properties": {
+    "value": {
+      "type": "number",
+      "description": "Value"
+    },
+    "label": {
+      "type": "string",
+      "description": "Label string"
+    }
+  },
+  "required": [
+    "value",
+    "label"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Class Code label",
+        "code": {
+          "value": 2,
+          "label": "Ground"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+    "title": "I3S Scene Layer: attributeStorageInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "An object that describes the structure of the binary attribute data resource of a node.",
+    "properties": {
+        "key": {
+            "type": "string",
+            "description": "The unique field identifier key."
+        },
+        "name": {
+            "type": "string",
+            "description": "The name of the field."
+        },
+        "header": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "headerValue.cmn.0106.json",
+                "description": "Declares the headers of the binary attribute data."
+            }
+        },
+        "ordering": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "attributeByteCounts",
+                    "attributeValues",
+                    "ObjectIds"
+                ],
+                "enum-description": {
+                    "attributeByteCounts": "Should only be present when working with string data types.",
+                    "attributeValues": "Should always be present. "
+                },
+                "description": "Declares the ordering indicating the order in which the array of attribute byte counts and the array of attribute values are stored in the binary attribute data."
+            }
+        },
+        "attributeValues": {
+            "type": "object",
+            "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
+            "$ref": "value.cmn.0106.json"
+        },
+        "attributeByteCounts": {
+            "type": "object",
+            "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
+            "$ref": "value.cmn.0106.json"
+        },
+        "objectIds": {
+            "type": "object",
+            "description": "Stores the object-id values of each feature within the node.",
+            "$ref": "value.cmn.0106.json"
+        }
+    },
+    "required": [
+        "key",
+        "name",
+        "header"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "attributeStorageInfo for 3d object scene layer",
+                "code_href": "../examples/attributeStorageExample.json"
+            }
+        ]
+    }
+}

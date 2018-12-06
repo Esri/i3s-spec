@@ -1,3 +1,15 @@
 {
-  "entryPoints": ["layer.bld.0106.json", "statsummary.bld.0106.json"]
+  "title": "i3s 1.6",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "This file defines the entry points for version 1.6 of the i3s-spec",
+  "entryPoints": [
+    "layer.bld.0106.json",
+    "statsummary.bld.0106.json",
+    "stats.cmn.0106.json",
+    "3DSceneLayer.cmn.0106.json",
+    "3DSNodeIndexDocument.cmn.0106.json",
+    "sharedResource.cmn.0106.json",
+    "features.cmn.0106.json"
+  ]
 }

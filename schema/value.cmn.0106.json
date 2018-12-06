@@ -1,0 +1,27 @@
+{
+  "title": "Value",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Value for attributeByteCount, attributeValues and objectIds.",
+  "properties": {
+    "valueType": {
+      "type": "string",
+      "description": "Defines the value type."
+    },
+    "encoding": {
+      "type": "string",
+      "description": "Encoding method for the value."
+    },
+    "valuesPerElement": {
+      "type": "number",
+      "description": "Number of values per element."
+    }
+  },
+  "required": [
+    "valueType"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": []
+  }
+}

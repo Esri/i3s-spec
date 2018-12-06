@@ -1,0 +1,55 @@
+{
+  "title": "Texture set definition format",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Describe the format(s) available for a texture set. Note: JPEG (or PNG) must always be provided",
+  "properties": {
+    "index": {
+      "type": "integer",
+      "description": "location ID for the resource (last segment of the URL path)"
+    },
+    "format": {
+      "type": "string",
+      "enum": [ "jpg", "png", "dds", "ktx", "bundle" ],
+      "enum-description": {
+        "jpg": "JPEG compression. no mipmaps. Please note that alpha channel may have been added after the JPEG stream. This alpha channel is alwasy 8bit and zlib compressed. Last 4 byte of the entire stream are the 32 bit offset to the beginning of the alpha stream (little-endian)",
+        "png": "PNG format, no mipmaps",
+        "dds": "The DDS header will specify the type of compression and number of mipmaps. **WARNING** only DXT1 (no alpha) and DXT5 (alpha channel) are supported",
+        "ktx": "Kronos group container for ETC2 compressed texture. Mipmap may be available",
+        "bundle": "A binary bundle of multiple images. `bundle` field must be present to indicate where to find the image inside the binary bundle"
+      },
+      "description": "Texture format"
+    },
+    "bundle": {
+      "type": "integer",
+      "$ref": "bundle.cmn.0107.json",
+      "description": "**Required** if `format=\"bundle\"`, `null` or omitted otherwise"
+    }
+  },
+  "required": [
+    "index",
+    "format"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "JPEG texture at `/layers/0/nodes/{resource_id}/1`",
+        "code": {
+          "index": 1,
+          "format": "jpg"
+        }
+      },
+      {
+        "title": "PNG texture in the 2nd slot of a bundle",
+        "code": {
+          "index": 3,
+          "format": "bundle",
+          "bundle": {
+            "slot": 1,
+            "format": "png"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -321,7 +321,7 @@ class Markdown_writer  :
             if prop.type.range[0] == prop.type.range[1] and prop.type.range[0] != '':
                 range = prop.type.range[0] 
             if prop.type.range[0] != prop.type.range[1] :
-                range = "%s:%s" % prop.type 
+                range = "%s:%s" % (prop.type.range[0], prop.type.range[1]) 
             postfix ='[%s]' % range
             return self.get_property_type( prop.type.item_prop, postfix)
         

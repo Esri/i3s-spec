@@ -2,7 +2,8 @@
   "title": "Building Scene Layer",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "related": [ "statsummary.bld.0106.json"],
+  "description-href": "description/layer.bld.0106.md",
+  "related": "statsummary.bld.0106",
   "properties": {
     "id": {
       "type": "integer",

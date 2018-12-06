@@ -17,7 +17,8 @@ def json_to_dom( path ) :
 class Schema_manifest :
     c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"building":"building"}
     c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","building":"building"}
-    c_path_to_docs = { '0106' : '1.6', '0107' : '1.7', '0200' : '2.0' }
+    c_code_to_versions = { '0106' : '1.6', '0107' : '1.7', '0200' : '2.0' }
+    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path, version) :
@@ -39,7 +40,7 @@ class Schema_manifest :
         tok = name.split('::')
         assert( len(tok) <= 2 )
         fn = tok[-1].split('.')[0] + ".md"
-        version_num = Schema_manifest.c_path_to_docs[version]
+        version_num = Schema_manifest.c_code_to_versions[version]
         if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
             fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", version_num, fn ) 
@@ -50,7 +51,7 @@ class Schema_manifest :
     def get_output_path_from_schema_name( self, name ) :
         fn = name.split('.')[0] + ".md"
         #check if output directory exists
-        dir = os.path.join( self.ref_path, "docs", manifest.c_path_to_docs[version] )
+        dir = os.path.join( self.ref_path, "docs", manifest.c_code_to_versions[version] )
         if ( not os.path.isdir(dir) ) :
             try:
                 os.mkdir(dir)
@@ -504,7 +505,7 @@ if __name__ == "__main__" :
     #scan the manifest:
     for file in os.listdir( manifest_folder) :
         version = file.split('.')[1]
-        if (Schema_manifest.c_path_to_docs[version] not in args.profiles ):
+        if (Schema_manifest.c_code_to_versions[version] not in args.profiles ):
             continue
         manifest = Schema_manifest(root, version);
         dom = json_to_dom( os.path.join(manifest_folder, file) )

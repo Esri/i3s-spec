@@ -4,7 +4,7 @@ Oriented bounding boxes
 
 ### Related:
 
-[3DSNodeIndexDocument](3DSNodeIndexDocument.md), [node](node.md), [nodeReference](nodeReference.md)
+[nodeReference](nodeReference.md), [node](node.md), [3DSNodeIndexDocument](3DSNodeIndexDocument.md)
 ### Properties
 
 | Property | Type | Description |
@@ -18,4 +18,25 @@ Oriented bounding boxes
 ### Examples 
 
 #### Example: Global scene (WSG84) oriented-bounding box 
+
+```json
+ {
+  "center": [
+    -105.01482,
+    39.747244,
+    1596.040551
+  ],
+  "halfSize": [
+    29.421873,
+    29.539055,
+    22.082193
+  ],
+  "quaternion": [
+    0.420972,
+    -0.055513,
+    -0.118217,
+    0.897622
+  ]
+} 
+```
 

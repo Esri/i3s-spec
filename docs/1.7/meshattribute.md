@@ -18,3 +18,10 @@ Mesh geometry for a node
 
 #### Example: Attribute buffer(s) will be at `/layers/0/nodes/attributes/6/(...) 
 
+```json
+ {
+  "definition": 0,
+  "resource": 6
+} 
+```
+

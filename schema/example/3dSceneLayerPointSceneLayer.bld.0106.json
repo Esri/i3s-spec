@@ -1,0 +1,1132 @@
+{
+"id" : 0,
+"version" : "",
+"name" : "",
+"href" : "./layers/0",
+"layerType" : "Point",
+"spatialReference" : {
+"wkid" : 4326,
+"latestWkid" : 4326
+}
+,
+"alias" : "",
+"description" : "",
+"capabilities" : ["View", "Query"],
+"elevationInfo" : {
+"mode" : "absoluteHeight",
+"offset" : 0.000000
+}
+,
+"drawingInfo" : {
+"renderer" : {
+"type" : "simple",
+"symbol" : {
+"type" : "PointSymbol3D",
+"symbolLayers" : [{
+"type" : "Icon",
+"anchor" : "center",
+"size" : 6,
+"resource" : {
+"primitive" : "circle"
+}
+,
+"material" : {
+"color" : [0, 0, 255]
+}
+,
+"outline" : {
+"color" : [0, 0, 0],
+"size" : 0
+}
+
+}
+]
+}
+
+}
+
+}
+,
+"disablePopup" : false,
+"store" : {
+"id" : "",
+"profile" : "points",
+"version" : "1.6",
+"resourcePattern" : ["3dNodeIndexDocument", "Attributes", "featureData"],
+"rootNode" : "./nodes/root",
+"extent" : [5.966632, 45.827005, 10.539381, 47.767247],
+"indexCRS" : "http://www.opengis.net/def/crs/EPSG/0/4326",
+"vertexCRS" : "http://www.opengis.net/def/crs/EPSG/0/4326",
+"normalReferenceFrame" : "earth-centered",
+"nidEncoding" : "",
+"featureEncoding" : "",
+"attributeEncoding" : "application/octet-stream; version=1.6",
+"lodType" : "AutoThinning",
+"lodModel" : "node-switching"
+}
+,
+"fields" : [{
+"name" : "OBJECTID",
+"type" : "esriFieldTypeOID",
+"alias" : "OBJECTID"
+}
+, {
+"name" : "mem_point_LineOID",
+"type" : "esriFieldTypeInteger",
+"alias" : "LineOID"
+}
+, {
+"name" : "mem_point_Value",
+"type" : "esriFieldTypeDouble",
+"alias" : "Value"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_OBJECTID",
+"type" : "esriFieldTypeInteger",
+"alias" : "OBJECTID"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_TILEKEY",
+"type" : "esriFieldTypeString",
+"alias" : "TILEKEY"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_KBNUM",
+"type" : "esriFieldTypeString",
+"alias" : "KBNUM"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_KBBEZ",
+"type" : "esriFieldTypeString",
+"alias" : "KBBEZ"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_feature_type_name",
+"type" : "esriFieldTypeString",
+"alias" : "fme_feature_type_name"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___name",
+"type" : "esriFieldTypeString",
+"alias" : "attribute___name"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___fme_data_type",
+"type" : "esriFieldTypeString",
+"alias" : "attribute___fme_data_type"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___native_data_type",
+"type" : "esriFieldTypeString",
+"alias" : "attribute___native_data_type"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_format_short_name",
+"type" : "esriFieldTypeString",
+"alias" : "fme_format_short_name"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_format_long_name",
+"type" : "esriFieldTypeString",
+"alias" : "fme_format_long_name"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_UUID",
+"type" : "esriFieldTypeString",
+"alias" : "UUID"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_DATUM_AENDERUNG",
+"type" : "esriFieldTypeString",
+"alias" : "DATUM_AENDERUNG"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_DATUM_ERSTELLUNG",
+"type" : "esriFieldTypeString",
+"alias" : "DATUM_ERSTELLUNG"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_ERSTELLUNG_JAHR",
+"type" : "esriFieldTypeString",
+"alias" : "ERSTELLUNG_JAHR"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_ERSTELLUNG_MONAT",
+"type" : "esriFieldTypeString",
+"alias" : "ERSTELLUNG_MONAT"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_JAHR",
+"type" : "esriFieldTypeString",
+"alias" : "REVISION_JAHR"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_MONAT",
+"type" : "esriFieldTypeString",
+"alias" : "REVISION_MONAT"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_GRUND_AENDERUNG",
+"type" : "esriFieldTypeString",
+"alias" : "GRUND_AENDERUNG"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT",
+"type" : "esriFieldTypeString",
+"alias" : "HERKUNFT"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT_JAHR",
+"type" : "esriFieldTypeString",
+"alias" : "HERKUNFT_JAHR"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT_MONAT",
+"type" : "esriFieldTypeString",
+"alias" : "HERKUNFT_MONAT"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_QUALITAET",
+"type" : "esriFieldTypeString",
+"alias" : "REVISION_QUALITAET"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_OBJEKTART",
+"type" : "esriFieldTypeDouble",
+"alias" : "OBJEKTART"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_NAME",
+"type" : "esriFieldTypeString",
+"alias" : "NAME"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_TLM_AREALE_NAME_UUID",
+"type" : "esriFieldTypeString",
+"alias" : "TLM_AREALE_NAME_UUID"
+}
+, {
+"name" : "TLM_BAUM_GEBUESCHREIHE_Spacing",
+"type" : "esriFieldTypeDouble",
+"alias" : "Spacing"
+}
+, {
+"name" : "HEIGHT",
+"type" : "esriFieldTypeDouble",
+"alias" : "HEIGHT"
+}
+, {
+"name" : "treeType",
+"type" : "esriFieldTypeInteger",
+"alias" : "treeType"
+}
+, {
+"name" : "HeightCorrected",
+"type" : "esriFieldTypeDouble",
+"alias" : "HeightCorrected"
+}
+, {
+"name" : "treeRotation",
+"type" : "esriFieldTypeDouble",
+"alias" : "treeRotation"
+}
+],
+"attributeStorageInfo" : [{
+"key" : "f_0",
+"name" : "OBJECTID",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["ObjectIds"],
+"objectIds" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_2",
+"name" : "mem_point_LineOID",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_3",
+"name" : "mem_point_Value",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Float64",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_4",
+"name" : "TLM_BAUM_GEBUESCHREIHE_OBJECTID",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_5",
+"name" : "TLM_BAUM_GEBUESCHREIHE_TILEKEY",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_6",
+"name" : "TLM_BAUM_GEBUESCHREIHE_KBNUM",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_7",
+"name" : "TLM_BAUM_GEBUESCHREIHE_KBBEZ",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_8",
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_feature_type_name",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_9",
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___name",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_10",
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___fme_data_type",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_11",
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___native_data_type",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_12",
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_format_short_name",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_13",
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_format_long_name",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_14",
+"name" : "TLM_BAUM_GEBUESCHREIHE_UUID",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_15",
+"name" : "TLM_BAUM_GEBUESCHREIHE_DATUM_AENDERUNG",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_16",
+"name" : "TLM_BAUM_GEBUESCHREIHE_DATUM_ERSTELLUNG",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_17",
+"name" : "TLM_BAUM_GEBUESCHREIHE_ERSTELLUNG_JAHR",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_18",
+"name" : "TLM_BAUM_GEBUESCHREIHE_ERSTELLUNG_MONAT",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_19",
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_JAHR",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_20",
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_MONAT",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_21",
+"name" : "TLM_BAUM_GEBUESCHREIHE_GRUND_AENDERUNG",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_22",
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_23",
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT_JAHR",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_24",
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT_MONAT",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_25",
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_QUALITAET",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_26",
+"name" : "TLM_BAUM_GEBUESCHREIHE_OBJEKTART",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Float64",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_27",
+"name" : "TLM_BAUM_GEBUESCHREIHE_NAME",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_28",
+"name" : "TLM_BAUM_GEBUESCHREIHE_TLM_AREALE_NAME_UUID",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+, {
+"property" : "attributeValuesByteCount",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeByteCounts", "attributeValues"],
+"attributeByteCounts" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+,
+"attributeValues" : {
+"valueType" : "String",
+"encoding" : "UTF-8",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_29",
+"name" : "TLM_BAUM_GEBUESCHREIHE_Spacing",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Float64",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_30",
+"name" : "HEIGHT",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Float64",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_31",
+"name" : "treeType",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Int32",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_32",
+"name" : "HeightCorrected",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Float64",
+"valuesPerElement" : 1
+}
+
+}
+, {
+"key" : "f_33",
+"name" : "treeRotation",
+"header" : [{
+"property" : "count",
+"valueType" : "Int32"
+}
+],
+"ordering" : ["attributeValues"],
+"attributeValues" : {
+"valueType" : "Float64",
+"valuesPerElement" : 1
+}
+
+}
+],
+"statisticsInfo" : [{
+"key" : "f_0",
+"name" : "OBJECTID",
+"href" : "./statistics/f_0"
+}
+, {
+"key" : "f_2",
+"name" : "mem_point_LineOID",
+"href" : "./statistics/f_2"
+}
+, {
+"key" : "f_3",
+"name" : "mem_point_Value",
+"href" : "./statistics/f_3"
+}
+, {
+"key" : "f_4",
+"name" : "TLM_BAUM_GEBUESCHREIHE_OBJECTID",
+"href" : "./statistics/f_4"
+}
+, {
+"key" : "f_5",
+"name" : "TLM_BAUM_GEBUESCHREIHE_TILEKEY",
+"href" : "./statistics/f_5"
+}
+, {
+"key" : "f_6",
+"name" : "TLM_BAUM_GEBUESCHREIHE_KBNUM",
+"href" : "./statistics/f_6"
+}
+, {
+"key" : "f_7",
+"name" : "TLM_BAUM_GEBUESCHREIHE_KBBEZ",
+"href" : "./statistics/f_7"
+}
+, {
+"key" : "f_8",
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_feature_type_name",
+"href" : "./statistics/f_8"
+}
+, {
+"key" : "f_9",
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___name",
+"href" : "./statistics/f_9"
+}
+, {
+"key" : "f_10",
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___fme_data_type",
+"href" : "./statistics/f_10"
+}
+, {
+"key" : "f_11",
+"name" : "TLM_BAUM_GEBUESCHREIHE_attribute___native_data_type",
+"href" : "./statistics/f_11"
+}
+, {
+"key" : "f_12",
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_format_short_name",
+"href" : "./statistics/f_12"
+}
+, {
+"key" : "f_13",
+"name" : "TLM_BAUM_GEBUESCHREIHE_fme_format_long_name",
+"href" : "./statistics/f_13"
+}
+, {
+"key" : "f_14",
+"name" : "TLM_BAUM_GEBUESCHREIHE_UUID",
+"href" : "./statistics/f_14"
+}
+, {
+"key" : "f_15",
+"name" : "TLM_BAUM_GEBUESCHREIHE_DATUM_AENDERUNG",
+"href" : "./statistics/f_15"
+}
+, {
+"key" : "f_16",
+"name" : "TLM_BAUM_GEBUESCHREIHE_DATUM_ERSTELLUNG",
+"href" : "./statistics/f_16"
+}
+, {
+"key" : "f_17",
+"name" : "TLM_BAUM_GEBUESCHREIHE_ERSTELLUNG_JAHR",
+"href" : "./statistics/f_17"
+}
+, {
+"key" : "f_18",
+"name" : "TLM_BAUM_GEBUESCHREIHE_ERSTELLUNG_MONAT",
+"href" : "./statistics/f_18"
+}
+, {
+"key" : "f_19",
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_JAHR",
+"href" : "./statistics/f_19"
+}
+, {
+"key" : "f_20",
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_MONAT",
+"href" : "./statistics/f_20"
+}
+, {
+"key" : "f_21",
+"name" : "TLM_BAUM_GEBUESCHREIHE_GRUND_AENDERUNG",
+"href" : "./statistics/f_21"
+}
+, {
+"key" : "f_22",
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT",
+"href" : "./statistics/f_22"
+}
+, {
+"key" : "f_23",
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT_JAHR",
+"href" : "./statistics/f_23"
+}
+, {
+"key" : "f_24",
+"name" : "TLM_BAUM_GEBUESCHREIHE_HERKUNFT_MONAT",
+"href" : "./statistics/f_24"
+}
+, {
+"key" : "f_25",
+"name" : "TLM_BAUM_GEBUESCHREIHE_REVISION_QUALITAET",
+"href" : "./statistics/f_25"
+}
+, {
+"key" : "f_26",
+"name" : "TLM_BAUM_GEBUESCHREIHE_OBJEKTART",
+"href" : "./statistics/f_26"
+}
+, {
+"key" : "f_27",
+"name" : "TLM_BAUM_GEBUESCHREIHE_NAME",
+"href" : "./statistics/f_27"
+}
+, {
+"key" : "f_28",
+"name" : "TLM_BAUM_GEBUESCHREIHE_TLM_AREALE_NAME_UUID",
+"href" : "./statistics/f_28"
+}
+, {
+"key" : "f_29",
+"name" : "TLM_BAUM_GEBUESCHREIHE_Spacing",
+"href" : "./statistics/f_29"
+}
+, {
+"key" : "f_30",
+"name" : "HEIGHT",
+"href" : "./statistics/f_30"
+}
+, {
+"key" : "f_31",
+"name" : "treeType",
+"href" : "./statistics/f_31"
+}
+, {
+"key" : "f_32",
+"name" : "HeightCorrected",
+"href" : "./statistics/f_32"
+}
+, {
+"key" : "f_33",
+"name" : "treeRotation",
+"href" : "./statistics/f_33"
+}
+],
+"heightModelInfo" : {
+"heightModel" : "gravity_related_height",
+"vertCRS" : "NAVD_1988",
+"heightUnit" : "meter"
+}
+
+}

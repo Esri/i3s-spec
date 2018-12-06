@@ -62,7 +62,7 @@
         "examples": [
             {
                 "title": "attributeStorageInfo for 3d object scene layer",
-                "code_href": "../examples/attributeStorageExample.json"
+                "code_href": "example/attributeStorage.cmn.0106.json"
             }
         ]
     }

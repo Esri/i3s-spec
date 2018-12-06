@@ -19,3 +19,25 @@ Describes the statistics for the scene layer.
 
 #### Example: statisticsInfo for 3D Object scene layer. 
 
+```json
+ {
+  "statisticsInfo": [
+    {
+      "key": "f_1",
+      "name": "Category",
+      "href": "./statistics/f_1"
+    },
+    {
+      "key": "f_2",
+      "name": "Family",
+      "href": "./statistics/f_2"
+    },
+    {
+      "key": "f_3",
+      "name": "FamilyType",
+      "href": "./statistics/f_3"
+    }
+  ]
+} 
+```
+

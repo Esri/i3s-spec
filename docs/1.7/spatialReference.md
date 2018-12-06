@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[layer](layer.md), [fullExtent](fullExtent.md), [3DSceneLayer](3DSceneLayer.md)
+[fullExtent](fullExtent.md), [3DSceneLayer](3DSceneLayer.md), [layer](layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -22,4 +22,15 @@ A spatial reference can optionally include a definition for a vertical coordinat
 ### Examples 
 
 #### Example: spatial reference 
+
+```json
+ {
+  "spatialreference": {
+    "wkid": 103142,
+    "latestWkid": 6565,
+    "vcsWkid": 105703,
+    "latestVcsWkid": 6360
+  }
+} 
+```
 

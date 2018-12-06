@@ -30,3 +30,12 @@ For each feature, `faceRange` indicate its first and last triangles as a pair of
 
 #### Example: FaceRange 
 
+```json
+ {
+  "faceRange": {
+    "type": "UInt32",
+    "component": 2
+  }
+} 
+```
+

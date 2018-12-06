@@ -4,7 +4,7 @@
 
 ### Related:
 
-[common::nodepages](common/docs/1.7/nodepages.md)
+[nodepages](nodepages.md)
 ### Properties
 
 | Property | Type | Description |
@@ -16,4 +16,8 @@
 ### Examples 
 
 #### Example: FaceRange 
+
+```json
+ "" 
+```
 

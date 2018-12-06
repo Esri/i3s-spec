@@ -20,7 +20,77 @@ Materials describe how a feature or a set of features is to be rendered, includi
 
 #### Example: 3D Scene Layer info for point scene layer 
 
+```json
+ None 
+```
+
 #### Example: 3D Scene Layer info for 3D object scene layer 
 
+```json
+ {
+  "Mat525": {
+    "type": "standard",
+    "name": "standard",
+    "params": {
+      "vertexRegions": false,
+      "vertexColors": true,
+      "reflectivity": 0,
+      "useVertexColorAlpha": false,
+      "ambient": [
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        1,
+        1,
+        1
+      ],
+      "specular": [
+        0.09803921568627451,
+        0.09803921568627451,
+        0.09803921568627451
+      ],
+      "shininess": 1,
+      "renderMode": "solid",
+      "cullFace": "none"
+    }
+  }
+} 
+```
+
 #### Example: 3D Scene Layer info for integrated mesh scene layer 
+
+```json
+ {
+  "Mat8": {
+    "type": "standard",
+    "name": "standard",
+    "params": {
+      "vertexRegions": false,
+      "vertexColors": false,
+      "reflectivity": 0,
+      "useVertexColorAlpha": false,
+      "ambient": [
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        1,
+        1,
+        1
+      ],
+      "specular": [
+        0.098,
+        0.098,
+        0.098
+      ],
+      "shininess": 1,
+      "renderMode": "solid",
+      "cullFace": "none"
+    }
+  }
+} 
+```
 

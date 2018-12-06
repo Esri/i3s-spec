@@ -17,3 +17,11 @@
 
 #### Example: cachedDrawingInfo for 3D Object scene layer. 
 
+```json
+ {
+  "cachedDrawingInfo": {
+    "color": "true"
+  }
+} 
+```
+

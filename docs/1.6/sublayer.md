@@ -24,3 +24,31 @@ A building scene layer is composed of an overview and the full model containing 
 
 #### Example: Building Scene Layer simple group 
 
+```json
+ {
+  "id": 100,
+  "layerType": "group",
+  "name": "architectural",
+  "alias": "Architecture",
+  "modelName": "Architectural",
+  "visibility": true,
+  "visibilityMode": "independent",
+  "sublayers": [
+    {
+      "id": 0,
+      "layerType": "3DObject",
+      "name": "stairs",
+      "alias": "Escaliers",
+      "visibility": true
+    },
+    {
+      "id": 1,
+      "layerType": "3DObject",
+      "name": "roof",
+      "alias": "Toitures",
+      "visibility": true
+    }
+  ]
+} 
+```
+

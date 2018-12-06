@@ -19,3 +19,24 @@ Oriented bounding boxes
 
 #### Example: Global scene (WSG84) oriented-bounding box 
 
+```json
+ {
+  "center": [
+    -105.01482,
+    39.747244,
+    1596.040551
+  ],
+  "halfSize": [
+    29.421873,
+    29.539055,
+    22.082193
+  ],
+  "quaternion": [
+    0.420972,
+    -0.055513,
+    -0.118217,
+    0.897622
+  ]
+} 
+```
+

@@ -18,3 +18,10 @@ A LodSelection object provides metric information determined during the cooking 
 
 #### Example: LOD Selection example 
 
+```json
+ {
+  "metricType": "maxScreenThreshold",
+  "maxError": 34.87550189480981
+} 
+```
+

@@ -4,7 +4,7 @@ Value for attributeByteCount, attributeValues and objectIds.
 
 ### Related:
 
-[featureAttribute](featureAttribute.md), [attributeStorageInfo](attributeStorageInfo.md)
+[attributeStorageInfo](attributeStorageInfo.md), [featureAttribute](featureAttribute.md)
 ### Properties
 
 | Property | Type | Description |

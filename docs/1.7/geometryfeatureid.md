@@ -20,3 +20,12 @@ FeatureID helps to indentify part of mesh from belonging to a particular GIS `fe
 
 #### Example: Feature_id less than 65k, per-feature. `faceRange` attribute will be required 
 
+```json
+ {
+  "featureId": {
+    "type": "UInt16",
+    "component": 1
+  }
+} 
+```
+

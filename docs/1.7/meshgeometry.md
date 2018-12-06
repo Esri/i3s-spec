@@ -21,3 +21,12 @@ Mesh geometry for a node
 
 #### Example:  
 
+```json
+ {
+  "definition": 0,
+  "resource": 6,
+  "vertexCount": 1092,
+  "featureCount": 7
+} 
+```
+

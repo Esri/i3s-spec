@@ -22,3 +22,20 @@ A NodeReference is a pointer to another node - the parent, a child or a neighbor
 
 #### Example: cachedDrawingInfo for 3D Object scene layer. 
 
+```json
+ {
+  "children": [
+    {
+      "id": "2-0-0-0",
+      "href": "../2-0-0-0",
+      "mbs": [
+        0.027173397137801203,
+        0.0049950922109050205,
+        139.15166463702917,
+        133.9973907470703
+      ]
+    }
+  ]
+} 
+```
+

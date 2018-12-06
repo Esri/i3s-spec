@@ -18,3 +18,57 @@
 
 #### Example: Definition for a v1.6-equivalent geometry buffer and draco compressed geometry buffer 
 
+```json
+ {
+  "topology": "triangle",
+  "geometryBuffers": [
+    {
+      "id": 0,
+      "offset": 4,
+      "position": {
+        "type": "Float32",
+        "component": 3,
+        "binding": "per-vertex"
+      },
+      "normal": {
+        "type": "Float32",
+        "component": 3,
+        "binding": "per-vertex"
+      },
+      "uv0": {
+        "type": "Float32",
+        "component": 2,
+        "binding": "per-vertex"
+      },
+      "featureId": {
+        "type": "UInt32",
+        "component": 1,
+        "binding": "per-feature"
+      },
+      "faceRange": {
+        "type": "UInt32",
+        "component": 2,
+        "binding": "per-feature"
+      }
+    },
+    {
+      "id": 1,
+      "featureId": {
+        "type": "UInt32",
+        "component": 1,
+        "binding": "per-feature"
+      },
+      "compressedAttributes": {
+        "encoding": "draco",
+        "attributes": [
+          "position",
+          "normal",
+          "uv0",
+          "featureIndex"
+        ]
+      }
+    }
+  ]
+} 
+```
+

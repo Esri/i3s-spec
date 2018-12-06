@@ -18,3 +18,18 @@ The header definition provides the name of each field and the value type. Header
 
 #### Example: Header 3D Object and integrated mesh scene layer 
 
+```json
+ {
+  "header": [
+    {
+      "property": "vertexCount",
+      "type": "UInt32"
+    },
+    {
+      "property": "featureCount",
+      "type": "UInt32"
+    }
+  ]
+} 
+```
+

@@ -21,3 +21,40 @@ A Texture is a set of images, with some parameters specific to the texture/uv ma
 
 #### Example: textureDefinition 
 
+```json
+ {
+  "32": {
+    "encoding": [
+      "image/jpeg",
+      "image/vnd-ms.dds"
+    ],
+    "wrap": [
+      "none",
+      "none"
+    ],
+    "atlas": false,
+    "uvSet": "uv0",
+    "channels": "rgb",
+    "images": [
+      {
+        "id": "1161930902884843552",
+        "size": 512,
+        "pixelInWorldUnits": 0,
+        "href": [
+          "../textures/0_0",
+          "../textures/0_0_1"
+        ],
+        "byteOffset": [
+          0,
+          0
+        ],
+        "length": [
+          7461,
+          174904
+        ]
+      }
+    ]
+  }
+} 
+```
+

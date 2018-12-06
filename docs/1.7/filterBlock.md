@@ -19,3 +19,13 @@ A filter block defines what elements will be filtered with a specific filter mod
 
 #### Example: Filter block 
 
+```json
+ {
+  "title": "Created Phase 1",
+  "filterMode": {
+    "type": "solid"
+  },
+  "filterExpression": "CreatedPhase=1"
+} 
+```
+

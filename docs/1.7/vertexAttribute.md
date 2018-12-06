@@ -21,3 +21,34 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 #### Example: Vertex attributes for 3dObject 
 
+```json
+ {
+  "vertexAttributes": {
+    "position": {
+      "byteOffset": 8,
+      "count": 222,
+      "valueType": "Float32",
+      "valuesPerElement": 3
+    },
+    "normal": {
+      "byteOffset": 2672,
+      "count": 222,
+      "valueType": "Float32",
+      "valuesPerElement": 3
+    },
+    "uv0": {
+      "byteOffset": 5336,
+      "count": 222,
+      "valueType": "Float32",
+      "valuesPerElement": 2
+    },
+    "color": {
+      "byteOffset": 7112,
+      "count": 222,
+      "valueType": "UInt8",
+      "valuesPerElement": 4
+    }
+  }
+} 
+```
+

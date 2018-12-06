@@ -20,3 +20,32 @@ A collection of objects describing each attribute field.
 
 #### Example: Fields example 
 
+```json
+ {
+  "name": "CreatedPhase",
+  "type": "esriFieldTypeInteger",
+  "alias": "CreatedPhase",
+  "domain": {
+    "type": "codedValue",
+    "name": "Phases",
+    "description": "Phases",
+    "codedValues": [
+      {
+        "name": "Existing",
+        "code": 0
+      },
+      {
+        "name": "Baby Room Overhaul",
+        "code": 1
+      },
+      {
+        "name": "Roof Garden",
+        "code": 2
+      }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+  }
+} 
+```
+

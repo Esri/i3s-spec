@@ -44,7 +44,19 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 
 #### Example: 3D Scene Layer info for point scene layer 
 
+```json
+ None 
+```
+
 #### Example: 3D Scene Layer info for 3D object scene layer 
 
+```json
+ None 
+```
+
 #### Example: 3D Scene Layer info for integrated mesh scene layer 
+
+```json
+ None 
+```
 

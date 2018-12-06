@@ -20,3 +20,10 @@
 
 #### Example: Float 32 UV 
 
+```json
+ {
+  "type": "Float32",
+  "component": 2
+} 
+```
+

@@ -20,3 +20,12 @@ Relative the center of oriented-bounded box of the node
 
 #### Example: {x,y,z} position as float32 
 
+```json
+ {
+  "position": {
+    "type": "Float32",
+    "component": 3
+  }
+} 
+```
+

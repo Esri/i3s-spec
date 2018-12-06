@@ -18,5 +18,23 @@
 
 #### Example: JPEG texture on second slot 
 
+```json
+ {
+  "bundle": {
+    "slot": 1,
+    "format": "jpg"
+  }
+} 
+```
+
 #### Example: PNG texture on first slot 
+
+```json
+ {
+  "bundle": {
+    "slot": 0,
+    "format": "png"
+  }
+} 
+```
 

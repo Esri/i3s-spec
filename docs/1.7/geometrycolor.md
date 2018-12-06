@@ -20,3 +20,12 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 #### Example: RGB colors per vertex 
 
+```json
+ {
+  "color": {
+    "type": "UInt8",
+    "component": 3
+  }
+} 
+```
+

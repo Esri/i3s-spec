@@ -4,7 +4,7 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 
 ### Related:
 
-[layer](layer.md), [3DSceneLayer](3DSceneLayer.md)
+[3DSceneLayer](3DSceneLayer.md), [layer](layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -18,4 +18,14 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 ### Examples 
 
 #### Example: heightModelInfo 
+
+```json
+ {
+  "heightModelInfo": {
+    "heightModel": "gravity_related_height",
+    "vertCRS": "NAVD88_height_(ftUS)",
+    "heightUnit": "us-foot"
+  }
+} 
+```
 

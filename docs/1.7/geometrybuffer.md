@@ -51,5 +51,52 @@ faceRange
 
 #### Example: I3S v1.6 equivalent geometry buffer definition (without UV regions) 
 
+```json
+ {
+  "id": 0,
+  "offset": 4,
+  "position": {
+    "type": "Float32",
+    "component": 3
+  },
+  "normal": {
+    "type": "Float32",
+    "component": 3
+  },
+  "uv0": {
+    "type": "Float32",
+    "component": 2
+  },
+  "featureId": {
+    "type": "UInt32",
+    "component": 1
+  },
+  "faceRange": {
+    "type": "UInt32",
+    "component": 2
+  }
+} 
+```
+
 #### Example: A compressed geometry buffer definition with featureId (without UV regions) 
+
+```json
+ {
+  "id": 1,
+  "featureId": {
+    "type": "UInt32",
+    "component": 1,
+    "binding": "per-feature"
+  },
+  "compressedAttributes": {
+    "encoding": "draco",
+    "attributes": [
+      "position",
+      "normal",
+      "uv0",
+      "featureIndex"
+    ]
+  }
+} 
+```
 

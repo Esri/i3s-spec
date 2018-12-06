@@ -19,3 +19,23 @@ The histogram of the point cloud scene layer. The bin size may be computed as (m
 
 #### Example: histogram 
 
+```json
+ {
+  "histogram": {
+    "minimum": 1567.596482,
+    "maximum": 1644.937967,
+    "counts": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      3,
+      123,
+      1852
+    ]
+  }
+} 
+```
+

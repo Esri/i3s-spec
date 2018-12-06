@@ -29,3 +29,11 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 #### Example: 64 nodes per page index 
 
+```json
+ {
+  "nodePerPage": 64,
+  "rootIndex": 0,
+  "lodSelectionMetricType": "maxScreenThresholdSQ"
+} 
+```
+

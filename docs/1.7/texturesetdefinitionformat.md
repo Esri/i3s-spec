@@ -19,5 +19,23 @@ Describe the format(s) available for a texture set. Note: JPEG (or PNG) must alw
 
 #### Example: JPEG texture at `/layers/0/nodes/{resource_id}/1` 
 
+```json
+ {
+  "index": 1,
+  "format": "jpg"
+} 
+```
+
 #### Example: PNG texture in the 2nd slot of a bundle 
+
+```json
+ {
+  "index": 3,
+  "format": "bundle",
+  "bundle": {
+    "slot": 1,
+    "format": "png"
+  }
+} 
+```
 

@@ -15,3 +15,7 @@ Declaration of the attributes per feature in the geometry, such as feature ID or
 
 #### Example:  
 
+```json
+ None 
+```
+

@@ -4,7 +4,7 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 ### Related:
 
-[field](field.md), [common::field](common/docs/1.7/field.md)
+[field](field.md), [field](field.md)
 ### Properties
 
 | Property | Type | Description |
@@ -23,4 +23,30 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 ### Examples 
 
 #### Example: Example 1 
+
+```json
+ {
+  "domain": {
+    "type": "codedValue",
+    "name": "Phases",
+    "description": "Phases",
+    "codedValues": [
+      {
+        "name": "Existing",
+        "code": 0
+      },
+      {
+        "name": "Baby Room Overhaul",
+        "code": 1
+      },
+      {
+        "name": "Roof Garden",
+        "code": 2
+      }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+  }
+} 
+```
 

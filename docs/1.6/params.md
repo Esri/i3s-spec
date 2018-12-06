@@ -26,7 +26,19 @@ Parameter describing the material.
 
 #### Example: 3D Scene Layer info for point scene layer 
 
+```json
+ None 
+```
+
 #### Example: 3D Scene Layer info for 3D object scene layer 
 
+```json
+ None 
+```
+
 #### Example: 3D Scene Layer info for integrated mesh scene layer 
+
+```json
+ None 
+```
 

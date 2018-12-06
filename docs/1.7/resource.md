@@ -22,3 +22,13 @@ Resource objects are pointers to different types of resources related to a node,
 
 #### Example: Resource example 
 
+```json
+ {
+  "href": "./features/0",
+  "featureRange": [
+    0,
+    3
+  ]
+} 
+```
+

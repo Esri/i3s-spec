@@ -384,9 +384,10 @@ class Markdown_writer  :
            return json.dumps( ex_dom['code'], ensure_ascii=False, indent=2, separators=(',', ': '))
         if 'code_href' in ex_dom :
             #load from relative path:
-            #path = os.path.realpath( os.path.join( self.output_folder, ex_dom[ 'code_href' ]) )
+            #path = os.path.realpath( os.path.join( self.output_folder, "..", ex_dom[ 'code_href' ]) )
             #rel_path = Schema_manifest.get_example_href_from_schema_name( self.output_path, ex_dom[ 'code_href' ] )
-            abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
+            abs_path = os.path.abspath(os.path.join(os.path.dirname( self.output_path), '..', '..', 'schema', ex_dom[ 'code_href' ]))
+            #abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
             if not os.path.exists( abs_path ) :
                 raise BaseException( "Example 'href=%s' is missing (file %s not found )" %(ex_dom[ 'code_href' ], abs_path)  )
             with open( abs_path, 'r') as f :
@@ -440,7 +441,7 @@ class Markdown_writer  :
                     # validate example code if it exists in the current schema
                     if 'description' in ex :
                         self.write_line( "%s \n" % ex['description'] )
-                        self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
+                    self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
 def validate_examples(manifest) :
     ## validate examples before writing to schema

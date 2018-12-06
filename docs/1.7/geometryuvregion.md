@@ -16,7 +16,7 @@
 
 ### Related:
 
-[meshv2::geometryCompressedAttribute](meshv2/docs/1.7/geometryCompressedAttribute.md), [geometrybuffer](geometrybuffer.md)
+[geometryCompressedAttribute](geometryCompressedAttribute.md), [geometrybuffer](geometrybuffer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -31,4 +31,13 @@
 ### Examples 
 
 #### Example: UV region for repeated textures in atlas 
+
+```json
+ {
+  "uvRegion": {
+    "type": "UInt16",
+    "component": 4
+  }
+} 
+```
 

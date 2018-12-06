@@ -4,7 +4,7 @@
 
 ### Related:
 
-[common::layer](common/docs/1.7/layer.md), [nodes](nodes.md)
+[nodes](nodes.md), [layer](layer.md)
 ### Properties
 
 | Property | Type | Description |
@@ -21,5 +21,79 @@
 
 #### Example: Leaf node 
 
+```json
+ {
+  "index": 12,
+  "lodThreshold": 50.43,
+  "obb": {
+    "center": [
+      20.82,
+      41.988,
+      76.56
+    ],
+    "halfSize": [
+      64.93,
+      11.4,
+      70.315
+    ],
+    "quaternion": [
+      -0.0,
+      0.03,
+      -0.20569,
+      10.9
+    ]
+  },
+  "meshes": [
+    {
+      "materialId": 0,
+      "geometryDefinitionId": 0,
+      "attributeDefinitionId": 0,
+      "resourceId": 478,
+      "vertexCount": 526,
+      "featureCount": 0
+    }
+  ]
+} 
+```
+
 #### Example: Node with un-textured mesh and two children nodes 
+
+```json
+ {
+  "index": 1024,
+  "lodThreshold": 50.43,
+  "obb": {
+    "center": [
+      20.82,
+      41.988,
+      76.56
+    ],
+    "halfSize": [
+      64.93,
+      11.4,
+      70.315
+    ],
+    "quaternion": [
+      -0.0,
+      0.03,
+      -0.20569,
+      10.9
+    ]
+  },
+  "children": [
+    1025,
+    1026
+  ],
+  "meshes": [
+    {
+      "materialId": 0,
+      "geometryDefinitionId": 0,
+      "attributeDefinitionId": 0,
+      "resourceId": 478,
+      "vertexCount": 526,
+      "featureCount": 26
+    }
+  ]
+} 
+```
 

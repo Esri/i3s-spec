@@ -22,3 +22,55 @@ Objects of this type extend VestedGeometryParams and use one texture and one mat
 
 #### Example:  info for integrated mesh scene layer 
 
+```json
+ {
+  "id": 8,
+  "type": "ArrayBufferView",
+  "params": {
+    "type": "triangles",
+    "material": "/materialDefinitions/Mat8",
+    "texture": "/textureDefinitions/8",
+    "vertexAttributes": {
+      "position": {
+        "byteOffset": 8,
+        "count": 396,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "normal": {
+        "byteOffset": 4760,
+        "count": 396,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "uv0": {
+        "byteOffset": 9512,
+        "count": 396,
+        "valueType": "Float32",
+        "valuesPerElement": 2
+      },
+      "color": {
+        "byteOffset": 12680,
+        "count": 396,
+        "valueType": "UInt8",
+        "valuesPerElement": 4
+      }
+    },
+    "featureAttributes": {
+      "id": {
+        "byteOffset": 14264,
+        "count": 1,
+        "valueType": "UInt64",
+        "valuesPerElement": 1
+      },
+      "faceRange": {
+        "byteOffset": 14272,
+        "count": 1,
+        "valueType": "UInt32",
+        "valuesPerElement": 2
+      }
+    }
+  }
+} 
+```
+

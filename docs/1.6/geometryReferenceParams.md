@@ -20,3 +20,16 @@ Instead of owning a Geometry exclusively, a Feature can reference part of a Geom
 
 #### Example: geomtryReferenceParams 
 
+```json
+ {
+  "type": "GeometryReference",
+  "params": {
+    "$ref": "/geometryData/1",
+    "faceRange": [
+      0,
+      195
+    ]
+  }
+} 
+```
+

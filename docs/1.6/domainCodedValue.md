@@ -18,5 +18,19 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 #### Example: Example 1 
 
+```json
+ {
+  "name": "code 1.5 description",
+  "code": 1.5
+} 
+```
+
 #### Example: Example 1 
+
+```json
+ {
+  "name": "coded 3000.1 desc",
+  "code": 3000.3
+} 
+```
 

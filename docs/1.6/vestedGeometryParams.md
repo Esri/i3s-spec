@@ -20,3 +20,33 @@ This object extends GeometryParams and is the abstract parent object for all con
 
 #### Example: vestedGeometryParams 
 
+```json
+ {
+  "params": {
+    "type": "triangles",
+    "vertexAttributes": {
+      "position": {
+        "byteOffset": 8,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "normal": {
+        "byteOffset": 2672,
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "uv0": {
+        "byteOffset": 5336,
+        "valueType": "Float32",
+        "valuesPerElement": 2
+      },
+      "color": {
+        "byteOffset": 7112,
+        "valueType": "UInt8",
+        "valuesPerElement": 4
+      }
+    }
+  }
+} 
+```
+

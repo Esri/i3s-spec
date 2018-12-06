@@ -20,3 +20,12 @@ Texture sampler
 
 #### Example: Non-repeated tri-linear texture filtering 
 
+```json
+ {
+  "magFilter": "linear-mipmap-linear",
+  "minFiler": "nearest",
+  "wrapU": "clamp",
+  "wrapV": "clamp"
+} 
+```
+

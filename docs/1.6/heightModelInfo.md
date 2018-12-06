@@ -19,3 +19,13 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 
 #### Example: heightModelInfo 
 
+```json
+ {
+  "heightModelInfo": {
+    "heightModel": "gravity_related_height",
+    "vertCRS": "NAVD88_height_(ftUS)",
+    "heightUnit": "us-foot"
+  }
+} 
+```
+

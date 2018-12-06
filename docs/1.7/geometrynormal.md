@@ -20,3 +20,10 @@ Normals
 
 #### Example: Float32 x,y,z  **per-vertex** normals  
 
+```json
+ {
+  "type": "Float32",
+  "component": 3
+} 
+```
+

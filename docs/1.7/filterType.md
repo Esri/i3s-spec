@@ -18,3 +18,7 @@ The file authoring information for a filter, including the filter type and its v
 
 #### Example: Building Scene Layer filter authoring info 
 
+```json
+ None 
+```
+

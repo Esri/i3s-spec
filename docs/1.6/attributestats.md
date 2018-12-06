@@ -23,7 +23,56 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
 
 #### Example: `String` attribute with `modelName` to specify filterable semantic 
 
+```json
+ {
+  "fieldName": "fournitures",
+  "label": "Meuble interieur",
+  "modelName": "custom",
+  "mostFrequentValues": [
+    "chair",
+    "table",
+    "cubicle",
+    "boxes"
+  ],
+  "subLayerIds": [
+    10,
+    4,
+    5
+  ]
+} 
+```
+
 #### Example: `Integral` attribute with `modelName` to specify filterable semantic  
 
+```json
+ {
+  "fieldName": "floor",
+  "label": "Etages",
+  "modelName": "bldgLevel",
+  "mostFrequentValues": [
+    1,
+    2,
+    3
+  ],
+  "subLayerIds": [
+    10,
+    15
+  ]
+} 
+```
+
 #### Example: `Float` attribute 
+
+```json
+ {
+  "fieldName": "diameter",
+  "label": "Diametre de conduit",
+  "min": 0.2566,
+  "max": 2.256,
+  "subLayerIds": [
+    3,
+    5
+  ]
+} 
+```
 

@@ -130,15 +130,15 @@
         "examples": [
             {
                 "title": "3D Scene Layer info for point scene layer",
-                "code_href": "../examples/3dNodeIndexPointSceneLayerExample.json"
+                "code_href": "example/3dNodeIndexPointSceneLayer.cmn.0106.json"
             },
             {
                 "title": "3D Scene Layer info for 3D object scene layer",
-                "code_href": "../examples/3dNodeIndex3DObjectSceneLayerExample.json"
+                "code_href": "example/3dNodeIndex3DObjectSceneLayer.cmn.0106.json"
             },
             {
                 "title": "3D Scene Layer info for integrated mesh scene layer",
-                "code_href": "../examples/3dNodeIndexIntegratedMeshSceneLayerExample.json"
+                "code_href": "example/3dNodeIndexIntegratedMeshSceneLayer.cmn.0106.json"
             }
         ]
     }

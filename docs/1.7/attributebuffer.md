@@ -24,5 +24,27 @@
 
 #### Example: Declaration for per-feature string attribute buffers. Url: `layers/0/nodes/{resource_id}/attributes/12` 
 
+```json
+ {
+  "id": 12,
+  "name": "street_name",
+  "alias": "Nom de rue",
+  "type": "String",
+  "binding": "per-feature",
+  "encoding": "indexed-string-utf8"
+} 
+```
+
 #### Example: Declaration for per-vertex integer attribute buffers.  Url: `layers/0/nodes/{resource_id}/attributes/14` 
+
+```json
+ {
+  "id": 14,
+  "name": "class_code",
+  "alias": "Classification",
+  "type": "UInt8",
+  "binding": "per-vertex",
+  "hasNullMask": false
+} 
+```
 

@@ -24,3 +24,33 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 
 #### Example: Metal material 
 
+```json
+ {
+  "alphaMode": "mask",
+  "alphaCutoff": 0.25,
+  "pbrMetallicRoughness": {
+    "baseColorFactor": [
+      0.5,
+      0.5,
+      0.5,
+      1.0
+    ],
+    "baseColorTexture": {
+      "textureSetDefinitionId": 0,
+      "texCoord": 0
+    },
+    "metallicFactor": 1,
+    "roughnessFactor": 1,
+    "metallicRoughnessTexture": {
+      "textureSetDefinitionId": 2,
+      "texCoord": 1
+    }
+  },
+  "normalTexture": {
+    "textureSetDefinitionId": 1,
+    "factor": 2.0,
+    "texCoord": 1
+  }
+} 
+```
+

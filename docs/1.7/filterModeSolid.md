@@ -17,3 +17,11 @@ Shows all elements that comply with the filter block of a filter in a building s
 
 #### Example: filterMode solid 
 
+```json
+ {
+  "filterMode": {
+    "type": "solid"
+  }
+} 
+```
+

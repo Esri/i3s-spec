@@ -24,27 +24,27 @@
     "examples": [
       {
         "title": "Elevation statistic (point.z statistics)",
-        "code_href": "../examples/stats_1.json"
+        "code_href": "example/stats_1.pcsl.0106.json"
       },
       {
         "title": "Intensity statistics",
-        "code_href": "../examples/stats_2.json"
+        "code_href": "example/stats_2.pcsl.0106.json"
       },
       {
         "title": "RGB color statistics ( please note that histogram is not required here)",
-        "code_href": "../examples/stats_4.json"
+        "code_href": "example/stats_4.pcsl.0106.json"
       },
       {
         "title": "Class code statistics with labels",
-        "code_href": "../examples/stats_8.json"
+        "code_href": "example/stats_8.pcsl.0106.json"
       },
       {
         "title": "Flags statistics (LiDAR point cloud)",
-        "code_href": "../examples/stats_16.json"
+        "code_href": "example/stats_16.pcsl.0106.json"
       },
       {
         "title": "Returns statistics (LiDAR point cloud)",
-        "code_href": "../examples/stats_32.json"
+        "code_href": "example/stats_32.pcsl.0106.json"
       }
     ]
   }

@@ -8,7 +8,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "label_schema.json"
+        "$ref": "label.pcsl.0106.json"
       },
       "description": "Array of string label/value pairs. Used when attribute represents a set of values. For example, ClassCode."
     },
@@ -26,11 +26,11 @@
     "examples": [
       {
         "title": "Class Code labels (LIDAR data)",
-        "code_href": "../examples/stats_8_labels.json"
+        "code_href": "example/stats_8_labels.pcsl.0106.json"
       },
       {
         "title": "Flags labels (LIDAR data)",
-        "code_href": "../examples/stats_16_labels.json"
+        "code_href": "example/stats_16_labels.pcsl.0106.json"
       }
     ]
   }

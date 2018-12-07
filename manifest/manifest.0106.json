@@ -11,6 +11,9 @@
     "3DSNodeIndexDocument.cmn.0106.json",
     "sharedResource.cmn.0106.json",
     "features.cmn.0106.json",
-    "layer.pcsl.0106.json"
+    "layer.pcsl.0106.json",
+    "statistics.pcsl.0106.json",
+    "stats.pcsl.0106.json",
+    "nodepage.pcsl.0106.json"
   ]
 }

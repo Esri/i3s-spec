@@ -2,7 +2,7 @@
   "title": "I3S point cloud scene layer: nodepage",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description-href": "../docs/nodepage_desc.md",
+  "description-href": "description/nodepage.pcsl.0106.md",
   "properties": {
     "nodes": {
       "type": "array",
@@ -24,7 +24,7 @@
     "examples": [
       {
         "title": "Global scene (WSG84, last page)",
-        "code_href": "../examples/nodepage_11.json"
+        "code_href": "example/nodepage_11.pcsl.0106.json"
       }
     ]
   }

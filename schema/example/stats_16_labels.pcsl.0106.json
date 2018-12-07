@@ -1,0 +1,14 @@
+{
+    "labels": {
+        "bitfieldLabels": [
+            {
+                "bitNumber": 3,
+                "label": "Overlap"
+            },
+            {
+                "bitNumber": 7,
+                "label": "Edge"
+            }
+        ]
+    }
+}

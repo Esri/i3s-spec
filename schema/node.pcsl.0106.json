@@ -47,7 +47,7 @@
     "examples": [
       {
         "title": "Global scene (WSG84)",
-        "code_href": "../examples/node_1.json"
+        "code_href": "example/node_1.pcsl.0106.json"
       }
     ]
   }

@@ -14,7 +14,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 ### Related:
 
-[3DSceneLayer.cmn](3DSceneLayer.cmn.md), [node.cm](node.cm.md)
+[cm::node](node.cm.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

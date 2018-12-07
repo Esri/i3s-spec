@@ -4,7 +4,7 @@
 
 ### Related:
 
-[geometrybuffer.cmn](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

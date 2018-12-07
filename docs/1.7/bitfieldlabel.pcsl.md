@@ -4,7 +4,7 @@
 
 ### Related:
 
-[labels.pcsl](labels.pcsl.md)
+[pcsl::labels](labels.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

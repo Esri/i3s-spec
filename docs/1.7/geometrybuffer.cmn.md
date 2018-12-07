@@ -29,7 +29,7 @@ faceRange
 
 ### Related:
 
-[geometrydefinition.cmn](geometrydefinition.cmn.md)
+[cmn::geometrydefinition](geometrydefinition.cmn.md)
 ### Properties
 
 | Property | Type | Description |

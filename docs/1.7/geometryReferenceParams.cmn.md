@@ -4,7 +4,7 @@ Instead of owning a Geometry exclusively, a Feature can reference part of a Geom
 
 ### Related:
 
-[geometryParams.cmn](geometryParams.cmn.md)
+[cmn::geometryParams](geometryParams.cmn.md)
 ### Properties
 
 | Property | Type | Description |

@@ -4,7 +4,7 @@ This object extends GeometryParams and is the abstract parent object for all con
 
 ### Related:
 
-[geometryParams.cmn](geometryParams.cmn.md)
+[cmn::geometryParams](geometryParams.cmn.md)
 ### Properties
 
 | Property | Type | Description |

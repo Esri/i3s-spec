@@ -4,7 +4,7 @@ An object that describes the structure of the binary attribute data resource of 
 
 ### Related:
 
-[3DSceneLayer.cmn](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

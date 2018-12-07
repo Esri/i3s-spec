@@ -4,7 +4,7 @@ A building scene layer is composed of an overview and the full model containing 
 
 ### Related:
 
-[layer.bld](layer.bld.md), [sublayer.bld](sublayer.bld.md)
+[bld::layer](layer.bld.md), [bld::sublayer](sublayer.bld.md)
 ### Properties
 
 | Property | Type | Description |

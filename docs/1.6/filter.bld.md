@@ -4,7 +4,7 @@ The filter object can be applied to a building scene layer. Filter allows client
 
 ### Related:
 
-[layer.bld](layer.bld.md)
+[bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |

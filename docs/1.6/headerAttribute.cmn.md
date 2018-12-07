@@ -4,7 +4,7 @@ The header definition provides the name of each field and the value type. Header
 
 ### Related:
 
-[defaultGeometrySchema.cmn](defaultGeometrySchema.cmn.md)
+[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md)
 ### Properties
 
 | Property | Type | Description |

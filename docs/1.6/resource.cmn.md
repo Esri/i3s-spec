@@ -4,7 +4,7 @@ Resource objects are pointers to different types of resources related to a node,
 
 ### Related:
 
-[3DSNodeIndexDocument.cmn](3DSNodeIndexDocument.cmn.md)
+[cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
 ### Properties
 
 | Property | Type | Description |

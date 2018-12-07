@@ -4,7 +4,7 @@ The abstract parent object for all GeometryParams classes (GeometryReferencePara
 
 ### Related:
 
-[geometry.cmn](geometry.cmn.md)
+[cmn::geometry](geometry.cmn.md)
 ### oneOf:
 
 - [geometryReferenceParams](geometryReferenceParams.cmn.md)

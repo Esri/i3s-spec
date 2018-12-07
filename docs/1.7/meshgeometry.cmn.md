@@ -4,7 +4,7 @@ Mesh geometry for a node
 
 ### Related:
 
-[mesh.cmn](mesh.cmn.md)
+[cmn::mesh](mesh.cmn.md)
 ### Properties
 
 | Property | Type | Description |

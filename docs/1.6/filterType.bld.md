@@ -4,7 +4,7 @@ The file authoring information for a filter, including the filter type and its v
 
 ### Related:
 
-[filterBlockAuthoringInfo.bld](filterBlockAuthoringInfo.bld.md)
+[bld::filterBlockAuthoringInfo](filterBlockAuthoringInfo.bld.md)
 ### Properties
 
 | Property | Type | Description |

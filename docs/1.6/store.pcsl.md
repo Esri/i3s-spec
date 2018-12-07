@@ -4,7 +4,7 @@ Describes storage for the layer.
 
 ### Related:
 
-[layer.pcsl](layer.pcsl.md)
+[pcsl::layer](layer.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

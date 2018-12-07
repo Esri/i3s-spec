@@ -4,7 +4,7 @@
 
 ### Related:
 
-[attributesetdefinition.cmn](attributesetdefinition.cmn.md)
+[cmn::attributesetdefinition](attributesetdefinition.cmn.md)
 ### Properties
 
 | Property | Type | Description |

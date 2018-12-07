@@ -4,7 +4,7 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 
 ### Related:
 
-[materialdefinitions.cmn](materialdefinitions.cmn.md)
+[cmn::materialdefinitions](materialdefinitions.cmn.md)
 ### Properties
 
 | Property | Type | Description |

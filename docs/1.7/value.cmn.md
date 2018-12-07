@@ -4,7 +4,7 @@ Value for attributeByteCount, attributeValues and objectIds.
 
 ### Related:
 
-[featureAttribute.cmn](featureAttribute.cmn.md), [attributeStorageInfo.cmn](attributeStorageInfo.cmn.md)
+[cmn::featureAttribute](featureAttribute.cmn.md), [cmn::attributeStorageInfo](attributeStorageInfo.cmn.md)
 ### Properties
 
 | Property | Type | Description |

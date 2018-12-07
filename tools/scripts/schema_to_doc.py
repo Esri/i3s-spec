@@ -410,7 +410,7 @@ class Markdown_writer  :
             if len( schema_doc.back_refs ) > 0:
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
-                self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[0] +'.'+x.name.split('.')[1], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
+                self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[1] +'::'+x.name.split('.')[0], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
             
             # only print properties if any exist
             if ( len(schema_doc.props) ) :

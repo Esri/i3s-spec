@@ -4,7 +4,7 @@
 
 ### Related:
 
-[nodepages.cmn](nodepages.cmn.md)
+[cmn::nodepages](nodepages.cmn.md)
 ### Properties
 
 | Property | Type | Description |

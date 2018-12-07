@@ -4,7 +4,7 @@ The materialDefinition describes how a feature or a set of features is to be ren
 
 ### Related:
 
-[store.cmn](store.cmn.md)
+[cmn::store](store.cmn.md)
 ### Properties
 
 | Property | Type | Description |

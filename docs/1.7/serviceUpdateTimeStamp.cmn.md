@@ -4,7 +4,7 @@ Object to provide time stamp when the I3S service or the source of the service w
 
 ### Related:
 
-[3DSceneLayer.cmn](3DSceneLayer.cmn.md), [layer.pcsl](layer.pcsl.md)
+[pcsl::layer](layer.pcsl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

@@ -4,7 +4,7 @@ Parameter describing the material.
 
 ### Related:
 
-[materialDefinition.cmn](materialDefinition.cmn.md)
+[cmn::materialDefinition](materialDefinition.cmn.md)
 ### Properties
 
 | Property | Type | Description |

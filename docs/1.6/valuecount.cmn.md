@@ -4,7 +4,7 @@ A string or numeric value.
 
 ### Related:
 
-[statsInfo.cmn](statsInfo.cmn.md)
+[cmn::statsInfo](statsInfo.cmn.md)
 ### Properties
 
 | Property | Type | Description |

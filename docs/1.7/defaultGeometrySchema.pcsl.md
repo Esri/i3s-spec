@@ -4,7 +4,7 @@ Attribute description as field.
 
 ### Related:
 
-[store.pcsl](store.pcsl.md)
+[pcsl::store](store.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

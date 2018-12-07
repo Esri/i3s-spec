@@ -4,7 +4,7 @@ A NodeReference is a pointer to another node - the parent, a child or a neighbor
 
 ### Related:
 
-[3DSNodeIndexDocument.cmn](3DSNodeIndexDocument.cmn.md)
+[cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
 ### Properties
 
 | Property | Type | Description |

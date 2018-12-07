@@ -4,7 +4,7 @@ Describes the index (i.e. bounding volume tree) of the layer.
 
 ### Related:
 
-[store.pcsl](store.pcsl.md)
+[pcsl::store](store.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

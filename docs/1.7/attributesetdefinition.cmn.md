@@ -4,7 +4,7 @@ Statistics for the attribute will be at `statistics/{attribute_set_index}/{attri
 
 ### Related:
 
-[3DSceneLayer.cmn](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

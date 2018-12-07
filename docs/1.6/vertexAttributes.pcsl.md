@@ -4,7 +4,7 @@ The vertex buffer description.
 
 ### Related:
 
-[defaultGeometrySchema.pcsl](defaultGeometrySchema.pcsl.md)
+[pcsl::defaultGeometrySchema](defaultGeometrySchema.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

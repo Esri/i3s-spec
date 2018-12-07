@@ -4,7 +4,7 @@ The FeatureData JSON file(s) contain geographical features with a set of attribu
 
 ### Related:
 
-[features.cmn](features.cmn.md)
+[cmn::features](features.cmn.md)
 ### Properties
 
 | Property | Type | Description |

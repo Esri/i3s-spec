@@ -4,7 +4,7 @@
 
 ### Related:
 
-[3DSceneLayer.cmn](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

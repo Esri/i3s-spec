@@ -4,7 +4,7 @@ Oriented bounding boxes
 
 ### Related:
 
-[3DSNodeIndexDocument.cmn](3DSNodeIndexDocument.cmn.md), [node.pcsl](node.pcsl.md), [nodeReference.cmn](nodeReference.cmn.md)
+[pcsl::node](node.pcsl.md), [cmn::nodeReference](nodeReference.cmn.md), [cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
 ### Properties
 
 | Property | Type | Description |

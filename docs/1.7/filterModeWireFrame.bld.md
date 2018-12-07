@@ -4,7 +4,7 @@ Shows all elements that comply with the filter block of a filter in a building s
 
 ### Related:
 
-[filterMode.bld](filterMode.bld.md)
+[bld::filterMode](filterMode.bld.md)
 ### Properties
 
 | Property | Type | Description |

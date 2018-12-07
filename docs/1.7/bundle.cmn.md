@@ -4,7 +4,7 @@
 
 ### Related:
 
-[texturesetdefinitionformat.cmn](texturesetdefinitionformat.cmn.md)
+[cmn::texturesetdefinitionformat](texturesetdefinitionformat.cmn.md)
 ### Properties
 
 | Property | Type | Description |

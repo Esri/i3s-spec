@@ -4,7 +4,7 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 ### Related:
 
-[domain.cmn](domain.cmn.md)
+[cmn::domain](domain.cmn.md)
 ### Properties
 
 | Property | Type | Description |

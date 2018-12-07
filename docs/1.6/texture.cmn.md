@@ -4,7 +4,7 @@ A Texture is a set of images, with some parameters specific to the texture/uv ma
 
 ### Related:
 
-[store.cmn](store.cmn.md)
+[cmn::store](store.cmn.md)
 ### Properties
 
 | Property | Type | Description |

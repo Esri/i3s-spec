@@ -77,7 +77,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 
 ### Related:
 
-[statsummary.bld](statsummary.bld.md)
+[bld::statsummary](statsummary.bld.md)
 ### Properties
 
 | Property | Type | Description |

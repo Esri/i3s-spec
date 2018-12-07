@@ -4,7 +4,7 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 ### Related:
 
-[geometrybuffer.cmn](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

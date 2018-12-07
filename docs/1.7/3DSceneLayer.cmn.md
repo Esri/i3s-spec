@@ -4,7 +4,7 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 
 ### Related:
 
-[nodes.cmn](nodes.cmn.md)
+[cmn::nodes](nodes.cmn.md)
 ### Properties
 
 | Property | Type | Description |

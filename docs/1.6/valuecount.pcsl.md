@@ -4,7 +4,7 @@ A scalar or vector value.
 
 ### Related:
 
-[stats.pcsl](stats.pcsl.md)
+[pcsl::stats](stats.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

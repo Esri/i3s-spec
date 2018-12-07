@@ -4,7 +4,7 @@ A filter block defines what elements will be filtered with a specific filter mod
 
 ### Related:
 
-[filter.bld](filter.bld.md)
+[bld::filter](filter.bld.md)
 ### Properties
 
 | Property | Type | Description |

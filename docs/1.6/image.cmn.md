@@ -4,7 +4,7 @@ An image is a binary resource, containing a single raster that can be used to te
 
 ### Related:
 
-[textureDefinition.cmn](textureDefinition.cmn.md)
+[cmn::textureDefinition](textureDefinition.cmn.md)
 ### Properties
 
 | Property | Type | Description |

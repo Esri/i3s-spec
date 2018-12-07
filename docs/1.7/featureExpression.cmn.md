@@ -4,7 +4,7 @@ Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geom
 
 ### Related:
 
-[elevationInfo.cmn](elevationInfo.cmn.md)
+[cmn::elevationInfo](elevationInfo.cmn.md)
 ### Properties
 
 | Property | Type | Description |

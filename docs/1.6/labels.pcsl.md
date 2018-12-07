@@ -4,7 +4,7 @@ Optionally, the statistics document may contain labeling information for the att
 
 ### Related:
 
-[statistics.pcsl](statistics.pcsl.md)
+[pcsl::statistics](statistics.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

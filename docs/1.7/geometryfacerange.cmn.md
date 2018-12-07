@@ -14,7 +14,7 @@ For each feature, `faceRange` indicate its first and last triangles as a pair of
 
 ### Related:
 
-[geometrybuffer.cmn](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

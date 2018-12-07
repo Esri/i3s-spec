@@ -4,7 +4,7 @@ FeatureID helps to indentify part of mesh from belonging to a particular GIS `fe
 
 ### Related:
 
-[geometrybuffer.cmn](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

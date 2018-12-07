@@ -4,7 +4,7 @@ Id-> Feature-service mapping
 
 ### Related:
 
-[layer.bld](layer.bld.md)
+[bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |

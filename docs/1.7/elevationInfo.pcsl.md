@@ -4,7 +4,7 @@ The elevationInfo defines how content in a scene layer is aligned to the ground.
 
 ### Related:
 
-[layer.pcsl](layer.pcsl.md)
+[pcsl::layer](layer.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

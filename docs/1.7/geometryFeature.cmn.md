@@ -4,7 +4,7 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Related:
 
-[defaultGeometrySchema.cmn](defaultGeometrySchema.cmn.md)
+[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md)
 ### Properties
 
 | Property | Type | Description |

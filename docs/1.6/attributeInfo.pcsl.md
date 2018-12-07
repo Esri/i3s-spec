@@ -4,7 +4,7 @@ List of attributes included for this layer.
 
 ### Related:
 
-[layer.pcsl](layer.pcsl.md)
+[pcsl::layer](layer.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

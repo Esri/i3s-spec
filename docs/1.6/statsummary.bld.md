@@ -4,7 +4,7 @@ Statistics for all building scene layer sublayers. Captures statistical informat
 
 ### Related:
 
-[layer.bld](layer.bld.md)
+[bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |

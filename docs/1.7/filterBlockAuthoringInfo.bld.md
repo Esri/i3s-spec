@@ -4,7 +4,7 @@ The filter authoring info object contains metadata about the authoring process f
 
 ### Related:
 
-[filterAuthoringInfo.bld](filterAuthoringInfo.bld.md)
+[bld::filterAuthoringInfo](filterAuthoringInfo.bld.md)
 ### Properties
 
 | Property | Type | Description |

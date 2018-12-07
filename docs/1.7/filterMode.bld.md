@@ -4,7 +4,7 @@ Filter mode represents the way elements draw when participating in a filter bloc
 
 ### Related:
 
-[filterBlock.bld](filterBlock.bld.md)
+[bld::filterBlock](filterBlock.bld.md)
 ### oneOf:
 
 - [filterModeSolid](filterModeSolid.bld.md)

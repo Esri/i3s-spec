@@ -4,7 +4,7 @@ Objects of this type extend VestedGeometryParams and use one texture and one mat
 
 ### Related:
 
-[geometryParams.cmn](geometryParams.cmn.md)
+[cmn::geometryParams](geometryParams.cmn.md)
 ### Properties
 
 | Property | Type | Description |

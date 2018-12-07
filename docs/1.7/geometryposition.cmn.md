@@ -4,7 +4,7 @@ Relative the center of oriented-bounded box of the node
 
 ### Related:
 
-[geometrybuffer.cmn](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

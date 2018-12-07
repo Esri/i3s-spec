@@ -4,7 +4,7 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 
 ### Related:
 
-[3DSceneLayer.cmn](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

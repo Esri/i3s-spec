@@ -4,7 +4,7 @@
 
 ### Related:
 
-[layer.cmn](layer.cmn.md), [nodes.cmn](nodes.cmn.md)
+[cmn::nodes](nodes.cmn.md), [cmn::layer](layer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

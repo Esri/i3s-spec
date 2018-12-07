@@ -4,7 +4,7 @@ The histogram of the point cloud scene layer. The bin size may be computed as (m
 
 ### Related:
 
-[stats.pcsl](stats.pcsl.md)
+[pcsl::stats](stats.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

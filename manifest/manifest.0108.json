@@ -3,6 +3,38 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "This file defines the entry points for version 1.8 of the i3s-spec",
+  "profile": [
+    {
+      "name": "building",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "layer.bld.0106.json"
+        },
+        {
+          "path": "summary.json.gz",
+          "schema": "statsummary.bld.0106.json"
+        }
+      ]
+    },
+    {
+      "name": "common",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "3DSceneLayer.cmn.0108.json"
+        },
+        {
+          "path": "3dNodeIndexDocument.json.gz",
+          "schema": "3DSNodeIndexDocument.cmn.0106.json"
+        },
+        {
+          "path": "0.json.gz",
+          "schema": "stats.cmn.0106.json"
+        }
+      ]
+    }
+  ],
   "entryPoints": [
     "layer.bld.0106.json",
     "statsummary.bld.0106.json",

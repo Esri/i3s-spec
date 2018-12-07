@@ -6,9 +6,15 @@ import os
 import sys
 import zipfile
 import zlib
+import collections
 from validate_json import validate
 
+
 verbose = ''
+
+def json_to_dom( path ) :
+    with open( path, 'r') as f :
+      return  json.load(f, object_pairs_hook=collections.OrderedDict)
 
 ############################################################################
 ############### Decompress an slpk file for reading ########################
@@ -35,80 +41,97 @@ class Reader :
 ############################################################################
 ############ Functions to get the appropriate schema path ##################
 ############################################################################
-def get_schema(slpk_type, file_type) :
+def get_schema(path_to_specs, slpk_type, file_type, version) :
+    c_versions_to_code = { '1.6' : '0106', '1.8' : '0108' }
+    # building 3dSceneLayer does not have 'store' property
+    if ( not version ) :
+        version = '1.6'
+
     dir, file = os.path.split( file_type )
+    manifest = 'manifest.' + c_versions_to_code[version] + '.json'
+    path_to_manifest = os.path.join(path_to_specs, 'manifest', manifest)
+    dom = json_to_dom( path_to_manifest )
+
+    path = None
+
     if ( slpk_type == "Building" ) :
-        return get_building_schema_path( dir, file )
+        path = get_building_schema_path( dom, dir, file )
 
-    if ( slpk_type == "Point" ) :
-        return get_point_schema_path( dir, file )
+    elif ( slpk_type == "Point" ) :
+        path = get_point_schema_path( dir, file )
     
-    if ( slpk_type == "PointCloud" ) :
-        return get_pointcloud_schema_path( dir, file )
+    elif ( slpk_type == "PointCloud" ) :
+        path = get_pointcloud_schema_path( dom, dir, file )
 
-    if ( slpk_type == "3DObject" ) :
-        return get_common_schema_path( dir, file )
-    
-    if ( slpk_type == "IntegratedMesh" ) :
-        return get_common_schema_path( dir, file )
-    # type was not valid
+    elif ( slpk_type == "3DObject" ) :
+        path =  get_common_schema_path( dom, dir, file )
+
+    return path
+
+# get the path for the file within the profile type from the dom
+def get_path_from_dom(dom, type, file) :
+    for profile in dom['profile'] :
+        for name, value in profile.items() :
+            if (value == type) :
+                for schemas in profile['schemas'] :
+                    for path, schema in schemas.items() :
+                        if ( schema == file ) :
+                            return schemas['schema']
     return None
 
 
 # includes Point, 3DObject
-def get_common_schema_path( dir, file ) :
+def get_common_schema_path( dom, dir, file ) :
     if ( ( (not dir) or dir.isdigit() ) and file == "3dSceneLayer.json.gz" ) :
-        return os.path.join("common", "schema", "3DSceneLayer_schema.json")
+        return get_path_from_dom(dom, 'common', file)
 
     if ( (dir.isdigit() or dir == "root") and file == "3dNodeIndexDocument.json.gz"):
-        return os.path.join("common", "schema", "3DSNodeIndexDocument_schema.json")
+        return get_path_from_dom(dom, 'common', file)
 
-    # e.g /sublayers/#/statistics/f_#/0.json.gz
-    if ( ("f_" in dir) and file == "0.json.gz" ) :
-        return os.path.join("common", "schema", "stats_schema.json")
+    ## e.g /sublayers/#/statistics/f_#/0.json.gz
+    if ( (dir.startswith("f_") ) and file == "0.json.gz" ) :
+        return get_path_from_dom(dom, 'common', file)
 
-    return None
+    ### not being validated currently ###
+    #if ( (dir == "features") and file == "0.json.gz") :
+    #    return os.path.join("schema", "features.cmn")
+
+    #if ( ( dir == "shared") and file == "sharedResource.json.gz"):
+    #    return os.path.join("schema", "sharedResource.cmn" )
 
 
-def get_building_schema_path( dir, file ) :
-    # e.g /3dSceneLayer.json.gz
-    if (dir == "" and file == "3dSceneLayer.json.gz"):
-        return os.path.join("building", "schema", "layer_schema.json")
+def get_building_schema_path( dom, dir, file ) :
+    ## e.g 3dSceneLayer.json.gz
+    if (dir == ""):
+        return get_path_from_dom(dom,'building', file)
 
-    # e.g /statistics/summary.json.gz
-    if (dir == "statistics" and file == "summary.json.gz"):
-        return os.path.join("building", "schema", "statsummary_schema.json")
+    ## e.g statistics/summary.json.gz
+    if (dir == "statistics"):
+        return get_path_from_dom(dom,'building', file)
 
     # everything else in common or not being validated
-    return get_common_schema_path(dir, file)
+    return get_common_schema_path(dom, dir, file)
 
 
-def get_pointcloud_schema_path( dir, file ) :
+def get_pointcloud_schema_path( dom, dir, file ) :
+    #node pages don't have consistent naming, e.g 0.json, 64.json, 384.json, ...
     if ( dir == "nodepages" ) :
-        return os.path.join("pointclouds", "schema", "nodepage_schema.json")
+        return  get_path_from_dom(dom, "pointcloud", "nodepage")
     
     if ( dir == "statistics" ) :
-        return os.path.join("pointclouds", "schema", "statistics.json")
+        return  get_path_from_dom(dom, "pointcloud", "statistics")
 
     if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
-        return os.path.join("pointclouds", "schema", "layer_schema.json")
+        return get_path_from_dom(dom, dir, file)
 
-    # any other file is not being validated
-    return None
-
-def get_integrated_mesh_schema_path( dir, file) :
-    if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
-        return os.path.join("meshv2", "schema", "layer_schema.json")
-    return None
+    return get_path_from_dom(dom, dir, file)
 
 def get_point_schema_path( dir, file) :
-    if ( (dir == "features") and file == "0.json.gz") :
-        return os.path.join("common", "schema", "features_schema.json")
-    return get_common_schema_path(dir, file)
+    return get_common_schema_path(dom, dir, file)
 
 
 ############################################################################
-##################### Functions for file I/O ###############################
+#################### Functions for reading files ###########################
 ############################################################################
 # file_name, data are strings
 # returns path to created file
@@ -129,12 +152,42 @@ def remove_file( file_name ):
          os.remove(file_name)
 
 
+def load_file_to_dom(reader, file) :
+    files = reader.get_file_list()
+    layer_desc_index = files.index(file)
+    layer_desc = reader.get_file( files[layer_desc_index] ) # bytes file_type
+    layer_desc = layer_desc.decode()                        # to string
+    return json.loads(layer_desc)
+
+def get_slpk_info(reader) :
+    layer_file = "3dSceneLayer.json.gz"
+    layer_desc = load_file_to_dom(reader, layer_file)
+    # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating
+    type, version = get_info_from_layer(layer_desc)
+
+    # 3dScenelayer for building does not have a version, or store
+    # find a 3dscenelayer within the sublayers
+    if (not version) :
+        files = reader.get_file_list()
+        for file in files :
+            if file.startswith('sublayers') and file.endswith(layer_file)  :
+                layer_desc = load_file_to_dom(reader, file)
+                version = get_info_from_layer(layer_desc)[1]
+                return type, version
+
+    return type, version
+
 # get the type of slpk, e.g:
 # Building, Point, Pointcloud, ...
-def get_slpk_type(dom) :
+def get_info_from_layer(dom) :
+    type = None
+    version = None
     if ( 'layerType' in dom ) :
-        return dom['layerType']
-    return None
+        type =  dom['layerType']
+    if ( 'store' in dom ) :
+        if ('version' in dom['store'] ) :
+            version = dom['store']['version']
+    return type, version
 
 
 ############################################################################
@@ -165,22 +218,15 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
     success_count = 0
     successful_validation = True
 
-    #current_layer = -1                  # used for printing current layer information / checking when sublayer has changed
+    # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating    
+    slpk_type, version = get_slpk_info(reader)
 
-    # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating
-    layer_desc_index = files.index("3dSceneLayer.json.gz")
-    layer_desc = reader.get_file( files[layer_desc_index] ) # bytes file_type
-    layer_desc = layer_desc.decode()                        # to string
-    layer_desc = json.loads(layer_desc)
-
-    slpk_type = get_slpk_type(layer_desc)
-    
     for file in files:
         # check if file is a json file
         # if so, decompress file and validate schema
         if file[-7:] == "json.gz":
             file_contents = (reader.get_file(file)).decode()    # file_contents as string
-            file_paths = file.split("/")                        
+            file_paths = file.split("/")                                    
 
             # files in root directory will have path length of 1
             if ( len(file_paths) > 1) :
@@ -189,26 +235,22 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
                 current_file = file_paths[-1]
 
             # get the schema for the current json file type
-            schema = get_schema(slpk_type, current_file)
+            schema = get_schema(path_to_specs_folder, slpk_type, current_file, version)
 
             # not every file is being validated
             # check get_schema_type to see which are being validated
-            if (not schema) :
-                continue
-
-            print(file)
-
-            path_to_json_schema = os.path.join(path_to_specs_folder, "profiles", schema)
-            
-            # validate the data against the schema           
-            successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, current_file)
-            if (not successful__file_validation) :
-                successful_validation = False
+            if (schema) :
+                print(file)
+                path_to_json_schema = os.path.join(path_to_specs_folder, 'schema', schema)
+                # validate the data against the schema           
+                successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, current_file)
+                if (not successful__file_validation) :
+                    successful_validation = False
     
-            if not successful__file_validation:
-                error_count += 1
-            else:
-                success_count += 1
+                if not successful__file_validation:
+                    error_count += 1
+                else:
+                    success_count += 1
 
     current_slpk = os.path.split(path_to_slpk)[1]
     print()

@@ -1,0 +1,29 @@
+{
+    "title": "I3S point cloud scene layer: vertexAttributes",
+    "type": "object",
+    "description": "The vertex buffer description.",
+    "properties": {
+        "position": {
+            "$ref": "value.pcsl.0106.json",
+            "description": "Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position."
+        }
+    },
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+           {
+             "title": "vertexAttributes",
+             "code": {
+                "vertexAttributes": 
+                {
+                    "position": 
+                    {
+                        "valueType": "Float64", 
+                        "valuesPerElement": 3
+                        }
+                    }        
+                }
+            }
+        ]
+    }
+}

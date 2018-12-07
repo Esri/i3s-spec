@@ -17,12 +17,15 @@ def json_to_dom( path ) :
 class Schema_manifest :
     c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"building":"building"}
     c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","building":"building"}
+    c_code_to_versions = { '0106' : '1.6', '0108' : '1.8', '0200' : '2.0' }
+    c_versions_to_code = { '1.6' : '0106', '1.8' : '0108', '2.0' : '0200' }
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
-    def __init__(self, schema_reference_path) :
+    def __init__(self, schema_reference_path, version) :
         self.ref_path = schema_reference_path
         self.types = {} # key: schema name, value : type object
         self.include_stack = []
+        version = version
 
     def get_abs_path_from_schema_name( self, name ) :
         tok = name.split('::')
@@ -35,24 +38,29 @@ class Schema_manifest :
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
-        assert( len(tok) <=2 )
-        fn = tok[-1] + ".md"
-        if len(tok) >1 :
+        assert( len(tok) <= 2 )
+        name = tok[-1].split('.')
+        fn = name[0] + '.' + name[1] + '.md'
+        version_num = Schema_manifest.c_code_to_versions[version]
+        if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", fn ) 
-        if abs_ref_path != None :
-            fn = os.path.relpath( os.path.join(self.ref_path, fn), os.path.dirname( abs_ref_path) )
+            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", version_num, fn ) 
+        #if abs_ref_path != None :
+        #    fn = os.path.relpath( os.path.join(self.ref_path, "docs", version_num, fn,), os.path.dirname( abs_ref_path) )
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
-        #tok = name.split('::')
-        #assert( len(tok) <=2 )
-        #fn = tok[-1] + ".md"
-        #if len(tok) >1 :
-        #    assert( tok[0] in Schema_manifest.c_code_to_paths)
-        #    fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", fn ) 
-        #return os.path.realpath( os.path.join( self.ref_path, fn ) );
-        return os.path.realpath( os.path.join( self.ref_path, self.get_relative_output_path_from_schema_name(name) ) );
+        name = name.split('.')
+        fn = name[0] + '.' + name[1] + '.md'
+        #check if output directory exists
+        dir = os.path.join( self.ref_path, "docs", Schema_manifest.c_code_to_versions[version] )
+        if ( not os.path.isdir(dir) ) :
+            try:
+                os.mkdir(dir)
+            except OSError:
+                print("Could not create %s" % dir)
+        return os.path.realpath( os.path.join(dir, fn ) )
+       
 
     def read_href_resource( self, href) :
         assert( len( self.include_stack) > 0 )
@@ -65,22 +73,25 @@ class Schema_manifest :
         return Schema_manifest.get_schema_name_from_relative_path( rel_path );
 
 
-
     def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
         #pointclouds/schema/pcsl_attributeInfo_schema.json
         tok = rel_path.replace('\\','/').split('/')
-        name = tok[-1];
+        if ( len(tok) > 1 ):
+            name = tok[1]
+        else:
+            name = tok[0]
         if name.endswith('.json') :
             name = name[:-5]
-        if name.endswith('_schema') :
-            name = name[:-7]
-        if len(tok) ==1 :
-            assert( default_namespace in Schema_manifest.c_code_to_paths)
-            tok.insert(0, Schema_manifest.c_code_to_paths[ default_namespace])
-        while( len(tok) > 0 and tok[0] == ".."):
-            del tok[0]
-        assert( tok[0] in Schema_manifest.c_path_to_codes)
-        return "%s::%s" % (Schema_manifest.c_path_to_codes[tok[0]], name )
+        #if name.endswith('_schema') :
+        #    name = name[:-7]
+        #if len(tok) ==1 :
+        #    assert( default_namespace in Schema_manifest.c_code_to_paths)
+        #    tok.insert(0, Schema_manifest.c_code_to_paths[ default_namespace])
+        #while( len(tok) > 0 and tok[0] == ".."):
+        #    del tok[0]
+        #assert( tok[0] in Schema_manifest.c_path_to_codes)
+        #return "%s::%s" % (Schema_manifest.c_path_to_codes[tok[0]], name )
+        return name
 
     def get_docs_href_from_schema_name( href) :
         return Schema_manifest._get_href_from_schema_name( href, 'docs')
@@ -101,7 +112,8 @@ class Schema_manifest :
 
         folders.reverse()
         folders = [ (x if x !='schema' else replace_by ) for x in folders ]
-        folders[-1] = folders[-1].replace('_schema.json', '.md')
+        #folders[-1] = folders[-1].replace('_schema.json', '.md')
+        folders[-1] = folders[-1].replace('.json', '.md')
         #if 'schema' in folders :
         #    folders = folders.replace( 'schema', 'docs')
         rel_path  = os.path.join(*folders )
@@ -251,6 +263,8 @@ class Schema_type :
         if 'oneOf' in dom :
             for schema in dom['oneOf']:
                 for field, sub_dom in schema.items():
+                    prop = self.parse_property(field, schema)
+                    prop.type.back_refs.append( self)
                     self.oneOf.append( {field: sub_dom} )
 
 
@@ -309,7 +323,7 @@ class Markdown_writer  :
             if prop.type.range[0] == prop.type.range[1] and prop.type.range[0] != '':
                 range = prop.type.range[0] 
             if prop.type.range[0] != prop.type.range[1] :
-                range = "%s:%s" % prop.type 
+                range = "%s:%s" % (prop.type.range[0], prop.type.range[1]) 
             postfix ='[%s]' % range
             return self.get_property_type( prop.type.item_prop, postfix)
         
@@ -318,7 +332,10 @@ class Markdown_writer  :
             if prop.href != '' :
                 #print a link to the type:
                 tn = prop.get_type_name(self.output_path)
-                typename = "[%s](%s)" % (prop.type.name, "%s" % tn.replace('\\','/') )
+                obj = tn.split('.')
+                link = obj[0]
+                fn = obj[0] + '.' + obj[1] + ".md"
+                typename = "[%s](%s)" % (link, "%s" % fn )
             else :
                 typename = prop.type.name
         return "%s%s" % (typename, postfix )
@@ -369,16 +386,18 @@ class Markdown_writer  :
            return json.dumps( ex_dom['code'], ensure_ascii=False, indent=2, separators=(',', ': '))
         if 'code_href' in ex_dom :
             #load from relative path:
-            #path = os.path.realpath( os.path.join( self.output_folder, ex_dom[ 'code_href' ]) )
+            #path = os.path.realpath( os.path.join( self.output_folder, "..", ex_dom[ 'code_href' ]) )
             #rel_path = Schema_manifest.get_example_href_from_schema_name( self.output_path, ex_dom[ 'code_href' ] )
-            abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
+            abs_path = os.path.abspath(os.path.join(os.path.dirname( self.output_path), '..', '..', 'schema', ex_dom[ 'code_href' ]))
+            #abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
             if not os.path.exists( abs_path ) :
                 raise BaseException( "Example 'href=%s' is missing (file %s not found )" %(ex_dom[ 'code_href' ], abs_path)  )
             with open( abs_path, 'r') as f :
                 return f.read()
 
     def write_to_md( self, manifest, schema_doc ):
-        self.output_path  =manifest.get_output_path_from_schema_name( schema_doc.name )
+        self.output_path  = manifest.get_output_path_from_schema_name( schema_doc.name )
+
         #output_path  = os.path.join( self.output_folder, "%s.md" % schema_doc.name)
         print( "Writing %s" % self.output_path )
         with open( self.output_path,'w') as output:
@@ -391,7 +410,7 @@ class Markdown_writer  :
             if len( schema_doc.back_refs ) > 0:
                 # print the related documents (i.e. navigation parents)
                 self.write_line( "### Related:\n" )
-                self.write_line( ", ".join( [ "[%s](%s)" %( x.name, manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
+                self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[1] +'::'+x.name.split('.')[0], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
             
             # only print properties if any exist
             if ( len(schema_doc.props) ) :
@@ -412,7 +431,7 @@ class Markdown_writer  :
                         namespace =  schema_doc.name.split('::')[0]
                         name = Schema_manifest.get_schema_name_from_relative_path( value, namespace )
                         link = manifest.get_relative_output_path_from_schema_name(name, self.output_path)
-                        self.write_line("- [%s](%s)" % (name, link))
+                        self.write_line("- [%s](%s)" % (name.split('.')[0], link))
                 self.write_line()
                 self.write_line()
 
@@ -424,9 +443,26 @@ class Markdown_writer  :
                     # validate example code if it exists in the current schema
                     if 'description' in ex :
                         self.write_line( "%s \n" % ex['description'] )
-                        self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
+                    self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
-
+def validate_examples(manifest) :
+    ## validate examples before writing to schema
+    for profile in manifest.types:
+        examples = manifest.types[profile].example_dom
+        if ( len(examples) ) :
+            schema = manifest.get_abs_path_from_schema_name(profile)
+            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
+            for example in examples:
+                successful_validation = True
+                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
+                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                    try:
+                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
+                        if (not successful_validation) :
+                            bad_example_file = profile.split('::')[1] + ".json"
+                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
+                    except BaseException as e:
+                        print(e)
 
 
 if __name__ == "__main__" :
@@ -459,46 +495,36 @@ if __name__ == "__main__" :
     #schema_names     = arguments.schema_names.split(',')
 
     #find 'root' path:
-    print(args.profiles );#profiles = ['pointclouds'] #add more as needed
-    root = os.path.realpath(__file__ + "../../../../profiles") 
+    print(args.profiles );
+    root = os.path.realpath(__file__ + "../../../../") 
     print( "Profile root folder is:", root )
     assert( os.path.exists(root))
 
-    manifest = Schema_manifest(root);
+    search_folder = os.path.join(root, "schema")
+    manifest_folder = os.path.join(root, "manifest")
+    output_path = os.path.realpath(__file__ + "../../../../docs")
 
-    for profile in args.profiles :
-        #scan the schema sub-folder:
-        search_folder = os.path.join( root, profile, "schema" )
-        for file in os.listdir( search_folder) :
-            if file.endswith(".json"):
-                abs_path = os.path.join(search_folder, file)
-                manifest.get_type_from_abs_path( abs_path )
-                
-   
-    ## validate examples before writing to schema
-    for profile in manifest.types:
-        examples = manifest.types[profile].example_dom
-        if ( len(examples) ) :
-            schema = manifest.get_abs_path_from_schema_name(profile)
-            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
-            for example in examples:
-                successful_validation = True
-                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
-                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
-                    try:
-                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
-                        if (not successful_validation) :
-                            bad_example_file = profile.split('::')[1] + ".json"
-                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
-                    except BaseException as e:
-                        print(e)
+    manifest = {}   # {version : Schema_manifest}
+
+    #for profile in args.profiles :
+    #scan the manifest:
+    for file in os.listdir( manifest_folder) :
+        version = file.split('.')[1]
+        if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
+            manifest[version] = Schema_manifest(root, version);
+            dom = json_to_dom( os.path.join(manifest_folder, file) )
+            entry_points = dom['entryPoints']
+            for entry_point in entry_points :
+                if file.endswith(".json"):
+                    abs_path = os.path.join(search_folder, entry_point)
+                    manifest[version].get_type_from_abs_path( abs_path )
+
+    ##validate examples
+    #for version in manifest:
+    #    validate_examples(manifest[version])
 
     #write all profiles:
-    output_path = os.path.join( root )
-    writer = Markdown_writer( output_path);
-    for name, obj  in manifest.types.items() :
-        writer.write_to_md( manifest, obj );
-       
-
-
-
+    for version in manifest :
+        writer = Markdown_writer( output_path );
+        for name, obj  in manifest[version].types.items() :
+            writer.write_to_md( manifest[version], obj )

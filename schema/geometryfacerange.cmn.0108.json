@@ -1,0 +1,40 @@
+{
+  "title": "Face Range",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "description/geometryfacerange.cmn.0108.md",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [  "UINT32" ]
+    },
+    "component": {
+      "type": "integer",
+      "description": "must be `2` "
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "none" ]
+    },
+    "binding": {
+      "type": "string",
+      "enum": [  "per-feature" ]
+    }
+  },
+  "required": [
+    "type", "component"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "FaceRange",
+        "code": {
+          "faceRange": {
+            "type": "UInt32",
+            "component": 2
+          }
+        }
+      }
+    ]
+  }
+}

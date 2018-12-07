@@ -1,0 +1,45 @@
+{
+  "title": "Mesh definition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Statistics for the attribute will be at `statistics/{attribute_set_index}/{attribute_index_in_set}`",
+  "properties": {
+    "attributeBuffers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "attributebuffer.cmn.0108.json"
+      },
+      "description": "define the binary attribute buffers available for this class of meshes"
+    }
+  },
+  "required": [
+    "attributeBuffers"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "",
+        "code": {
+        "attributeBuffers": [
+            {
+              "name": "street_name",
+              "alias": "Nom de rue",
+              "type": "String",
+              "binding": "per-feature",
+              "encoding": "indexed-string-utf8"
+
+            },
+            {
+              "name": "class_code",
+              "alias": "Classification",
+              "type": "UInt8",
+              "binding": "per-vertex"
+            }
+          ]
+
+        }
+      }
+    ]
+  }
+}

@@ -57,7 +57,7 @@ def get_schema(slpk_type, file_type) :
 
 # includes Point, 3DObject
 def get_common_schema_path( dir, file ) :
-    if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
+    if ( ( (not dir) or dir.isdigit() ) and file == "3dSceneLayer.json.gz" ) :
         return os.path.join("common", "schema", "3DSceneLayer_schema.json")
 
     if ( (dir.isdigit() or dir == "root") and file == "3dNodeIndexDocument.json.gz"):

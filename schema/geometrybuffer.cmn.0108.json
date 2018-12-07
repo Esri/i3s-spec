@@ -1,0 +1,111 @@
+{
+  "title": "Mesh geometry description",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "description/geometrybuffer.cmn.0108.md",
+  "properties": {
+    "offset": {
+      "type": "integer",
+      "description": "number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`)"
+    },
+    "position": {
+      "type": "object",
+      "$ref": "geometryposition.cmn.0108.json",
+      "description": "Vertex positions relative to Oriented-bounding-box center"
+    },
+    "normal": {
+      "type": "object",
+      "$ref": "geometrynormal.cmn.0108.json",
+      "description": "Face/vertex normal "
+    },
+    "uv0": {
+      "type": "object",
+      "$ref": "geometryuv.cmn.0108.json",
+      "description": "First set of UV coordinates (textured mesh only)"
+    },
+    "color": {
+      "type": "object",
+      "$ref": "geometrycolor.cmn.0108.json",
+      "description": "Colors attribute "
+    },
+    "uvRegion": {
+      "type": "object",
+      "$ref": "geometryuvregion.cmn.0108.json",
+      "description": "UV regions (for repeated textures in texture atlases)"
+    },
+    "featureId": {
+      "type": "object",
+      "$ref": "geometryfeatureid.cmn.0108.json",
+      "description": "FeatureId attribute"
+    },
+    "faceRange": {
+      "type": "object",
+      "$ref": "geometryfacerange.cmn.0108.json",
+      "description": "Face range for feature"
+    },
+    "compressedAttributes": {
+      "type": "object",
+      "$ref": "compressedAttributes.cmn.0108.json",
+      "description": "Compressed attributes. **Cannot** be combined with any other attributes"
+    },
+    "normalReferenceFrame": {
+      "type": "string",
+      "enum": [ "east-north-up", "earth-centered", "vertex-reference-frame" ],
+      "enum-description": {
+        "east-north-up": "normals are stored in a node local reference frame defined by the easting, northing and up directions at the OBB/MBS center, and is only valid for geographic(WGS84)",
+        "earth-centered": "normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0�) and Equator (lat = 0�), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic",
+        "vertex-reference-frame": "normals are stored in the same reference frame as vertices and is only valid for projected spatial reference"
+      },
+      "description": "Frame of reference for normals. default is `earth-centered` for GCS (geographic), and `vertex-reference-frame` for PCS (projected) "
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
+        "code": {
+          "id": 0,
+          "offset": 4,
+          "position": {
+            "type": "Float32",
+            "component": 3
+          },
+          "normal": {
+            "type": "Float32",
+            "component": 3
+          },
+          "uv0": {
+            "type": "Float32",
+            "component": 2
+          },
+          "featureId": {
+            "type": "UInt32",
+            "component": 1
+          },
+          "faceRange": {
+            "type": "UInt32",
+            "component": 2
+          }
+        }
+      },
+      {
+        "title": "A compressed geometry buffer definition with featureId (without UV regions)",
+        "code": {
+          "id": 1,
+          "featureId": {
+            "type": "UInt32",
+            "component": 1,
+            "binding": "per-feature"
+          },
+          "compressedAttributes": {
+            "encoding": "draco",
+            "attributes": [ "position", "normal", "uv0", "featureIndex" ]
+          }
+        }
+      }
+    ]
+  }
+}

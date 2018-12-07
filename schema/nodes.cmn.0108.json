@@ -1,0 +1,29 @@
+{
+  "title": "Node page index document",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "related" :  "nodepages.cmn.0108",
+  "description": "",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "node.cmn.0108.json"
+      },
+      "description": "Array of nodes"
+    }
+  },
+  "required": [
+    "nodes"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "FaceRange",
+        "code": ""
+      }
+
+    ]
+  }
+}

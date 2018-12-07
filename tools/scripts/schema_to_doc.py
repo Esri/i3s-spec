@@ -17,8 +17,8 @@ def json_to_dom( path ) :
 class Schema_manifest :
     c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"building":"building"}
     c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","building":"building"}
-    c_code_to_versions = { '0106' : '1.6', '0107' : '1.7', '0200' : '2.0' }
-    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
+    c_code_to_versions = { '0106' : '1.6', '0108' : '1.8', '0200' : '2.0' }
+    c_versions_to_code = { '1.6' : '0106', '1.8' : '0108', '2.0' : '0200' }
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path, version) :

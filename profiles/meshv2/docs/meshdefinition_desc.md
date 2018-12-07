@@ -1,4 +1,0 @@
-Having multiple `meshDefinition` objects allows for more efficient geometry definition.
-For instance, meshes may have different vertex attributes, topology and attributes within a single layer. 
-
-This approach also solve a short-coming in legacy I3S for `uvRegions` attribute. This attribute is only needed for nodes using _repeated_ texture so to save space, current implementations silently omits it in some binary buffers *despite being listed in the `defaultGeometryDescription` json object*. This can break clients unexpectedly-.  With the `extended` specs, meshes with `uvRegion` would reference a different `meshDefinitionId` than meshes without them. 

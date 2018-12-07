@@ -4,7 +4,7 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Related:
 
-[vestedGeometryParams.cmn](vestedGeometryParams.cmn.md), [geometryFeature.cmn](geometryFeature.cmn.md), [vertexAttribute.cmn](vertexAttribute.cmn.md)
+[geometryFeature.cmn](geometryFeature.cmn.md), [vestedGeometryParams.cmn](vestedGeometryParams.cmn.md), [vertexAttribute.cmn](vertexAttribute.cmn.md)
 ### Properties
 
 | Property | Type | Description |

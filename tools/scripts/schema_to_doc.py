@@ -53,7 +53,7 @@ class Schema_manifest :
         name = name.split('.')
         fn = name[0] + '.' + name[1] + '.md'
         #check if output directory exists
-        dir = os.path.join( self.ref_path, "docs", manifest.c_code_to_versions[version] )
+        dir = os.path.join( self.ref_path, "docs", Schema_manifest.c_code_to_versions[version] )
         if ( not os.path.isdir(dir) ) :
             try:
                 os.mkdir(dir)
@@ -504,22 +504,27 @@ if __name__ == "__main__" :
     manifest_folder = os.path.join(root, "manifest")
     output_path = os.path.realpath(__file__ + "../../../../docs")
 
+    manifest = {}   # {version : Schema_manifest}
+
     #for profile in args.profiles :
     #scan the manifest:
     for file in os.listdir( manifest_folder) :
         version = file.split('.')[1]
-        if (Schema_manifest.c_code_to_versions[version] not in args.profiles ):
-            continue
-        manifest = Schema_manifest(root, version);
-        dom = json_to_dom( os.path.join(manifest_folder, file) )
-        entryPoints = dom['entryPoints']
-        for entry in entryPoints :
-            if file.endswith(".json"):
-                abs_path = os.path.join(search_folder, entry)
-                manifest.get_type_from_abs_path( abs_path )
-        # validate examples
-#        validate_examples(manifest)
-        #write all profiles:
-        writer = Markdown_writer( output_path);
-        for name, obj  in manifest.types.items() :
-            writer.write_to_md( manifest, obj )
+        if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
+            manifest[version] = Schema_manifest(root, version);
+            dom = json_to_dom( os.path.join(manifest_folder, file) )
+            entry_points = dom['entryPoints']
+            for entry_point in entry_points :
+                if file.endswith(".json"):
+                    abs_path = os.path.join(search_folder, entry_point)
+                    manifest[version].get_type_from_abs_path( abs_path )
+
+    ##validate examples
+    #for version in manifest:
+    #    validate_examples(manifest[version])
+
+    #write all profiles:
+    for version in manifest :
+        writer = Markdown_writer( output_path );
+        for name, obj  in manifest[version].types.items() :
+            writer.write_to_md( manifest[version], obj )

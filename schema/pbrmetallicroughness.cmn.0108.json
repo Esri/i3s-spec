@@ -30,16 +30,13 @@
       "type": "object",
       "$ref": "materialtexture.cmn.0108.json",
       "description": "he metallic-roughness texture."
-    } 
+    }
   },
-  "required": [
-    "meshDefinitions"
-  ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "",
-        "code":""
+        "code": ""
       }
     ]
   }

@@ -18,7 +18,6 @@
     }
   },
   "required": [
-    "binding",
     "formats"
   ],
   "esriDocumentation": {

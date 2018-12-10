@@ -13,6 +13,10 @@
       "type": "string",
       "description": "Layer name."
     },
+    "version": {
+      "type": "string",
+      "description": "Version of building scene layer."
+    },
     "alias": {
       "type": "string",
       "description": "Alias of the layer name. Can be empty if alias and name are identical."

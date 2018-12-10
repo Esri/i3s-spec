@@ -6,7 +6,11 @@
   "properties": {
     "alphaMode": {
       "type": "string",
-      "enum": [ "opaque", "mask", "blend" ],
+      "enum": [
+        "opaque",
+        "mask",
+        "blend"
+      ],
       "enum-description": {
         "opaque": "The rendered output is fully opaque and any alpha value is ignored",
         "mask": "The rendered output is either fully opaque or fully transparent depending on the alpha value and the specified alpha cutoff value. This mode is used to simulate geometry such as tree leaves or wire fences.",
@@ -52,16 +56,13 @@
       "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
     }
   },
-  "required": [
-    "meshDefinitions"
-  ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "Metal material",
         "code": {
-          "alphaMode": "mask", 
-          "alphaCutoff": 0.25, 
+          "alphaMode": "mask",
+          "alphaCutoff": 0.25,
           "pbrMetallicRoughness": {
             "baseColorFactor": [
               0.5,
@@ -70,26 +71,23 @@
               1.0
             ],
             "baseColorTexture": {
-              "textureSetDefinitionId": 0, 
-              "texCoord": 0 
+              "textureSetDefinitionId": 0,
+              "texCoord": 0
             },
             "metallicFactor": 1,
             "roughnessFactor": 1,
             "metallicRoughnessTexture": {
-              "textureSetDefinitionId": 2, 
-              "texCoord": 1 
+              "textureSetDefinitionId": 2,
+              "texCoord": 1
             }
           },
           "normalTexture": {
-            "textureSetDefinitionId": 1, 
+            "textureSetDefinitionId": 1,
             "factor": 2.0,
-            "texCoord": 1 
+            "texCoord": 1
           }
         }
       }
     ]
-
   }
-
-
 }

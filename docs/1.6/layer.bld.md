@@ -88,6 +88,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Must be:<ul><li>`Building`</li></ul></div> |
 | description | string | Description for the layer. |
+| **version** | string | Version of the building scene layer |
 | copyrightText | string | Copyright information to be displayed. |
 | **fullExtent** | [fullExtent](fullExtent.cmn.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
 | **spatialReference** | [spatialReference](spatialReference.cmn.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
@@ -109,6 +110,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
   "name": "esri_campus",
   "layerType": "building",
   "alias": "Esri Campus 2018",
+  "version": "1.6",
   "spatialReference": {
     "wkid": 4326,
     "latestWkid": 4326

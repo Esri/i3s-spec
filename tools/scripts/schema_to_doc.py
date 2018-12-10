@@ -464,6 +464,14 @@ def validate_examples(manifest) :
                     except BaseException as e:
                         print(e)
 
+def get_entry_points_from_dom( manifest_dom ) :
+    entry_points = []
+    for profile in manifest_dom['profile'] :
+        for paths in profile['schemas'] :
+            path, schema = paths.items()
+            entry_points.append(schema[1])
+    return entry_points
+
 
 if __name__ == "__main__" :
 
@@ -506,6 +514,7 @@ if __name__ == "__main__" :
 
     manifest = {}   # {version : Schema_manifest}
 
+
     #for profile in args.profiles :
     #scan the manifest:
     for file in os.listdir( manifest_folder) :
@@ -513,7 +522,7 @@ if __name__ == "__main__" :
         if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
             manifest[version] = Schema_manifest(root, version);
             dom = json_to_dom( os.path.join(manifest_folder, file) )
-            entry_points = dom['entryPoints']
+            entry_points = get_entry_points_from_dom( dom)
             for entry_point in entry_points :
                 if file.endswith(".json"):
                     abs_path = os.path.join(search_folder, entry_point)

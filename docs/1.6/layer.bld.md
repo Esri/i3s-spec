@@ -84,6 +84,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 | --- | --- | --- |
 | **id** | integer | Identifier for the layer. Building scene layer id is not in the same namespace as sublayer id. **Important**: clients should **not** assume it will be `0`. |
 | **name** | string | Layer name. |
+| version | string | Version of building scene layer. |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Must be:<ul><li>`Building`</li></ul></div> |
 | description | string | Description for the layer. |

@@ -31,23 +31,33 @@
         {
           "path": "0.json.gz",
           "schema": "stats.cmn.0106.json"
+        },
+        {
+          "path": "0.json.gz",
+          "schema": "features.cmn.0106.json"
+        },
+        {
+          "path": "sharedResource",
+          "schema": "sharedResource.cmn.0106.json"
+        }
+      ]
+    },
+    {
+      "name": "pointcloud",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "layer.pcsl.0106.json"
+        },
+        {
+          "path": "statistics",
+          "schema": "statistics.pcsl.0106.json"
+        },
+        {
+          "path": "nodepage",
+          "schema": "nodepage.pcsl.0106.json"
         }
       ]
     }
-  ],
-  "entryPoints": [
-    "layer.bld.0106.json",
-    "statsummary.bld.0106.json",
-    "stats.cmn.0106.json",
-    "3DSNodeIndexDocument.cmn.0106.json",
-    "sharedResource.cmn.0106.json",
-    "features.cmn.0106.json",
-    "layer.pcsl.0106.json",
-    "statistics.pcsl.0106.json",
-    "stats.pcsl.0106.json",
-    "nodepage.pcsl.0106.json",
-    "geometryindex.cmn.0108.json",
-    "nodes.cmn.0108.json",
-    "3DSceneLayer.cmn.0108.json"
   ]
 }

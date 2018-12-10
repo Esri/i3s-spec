@@ -75,6 +75,7 @@
   "required": [
     "id",
     "name",
+    "version",
     "layerType",
     "fullExtent",
     "spatialReference",

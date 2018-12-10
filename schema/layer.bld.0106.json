@@ -1,0 +1,97 @@
+{
+  "title": "Building Scene Layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "description/layer.bld.0106.md",
+  "related": "statsummary.bld.0106",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Identifier for the layer. Building scene layer id is not in the same namespace as sublayer id. **Important**: clients should **not** assume it will be `0`."
+    },
+    "name": {
+      "type": "string",
+      "description": "Layer name."
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of building scene layer."
+    },
+    "alias": {
+      "type": "string",
+      "description": "Alias of the layer name. Can be empty if alias and name are identical."
+    },
+    "layerType": {
+      "type": "string",
+      "enum": [ "Building" ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Description for the layer."
+    },
+    "version": {
+      "type" : "string",
+      "description": "Version of the building scene layer"
+    },
+    "copyrightText": {
+      "type": "string",
+      "description": "Copyright information to be displayed."
+    },
+    "fullExtent": {
+      "type": "object",
+      "$ref": "fullExtent.cmn.0106.json",
+      "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`."
+    },
+    "spatialReference": {
+      "description": "The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references.",
+      "$ref": "spatialReference.cmn.0106.json"
+    },
+    "heightModelInfo": {
+      "type": "object",
+      "description": "An object containing the vertical coordinate system information.",
+      "$ref": "heightModelInfo.cmn.0106.json"
+    },
+    "sublayers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "sublayer.bld.0106.json"
+      },
+      "description": "List of sublayers or group of sublayers."
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "filter.bld.0106.json"
+      },
+      "description": "Array of filters defined for the building scene layer."
+    },
+    "activeFilterID": {
+      "type": "string",
+      "description": "Global ID, filter ID of the currently active filter for the building scene layer."
+    },
+    "statisticsHRef": {
+      "type": "string",
+      "description": "url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md)"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "version",
+    "layerType",
+    "fullExtent",
+    "spatialReference",
+    "sublayers"    
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer",
+        "code_href": "example/bim.bld.0106.json"
+      }
+    ]
+  }
+}

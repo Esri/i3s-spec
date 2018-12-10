@@ -1,0 +1,62 @@
+{
+  "title": "Resource",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Resource objects are pointers to different types of resources related to a node, such as the feature data, the geometry attributes and indices, textures and shared resources.",
+  "properties": {
+    "href": {
+      "type": "string",
+      "description": "The relative URL to the referenced resource."
+    },
+    "layerContent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The list of layer names that indicates which layer features in the bundle belongs to. The client can use this information to selectively download bundles."
+    },
+    "featureRange": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Only applicable for featureData resources. Provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle."
+    },
+    "multiTextureBundle": {
+      "type": "string",
+      "description": "Only applicable for textureData resources. TRUE if the bundle contains multiple textures. If FALSE or not set, clients can interpret the entire bundle as a single image."
+    },
+    "vertexElements": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Only applicable for geometryData resources. Represents the count of elements in vertexAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema."
+    },
+    "faceElements": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Only applicable for geometryData resources. Represents the count of elements in faceAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema."
+    }
+  },
+  "required": [
+    "href"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Resource example",
+        "code": {
+          "href": "./features/0",
+          "featureRange": [
+            0,
+            3
+          ]
+        }
+      }
+    ]
+  }
+}

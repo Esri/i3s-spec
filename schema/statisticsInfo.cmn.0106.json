@@ -1,0 +1,52 @@
+{
+    "title": "I3S Scene Layer: statisticsInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Describes the statistics for the scene layer.",
+    "properties": {
+        "key": {
+            "type": "string",
+            "description": "Key indicating the resource of the statistics. For example f_1 for  ./statistics/f_1"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the field of the statistical information."
+        },
+        "href": {
+            "type": "string",
+            "description": "The URL to the statistics information. For example ./statistics/f_1"
+        }
+    },
+    "required": [
+        "key",
+        "name",
+        "href"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "statisticsInfo for 3D Object scene layer.",
+                "code": {
+                    "statisticsInfo": [
+                        {
+                            "key": "f_1",
+                            "name": "Category",
+                            "href": "./statistics/f_1"
+                        },
+                        {
+                            "key": "f_2",
+                            "name": "Family",
+                            "href": "./statistics/f_2"
+                        },
+                        {
+                            "key": "f_3",
+                            "name": "FamilyType",
+                            "href": "./statistics/f_3"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

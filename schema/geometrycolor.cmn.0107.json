@@ -1,0 +1,46 @@
+{
+  "title": "Color vertex attribute",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Colors for geometry .TBD: Assumed to be sRGB ??",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [ "UINT8" ],
+      "description": "color channel values"
+    },
+    "component": {
+      "type": "integer",
+      "description": "Number of colors. Must be `1` (opaque grayscale: `{R,R,R,255}`),`3`(opaque color `{R,G,B,255}`) or `4` ( transparent color `{R,G,B,A}`)."
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [ "normalized" ],
+      "enum-description": {
+        "normalized": "default. Assume 8-bit unsigned color per channel [0,255] -> [0,1]"
+      },
+      "description": "Encoding"
+    },
+    "binding": {
+      "type": "string",
+      "enum": [ "per-vertex"]
+    }
+  },
+  "required": [
+    "type",
+    "component"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "RGB colors per vertex",
+        "code": {
+          "color": {
+            "type": "UInt8",
+            "component": 3
+          }
+        }
+      }
+    ]
+  }
+}

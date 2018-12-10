@@ -42,10 +42,7 @@ class Reader :
 ############ Functions to get the appropriate schema path ##################
 ############################################################################
 def get_schema(path_to_specs, slpk_type, file_type, version) :
-    c_versions_to_code = { '1.6' : '0106', '1.8' : '0108' }
-    # building 3dSceneLayer does not have 'store' property
-    if ( not version ) :
-        version = '1.6'
+    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107' }
 
     dir, file = os.path.split( file_type )
     manifest = 'manifest.' + c_versions_to_code[version] + '.json'
@@ -217,25 +214,29 @@ def validate_json_string( json_schema, data, temp_file_name = "temp" ):
 
 # validate an slpk against the i3s specs
 def validate_slpk( path_to_slpk, path_to_specs_folder ):
-    # get all paths in slpk
-    reader = Reader(path_to_slpk)
-    files = reader.get_file_list()              # list with all the files in slpk
     error_output = {}
     error_count = 0
     success_count = 0
     successful_validation = True
 
-    # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating    
+    # get all paths in slpk
+    reader = Reader(path_to_slpk)
+    files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
+
+    # temporary. for validation. 1.8 was changed to 1.7
+    if (version == '1.8') :
+        version = '1.7'
 
     for file in files:
         # check if file is a json file
         # if so, decompress file and validate schema
-        if file[-7:] == "json.gz":
+        if file.endswith("json.gz"):
             file_contents = (reader.get_file(file)).decode()    # file_contents as string
             file_paths = file.split("/")                                    
 
             # files in root directory will have path length of 1
+            # append directory to diffentiate files with similar names
             if ( len(file_paths) > 1) :
                 current_file = os.path.join( file_paths[-2], file_paths[-1] )
             else :

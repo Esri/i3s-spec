@@ -1,8 +1,8 @@
 {
-  "title": "i3s 1.8",
+  "title": "i3s 1.7",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "This file defines the entry points for version 1.8 of the i3s-spec",
+  "description": "This file defines the entry points for version 1.7 of the i3s-spec",
   "profile": [
     {
       "name": "building",
@@ -22,7 +22,7 @@
       "schemas": [
         {
           "path": "3dSceneLayer.json.gz",
-          "schema": "3DSceneLayer.cmn.0108.json"
+          "schema": "3DSceneLayer.cmn.0107.json"
         },
         {
           "path": "3dNodeIndexDocument.json.gz",

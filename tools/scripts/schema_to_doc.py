@@ -311,7 +311,6 @@ class Markdown_writer  :
     #    return os.path.join( self.output_folder, "%s.md" % typename )
 
     def get_property_name( self, prop ) :
-
         return ("**%s**" % prop.name) if prop.is_required else prop.name
 
 
@@ -513,7 +512,6 @@ if __name__ == "__main__" :
     output_path = os.path.realpath(__file__ + "../../../../docs")
 
     manifest = {}   # {version : Schema_manifest}
-
 
     #for profile in args.profiles :
     #scan the manifest:

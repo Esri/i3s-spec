@@ -65,10 +65,13 @@ def get_schema(path_to_specs, slpk_type, file_type, version) :
     elif ( slpk_type == "3DObject" ) :
         path =  get_common_schema_path( manifest_paths, dir, file )
 
+    elif ( slpk_type == "IntegratedMesh" ) :
+        path = get_common_schema_path( manifest_paths, dir, file )
+
     return path
 
 
-# get the path for the file within the profile type from the dom
+# get the path for the file within the profile type from the manifest
 def get_schema_file_name(manifest, type, file_name) :
     if (type in manifest) :
         for file in manifest[type]:
@@ -78,54 +81,54 @@ def get_schema_file_name(manifest, type, file_name) :
 
 
 # includes Point, 3DObject
-def get_common_schema_path( dom, dir, file ) :
+def get_common_schema_path( manifest, dir, file ) :
     if ( ( (not dir) or dir.isdigit() ) and file == "3dSceneLayer.json.gz" ) :
-        return get_schema_file_name(dom, 'common', file)
+        return get_schema_file_name(manifest, 'common', file)
 
-    if ( (dir.isdigit() or dir == "root") and file == "3dNodeIndexDocument.json.gz"):
-        return get_schema_file_name(dom, 'common', file)
+    if ( (dir[0].isdigit() or dir == "root") and file == "3dNodeIndexDocument.json.gz"):
+        return get_schema_file_name(manifest, 'common', file)
 
     ## e.g /sublayers/#/statistics/f_#/0.json.gz
-    if ( (dir.startswith("f_") ) and file == "0.json.gz" ) :
-        return get_schema_file_name(dom, 'common', file)
+    if ( dir.startswith("f_") and file == "0.json.gz" ) :
+        return get_schema_file_name(manifest, 'common', file)
 
     ### not being validated currently ###
     #if ( (dir == "features") and file == "0.json.gz") :
-    #    return os.path.join("schema", "features.cmn")
+    #    return get_schema_file_name(manifest, 'common', file)
 
     #if ( ( dir == "shared") and file == "sharedResource.json.gz"):
-    #    return os.path.join("schema", "sharedResource.cmn" )
+    #    return get_schema_file_name(manifest, 'common', file)
     return None
 
 
-def get_building_schema_path( dom, dir, file ) :
+def get_building_schema_path( manifest, dir, file ) :
     ## e.g 3dSceneLayer.json.gz
     if (dir == ""):
-        return get_schema_file_name(dom,'building', file)
+        return get_schema_file_name(manifest,'building', file)
 
     ## e.g statistics/summary.json.gz
     if (dir == "statistics"):
-        return get_schema_file_name(dom,'building', file)
+        return get_schema_file_name(manifest,'building', file)
 
     # everything else in common or not being validated
-    return get_common_schema_path(dom, dir, file)
+    return get_common_schema_path(manifest, dir, file)
 
 
-def get_pointcloud_schema_path( dom, dir, file ) :
+def get_pointcloud_schema_path( manifest, dir, file ) :
     #node pages don't have consistent naming, e.g 0.json, 64.json, 384.json, ...
     if ( dir == "nodepages" ) :
-        return  get_schema_file_name(dom, "pointcloud", "nodepage")
+        return  get_schema_file_name(manifest, "pointcloud", "nodepage")
     
     if ( dir == "statistics" ) :
-        return  get_schema_file_name(dom, "pointcloud", "statistics")
+        return  get_schema_file_name(manifest, "pointcloud", "statistics")
 
     if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
-        return get_schema_file_name(dom, dir, file)
+        return get_schema_file_name(manifest, dir, file)
 
-    return get_schema_file_name(dom, dir, file)
+    return get_schema_file_name(manifest, dir, file)
 
 def get_point_schema_path( dir, file) :
-    return get_common_schema_path(dom, dir, file)
+    return get_common_schema_path(manifest, dir, file)
 
 
 ############################################################################
@@ -159,7 +162,6 @@ def load_file_to_dom(reader, file) :
 
 def get_schemas( dom ) :
     schemas = collections.defaultdict(list)
-
     for profile in dom['profile'] :
         schema_name = profile['name']
         schemas[ schema_name ] = []
@@ -167,6 +169,7 @@ def get_schemas( dom ) :
             schemas[ schema_name ].append( dict( { entry['path'] : entry['schema'] } ) )
 
     return schemas
+
 
 def get_slpk_info(reader) :
     layer_file = "3dSceneLayer.json.gz"

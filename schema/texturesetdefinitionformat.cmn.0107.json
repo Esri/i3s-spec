@@ -22,7 +22,7 @@
     },
     "bundle": {
       "type": "integer",
-      "$ref": "bundle.cmn.0108.json",
+      "$ref": "bundle.cmn.0107.json",
       "description": "**Required** if `format=\"bundle\"`, `null` or omitted otherwise"
     }
   },

@@ -3,7 +3,7 @@
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
-    "related": "nodes.cmn.0108.json",
+    "related": "nodes.cmn.0107.json",
     "properties": {
         "id": {
             "type": "integer",
@@ -135,14 +135,14 @@
         },
         "nodePages": {
             "type": "object",
-            "$ref": "nodepages.cmn.0108.json",
+            "$ref": "nodepages.cmn.0107.json",
             "description": "paged-access index description"
         },
         "materialDefinitions": {
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "materialdefinitions.cmn.0108.json"
+                "$ref": "materialdefinitions.cmn.0107.json"
             },
             "description": "List of materials classes used in this layer. _TBD_ use a separated JSON resource?"
         },
@@ -150,7 +150,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "texturesetdefinition.cmn.0108.json"
+                "$ref": "texturesetdefinition.cmn.0107.json"
             },
             "description": "define the set of textures that can be referenced by meshes"
         },
@@ -158,7 +158,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "geometrydefinition.cmn.0108.json"
+                "$ref": "geometrydefinition.cmn.0107.json"
             },
             "description": "Define the layouts of mesh geometry and its attributes"
         },
@@ -168,7 +168,7 @@
             "maxItems": 1,
             "items": {
                 "type": "object",
-                "$ref": "attributesetdefinition.cmn.0108.json"
+                "$ref": "attributesetdefinition.cmn.0107.json"
             },
             "description": "Define the layouts of mesh geometry and its attributes. WARNING: only **SINGLE** definition is supported at v1.7. length must 0 or 1"
         }

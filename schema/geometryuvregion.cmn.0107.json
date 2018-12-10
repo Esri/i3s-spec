@@ -2,8 +2,8 @@
   "title": "UV region for repeated textures",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description-href": "description/geometryuvregion.cmn.0108.md",
-  "related": "geometryCompressedAttribute.cmn.0108",
+  "description-href": "description/geometryuvregion.cmn.0107.md",
+  "related": "geometryCompressedAttribute.cmn.0107",
   "properties": {
     "type": {
       "type": "string",

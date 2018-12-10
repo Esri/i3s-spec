@@ -52,45 +52,45 @@ def get_schema(path_to_specs, slpk_type, file_type, version) :
     path_to_manifest = os.path.join(path_to_specs, 'manifest', manifest)
     dom = json_to_dom( path_to_manifest )
 
+    manifest_paths = get_schemas(dom)
+
     path = None
 
     if ( slpk_type == "Building" ) :
-        path = get_building_schema_path( dom, dir, file )
+        path = get_building_schema_path( manifest_paths, dir, file )
 
     elif ( slpk_type == "Point" ) :
         path = get_point_schema_path( dir, file )
     
     elif ( slpk_type == "PointCloud" ) :
-        path = get_pointcloud_schema_path( dom, dir, file )
+        path = get_pointcloud_schema_path( manifest_paths, dir, file )
 
     elif ( slpk_type == "3DObject" ) :
-        path =  get_common_schema_path( dom, dir, file )
+        path =  get_common_schema_path( manifest_paths, dir, file )
 
     return path
 
+
 # get the path for the file within the profile type from the dom
-def get_path_from_dom(dom, type, file) :
-    for profile in dom['profile'] :
-        for name, value in profile.items() :
-            if (value == type) :
-                for schemas in profile['schemas'] :
-                    for path, schema in schemas.items() :
-                        if ( schema == file ) :
-                            return schemas['schema']
+def get_schema_file_name(manifest, type, file_name) :
+    if (type in manifest) :
+        for file in manifest[type]:
+            if ( file_name in file ) :
+                return file[file_name]
     return None
 
 
 # includes Point, 3DObject
 def get_common_schema_path( dom, dir, file ) :
     if ( ( (not dir) or dir.isdigit() ) and file == "3dSceneLayer.json.gz" ) :
-        return get_path_from_dom(dom, 'common', file)
+        return get_schema_file_name(dom, 'common', file)
 
     if ( (dir.isdigit() or dir == "root") and file == "3dNodeIndexDocument.json.gz"):
-        return get_path_from_dom(dom, 'common', file)
+        return get_schema_file_name(dom, 'common', file)
 
     ## e.g /sublayers/#/statistics/f_#/0.json.gz
     if ( (dir.startswith("f_") ) and file == "0.json.gz" ) :
-        return get_path_from_dom(dom, 'common', file)
+        return get_schema_file_name(dom, 'common', file)
 
     ### not being validated currently ###
     #if ( (dir == "features") and file == "0.json.gz") :
@@ -98,16 +98,17 @@ def get_common_schema_path( dom, dir, file ) :
 
     #if ( ( dir == "shared") and file == "sharedResource.json.gz"):
     #    return os.path.join("schema", "sharedResource.cmn" )
+    return None
 
 
 def get_building_schema_path( dom, dir, file ) :
     ## e.g 3dSceneLayer.json.gz
     if (dir == ""):
-        return get_path_from_dom(dom,'building', file)
+        return get_schema_file_name(dom,'building', file)
 
     ## e.g statistics/summary.json.gz
     if (dir == "statistics"):
-        return get_path_from_dom(dom,'building', file)
+        return get_schema_file_name(dom,'building', file)
 
     # everything else in common or not being validated
     return get_common_schema_path(dom, dir, file)
@@ -116,15 +117,15 @@ def get_building_schema_path( dom, dir, file ) :
 def get_pointcloud_schema_path( dom, dir, file ) :
     #node pages don't have consistent naming, e.g 0.json, 64.json, 384.json, ...
     if ( dir == "nodepages" ) :
-        return  get_path_from_dom(dom, "pointcloud", "nodepage")
+        return  get_schema_file_name(dom, "pointcloud", "nodepage")
     
     if ( dir == "statistics" ) :
-        return  get_path_from_dom(dom, "pointcloud", "statistics")
+        return  get_schema_file_name(dom, "pointcloud", "statistics")
 
     if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
-        return get_path_from_dom(dom, dir, file)
+        return get_schema_file_name(dom, dir, file)
 
-    return get_path_from_dom(dom, dir, file)
+    return get_schema_file_name(dom, dir, file)
 
 def get_point_schema_path( dir, file) :
     return get_common_schema_path(dom, dir, file)
@@ -159,21 +160,27 @@ def load_file_to_dom(reader, file) :
     layer_desc = layer_desc.decode()                        # to string
     return json.loads(layer_desc)
 
+def get_schemas( dom ) :
+    schemas = collections.defaultdict(list)
+
+    for profile in dom['profile'] :
+        schema_name = profile['name']
+        schemas[ schema_name ] = []
+        for entry in profile['schemas'] :
+            schemas[ schema_name ].append( dict( { entry['path'] : entry['schema'] } ) )
+
+    return schemas
+
 def get_slpk_info(reader) :
     layer_file = "3dSceneLayer.json.gz"
     layer_desc = load_file_to_dom(reader, layer_file)
     # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating
     type, version = get_info_from_layer(layer_desc)
 
-    # 3dScenelayer for building does not have a version, or store
-    # find a 3dscenelayer within the sublayers
+    # BSL does not have version
+    # default to 1.6
     if (not version) :
-        files = reader.get_file_list()
-        for file in files :
-            if file.startswith('sublayers') and file.endswith(layer_file)  :
-                layer_desc = load_file_to_dom(reader, file)
-                version = get_info_from_layer(layer_desc)[1]
-                return type, version
+        version = '1.6'
 
     return type, version
 
@@ -240,7 +247,7 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
             # not every file is being validated
             # check get_schema_type to see which are being validated
             if (schema) :
-                print(file)
+                print("Validating file: %s" % file)
                 path_to_json_schema = os.path.join(path_to_specs_folder, 'schema', schema)
                 # validate the data against the schema           
                 successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, current_file)
@@ -310,7 +317,7 @@ def main():
     for data_file_name in files:
         head, tail = os.path.split(data_file_name)
         root, ext = os.path.splitext(tail)
-        print("Now validating: %s" % tail)
+        print("Now validating slpk: %s" % tail)
         successful_validation, error_output[root] = validate_slpk( data_file_name, schema_dir )
         if not successful_validation:
             error_count += 1

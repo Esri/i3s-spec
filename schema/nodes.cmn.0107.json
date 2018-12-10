@@ -2,14 +2,14 @@
   "title": "Node page index document",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "related" :  "nodepages.cmn.0108",
+  "related" :  "nodepages.cmn.0107",
   "description": "",
   "properties": {
     "nodes": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "node.cmn.0108.json"
+        "$ref": "node.cmn.0107.json"
       },
       "description": "Array of nodes"
     }

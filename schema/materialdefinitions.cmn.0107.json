@@ -28,17 +28,17 @@
     },
     "normalTexture": {
       "type": "object",
-      "$ref": "materialtexture.cmn.0108.json",
+      "$ref": "materialtexture.cmn.0107.json",
       "description": "The normal map texture."
     },
     "occlusionTexture": {
       "type": "object",
-      "$ref": "materialtexture.cmn.0108.json",
+      "$ref": "materialtexture.cmn.0107.json",
       "description": "The normal map texture."
     },
     "emissiveTexture": {
       "type": "object",
-      "$ref": "materialtexture.cmn.0108.json",
+      "$ref": "materialtexture.cmn.0107.json",
       "description": "_TBD_: may not support this"
     },
     "emissiveFactor": {
@@ -52,7 +52,7 @@
     },
     "pbrMetallicRoughness": {
       "type": "object",
-      "$ref": "pbrmetallicroughness.cmn.0108.json",
+      "$ref": "pbrmetallicroughness.cmn.0107.json",
       "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
     }
   },

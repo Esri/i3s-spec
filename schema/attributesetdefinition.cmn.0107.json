@@ -8,7 +8,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "attributebuffer.cmn.0108.json"
+        "$ref": "attributebuffer.cmn.0107.json"
       },
       "description": "define the binary attribute buffers available for this class of meshes"
     }

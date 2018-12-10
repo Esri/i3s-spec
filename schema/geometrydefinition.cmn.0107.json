@@ -13,7 +13,7 @@
       "maxItems": 2,
       "items": {
         "type": "object",
-        "$ref": "geometrybuffer.cmn.0108.json"
+        "$ref": "geometrybuffer.cmn.0107.json"
       },
       "description": "Array of geometry representation(s) for this class of mesh. When multiple representations are listed, Clients should select the most compact one (e.g. Draco compressed mesh) they support. Length must be 1 or 2"
     }

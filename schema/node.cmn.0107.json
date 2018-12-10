@@ -3,7 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "",
-  "related": "layer.cmn.0107",
+  "related": "3DSceneLayer.cmn.0107.cmn.0107",
   "properties": {
     "index": {
       "type": "integer",

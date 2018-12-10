@@ -39,6 +39,10 @@
         {
           "path": "sharedResource",
           "schema": "sharedResource.cmn.0106.json"
+        },
+        {
+          "path": "nodes",
+          "schema": "nodes.cmn.0107.json"
         }
       ]
     },

@@ -4,7 +4,7 @@
   "$schema": "http://json-schema.org/draft-04/schema",
 
   "description-href": "description/nodepages.cmn.0107.md",
-  "related": "node.cm.0107",
+  "related": "node.cmn.0107",
   "properties": {
     "nodesPerPage": {
       "type": "integer",

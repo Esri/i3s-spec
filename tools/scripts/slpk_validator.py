@@ -57,7 +57,7 @@ def get_schema(path_to_specs, slpk_type, file_type, version) :
         path = get_building_schema_path( manifest_paths, dir, file )
 
     elif ( slpk_type == "Point" ) :
-        path = get_point_schema_path( dir, file )
+        path =get_common_schema_path( manifest_paths, dir, file )
     
     elif ( slpk_type == "PointCloud" ) :
         path = get_pointcloud_schema_path( manifest_paths, dir, file )
@@ -80,7 +80,7 @@ def get_schema_file_name(manifest, type, file_name) :
     return None
 
 
-# includes Point, 3DObject
+# includes Point, 3DObject, IM, ...
 def get_common_schema_path( manifest, dir, file ) :
     if ( ( (not dir) or dir.isdigit() ) and file == "3dSceneLayer.json.gz" ) :
         return get_schema_file_name(manifest, 'common', file)
@@ -89,7 +89,7 @@ def get_common_schema_path( manifest, dir, file ) :
         return get_schema_file_name(manifest, 'common', file)
 
     ## e.g /sublayers/#/statistics/f_#/0.json.gz
-    if ( dir.startswith("f_") and file == "0.json.gz" ) :
+    if ( (dir.startswith("f_") or dir[0].isdigit()) and file == "0.json.gz" ) :
         return get_schema_file_name(manifest, 'common', file)
 
     ### not being validated currently ###
@@ -125,10 +125,8 @@ def get_pointcloud_schema_path( manifest, dir, file ) :
     if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
         return get_schema_file_name(manifest, dir, file)
 
+    # everything else in common or not being validated
     return get_schema_file_name(manifest, dir, file)
-
-def get_point_schema_path( dir, file) :
-    return get_common_schema_path(manifest, dir, file)
 
 
 ############################################################################
@@ -160,6 +158,8 @@ def load_file_to_dom(reader, file) :
     layer_desc = layer_desc.decode()                        # to string
     return json.loads(layer_desc)
 
+# return dictionary of schema file names from the manifest dom
+# e.g dom -> {"common": [{ name : schema } ... ] }, { "building" : [ {name : schema } ... ] },...
 def get_schemas( dom ) :
     schemas = collections.defaultdict(list)
     for profile in dom['profile'] :
@@ -167,7 +167,6 @@ def get_schemas( dom ) :
         schemas[ schema_name ] = []
         for entry in profile['schemas'] :
             schemas[ schema_name ].append( dict( { entry['path'] : entry['schema'] } ) )
-
     return schemas
 
 
@@ -177,9 +176,9 @@ def get_slpk_info(reader) :
     # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating
     type, version = get_info_from_layer(layer_desc)
 
-    # BSL does not have version
+    # BSL does not have version property
     # default to 1.6
-    if (not version) :
+    if ( not version ) :
         version = '1.6'
 
     return type, version
@@ -212,8 +211,8 @@ def validate_json_string( json_schema, data, temp_file_name = "temp" ):
         successful_validation, error_output = validate(data_file_path, json_schema.replace('\\', '/'))
     finally:
         remove_file(temp_file_name)
-
     return successful_validation, error_output
+
 
 # validate an slpk against the i3s specs
 def validate_slpk( path_to_slpk, path_to_specs_folder ):
@@ -227,7 +226,7 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
     files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
 
-    # temporary. for validation. 1.8 was changed to 1.7
+    # temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files
     if (version == '1.8') :
         version = '1.7'
 
@@ -249,12 +248,13 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
             schema = get_schema(path_to_specs_folder, slpk_type, current_file, version)
 
             # not every file is being validated
-            # check get_schema_type to see which are being validated
+            # only proceed if file is being validated
             if (schema) :
                 print("Validating file: %s" % file)
                 path_to_json_schema = os.path.join(path_to_specs_folder, 'schema', schema)
                 # validate the data against the schema           
                 successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, current_file)
+
                 if (not successful__file_validation) :
                     successful_validation = False
     

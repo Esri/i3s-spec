@@ -25,6 +25,10 @@
       "type": "string",
       "description": "Description for the layer."
     },
+    "version": {
+      "type" : "string",
+      "description": "Version of the building scene layer"
+    },
     "copyrightText": {
       "type": "string",
       "description": "Copyright information to be displayed."

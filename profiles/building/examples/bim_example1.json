@@ -3,6 +3,7 @@
   "name": "esri_campus",
   "layerType": "building",
   "alias": "Esri Campus 2018",
+  "version": "1.6",
   "spatialReference": {
     "wkid": 4326,
     "latestWkid": 4326

@@ -22,143 +22,70 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "3D Scene Layer info for point scene layer"
-      },
-      {
-        "title": "3D Scene Layer info for 3D object scene layer",
+        "title": "Example shared resource",
         "code": {
           "materialDefinitions": {
-            "Mat525": {
-              "type": "standard",
-              "name": "standard",
-              "params": {
-                "vertexRegions": false,
-                "vertexColors": true,
-                "reflectivity": 0,
-                "useVertexColorAlpha": false,
-                "ambient": [
-                  0,
-                  0,
-                  0
-                ],
-                "diffuse": [
-                  1,
-                  1,
-                  1
-                ],
-                "specular": [
-                  0.098039215686274508,
-                  0.098039215686274508,
-                  0.098039215686274508
-                ],
-                "shininess": 1,
-                "renderMode": "solid",
-                "cullFace": "none"
-              }
+            "type": "standard",
+            "name": "standard",
+            "params": {
+              
+              "reflectivity": 0,
+              
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "diffuse": [
+                1,
+                1,
+                1
+              ],
+              "specular": [
+                0.098039215686274508,
+                0.098039215686274508,
+                0.098039215686274508
+              ],
+              "shininess": 1,
+              "renderMode": "solid",
+              "cullFace": "none"
             }
           },
           "textureDefinitions": {
-            "525": {
-              "encoding": [
-                "image/jpeg",
-                "image/vnd-ms.dds"
-              ],
-              "wrap": [
-                "none",
-                "none"
-              ],
-              "atlas": false,
-              "uvSet": "uv0",
-              "channels": "rgb",
-              "images": [
-                {
-                  "id": "525",
-                  "size": 64,
-                  "pixelInWorldUnits": 0,
-                  "href": [
-                    "../textures/0_0",
-                    "../textures/0_0_1"
-                  ],
-                  "byteOffset": [
-                    0,
-                    0
-                  ],
-                  "length": [
-                    737,
-                    400
-                  ]
-                }
-              ]
-            }
-          }
-        }
-      },
-      {
-        "title": "3D Scene Layer info for integrated mesh scene layer",
-        "code": {
-          "materialDefinitions": {
-            "Mat87040": {
-              "type": "standard",
-              "name": "standard",
-              "params": {
-                "vertexRegions": false,
-                "vertexColors": false,
-                "reflectivity": 0,
-                "useVertexColorAlpha": false,
-                "ambient": [
-                  0,
+            "encoding": [
+              "image/jpeg",
+              "image/vnd-ms.dds"
+            ],
+            "wrap": [
+              "none",
+              "none"
+            ],
+            "atlas": false,
+            "uvSet": "uv0",
+            "channels": [
+              "r",
+              "g",
+              "b"
+            ],
+            "images": [
+              {
+                "id": "525",
+                "size": 64,
+                "pixelInWorldUnits": 0,
+                "href": [
+                  "../textures/0_0",
+                  "../textures/0_0_1"
+                ],
+                "byteOffset": [
                   0,
                   0
                 ],
-                "diffuse": [
-                  1,
-                  1,
-                  1
-                ],
-                "specular": [
-                  0.098000000000000004,
-                  0.098000000000000004,
-                  0.098000000000000004
-                ],
-                "shininess": 1,
-                "renderMode": "solid",
-                "cullFace": "none"
+                "length": [
+                  737,
+                  400
+                ]
               }
-            }
-          },
-          "textureDefinitions": {
-            "87040": {
-              "encoding": [
-                "image/jpeg",
-                "image/vnd-ms.dds"
-              ],
-              "wrap": [
-                "none",
-                "none"
-              ],
-              "atlas": false,
-              "uvSet": "uv0",
-              "channels": "rgb",
-              "images": [
-                {
-                  "id": "1170940301162927104",
-                  "size": 1024,
-                  "pixelInWorldUnits": 0,
-                  "href": [
-                    "../textures/0_0",
-                    "../textures/0_0_1"
-                  ],
-                  "byteOffset": [
-                    0,
-                    0
-                  ],
-                  "length": [
-                    207385,
-                    699192
-                  ]
-                }
-              ]
-            }
+            ]
           }
         }
       }

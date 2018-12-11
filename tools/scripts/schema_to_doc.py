@@ -28,13 +28,10 @@ class Schema_manifest :
         version = version
 
     def get_abs_path_from_schema_name( self, name ) :
-        tok = name.split('::')
-        assert( len(tok) <=2 )
-        fn = tok[-1] + "_schema.json"
-        if len(tok) > 1 :
-            assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
-        return os.path.realpath( os.path.join( self.ref_path, fn ) );
+        #if len(tok) > 1 :
+        #    assert( tok[0] in Schema_manifest.c_code_to_paths)
+        #fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
+        return os.path.realpath( os.path.join( self.ref_path, name ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
@@ -387,7 +384,7 @@ class Markdown_writer  :
             #load from relative path:
             #path = os.path.realpath( os.path.join( self.output_folder, "..", ex_dom[ 'code_href' ]) )
             #rel_path = Schema_manifest.get_example_href_from_schema_name( self.output_path, ex_dom[ 'code_href' ] )
-            abs_path = os.path.abspath(os.path.join(os.path.dirname( self.output_path), '..', '..', 'schema', ex_dom[ 'code_href' ]))
+            abs_path = os.path.abspath(os.path.join(os.path.dirname( output_path), 'schema', ex_dom[ 'code_href' ]))
             #abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
             if not os.path.exists( abs_path ) :
                 raise BaseException( "Example 'href=%s' is missing (file %s not found )" %(ex_dom[ 'code_href' ], abs_path)  )
@@ -446,22 +443,24 @@ class Markdown_writer  :
 
 def validate_examples(manifest) :
     ## validate examples before writing to schema
+    successful_validation = True
     for profile in manifest.types:
         examples = manifest.types[profile].example_dom
         if ( len(examples) ) :
-            schema = manifest.get_abs_path_from_schema_name(profile)
-            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
+            schema = os.path.join(manifest.ref_path, 'schema', profile + '.json')
             for example in examples:
                 successful_validation = True
                 ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
-                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                if (ex_code and ex_code != "") :                                    # no example code is an empty string, e.g. ""
                     try:
-                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
+                        successful_validation = validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
                         if (not successful_validation) :
-                            bad_example_file = profile.split('::')[1] + ".json"
-                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
+                            bad_example_file = profile + ".json"
+                            raise BaseException(("Example in %s did not successfully validate against schema" % profile))
                     except BaseException as e:
                         print(e)
+                        return False
+    return True
 
 def get_entry_points_from_dom( manifest_dom ) :
     entry_points = []
@@ -526,12 +525,20 @@ if __name__ == "__main__" :
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
 
+    
+    successful_validation = True
+
     ##validate examples
-    #for version in manifest:
-    #    validate_examples(manifest[version])
+    print("\nNow validating examples")
+    for version in manifest:
+        successful_validation =  validate_examples(manifest[version])
+    print()
 
     #write all profiles:
-    for version in manifest :
-        writer = Markdown_writer( output_path );
-        for name, obj  in manifest[version].types.items() :
-            writer.write_to_md( manifest[version], obj )
+    if (successful_validation) :
+        for version in manifest :
+            writer = Markdown_writer( output_path );
+            for name, obj  in manifest[version].types.items() :
+                writer.write_to_md( manifest[version], obj )
+    else:
+        print("\nFix errors before docs can be generated")

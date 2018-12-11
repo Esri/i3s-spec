@@ -6,7 +6,9 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "Float32"],
+      "enum": [
+        "Float32"
+      ],
       "description": "Vertex positions relative to Oriented-bounding-box center"
     },
     "component": {
@@ -15,28 +17,29 @@
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none" ],
+      "enum": [
+        "none"
+      ],
       "description": "Encoding. "
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex" ]
+      "enum": [
+        "per-vertex"
+      ]
     }
   },
   "required": [
     "type",
     "component"
-
   ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "{x,y,z} position as float32",
         "code": {
-          "position": {
-            "type": "Float32",
-            "component": 3
-          }
+          "type": "Float32",
+          "component": 3
         }
       }
     ]

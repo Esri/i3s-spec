@@ -17,11 +17,3 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 
 *Note: properties in **bold** are required*
 
-### Examples 
-
-#### Example:  
-
-```json
- "" 
-```
-

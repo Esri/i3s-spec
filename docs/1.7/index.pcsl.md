@@ -23,12 +23,10 @@ Describes the index (i.e. bounding volume tree) of the layer.
 
 ```json
  {
-  "index": {
-    "nodeVersion": 1,
-    "boundingVolumeType": "obb",
-    "nodesPerPage": 64,
-    "lodSelectionMetricType": "density-threshold"
-  }
+  "nodeVersion": 1,
+  "boundingVolumeType": "obb",
+  "nodePerIndexBlock": 64,
+  "lodSelectionMetricType": "density-threshold"
 } 
 ```
 

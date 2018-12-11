@@ -82,6 +82,8 @@ def validate( data_file_name, schema_file, json_output=False ):
     json_errors['errors'] = []
     data = {}
 
+
+
     with open(data_file_name, 'r', encoding="utf8") as data_file:
         try: 
             data = json.load(data_file)

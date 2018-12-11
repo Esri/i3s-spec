@@ -23,7 +23,6 @@ Statistics for all building scene layer sublayers. Captures statistical informat
     {
       "fieldName": "floor",
       "label": "Etage",
-      "modelName": "floorId",
       "mostFrequentValues": [
         1,
         2,

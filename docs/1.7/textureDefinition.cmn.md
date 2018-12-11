@@ -24,38 +24,40 @@ Materials describe how a feature or a set of features is to be rendered. This in
 
 ```json
  {
-  "32": {
-    "encoding": [
-      "image/jpeg",
-      "image/vnd-ms.dds"
-    ],
-    "wrap": [
-      "none",
-      "none"
-    ],
-    "atlas": false,
-    "uvSet": "uv0",
-    "channels": "rgb",
-    "images": [
-      {
-        "id": "1161930902884843552",
-        "size": 512,
-        "pixelInWorldUnits": 0,
-        "href": [
-          "../textures/0_0",
-          "../textures/0_0_1"
-        ],
-        "byteOffset": [
-          0,
-          0
-        ],
-        "length": [
-          7461,
-          174904
-        ]
-      }
-    ]
-  }
+  "encoding": [
+    "image/jpeg",
+    "image/vnd-ms.dds"
+  ],
+  "wrap": [
+    "none",
+    "none"
+  ],
+  "atlas": false,
+  "uvSet": "uv0",
+  "channels": [
+    "r",
+    "g",
+    "b"
+  ],
+  "images": [
+    {
+      "id": "1161930902884843552",
+      "size": 512,
+      "pixelInWorldUnits": 0,
+      "href": [
+        "../textures/0_0",
+        "../textures/0_0_1"
+      ],
+      "byteOffset": [
+        0,
+        0
+      ],
+      "length": [
+        7461,
+        174904
+      ]
+    }
+  ]
 } 
 ```
 

@@ -25,7 +25,7 @@ For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/te
   "formats": [
     {
       "index": 0,
-      "format": "jpeg"
+      "format": "jpg"
     },
     {
       "index": 1,
@@ -75,70 +75,13 @@ JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/1
 
 ```json
  {
-  "textureSetDefinitions": [
+  "formats": [
     {
-      "formats": [
-        {
-          "index": 0,
-          "format": "bundle",
-          "bundle": {
-            "slot": 0,
-            "format": "jpg"
-          }
-        }
-      ]
-    },
-    {
-      "formats": [
-        {
-          "index": 0,
-          "format": "bundle",
-          "bundle": {
-            "slot": 1,
-            "format": "png"
-          }
-        }
-      ]
-    },
-    {
-      "formats": [
-        {
-          "index": 0,
-          "format": "bundle",
-          "bundle": {
-            "slot": 2,
-            "format": "png"
-          }
-        }
-      ]
-    }
-  ],
-  "materialDefinitions": [
-    {
-      "alphaMode": "mask",
-      "alphaCutoff": 0.25,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          0.5,
-          0.5,
-          0.5,
-          1.0
-        ],
-        "baseColorTexture": {
-          "textureSetDefinitionId": 0,
-          "texCoord": 0
-        },
-        "metallicFactor": 1,
-        "roughnessFactor": 1,
-        "metallicRoughnessTexture": {
-          "textureSetDefinitionId": 1,
-          "texCoord": 1
-        }
-      },
-      "normalTexture": {
-        "textureSetDefinitionId": 2,
-        "factor": 2.0,
-        "texCoord": 1
+      "index": 0,
+      "format": "bundle",
+      "bundle": {
+        "slot": 0,
+        "format": "jpg"
       }
     }
   ]

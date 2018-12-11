@@ -62,7 +62,33 @@
         "examples": [
             {
                 "title": "attributeStorageInfo for 3d object scene layer",
-                "code_href": "example/attributeStorage.cmn.0106.json"
+                "code": {
+                    "key": "f_2",
+                    "name": "Family",
+                    "header": [
+                        {
+                            "property": "count",
+                            "valueType": "UInt32"
+                        },
+                        {
+                            "property": "attributeValuesByteCount",
+                            "valueType": "UInt32"
+                        }
+                    ],
+                    "ordering": [
+                        "attributeByteCounts",
+                        "attributeValues"
+                    ],
+                    "attributeByteCounts": {
+                        "valueType": "UInt32",
+                        "valuesPerElement": 1
+                    },
+                    "attributeValues": {
+                        "valueType": "String",
+                        "encoding": "UTF-8",
+                        "valuesPerElement": 1
+                    }
+                }
             }
         ]
     }

@@ -20,16 +20,8 @@ The header definition provides the name of each field and the value type. Header
 
 ```json
  {
-  "header": [
-    {
-      "property": "vertexCount",
-      "type": "UInt32"
-    },
-    {
-      "property": "featureCount",
-      "type": "UInt32"
-    }
-  ]
+  "property": "vertexCount",
+  "type": "UInt32"
 } 
 ```
 

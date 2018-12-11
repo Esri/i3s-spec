@@ -15,11 +15,3 @@
 
 *Note: properties in **bold** are required*
 
-### Examples 
-
-#### Example:  
-
-```json
- "" 
-```
-

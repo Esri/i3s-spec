@@ -4,7 +4,7 @@ Object to provide time stamp when the I3S service or the source of the service w
 
 ### Related:
 
-[pcsl::layer](layer.pcsl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [pcsl::layer](layer.pcsl.md)
 ### Properties
 
 | Property | Type | Description |
@@ -19,9 +19,7 @@ Object to provide time stamp when the I3S service or the source of the service w
 
 ```json
  {
-  "serviceUpdateTimeStamp": {
-    "lastUpdate": " 1518827901690"
-  }
+  "lastUpdate": 1518827901690
 } 
 ```
 

@@ -20,10 +20,8 @@
 
 ```json
  {
-  "bundle": {
-    "slot": 1,
-    "format": "jpg"
-  }
+  "slot": 1,
+  "format": "jpg"
 } 
 ```
 
@@ -31,10 +29,8 @@
 
 ```json
  {
-  "bundle": {
-    "slot": 0,
-    "format": "png"
-  }
+  "slot": 0,
+  "format": "png"
 } 
 ```
 

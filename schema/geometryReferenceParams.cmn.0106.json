@@ -27,20 +27,17 @@
   "required": [
     "href"
   ],
-  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
         "title": "geomtryReferenceParams",
         "code": {
           "type": "GeometryReference",
-          "params": {
-            "$ref": "/geometryData/1",
-            "faceRange": [
-              0,
-              195
-            ]
-          }
+          "href": "/geometryData/1",
+          "faceRange": [
+            0,
+            195
+          ]
         }
       }
     ]

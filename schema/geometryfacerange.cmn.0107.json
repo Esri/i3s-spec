@@ -6,7 +6,9 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [  "UINT32" ]
+      "enum": [
+        "UINT32"
+      ]
     },
     "component": {
       "type": "integer",
@@ -14,25 +16,28 @@
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none" ]
+      "enum": [
+        "none"
+      ]
     },
     "binding": {
       "type": "string",
-      "enum": [  "per-feature" ]
+      "enum": [
+        "per-feature"
+      ]
     }
   },
   "required": [
-    "type", "component"
+    "type",
+    "component"
   ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "FaceRange",
         "code": {
-          "faceRange": {
-            "type": "UInt32",
-            "component": 2
-          }
+          "type": "UINT32",
+          "component": 2
         }
       }
     ]

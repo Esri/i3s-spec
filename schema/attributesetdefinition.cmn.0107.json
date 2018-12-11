@@ -25,6 +25,7 @@
             {
               "name": "street_name",
               "alias": "Nom de rue",
+              "id": 12,
               "type": "String",
               "binding": "per-feature",
               "encoding": "indexed-string-utf8"
@@ -33,6 +34,7 @@
             {
               "name": "class_code",
               "alias": "Classification",
+              "id": 14,
               "type": "UInt8",
               "binding": "per-vertex"
             }

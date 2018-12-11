@@ -16,7 +16,7 @@
 
 ### Related:
 
-[cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md), [cmn::geometrybuffer](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md), [cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -34,10 +34,8 @@
 
 ```json
  {
-  "uvRegion": {
-    "type": "UInt16",
-    "component": 4
-  }
+  "type": "UINT16",
+  "component": 4
 } 
 ```
 

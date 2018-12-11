@@ -23,13 +23,11 @@ Instead of owning a Geometry exclusively, a Feature can reference part of a Geom
 ```json
  {
   "type": "GeometryReference",
-  "params": {
-    "$ref": "/geometryData/1",
-    "faceRange": [
-      0,
-      195
-    ]
-  }
+  "href": "/geometryData/1",
+  "faceRange": [
+    0,
+    195
+  ]
 } 
 ```
 

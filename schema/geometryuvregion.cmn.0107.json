@@ -7,7 +7,9 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "UINT16" ],
+      "enum": [
+        "UINT16"
+      ],
       "description": "color channel values"
     },
     "component": {
@@ -16,12 +18,17 @@
     },
     "encoding": {
       "type": "string",
-      "enum": [ "normalized" ],
+      "enum": [
+        "normalized"
+      ],
       "description": "Encoding"
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-vertex", "per-uvregion" ],
+      "enum": [
+        "per-vertex",
+        "per-uvregion"
+      ],
       "enum-description": {
         "per-vertex": "default",
         "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present"
@@ -38,10 +45,8 @@
       {
         "title": "UV region for repeated textures in atlas",
         "code": {
-          "uvRegion": {
-            "type": "UInt16",
-            "component": 4
-          }
+          "type": "UINT16",
+          "component": 4
         }
       }
     ]

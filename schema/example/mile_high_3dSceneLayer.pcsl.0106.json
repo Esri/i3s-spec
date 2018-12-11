@@ -23,7 +23,7 @@
         {
             "nodeVersion": 1, 
             "boundingVolumeType": "obb", 
-            "nodesPerPage": 64, 
+            "nodePerIndexBlock": 64, 
             "lodSelectionMetricType": "density-threshold"
             }, 
         "defaultGeometrySchema": 
@@ -36,7 +36,7 @@
             {
                 "position": 
                 {
-                    "valueType": "Float64", 
+                    "valueType": "Float", 
                     "valuesPerElement": 3
                     }
                 }, "ordering": ["position"]

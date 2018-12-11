@@ -72,7 +72,7 @@ faceRange
     "component": 1
   },
   "faceRange": {
-    "type": "UInt32",
+    "type": "UINT32",
     "component": 2
   }
 } 
@@ -94,7 +94,7 @@ faceRange
       "position",
       "normal",
       "uv0",
-      "featureIndex"
+      "feature-index"
     ]
   }
 } 

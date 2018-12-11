@@ -1,7 +1,7 @@
 {
   "id": 10,
   "name": "esri_campus",
-  "layerType": "building",
+  "layerType": "Building",
   "alias": "Esri Campus 2018",
   "version": "1.6",
   "spatialReference": {

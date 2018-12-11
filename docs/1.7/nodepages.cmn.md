@@ -31,7 +31,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 ```json
  {
-  "nodePerPage": 64,
+  "nodesPerPage": 64,
   "rootIndex": 0,
   "lodSelectionMetricType": "maxScreenThresholdSQ"
 } 

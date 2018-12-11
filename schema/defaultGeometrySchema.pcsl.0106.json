@@ -61,25 +61,22 @@
         "additionalProperties": false,
         "esriDocumentation": {
             "examples": [
-               {
-                 "title": "defaultGeometrySchema",
-                 "code": {
-                    "defaultGeometrySchema": 
-                    {
-                        "geometryType": "points", 
-                        "header": [], 
-                        "topology": "PerAttributeArray", 
-                        "encoding": "lepcc-xyz", 
-                        "vertexAttributes": 
-                        {
-                            "position": 
-                            {
-                                "valueType": "Float64", 
+                {
+                    "title": "defaultGeometrySchema",
+                    "code": {
+                        "geometryType": "points",
+                        "header": [],
+                        "topology": "PerAttributeArray",
+                        "encoding": "lepcc-xyz",
+                        "vertexAttributes": {
+                            "position": {
+                                "valueType": "Float",
                                 "valuesPerElement": 3
-                                }
-                            }, 
-                        "ordering": ["position"]
-                        }
+                            }
+                        },
+                        "ordering": [
+                            "position"
+                        ]
                     }
                 }
             ]

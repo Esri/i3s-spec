@@ -23,6 +23,7 @@ Statistics for the attribute will be at `statistics/{attribute_set_index}/{attri
     {
       "name": "street_name",
       "alias": "Nom de rue",
+      "id": 12,
       "type": "String",
       "binding": "per-feature",
       "encoding": "indexed-string-utf8"
@@ -30,6 +31,7 @@ Statistics for the attribute will be at `statistics/{attribute_set_index}/{attri
     {
       "name": "class_code",
       "alias": "Classification",
+      "id": 14,
       "type": "UInt8",
       "binding": "per-vertex"
     }

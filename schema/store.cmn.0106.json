@@ -160,7 +160,6 @@
       {
         "title": "Store example",
         "code": {
-          "store": {
             "id": "e9ecfade-0d85-4dd7-abb5-a3b0a07b9fd7",
             "profile": "meshpyramids",
             "resourcePattern": [
@@ -241,7 +240,7 @@
                 }
               }
             }
-          }
+          
         }
       }
     ]

@@ -78,27 +78,25 @@
       {
         "title": "Example 1",
         "code": {
-          "domain": {
-            "type": "codedValue",
-            "name": "Phases",
-            "description": "Phases",
-            "codedValues": [
-              {
-                "name": "Existing",
-                "code": 0
-              },
-              {
-                "name": "Baby Room Overhaul",
-                "code": 1
-              },
-              {
-                "name": "Roof Garden",
-                "code": 2
-              }
-            ],
-            "mergePolicy": "esriMPTDefaultValue",
-            "splitPolicy": "esriSPTDefaultValue"
-          }
+          "type": "codedValue",
+          "name": "Phases",
+          "description": "Phases",
+          "codedValues": [
+            {
+              "name": "Existing",
+              "code": 0
+            },
+            {
+              "name": "Baby Room Overhaul",
+              "code": 1
+            },
+            {
+              "name": "Roof Garden",
+              "code": 2
+            }
+          ],
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue"
         }
       }
     ]

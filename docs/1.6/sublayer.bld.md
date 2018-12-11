@@ -32,7 +32,6 @@ A building scene layer is composed of an overview and the full model containing 
   "alias": "Architecture",
   "modelName": "Architectural",
   "visibility": true,
-  "visibilityMode": "independent",
   "sublayers": [
     {
       "id": 0,

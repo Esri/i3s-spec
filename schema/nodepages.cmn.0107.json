@@ -34,7 +34,7 @@
       {
         "title": "64 nodes per page index",
         "code": {
-          "nodePerPage": 64,
+          "nodesPerPage": 64,
           "rootIndex": 0,
           "lodSelectionMetricType": "maxScreenThresholdSQ"
         }

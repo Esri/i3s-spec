@@ -56,7 +56,7 @@ Describes the point cloud scene layer.
         {
             "nodeVersion": 1, 
             "boundingVolumeType": "obb", 
-            "nodesPerPage": 64, 
+            "nodePerIndexBlock": 64, 
             "lodSelectionMetricType": "density-threshold"
             }, 
         "defaultGeometrySchema": 
@@ -69,7 +69,7 @@ Describes the point cloud scene layer.
             {
                 "position": 
                 {
-                    "valueType": "Float64", 
+                    "valueType": "Float", 
                     "valuesPerElement": 3
                     }
                 }, "ordering": ["position"]

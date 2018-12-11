@@ -23,7 +23,7 @@
         "type": "object"
       },
       "description": "A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions. While there are standard keywords such as position, uv0..uv9, normal and color, this is an open, extendable list.",
-      "$ref": "geometryAttribute.cmn.0106.json"
+      "$ref": "vertexAttribute.cmn.0106.json"
     },
     "faces": {
       "type": "array",
@@ -34,38 +34,33 @@
       "$ref": "geometryAttribute.cmn.0106.json"
     }
   },
-  "required": [
-    "href"
-  ],
   "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {
         "title": "vestedGeometryParams",
         "code": {
-          "params": {
-            "type": "triangles",
-            "vertexAttributes": {
-                "position": {
-                    "byteOffset": 8,
-                    "valueType": "Float32",
-                    "valuesPerElement": 3
-                },
-                "normal": {
-                    "byteOffset": 2672,
-                    "valueType": "Float32",
-                    "valuesPerElement": 3
-                },
-                "uv0": {
-                    "byteOffset": 5336,
-                    "valueType": "Float32",
-                    "valuesPerElement": 2
-                },
-                "color": {
-                    "byteOffset": 7112,
-                    "valueType": "UInt8",
-                    "valuesPerElement": 4
-                }
+          "type": "triangles",
+          "vertexAttributes": {
+            "position": {
+              "byteOffset": 8,
+              "valueType": "Float32",
+              "valuesPerElement": 3
+            },
+            "normal": {
+              "byteOffset": 2672,
+              "valueType": "Float32",
+              "valuesPerElement": 3
+            },
+            "uv0": {
+              "byteOffset": 5336,
+              "valueType": "Float32",
+              "valuesPerElement": 2
+            },
+            "color": {
+              "byteOffset": 7112,
+              "valueType": "UInt8",
+              "valuesPerElement": 4
             }
           }
         }

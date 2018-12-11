@@ -6,7 +6,10 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "UInt32", "UInt16" ],
+      "enum": [
+        "UInt32",
+        "UInt16"
+      ],
       "description": "Vertex positions relative to Oriented-bounding-box center"
     },
     "component": {
@@ -22,9 +25,7 @@
       {
         "title": "index buffer",
         "code": {
-          "indice": {
-            "type": "UInt32"
-          }
+          "type": "UInt32"
         }
       }
     ]

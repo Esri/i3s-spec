@@ -13,150 +13,70 @@ Shared resources are models or textures that can be shared among features within
 
 ### Examples 
 
-#### Example: 3D Scene Layer info for point scene layer 
-
-```json
- None 
-```
-
-#### Example: 3D Scene Layer info for 3D object scene layer 
+#### Example: Example shared resource 
 
 ```json
  {
   "materialDefinitions": {
-    "Mat525": {
-      "type": "standard",
-      "name": "standard",
-      "params": {
-        "vertexRegions": false,
-        "vertexColors": true,
-        "reflectivity": 0,
-        "useVertexColorAlpha": false,
-        "ambient": [
-          0,
-          0,
-          0
-        ],
-        "diffuse": [
-          1,
-          1,
-          1
-        ],
-        "specular": [
-          0.09803921568627451,
-          0.09803921568627451,
-          0.09803921568627451
-        ],
-        "shininess": 1,
-        "renderMode": "solid",
-        "cullFace": "none"
-      }
+    "type": "standard",
+    "name": "standard",
+    "params": {
+      "reflectivity": 0,
+      "ambient": [
+        0,
+        0,
+        0
+      ],
+      "diffuse": [
+        1,
+        1,
+        1
+      ],
+      "specular": [
+        0.09803921568627451,
+        0.09803921568627451,
+        0.09803921568627451
+      ],
+      "shininess": 1,
+      "renderMode": "solid",
+      "cullFace": "none"
     }
   },
   "textureDefinitions": {
-    "525": {
-      "encoding": [
-        "image/jpeg",
-        "image/vnd-ms.dds"
-      ],
-      "wrap": [
-        "none",
-        "none"
-      ],
-      "atlas": false,
-      "uvSet": "uv0",
-      "channels": "rgb",
-      "images": [
-        {
-          "id": "525",
-          "size": 64,
-          "pixelInWorldUnits": 0,
-          "href": [
-            "../textures/0_0",
-            "../textures/0_0_1"
-          ],
-          "byteOffset": [
-            0,
-            0
-          ],
-          "length": [
-            737,
-            400
-          ]
-        }
-      ]
-    }
-  }
-} 
-```
-
-#### Example: 3D Scene Layer info for integrated mesh scene layer 
-
-```json
- {
-  "materialDefinitions": {
-    "Mat87040": {
-      "type": "standard",
-      "name": "standard",
-      "params": {
-        "vertexRegions": false,
-        "vertexColors": false,
-        "reflectivity": 0,
-        "useVertexColorAlpha": false,
-        "ambient": [
-          0,
+    "encoding": [
+      "image/jpeg",
+      "image/vnd-ms.dds"
+    ],
+    "wrap": [
+      "none",
+      "none"
+    ],
+    "atlas": false,
+    "uvSet": "uv0",
+    "channels": [
+      "r",
+      "g",
+      "b"
+    ],
+    "images": [
+      {
+        "id": "525",
+        "size": 64,
+        "pixelInWorldUnits": 0,
+        "href": [
+          "../textures/0_0",
+          "../textures/0_0_1"
+        ],
+        "byteOffset": [
           0,
           0
         ],
-        "diffuse": [
-          1,
-          1,
-          1
-        ],
-        "specular": [
-          0.098,
-          0.098,
-          0.098
-        ],
-        "shininess": 1,
-        "renderMode": "solid",
-        "cullFace": "none"
+        "length": [
+          737,
+          400
+        ]
       }
-    }
-  },
-  "textureDefinitions": {
-    "87040": {
-      "encoding": [
-        "image/jpeg",
-        "image/vnd-ms.dds"
-      ],
-      "wrap": [
-        "none",
-        "none"
-      ],
-      "atlas": false,
-      "uvSet": "uv0",
-      "channels": "rgb",
-      "images": [
-        {
-          "id": "1170940301162927104",
-          "size": 1024,
-          "pixelInWorldUnits": 0,
-          "href": [
-            "../textures/0_0",
-            "../textures/0_0_1"
-          ],
-          "byteOffset": [
-            0,
-            0
-          ],
-          "length": [
-            207385,
-            699192
-          ]
-        }
-      ]
-    }
+    ]
   }
 } 
 ```

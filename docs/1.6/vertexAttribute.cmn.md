@@ -4,7 +4,7 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Related:
 
-[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md)
+[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md), [cmn::vestedGeometryParams](vestedGeometryParams.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -23,31 +23,25 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ```json
  {
-  "vertexAttributes": {
-    "position": {
-      "byteOffset": 8,
-      "count": 222,
-      "valueType": "Float32",
-      "valuesPerElement": 3
-    },
-    "normal": {
-      "byteOffset": 2672,
-      "count": 222,
-      "valueType": "Float32",
-      "valuesPerElement": 3
-    },
-    "uv0": {
-      "byteOffset": 5336,
-      "count": 222,
-      "valueType": "Float32",
-      "valuesPerElement": 2
-    },
-    "color": {
-      "byteOffset": 7112,
-      "count": 222,
-      "valueType": "UInt8",
-      "valuesPerElement": 4
-    }
+  "position": {
+    "byteOffset": 8,
+    "valueType": "Float32",
+    "valuesPerElement": 3
+  },
+  "normal": {
+    "byteOffset": 2672,
+    "valueType": "Float32",
+    "valuesPerElement": 3
+  },
+  "uv0": {
+    "byteOffset": 5336,
+    "valueType": "Float32",
+    "valuesPerElement": 2
+  },
+  "color": {
+    "byteOffset": 7112,
+    "valueType": "UInt8",
+    "valuesPerElement": 4
   }
 } 
 ```

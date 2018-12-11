@@ -28,19 +28,19 @@
       {
         "title": "JPEG texture on second slot",
         "code": {
-          "bundle": {
+         
             "slot": 1,
             "format": "jpg"
-          }
+          
         }
       },
       {
         "title": "PNG texture on first slot",
         "code": {
-          "bundle": {
+          
             "slot": 0,
             "format": "png"
-          }
+          
         }
       }
 

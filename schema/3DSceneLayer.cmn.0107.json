@@ -162,16 +162,11 @@
             },
             "description": "Define the layouts of mesh geometry and its attributes"
         },
-        "attributeSetDefinitions": {
-            "type": "array",
-            "minItems": 0,
-            "maxItems": 1,
-            "items": {
-                "type": "object",
-                "$ref": "attributesetdefinition.cmn.0107.json"
-            },
-            "description": "Define the layouts of mesh geometry and its attributes. WARNING: only **SINGLE** definition is supported at v1.7. length must 0 or 1"
-        }
+      "attributeSetDefinitions": {
+        "type": "object",
+        "$ref": "attributesetdefinition.cmn.0107.json",
+        "description": "Define the layouts of mesh geometry and its attributes"
+      }
     },
     "required": [
         "id",

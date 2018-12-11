@@ -32,7 +32,6 @@ Mesh geometry for a node
     "featureCount": 7
   },
   "attribute": {
-    "definition": 0,
     "resource": 6
   }
 } 

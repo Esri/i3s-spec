@@ -12,6 +12,7 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 | alphaMode | string | define the meaning of the alpha-channel/alpha-mask<div>Possible values are:<ul><li>`opaque`: The rendered output is fully opaque and any alpha value is ignored</li><li>`mask`: The rendered output is either fully opaque or fully transparent depending on the alpha value and the specified alpha cutoff value. This mode is used to simulate geometry such as tree leaves or wire fences.</li><li>`blend`: The rendered output is combined with the background using the normal painting operation (i.e. the Porter and Duff over operator).</li></ul></div> |
 | alphaCutoff | number | The alpha cutoff value of the material (alphaMode=`mask`) default = `0.25` |
 | doubleSided | boolean | Specifies whether the material is double sided. For lightning, the opposite normals will be used when original normals are facing away from the camera. default=`false` |
+| cullFace | string | TODO: describe winding order convention for I3S<div>Possible values are:<ul><li>`none`: default. **Must** be none if `doubleSided=True`</li><li>`front`: cull back-face. </li><li>`back`: cull front-face</li></ul></div> |
 | normalTexture | [materialtexture](materialtexture.cmn.md) | The normal map texture. |
 | occlusionTexture | [materialtexture](materialtexture.cmn.md) | The normal map texture. |
 | emissiveTexture | [materialtexture](materialtexture.cmn.md) | _TBD_: may not support this |
@@ -26,7 +27,7 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 
 ```json
  {
-  "alphaMode": "mask",
+  "alphaModes": "mask",
   "alphaCutoff": 0.25,
   "pbrMetallicRoughness": {
     "baseColorFactor": [

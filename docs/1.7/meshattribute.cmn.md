@@ -9,7 +9,6 @@ Mesh geometry for a node
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **definition** | integer | index in [layer.attributeSetDefinitions](layer.md) array |
 | **resource** | integer | resource locator to be used attribute resources for this mesh. i.e. `layers/0/nodes/attributes/{this.resource}/...` |
 
 *Note: properties in **bold** are required*
@@ -20,7 +19,6 @@ Mesh geometry for a node
 
 ```json
  {
-  "definition": 0,
   "resource": 6
 } 
 ```

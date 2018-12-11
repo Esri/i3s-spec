@@ -36,7 +36,7 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 | materialDefinitions | [materialdefinitions](materialdefinitions.cmn.md)[] | List of materials classes used in this layer. _TBD_ use a separated JSON resource? |
 | textureSetDefinitions | [texturesetdefinition](texturesetdefinition.cmn.md)[] | define the set of textures that can be referenced by meshes |
 | **geometryDefinitions** | [geometrydefinition](geometrydefinition.cmn.md)[] | Define the layouts of mesh geometry and its attributes |
-| attributeSetDefinitions | [attributesetdefinition](attributesetdefinition.cmn.md)[0:1] | Define the layouts of mesh geometry and its attributes. WARNING: only **SINGLE** definition is supported at v1.7. length must 0 or 1 |
+| attributeSetDefinitions | [attributesetdefinition](attributesetdefinition.cmn.md) | Define the layouts of mesh geometry and its attributes |
 
 *Note: properties in **bold** are required*
 

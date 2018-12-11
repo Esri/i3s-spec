@@ -10,7 +10,7 @@
 | Property | Type | Description |
 | --- | --- | --- |
 | **formats** | [texturesetdefinitionformat](texturesetdefinitionformat.cmn.md)[] | List of formats that are available for this texture set |
-| sampler | [texturesampler](texturesampler.cmn.md) | Optional texture sampler (_TBD_) |
+| atlas | boolean | `true` is texture contains an atlas. Viewer should turn off anisotropic filtering for atlases to avoid sampling artifacts. default=`False` |
 
 *Note: properties in **bold** are required*
 
@@ -35,7 +35,7 @@ For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/te
 } 
 ```
 
-#### Example: Texture set definition with ETC2 compresses image (Mobile: jpg+ktx) 
+#### Example: Texture set definition with ETC2 compresses image (Mobile: jpg+ktx-etc2) 
 
 JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/10`. Same texture in KTX format will be at  `/layers/0/nodes/{nodes[i].material.resource}/textures/11` 
 
@@ -48,7 +48,7 @@ JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/1
     },
     {
       "index": 11,
-      "format": "ktx"
+      "format": "ktx-etc2"
     }
   ]
 } 

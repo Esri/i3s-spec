@@ -11,10 +11,9 @@
       },
       "description": "List of formats that are available for this texture set"
     },
-    "sampler": {
-      "type": "object",
-      "$ref": "texturesampler.cmn.0107.json",
-      "description": "Optional texture sampler (_TBD_)"
+    "atlas": {
+      "type": "boolean",
+      "description": "`true` is texture contains an atlas. Viewer should turn off anisotropic filtering for atlases to avoid sampling artifacts. default=`False`"
     }
   },
   "required": [
@@ -39,7 +38,7 @@
         }
       },
       {
-        "title": "Texture set definition with ETC2 compresses image (Mobile: jpg+ktx)",
+        "title": "Texture set definition with ETC2 compresses image (Mobile: jpg+ktx-etc2)",
         "description": "JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/10`. Same texture in KTX format will be at  `/layers/0/nodes/{nodes[i].material.resource}/textures/11`",
         "code": {
           "formats": [
@@ -49,7 +48,7 @@
             },
             {
               "index": 11,
-              "format": "ktx"
+              "format": "ktx-etc2"
             }
           ]
         }

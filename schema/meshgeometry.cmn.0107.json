@@ -6,7 +6,7 @@
   "properties": {
     "definition": {
       "type": "integer",
-      "description": "index in [layer.geometryDefinitions](layer.md) array"
+      "description": "index in [layer.geometryDefinitions](3dSceneLayer.cmn.md) array"
     },
     "resource": {
       "type": "integer",

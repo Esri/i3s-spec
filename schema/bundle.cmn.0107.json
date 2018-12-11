@@ -9,17 +9,12 @@
     },
     "format": {
       "type": "string",
-      "enum": [
-        "jpg",
-        "png",
-        "dds",
-        "ktx"
-      ],
+      "enum": [ "jpg", "png", "dds", "ktx-etc2" ],
       "enum-description": {
         "jpg": "JPEG compression. no mipmaps. Please note that alpha channel may have been added after the JPEG stream. This alpha channel is alwasy 8bit and zlib compressed. Last 4 byte of the entire stream are the 32 bit offset to the beginning of the alpha stream (little-endian)",
         "png": "PNG format, no mipmaps",
         "dds": "The DDS header will specify the type of compression and number of mipmaps. **WARNING** only DXT1 (no alpha) and DXT5 (alpha channel) are supported",
-        "ktx": "Kronos group container for ETC2 compressed texture. Mipmap may be available"
+        "ktx-etc2": "Kronos group container for ETC2 compressed texture. Mipmap may be available"
       },
       "description": "Texture format. *Note*: nested bundles are **not** supported"
     }
@@ -33,17 +28,22 @@
       {
         "title": "JPEG texture on second slot",
         "code": {
-          "slot": 1,
-          "format": "jpg"
+          "bundle": {
+            "slot": 1,
+            "format": "jpg"
+          }
         }
       },
       {
         "title": "PNG texture on first slot",
         "code": {
-          "slot": 0,
-          "format": "png"
+          "bundle": {
+            "slot": 0,
+            "format": "png"
+          }
         }
       }
+
     ]
   }
 }

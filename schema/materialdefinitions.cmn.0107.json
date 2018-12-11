@@ -26,6 +26,16 @@
       "type": "boolean",
       "description": "Specifies whether the material is double sided. For lightning, the opposite normals will be used when original normals are facing away from the camera. default=`false`"
     },
+    "cullFace": {
+      "type": "string",
+      "enum": [ "none", "front", "back" ],
+      "enum-description": {
+        "none": "default. **Must** be none if `doubleSided=True`",
+        "front": "cull back-face. ",
+        "back": "cull front-face"
+      },
+      "description": "TODO: describe winding order convention for I3S"
+    },
     "normalTexture": {
       "type": "object",
       "$ref": "materialtexture.cmn.0107.json",
@@ -56,6 +66,7 @@
       "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
     }
   },
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

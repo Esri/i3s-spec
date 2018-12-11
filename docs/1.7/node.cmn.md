@@ -4,16 +4,16 @@
 
 ### Related:
 
-[cmn::nodes](nodes.cmn.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::nodes](nodes.cmn.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **index** | integer | index in the node array. may be **different than** [`mesh[0].resourceId`](mesh.md) |
-| lodThreshold | number | When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.md)  |
+| **index** | integer | index in the node array. may be **different than** [`mesh.resourceId`](mesh.cmn.md) |
+| lodThreshold | number | When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.cmn.md)  |
 | **obb** | [obb](obb.cmn.md) | Oriented bounding box for this node.  |
 | children | integer[] | index of the children nodes indices |
-| meshes | [mesh](mesh.cmn.md)[0:1] | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
+| mesh | [mesh](mesh.cmn.md) | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
 
 *Note: properties in **bold** are required*
 
@@ -43,16 +43,21 @@
       10.9
     ]
   },
-  "meshes": [
-    {
-      "materialId": 0,
-      "geometryDefinitionId": 0,
-      "attributeDefinitionId": 0,
-      "resourceId": 478,
-      "vertexCount": 526,
-      "featureCount": 0
+  "mesh": {
+    "material": {
+      "definition": 0,
+      "resource": 6
+    },
+    "geometry": {
+      "definition": 0,
+      "resource": 6,
+      "vertexCount": 1092,
+      "featureCount": 7
+    },
+    "attribute": {
+      "resource": 6
     }
-  ]
+  }
 } 
 ```
 
@@ -84,16 +89,21 @@
     1025,
     1026
   ],
-  "meshes": [
-    {
-      "materialId": 0,
-      "geometryDefinitionId": 0,
-      "attributeDefinitionId": 0,
-      "resourceId": 478,
-      "vertexCount": 526,
-      "featureCount": 26
+  "mesh": {
+    "material": {
+      "definition": 0,
+      "resource": 6
+    },
+    "geometry": {
+      "definition": 0,
+      "resource": 6,
+      "vertexCount": 1092,
+      "featureCount": 7
+    },
+    "attribute": {
+      "resource": 6
     }
-  ]
+  }
 } 
 ```
 

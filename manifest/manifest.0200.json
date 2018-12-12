@@ -1,0 +1,17 @@
+{
+  "title": "i3s 1.7",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "This file defines the entry points for version 1.7 of the i3s-spec",
+  "profile": [
+    {
+      "name": "test",
+      "schemas": [
+        {
+          "path": "new",
+          "schema": "test.testing.0200.json"
+        }
+      ]
+    }
+  ]
+}

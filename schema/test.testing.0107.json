@@ -1,0 +1,40 @@
+{
+  "title": "Filter Type",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The file authoring information for a filter, including the filter type and its value settings.",
+  "$include": "test.testing.0106.json",
+  "properties": {
+    "newProp": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "integer",
+          "number"
+        ]
+      },
+      "description": "New to 1.7"
+    }
+  },
+  "required": [
+    "newProp"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "test changes in 1.7",
+        "code": {
+          "oldProp": "this is a 1.6 property",
+          "newProp": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Filter Type",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The file authoring information for a filter, including the filter type and its value settings.",
+  "$include": "test.testing.0107.json",
+  "properties": {
+    "oldProp": {
+      "type": "number",
+      "description": "Overwrites property from 1.6"
+    },
+    "newnewProp": {
+      "type": "number",
+      "description": "New in 2.0"
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer filter authoring info"
+      }
+    ]
+  }
+}

@@ -31,7 +31,7 @@ class Schema_manifest :
         #if len(tok) > 1 :
         #    assert( tok[0] in Schema_manifest.c_code_to_paths)
         #fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
-        return os.path.realpath( os.path.join( self.ref_path, name ) );
+        return os.path.realpath( os.path.join( self.ref_path, "schema", name ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
@@ -173,6 +173,8 @@ class Schema_type :
         self.desc_href=''
         self.custom_related = []
         self.oneOf = []
+        self.include = ''
+        self.properties = {}
 
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
@@ -209,7 +211,21 @@ class Schema_type :
             prop.type.parse_from_dom( sub_dom, self )
         return prop
 
-   
+    def get_properties(self, dom) :
+        if '$include' in dom :
+            path_to_include = dom['$include']
+            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, path_to_include)
+            print("Including schema file: %s" % abs_path_to_include)
+            old_schema = json_to_dom( abs_path_to_include )
+            self.get_properties( old_schema )
+        
+        if ( 'properties' in dom ) :
+            for entry in dom['properties'] :
+                self.properties[entry] = dom['properties'][entry]
+            #old_schema = self.parse_from_dom( json_to_dom( abs_path_to_include ) )
+            #props = self.get_properties(old_schema)
+
+
 
     def parse_type(self, dom, parent_type=None ) :
         if 'type' in dom :
@@ -222,6 +238,10 @@ class Schema_type :
                 obj.name = related
                 self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
+
+        if '$include' in dom :
+            path_to_include = dom['$include']
+            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, path_to_include)
 
         if 'description' in dom :
             self.desc = dom['description']
@@ -236,7 +256,10 @@ class Schema_type :
                 self.range[1] = str(dom['maxItems'])
 
         if 'properties' in dom :
-            for field,sub_dom in dom['properties'].items() :
+            self.get_properties(dom)
+
+            #for field,sub_dom in dom['properties'].items() :
+            for field,sub_dom in self.properties.items() :
                 prop = self.parse_property( field, sub_dom, self )
                 prop.is_required = True if 'required' in dom and field in dom['required'] else False
                 if prop.type.json_type == 'array' :
@@ -515,23 +538,26 @@ if __name__ == "__main__" :
     #for profile in args.profiles :
     #scan the manifest:
     for file in os.listdir( manifest_folder) :
-        version = file.split('.')[1]
-        if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
-            manifest[version] = Schema_manifest(root, version);
-            dom = json_to_dom( os.path.join(manifest_folder, file) )
-            entry_points = get_entry_points_from_dom( dom)
-            for entry_point in entry_points :
-                if file.endswith(".json"):
+        if file.endswith(".json"):
+            version = file.split('.')[1]
+            if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
+                manifest[version] = Schema_manifest(root, version);
+                dom = json_to_dom( os.path.join(manifest_folder, file) )
+                entry_points = get_entry_points_from_dom( dom)
+                for entry_point in entry_points :
+                    if ('.testing.' in entry_point) :
+                        None
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
 
     
     successful_validation = True
 
-    ##validate examples
+    #validate examples
     print("\nNow validating examples")
     for version in manifest:
-        successful_validation =  validate_examples(manifest[version])
+        if (not validate_examples(manifest[version]) ) :
+            successful_validation = False
     print()
 
     #write all profiles:

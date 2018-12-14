@@ -14,7 +14,11 @@
           "number"
         ]
       },
-      "description": "New to 1.7"
+      "description": "In 1.7"
+    },
+    "objProp": {
+      "type": "object",
+      "$ref": "test.testing.0107.json"
     }
   },
   "required": [
@@ -26,7 +30,7 @@
       {
         "title": "test changes in 1.7",
         "code": {
-          "oldProp": "this is a 1.6 property",
+          "oldProp1": "this is a 1.6 property",
           "newProp": [
             1,
             2,

@@ -2,12 +2,17 @@
 
 The file authoring information for a filter, including the filter type and its value settings.
 
+### Related:
+
+[testing::test](test.testing.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| oldProp | string | Original |
-| **newProp** | string[], integer[], number[] | New to 1.7 |
+| oldProp1 | string | Original 1.6 |
+| oldProp2 | string | Original 1.6 |
+| **newProp** | string[], integer[], number[] | In 1.7 |
+| objProp | [test](test.testing.md) | The file authoring information for a filter, including the filter type and its value settings. |
 
 *Note: properties in **bold** are required*
 
@@ -17,7 +22,7 @@ The file authoring information for a filter, including the filter type and its v
 
 ```json
  {
-  "oldProp": "this is a 1.6 property",
+  "oldProp1": "this is a 1.6 property",
   "newProp": [
     1,
     2,

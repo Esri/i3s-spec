@@ -27,7 +27,7 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 
 ```json
  {
-  "alphaModes": "mask",
+  "alphaMode": "mask",
   "alphaCutoff": 0.25,
   "pbrMetallicRoughness": {
     "baseColorFactor": [

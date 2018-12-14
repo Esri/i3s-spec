@@ -6,7 +6,8 @@ The file authoring information for a filter, including the filter type and its v
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **oldProp** | string | Original |
+| **oldProp1** | string | Original 1.6 |
+| oldProp2 | string | Original 1.6 |
 
 *Note: properties in **bold** are required*
 
@@ -16,7 +17,7 @@ The file authoring information for a filter, including the filter type and its v
 
 ```json
  {
-  "oldProp": "test"
+  "oldProp1": "test"
 } 
 ```
 

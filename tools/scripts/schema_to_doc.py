@@ -6,7 +6,9 @@ import argparse
 import re
 import errno
 import collections
-from slpk_validator import validate_json_string
+import slpk_validator
+
+
 
 
 def json_to_dom( path ) :
@@ -25,7 +27,7 @@ class Schema_manifest :
         self.ref_path = schema_reference_path
         self.types = {} # key: schema name, value : type object
         self.include_stack = []
-        version = version
+        self.version = version
 
     def get_abs_path_from_schema_name( self, name ) :
         #if len(tok) > 1 :
@@ -137,7 +139,6 @@ class Schema_manifest :
         return sch;
 
     def get_type_from_abs_path( self, abs_path ) :
-        
         # have it already ?
         name = self.get_schema_name_from_abs_path( abs_path )
         if name in self.types :
@@ -147,6 +148,35 @@ class Schema_manifest :
             ret = self.load_schema( abs_path)
             self.include_stack.pop()
             return ret;
+
+    def dom_to_schema(self) :
+        dom = {}
+        properties = {}
+        is_required = []
+        for key,value in self.types.items() :
+            for prop in value.props :
+                properties[prop.name] = {}
+                if (prop.is_required) :
+                    is_required.append(prop.name)
+                if (prop.type.json_type == 'array') :
+                    properties[prop.name]["type"] = "array"
+                    properties[prop.name]['items'] = {}
+                    properties[prop.name]['items']['type'] = prop.type.item_prop.type.json_type
+                    if (prop.type.enum) :
+                        properties[prop.name]['items']['enum'] =  prop.type.enum
+                elif (prop.type.json_type == 'object') :
+                    properties[prop.name]['type'] = 'object'
+                    properties[prop.name]['$ref'] = prop.type.name + '.json'
+                else:
+                    properties[prop.name]['type'] = prop.type.json_type
+                    if (prop.type.enum) :
+                        properties[prop.name]["enum"] =  prop.type.enum
+        dom['properties'] = properties
+        dom['required'] = is_required
+        dom['additionalProperties'] = False
+        dom = json.dumps(dom)
+        return dom
+
 
 class Dummy_type :
     """used only for custom_related"""
@@ -213,8 +243,8 @@ class Schema_type :
 
     def get_properties(self, dom) :
         if '$include' in dom :
-            path_to_include = dom['$include']
-            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, path_to_include)
+            self.include = dom['$include']
+            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, self.include)
             print("Including schema file: %s" % abs_path_to_include)
             old_schema = json_to_dom( abs_path_to_include )
             self.get_properties( old_schema )
@@ -240,8 +270,7 @@ class Schema_type :
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
 
         if '$include' in dom :
-            path_to_include = dom['$include']
-            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, path_to_include)
+            include = dom['$include']
 
         if 'description' in dom :
             self.desc = dom['description']
@@ -470,15 +499,14 @@ def validate_examples(manifest) :
     for profile in manifest.types:
         examples = manifest.types[profile].example_dom
         if ( len(examples) ) :
-            schema = os.path.join(manifest.ref_path, 'schema', profile + '.json')
+            schema = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
             for example in examples:
                 successful_validation = True
-                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
-                if (ex_code and ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                ex_code = Markdown_writer.get_example_code(example, example)
+                if (ex_code and ex_code != "") :                                   
                     try:
-                        successful_validation = validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
+                        successful_validation = slpk_validator.validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
                         if (not successful_validation) :
-                            bad_example_file = profile + ".json"
                             raise BaseException(("Example in %s did not successfully validate against schema" % profile))
                     except BaseException as e:
                         print(e)
@@ -549,16 +577,16 @@ if __name__ == "__main__" :
                         None
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
-
     
     successful_validation = True
 
-    #validate examples
+    ##validate examples
     print("\nNow validating examples")
     for version in manifest:
         if (not validate_examples(manifest[version]) ) :
             successful_validation = False
     print()
+
 
     #write all profiles:
     if (successful_validation) :

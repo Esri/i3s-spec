@@ -5,7 +5,7 @@
   "description": "The file authoring information for a filter, including the filter type and its value settings.",
   "$include": "test.testing.0107.json",
   "properties": {
-    "oldProp": {
+    "oldProp2": {
       "type": "number",
       "description": "Overwrites property from 1.6"
     },
@@ -18,7 +18,12 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Building Scene Layer filter authoring info"
+        "title": "Building Scene Layer filter authoring info",
+        "code": {
+          "oldProp1": "this is a 1.6 property",
+          "newProp": [1,2,3],
+          "newnewProp": 4
+        }
       }
     ]
   }

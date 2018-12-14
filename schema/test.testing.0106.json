@@ -4,13 +4,17 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The file authoring information for a filter, including the filter type and its value settings.",
   "properties": {
-    "oldProp": {
+    "oldProp1": {
       "type": "string",
-      "description": "Original"
+      "description": "Original 1.6"
+    },
+    "oldProp2": {
+      "type": "string",
+      "description": "Original 1.6"
     }
   },
   "required": [
-    "oldProp"
+    "oldProp1"
   ],
   "additionalProperties": false,
   "esriDocumentation": {
@@ -18,7 +22,7 @@
       {
         "title": "example",
         "code": {
-          "oldProp": "test"
+          "oldProp1": "test"
         }
       }
     ]

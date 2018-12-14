@@ -7,7 +7,7 @@ import sys
 import zipfile
 import zlib
 import collections
-from validate_json import validate
+import validate_json
 
 
 verbose = ''
@@ -208,7 +208,7 @@ def validate_json_string( json_schema, data, temp_file_name = "temp" ):
 
     #validate the file, then remove it
     try:
-        successful_validation, error_output = validate(data_file_path, json_schema.replace('\\', '/'))
+        successful_validation, error_output = validate_json.validate(data_file_path, json_schema.replace('\\', '/'))
     finally:
         remove_file(temp_file_name)
     return successful_validation, error_output

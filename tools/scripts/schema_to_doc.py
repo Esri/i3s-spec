@@ -156,8 +156,9 @@ class Schema_manifest :
         for key,value in self.types.items() :
             for prop in value.props :
                 properties[prop.name] = {}
-                if (prop.is_required) :
+                if (prop.is_required and key == value.name) :
                     is_required.append(prop.name)
+
                 if (prop.type.json_type == 'array') :
                     properties[prop.name]["type"] = "array"
                     properties[prop.name]['items'] = {}
@@ -166,7 +167,7 @@ class Schema_manifest :
                         properties[prop.name]['items']['enum'] =  prop.type.enum
                 elif (prop.type.json_type == 'object') :
                     properties[prop.name]['type'] = 'object'
-                    properties[prop.name]['$ref'] = prop.type.name + '.json'
+                    properties[prop.name]['$ref'] = prop.href
                 else:
                     properties[prop.name]['type'] = prop.type.json_type
                     if (prop.type.enum) :
@@ -175,6 +176,7 @@ class Schema_manifest :
         dom['required'] = is_required
         dom['additionalProperties'] = False
         dom = json.dumps(dom)
+        print(dom)
         return dom
 
 

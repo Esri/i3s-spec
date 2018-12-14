@@ -11,6 +11,10 @@
     "oldProp2": {
       "type": "string",
       "description": "Original 1.6"
+    },
+    "objProp1": {
+      "type": "object",
+      "$ref": "test.testing.0106.json"
     }
   },
   "required": [

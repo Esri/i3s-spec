@@ -1,17 +1,28 @@
 {
-  "title": "i3s 1.7",
+  "title": "i3s 2.0",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "This file defines the entry points for version 1.7 of the i3s-spec",
+  "description": "This file defines the entry points for version 2.0 of the i3s-spec",
   "profile": [
     {
       "name": "test",
       "schemas": [
         {
-          "path": "new",
+          "path": "new2.0",
           "schema": "test.testing.0200.json"
         }
       ]
     }
-  ]
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer filter authoring info",
+        "code": {
+          "oldProp1": "this is a 1.6 property",
+          "newnewProp": 4
+        }
+      }
+    ]
+  }
 }

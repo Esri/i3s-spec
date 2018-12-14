@@ -112,9 +112,10 @@ def validate_dom( data, schema_file, json_output=False ):
     # check if we need to include any additionals schemas to successfuly validate
     includes = schema.get('$include')
     if (includes) :
-        manifest = schema_to_doc.Schema_manifest(os.path.os.path.realpath(schema_file + "../../../"), '1.6')                    # FIX VERSION
+        tok = schema_file.split('/')[-1].split('.')[-2]
+        manifest = schema_to_doc.Schema_manifest(os.path.os.path.realpath(schema_file + "../../../"), tok)                    
         manifest.get_type_from_abs_path( schema_file)
-        schema = manifest.dom_to_schema()
+        schema = manifest.dom_to_json()
         print(schema)
         try:
             schema_file = slpk_validator.create_file_to_validate(schema_file.split('/')[-1], schema)

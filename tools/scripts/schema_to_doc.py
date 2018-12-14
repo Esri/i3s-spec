@@ -73,7 +73,6 @@ class Schema_manifest :
 
 
     def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
-        #pointclouds/schema/pcsl_attributeInfo_schema.json
         tok = rel_path.replace('\\','/').split('/')
         if ( len(tok) > 1 ):
             name = tok[1]
@@ -81,15 +80,6 @@ class Schema_manifest :
             name = tok[0]
         if name.endswith('.json') :
             name = name[:-5]
-        #if name.endswith('_schema') :
-        #    name = name[:-7]
-        #if len(tok) ==1 :
-        #    assert( default_namespace in Schema_manifest.c_code_to_paths)
-        #    tok.insert(0, Schema_manifest.c_code_to_paths[ default_namespace])
-        #while( len(tok) > 0 and tok[0] == ".."):
-        #    del tok[0]
-        #assert( tok[0] in Schema_manifest.c_path_to_codes)
-        #return "%s::%s" % (Schema_manifest.c_path_to_codes[tok[0]], name )
         return name
 
     def get_docs_href_from_schema_name( href) :
@@ -111,10 +101,7 @@ class Schema_manifest :
 
         folders.reverse()
         folders = [ (x if x !='schema' else replace_by ) for x in folders ]
-        #folders[-1] = folders[-1].replace('_schema.json', '.md')
         folders[-1] = folders[-1].replace('.json', '.md')
-        #if 'schema' in folders :
-        #    folders = folders.replace( 'schema', 'docs')
         rel_path  = os.path.join(*folders )
         return rel_path;
 
@@ -149,35 +136,43 @@ class Schema_manifest :
             self.include_stack.pop()
             return ret;
 
-    def dom_to_schema(self) :
+    def dom_to_json(self) :              
         dom = {}
         properties = {}
         is_required = []
         for key,value in self.types.items() :
-            for prop in value.props :
-                properties[prop.name] = {}
-                if (prop.is_required and key == value.name) :
-                    is_required.append(prop.name)
-
-                if (prop.type.json_type == 'array') :
-                    properties[prop.name]["type"] = "array"
-                    properties[prop.name]['items'] = {}
-                    properties[prop.name]['items']['type'] = prop.type.item_prop.type.json_type
-                    if (prop.type.enum) :
-                        properties[prop.name]['items']['enum'] =  prop.type.enum
-                elif (prop.type.json_type == 'object') :
-                    properties[prop.name]['type'] = 'object'
-                    properties[prop.name]['$ref'] = prop.href
-                else:
-                    properties[prop.name]['type'] = prop.type.json_type
-                    if (prop.type.enum) :
-                        properties[prop.name]["enum"] =  prop.type.enum
+            if ( self.version in key) :
+                for prop in value.props :
+                    properties[prop.name] = {}
+                    # required properties
+                    if (prop.is_required and key == value.name) :
+                        is_required.append(prop.name)
+                    # array properties
+                    if (prop.type.json_type == 'array') :
+                        properties[prop.name]["type"] = "array"
+                        properties[prop.name]['items'] = {}
+                        properties[prop.name]['items']['type'] = prop.type.item_prop.type.json_type
+                        if (prop.type.enum) :
+                            properties[prop.name]['items']['enum'] =  prop.type.enum
+                        if (prop.type.range) :
+                            # min
+                            if (prop.type.range[0] ) :
+                                properties[prop.name]['minItems'] = int( prop.type.range[0] )
+                            if (prop.type.range[1] ) :
+                                properties[prop.name]['maxItems'] = int( prop.type.range[1] )
+                    # object properties
+                    elif (prop.type.json_type == 'object') :
+                        properties[prop.name]['type'] = 'object'
+                        properties[prop.name]['$ref'] = prop.href
+                    # everything else
+                    else:
+                        properties[prop.name]['type'] = prop.type.json_type
+                        if (prop.type.enum) :
+                            properties[prop.name]["enum"] =  prop.type.enum
         dom['properties'] = properties
         dom['required'] = is_required
         dom['additionalProperties'] = False
-        dom = json.dumps(dom)
-        print(dom)
-        return dom
+        return json.dumps(dom)
 
 
 class Dummy_type :
@@ -224,6 +219,7 @@ class Schema_type :
     def parse_property( self, field, sub_dom, parent_type=None ) :
         prop = Property()
         prop.name = field
+
         if '$ref' in sub_dom :
             #tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], self.name.split('::')[0] );
             tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name.split('::')[0] );
@@ -237,11 +233,11 @@ class Schema_type :
                 if 'description' in sub_dom :
                     prop.prop_desc = sub_dom['description']
                 prop.type = self if tmp == self.name else parent_type
-
         else :
             prop.type = Schema_type( self.manifest)
             prop.type.parse_from_dom( sub_dom, self )
         return prop
+
 
     def get_properties(self, dom) :
         if '$include' in dom :
@@ -271,7 +267,7 @@ class Schema_type :
                 self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
 
-        if '$include' in dom :
+        if '$include' in dom :                                                  # self.include?
             include = dom['$include']
 
         if 'description' in dom :
@@ -288,7 +284,6 @@ class Schema_type :
 
         if 'properties' in dom :
             self.get_properties(dom)
-
             #for field,sub_dom in dom['properties'].items() :
             for field,sub_dom in self.properties.items() :
                 prop = self.parse_property( field, sub_dom, self )
@@ -575,8 +570,6 @@ if __name__ == "__main__" :
                 dom = json_to_dom( os.path.join(manifest_folder, file) )
                 entry_points = get_entry_points_from_dom( dom)
                 for entry_point in entry_points :
-                    if ('.testing.' in entry_point) :
-                        None
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
     
@@ -597,4 +590,4 @@ if __name__ == "__main__" :
             for name, obj  in manifest[version].types.items() :
                 writer.write_to_md( manifest[version], obj )
     else:
-        print("\nFix errors before docs can be generated")
+        print("\nFix errors before docs can be generated\n")

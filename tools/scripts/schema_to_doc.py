@@ -140,7 +140,7 @@ class Schema_manifest :
         dom = {}
         properties = {}
         is_required = []
-        fn = Schema_manifest.get_schema_name_from_relative_path(file)
+        fn = Schema_manifest.get_schema_name_from_relative_path(file.split('/')[-1])
         for key,value in self.types.items() :
             if ( key == fn) :
                 for prop in value.props :

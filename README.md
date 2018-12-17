@@ -3,7 +3,7 @@ Scene Layers: Service and Package Standard
 
 ![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")[http://www.arcgis.com](http://www.arcgis.com)
 
-This repository hosts the standard for scene layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model for scene layers, referred to as indexed 3d scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
+This repository hosts the standard for scene layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model for scene layers, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
 The format I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
 
@@ -18,19 +18,19 @@ The following layer types have been specified and the standard validated via imp
 - [building scene layer](docs/1.6/buildingSceneLayer.md) (e.g. comprehensive building model including building components)
 
 
-The specification of the [indexed 3d scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.
+The specification of the [indexed 3D scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.
 
 
 ## Designed for Web, Mobile and Cloud  
 
-The I3S format is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. The goal is to be able to stream large 3d datasets with high performance and scalability.
+The I3S format is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. The goal is to be able to stream large 3D datasets with high performance and scalability.
 
 ## Designed for 3D
 The I3S format is intrinsically designed to support 3D geospatial content, the requisite coordinate systems and height models in conjunction with a rich set of layer types.
 
 ## Open Standard
 
-For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
+For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [[License|i3s-spec#license-for-indexed-3d-scene-format-and-rest-endpoint-specification]] section below for more information.
 
 ## Where can I use...?
 
@@ -57,21 +57,22 @@ There are few applications that can create and consume scene layers. The tables 
   <td>IntegratedMesh</td>  
  </tr>
 </table>
-<p><em>Table 1: List of vendors and products that support outputting I3S layers.</em></p>
+<p><em>Table 1: List of vendors and products that support creation of I3S layers.</em></p>
 
-The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> The software products listed below support publishing as well as consuming Scene Layers.
+The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> 
 
 <table>
   <tr>
     <th rowspan="2"><br>ArcGIS Software<br></th>
     <th rowspan="2"><br>Version</th>
-    <th colspan="4">Scene Layer Types<br></th>    
+    <th colspan="5">Scene Layer Types<br></th>    
   </tr>
   <tr>
     <td>3D Objects</td>
     <td>Integrated Meshes</td>
     <td>Points</td>
-    <td>Point Clouds
+    <td>Point Clouds</td>
+    <td>Building Scene Layer</td>
   </tr>
   <tr>
     <td>ArcGIS Online</td>
@@ -80,6 +81,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS API for JavaScript</td>
@@ -88,6 +90,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Enterprise</td>
@@ -96,6 +99,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Pro</td>
@@ -104,6 +108,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>Esri CityEngine</td>
@@ -112,6 +117,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Earth</td>
@@ -120,6 +126,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Runtime</td>
@@ -128,15 +135,14 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
   </tr>
   </table>
-
 <em>Table 2: ArcGIS platform support for diffrent scene layers types.</em>
 
 ## Contributing
 
-You are very much invited to fork this repository to a public or private repository and to send pull requests if you have ideas for improvements or have found bugs in this documentation. Creating a fork solely for this purpose
-does not constitute the creation and distribution of a derivative work. Please see our [guidelines for  contributing](https://github.com/esri/contributing).
+You are invited to fork this repository and to submit pull requests with ideas for improvements, bugs, or issues in this documentation. Creating a fork solely for this purpose does not constitute the creation and distribution of a derivative work. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## License for indexed 3D scene format and REST endpoint specification
 

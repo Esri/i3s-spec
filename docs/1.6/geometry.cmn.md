@@ -4,7 +4,7 @@ This is the common container class for all types of geometry definitions used in
 
 ### Related:
 
-[cmn::featureData](featureData.cmn.md), [cmn::features](features.cmn.md)
+[cmn::features](features.cmn.md), [cmn::featureData](featureData.cmn.md)
 ### Properties
 
 | Property | Type | Description |

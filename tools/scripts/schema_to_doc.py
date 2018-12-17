@@ -136,12 +136,13 @@ class Schema_manifest :
             self.include_stack.pop()
             return ret;
 
-    def dom_to_json(self) :              
+    def dom_to_json(self, file) :              
         dom = {}
         properties = {}
         is_required = []
+        fn = Schema_manifest.get_schema_name_from_relative_path(file)
         for key,value in self.types.items() :
-            if ( self.version in key) :
+            if ( key == fn) :
                 for prop in value.props :
                     properties[prop.name] = {}
                     # required properties
@@ -173,6 +174,12 @@ class Schema_manifest :
         dom['required'] = is_required
         dom['additionalProperties'] = False
         return json.dumps(dom)
+
+
+def create_schema_file(ref_path, version, schema_file) :
+        manifest = Schema_manifest(ref_path, version)                    
+        manifest.get_type_from_abs_path( schema_file)
+        return manifest.dom_to_json(schema_file.split('\\')[-1])
 
 
 class Dummy_type :

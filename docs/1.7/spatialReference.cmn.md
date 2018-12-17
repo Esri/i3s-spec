@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[pcsl::layer](layer.pcsl.md), [bld::layer](layer.bld.md), [cmn::fullExtent](fullExtent.cmn.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::fullExtent](fullExtent.cmn.md), [pcsl::layer](layer.pcsl.md), [bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |

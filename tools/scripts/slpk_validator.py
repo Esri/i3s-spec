@@ -1,13 +1,16 @@
 import argparse
+import errno
 import glob
 import json
 import jsonschema
 import os
+import shutil
 import sys
 import zipfile
 import zlib
 import collections
 import validate_json
+import schema_to_doc
 
 
 verbose = ''
@@ -41,15 +44,10 @@ class Reader :
 ############################################################################
 ############ Functions to get the appropriate schema path ##################
 ############################################################################
-def get_schema(path_to_specs, slpk_type, file_type, version) :
-    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107' }
+def get_schema(slpk_type, file_type, version) :
 
     dir, file = os.path.split( file_type )
-    manifest = 'manifest.' + c_versions_to_code[version] + '.json'
-    path_to_manifest = os.path.join(path_to_specs, 'manifest', manifest)
-    dom = json_to_dom( path_to_manifest )
-
-    manifest_paths = get_schemas(dom)
+    #load_incomplete_files(manifest_paths)
 
     path = None
 
@@ -57,13 +55,13 @@ def get_schema(path_to_specs, slpk_type, file_type, version) :
         path = get_building_schema_path( manifest_paths, dir, file )
 
     elif ( slpk_type == "Point" ) :
-        path =get_common_schema_path( manifest_paths, dir, file )
+        path = get_common_schema_path( manifest_paths, dir, file )
     
     elif ( slpk_type == "PointCloud" ) :
         path = get_pointcloud_schema_path( manifest_paths, dir, file )
 
     elif ( slpk_type == "3DObject" ) :
-        path =  get_common_schema_path( manifest_paths, dir, file )
+        path = get_common_schema_path( manifest_paths, dir, file )
 
     elif ( slpk_type == "IntegratedMesh" ) :
         path = get_common_schema_path( manifest_paths, dir, file )
@@ -132,6 +130,32 @@ def get_pointcloud_schema_path( manifest, dir, file ) :
 ############################################################################
 #################### Functions for reading files ###########################
 ############################################################################
+def create_dir(path) :
+    try:
+        os.mkdir(path)
+    except OSError :
+        print("Failed creating directory %s", path)
+    else :
+        print("Creating directory %s", path)
+
+def copy_dir(src, dest):
+    try:
+        shutil.copytree(src, dest)
+    except OSError as e:
+        # If the error was caused because the source wasn't a directory
+        if e.errno == errno.ENOTDIR:
+            shutil.copy(src, dest)
+        else:
+            print('Directory not copied. Error: %s' % e)
+
+# copy only files in src, not directories
+def copy_files(src, dst) :
+    src_files = os.listdir(src)
+    for file_name in src_files:
+        fn = os.path.join(src, file_name)
+        if (os.path.isfile(fn)):
+            shutil.copy(fn, dst)
+
 # file_name, data are strings
 # returns path to created file
 def create_file_to_validate( file_name, data ):
@@ -195,6 +219,63 @@ def get_info_from_layer(dom) :
             version = dom['store']['version']
     return type, version
 
+def load_manifests(path_to_specs_folder) :
+    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
+
+    path_to_manifest = os.path.join(path_to_specs_folder, 'manifest')
+    manifests = {}
+    for file in os.listdir( path_to_manifest) :
+        # load the manifest
+        manifest_dom = json_to_dom( os.path.join( path_to_manifest, file ) )
+        for profile in manifest_dom['profile'] :
+            for schema in profile['schemas'] :
+                path_to_file = os.path.join(path_to_specs_folder, 'schema', schema['schema'] )
+                updated_path = load_incomplete_file(path_to_file)
+
+
+
+    #manifest_paths = get_schemas(dom)
+
+# inject the $include files into file if necessary
+def load_incomplete_files(abs_path_to_folder) :
+    for file in os.listdir( abs_path_to_folder) :
+        # check files to see if $include in schema
+        dom = json_to_dom( os.path.join(abs_path_to_folder, file) )
+        if '$include' in dom  :
+            # get all the required properties
+            properties = load_incomplete_file(abs_path_to_folder, dom)
+            complete_schema = {}
+            complete_schema['properties'] = properties
+            if ( 'required' in dom ) :
+                complete_schema['required'] = dom['required']
+            # overwrite the file
+            create_file_to_validate( os.path.join( abs_path_to_folder, file ), json.dumps( complete_schema ) )
+            
+
+# checks if file uses $include
+# if true, create a new file that loads the included file and return the path to the file
+# return original path otherwise
+def load_incomplete_file(path_to_schema, dom):
+    #dom = json_to_dom( os.path.join(path_to_folder, 'schema', file) )
+    if '$include' not in dom :
+        if 'properties' in dom :
+            #properties['properties'] = dom['properties']
+            return dom['properties']
+        
+    # we have to include a file for the full schema
+    include_file = dom['$include']
+    sub_dom = json_to_dom( os.path.join(path_to_schema, include_file) )
+    properties = {}
+    properties['properties'] = {}
+    # load included properties
+    for prop, value in load_incomplete_file(path_to_schema, sub_dom).items() :
+        properties['properties'][prop] = value
+    #load current properties
+    # overwrites included properties
+    for prop in dom['properties']:
+        properties['properties'][prop] = dom['properties'][prop]
+    return properties['properties']
+
 
 ############################################################################
 ##################### Functions for validation #############################
@@ -221,10 +302,18 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
     success_count = 0
     successful_validation = True
 
+    temp_specs_folder_path = os.path.join( os.getcwd(), 'i3s-specs-temp')
+    temp_schema_folder_path = os.path.join(temp_specs_folder_path, 'schema')
+    create_dir(temp_specs_folder_path)
+    copy_files(path_to_specs_folder, temp_specs_folder_path)
+    #copy_dir(path_to_specs_folder, temp_schema_folder_path)
+    load_incomplete_files(temp_specs_folder_path)
     # get all paths in slpk
     reader = Reader(path_to_slpk)
     files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
+
+    #manifests = load_manifests( path_to_specs_folder )
 
     # temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files
     if (version == '1.8') :
@@ -245,7 +334,7 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
                 current_file = file_paths[-1]
 
             # get the schema for the current json file type
-            schema = get_schema(path_to_specs_folder, slpk_type, current_file, version)
+            schema = get_schema(slpk_type, current_file, version)
 
             # not every file is being validated
             # only proceed if file is being validated
@@ -300,7 +389,7 @@ def main():
         if os.path.isfile(arguments.schema_file):
             raise FileNotFoundError("Please provide the i3s-spec folder, not a schema file")
         elif os.path.isdir(arguments.schema_file):
-            schema_dir = arguments.schema_file
+            schema_dir = os.path.join(arguments.schema_file, 'schema') 
         else:
             raise FileNotFoundError("Schema folder not found.")
 

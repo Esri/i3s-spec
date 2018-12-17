@@ -44,27 +44,25 @@ class Reader :
 ############ Functions to get the appropriate schema path ##################
 ############################################################################
 def get_schema(slpk_type, file_type, version, manifest_paths) :
-
     dir, file = os.path.split( file_type )
-
-    path = None
-
     if ( slpk_type == "Building" ) :
-        path = get_building_schema_path( manifest_paths[version], dir, file )
+        return get_building_schema_path( manifest_paths[version], dir, file )
 
-    elif ( slpk_type == "Point" ) :
-        path = get_common_schema_path( manifest_paths[version], dir, file )
+    if ( slpk_type == "PointCloud" ) :
+        return get_pointcloud_schema_path( manifest_paths[version], dir, file )
+
+    if ( slpk_type == "Point" ) :
+        return get_common_schema_path( manifest_paths[version], dir, file )
+
+    if ( slpk_type == "3DObject" ) :
+        return get_common_schema_path( manifest_paths[version], dir, file )
+
+    if ( slpk_type == "IntegratedMesh" ) :
+        return get_common_schema_path( manifest_paths[version], dir, file )
+
+    # invalid slpk type
+    return None
     
-    elif ( slpk_type == "PointCloud" ) :
-        path = get_pointcloud_schema_path( manifest_paths[version], dir, file )
-
-    elif ( slpk_type == "3DObject" ) :
-        path = get_common_schema_path( manifest_paths[version], dir, file )
-
-    elif ( slpk_type == "IntegratedMesh" ) :
-        path = get_common_schema_path( manifest_paths[version], dir, file )
-
-    return path
 
 
 # get the path for the file within the profile type from the manifest
@@ -73,7 +71,7 @@ def get_schema_file_name(manifest, type, file_name) :
         for schema in manifest[type]:
             if (schema['path'] == file_name) :
                 return schema['schema']
-    return None
+    return None     # type or file not found
 
 
 # includes Point, 3DObject, IM, ...
@@ -191,13 +189,12 @@ def get_slpk_info(reader) :
     layer_desc = load_file_to_dom(reader, layer_file)
     # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating
     type, version = get_info_from_layer(layer_desc)
-
-    # BSL does not have version property
-    # default to 1.6
+    # older builds of BSL do not have version property
+    # version defaults to 1.6
     if ( not version ) :
         version = '1.6'
-
     return type, version
+
 
 # get the type of slpk, e.g:
 # Building, Point, Pointcloud, ...
@@ -333,7 +330,7 @@ def validate_slpk( path_to_slpk, path_to_specs_folder, manifests ):
                 print("Validating file: %s" % file)
                 path_to_json_schema = os.path.join(path_to_specs_folder, schema)
                 # validate the data against the schema           
-                successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, schema)
+                successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, file_paths[-1])
 
                 if (not successful__file_validation) :
                     successful_validation = False
@@ -408,7 +405,7 @@ def main():
     # load the manifests e.g the entry points
     manifests = load_manifests( root )
 
-    # validate the file/files
+    # validate the slpk/slpks
     try:
         for data_file_name in files:
             head, tail = os.path.split(data_file_name)

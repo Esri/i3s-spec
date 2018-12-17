@@ -472,6 +472,8 @@ def validate_examples(manifest) :
                         return False
     return True
 
+
+# returns list of required schemas to generate the docs
 def get_entry_points_from_dom( manifest_dom ) :
     entry_points = []
     for profile in manifest_dom['profile'] :
@@ -496,20 +498,6 @@ if __name__ == "__main__" :
 
     args = parser.parse_args();
 
-    #schema_files = []
-
-    #try:
-    #    os.makedirs(arguments.md_output_path)
-
-    #except OSError as e:
-    #    if e.errno != errno.EEXIST:
-    #        raise
-
-    ##assumes relative path:
-    #output_path = os.path.realpath(  os.path.join(os.path.dirname(__file__), arguments.md_output_path) )
-    #input_path  = os.path.realpath(  os.path.join(os.path.dirname(__file__), arguments.json_schema_path) )
-    #schema_names     = arguments.schema_names.split(',')
-
     #find 'root' path:
     print(args.profiles );
     root = os.path.realpath(__file__ + "../../../../") 
@@ -522,11 +510,10 @@ if __name__ == "__main__" :
 
     manifest = {}   # {version : Schema_manifest}
 
-    #for profile in args.profiles :
     #scan the manifest:
-    for file in os.listdir( manifest_folder) :
+    for file in os.listdir( manifest_folder ) :
         if file.endswith(".json"):
-            version = file.split('.')[1]
+            version = file.split('.')[1]                # e.g manifest.0106.json
             if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
                 manifest[version] = Schema_manifest(root, version);
                 dom = json_to_dom( os.path.join(manifest_folder, file) )
@@ -534,22 +521,21 @@ if __name__ == "__main__" :
                 for entry_point in entry_points :
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
-    
-    successful_validation = True
 
     ##validate examples
     print("\nNow validating examples")
-    for version in manifest:
-        if (not validate_examples(manifest[version]) ) :
-            successful_validation = False
-    print()
-
-
-    #write all profiles:
-    if (successful_validation) :
+    try:
+        for version in manifest:
+            if (not validate_examples(manifest[version]) ) :
+                raise Exception("Fix examples before writing docs")
+        #write all profiles:
         for version in manifest :
             writer = Markdown_writer( output_path );
             for name, obj  in manifest[version].types.items() :
                 writer.write_to_md( manifest[version], obj )
-    else:
-        print("\nFix errors before docs can be generated\n")
+    except Exception as e:
+        print()
+        print(e)
+
+
+

@@ -86,7 +86,7 @@ def validate( data_file_name, schema_file, json_output = False ):
     with open(data_file_name, 'r', encoding="utf8") as data_file:
         try: 
             data = json.load(data_file)
-            return validate_dom(data, schema_file, json_output)
+            return validate_dom(data, schema_file, data_file_name.split('\\')[-1], json_output)
         except ValueError as e:
             syntax_error = {}
             syntax_error['message'] = 'JSON data file syntax error: ' + str(e)
@@ -94,7 +94,7 @@ def validate( data_file_name, schema_file, json_output = False ):
             return False, json_errors
 
 # use this if you want to validate a dom against a schema file
-def validate_dom( data, schema_file, json_output=False ):
+def validate_dom( data, schema_file, console_output_name, json_output=False ):
     successful_validation = True
     json_errors = {}
     json_errors['errors'] = []
@@ -126,7 +126,7 @@ def validate_dom( data, schema_file, json_output=False ):
         if json_output:
             json_errors['errors'] = process_error_json(errors, data)
         else:
-            process_error_console(errors, "temp")                               # GIVE BETTER NAME
+            process_error_console(errors, console_output_name)             
 
     return successful_validation, json_errors
 

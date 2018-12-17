@@ -58,15 +58,6 @@
           "schema": "nodepage.pcsl.0106.json"
         }
       ]
-    },
-    {
-      "name": "test",
-      "schemas": [
-        {
-          "path": "old",
-          "schema": "test.testing.0106.json"
-        }
-      ]
     }
   ]
 }

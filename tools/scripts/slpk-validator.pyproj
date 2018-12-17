@@ -13,7 +13,7 @@
     <Name>slpk-validator</Name>
     <RootNamespace>slpk_validator</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>-s E:\Repos\i3s-spec -d C:\Users\juan9976\Desktop\slpks\Building\jay_st.slpk</CommandLineArguments>
+    <CommandLineArguments>-s E:\Repos\i3s-spec -d C:\Users\juan9976\Desktop\glass-tree.optimized.slpk</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

@@ -56,13 +56,13 @@ def get_schema(slpk_type, file_type, version, manifest_paths) :
         path = get_common_schema_path( manifest_paths[version], dir, file )
     
     elif ( slpk_type == "PointCloud" ) :
-        path = get_pointcloud_schema_path( manifest_paths, dir, file )
+        path = get_pointcloud_schema_path( manifest_paths[version], dir, file )
 
     elif ( slpk_type == "3DObject" ) :
-        path = get_common_schema_path( manifest_paths, dir, file )
+        path = get_common_schema_path( manifest_paths[version], dir, file )
 
     elif ( slpk_type == "IntegratedMesh" ) :
-        path = get_common_schema_path( manifest_paths, dir, file )
+        path = get_common_schema_path( manifest_paths[version], dir, file )
 
     return path
 
@@ -244,14 +244,9 @@ def load_incomplete_files(abs_path_to_folder) :
         # check files to see if $include in schema
         dom = json_to_dom( os.path.join(abs_path_to_folder, file) )
         if '$include' in dom  :
-            # get all the required properties
-            properties = load_incomplete_file(abs_path_to_folder, dom)
-            complete_schema = {}
-            complete_schema['properties'] = properties
-            if ( 'required' in dom ) :
-                complete_schema['required'] = dom['required']
+            schema = dom_to_schema(abs_path_to_folder, dom)
             # overwrite the file
-            create_file_to_validate( os.path.join( abs_path_to_folder, file ), json.dumps( complete_schema ) )
+            create_file_to_validate( os.path.join( abs_path_to_folder, file ), json.dumps( schema ) )
             
 
 # checks if file uses $include
@@ -278,6 +273,15 @@ def load_incomplete_file(path_to_schema, dom):
         properties['properties'][prop] = dom['properties'][prop]
     return properties['properties']
 
+
+def dom_to_schema(path_to_schema, dom) :
+    # get all the required properties
+    properties = load_incomplete_file(path_to_schema, dom)
+    complete_schema = {}
+    complete_schema['properties'] = properties
+    if ( 'required' in dom ) :
+        complete_schema['required'] = dom['required']
+    return complete_schema
 
 ############################################################################
 ##################### Functions for validation #############################

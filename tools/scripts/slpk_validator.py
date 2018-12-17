@@ -1,5 +1,4 @@
 import argparse
-import errno
 import glob
 import json
 import jsonschema
@@ -138,15 +137,17 @@ def create_dir(path) :
     else :
         print("Creating directory %s", path)
 
-def copy_dir(src, dest):
-    try:
-        shutil.copytree(src, dest)
-    except OSError as e:
-        # If the error was caused because the source wasn't a directory
-        if e.errno == errno.ENOTDIR:
-            shutil.copy(src, dest)
-        else:
-            print('Directory not copied. Error: %s' % e)
+def remove_dir(path) :
+    # check if path is directory
+    if ( os.path.isdir(path) ) :
+        try :
+            shutil.rmtree(path)
+        except Exception as e :
+            print(e)
+            raise
+    else :
+        print("Directory %s does not exist" % path)
+
 
 # copy only files in src, not directories
 def copy_files(src, dst) :
@@ -220,6 +221,7 @@ def get_info_from_layer(dom) :
     return type, version
 
 def load_manifests(path_to_specs_folder) :
+    path_to_manifest
     c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
 
     path_to_manifest = os.path.join(path_to_specs_folder, 'manifest')
@@ -302,18 +304,21 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
     success_count = 0
     successful_validation = True
 
-    temp_specs_folder_path = os.path.join( os.getcwd(), 'i3s-specs-temp')
-    temp_schema_folder_path = os.path.join(temp_specs_folder_path, 'schema')
-    create_dir(temp_specs_folder_path)
-    copy_files(path_to_specs_folder, temp_specs_folder_path)
-    #copy_dir(path_to_specs_folder, temp_schema_folder_path)
-    load_incomplete_files(temp_specs_folder_path)
+    # copy i3s schemas
+    #temp_specs_folder_path = os.path.join( os.getcwd(), 'i3s-specs-temp')
+    #create_dir(temp_specs_folder_path)
+    #copy_files(path_to_specs_folder, temp_specs_folder_path)
+    #load_incomplete_files(temp_specs_folder_path)
+
+    #remove_dir(temp_specs_folder_path)
+
+    # delete the copied i3s directory
     # get all paths in slpk
     reader = Reader(path_to_slpk)
     files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
 
-    #manifests = load_manifests( path_to_specs_folder )
+    manifests = load_manifests( path_to_specs_folder )
 
     # temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files
     if (version == '1.8') :

@@ -111,8 +111,7 @@ def validate_dom( data, schema_file, json_output=False ):
    
     # check if we need to include any additionals schemas to successfuly validate
     if ('$include' in schema) :
-        version = schema_file.split('/')[-1].split('.')[-2]
-        schema = schema_to_doc.create_schema_file(os.path.os.path.realpath(schema_file + "../../../"), version, schema_file)
+        schema = json.dumps(slpk_validator.dom_to_schema(os.path.realpath(schema_file + "../../"), schema))
         try:
             schema_file = slpk_validator.create_file_to_validate(schema_file.split('/')[-1], schema)
             return validate_dom( data, schema_file, json_output)

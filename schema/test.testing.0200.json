@@ -20,7 +20,7 @@
       {
         "title": "Building Scene Layer filter authoring info",
         "code": {
-          "badProp": "this is a 1.6 property",
+          "oldProp1": "this is a 1.6 property",
           "newnewProp": 4
         }
       }

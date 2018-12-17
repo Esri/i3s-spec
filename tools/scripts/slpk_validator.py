@@ -88,6 +88,9 @@ def get_common_schema_path( manifest, dir, file ) :
     if ( (dir.startswith("f_") or dir[0].isdigit()) and file == "0.json.gz" ) :
         return get_schema_file_name(manifest, 'common', file)
 
+    if ( dir == "nodepages") :
+        return get_schema_file_name(manifest, 'common', "nodepages")
+
     ### not being validated currently ###
     #if ( (dir == "features") and file == "0.json.gz") :
     #    return get_schema_file_name(manifest, 'common', file)
@@ -182,17 +185,6 @@ def load_file_to_dom(reader, file) :
     layer_desc = layer_desc.decode()                        # to string
     return json.loads(layer_desc)
 
-# return dictionary of schema file names from the manifest dom
-# e.g dom -> {"common": [{ name : schema } ... ] }, { "building" : [ {name : schema } ... ] },...
-def get_schemas( dom ) :
-    schemas = collections.defaultdict(list)
-    for profile in dom['profile'] :
-        schema_name = profile['name']
-        schemas[ schema_name ] = []
-        for entry in profile['schemas'] :
-            schemas[ schema_name ].append( dict( { entry['path'] : entry['schema'] } ) )
-    return schemas
-
 
 def get_slpk_info(reader) :
     layer_file = "3dSceneLayer.json.gz"
@@ -232,11 +224,8 @@ def load_manifests(path_to_specs_folder) :
             manifests[version][profile['name']] = profile['schemas']
             #for schema in profile['schemas'] :
                 #path_to_file = os.path.join(path_to_specs_folder, 'schema', schema['schema'] )
-                #updated_path = load_incomplete_file(path_to_file)
+                #updated_path = load_properties(path_to_file)
     return manifests
-
-
-    #manifest_paths = get_schemas(dom)
 
 # inject the $include files into file if necessary
 def load_incomplete_files(abs_path_to_folder) :
@@ -252,7 +241,7 @@ def load_incomplete_files(abs_path_to_folder) :
 # checks if file uses $include
 # if true, create a new file that loads the included file and return the path to the file
 # return original path otherwise
-def load_incomplete_file(path_to_schema, dom):
+def load_properties(path_to_schema, dom):
     #dom = json_to_dom( os.path.join(path_to_folder, 'schema', file) )
     if '$include' not in dom :
         if 'properties' in dom :
@@ -265,7 +254,7 @@ def load_incomplete_file(path_to_schema, dom):
     properties = {}
     properties['properties'] = {}
     # load included properties
-    for prop, value in load_incomplete_file(path_to_schema, sub_dom).items() :
+    for prop, value in load_properties(path_to_schema, sub_dom).items() :
         properties['properties'][prop] = value
     #load current properties
     # overwrites included properties
@@ -276,12 +265,15 @@ def load_incomplete_file(path_to_schema, dom):
 
 def dom_to_schema(path_to_schema, dom) :
     # get all the required properties
-    properties = load_incomplete_file(path_to_schema, dom)
-    complete_schema = {}
-    complete_schema['properties'] = properties
+    properties = load_properties(path_to_schema, dom)
+    schema = {}
+    schema['properties'] = properties
+    # add required prperties
     if ( 'required' in dom ) :
-        complete_schema['required'] = dom['required']
-    return complete_schema
+        schema['required'] = dom['required']
+    # guard against additional properties
+    schema['additionalProperties'] = False
+    return schema
 
 ############################################################################
 ##################### Functions for validation #############################

@@ -136,51 +136,6 @@ class Schema_manifest :
             self.include_stack.pop()
             return ret;
 
-    def dom_to_json(self, file) :              
-        dom = {}
-        properties = {}
-        is_required = []
-        fn = Schema_manifest.get_schema_name_from_relative_path(file.split('/')[-1])
-        for key,value in self.types.items() :
-            if ( key == fn) :
-                for prop in value.props :
-                    properties[prop.name] = {}
-                    # required properties
-                    if (prop.is_required and key == value.name) :
-                        is_required.append(prop.name)
-                    # array properties
-                    if (prop.type.json_type == 'array') :
-                        properties[prop.name]["type"] = "array"
-                        properties[prop.name]['items'] = {}
-                        properties[prop.name]['items']['type'] = prop.type.item_prop.type.json_type
-                        if (prop.type.enum) :
-                            properties[prop.name]['items']['enum'] =  prop.type.enum
-                        if (prop.type.range) :
-                            # min
-                            if (prop.type.range[0] ) :
-                                properties[prop.name]['minItems'] = int( prop.type.range[0] )
-                            if (prop.type.range[1] ) :
-                                properties[prop.name]['maxItems'] = int( prop.type.range[1] )
-                    # object properties
-                    elif (prop.type.json_type == 'object') :
-                        properties[prop.name]['type'] = 'object'
-                        properties[prop.name]['$ref'] = prop.href
-                    # everything else
-                    else:
-                        properties[prop.name]['type'] = prop.type.json_type
-                        if (prop.type.enum) :
-                            properties[prop.name]["enum"] =  prop.type.enum
-        dom['properties'] = properties
-        dom['required'] = is_required
-        dom['additionalProperties'] = False
-        return json.dumps(dom)
-
-
-def create_schema_file(ref_path, version, schema_file) :
-        manifest = Schema_manifest(ref_path, version)                    
-        manifest.get_type_from_abs_path( schema_file)
-        return manifest.dom_to_json(schema_file.split('\\')[-1])
-
 
 class Dummy_type :
     """used only for custom_related"""
@@ -274,8 +229,8 @@ class Schema_type :
                 self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
 
-        if '$include' in dom :                                                  # self.include?
-            include = dom['$include']
+        if '$include' in dom :                                                 
+            self.include = dom['$include']
 
         if 'description' in dom :
             self.desc = dom['description']

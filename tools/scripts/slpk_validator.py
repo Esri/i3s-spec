@@ -43,18 +43,17 @@ class Reader :
 ############################################################################
 ############ Functions to get the appropriate schema path ##################
 ############################################################################
-def get_schema(slpk_type, file_type, version) :
+def get_schema(slpk_type, file_type, version, manifest_paths) :
 
     dir, file = os.path.split( file_type )
-    #load_incomplete_files(manifest_paths)
 
     path = None
 
     if ( slpk_type == "Building" ) :
-        path = get_building_schema_path( manifest_paths, dir, file )
+        path = get_building_schema_path( manifest_paths[version], dir, file )
 
     elif ( slpk_type == "Point" ) :
-        path = get_common_schema_path( manifest_paths, dir, file )
+        path = get_common_schema_path( manifest_paths[version], dir, file )
     
     elif ( slpk_type == "PointCloud" ) :
         path = get_pointcloud_schema_path( manifest_paths, dir, file )
@@ -71,9 +70,9 @@ def get_schema(slpk_type, file_type, version) :
 # get the path for the file within the profile type from the manifest
 def get_schema_file_name(manifest, type, file_name) :
     if (type in manifest) :
-        for file in manifest[type]:
-            if ( file_name in file ) :
-                return file[file_name]
+        for schema in manifest[type]:
+            if (schema['path'] == file_name) :
+                return schema['schema']
     return None
 
 
@@ -221,19 +220,20 @@ def get_info_from_layer(dom) :
     return type, version
 
 def load_manifests(path_to_specs_folder) :
-    path_to_manifest
-    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
-
     path_to_manifest = os.path.join(path_to_specs_folder, 'manifest')
     manifests = {}
     for file in os.listdir( path_to_manifest) :
+        version = file.split('.')[1]                    # e.g manifest.0106.json
+        version = schema_to_doc.Schema_manifest.c_code_to_versions[version] 
+        manifests[version] = {}
         # load the manifest
         manifest_dom = json_to_dom( os.path.join( path_to_manifest, file ) )
         for profile in manifest_dom['profile'] :
-            for schema in profile['schemas'] :
-                path_to_file = os.path.join(path_to_specs_folder, 'schema', schema['schema'] )
-                updated_path = load_incomplete_file(path_to_file)
-
+            manifests[version][profile['name']] = profile['schemas']
+            #for schema in profile['schemas'] :
+                #path_to_file = os.path.join(path_to_specs_folder, 'schema', schema['schema'] )
+                #updated_path = load_incomplete_file(path_to_file)
+    return manifests
 
 
     #manifest_paths = get_schemas(dom)
@@ -298,27 +298,17 @@ def validate_json_string( json_schema, data, temp_file_name = "temp" ):
 
 
 # validate an slpk against the i3s specs
-def validate_slpk( path_to_slpk, path_to_specs_folder ):
+def validate_slpk( path_to_slpk, path_to_specs_folder, manifests ):
     error_output = {}
     error_count = 0
     success_count = 0
     successful_validation = True
-
-    # copy i3s schemas
-    #temp_specs_folder_path = os.path.join( os.getcwd(), 'i3s-specs-temp')
-    #create_dir(temp_specs_folder_path)
-    #copy_files(path_to_specs_folder, temp_specs_folder_path)
-    #load_incomplete_files(temp_specs_folder_path)
-
-    #remove_dir(temp_specs_folder_path)
 
     # delete the copied i3s directory
     # get all paths in slpk
     reader = Reader(path_to_slpk)
     files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
-
-    manifests = load_manifests( path_to_specs_folder )
 
     # temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files
     if (version == '1.8') :
@@ -339,15 +329,15 @@ def validate_slpk( path_to_slpk, path_to_specs_folder ):
                 current_file = file_paths[-1]
 
             # get the schema for the current json file type
-            schema = get_schema(slpk_type, current_file, version)
+            schema = get_schema(slpk_type, current_file, version, manifests)
 
             # not every file is being validated
             # only proceed if file is being validated
             if (schema) :
                 print("Validating file: %s" % file)
-                path_to_json_schema = os.path.join(path_to_specs_folder, 'schema', schema)
+                path_to_json_schema = os.path.join(path_to_specs_folder, schema)
                 # validate the data against the schema           
-                successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, current_file)
+                successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, schema)
 
                 if (not successful__file_validation) :
                     successful_validation = False
@@ -390,11 +380,12 @@ def main():
         json_output = arguments.json_output
         file_write = arguments.file_write
         verbose = arguments.verbose
+        root = arguments.schema_file
 
         if os.path.isfile(arguments.schema_file):
             raise FileNotFoundError("Please provide the i3s-spec folder, not a schema file")
         elif os.path.isdir(arguments.schema_file):
-            schema_dir = os.path.join(arguments.schema_file, 'schema') 
+            schema_dir = os.path.join(root, 'schema') 
         else:
             raise FileNotFoundError("Schema folder not found.")
 
@@ -412,20 +403,33 @@ def main():
     except Exception as e:
         print (e)
 
-    for data_file_name in files:
-        head, tail = os.path.split(data_file_name)
-        root, ext = os.path.splitext(tail)
-        print("Now validating slpk: %s" % tail)
-        successful_validation, error_output[root] = validate_slpk( data_file_name, schema_dir )
-        if not successful_validation:
-            error_count += 1
+    ## some pre-processing
+    # copy i3s schemas
+    temp_schema_dir = os.path.join( os.getcwd(), 'schema')
+    create_dir(temp_schema_dir)
+    copy_files(schema_dir, temp_schema_dir)
+    load_incomplete_files(temp_schema_dir)
+    # load the manifests e.g the entry points
+    manifests = load_manifests( root )
 
-    if json_output:
-        process_error_json_output(error_output, file_write)
-    else:
-        print("Results:")
-        print("Number of errors: " + str(error_count))
-        print("Number of successful files: " + str(len(files) - error_count))
+    # validate the file/files
+    try:
+        for data_file_name in files:
+            head, tail = os.path.split(data_file_name)
+            root, ext = os.path.splitext(tail)
+            print("Now validating slpk: %s" % tail)
+            successful_validation, error_output[root] = validate_slpk( data_file_name, temp_schema_dir, manifests )
+            if not successful_validation:
+                error_count += 1
+
+        if json_output:
+            process_error_json_output(error_output, file_write)
+        else:
+            print("Results:")
+            print("Number of errors: " + str(error_count))
+            print("Number of successful files: " + str(len(files) - error_count))
+    finally:
+        remove_dir(temp_schema_dir)
 
 
 if __name__ == "__main__" :

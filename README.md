@@ -15,11 +15,7 @@ The following layer types have been specified and the standard validated via imp
 - [integrated meshes](docs/1.6/integratedMesh.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [points](docs/1.6/points.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
 - [point clouds](docs/1.6/pointCloud.md) (e.g. large point data from LiDAR)
-
-The following layer types are planned for future inclusion:
-
-- Line Features (e.g. from GIS data)
-- Polygon Features (e.g. from GIS data)
+- [building scene layer](docs/1.6/buildingSceneLayer.md) (e.g. comprehensive building model including building components)
 
 
 The specification of the [indexed 3d scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.

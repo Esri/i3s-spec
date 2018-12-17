@@ -81,7 +81,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS API for JavaScript</td>
@@ -90,7 +90,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Enterprise</td>
@@ -99,7 +99,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Pro</td>
@@ -108,7 +108,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>Esri CityEngine</td>
@@ -117,7 +117,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Earth</td>
@@ -126,7 +126,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   <tr>
     <td>ArcGIS Runtime</td>
@@ -135,7 +135,7 @@ The Table below shows the various scene layer types that are currently supported
     <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
     <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-      <td><ul><li>[] Publishing</li><li>[] Consuming</li></ul></td>
+    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
   </tr>
   </table>
 <em>Table 2: ArcGIS platform support for diffrent scene layers types.</em>

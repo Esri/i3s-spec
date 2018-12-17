@@ -11,10 +11,10 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 
 The I3S format is declarative and extendable and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
-- 3D objects (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- integrated meshes (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
-- points (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [point clouds](profiles/pointclouds/docs/Documentation.md) (e.g. large point data from LiDAR)
+- [3D objects](docs/1.6/3Dobjects.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
+- [integrated meshes](docs/1.6/integratedMesh.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
+- [points](docs/1.6/points.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
+- [point clouds](docs/1.6/pointCloud.md) (e.g. large point data from LiDAR)
 
 The following layer types are planned for future inclusion:
 

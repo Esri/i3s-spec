@@ -234,69 +234,49 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
     },
     "sublayers": [
         {
-            "id": 200,
-            "layerType": "group",
-            "name": "Electrical",
-            "alias": "Electrical",
-            "modelName": "Electrical",
-            "visibility": false,
-            "sublayers": [
-                {
-                    "id": 1,
-                    "layerType": "3DObject",
-                    "name": "ElectricalFixtures",
-                    "alias": "ElectricalFixtures",
-                    "modelName": "ElectricalFixtures",
-                    "discipline": "Electrical",
-                    "visibility": true
-                },
-                {
-                    "id": 2,
-                    "layerType": "3DObject",
-                    "name": "LightingFixtures",
-                    "alias": "LightingFixtures",
-                    "modelName": "LightingFixtures",
-                    "discipline": "Electrical",
-                    "visibility": true
-                }
-            ]
+            "id": 1,
+            "layerType": "3DObject",
+            "name": "ElectricalFixtures",
+            "alias": "ElectricalFixtures",
+            "modelName": "ElectricalFixtures",
+            "discipline": "Electrical",
+            "visibility": true
         },
         {
-            "id": 210,
-            "layerType": "group",
-            "name": "Mechanical",
-            "alias": "Mechanical",
-            "modelName": "Mechanical",
-            "visibility": false,
-            "sublayers": [
-                {
-                    "id": 3,
-                    "layerType": "3DObject",
-                    "name": "DuctFitting",
-                    "alias": "DuctFitting",
-                    "modelName": "DuctFitting",
-                    "discipline": "Mechanical",
-                    "visibility": true
-                },
-                {
-                    "id": 4,
-                    "layerType": "3DObject",
-                    "name": "Ducts",
-                    "alias": "Ducts",
-                    "modelName": "Ducts",
-                    "discipline": "Mechanical",
-                    "visibility": true
-                },
-                {
-                    "id": 5,
-                    "layerType": "3DObject",
-                    "name": "MechanicalEquipment",
-                    "alias": "MechanicalEquipment",
-                    "modelName": "MechanicalEquipment",
-                    "discipline": "Mechanical",
-                    "visibility": true
-                }
-            ]
+            "id": 2,
+            "layerType": "3DObject",
+            "name": "LightingFixtures",
+            "alias": "LightingFixtures",
+            "modelName": "LightingFixtures",
+            "discipline": "Electrical",
+            "visibility": true
+        },
+        {
+            "id": 3,
+            "layerType": "3DObject",
+            "name": "DuctFitting",
+            "alias": "DuctFitting",
+            "modelName": "DuctFitting",
+            "discipline": "Mechanical",
+            "visibility": true
+        },
+        {
+            "id": 4,
+            "layerType": "3DObject",
+            "name": "Ducts",
+            "alias": "Ducts",
+            "modelName": "Ducts",
+            "discipline": "Mechanical",
+            "visibility": true
+        },
+        {
+            "id": 5,
+            "layerType": "3DObject",
+            "name": "MechanicalEquipment",
+            "alias": "MechanicalEquipment",
+            "modelName": "MechanicalEquipment",
+            "discipline": "Mechanical",
+            "visibility": true
         }
     ]
 } 

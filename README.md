@@ -78,37 +78,37 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>3D Objects</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
   <tr>
     <td>Integrated Meshes</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
   <tr>
     <td>Points</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
     <td>Points Clouds</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
   </tr>
@@ -139,38 +139,38 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>3D Objects</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
   <tr>
     <td>Integrated Meshes</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
   <tr>
     <td>Points</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
   <tr>
     <td>Points Clouds</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   </tr>
 </table>
 
@@ -191,8 +191,8 @@ The Table below shows the various scene layer types that are currently supported
   <tr>
     <td>3D Objects</td>
     <td></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
-    <td><img align="middle" alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
   </tr>
   <tr>

@@ -1,15 +1,15 @@
 <h2>Esri Indexed 3d Scene Layer (I3S) and <br>
 Scene Layer Package (*.slpk) Format Specification</h2>
-
 <p>Version 1.6, March 02, 2017</p>
 <p style="font-size:80%">
 <em>Contributors:</em> Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
-<p>
-This document specifies the Indexed 3D Scene layer (I3S) format, an open 3d content delivery
-format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. The first sections of
-this specification explain the conceptual structure of I3S, while the latter
-sections provide a detailed implementation-level view.</p>
+The Indexed 3D Scene layer (I3S) format is an open 3D content delivery format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. 
+
+I3S originated from research into technologies for rapidly streaming and distributing large volumes of 3D content.  It is designed to share the content across enterprise systems with server and cloud components, and to be compatible with desktop, web, and mobile client software. 
+
+The first sections explain the conceptual structure of I3S, and the latter sections provide implementation details.
+
 
 <h2>Table of Contents</h2>
 
@@ -59,26 +59,26 @@ sections provide a detailed implementation-level view.</p>
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 
 <ol>
-	<li><strong>User Experience first:</strong> Support a positive user experience - high interactivity, fast display, support rendering of visually relevant features first;</li>
-	<li><strong>Scalability:</strong> Support very large scene layers, with global extent and large amounts of features - as well as the ability to handle highly detailed features;</li>
-	<li><strong>Reusability:</strong> Be usable both as a service delivery format as well as a storage/exchange format;</li>
-	<li><strong>Level of Detail:</strong> Have intrinsic support for representing level of detail;</li>
-	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets;</li>
-	<li><strong>User-controllable symbology:</strong> Support client-side symbology/styling and its efficient rendering;</li>
-	<li><strong>Extensibility:</strong> Be extensible to support new layer and geometry types as well as new platforms;</li>
-	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards;</li>
-	<li><strong>Compatibility:</strong> Have a single structure that is usable across a modern platform spanning web, mobile and desktop clients and cloud and on-premises servers;</li>
-	<li><strong>Declarative:</strong> Limit how much specific knowledge is needed by clients for format support;</li>
-	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" - make all resources navigable using hrefs from relevant other resources.</li>
+	<li><strong>User Experience first:</strong> Provide a positive user experience, like high interactivity, fast display, and rendering visually relevant features first.</li>
+	<li><strong>Scalability:</strong> Support very large scene layers, including scenes with a global extent and many detailed features.</li>
+	<li><strong>Reusability:</strong> Use as a service delivery format, storage format, and exchange format.</li>
+	<li><strong>Level of Detail:</strong> Support multiple detail levels.</li>
+	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets.</li>
+	<li><strong>User-controllable symbology:</strong> Support efficient rendering of client-side symbology and styling.</li>
+	<li><strong>Extensibility:</strong> Support new layer types, new geometry types, and new platforms.</li>
+	<li><strong>Web Friendliness:</strong> Provide easy to handle data using JSON and current web standards.</li>
+	<li><strong>Compatibility:</strong> Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and on-premises servers.</li>
+	<li><strong>Declarative:</strong> Minimize the amount of required domain knowledge to support the format.</li>
+	<li><strong>Follow REST/JSON API best practices:</strong> Provide navigable links to all resources.</li>
 </ol>
+
 
 
 <h2><a name="_2">3D Scene Layer</a></h2>
 
-I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
-A single I3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  
 
-I3S Scene Layers are designed to provide clients access to data. Clients have the ability to then visualize the data for the layer independently according to their needs. Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features as well as  vertex geometry and attributes for Integrated Meshes and Point Cloud layers representing continuous or variable density geographic fields.  
+Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features.  The data for Integrated Meshes and Point Cloud Scene Layers can include vertex geometry and attributes.
 
 An I3S Layer is characterized by a combination of layer type and profile that fully describes the behavior of the layer and the manner in which it is realized within the standard.
 

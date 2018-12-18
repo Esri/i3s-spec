@@ -3,10 +3,9 @@ Scene Layer Package (*.slpk) Format Specification</h2>
 
 <p>Version 1.6, March 02, 2017</p>
 <p style="font-size:80%">
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
+<em>Contributors:</em> Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
 <p>
-
 This document specifies the Indexed 3D Scene layer (I3S) format, an open 3d content delivery
 format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. The first sections of
 this specification explain the conceptual structure of I3S, while the latter
@@ -24,9 +23,11 @@ sections provide a detailed implementation-level view.</p>
 	<li><a href="#_4">I3S - Organization and Structure</a></li>
 	<ol>
 		<li><a href="#_4_1">Indexing Model and Tree Structure</a></li>
-		<li><a href="#_4_2">Geometry Model and Storage</a></li>
-		<li><a href="#_4_3">Textures</a></li>
-		<li><a href="#_4_4">Attribute Model and Storage</a></li>
+		<li><a href="#_4_2">Paged node index</a></li>
+		<li><a href="#_4_3">Oriented bounding box</a></li>
+		<li><a href="#_4_4">Geometry Model and Storage</a></li>
+		<li><a href="#_4_5">Textures</a></li>
+		<li><a href="#_4_6">Attribute Model and Storage</a></li>
 	</ol>
 	<li><a href="#_5">Level of Detail Concept</a>
 	<ol>
@@ -172,6 +173,8 @@ Layers are described using two properties, type and profile. The type of a layer
 <p>All I3S profiles support outputting 3d content in two modes - <i>Global</i> or  <i>Local</i> modes. In <i>Global</i> mode only EPSG code 4326 (WGS84) is the supported coordinate system for both index and vertex positions and SHALL be represented as longitude, latitude, elevation. In <i>Local</i> mode all geodetic CRS (including cartesian coordinate systems) are allowed. The only requirement is that both index and position vertex SHALL have the same CRS.</p>
 
 <p> All I3S layers indicate the coordinate system via the <code>spatialReference</code> property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.</p>
+
+<p> The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> object is common to all i3s profile types.
 
 <h3><a name="_3_1">Height Models</a></h3>
 
@@ -1665,7 +1668,7 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>topology</td>
 		<td>TopologyType</td>
-		<td>Declares the topology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
+		<td>Declares the typology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
 	</tr>
 	<tr>
 		<td>vertexAttributes</td>
@@ -2240,8 +2243,8 @@ The _attributes_ REST api syntax is as follows:
 
     a.http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-0/<b>attributes/0/f_1</b>  
     b.http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-/<b>attributes/0/f_2</b>  
-
-	In _Example 1.a_ we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (<i>f_1</i>) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (<i>f_2</i>).
+    
+    In _Example 1.a_ we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (<i>f_1</i>) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (<i>f_2</i>).
 
 #### Attribute Resource - Details
 
@@ -2309,16 +2312,16 @@ I3S is flexible and allows for different implementation choices for different ty
 
 3. Embedded versus Binary geometry content format  
  a. Embedded geometry: as text (JSON) inlined with other metadata within featureData resource – to support profiles where run-length encoding of feature-IDs along the vertex data is suboptimal
- 	      Used by: the canonical points profile.  
+	 	      Used by: the canonical points profile.  
 
  b. Binary format: for voluminous, ready to render/use geometries and cached attributes. Both typed array buffer views as well as fixed format binary buffers are supported.  
-	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
-	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
+​	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
+​	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
 
 4. LoD Selection based on different metricTypes:  
 
  1.	maxScreenThreshold – LoD switching based on screen ‘size’ of the node’s MBV  
- 	      Used by: mesh-pyramids profile
+	 	 ​     Used by: mesh-pyramids profile
  2.	screenSpaceRelative – LoD switching based on screen ‘scale’ of the node’s MBV  
         Used by: points profile
  3.	distancRangeFromDefaultCamera – LoD switching based on normalized distance of the node’s MBV from the camera – used by: points profile

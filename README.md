@@ -63,82 +63,169 @@ The Table below shows the various scene layer types that are currently supported
 
 <table>
   <tr>
-    <th rowspan="2"><br>ArcGIS Software<br></th>
-    <th rowspan="2"><br>Version</th>
-    <th colspan="5">Scene Layer Types<br></th>    
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="2">ArcGIS Online</th> 
+    <th colspan="2">ArcGIS API for Javascript<br>4.x</th>
+    <th colspan="2">ArcGIS Runtime<br>100.0</th>
+  </tr>
+  <tr>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
   </tr>
   <tr>
     <td>3D Objects</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
     <td>Integrated Meshes</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
     <td>Points</td>
-    <td>Point Clouds</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Points Clouds</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>Building Scene Layer</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
+
+<table>
+  <tr>
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="2">ArcGIS Enterprise<br>10.5</th> 
+    <th colspan="2">ArcGIS Pro<br>1.4</th>
   </tr>
   <tr>
-    <td>ArcGIS Online</td>
-    <td>Current</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
   </tr>
   <tr>
-    <td>ArcGIS API for JavaScript</td>
-    <td>4.x</td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>3D Objects</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
   </tr>
   <tr>
-    <td>ArcGIS Enterprise</td>
-    <td>10.5</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>Integrated Meshes</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
   </tr>
   <tr>
-    <td>ArcGIS Pro</td>
-    <td>1.4</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>Points</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
   </tr>
   <tr>
-    <td>Esri CityEngine</td>
-    <td>2016.1</td>
-    <td><ul><li>[x] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>Points Clouds</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
   </tr>
   <tr>
-    <td>ArcGIS Earth</td>
-    <td>1.3</td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>Building Scene Layer</td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+  </tr>
+</table>
+
+
+
+<table>
+  <tr>
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="2">ArcGIS Earth<br>1.3</th>
+    <th colspan="2">Esri City Engine<br>2016.1</th>
   </tr>
   <tr>
-    <td>ArcGIS Runtime</td>
-    <td>100.0</td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
   </tr>
-  </table>
-<em>Table 2: ArcGIS platform support for diffrent scene layers types.</em>
+  <tr>
+    <td>3D Objects</td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Integrated Meshes</td>
+    <td></td>
+    <td><img src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Points</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Points Clouds</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Building Scene Layer</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
 
 ## Contributing
 

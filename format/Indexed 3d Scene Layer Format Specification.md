@@ -1,16 +1,15 @@
 <h2>Esri Indexed 3d Scene Layer (I3S) and <br>
 Scene Layer Package (*.slpk) Format Specification</h2>
-
 <p>Version 1.6, March 02, 2017</p>
 <p style="font-size:80%">
-<em>Contributors:</em> Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal M&uuml;ller, Dragan Petrovic, Sud Menon<br>
+<em>Contributors:</em> Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
-<p>
+The Indexed 3D Scene layer (I3S) format is an open 3D content delivery format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. 
 
-This document specifies the Indexed 3D Scene layer (I3S) format, an open 3d content delivery
-format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. The first sections of
-this specification explain the conceptual structure of I3S, while the latter
-sections provide a detailed implementation-level view.</p>
+I3S originated from research into technologies for rapidly streaming and distributing large volumes of 3D content.  It is designed to share the content across enterprise systems with server and cloud components, and to be compatible with desktop, web, and mobile client software. 
+
+The first sections explain the conceptual structure of I3S, and the latter sections provide implementation details.
+
 
 <h2>Table of Contents</h2>
 
@@ -24,9 +23,11 @@ sections provide a detailed implementation-level view.</p>
 	<li><a href="#_4">I3S - Organization and Structure</a></li>
 	<ol>
 		<li><a href="#_4_1">Indexing Model and Tree Structure</a></li>
-		<li><a href="#_4_2">Geometry Model and Storage</a></li>
-		<li><a href="#_4_3">Textures</a></li>
-		<li><a href="#_4_4">Attribute Model and Storage</a></li>
+		<li><a href="#_4_2">Paged node index</a></li>
+		<li><a href="#_4_3">Oriented bounding box</a></li>
+		<li><a href="#_4_4">Geometry Model and Storage</a></li>
+		<li><a href="#_4_5">Textures</a></li>
+		<li><a href="#_4_6">Attribute Model and Storage</a></li>
 	</ol>
 	<li><a href="#_5">Level of Detail Concept</a>
 	<ol>
@@ -58,26 +59,26 @@ sections provide a detailed implementation-level view.</p>
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 
 <ol>
-	<li><strong>User Experience first:</strong> Support a positive user experience - high interactivity, fast display, support rendering of visually relevant features first;</li>
-	<li><strong>Scalability:</strong> Support very large scene layers, with global extent and large amounts of features - as well as the ability to handle highly detailed features;</li>
-	<li><strong>Reusability:</strong> Be usable both as a service delivery format as well as a storage/exchange format;</li>
-	<li><strong>Level of Detail:</strong> Have intrinsic support for representing level of detail;</li>
-	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets;</li>
-	<li><strong>User-controllable symbology:</strong> Support client-side symbology/styling and its efficient rendering;</li>
-	<li><strong>Extensibility:</strong> Be extensible to support new layer and geometry types as well as new platforms;</li>
-	<li><strong>Web Friendliness:</strong> Easy to handle and parse by web clients by using JSON and current web standards;</li>
-	<li><strong>Compatibility:</strong> Have a single structure that is usable across a modern platform spanning web, mobile and desktop clients and cloud and on-premises servers;</li>
-	<li><strong>Declarative:</strong> Limit how much specific knowledge is needed by clients for format support;</li>
-	<li><strong>Follow REST/JSON API best practices:</strong> "Hypertext as the Engine of Application State" - make all resources navigable using hrefs from relevant other resources.</li>
+	<li><strong>User Experience first:</strong> Provide a positive user experience, like high interactivity, fast display, and rendering visually relevant features first.</li>
+	<li><strong>Scalability:</strong> Support very large scene layers, including scenes with a global extent and many detailed features.</li>
+	<li><strong>Reusability:</strong> Use as a service delivery format, storage format, and exchange format.</li>
+	<li><strong>Level of Detail:</strong> Support multiple detail levels.</li>
+	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets.</li>
+	<li><strong>User-controllable symbology:</strong> Support efficient rendering of client-side symbology and styling.</li>
+	<li><strong>Extensibility:</strong> Support new layer types, new geometry types, and new platforms.</li>
+	<li><strong>Web Friendliness:</strong> Provide easy to handle data using JSON and current web standards.</li>
+	<li><strong>Compatibility:</strong> Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and on-premises servers.</li>
+	<li><strong>Declarative:</strong> Minimize the amount of required domain knowledge to support the format.</li>
+	<li><strong>Follow REST/JSON API best practices:</strong> Provide navigable links to all resources.</li>
 </ol>
+
 
 
 <h2><a name="_2">3D Scene Layer</a></h2>
 
-I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
-A single I3S data set, referred to as a Scene Layer is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  
 
-I3S Scene Layers are designed to provide clients access to data. Clients have the ability to then visualize the data for the layer independently according to their needs. Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features as well as  vertex geometry and attributes for Integrated Meshes and Point Cloud layers representing continuous or variable density geographic fields.  
+Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features.  The data for Integrated Meshes and Point Cloud Scene Layers can include vertex geometry and attributes.
 
 An I3S Layer is characterized by a combination of layer type and profile that fully describes the behavior of the layer and the manner in which it is realized within the standard.
 
@@ -172,6 +173,8 @@ Layers are described using two properties, type and profile. The type of a layer
 <p>All I3S profiles support outputting 3d content in two modes - <i>Global</i> or  <i>Local</i> modes. In <i>Global</i> mode only EPSG code 4326 (WGS84) is the supported coordinate system for both index and vertex positions and SHALL be represented as longitude, latitude, elevation. In <i>Local</i> mode all geodetic CRS (including cartesian coordinate systems) are allowed. The only requirement is that both index and position vertex SHALL have the same CRS.</p>
 
 <p> All I3S layers indicate the coordinate system via the <code>spatialReference</code> property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.</p>
+
+<p> The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> object is common to all i3s profile types.
 
 <h3><a name="_3_1">Height Models</a></h3>
 
@@ -1665,7 +1668,7 @@ representative of a feature present in the real, geographic world.</p>
 	<tr>
 		<td>topology</td>
 		<td>TopologyType</td>
-		<td>Declares the topology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
+		<td>Declares the typology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
 	</tr>
 	<tr>
 		<td>vertexAttributes</td>
@@ -2240,8 +2243,8 @@ The _attributes_ REST api syntax is as follows:
 
     a.http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-0/<b>attributes/0/f_1</b>  
     b.http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-/<b>attributes/0/f_2</b>  
-
-	In _Example 1.a_ we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (<i>f_1</i>) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (<i>f_2</i>).
+    
+    In _Example 1.a_ we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (<i>f_1</i>) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (<i>f_2</i>).
 
 #### Attribute Resource - Details
 
@@ -2309,16 +2312,16 @@ I3S is flexible and allows for different implementation choices for different ty
 
 3. Embedded versus Binary geometry content format  
  a. Embedded geometry: as text (JSON) inlined with other metadata within featureData resource – to support profiles where run-length encoding of feature-IDs along the vertex data is suboptimal
- 	      Used by: the canonical points profile.  
+	 	      Used by: the canonical points profile.  
 
  b. Binary format: for voluminous, ready to render/use geometries and cached attributes. Both typed array buffer views as well as fixed format binary buffers are supported.  
-	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
-	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
+​	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
+​	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
 
 4. LoD Selection based on different metricTypes:  
 
  1.	maxScreenThreshold – LoD switching based on screen ‘size’ of the node’s MBV  
- 	      Used by: mesh-pyramids profile
+	 	 ​     Used by: mesh-pyramids profile
  2.	screenSpaceRelative – LoD switching based on screen ‘scale’ of the node’s MBV  
         Used by: points profile
  3.	distancRangeFromDefaultCamera – LoD switching based on normalized distance of the node’s MBV from the camera – used by: points profile

@@ -8,16 +8,16 @@ There is a set of REST resources also defined in the I3S format specification th
 
 Mandatory:
 
-- 3dSceneServiceInfo (JSON)
-- 3dSceneLayerInfo (JSON)
-- [3dNodeIndexDocument](docs/1.6/3DSNodeIndexDocument.cmn.md) (JSON)
-- [SharedResources](docs/1.6/sharedResource.cmn.md) (JSON)
-- TextureData (Binary)
-- GeometryData (Binary)
+- [3dSceneServiceInfo](Scene-Service#3dSceneServiceInfo) (JSON)
+- [3dSceneLayerInfo](Scene-Service#3dSceneLayerInfo)  (JSON)
+- [3dNodeIndexDocument](Scene-Service#3dNodeIndexDocument) (JSON)
+- [SharedResources](Scene-Service#SharedResources) (JSON)
+- [GeometryData](Scene-Service#GeometryData) (Binary)
+- [TextureData](Scene-Service#TextureData)  (Binary)
 
 Optional:
 
-- [FeatureData](docs/1.6/featureData.cmn.md) (JSON) (optional for Mesh-Pyramids profile)
+- [FeatureData](Scene-Service#FeatureData) (JSON) (optional for Mesh-Pyramids profile)
 
 The schema of the individual endpoints is documented in the <a href="../format/Indexed 3d Scene Layer Format Specification.md#_6">JSON Resources Schema and Documentation of the I3S Format specification</a>. This is the REST API for retrieval of these resources:
 
@@ -57,12 +57,6 @@ The schema of the individual endpoints is documented in the <a href="../format/I
 - *Example Service*: [http://3dcities.maps.arcgis.com/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/features/0](http://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/features/0)
 - *Returns*: A feature data resource (bundle).
 
-### FeatureData
-
-- *URL Pattern*: ```<node-url>/features/<feature-data-bundle-id>```
-- *Method*: ```GET```
-- *Example Service*: [http://3dcities.maps.arcgis.com/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/features/0](http://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/features/0)
-- *Returns*: A feature data resource (bundle).
 
 ### GeometryData
 
@@ -78,3 +72,10 @@ The schema of the individual endpoints is documented in the <a href="../format/I
 - *Example Service*: [http://scene.arcgis.com/arcgis/rest/services/Hosted/Buildings_San_Francisco/SceneServer/layers/0/nodes/1-3-0-0-0-0-0-0-0/textures/0_0](http://scene.arcgis.com/arcgis/rest/services/Hosted/Buildings_San_Francisco/SceneServer/layers/0/nodes/1-3-0-0-0-0-0-0-0/textures/0_0)
 - *Returns*: A [texture data resource](textureDefinition.cmn.md) (bundle).
 
+
+### FeatureData
+
+- *URL Pattern*: ```<node-url>/features/<feature-data-bundle-id>```
+- *Method*: ```GET```
+- *Example Service*: [http://3dcities.maps.arcgis.com/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/features/0](http://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/features/0)
+- *Returns*: A feature data resource (bundle).

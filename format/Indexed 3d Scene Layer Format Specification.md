@@ -4,6 +4,7 @@ Scene Layer Package (*.slpk) Format Specification</h2>
 <p style="font-size:80%">
 <em>Contributors:</em> Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
+
 The Indexed 3D Scene layer (I3S) format is an open 3D content delivery format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. 
 
 I3S originated from research into technologies for rapidly streaming and distributing large volumes of 3D content.  It is designed to share the content across enterprise systems with server and cloud components, and to be compatible with desktop, web, and mobile client software. 
@@ -14,8 +15,8 @@ The first sections explain the conceptual structure of I3S, and the latter secti
 <h2>Table of Contents</h2>
 
 <ol>
-	<li><a href="#_1">I3S Design Principals</a></li>
-	<li><a href="#_2">3D Scene Layer</a></li>
+	<li><a href="#_1">I3S Design Principles</a></li>
+	<li><a href="#_2">Scene Layer</a></li>
 	<li><a href="#_3">Coordinate Reference Systems</a>
 		<ol>
 		<li><a href="#_3_1">Height Models</a></li>
@@ -54,7 +55,7 @@ The first sections explain the conceptual structure of I3S, and the latter secti
 	</ol></li>
 </ol>
 
-<h2><a name="_1">I3S Design Principals</a></h2>
+<h2><a name="_1">I3S Design Principles</a></h2>
 
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 
@@ -72,34 +73,27 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 	<li><strong>Follow REST/JSON API best practices:</strong> Provide navigable links to all resources.</li>
 </ol>
 
+<h2><a name="_2">Scene Layer</a></h2>
+
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  Data here includes the geometry, attributes, and vertex geometry. 
+
+A Scene Layer is characterized by a combination of layer type and profile. The layer type describes kind of geospatial data stored within it. The layer profile is exposed to clients and includes additional details on the specific I3S implementation. 
+
+ The supported layer types are:
+
+* [3D Objects](docs/1.6/3Dobjects.md) (e.g. building exteriors, 3D models in various formats)
+* [Integrated Mesh](docs/1.6/integratedMesh.md) (e.g. integrated surface including vegetation, buildings and roads from satellite, aerial or drone imagery) 
+* [Points](docs/1.6/points.md) (e.g. hospitals, schools, trees, street furniture, signs)
+* [Point Clouds](docs/1.6/pointCloud.md) (e.g. lidar data)
+* [Building Scene Layer](docs/1.6/buildingSceneLayer.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 
-<h2><a name="_2">3D Scene Layer</a></h2>
 
-A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  
+Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features with an identity instead of a geospatial field (e.g. mesh or cloud).  Some layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
 
-Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  Data here refers to both the geometry as well as the attributes for 3D Object, Point, Line and Polygon Features.  The data for Integrated Meshes and Point Cloud Scene Layers can include vertex geometry and attributes.
-
-An I3S Layer is characterized by a combination of layer type and profile that fully describes the behavior of the layer and the manner in which it is realized within the standard.
-
-The requirements specified below apply to the following layer types:
-<ul>
-<li> 3D Objects (e.g., building Exteriors from GIS data  as well as 3D models in various formats)</li>
-<li> Integrated Mesh (e.g., an integrated surface representing the skin of the earth including vegetation, buildings and roads from satellite, aerial or drone imagery via dense matching photogrammetry) </li>
-<li> Points (e.g. hospitals or schools, trees, street furniture, signs, etc. from GIS data)</li>
-<li> <a href="../profiles/pointclouds/docs/Documentation.md">point clouds </a> (lidar data) </li>
-</ul>
-
-The following layer types are planned for future inclusion in the I3S standard (future work):
-<ul>
-<li>Line Features (e.g. from GIS data)</li>
-<li>Polygon Features (e.g. from GIS data)</li>
-</ul>
-
-Layers are described using two properties, type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and Pointclouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles.  For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
 <table>
  <tr>
-  <td><strong>Layer Type <em>(example)</em></strong></td>
+  <td><strong>Layer Type</strong></td>
   <td><strong>Profile</strong></td>
 	<td><strong>Features with Identity</strong></td>
   <td><strong>Attributes</strong></td>	  
@@ -142,7 +136,7 @@ Layers are described using two properties, type and profile. The type of a layer
  </tr>
  </table>
 
-<p><em>Table 1: 3D Layer Types supported in I3S</em></p>
+<p><em>Table 1: Examples of 3D Layer Types and Layer Profiles</em></p>
 
 
 <h2><a name="_3">Coordinate Reference Systems (CRS)</a></h2>

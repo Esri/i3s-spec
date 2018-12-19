@@ -76,7 +76,7 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Example 1",
+        "title": "domain",
         "code": {
           "type": "codedValue",
           "name": "Phases",

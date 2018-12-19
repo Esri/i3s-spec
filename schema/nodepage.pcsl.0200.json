@@ -3,6 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/nodepage.pcsl.0200.md",
+  "related": "layer.pcsl.2000.json",
   "properties": {
     "nodes": {
       "type": "array",
@@ -11,9 +12,6 @@
         "type": "object",
         "$ref": "node.pcsl.0200.json"
       }
-    },
-    "actualCount": {
-      "type": "number"
     }
   },
   "required": [

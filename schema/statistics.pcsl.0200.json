@@ -2,6 +2,7 @@
   "title": "I3S point cloud scene layer: Attribute Statistics",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "related":  "layer.pcsl.2000.json",
   "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",
   "properties": {
     "attribute": {

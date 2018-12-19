@@ -12,12 +12,14 @@ Assuming [layer.store.index.nodesPerPage](index.md) = 64, then `node id = 78` wi
 
 
 
+### Related:
+
+[pcsl::layer](layer.pcsl.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
 | **nodes** | [node](node.pcsl.md)[] | Array of nodes |
-| actualCount | number |  |
 
 *Note: properties in **bold** are required*
 

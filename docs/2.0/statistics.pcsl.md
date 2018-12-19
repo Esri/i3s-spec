@@ -2,6 +2,9 @@
 
 Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.
 
+### Related:
+
+[pcsl::layer](layer.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

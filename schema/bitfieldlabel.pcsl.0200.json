@@ -2,7 +2,7 @@
   "title": "I3S point cloud scene layer: Bit Field Label",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "",
+  "description-href": "description/bitfiedlabel.pcsl.0200.md",
   "properties": {
     "bitNumber": {
       "type": "integer",
@@ -23,10 +23,10 @@
       {
         "title": "Flag label",
         "code": {
-          
-            "bitNumber": 3,
-            "label": "Overlap"
-          
+
+          "bitNumber": 3,
+          "label": "Overlap"
+
         }
       }
     ]

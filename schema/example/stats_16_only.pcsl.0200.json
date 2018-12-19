@@ -166,17 +166,5 @@
             "value": 128.000000,
             "count": 1610
         }
-    ],
-    "labels": {
-        "bitfieldLabels": [
-            {
-                "bitNumber": 3,
-                "label": "Overlap"
-            },
-            {
-                "bitNumber": 7,
-                "label": "Edge"
-            }
-        ]
-    }
+    ]
 }

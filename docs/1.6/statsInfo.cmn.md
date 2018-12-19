@@ -4,7 +4,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 
 ### Related:
 
-[cmn::stats](stats.cmn.md), [pcsl::statistics](statistics.pcsl.md)
+[cmn::stats](stats.cmn.md)
 ### Properties
 
 | Property | Type | Description |

@@ -10,7 +10,7 @@
     },
     "stats": {
       "type": "object",
-      "$ref": "statsInfo.cmn.0106.json",
+      "$ref": "stats.pcsl.0200.json",
       "description": "Statistics for this attribute"
     },
     "labels": {
@@ -39,11 +39,11 @@
         "code_href": "example/stats_8.pcsl.0200.json"
       },
       {
-        "title": "Flags statistics (LiDAR point cloud)",
+        "title": "Flags statistics (LIDAR point cloud)",
         "code_href": "example/stats_16.pcsl.0200.json"
       },
       {
-        "title": "Returns statistics (LiDAR point cloud)",
+        "title": "Returns statistics (LIDAR point cloud)",
         "code_href": "example/stats_32.pcsl.0200.json"
       }
     ]

@@ -165,31 +165,13 @@ The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> 
 
 <h3><a name="_3_1">Height Models</a></h3>
 
-The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal (elevation/height defined with respect to a reference ellipsoid) or orthometric (elevation/height defined with respect to a reference geoid/gravity surface). This allows the I3S approach to be applied across a diverse range of fields and applications where the particular definition of elevation/height is of importance.  
+The I3S standard allows either ellipsoidal or orthometeric vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications, including those where the definition of elevation and height is important.  
 
-At version 1.5 I3S has added support for a vertical coordinate systems. The Well-known Text (wkt) string representation of the CRS now includes the vertical coordinate system utilized by the layer. The spatialReference property also includes a Well-known Id (wkid) and a Vertical Coordinate System Well-known ID (vcsWkid) representations, which could alternatively be utilized by a client applicaiton consuming the layer instead of the wkt.
+At version 1.5, I3S added support for a vertical coordinate systems. The Well-known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The `spatialReference` property also includes a Well-known Id (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designated the height model.
 
-In addition to the detailed spatialReference property that describes the layers horizontal and vertical CRSs, the 3dSceneLayerInfo resource also includes a coarse metadata property called *heightModelInfo*, which can be used by a client application to quickly identify if the layers' height model is either orthometric or ellipsoidal.  
+The 3dSceneLayerInfo resource includes a coarse metadata property called `heightModelInfo`, which client applications can use to identify if the layer's height model is either orthometric or ellipsoidal.  
 
-<pre><code>
-	"spatialReference": // the horizontal and vertical coordinate system of the layer
-	{
-		"wkid": 4326,
-		"latestWkid": 4326,
-		"vcsWkid": 3855,
-		"latestVcsWkid": 3855,
-		"wkt": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137,298.257223563]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],
-		VERTCS[\"EGM2008_Geoid\",VDATUM[\"EGM2008_Geoid\"],PARAMETER[\"Vertical_Shift\",0.0],PARAMETER[\"Direction\",1.0],UNIT[\"Meter\",1.0]]}"
-	},
-	"heightModelInfo":  // a coarse metadata indicating the layers height Model
-	{
-		"heightModel": "orthometric", //one of {*"orthometric"*, "ellipsoidal"};
-		"ellipsoid": "wgs84 (G1674)/", //datum realization
-		"heightUnit": "meter" //units
-		}
-</code></pre>
-
-The above example illustrates the coordinate system and height information model of a layer in I3S. The spatialReference object includes a Well-known Text (wkt) string representation of the CRS for both horizontal and vertical coordinate systems. The heightModelInfo object is a coarse metadata that could be used by client application to quickly determine if the the layers' horizontal and vertical coordinate systems align with that of any base map data used by the application. See Class <a href="_6_2">3dSceneLayerInfo</a> for more information.
+See the [3DSceneLayerInfo] and [heightModelInfo] pages for more details.
 
 
 <h2><a name="_4">Indexed Scene Layers - Organization and Structure</a></h2>

@@ -11,17 +11,13 @@
     "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
-           {
-             "title": "vertexAttributes",
-             "code": {
-                "vertexAttributes": 
-                {
-                    "position": 
-                    {
-                        "valueType": "Float64", 
+            {
+                "title": "vertexAttributes",
+                "code": {
+                    "position": {
+                        "valueType": "Float",
                         "valuesPerElement": 3
-                        }
-                    }        
+                    }
                 }
             }
         ]

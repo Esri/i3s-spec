@@ -2,7 +2,7 @@
 
 A building scene layer represents a 3D BIM model as a single layer composed of sublayers. A building scene layer is organized in discipline layers (groups) such as Architectural, Electrical, Mechanical, Piping and Structural and category layers representing content such as walls or windows. A building scene layer may contain an overview.
 
-The concept of a group (i.e. `layerType='group'`) has been added to organized sublayers into a nested tree structure that can be reflected in the table of content of 3D Clients. 
+The concept of a group (i.e. `layerType='group'`) has been added to organized sublayers into a nested tree structure that can be reflected in the table of content of 3D Clients. If a building scene layer does not contain an overview, the structure should not include an overview or full model, only the disciplines directly.
 
 Please note that:
 - Groups and sublayers may be referenced **once** (e.g. a sublayer may not be in multiple groups).

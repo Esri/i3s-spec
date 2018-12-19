@@ -3,7 +3,7 @@ Scene Layers: Service and Package Standard
 
 ![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")[http://www.arcgis.com](http://www.arcgis.com)
 
-This repository hosts the standard for scene layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model for scene layers, referred to as indexed 3d scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
+This repository hosts the standard for scene layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model for scene layers, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
 The format I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
 
@@ -11,30 +11,26 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 
 The I3S format is declarative and extendable and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
-- 3D objects (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- integrated meshes (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
-- points (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [point clouds](profiles/pointclouds/docs/Documentation.md) (e.g. large point data from LiDAR)
-
-The following layer types are planned for future inclusion:
-
-- Line Features (e.g. from GIS data)
-- Polygon Features (e.g. from GIS data)
+- [3D objects](docs/1.6/3Dobjects.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
+- [integrated meshes](docs/1.6/integratedMesh.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
+- [points](docs/1.6/points.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
+- [point clouds](docs/1.6/pointCloud.md) (e.g. large point data from LiDAR)
+- [building scene layer](docs/1.6/buildingSceneLayer.md) (e.g. comprehensive building model including building components)
 
 
-The specification of the [indexed 3d scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.
+The specification of the [indexed 3D scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.
 
 
 ## Designed for Web, Mobile and Cloud  
 
-The I3S format is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. The goal is to be able to stream large 3d datasets with high performance and scalability.
+The I3S format is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. The goal is to be able to stream large 3D datasets with high performance and scalability.
 
 ## Designed for 3D
 The I3S format is intrinsically designed to support 3D geospatial content, the requisite coordinate systems and height models in conjunction with a rich set of layer types.
 
 ## Open Standard
 
-For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [License](### License for Indexed 3D Scene Format and REST Endpoint Specification) section below for more information.
+For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [[License|i3s-spec#license-for-indexed-3d-scene-format-and-rest-endpoint-specification]] section below for more information.
 
 ## Where can I use...?
 
@@ -61,86 +57,179 @@ There are few applications that can create and consume scene layers. The tables 
   <td>IntegratedMesh</td>  
  </tr>
 </table>
-<p><em>Table 1: List of vendors and products that support outputting I3S layers.</em></p>
+<p><em>Table 1: List of vendors and products that support creation of I3S layers.</em></p>
 
-The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> The software products listed below support publishing as well as consuming Scene Layers.
+The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> 
 
 <table>
   <tr>
-    <th rowspan="2"><br>ArcGIS Software<br></th>
-    <th rowspan="2"><br>Version</th>
-    <th colspan="4">Scene Layer Types<br></th>    
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="2">ArcGIS Online</th> 
+    <th colspan="2">ArcGIS API for Javascript<br>4.x</th>
+    <th colspan="2">ArcGIS Runtime<br>100.0</th>
+  </tr>
+  <tr>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
   </tr>
   <tr>
     <td>3D Objects</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
     <td>Integrated Meshes</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
     <td>Points</td>
-    <td>Point Clouds
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>ArcGIS Online</td>
-    <td>Current</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td>Points Clouds</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>ArcGIS API for JavaScript</td>
-    <td>4.x</td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
+    <td>Building Scene Layer</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
-  <tr>
-    <td>ArcGIS Enterprise</td>
-    <td>10.5</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-  </tr>
-  <tr>
-    <td>ArcGIS Pro</td>
-    <td>1.4</td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[x] Publishing</li><li>[x] Consuming</li></ul></td>
-  </tr>
-  <tr>
-    <td>Esri CityEngine</td>
-    <td>2016.1</td>
-    <td><ul><li>[x] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-  </tr>
-  <tr>
-    <td>ArcGIS Earth</td>
-    <td>1.3</td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-  </tr>
-  <tr>
-    <td>ArcGIS Runtime</td>
-    <td>100.0</td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[x] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-    <td><ul><li>[ ] Publishing</li><li>[ ] Consuming</li></ul></td>
-  </tr>
-  </table>
+</table>
 
-<em>Table 2: ArcGIS platform support for diffrent scene layers types.</em>
+
+
+<table>
+  <tr>
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="2">ArcGIS Enterprise<br>10.5</th> 
+    <th colspan="2">ArcGIS Pro<br>1.4</th>
+  </tr>
+  <tr>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+  </tr>
+  <tr>
+    <td>3D Objects</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
+    <td>Integrated Meshes</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
+    <td>Points</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
+    <td>Points Clouds</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+  <tr>
+    <td>Building Scene Layer</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  </tr>
+</table>
+
+
+
+<table>
+  <tr>
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="2">ArcGIS Earth<br>1.3</th>
+    <th colspan="2">Esri City Engine<br>2016.1</th>
+  </tr>
+  <tr>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+  </tr>
+  <tr>
+    <td>3D Objects</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Integrated Meshes</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Points</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Points Clouds</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Building Scene Layer</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+
 
 ## Contributing
 
-You are very much invited to fork this repository to a public or private repository and to send pull requests if you have ideas for improvements or have found bugs in this documentation. Creating a fork solely for this purpose
-does not constitute the creation and distribution of a derivative work. Please see our [guidelines for  contributing](https://github.com/esri/contributing).
+You are invited to fork this repository and to submit pull requests with ideas for improvements, bugs, or issues in this documentation. Creating a fork solely for this purpose does not constitute the creation and distribution of a derivative work. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## License for indexed 3D scene format and REST endpoint specification
 

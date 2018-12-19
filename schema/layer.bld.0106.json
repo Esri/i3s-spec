@@ -23,15 +23,13 @@
     },
     "layerType": {
       "type": "string",
-      "enum": [ "Building" ]
+      "enum": [
+        "Building"
+      ]
     },
     "description": {
       "type": "string",
       "description": "Description for the layer."
-    },
-    "version": {
-      "type" : "string",
-      "description": "Version of the building scene layer"
     },
     "copyrightText": {
       "type": "string",
@@ -83,7 +81,7 @@
     "layerType",
     "fullExtent",
     "spatialReference",
-    "sublayers"    
+    "sublayers"
   ],
   "additionalProperties": false,
   "esriDocumentation": {
@@ -91,6 +89,10 @@
       {
         "title": "Building Scene Layer",
         "code_href": "example/bim.bld.0106.json"
+      },
+      {
+        "title": "Building Scene Layer without overview",
+        "code_href": "example/bimNoOverview.bld.0106.json"
       }
     ]
   }

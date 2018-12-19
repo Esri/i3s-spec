@@ -18,6 +18,6 @@ The filter authoring info object contains metadata about the authoring process f
 #### Example: Building Scene Layer filter block authoring info 
 
 ```json
- "" 
+ None 
 ```
 

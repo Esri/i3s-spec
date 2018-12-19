@@ -25,22 +25,18 @@ The filter object can be applied to a building scene layer. Filter allows client
 
 ```json
  {
-  "filters": [
+  "id": "6339E293-B52E-4F49-899A-E177DEC0D644",
+  "name": "Default",
+  "description": "Filter by all created phases.",
+  "isDefaultFilter": true,
+  "isVisible": false,
+  "filterBlocks": [
     {
-      "id": "6339E293-B52E-4F49-899A-E177DEC0D644",
-      "name": "Default",
-      "description": "Filter by all created phases.",
-      "isDefaultFilter": true,
-      "isVisible": false,
-      "filterBlocks": [
-        {
-          "title": "Created Phase 1",
-          "filterMode": {
-            "type": "solid"
-          },
-          "filterExpression": "CreatedPhase=1"
-        }
-      ]
+      "title": "Created Phase 1",
+      "filterMode": {
+        "type": "solid"
+      },
+      "filterExpression": "CreatedPhase=1"
     }
   ]
 } 

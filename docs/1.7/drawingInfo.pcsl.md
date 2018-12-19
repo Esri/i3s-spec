@@ -19,7 +19,7 @@ The drawingInfo object contains drawing information for a point cloud scene laye
 
 ```json
  {
-  "drawingInfo": {
+  "renderer": {
     "pointSizeAlgorithm": {
       "type": "pointCloudSplatAlgorithm",
       "scaleFactor": 1.0

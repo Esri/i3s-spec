@@ -18,9 +18,7 @@
       {
         "title": "filterMode solid",
         "code": {
-          "filterMode": {
-            "type": "solid"
-          }
+          "type": "solid"
         }
       }
     ]

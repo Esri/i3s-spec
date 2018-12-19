@@ -20,10 +20,8 @@ The elevationInfo defines how content in a scene layer is aligned to the ground.
 
 ```json
  {
-  "elevationInfo": {
-    "mode": "absoluteHeight",
-    "offset": 0.0
-  }
+  "mode": "absoluteHeight",
+  "offset": 0.0
 } 
 ```
 

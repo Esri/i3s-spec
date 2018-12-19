@@ -19,9 +19,7 @@ Object to provide time stamp when the I3S service or the source of the service w
 
 ```json
  {
-  "serviceUpdateTimeStamp": {
-    "lastUpdate": " 1518827901690"
-  }
+  "lastUpdate": 1518827901690
 } 
 ```
 

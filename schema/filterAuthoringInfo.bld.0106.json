@@ -29,11 +29,6 @@
   ],
   "additionalProperties": false,
   "esriDocumentation": {
-    "examples": [
-      {
-        "title": "Building Scene Layer filter authoring info",
-        "code": ""
-      }
-    ]
+    "examples": []
   }
 }

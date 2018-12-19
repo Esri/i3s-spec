@@ -9,33 +9,35 @@
       "description": "The name of the property in the header. "
     },
     "type": {
-        "type": "string",
-        "enum": [ "UInt8", "UInt16", "UInt32", "UInt64", "Int16", "Int32", "Int64", "Float32", "Float64" ],
-        "description": "The element type of the header property."
+      "type": "string",
+      "enum": [
+        "UInt8",
+        "UInt16",
+        "UInt32",
+        "UInt64",
+        "Int16",
+        "Int32",
+        "Int64",
+        "Float32",
+        "Float64"
+      ],
+      "description": "The element type of the header property."
     }
   },
   "required": [
     "type",
     "property"
-],
-"additionalProperties": false,
-"esriDocumentation": {
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
     "examples": [
-       {
-         "title": "Header 3D Object and integrated mesh scene layer",
-         "code": {
-          "header": [
-            {
-            "property": "vertexCount",
-            "type": "UInt32"
-            },
-            {
-            "property": "featureCount",
-            "type": "UInt32"
-            }
-            ]
-        }   
+      {
+        "title": "Header 3D Object and integrated mesh scene layer",
+        "code": {
+          "property": "vertexCount",
+          "type": "UInt32"
+        }
       }
     ]
-   }
+  }
 }

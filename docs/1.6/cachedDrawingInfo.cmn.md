@@ -19,9 +19,7 @@
 
 ```json
  {
-  "cachedDrawingInfo": {
-    "color": "true"
-  }
+  "color": true
 } 
 ```
 

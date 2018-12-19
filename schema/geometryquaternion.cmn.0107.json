@@ -6,7 +6,9 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "Float32" ],
+      "enum": [
+        "Float32"
+      ],
       "description": "Support only float32 quaternion"
     },
     "component": {
@@ -23,10 +25,8 @@
       {
         "title": "Quaternion rotation",
         "code": {
-          "rotation": {
-            "type": "Float32",
-            "component": 4
-          }
+          "type": "Float32",
+          "component": 4
         }
       }
     ]

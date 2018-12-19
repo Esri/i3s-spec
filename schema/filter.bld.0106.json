@@ -20,12 +20,11 @@
       "type": "boolean",
       "description": "Indicates if a filter is the default filter. Clients use the default filter to show the current state of a building. For example, if 'created' is the default filter, all elements in the 'created' phases are drawn, while elements in the 'demolished' phases are invisible.  The default filter is not shown in the UI and does not have Authoring Info. (Can build specific UI for this filter)"
     },
-    "isVisible": 
-    {
-      "type":"boolean",
+    "isVisible": {
+      "type": "boolean",
       "description": "Defines if a filter is visible within the client application. Used to exclude filters that are overwritten from a group of filters shown in the client application."
     },
-    "filterBlocks":{
+    "filterBlocks": {
       "type": "array",
       "items": {
         "type": "object",
@@ -50,27 +49,22 @@
       {
         "title": "Building Scene Layer",
         "code": {
-          "filters": [
+          "id": "6339E293-B52E-4F49-899A-E177DEC0D644",
+          "name": "Default",
+          "description": "Filter by all created phases.",
+          "isDefaultFilter": true,
+          "isVisible": false,
+          "filterBlocks": [
             {
-                "id": "6339E293-B52E-4F49-899A-E177DEC0D644",
-                "name": "Default",
-                "description": "Filter by all created phases.",
-                "isDefaultFilter": true,
-                "isVisible": false,
-                "filterBlocks": [
-                    {
-                        "title": "Created Phase 1",
-                        "filterMode": {
-                          "type": "solid"
-                        },
-                        "filterExpression": "CreatedPhase=1"
-                    }
-                ]
+              "title": "Created Phase 1",
+              "filterMode": {
+                "type": "solid"
+              },
+              "filterExpression": "CreatedPhase=1"
             }
-        ]
+          ]
         }
       }
     ]
   }
 }
-

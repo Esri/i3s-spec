@@ -22,10 +22,8 @@ FeatureID helps to indentify part of mesh from belonging to a particular GIS `fe
 
 ```json
  {
-  "featureId": {
-    "type": "UInt16",
-    "component": 1
-  }
+  "type": "UInt16",
+  "component": 1
 } 
 ```
 

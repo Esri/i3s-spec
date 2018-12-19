@@ -21,23 +21,9 @@ Describes the statistics for the scene layer.
 
 ```json
  {
-  "statisticsInfo": [
-    {
-      "key": "f_1",
-      "name": "Category",
-      "href": "./statistics/f_1"
-    },
-    {
-      "key": "f_2",
-      "name": "Family",
-      "href": "./statistics/f_2"
-    },
-    {
-      "key": "f_3",
-      "name": "FamilyType",
-      "href": "./statistics/f_3"
-    }
-  ]
+  "key": "f_1",
+  "name": "Category",
+  "href": "./statistics/f_1"
 } 
 ```
 

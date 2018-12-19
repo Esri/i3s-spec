@@ -22,10 +22,8 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 ```json
  {
-  "color": {
-    "type": "UInt8",
-    "component": 3
-  }
+  "type": "UINT8",
+  "component": 3
 } 
 ```
 

@@ -28,16 +28,14 @@
   },
   "additionalProperties": false,
   "esriDocumentation": {
-     "examples": [
+    "examples": [
       {
         "title": "spatial reference",
         "code": {
-          "spatialreference": {
-            "wkid": 103142,
-            "latestWkid": 6565,
-            "vcsWkid": 105703, 
-            "latestVcsWkid": 6360
-          }
+          "wkid": 103142,
+          "latestWkid": 6565,
+          "vcsWkid": 105703,
+          "latestVcsWkid": 6360
         }
       }
     ]

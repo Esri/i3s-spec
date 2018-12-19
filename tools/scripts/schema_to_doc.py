@@ -6,7 +6,9 @@ import argparse
 import re
 import errno
 import collections
-from slpk_validator import validate_json_string
+import slpk_validator
+
+
 
 
 def json_to_dom( path ) :
@@ -25,16 +27,13 @@ class Schema_manifest :
         self.ref_path = schema_reference_path
         self.types = {} # key: schema name, value : type object
         self.include_stack = []
-        version = version
+        self.version = version
 
     def get_abs_path_from_schema_name( self, name ) :
-        tok = name.split('::')
-        assert( len(tok) <=2 )
-        fn = tok[-1] + "_schema.json"
-        if len(tok) > 1 :
-            assert( tok[0] in Schema_manifest.c_code_to_paths)
-            fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
-        return os.path.realpath( os.path.join( self.ref_path, fn ) );
+        #if len(tok) > 1 :
+        #    assert( tok[0] in Schema_manifest.c_code_to_paths)
+        #fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
+        return os.path.realpath( os.path.join( self.ref_path, "schema", name ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
         tok = name.split('::')
@@ -74,7 +73,6 @@ class Schema_manifest :
 
 
     def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
-        #pointclouds/schema/pcsl_attributeInfo_schema.json
         tok = rel_path.replace('\\','/').split('/')
         if ( len(tok) > 1 ):
             name = tok[1]
@@ -82,15 +80,6 @@ class Schema_manifest :
             name = tok[0]
         if name.endswith('.json') :
             name = name[:-5]
-        #if name.endswith('_schema') :
-        #    name = name[:-7]
-        #if len(tok) ==1 :
-        #    assert( default_namespace in Schema_manifest.c_code_to_paths)
-        #    tok.insert(0, Schema_manifest.c_code_to_paths[ default_namespace])
-        #while( len(tok) > 0 and tok[0] == ".."):
-        #    del tok[0]
-        #assert( tok[0] in Schema_manifest.c_path_to_codes)
-        #return "%s::%s" % (Schema_manifest.c_path_to_codes[tok[0]], name )
         return name
 
     def get_docs_href_from_schema_name( href) :
@@ -112,10 +101,7 @@ class Schema_manifest :
 
         folders.reverse()
         folders = [ (x if x !='schema' else replace_by ) for x in folders ]
-        #folders[-1] = folders[-1].replace('_schema.json', '.md')
         folders[-1] = folders[-1].replace('.json', '.md')
-        #if 'schema' in folders :
-        #    folders = folders.replace( 'schema', 'docs')
         rel_path  = os.path.join(*folders )
         return rel_path;
 
@@ -140,7 +126,6 @@ class Schema_manifest :
         return sch;
 
     def get_type_from_abs_path( self, abs_path ) :
-        
         # have it already ?
         name = self.get_schema_name_from_abs_path( abs_path )
         if name in self.types :
@@ -150,6 +135,7 @@ class Schema_manifest :
             ret = self.load_schema( abs_path)
             self.include_stack.pop()
             return ret;
+
 
 class Dummy_type :
     """used only for custom_related"""
@@ -176,6 +162,8 @@ class Schema_type :
         self.desc_href=''
         self.custom_related = []
         self.oneOf = []
+        self.include = ''
+        self.properties = {}
 
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
@@ -193,6 +181,7 @@ class Schema_type :
     def parse_property( self, field, sub_dom, parent_type=None ) :
         prop = Property()
         prop.name = field
+
         if '$ref' in sub_dom :
             #tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], self.name.split('::')[0] );
             tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name.split('::')[0] );
@@ -206,13 +195,27 @@ class Schema_type :
                 if 'description' in sub_dom :
                     prop.prop_desc = sub_dom['description']
                 prop.type = self if tmp == self.name else parent_type
-
         else :
             prop.type = Schema_type( self.manifest)
             prop.type.parse_from_dom( sub_dom, self )
         return prop
 
-   
+
+    def get_properties(self, dom) :
+        if '$include' in dom :
+            self.include = dom['$include']
+            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, self.include)
+            print("Including schema file: %s" % abs_path_to_include)
+            old_schema = json_to_dom( abs_path_to_include )
+            self.get_properties( old_schema )
+        
+        if ( 'properties' in dom ) :
+            for entry in dom['properties'] :
+                self.properties[entry] = dom['properties'][entry]
+            #old_schema = self.parse_from_dom( json_to_dom( abs_path_to_include ) )
+            #props = self.get_properties(old_schema)
+
+
 
     def parse_type(self, dom, parent_type=None ) :
         if 'type' in dom :
@@ -225,6 +228,9 @@ class Schema_type :
                 obj.name = related
                 self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
+
+        if '$include' in dom :                                                 
+            self.include = dom['$include']
 
         if 'description' in dom :
             self.desc = dom['description']
@@ -239,7 +245,9 @@ class Schema_type :
                 self.range[1] = str(dom['maxItems'])
 
         if 'properties' in dom :
-            for field,sub_dom in dom['properties'].items() :
+            self.get_properties(dom)
+            #for field,sub_dom in dom['properties'].items() :
+            for field,sub_dom in self.properties.items() :
                 prop = self.parse_property( field, sub_dom, self )
                 prop.is_required = True if 'required' in dom and field in dom['required'] else False
                 if prop.type.json_type == 'array' :
@@ -387,7 +395,7 @@ class Markdown_writer  :
             #load from relative path:
             #path = os.path.realpath( os.path.join( self.output_folder, "..", ex_dom[ 'code_href' ]) )
             #rel_path = Schema_manifest.get_example_href_from_schema_name( self.output_path, ex_dom[ 'code_href' ] )
-            abs_path = os.path.abspath(os.path.join(os.path.dirname( self.output_path), '..', '..', 'schema', ex_dom[ 'code_href' ]))
+            abs_path = os.path.abspath(os.path.join(os.path.dirname( output_path), 'schema', ex_dom[ 'code_href' ]))
             #abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
             if not os.path.exists( abs_path ) :
                 raise BaseException( "Example 'href=%s' is missing (file %s not found )" %(ex_dom[ 'code_href' ], abs_path)  )
@@ -446,23 +454,26 @@ class Markdown_writer  :
 
 def validate_examples(manifest) :
     ## validate examples before writing to schema
+    successful_validation = True
     for profile in manifest.types:
         examples = manifest.types[profile].example_dom
         if ( len(examples) ) :
-            schema = manifest.get_abs_path_from_schema_name(profile)
-            temp_file_name = profile.replace('::', '_')                 # change 'folder::file' -> 'folder_file' to avoid colons in file names
+            schema = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
             for example in examples:
                 successful_validation = True
-                ex_code = Markdown_writer.get_example_code(example, example) # get_example_code( ex )
-                if (ex_code != "") :                                    # no example code is an empty string, e.g. ""
+                ex_code = Markdown_writer.get_example_code(example, example)
+                if (ex_code and ex_code != "") :                                   
                     try:
-                        successful_validation = validate_json_string(schema, ex_code, temp_file_name)[0]    # first returned argument return success or failure
+                        successful_validation = slpk_validator.validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
                         if (not successful_validation) :
-                            bad_example_file = profile.split('::')[1] + ".json"
-                            raise BaseException(("Example in %s did not successfully validate against schema" % bad_example_file))
+                            raise BaseException(("Example in %s did not successfully validate against schema" % profile))
                     except BaseException as e:
                         print(e)
+                        return False
+    return True
 
+
+# returns list of required schemas to generate the docs
 def get_entry_points_from_dom( manifest_dom ) :
     entry_points = []
     for profile in manifest_dom['profile'] :
@@ -487,20 +498,6 @@ if __name__ == "__main__" :
 
     args = parser.parse_args();
 
-    #schema_files = []
-
-    #try:
-    #    os.makedirs(arguments.md_output_path)
-
-    #except OSError as e:
-    #    if e.errno != errno.EEXIST:
-    #        raise
-
-    ##assumes relative path:
-    #output_path = os.path.realpath(  os.path.join(os.path.dirname(__file__), arguments.md_output_path) )
-    #input_path  = os.path.realpath(  os.path.join(os.path.dirname(__file__), arguments.json_schema_path) )
-    #schema_names     = arguments.schema_names.split(',')
-
     #find 'root' path:
     print(args.profiles );
     root = os.path.realpath(__file__ + "../../../../") 
@@ -513,25 +510,32 @@ if __name__ == "__main__" :
 
     manifest = {}   # {version : Schema_manifest}
 
-    #for profile in args.profiles :
     #scan the manifest:
-    for file in os.listdir( manifest_folder) :
-        version = file.split('.')[1]
-        if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
-            manifest[version] = Schema_manifest(root, version);
-            dom = json_to_dom( os.path.join(manifest_folder, file) )
-            entry_points = get_entry_points_from_dom( dom)
-            for entry_point in entry_points :
-                if file.endswith(".json"):
+    for file in os.listdir( manifest_folder ) :
+        if file.endswith(".json"):
+            version = file.split('.')[1]                # e.g manifest.0106.json
+            if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
+                manifest[version] = Schema_manifest(root, version);
+                dom = json_to_dom( os.path.join(manifest_folder, file) )
+                entry_points = get_entry_points_from_dom( dom)
+                for entry_point in entry_points :
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
 
     ##validate examples
-    #for version in manifest:
-    #    validate_examples(manifest[version])
+    print("\nNow validating examples")
+    try:
+        for version in manifest:
+            if (not validate_examples(manifest[version]) ) :
+                raise Exception("Fix examples before writing docs")
+        #write all profiles:
+        for version in manifest :
+            writer = Markdown_writer( output_path );
+            for name, obj  in manifest[version].types.items() :
+                writer.write_to_md( manifest[version], obj )
+    except Exception as e:
+        print()
+        print(e)
 
-    #write all profiles:
-    for version in manifest :
-        writer = Markdown_writer( output_path );
-        for name, obj  in manifest[version].types.items() :
-            writer.write_to_md( manifest[version], obj )
+
+

@@ -22,10 +22,8 @@ Relative the center of oriented-bounded box of the node
 
 ```json
  {
-  "position": {
-    "type": "Float32",
-    "component": 3
-  }
+  "type": "Float32",
+  "component": 3
 } 
 ```
 

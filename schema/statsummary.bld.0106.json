@@ -27,7 +27,6 @@
             {
               "fieldName": "floor",
               "label": "Etage",
-              "modelName": "floorId",
               "mostFrequentValues": [
                 1,
                 2,

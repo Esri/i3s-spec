@@ -57,20 +57,16 @@
     "required": [
         "id"
     ],
-    "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
             {
-                "title": "3D Scene Layer info for point scene layer",
-                "code_href": "example/featureDataPointSceneLayer.cmn.0106.json"
+                "title": "3D Scene Layer info for point scene layer"
             },
             {
-                "title": "3D Scene Layer info for 3D object scene layer",
-                "code_href": "example/featureData3dObjectSceneLayer.cmn.0106.json"
+                "title": "3D Scene Layer info for 3D object scene layer"
             },
             {
-                "title": "3D Scene Layer info for integrated mesh scene layer",
-                "code_href": "example/featureDataIntegratedMeshceneLayer.cmn.0106.json"
+                "title": "3D Scene Layer info for integrated mesh scene layer"
             }
         ]
     }

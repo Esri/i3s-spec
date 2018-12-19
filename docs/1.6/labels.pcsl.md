@@ -20,54 +20,52 @@ Optionally, the statistics document may contain labeling information for the att
 
 ```json
  {
-    "labels": {
-        "labels": [
-            {
-                "value": 1.0,
-                "label": "Unclassified"
-            },
-            {
-                "value": 2.0,
-                "label": "Ground"
-            },
-            {
-                "value": 3.0,
-                "label": "Low Vegetation"
-            },
-            {
-                "value": 4.0,
-                "label": "Medium Vegetation"
-            },
-            {
-                "value": 5.0,
-                "label": "High Vegetation"
-            },
-            {
-                "value": 6.0,
-                "label": "Building"
-            },
-            {
-                "value": 7.0,
-                "label": "Low Point(noise)"
-            },
-            {
-                "value": 8.0,
-                "label": "Model Key"
-            },
-            {
-                "value": 9.0,
-                "label": "Water"
-            },
-            {
-                "value": 10.0,
-                "label": "Rail"
-            },
-            {
-                "value": 11.0,
-                "label": "Road Surface"
-            }
-        ]
-    }
+    "labels": [
+        {
+            "value": 1.0,
+            "label": "Unclassified"
+        },
+        {
+            "value": 2.0,
+            "label": "Ground"
+        },
+        {
+            "value": 3.0,
+            "label": "Low Vegetation"
+        },
+        {
+            "value": 4.0,
+            "label": "Medium Vegetation"
+        },
+        {
+            "value": 5.0,
+            "label": "High Vegetation"
+        },
+        {
+            "value": 6.0,
+            "label": "Building"
+        },
+        {
+            "value": 7.0,
+            "label": "Low Point(noise)"
+        },
+        {
+            "value": 8.0,
+            "label": "Model Key"
+        },
+        {
+            "value": 9.0,
+            "label": "Water"
+        },
+        {
+            "value": 10.0,
+            "label": "Rail"
+        },
+        {
+            "value": 11.0,
+            "label": "Road Surface"
+        }
+    ]
 } 
 ```
 
@@ -75,18 +73,16 @@ Optionally, the statistics document may contain labeling information for the att
 
 ```json
  {
-    "labels": {
-        "bitfieldLabels": [
-            {
-                "bitNumber": 3,
-                "label": "Overlap"
-            },
-            {
-                "bitNumber": 7,
-                "label": "Edge"
-            }
-        ]
-    }
+    "bitfieldLabels": [
+        {
+            "bitNumber": 3,
+            "label": "Overlap"
+        },
+        {
+            "bitNumber": 7,
+            "label": "Edge"
+        }
+    ]
 } 
 ```
 

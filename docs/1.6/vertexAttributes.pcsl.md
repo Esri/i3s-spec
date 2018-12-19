@@ -19,11 +19,9 @@ The vertex buffer description.
 
 ```json
  {
-  "vertexAttributes": {
-    "position": {
-      "valueType": "Float64",
-      "valuesPerElement": 3
-    }
+  "position": {
+    "valueType": "Float",
+    "valuesPerElement": 3
   }
 } 
 ```

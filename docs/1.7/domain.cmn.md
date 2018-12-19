@@ -26,27 +26,25 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 ```json
  {
-  "domain": {
-    "type": "codedValue",
-    "name": "Phases",
-    "description": "Phases",
-    "codedValues": [
-      {
-        "name": "Existing",
-        "code": 0
-      },
-      {
-        "name": "Baby Room Overhaul",
-        "code": 1
-      },
-      {
-        "name": "Roof Garden",
-        "code": 2
-      }
-    ],
-    "mergePolicy": "esriMPTDefaultValue",
-    "splitPolicy": "esriSPTDefaultValue"
-  }
+  "type": "codedValue",
+  "name": "Phases",
+  "description": "Phases",
+  "codedValues": [
+    {
+      "name": "Existing",
+      "code": 0
+    },
+    {
+      "name": "Baby Room Overhaul",
+      "code": 1
+    },
+    {
+      "name": "Roof Garden",
+      "code": 2
+    }
+  ],
+  "mergePolicy": "esriMPTDefaultValue",
+  "splitPolicy": "esriSPTDefaultValue"
 } 
 ```
 

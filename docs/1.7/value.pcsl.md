@@ -4,7 +4,7 @@ A scalar or vector value.
 
 ### Related:
 
-[pcsl::vertexAttributes](vertexAttributes.pcsl.md), [pcsl::attributeInfo](attributeInfo.pcsl.md)
+[pcsl::attributeInfo](attributeInfo.pcsl.md), [pcsl::vertexAttributes](vertexAttributes.pcsl.md)
 ### Properties
 
 | Property | Type | Description |
@@ -22,10 +22,8 @@ An unsigned 16 bit value.
 
 ```json
  {
-  "attributeValues": {
-    "valueType": "UInt16",
-    "valuesPerElement": 1
-  }
+  "valueType": "UInt16",
+  "valuesPerElement": 1
 } 
 ```
 
@@ -35,10 +33,8 @@ The vector value can only be RGB-8 value.
 
 ```json
  {
-  "attributeValues": {
-    "valueType": "UInt8",
-    "valuesPerElement": 3
-  }
+  "valueType": "UInt8",
+  "valuesPerElement": 3
 } 
 ```
 

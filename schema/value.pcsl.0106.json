@@ -36,20 +36,16 @@
                 "title": "Scalar value definition",
                 "description": "An unsigned 16 bit value.",
                 "code": {
-                    "attributeValues": {
-                        "valueType": "UInt16",
-                        "valuesPerElement": 1
-                    }
+                    "valueType": "UInt16",
+                    "valuesPerElement": 1
                 }
             },
             {
                 "title": "Vector value definition",
                 "description": "The vector value can only be RGB-8 value.",
                 "code": {
-                    "attributeValues": {
-                        "valueType": "UInt8",
-                        "valuesPerElement": 3
-                    }
+                    "valueType": "UInt8",
+                    "valuesPerElement": 3
                 }
             }
         ]

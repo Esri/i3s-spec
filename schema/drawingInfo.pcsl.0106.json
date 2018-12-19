@@ -18,7 +18,7 @@
             {
                 "title": "drawingInfo",
                 "code": {
-                    "drawingInfo": {
+                    "renderer": {
                         "pointSizeAlgorithm": {
                             "type": "pointCloudSplatAlgorithm",
                             "scaleFactor": 1.0

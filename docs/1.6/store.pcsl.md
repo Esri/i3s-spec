@@ -26,37 +26,35 @@ Describes storage for the layer.
 
 ```json
  {
-  "store": {
-    "id": "",
-    "profile": "PointCloud",
-    "version": "2.0",
-    "extent": [
-      -105.023403,
-      39.740089,
-      -105.011746,
-      39.757051
-    ],
-    "index": {
-      "nodeVersion": 1,
-      "boundingVolumeType": "obb",
-      "nodesPerPage": 64,
-      "lodSelectionMetricType": "density-threshold"
+  "id": "",
+  "profile": "PointCloud",
+  "version": "2.0",
+  "extent": [
+    -105.023403,
+    39.740089,
+    -105.011746,
+    39.757051
+  ],
+  "index": {
+    "nodeVersion": 1,
+    "boundingVolumeType": "obb",
+    "nodePerIndexBlock": 64,
+    "lodSelectionMetricType": "density-threshold"
+  },
+  "defaultGeometrySchema": {
+    "geometryType": "points",
+    "header": [],
+    "topology": "PerAttributeArray",
+    "encoding": "lepcc-xyz",
+    "vertexAttributes": {
+      "position": {
+        "valueType": "Float",
+        "valuesPerElement": 3
+      }
     },
-    "defaultGeometrySchema": {
-      "geometryType": "points",
-      "header": [],
-      "topology": "PerAttributeArray",
-      "encoding": "lepcc-xyz",
-      "vertexAttributes": {
-        "position": {
-          "valueType": "Float64",
-          "valuesPerElement": 3
-        }
-      },
-      "ordering": [
-        "position"
-      ]
-    }
+    "ordering": [
+      "position"
+    ]
   }
 } 
 ```

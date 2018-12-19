@@ -60,7 +60,6 @@
           "alias": "Architecture",
           "modelName": "Architectural",
           "visibility": true,
-          "visibilityMode": "independent",
           "sublayers": [
             {
               "id": 0,

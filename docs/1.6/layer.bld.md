@@ -6,7 +6,7 @@
 
 A building scene layer represents a 3D BIM model as a single layer composed of sublayers. A building scene layer is organized in discipline layers (groups) such as Architectural, Electrical, Mechanical, Piping and Structural and category layers representing content such as walls or windows. A building scene layer may contain an overview.
 
-The concept of a group (i.e. `layerType='group'`) has been added to organized sublayers into a nested tree structure that can be reflected in the table of content of 3D Clients. 
+The concept of a group (i.e. `layerType='group'`) has been added to organized sublayers into a nested tree structure that can be reflected in the table of content of 3D Clients. If a building scene layer does not contain an overview, the structure should not include an overview or full model, only the disciplines directly.
 
 Please note that:
 - Groups and sublayers may be referenced **once** (e.g. a sublayer may not be in multiple groups).
@@ -84,7 +84,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 | --- | --- | --- |
 | **id** | integer | Identifier for the layer. Building scene layer id is not in the same namespace as sublayer id. **Important**: clients should **not** assume it will be `0`. |
 | **name** | string | Layer name. |
-| **version** | string | Version of the building scene layer |
+| **version** | string | Version of building scene layer. |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | **layerType** | string | <div>Must be:<ul><li>`Building`</li></ul></div> |
 | description | string | Description for the layer. |
@@ -107,7 +107,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
  {
   "id": 10,
   "name": "esri_campus",
-  "layerType": "building",
+  "layerType": "Building",
   "alias": "Esri Campus 2018",
   "version": "1.6",
   "spatialReference": {
@@ -203,5 +203,82 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
   ]
 }
  
+```
+
+#### Example: Building Scene Layer without overview 
+
+```json
+ {
+    "id": 0,
+    "name": "11 Jay St - 2015",
+    "layerType": "Building",
+    "alias": "11 Jay St - 2015",
+    "version": "1.6",
+    "spatialReference": {
+        "wkid": 2875,
+        "latestWkid": 2875
+    },
+    "fullExtent": {
+        "xmin": 6275739.750599888153,
+        "ymin": 2329145.64472599281,
+        "xmax": 6275810.25458117947,
+        "ymax": 2329220.688075052574,
+        "spatialReference": {
+            "wkid": 4326,
+            "latestWkid": 4326,
+            "vcsWkid": 5703,
+            "latestVcsWkid": 5703
+        },
+        "zmin": 396.6794973805014,
+        "zmax": 412.033626022210115
+    },
+    "sublayers": [
+        {
+            "id": 1,
+            "layerType": "3DObject",
+            "name": "ElectricalFixtures",
+            "alias": "ElectricalFixtures",
+            "modelName": "ElectricalFixtures",
+            "discipline": "Electrical",
+            "visibility": true
+        },
+        {
+            "id": 2,
+            "layerType": "3DObject",
+            "name": "LightingFixtures",
+            "alias": "LightingFixtures",
+            "modelName": "LightingFixtures",
+            "discipline": "Electrical",
+            "visibility": true
+        },
+        {
+            "id": 3,
+            "layerType": "3DObject",
+            "name": "DuctFitting",
+            "alias": "DuctFitting",
+            "modelName": "DuctFitting",
+            "discipline": "Mechanical",
+            "visibility": true
+        },
+        {
+            "id": 4,
+            "layerType": "3DObject",
+            "name": "Ducts",
+            "alias": "Ducts",
+            "modelName": "Ducts",
+            "discipline": "Mechanical",
+            "visibility": true
+        },
+        {
+            "id": 5,
+            "layerType": "3DObject",
+            "name": "MechanicalEquipment",
+            "alias": "MechanicalEquipment",
+            "modelName": "MechanicalEquipment",
+            "discipline": "Mechanical",
+            "visibility": true
+        }
+    ]
+} 
 ```
 

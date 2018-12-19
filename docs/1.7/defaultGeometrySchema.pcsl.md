@@ -24,21 +24,19 @@ Attribute description as field.
 
 ```json
  {
-  "defaultGeometrySchema": {
-    "geometryType": "points",
-    "header": [],
-    "topology": "PerAttributeArray",
-    "encoding": "lepcc-xyz",
-    "vertexAttributes": {
-      "position": {
-        "valueType": "Float64",
-        "valuesPerElement": 3
-      }
-    },
-    "ordering": [
-      "position"
-    ]
-  }
+  "geometryType": "points",
+  "header": [],
+  "topology": "PerAttributeArray",
+  "encoding": "lepcc-xyz",
+  "vertexAttributes": {
+    "position": {
+      "valueType": "Float",
+      "valuesPerElement": 3
+    }
+  },
+  "ordering": [
+    "position"
+  ]
 } 
 ```
 

@@ -6,20 +6,28 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": [ "UInt16", "UInt32", "UInt64" ],
+      "enum": [
+        "UInt16",
+        "UInt32",
+        "UInt64"
+      ],
       "description": "A feature integer ID"
-    }, 
+    },
     "component": {
       "type": "integer",
       "description": "must be 1"
     },
     "encoding": {
       "type": "string",
-      "enum": [ "none" ]
+      "enum": [
+        "none"
+      ]
     },
     "binding": {
       "type": "string",
-      "enum": [ "per-feature" ],
+      "enum": [
+        "per-feature"
+      ],
       "enum-description": {
         "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **Requirement**: a) [`FaceRange`](geometryfacerange.md) attribute must be present** to map features-to-faces and vertices must _be grouped by feature_ **OR** b) [`compressedAttribute.attributes`](compressedAttributes.md) has `uvRegionIndex`. Important: a) and b) are mutually exlusive"
       }
@@ -34,10 +42,8 @@
       {
         "title": "Feature_id less than 65k, per-feature. `faceRange` attribute will be required",
         "code": {
-          "featureId": {
-            "type": "UInt16",
-            "component": 1
-          }
+          "type": "UInt16",
+          "component": 1
         }
       }
     ]

@@ -1,0 +1,67 @@
+{
+  "title": "i3s 2.0",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "This file defines the entry points for version 2.0 of the i3s-spec",
+  "profile": [
+    {
+      "name": "building",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "layer.bld.0106.json"
+        },
+        {
+          "path": "summary.json.gz",
+          "schema": "statsummary.bld.0106.json"
+        }
+      ]
+    },
+    {
+      "name": "common",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "3DSceneLayer.cmn.0107.json"
+        },
+        {
+          "path": "3dNodeIndexDocument.json.gz",
+          "schema": "3DSNodeIndexDocument.cmn.0106.json"
+        },
+        {
+          "path": "0.json.gz",
+          "schema": "stats.cmn.0106.json"
+        },
+        {
+          "path": "0.json.gz",
+          "schema": "features.cmn.0106.json"
+        },
+        {
+          "path": "sharedResource",
+          "schema": "sharedResource.cmn.0106.json"
+        },
+        {
+          "path": "nodepages",
+          "schema": "nodes.cmn.0107.json"
+        }
+      ]
+    },
+    {
+      "name": "pointcloud",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "layer.pcsl.0200.json"
+        },
+        {
+          "path": "statistics",
+          "schema": "statistics.pcsl.0200.json"
+        },
+        {
+          "path": "nodepage",
+          "schema": "nodepage.pcsl.0200.json"
+        }
+      ]
+    }
+  ]
+}

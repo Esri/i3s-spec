@@ -17,8 +17,6 @@ def json_to_dom( path ) :
 
 
 class Schema_manifest :
-    c_path_to_codes = { 'pointclouds' : 'pointcloud',  'meshes' : 'mesh', 'meshpyramids':'3dobject', 'points' : 'point', 'common' : 'common', "meshv2":"meshv2" ,"building":"building"}
-    c_code_to_paths = { 'pointcloud'  : 'pointclouds', 'mesh' : 'meshes', '3dobject':'meshpyramids', 'point' : 'points', 'common' : 'common', "meshv2":"meshv2","building":"building"}
     c_code_to_versions = { '0106' : '1.6', '0107' : '1.7', '0200' : '2.0' }
     c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
 
@@ -452,25 +450,21 @@ class Markdown_writer  :
                         self.write_line( "%s \n" % ex['description'] )
                     self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
-def validate_examples(manifest) :
-    ## validate examples before writing to schema
-    successful_validation = True
+def validate_examples(manifest, validated_schemas) :
     for profile in manifest.types:
-        examples = manifest.types[profile].example_dom
-        if ( len(examples) ) :
-            schema = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
-            for example in examples:
-                successful_validation = True
-                ex_code = Markdown_writer.get_example_code(example, example)
-                if (ex_code and ex_code != "") :                                   
-                    try:
+        if profile not in validated_schemas:
+            validated_schemas.append(profile)
+            examples = manifest.types[profile].example_dom
+            # examples exist in schema
+            if ( len(examples) ) :
+                schema = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
+                for example in examples:
+                    successful_validation = True
+                    ex_code = Markdown_writer.get_example_code(example, example)
+                    if (ex_code and ex_code != "") :                                   
                         successful_validation = slpk_validator.validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
                         if (not successful_validation) :
                             raise BaseException(("Example in %s did not successfully validate against schema" % profile))
-                    except BaseException as e:
-                        print(e)
-                        return False
-    return True
 
 
 # returns list of required schemas to generate the docs
@@ -522,20 +516,22 @@ if __name__ == "__main__" :
                     abs_path = os.path.join(search_folder, entry_point)
                     manifest[version].get_type_from_abs_path( abs_path )
 
-    ##validate examples
-    print("\nNow validating examples")
+    
+    print("Now validating examples")
     try:
+        validated_schemas = []            # avoid checking same file multiple times in different versions
         for version in manifest:
-            if (not validate_examples(manifest[version]) ) :
-                raise Exception("Fix examples before writing docs")
-        #write all profiles:
+            validate_examples( manifest[version], validated_schemas ) 
+    except BaseException as e:
+        print(e)
+        print()
+        print("Fix examples before documents can be generated\n")
+    else:
+        #write all profiles only if validation succeeds
         for version in manifest :
             writer = Markdown_writer( output_path );
             for name, obj  in manifest[version].types.items() :
                 writer.write_to_md( manifest[version], obj )
-    except Exception as e:
-        print()
-        print(e)
 
 
 

@@ -1,0 +1,31 @@
+{
+  "title": "I3S point cloud scene layer: nodepage",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "description/nodepage.pcsl.0200.md",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "description": "Array of nodes",
+      "items": {
+        "type": "object",
+        "$ref": "node.pcsl.0200.json"
+      }
+    },
+    "actualCount": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "nodes"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Global scene (WSG84, last page)",
+        "code_href": "example/nodepage_11.pcsl.0200.json"
+      }
+    ]
+  }
+}

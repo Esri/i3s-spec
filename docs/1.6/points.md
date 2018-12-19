@@ -1,2 +1,0 @@
-# Points Scene Layer Overivew
-

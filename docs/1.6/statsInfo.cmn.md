@@ -1,10 +1,10 @@
-# I3S point cloud scene layer: stats
+# stats
 
 Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.
 
 ### Related:
 
-[cmn::stats](stats.cmn.md), [pcsl::statistics](statistics.pcsl.md)
+[pcsl::statistics](statistics.pcsl.md), [cmn::stats](stats.cmn.md)
 ### Properties
 
 | Property | Type | Description |

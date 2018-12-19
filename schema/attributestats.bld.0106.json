@@ -42,6 +42,8 @@
     },
     "mostFrequentValues": {
       "type": "array",
+      "minItems": 0,
+      "maxItems": 256,
       "items": {
         "type": [
           "integer",

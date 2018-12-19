@@ -13,7 +13,7 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 | baseColorTexture | [materialtexture](materialtexture.cmn.md) | The base color texture. |
 | metallicFactor | number | the metalness of the material. default=`1.0` |
 | roughnessFactor | number | the roughness of the material. default=`1.0` |
-| metallicRoughnessTexture | [materialtexture](materialtexture.cmn.md) | he metallic-roughness texture. |
+| metallicRoughnessTexture | [materialtexture](materialtexture.cmn.md) | the metallic-roughness texture. |
 
 *Note: properties in **bold** are required*
 

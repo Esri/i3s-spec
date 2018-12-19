@@ -34,15 +34,14 @@
     },
     "histogram": {
       "type": "object",
-      "$ref": "histogram.pcsl.0106.json",
+      "$ref": "histogram.cmn.0106.json",
       "description": "Represents the histogram."
     },
     "mostFrequentValues": {
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "valuecount.pcsl.0106.json",
-        "description": "An array of most frequently used values within the point cloud scene layer."
+        "$ref": "valuecount.pcsl.0106.json"
       },
       "description": "An array of most frequently used values within the point cloud scene layer."
     }

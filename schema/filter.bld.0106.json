@@ -30,6 +30,7 @@
         "type": "object",
         "$ref": "filterBlock.bld.0106.json"
       },
+      "minItems": 1,
       "description": "Array of filter blocks defining the filter. A filter contains at least one filter block."
     },
     "filterAuthoringInfo": {

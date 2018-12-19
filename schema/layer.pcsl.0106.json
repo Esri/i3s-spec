@@ -34,17 +34,16 @@
         "capabilities": {
             "type": "array",
             "items": {
-                "type": "string", 
+                "type": "string",
                 "enum": [
                     "View",
                     "Query"
                 ],
-                "enum-description" : 
-                {
-                    "View" : "View is supported.",
-                    "Query" : "Query is supported."
+                "enum-description": {
+                    "View": "View is supported.",
+                    "Query": "Query is supported."
                 },
-                "description" : "Describes the capabilities of the point cloud scene layer."
+                "description": "Describes the capabilities of the point cloud scene layer."
             },
             "description": "Capabilities supported by this layer."
         },
@@ -73,36 +72,34 @@
             "items": {
                 "type": "object",
                 "description": "Describes the attribute storage for this layer.",
-
-                
                 "$ref": "attributeInfo.pcsl.0106.json"
             },
             "description": "List of attributes included for this layer."
         },
-    "drawingInfo": {
-        "type": "object",
-        "description": "An object containing drawing information.",
-        "$ref": "drawingInfo.pcsl.0106.json"
-    },
-    "elevationInfo": {
-        "type": "object",
-        "description": "An object containing elevation information.",
-        "$ref": "elevationInfo.pcsl.0106.json"
-    },
-    "sourceHRef": {
-        "type": "string"
-    },
-    "statsHRef": {
-        "type": "string"
-    },
-    "fields": {
-        "type": "array",
-        "items": {
+        "drawingInfo": {
             "type": "object",
-            "$ref": "field.cmn.0106.json"
+            "description": "An object containing drawing information.",
+            "$ref": "drawingInfo.pcsl.0106.json"
+        },
+        "elevationInfo": {
+            "type": "object",
+            "description": "An object containing elevation information.",
+            "$ref": "elevationInfo.pcsl.0106.json"
+        },
+        "sourceHRef": {
+            "type": "string"
+        },
+        "statsHRef": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "field.cmn.0106.json"
+            }
         }
-    }
-},
+    },
     "required": [
         "id",
         "name",
@@ -116,7 +113,7 @@
         "examples": [
             {
                 "title": "Point cloud layer",
-                "code_href" : "example/mile_high_3dSceneLayer.pcsl.0106.json"
+                "code_href": "example/mile_high_3dSceneLayer.pcsl.0106.json"
             }
         ]
     }

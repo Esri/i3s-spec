@@ -5,18 +5,14 @@ Scene Layer Package (*.slpk) Format Specification</h2>
 <em>Contributors:</em> Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang<br>
 <em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
 
-The Indexed 3D Scene layer (I3S) format is an open 3D content delivery format used to disseminate 3D GIS data to mobile, web and desktop clients. I3S is the choice of format used by <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and the Scene Services that deliver them. 
-
-I3S originated from research into technologies for rapidly streaming and distributing large volumes of 3D content.  It is designed to share the content across enterprise systems with server and cloud components, and to be compatible with desktop, web, and mobile client software. 
-
-The first sections explain the conceptual structure of I3S, and the latter sections provide implementation details.
+The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and Scene Services use the I3S infrastructure.
 
 
 <h2>Table of Contents</h2>
 
 <ol>
 	<li><a href="#_1">I3S Design Principles</a></li>
-	<li><a href="#_2">Scene Layer</a></li>
+	<li><a href="#_2">3D Scene Layer</a></li>
 	<li><a href="#_3">Coordinate Reference Systems</a>
 		<ol>
 		<li><a href="#_3_1">Height Models</a></li>
@@ -55,12 +51,13 @@ The first sections explain the conceptual structure of I3S, and the latter secti
 	</ol></li>
 </ol>
 
+
 <h2><a name="_1">I3S Design Principles</a></h2>
 
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 
 <ol>
-	<li><strong>User Experience first:</strong> Provide a positive user experience, like high interactivity, fast display, and rendering visually relevant features first.</li>
+	<li><strong>User Experience first:</strong> Provide a positive user experience, including high interactivity and fast display.</li>
 	<li><strong>Scalability:</strong> Support very large scene layers, including scenes with a global extent and many detailed features.</li>
 	<li><strong>Reusability:</strong> Use as a service delivery format, storage format, and exchange format.</li>
 	<li><strong>Level of Detail:</strong> Support multiple detail levels.</li>
@@ -69,15 +66,16 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 	<li><strong>Extensibility:</strong> Support new layer types, new geometry types, and new platforms.</li>
 	<li><strong>Web Friendliness:</strong> Provide easy to handle data using JSON and current web standards.</li>
 	<li><strong>Compatibility:</strong> Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and on-premises servers.</li>
-	<li><strong>Declarative:</strong> Minimize the amount of required domain knowledge to support the format.</li>
+	<li><strong>Declarative:</strong> Communicate clearly to minimize the amount of required domain knowledge to support the format.</li>
 	<li><strong>Follow REST/JSON API best practices:</strong> Provide navigable links to all resources.</li>
 </ol>
 
-<h2><a name="_2">Scene Layer</a></h2>
 
-A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  Data here includes the geometry, attributes, and vertex geometry. 
+<h2><a name="_2">3D Scene Layer</a></h2>
 
-A Scene Layer is characterized by a combination of layer type and profile. The layer type describes kind of geospatial data stored within it. The layer profile is exposed to clients and includes additional details on the specific I3S implementation. 
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  The definition of "data" in this case includes the geometry, attributes, and vertex geometry. 
+
+A Scene Layer is characterized by a combination of layer type and profile. The *layer type* describes the kind of geospatial data stored within it. The *layer profile* is exposed to clients and includes additional details on the specific I3S implementation. 
 
  The supported layer types are:
 
@@ -89,7 +87,7 @@ A Scene Layer is characterized by a combination of layer type and profile. The l
 
 
 
-Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features with an identity instead of a geospatial field (e.g. mesh or cloud).  Some layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
+Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Some layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
 
 <table>
  <tr>
@@ -99,28 +97,28 @@ Layer types with the same profile can be leveraged to support different use case
   <td><strong>Attributes</strong></td>	  
  </tr>
  <tr>
-  <td>3D Object</td>
-  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
+  <td><a href="../docs/1.6/3Dobjects.md">3D Objects</a></td>
+  <td>mesh-pyramids</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
-  <td>Integrated Mesh</td>
-  <td><a href="../profiles/meshpyramids/meshpyramids.md">mesh-pyramids</a></td>
+  <td><a href="../docs/1.6/integratedMesh.md">Integrated Mesh</a></td>
+  <td>mesh-pyramids</td>
   <td>No</td>
   <td>Triangle Attributes (planned)</td>
  </tr>
   <tr>
-  <td>Point</td>
-  <td><a href="../profiles/points/points.md">points</a></td>
+  <td><a href="../docs/1.6/points.md">Point</a></td>
+  <td>points</td>
   <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
-  <td>Pointcloud</td>
-  <td><a href="../profiles/pointclouds/docs/Documentation.md">pointclouds</td>
+  <td><a href="../docs/1.6/pointCloud.md">Point Cloud</a></td>
+  <td>pointclouds</td>
   <td>No</td>
-  <td>Vertex Attributes</td>
+  <td><a href="../docs/1.6/vertexAttribute.cmn.md">Vertex Attributes</a></td>
  </tr>
   <tr>
   <td>Line</td>
@@ -136,39 +134,34 @@ Layer types with the same profile can be leveraged to support different use case
  </tr>
  </table>
 
-<p><em>Table 1: Examples of 3D Layer Types and Layer Profiles</em></p>
+<p><em>Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles</em></p>
 
 
 <h2><a name="_3">Coordinate Reference Systems (CRS)</a></h2>
 
-<p>Indexed 3D Scene Layers have to fulfill several use cases when selecting the coordinate reference systems to use:</p>
+The Coordinate Refrence Systetm of the Indexed 3D Scene Layer should be selected with the following considerations:
 
-<ul>
-	<li>Minimize the need for re-projection on the client side</li>
-	<li>Support data sets with global extent</li>
-	<li>Render easily in coordinate systems for projected CRSs as well as coordinate systems for geodetic CRSs</li>
-	<li>Support local data with very high positional accuracy</li>
-	<li>Support global data sets with high positional accuracy</li>
-</ul>
+- Minimize the need for re-projection on the client side
+- Render in both projected and geodetic coordinate reference systems
+- Support data with a global extent
+- Support local and global data with high positional accuracy
 
-<p>These use cases lead to the following implementation requirements.</p>
+To support these considerations, I3S has the following implementation requirements:
 
-<ol>
-	<li>The location of all index-related data structures such as node bounding spheres SHALL be specified using a single, global Geographic WGS84 2d CRS. Coordinate bounds for such structures are in the range (-180.0000, -90.0000, 180.0000, 90.0000), Elevation and node minimum bounding sphere radius are specified in meters. Allowed coordinate system using EPSG code includes:
-		<ol>
-			<li>EPSG: 4326</li>
-		</ol>
-	</li>
-	<li> All vertex positions SHALL be specified using geodetic CRS (including cartesian coordinate systems), where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) for all vertex positions.
-	</li>
-	<li>Axis Order: All positions, independent of the CRS used, use the Easting, Northing, Elevation (x,y,z) axis order. The Z axis SHALL always point upwards towards the sky.
-</ol>
+1. The location of all index-related data structures, such as node bounding spheres, are specified using a single, global Geographic WGS84 2D CRS. 
+   - Coordinate bounds are in the range (-180.0000, -90.0000, 180.0000, 90.0000)
+   - Elevation and node minimum bounding sphere radius are specified in meters
+   - Allowed coordinate system using European Petroleum Survey Group (EPSG) code 4326
+2. All vertex positions are specified using geodetic coordinate reference system
+   1.  The X, Y, and Z axes are all in same unit, with a per-node offset for all vertex positions.  The offset is calculated from the center point of the node's minimum bounding sphere.
+3. The axis order is independent of the Coordinate Reference System.  It will always use the Easting, Northing, Elevation (X, Y, Z) axis order. The Z axis always points up towards the sky.
 
-<p>All I3S profiles support outputting 3d content in two modes - <i>Global</i> or  <i>Local</i> modes. In <i>Global</i> mode only EPSG code 4326 (WGS84) is the supported coordinate system for both index and vertex positions and SHALL be represented as longitude, latitude, elevation. In <i>Local</i> mode all geodetic CRS (including cartesian coordinate systems) are allowed. The only requirement is that both index and position vertex SHALL have the same CRS.</p>
 
-<p> All I3S layers indicate the coordinate system via the <code>spatialReference</code> property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.</p>
+All I3S profiles support writng 3D content in two modes: global and local. In global mode, only European Petroleum Survey Group (EPSG) code 4326 (WGS84) is supported for both index and vertex positions.  It is represented using longitude, latitude, elevation. In local mode, all geodetic Coordiante Reference Systems, including cartesian coordinate systems, are allowed. Both index and position vertex must have the same Coordiate Reference System.
 
-<p> The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> object is common to all i3s profile types.
+All I3S layers indicate the coordinate system via the `spatialReference` property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.
+
+The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> object is common to all i3s profile types.
 
 <h3><a name="_3_1">Height Models</a></h3>
 

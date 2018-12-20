@@ -375,35 +375,22 @@ A value schema ensures that the JSON properties follow a fixed pattern and suppo
 
 ### Pointers
 
-<p>I3S uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
-The Pointer consists of two elements :</p>
+Pointers are used to reference specific properties in another document.  They consist of two elements
 
-<ol>
-	<li><strong>mandatory in-document reference:</strong> Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
-		<ul>
-			<li><em>Absolute</em> references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by a name.
-				<ul>
-					<li>Example: <code>/materialDefinitions/*/type</code></li>
-				</ul>
-			</li>
-		</ul>
-		<ul>
-			<li><em>Relative</em> references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
-				<ul>
-					<li>Example: <code>params/ambient/0</code></li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-	<li><strong>optional URL:</strong> The pointer may be prefixed with a URL to a different document. This URL may be relative to the document that is being evaluated or absolute. To identify the URL element of a pointer, it is given in square brackets. Examples:
-		<ul>
-			<li><em>relative URL + absolute reference:</em> From FeatureData to 3dSceneLayer.name: <code>[../../]/name</code></li>
-		</ul>
-		<ul>
-			<li><em>absolute URL + absolute reference:</em> <code>[http://tiles.arcgis.com/arcgis/rest/services/Buildings_Portland/SceneServer/layers/0/nodes/68](http://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Buildings_Portland/SceneServer/layers/0/nodes/68)</code></li>
-		</ul>
-	</li>
-</ol>
+1. **In-document reference** (required): Reference the current property either relatively or absolutely. 
+2. **URL** (optional):
+
+
+
+
+ Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
+
+Absolute references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by a name.
+
+Relative references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
+
+optional URL:</strong> The pointer may be prefixed with a URL to a different document. This URL may be relative to the document that is being evaluated or absolute. To identify the URL element of a pointer, it is given in square brackets. Examples:
+relative URL + absolute reference:</em> From FeatureData to 3dSceneLayer.name: <code>[../../]/name</code>
 
 <h3><a name="_6_1">SceneServiceInfo</a></h3>
 

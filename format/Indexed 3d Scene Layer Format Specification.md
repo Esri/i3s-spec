@@ -249,11 +249,11 @@ See the [Textures](docs/1.6/texture.cmn.md) section for more details.
 
 I3S supports two ways to access attribute data.  They can be accessed through  
 
-1. Optional paired services with REST endpoints 
-   - Enabled direct access to source data
+1. Paired services with REST endpoints 
+   - Enables direct access to source data
    - The query uses the unique feature ID key
 2. Fully cached attribute information within the I3S store
-   - Binary storage representation, which provides a significant performance benefit.
+   - Binary storage representation, which provides a significant performance benefit
 
 Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
 
@@ -262,19 +262,24 @@ See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
 <h2><a name="_5">Level of Detail (LoD)</a></h2>
 
-Scene Layers include Levels of Detail that apply to the whole layer and summarize layer information.  They are similar to image pyramids or raster vector tiling schemes.  Scene Layers support levels of detail that perserve the identity of individual features across all detail levels. Levels of Detail can be used to split heavy features, thin or clustser for better visuals, and integrate externally authored LoDs. 
+Levels of Detail are used to provide multiple models to display the same object. Scene Layers include Levels of Detail that apply to the whole layer and summarize layer information.  They are similar to image pyramids or raster vector tiling schemes.  Scene Layers support levels of detail that preserve the identity of individual features across all detail levels. Levels of Detail can be used to split heavy features, thin or cluster for better visuals, and integrate externally authored files.
 
 <h4>Discrete LoDs</h4>
 
-<p>I3S supports the <em>Discrete</em> LoD approach, where different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LoD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be. For each next lower level, the amount of data is typically reduced by employing methods such as texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning, so that all inner nodes also have a balanced weight. Generalization applies to the Scene Layer as a whole and the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.</p>
+
+
+I3S uses the discrete Level of Detail approach. The detail levels are bound to the index tree. 
+
+the <em>Discrete</em> LoD approach, where different Level of Details are bound to the different levels of the index tree. Typically, leaf nodes of such LoD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be. For each next lower level, the amount of data is typically reduced by employing methods such as texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning, so that all inner nodes also have a balanced weight. Generalization applies to the Scene Layer as a whole and the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.
 
 During navigation and traversal of the I3S tree nodes, clients must decide to either
 
-<ol>
-<li>discontinue traversal to node’s children if the node is not visible in the current 3D view; or</li>
-<li>use/render the data within a node if its quality is appropriate to the current 3D view and discontinue further traversal to children nodes; or to </li>
-<li>continue traversal until children nodes with better quality are found.</li>
-</ol>
+- 
+  discontinue traversal to node’s children if the node is not visible in the current 3D view; or
+
+- use/render the data within a node if its quality is appropriate to the current 3D view and discontinue further traversal to children nodes; or to 
+- continue traversal until children nodes with better quality are found.
+
 
 These decisions are made using the advertised values for lod selection metrics that are part of the information payload of the node. The I3S specification supports multiple <a href="#_4_4">LoD Selection Metrics</a> and permits different <a href="#_4_1">LoD Switching Models</a>. An example lod selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LoD rendering (LoD Switching Model) is referred to in I3S as <code>node-switching</code>.
 

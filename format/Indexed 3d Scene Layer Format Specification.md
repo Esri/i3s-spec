@@ -349,33 +349,11 @@ First, the bounding volume tree hierarchy is built based on the spatial distribu
 *Table 2: Example level of detail generation methods based on Scene Layer type*
 
 
-<h3><a name="_5_3">LoD Selection Metrics</a></h3>
+<h3><a name="_5_3">Level of Detail: Selection Metrics</a></h3>
 
-<p>A client needs information to determine whether a node's contents are "good enough" to
-render in the current 3D view under constraints such as resolution, screen size, bandwidth and available memory and target minimum quality goals. Multiple LoD selection metrics can be included, as in the following example:</p>
+Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality. 
 
-<pre><code>
-"lodSelection": [
-	{
-		"metricType": "maxScreenThreshold",
-		"maxError": 486.00
-	},
-	{
-		"metricType": "screenSpaceRelative",
-		"maxError": 0.0034  
-	},
-	{
-		"metricType": "distanceRangeFromDefaultCamera",
-		"maxError": 750.00  
-	}
-]
-</code></pre>
-
-<p>These metrics are used by clients to determine the optimal resource access patterns. Each I3S profile definition provides additional details on LoD Selection.</p>
-
-<p>
-<code> maxScreenThreshold</code>, the default lodSelection metric used for meshpyramids profile, is a per-node value for the maximum pixel size as measured in screen pixels. This value indicates the upper limit for the screen size of the diameter of the node's minimum bounding sphere (MBS). In other words, the content referenced by this node will qualify to be rendered only when the screen size is below the maximum screen threshold value. </p>
-
+See the the [Level of Detail Selection](docs/1.6/lodSelection.cmn.md") for more details.
 
 
 <h2><a name="_6">JSON Resources Schema and Documentation</a></h2>

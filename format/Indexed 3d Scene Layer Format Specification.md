@@ -237,15 +237,13 @@ The Array Buffer View controls geometry storage and comsumption representation. 
 
 Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
 
-See [Geometry](docs/1.6/geometry.cmn.md) section for more details.
+See the [Geometry](docs/1.6/geometry.cmn.md) section for more details.
 
 <h3><a name="_4_3">Textures</a></h3>
 
-Textures are stored as a binary resource associated with a node. The texture resource for a node contains the images that are used as textures for the features stored in the node. The mesh-pyramids profile supports either a single texture or a texture atlas per node.
+Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats like S3TC.  Authoring applications can provide additional texture formats using `textureEncoding` declarations. 
 
-By default, mesh-pyramids profile allow/support encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S specification supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as S3TC. In all cases, the specification provides flexibility by allowing authoring applications to provide additional texture formats via the <code>textureEncoding</code> declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding.  
-
-See <a href="#_6_6">Textures</a> section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
+See the [Textures](docs/1.6/texture.cmn.md) section for more details.
 
 <h3><a name="_4_4">Attribute Model and Storage </a></h3>  
 

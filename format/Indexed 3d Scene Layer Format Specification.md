@@ -282,7 +282,7 @@ I3S Layers can be used to represent input data that have multiple levels of deta
 
 A single I3S Layer can be created by combining all of the input level of detail information.  In this case, the height of the I3S Index Tree is fixed to the number of levels of detail present in the input.  Both the feature identities and geometries in each node are set based on the input data.  Using this strategy depends on the extent and the total number of detail levels.
 
-<h3><a name="_5_1">Level of Detail Switching Models</a></h3>
+<h3><a name="_5_1">Level of Detail: Switching Models</a></h3>
 
 Depending on the properties of a 3D layer, a good user experience will necessitate
 switching out the content for a node with the content of more detailed nodes.
@@ -295,15 +295,13 @@ Each interior node in the I3S tree has a set of features that represent the redu
 
 The feature IDs link the reduced level of detail feature and an interior node, as well as the descendant nodes.  Applications can determine the visual quality by using the I3S tree to display all of the features in an internal node or use the features found in its descendants. 
 
-<h3><a name="_5_2">Levels of Detail - Generation </a></h3>
+<h3><a name="_5_2">Level of Detail: Generation </a></h3>
 
-<p>Integrated Mesh layer types typically come with pre-authored Levels of Detail. For input data that does not come with pre-authored LoDs, different LoD generation models can be employed. For example, 3D Object layers based on the <code>Mesh-pyramids</code> profile may choose to create an LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features while preserving feature identity. The same approach can also be used with Integrated Mesh layers based on the <code>mesh-pyramid</code> profile - in this case there are no features and each node contains a generalized version of the mesh covered by its descendants.</p>
+Integrated Mesh layer types typically come with pre-authored levels of detail.  If the desired level of detail does not exist, it can be generated. 
 
-<p>
-The first step in the automatic LoD generation process is to build the I3S bounding volume tree hierarchy based on the spatial distribution of the 3D features. Once this has been completed generation of the reduced LoD content for interior nodes can proceed.</p>
-<p>
-As shown in Table 2 below, different models of LoD generation are applicable to different 3D layers.
-</p>
+For example, 3D Object Layers based on the mesh-pyramids profile can create a level of detail pyramid for all features based on generalizing, reducing and fusing the geometries of individual features while preserving feature identity. The same approach can also be used with Integrated Mesh Layers based on the mesh-pyramid profile.  In this case, there are no features and each node contains a generalized version of the mesh covered by its descendants.
+
+First, the bounding volume tree hierarchy is built based on the spatial distribution of the features.  The method used to create the levels depend on the Scene Layer type. 
 
 <table>
 	<tr>
@@ -316,7 +314,7 @@ As shown in Table 2 below, different models of LoD generation are applicable to 
 	</tr>
 	<tr>
 		<td><strong>Mesh-pyramids</strong></td>
-		<td>yes</td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -324,30 +322,31 @@ As shown in Table 2 below, different models of LoD generation are applicable to 
 	</tr>
 	<tr>
 		<td><strong>Thinning</strong></td>
-		<td>yes</td>
-		<td>yes</td>
-		<td>yes</td>
-		<td>yes</td>
-		<td>yes</td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
 	</tr>
 	<tr>
 		<td><strong>Clustering</strong></td>
-		<td>yes</td>
-		<td>yes</td>
-		<td>yes</td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
 		<td></td>
-		<td>yes</td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
 	</tr>
 	<tr>
 		<td><strong>Generalization</strong></td>
-		<td>yes</td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
 		<td></td>
-		<td>yes</td>
-		<td>yes</td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
+		<td align="middle"><img alt="supported" src="images/checkmark.png"></td>
 		<td></td>
 	</tr>
 </table>
-<p><em>Table 2: Different 3D Layer Types and the various models of LoD generation they can employ.</em></p>
+
+*Table 2: Example level of detail generation methods based on Scene Layer type*
 
 
 <h3><a name="_5_3">LoD Selection Metrics</a></h3>

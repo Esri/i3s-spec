@@ -226,27 +226,18 @@ Figure 2 below shows the node tree of an 3D Object Indexed Scene Layer with a me
 
 ![Figure 2: Example Nodes in a Mesh Pyramid](images/figure-02.png)
 
-*Figure 2: Example Nodes in a Mesh Pyramid*
+*Figure 2: Example 3D Object Indexed Scene Layer with a mesh pyramid profile*
 
 
 <h3><a name="_4_2">Geometry Model and Storage</a></h3>
 
-<p> All Scene Layer types make use of the same fundamental set of geometry types: </p>
-<ul>
-<li> points </li>
-<li> lines </li>
-<li> triangles </li>
-</ul>
+All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.
 
-<p>
-Geometries use binary storage and consumption representation, controlled by Array Buffer View geometry property declarations. I3s provides full control over those properties, such as per-vertex layout of components (e.g. position, normal and texture coordinates), in order to ensure the same pattern for face and vertex elements across the Scene Layer.
-</p>
+The Array Buffer View controls geometry storage and comsumption representation.  For example, the Array Buffer View can be used require per-vertex layout of components.  This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer.
 
-<p>I3S supports storage of triangle meshes via <em>triangles</em> geometry type.</p>
+Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
 
-<p>Both 3D Object as well as Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.</p>
-
-See <a href="#_6_7">Geometry</a> section for more discussion on the geometry format and storage models.
+See [Geometry](docs/1.6/geometry.cmn.md) section for more details.
 
 <h3><a name="_4_3">Textures</a></h3>
 

@@ -1,15 +1,15 @@
-# I3S building scene layer: Values
+# I3S point cloud scene layer: Values
 
-A string or numeric value.
+A scalar or vector value.
 
 ### Related:
 
-[cmn::statsInfo](statsInfo.cmn.md)
+[pcsl::stats](stats.pcsl.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **value** | string, number | Type of the attribute values after decompression, if applicable. Please note that `string` is not supported for point cloud scene layer attributes. |
+| **value** | number | Type of the attribute values after decompression, if applicable. Please note that `string` is not supported for point cloud scene layer attributes. |
 | **count** | number | Count the number of values. May exceed 32 bit. |
 
 *Note: properties in **bold** are required*

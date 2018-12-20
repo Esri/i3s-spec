@@ -52,7 +52,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 </ol>
 
 
-<h2><a name="_1">I3S Design Principles</a></h2>
+# I3S Design Principles
 
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 
@@ -71,7 +71,7 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 </ol>
 
 
-<h2><a name="_2">3D Scene Layer</a></h2>
+# 3D Scene Layer
 
 A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data and allow them the flexibility to visualize it according to their needs.  The definition of "data" in this case includes the geometry, attributes, and vertex geometry. 
 
@@ -133,11 +133,10 @@ Layer types with the same profile can be leveraged to support different use case
   <td>Yes</td>
  </tr>
  </table>
+*Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles*
 
-<p><em>Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles</em></p>
 
-
-<h2><a name="_3">Coordinate Reference Systems (CRS)</a></h2>
+## Coordinate Reference Systems (CRS)
 
 The Coordinate Reference System of the Indexed 3D Scene Layer should be selected with the following considerations:
 
@@ -163,7 +162,7 @@ All I3S layers indicate the coordinate system via the `spatialReference` propert
 
 The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> object is common to all i3s profile types.
 
-<h3><a name="_3_1">Height Models</a></h3>
+### Height Models
 
 The I3S standard allows either ellipsoidal or orthometeric vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications, including those where the definition of elevation and height is important.  
 
@@ -174,11 +173,11 @@ The 3dSceneLayerInfo resource includes a coarse metadata property called `height
 See the [3DSceneLayerInfo](docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](docs/1.6/heightModelInfo.cmn.md) pages for more details.
 
 
-<h2><a name="_4">Indexed Scene Layers - Organization and Structure</a></h2>
+## Indexed Scene Layers - Organization and Structure
 
 I3S organizes information using a hierarchical, node-based spatial index.  Each node contains features with geometry, textures and attributes. 
 
-<h3><a name="_4_1">I3S - Indexing Model and Tree Structure</a></h3>
+### I3S - Indexing Model and Tree Structure
 
 Indexing allows fast access to data blocks. In an Indexed 3D Scene Layer, the spatial extent of the data is split into regions called *nodes*.  Each node has roughly equivalent amounts of data and is organized hierarchically.  The node index allows clients to efficiently determine which data it needs, and allows the server to quickly locate it.  Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node. 
 
@@ -229,7 +228,7 @@ Figure 2 below shows the node tree of an 3D Object Indexed Scene Layer with a me
 *Figure 2: Example 3D Object Indexed Scene Layer with a mesh pyramid profile*
 
 
-<h3><a name="_4_2">Geometry Model and Storage</a></h3>
+### Geometry Model and Storage
 
 All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.
 
@@ -239,7 +238,7 @@ Both 3D Object and Integrated Mesh layer types model geometries as triangle mesh
 
 See the [Geometry](docs/1.6/geometry.cmn.md) section for more details.
 
-<h3><a name="_4_3">Textures</a></h3>
+### Textures
 
 Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats like S3TC.  Authoring applications can provide additional texture formats using `textureEncoding` declarations. 
 
@@ -257,14 +256,17 @@ I3S supports two ways to access attribute data.  They can be accessed through
 
 Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
 
-
 See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
-<h2><a name="_5">Level of Detail (LoD)</a></h2>
+## Oriented Bounding Box
+
+
+
+## Level of Detail (LoD)
 
 Scene Layers include Levels of Detail that apply to the whole layer and summarize layer information.  They are similar to image pyramids or raster vector tiling schemes.  Scene Layers support levels of detail that preserve the identity of individual features across all detail levels. Levels of Detail can be used to split heavy features, thin or cluster for better visuals, and integrate externally authored files.
 
-<h4>Discrete Level of Detail</h4>
+### Discrete Level of Detail
 
 Discrete Levels of Detail are used to provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer the node is the the root, the lower the level of detail. The detail is can reduced by texture thinning, down-sampling, feature reduction, mesh reduction, or clustering in order to ensure inner nodes have a balanced weight.  The number of discrete levels of detail for the layer corresponds to the number of levels in the index tree.
 
@@ -276,18 +278,13 @@ When navigating the I3S tree nodes, clients must determine how to interpret an u
 
 I3S supports multiple level of detail selection metrics and switching level of detail models.  Metadata about the level of detail generation processed used can be optionally included in the Scene Layer. 
 
-<h4>Levels of Detail with Multiple Representations</h4>  
+### Levels of Detail with Multiple Representations 
 
 I3S Layers can be used to represent input data that have multiple levels of detail. The most common method is to represent each input level of detail as its own I3S Layer with visibility thresholds.  The thresholds can capture the range of distances for which the layer should be used.  A set of I3S Layers that represent a single model can be grouped within the same I3S service. For each layer within the set, the features in the leaf nodes represent the modeled features at the level of detail of the input. Additionally automatically generated detail levels can be generated by extending the viewing range of each input level. 
 
 A single I3S Layer can be created by combining all of the input level of detail information.  In this case, the height of the I3S Index Tree is fixed to the number of levels of detail present in the input.  Both the feature identities and geometries in each node are set based on the input data.  Using this strategy depends on the extent and the total number of detail levels.
 
-<h3><a name="_5_1">Level of Detail: Switching Models</a></h3>
-
-Depending on the properties of a 3D layer, a good user experience will necessitate
-switching out the content for a node with the content of more detailed nodes.
-
-<h4>Node Switching</h4>
+### Level of Detail: Switching Models
 
 Node switching allows clients to focus on the display of a node as a whole.  A node switch occurs when the content from a node's children is used to replace the content of an existing node.  This can include features, geometry, attributes and textures. Node switching can be helpful when the user needs to see more detailed information. 
 
@@ -295,7 +292,7 @@ Each interior node in the I3S tree has a set of features that represent the redu
 
 The feature IDs link the reduced level of detail feature and an interior node, as well as the descendant nodes.  Applications can determine the visual quality by using the I3S tree to display all of the features in an internal node or use the features found in its descendants. 
 
-<h3><a name="_5_2">Level of Detail: Generation </a></h3>
+### Level of Detail: Generation 
 
 Integrated Mesh layer types typically come with pre-authored levels of detail.  If the desired level of detail does not exist, it can be generated. 
 
@@ -349,19 +346,16 @@ First, the bounding volume tree hierarchy is built based on the spatial distribu
 *Table 2: Example level of detail generation methods based on Scene Layer type*
 
 
-<h3><a name="_5_3">Level of Detail: Selection Metrics</a></h3>
+### Level of Detail: Selection Metrics
 
 Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality. 
 
 See the the [Level of Detail Selection](docs/1.6/lodSelection.cmn.md") for more details.
 
 
-<h2><a name="_6">JSON Resources Schema and Documentation</a></h2>
+## JSON Resources
 
-This section provides a detailed, logical-level specification for each of the
-resource types.   
-
-<h4>Basic value types</h4>
+### Basic value types
 
 Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
 

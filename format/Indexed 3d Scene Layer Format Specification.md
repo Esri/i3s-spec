@@ -73,7 +73,7 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 
 <h2><a name="_2">3D Scene Layer</a></h2>
 
-A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data, and allow them the flexibility to visualize it according to their needs.  The definition of "data" in this case includes the geometry, attributes, and vertex geometry. 
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data and allow them the flexibility to visualize it according to their needs.  The definition of "data" in this case includes the geometry, attributes, and vertex geometry. 
 
 A Scene Layer is characterized by a combination of layer type and profile. The *layer type* describes the kind of geospatial data stored within it. The *layer profile* is exposed to clients and includes additional details on the specific I3S implementation. 
 
@@ -139,7 +139,7 @@ Layer types with the same profile can be leveraged to support different use case
 
 <h2><a name="_3">Coordinate Reference Systems (CRS)</a></h2>
 
-The Coordinate Refrence Systetm of the Indexed 3D Scene Layer should be selected with the following considerations:
+The Coordinate Reference System of the Indexed 3D Scene Layer should be selected with the following considerations:
 
 - Minimize the need for re-projection on the client side
 - Render in both projected and geodetic coordinate reference systems
@@ -157,7 +157,7 @@ To support these considerations, I3S has the following implementation requiremen
 3. The axis order is independent of the Coordinate Reference System.  It will always use the Easting, Northing, Elevation (X, Y, Z) axis order. The Z axis always points up towards the sky.
 
 
-All I3S profiles support writng 3D content in two modes: global and local. In global mode, only European Petroleum Survey Group (EPSG) code 4326 (WGS84) is supported for both index and vertex positions.  It is represented using longitude, latitude, elevation. In local mode, all geodetic Coordiante Reference Systems, including cartesian coordinate systems, are allowed. Both index and position vertex must have the same Coordiate Reference System.
+All I3S profiles support writing 3D content in two modes: global and local. In global mode, only European Petroleum Survey Group (EPSG) code 4326 (WGS84) is supported for both index and vertex positions.  It is represented using longitude, latitude, elevation. In local mode, all geodetic Coordinate Reference Systems, including cartesian coordinate systems, are allowed. Both index and position vertex must have the same Coordinate Reference System.
 
 All I3S layers indicate the coordinate system via the `spatialReference` property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.
 
@@ -167,103 +167,66 @@ The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> 
 
 The I3S standard allows either ellipsoidal or orthometeric vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications, including those where the definition of elevation and height is important.  
 
-At version 1.5, I3S added support for a vertical coordinate systems. The Well-known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The `spatialReference` property also includes a Well-known Id (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designated the height model.
+At version 1.5, I3S added support for a vertical coordinate systems. The Well-known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The `spatialReference` property also includes a Well-known Id (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
 
 The 3dSceneLayerInfo resource includes a coarse metadata property called `heightModelInfo`, which client applications can use to identify if the layer's height model is either orthometric or ellipsoidal.  
 
-See the [3DSceneLayerInfo] and [heightModelInfo] pages for more details.
+See the [3DSceneLayerInfo](docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](docs/1.6/heightModelInfo.cmn.md) pages for more details.
 
 
 <h2><a name="_4">Indexed Scene Layers - Organization and Structure</a></h2>
 
-<p> I3S organizes information using a hierarchical, node-based spatial index structure in which each node’s payload may contain features with associated geometry, textures and attributes. The following sections define this structure.</p>
+I3S organizes information using a hierarchical, node-based spatial index.  Each node contains features with geometry, textures and attributes. 
 
 <h3><a name="_4_1">I3S - Indexing Model and Tree Structure</a></h3>
 
-<p>
-The purpose of any index is to allow fast access to blocks of
-relevant data. In an Indexed 3D Scene layer, the spatial extent of the data is split into regions, called <code>nodes</code>,
-with roughly equal amounts of data, and organized into a hierarchical and navigable data structure - the
-index - that allows  the client to quickly discover which data it
-actually needs and the server to quickly locate the data requested by any client.
-Node creation is capacity driven - the smaller the node capacity is, typically the smaller
-the spatial extent of each node will be.  
-</p>
+Indexing allows fast access to data blocks. In an Indexed 3D Scene Layer, the spatial extent of the data is split into regions called *nodes*.  Each node has roughly equivalent amounts of data and is organized hierarchically.  The node index allows clients to efficiently determine which data it needs, and allows the server to quickly locate it.  Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node. 
 
-<p>
-I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. Quadtrees and Octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree exposed as web resources. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume tree hierarchy (BVH). Each node has an address and nodes may be thought of as equivalent to tiles.  
-</p>
+Any indexing model can be used to generate indices in I3S.  Both regular partitioning of space (e.g. Quadtrees) and density dependent partitioning of space (e.g. R-Trees) are supported.  The partitioning scheme is not exposed to clients.  This partition results in a hierarchical subdivision of 3D space represented by nodes, which are further organized in a bounding volume tree hierarchy (BVH).
 
-<p>
-All Nodes have an ID that is unique within a layer. There are two types of Node ID formats supported by I3S: As string based identifier, referred here to as <i>treekeys</i>, or as integers based on a fixed linearization of the nodes.  
-</p>
+Each node has an ID that is unique within a layer.  I3S supports two types of nodes: *treekeys* and integers.  Treekeys are a string based identifier.  Integer IDs are base on a fixed linearization of the nodes. 
 
-<p>
-In the <i>treekey</i> format, which is loosely modeled on binary search tree concept, the key value is used to indicate both the level and sibling association of a given node, the key directly indicates the position of the node in the tree, allowing sorting of all resources on a single dimension. Treekeys are strings in which levels are separated by dashes:
-"3-1-0" has 3 numeric elements, hence the node is on level 4 ("root" node is at level 1) and the node "3-1" is its parent.  
-The root node always gets ID <code>"root"</code>. An example of this numbering pattern is shown in Figure 1 below.</p>
+The treekey format is loosely modeled on binary search tree concept.  The key value indicates both the level and sibling association of a given node.  The key also indicates the position of the node in the tree, allowing sorting of all resources on a single dimension. 
 
-<div>
-<img src="images/figure-01.png" title="A sample Index Tree with Treekeys" alt="A sample Index Tree with Treekeys">
-<p><em>Figure 1: A sample Index Tree with Treekeys</em></p>
-</div>
+Treekeys are strings in which levels are separated by dashes.  The root node is at level 1 always gets ID `root`.  
 
+For example, take the node with treekey "3-1-0".  Since it has 3 numeric elements 3, 1 and 0, it can be concluded that the node is on level 4.  The parent node has Treekey  "3-1". 
 
-<p>The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the BVH tree topology for the node, in addition to the node’s bounding volume and meta-data used for [LoD Switching](<a name="_4_1">LoD Switching Models</a>) metrics. This resource allows for tree traversal without the need to  access the more voluminous content associated with a node (geometry, texture, attributes). The decision to render a node by the client application is based on its bounding-volume visibility in the current 3D view. Once the node's bounding volume is determined to be within the current 3D view of the application, then further evaluation is performed by the client app to determine the visual quality of the node. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.</p>
+![Figure 1: A sample index tree using Treekeys](images/figure-01.png)
 
-<p>The standard supports both minimum bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.</p>
+*Figure 1: A sample index tree using Treekeys*
 
-<p>Each interior node logically contains or covers the set of information covered by the nodes below it and participates in a path to the leaf nodes below it. Interior nodes may contain generalized or reduced representation of the information contained in descendant nodes.
-</p>
+Each node covers the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
 
-<p>
-The I3S format models node information using a set of resources - Node Index Documents, Feature Data, Geometry, Attributes, Textures and Shared Descriptors, all of which together represent the set of features or data elements for a given node. These resources are always attached to a node.</p>
-<ul>
-<li>The Node Index Document is a lightweight resource representing a node, its topology within the tree and includes references to other sub-resources. </li>
-<li> The Feature Data sub-resource for a node is a text resource that contains the identifiers for the set of features within a node. It can store the geometry and attributes for all of the features in the node either by value or as references into the geometry and attribute sub-resources for the node.</li>
-<li> The Geometry, Attribute and Texture sub-resources describe the geometry, attribute and texture for the node.  Geometry and attribute sub-resources represent the geometries and attributes of all of the features within the node and include the identifiers of the owning features within the node as well as the mapping between individual feature identifiers and their geometry segments.  Vertices within the geometry contain the appropriate texture coordinates. </li>
-</ul>
-</p>
+Nodes include `NodeIndexDocument`, `FeatureData`, `geometry`, `attribures`, and `SharedResource`.  
 
+- [Node Index Document](docs/1.6/3DSNodeIndexDocument.cmn.md): a lightweight resource that represents a node, its topology, and other sub-resources.
+- [Feature Data](docs/1.6/featureData.cmn.md): a text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference. 
+- [Geometry](docs/1.6/geometry.cmn.md): the geometries of the features, the identifiers of the owning features, the mapping between individual feature their geometry segments
+- [Attribute](docs/1.6/attributeStorageInfo.cmn.md): describes the structure of the binary attribute data
+- [Texture](docs/1.6/textureDefinition.cmn.md): describes how a feature is to be rendered
+- [Shared Resource](docs/1.6/sharedResource.cmn.md): models or textures that can be shared among features within the same layer
 
-<p>
-An I3S profile can choose between a single text-based feature-data sub-resource that contains all geometry and attribute information (e.g. <em>Point</em> profile), or separate, binary and self-contained geometry and attribute sub-resources (e.g. <em>mesh-pyramids</em> profile). Applications accessing the latter do not need to first fetch the feature-data resource in order to interpret them.
-</p>
+An I3S profile uses either a single text-based subresources or separate binary subresources.  The text-based resources contain all the geometry an attribute information (e.g. Point profile).  The separate binary subresources have self-contained geometry and attribute subresources (e.g. mesh pyraminds). Applications that use the separate binary subresources do not need to fetch the feature data in order to interpret them.  
 
+Each node has exactly one `NodeIndexDocument` and one `SharedDescirptors` document. The `FeatureData`, `geometry`, and `attribures` can be bundled to help optimize network transfer and client side reactivity.  This helps balance index size and feature splitting with optimal network usage. 
 
-<div>
-<img src="images/figure-02.png" title="Structure of a single Node and attached resources" alt="Structure of a single Node and attached resources.">
-<p>Figure 2: Nodes and their attached resources.</p>
-</div>
+There are always an equal number of `FeatureData` and `geometry` resources.  Each set contains
+the corresponding data elements to render a complete feature.  In order to avoid dependency on the `FeatureData` document, the geometry data is directly available as a binary resource.  The geometry data includes all vertex attributes, feature counts, and mesh segmentation.
 
-<p>Per node, there is exactly one Node Index Document and one Shared Descriptors resource document. FeatureData, Geometry, Texture and Attribute resources can be split into bundles for optimal network transfer and client-side reactivity. This allows balancing between index size, feature splitting (with a relatively large node capacity between 1MB and 10MB)
-and optimal network usage (with a smaller bundle size, usually in the range of
-64kB to 512kB).</p>
+Figure 2 below shows the node tree of an 3D Object Indexed Scene Layer with a mesh pyramid profile.
 
-<p>There are always an equal number <em>n</em> of FeatureData and Geometry resources, and each set contains
-the corresponding data elements to be able to render a complete feature.  Optimal access to all required properties of the geometry data, including the feature to geometry mapping, is available directly from the binary <em>geometry</em> data resource, avoiding unnecessary dependency on the FeatureData document. All vertexAttributes (including position, normal, texture coordinates and color), vertex and feature counts, and mesh segmentation information (faceRanges) are also readily accessible from the <em>geometry</em> resource. </p>
+- `Nodes` are in green circles
+- `node identifiers` are in dark blue rectangles above each node
+- `features` are in orange rectangles within each node.  The numbers in the rectangle are the feature identifiers.
+- `geometry` is in turquoise rectangles. Each geometry resource is an array of geometries, which includes mesh-segmentation information and the feature identifier. 
+- Each node is connected to its children with a green line. 
+- The attribute and texture resources are omitted from the figure for clarity. They follow a similar storage model to geometry.
+- Feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer represented within its payload.
 
-<div>
-<img src="images/figure-03.png" title="The content of a single I3S Node" alt="The content of a single I3S Node.">
-<p>Figure 3: This diagram illustrates the content of an I3S node as stored in its node index document. </p>
-</div>
+![Figure 2: Example Nodes in a Mesh Pyramid](images/figure-02.png)
 
-
-<p>Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. In the figure:</p>
-<ul>
-<li><code>Nodes</code> are in green, where the hyphenated numbers within the blue boxes represent the identifier or address for each node.</li>
-<li>The orange boxes indicate the <code>features</code> explicitly represented within the node, where the numbers within the box represent feature identifiers.</li>
-<li>Each node has associated geometry, texture and attribute resources that compactly store the <code>geometries</code>, <code>attributes</code> and <code>textures</code> of all of the features explicitly represented by the node, as typed arrays and texture atlases.</li>
-<li>The turquoise boxes show the <code>geometry</code> resource associated with each node. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual feature's range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding.</li>
-<li>Though both attribute and texture resources are omitted from the figure for clarity, it is worth noting that the attribute of all features of a given node are also stored as <code>attribute</code> resource of the node, following a similar storage model.</li>
-<li>Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. </li>
-<li>The figure also illustrates the case where feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.</li>
-</ul>
-
-<div>
-<img src="images/figure-04.png" title="Example Nodes in Mesh Pyramid" alt="Example Nodes in Mesh Pyramid">
-<p><em>Figure 4: Example Nodes in a Mesh Pyramid.  Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys.</em></p>
-</div>
+*Figure 2: Example Nodes in a Mesh Pyramid*
 
 
 <h3><a name="_4_2">Geometry Model and Storage</a></h3>

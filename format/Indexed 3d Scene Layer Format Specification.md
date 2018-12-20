@@ -56,19 +56,18 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 
 The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
 
-<ol>
-	<li><strong>User Experience first:</strong> Provide a positive user experience, including high interactivity and fast display.</li>
-	<li><strong>Scalability:</strong> Support very large scene layers, including scenes with a global extent and many detailed features.</li>
-	<li><strong>Reusability:</strong> Use as a service delivery format, storage format, and exchange format.</li>
-	<li><strong>Level of Detail:</strong> Support multiple detail levels.</li>
-	<li><strong>Distribution:</strong> Allow efficient distribution of very large data sets.</li>
-	<li><strong>User-controllable symbology:</strong> Support efficient rendering of client-side symbology and styling.</li>
-	<li><strong>Extensibility:</strong> Support new layer types, new geometry types, and new platforms.</li>
-	<li><strong>Web Friendliness:</strong> Provide easy to handle data using JSON and current web standards.</li>
-	<li><strong>Compatibility:</strong> Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and on-premises servers.</li>
-	<li><strong>Declarative:</strong> Communicate clearly to minimize the amount of required domain knowledge to support the format.</li>
-	<li><strong>Follow REST/JSON API best practices:</strong> Provide navigable links to all resources.</li>
-</ol>
+- **User Experience First**: Provide a positive user experience, including high interactivity and fast display.
+- **Scalability**: Support very large scene layers, including scenes with a global extent and many detailed features.
+- **Reusability**: Use as a service delivery format, storage format, and exchange format.
+- **Level of Detail**: Support multiple detail levels.
+- **Distribution**: Allow efficient distribution of very large data sets.
+- **User-controllable symbology**: Support efficient rendering of client-side symbology and styling.
+- **Extensibility**: Support new layer types, new geometry types, and new platforms.
+- **Web Friendliness**: Provide easy to handle data using JSON and current web standards.
+- **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and on-premises servers.
+- **Declarative**: Communicate clearly to minimize the amount of required domain knowledge to support the format.
+- **Follow REST/JSON API Best Practices:** Provide navigable links to all resources.
+
 
 
 # 3D Scene Layer
@@ -136,7 +135,7 @@ Layer types with the same profile can be leveraged to support different use case
 *Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles*
 
 
-## Coordinate Reference Systems (CRS)
+### Coordinate Reference Systems (CRS)
 
 The Coordinate Reference System of the Indexed 3D Scene Layer should be selected with the following considerations:
 
@@ -171,6 +170,7 @@ At version 1.5, I3S added support for a vertical coordinate systems. The Well-kn
 The 3dSceneLayerInfo resource includes a coarse metadata property called `heightModelInfo`, which client applications can use to identify if the layer's height model is either orthometric or ellipsoidal.  
 
 See the [3DSceneLayerInfo](docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](docs/1.6/heightModelInfo.cmn.md) pages for more details.
+
 
 
 ## Indexed Scene Layers - Organization and Structure
@@ -244,7 +244,7 @@ Textures are stored as a binary resource with a node. The texture resource conta
 
 See the [Textures](docs/1.6/texture.cmn.md) section for more details.
 
-<h3><a name="_4_4">Attribute Model and Storage </a></h3>  
+### Attribute Model and Storage 
 
 I3S supports two ways to access attribute data.  They can be accessed through  
 
@@ -258,7 +258,9 @@ Clients can use either method if the attributes are cached. The attribute values
 
 See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
-## Oriented Bounding Box
+
+
+## Oriented Bounding Box (OBB)
 
 
 
@@ -278,7 +280,7 @@ When navigating the I3S tree nodes, clients must determine how to interpret an u
 
 I3S supports multiple level of detail selection metrics and switching level of detail models.  Metadata about the level of detail generation processed used can be optionally included in the Scene Layer. 
 
-### Levels of Detail with Multiple Representations 
+### Levels of Detail: Multiple Representations 
 
 I3S Layers can be used to represent input data that have multiple levels of detail. The most common method is to represent each input level of detail as its own I3S Layer with visibility thresholds.  The thresholds can capture the range of distances for which the layer should be used.  A set of I3S Layers that represent a single model can be grouped within the same I3S service. For each layer within the set, the features in the leaf nodes represent the modeled features at the level of detail of the input. Additionally automatically generated detail levels can be generated by extending the viewing range of each input level. 
 
@@ -353,24 +355,25 @@ Selection metrics help clients determine the which level of detail to render.  F
 See the the [Level of Detail Selection](docs/1.6/lodSelection.cmn.md") for more details.
 
 
+
+
 ## JSON Resources
 
-### Basic value types
+### Supported Data Types
 
-Value schemas are used to ensure that the content of a JSON property follows a fixed pattern. The set of schemas that currently need to be supported is:
+A value schema ensures that the JSON properties follow a fixed pattern and support the following data types
 
-<ul>
-<li><strong>String</strong>: An utf8 String.</li>
-<li><strong>Float</strong>: A Float64 number with an optional fractional component, such as "1.02" or "1.0".</li>
-<li><strong>Integer</strong>: An Int32 number without a fractional component, such as "234".</li>
-<li><strong>UUID</strong>: A canonical hexadecimal UUID, such as "550e8400-e29b-41d4-a716-446655440000".</li>
-<li><strong>Date</strong>: An ISO 8601 timestamp YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone, such as "2009-01-01T12:00:00.000Z".</li>
-<li><strong>URL</strong>: Any resolvable, relative or absolute, URL, such as "../Node/51/sharedResource".</li>
-<li><strong>Pointer</strong>: Any resolvable reference to an object in a JSON document, consisting of a relative or absolute URL and a document path, such as [../Node/51/sharedResource]/materialDefinitions/Mat01 .</li>
-<li><strong>NodeID</strong>: A treekey string such as “3-0-34-234-2” that is zero-based (first child is "0", root node is "root").</li>
-</ul>
+- **String**
+- **Float**
+- **Integer**
+- **UUID**: A hexadecimal universally unique identifier
+- **Date**: An ISO 8601 timestamp YYYY-MM-DDThh:mm:ss.sTZD
+- **URL**: Both relative and absolute
+- **Pointer**: Any reference to an object in a JSON document, consisting of a URL and a document path
+- **NodeID**: A treekey string that is zero-based (first child is "0", root node is "root")
 
-<h4>Pointers</h4>
+
+### Pointers
 
 <p>I3S uses the following Pointer syntax whenever a specific property in the current or another document is to be referenced.
 The Pointer consists of two elements :</p>

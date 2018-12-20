@@ -247,18 +247,18 @@ See the [Textures](docs/1.6/texture.cmn.md) section for more details.
 
 <h3><a name="_4_4">Attribute Model and Storage </a></h3>  
 
-I3S supports the following two patterns of accessing the attribute data:  
+I3S supports two ways to access attribute data.  They can be accessed through  
 
-<ol>
-	<li>From optional paired services that expose query-able and updatable RESTful endpoints that enable direct access to dynamic source data, including attributes. The query in this case uses the unique feature-ID key – which is always maintained within each node and is also available as part of the descriptor for any segmented geometry.</li>
-	<li>From fully cached attribute information, in binary form, within I3S store.
-	I3S clients can still choose to use both of these modes even if the attributes are fully cached within I3S store.</li>
-</ol>
+1. Optional paired services with REST endpoints 
+   - Enabled direct access to source data
+   - The query uses the unique feature ID key
+2. Fully cached attribute information within the I3S store
+   - Binary storage representation, which provides a significant performance benefit.
 
-Cached Attributes use binary storage representation based on Array Buffers which provide significant performance benefits relative to method 1. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays.  
+Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
 
 
-See <a href="#_6_8">AttributeData</a> section for more on texture format, texture coordinate, texture atlas usage and regions discussion.  
+See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
 <h2><a name="_5">Level of Detail Concept</a></h2>
 

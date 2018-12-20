@@ -260,14 +260,9 @@ Clients can use either method if the attributes are cached. The attribute values
 
 See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
-<h2><a name="_5">Level of Detail Concept</a></h2>
+<h2><a name="_5">Level of Detail (LoD)</a></h2>
 
-The concept of Level of Detail (LoD) is intrinsic to the specification. Scene Layers may include levels of detail that apply to the layer as whole and serve to generalize or summarize information for the layer, similar to image pyramids and also similar to raster and vector tiling schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene layers support levels of detail in a manner that preserves the identity of the individual features that are retained within any level of detail.
-
-Level of Detail with this format specification covers several use cases,
-including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization as well as support for representing externally authored multiple LoDs.
-
-Note that the I3S Level of Detail concept  is orthogonal to the concept of consolidated storage for a set of geometries within a level of detail, based on for example the concatenation of geometries/meshes into larger geometry collections/meshes to assist in optimal rendering. In all such cases the consolidated storage makes use of Geometry Array Buffers that provide access to individual geometries when needed, and include the preservation of feature to geometry element mapping within the consolidated geometries.
+Scene Layers include Levels of Detail that apply to the whole layer and summarize layer information.  They are similar to image pyramids or raster vector tiling schemes.  Scene Layers support levels of detail that perserve the identity of individual features across all detail levels. Levels of Detail can be used to split heavy features, thin or clustser for better visuals, and integrate externally authored LoDs. 
 
 <h4>Discrete LoDs</h4>
 

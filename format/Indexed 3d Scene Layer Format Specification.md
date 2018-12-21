@@ -392,9 +392,7 @@ The SceneServiceInfo is a JSON file that describes the capability and data sets 
 
 ### Class SceneServiceInfo
 
-The Class SceneServiceInfo is the major object in the SceneServiceInfo document.
-There SHALL always be exactly one SceneServiceInfo object in the document, which
-describes a an active SceneService instance.  
+The Class SceneServiceInfo describes an active SceneService instance.  There is exactly one SceneServiceInfo object in a document. 
 
 
 <table>
@@ -416,7 +414,7 @@ describes a an active SceneService instance.
 	<tr>
 		<td>supportedBindings</td>
 		<td>String[1..*]</td>
-		<td>the list of bindings, should we ever need to add new bindings in addition to the REST binding initially supported</td>
+		<td>the list of bindings</td>
 	</tr>
 	<tr>
 		<td>supportedOperations</td>
@@ -430,9 +428,10 @@ describes a an active SceneService instance.
 	</tr>
 </table>
 
-<p><em>Table 3: Attributes of the Class <strong>SceneServiceInfo</strong> within the SceneServiceInfo document</em></p>
+*Table 3: Attributes of the Class SceneServiceInfo within the SceneServiceInfo document*
 
-<h3><a name="_6_2">3dSceneLayerInfo</a></h3>
+
+### 3dSceneLayerInfo
 
 The Class 3dSceneLayerInfo describes the properties of a single
 layer in a store, including the default symbology, as specified in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>, which contains stylization information for a feature layer.

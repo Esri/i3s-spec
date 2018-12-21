@@ -532,24 +532,13 @@ Point clouds have a different index scheme. See [point cloud index scheme](docs/
 
 ### Class DrawingInfo
 
-DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. When the *DrawingInfo* object is present in the <code>3dSceneLayerInfo</code> Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers, also allow capturing the *DrawingInfo* object as part of the binary I3S representation, in support of applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the <code>CachedDrawingInfo</code> Class, indicating the component of the *DrawingInfo* object that's captured as part of the binary I3S representation.  
+DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
 
-The Class DrawingInfo has the following structure:
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>renderer</td>
-		<td>DrawingInfo::Renderer</td>
-		<td>The renderer object encapsulates the drawing information of the layer.</td>
-	</tr>
-</table>
-<p><em>Table 9: Attributes of the Class <strong>DrawingInfo</strong> within the 3dSceneLayerInfo document</em></p>
+When the DrawingInfo object is present in the 3dSceneLayerInfo Class, a client application may symbolize an I3S layer by utilizing the Renderer information.  The DrawingInfo can alternativly be captured in the Scene Layer as part of the binary I3S representation in order to support applications that may not be able to override the symbology in a layer.  In this case, the DrawingInfo is described in the CachedDrawingInfo class. 
 
-<h4>Class Renderer</h4>
+See [drawing info](docs/1.6/drawingInfo.cmn.md) for more details.
+
+### Class Renderer
 
 <p>The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol and any label or descriptions associated with it.</p>
 

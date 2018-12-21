@@ -809,70 +809,21 @@ Instead of owning a Geometry exclusively, a Feature can also reference a Geometr
 
 See [geometry reference params](docs/1.6/geometryReferenceParams.cmn.md) for more details.
 
-<h4>Class VestedGeometryParams</h4>
+### Class VestedGeometryParams
 
-<p>This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry.</p>
+This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>String</td>
-		<td>The primitive type of the geometry defined through a VestedGeometryParams object. One of {*triangles*, lines, points}</td>
-	</tr>
-	<tr>
-		<td>topology</td>
-		<td>TopologyType</td>
-		<td>Declares the typology of embedded geometry attributes or those in a geometry resources. One of {"PerAttributeArray", "InterleavedArray", "Indexed"}. When "Indexed", the indices (faces) must also be declared.</td>
-	</tr>
-	<tr>
-		<td>vertexAttributes</td>
-		<td>VertexAttribute[1..*]</td>
-		<td>A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions.
-		While there are standard keywords such as <code>position</code>, <code>uv0..uv9</code>, <code>normal</code> and <code>color</code>, this is an open, extendable list.</td>
-	</tr>
-	<tr>
-		<td>faces</td>
-		<td>FaceAttribute[0..*]</td>
-		<td>A list of Face Attributes, such as indices to build faces, and their definitions.
-		While there are standard keywords such as <code>position</code>, <code>uv0..uv9</code>, <code>normal</code> and <code>color</code>, this is an open, extendable list.</td>
-	</tr>
-</table>
+See [vested geometry params](docs/1.6/vestedGeometryParams.cmn.md) for more details.
 
-<p><em>Table 26: Attributes of the Class <strong>VestedGeometryParams</strong> within the FeatureData document</em></p>
+### Class SingleComponentParams
 
-<h4>Class SingleComponentParams</h4>
+Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.
 
-<p>Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.</p>
+See [single component params](docs/1.6/singleComponentParams.cmn.md) for more details.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>material</td>
-		<td>URI</td>
-		<td>I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.</td>
-	</tr>
-	<tr>
-		<td>texture</td>
-		<td>URI</td>
-		<td>I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.</td>
-	</tr>
-</table>
+### Class Component
 
-<p><em>Table 27: Attributes of the Class <strong>SingleComponentParams</strong> within the FeatureData document</em></p>
-
-<h4><Class Component</a></h4>
-
-<p>Component objects provide information on parts of the geometry they
-belong to, specifically with which material and texture to render them.</p>
+Component objects provide information on parts of the geometry they belong to, specifically with which material and texture to render them.
 
 <table>
 	<tr>
@@ -904,62 +855,20 @@ belong to, specifically with which material and texture to render them.</p>
 
 <p><em>Table 28: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
 
-<h4>Class GeometryAttribute</h4>
+### Class GeometryAttribute
 
-<p>Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and
-FaceAttributes. While the first describe properties that are valid for a single
-vertex, the second are used to describe faces and other structures by providing
-a set of indices. As an example, the <code>faces.position</code> index attribute is used to define
-which vertex positions make up a face.</p>
+Each GeometryAttribute object is an accessor (i.e. a view) into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex.  FaceAttributes describe faces and other structures by providing a set of indices. For example, the `faces.position` index attribute defines which vertex positions make up a face.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>byteOffset</td>
-		<td>Integer</td>
-		<td>The starting byte position where the required bytes begin. Only used with the Geometry <code>"type": "ArrayBufferView"</code>.</td>
-	</tr>
-	<tr>
-		<td>count</td>
-		<td>Integer</td>
-		<td>The number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read. Only used with the Geometry <code>"type": "ArrayBufferView"</code>.</td>
-	</tr>
-	<tr>
-		<td>valueType</td>
-		<td>String</td>
-		<td>The element type, from <code>{UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64}</code></td>
-	</tr>
-	<tr>
-		<td>valuesPerElement</td>
-		<td>short</td>
-		<td>The number of values need to make a valid element (such as 3 for a xyz position)</td>
-	</tr>
-	<tr>
-		<td>values</td>
-		<td>Float[*]</td>
-		<td>The actual values. Only used with the Geometry <code>"type": "Embedded"</code></td>
-	</tr>
-	<tr>
-		<td>componentIndices</td>
-		<td>Integer[0...*]</td>
-		<td>An optional array that indicates how many of the elements in this view belong to the first, second and consecutive components of the geometry. The number of entries in this array, when present, has to be equal to the number of entries in the components List of the enclosing Geometry object. The entire field is optional when no components have been declared for this Geometry.</td>
-	</tr>
-</table>
+See [geometry attribute](docs/1.6/geometryAttribute.cmn.md) for more details.
 
-<p><em>Table 29: Attributes of the Class <strong>GeometryAttribute</strong> within the FeatureData document</em></p>
+### SharedResources
 
-<h3><a name="_6_5">SharedResources</a></h3>
-
-<p>Shared resources are models or textures that can be shared among features within the
+Shared resources are models or textures that can be shared among features within the
 same layer. They are stored as a JSON file entirely. Each node has a shared
 resource which contains materials and symbols used by more than a single
 feature in that node or in features which are stored in the subtree of the
 current node. This approach ensures an optimal distribution of shared resources
-across nodes, while maintaining the node-based updating process.</p>
+across nodes, while maintaining the node-based updating process.
 
 <div>
 <img src="images/figure-9.png" title="Logical schema of the SharedResources document" alt="Logical schema of the SharedResources document">

@@ -266,6 +266,9 @@ See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
 ### Oriented Bounding Box (OBB)
 
+See [oriented bounding boxes](docs/1.6/obb.cmn.md) for more details.
+
+
 
 
 ## Level of Detail (LoD)
@@ -433,9 +436,9 @@ The Class SceneServiceInfo describes an active SceneService instance.  There is 
 		<td>The full <a href="#_6_2">3dSceneLayerInfo</a> information.</td>
 	</tr>
 </table>
-
 *Table 3: Attributes of the Class SceneServiceInfo within the SceneServiceInfo document*
 
+See [scene service](service/SceneService.cmn.md) for service examples.
 
 ### 3dSceneLayerInfo
 
@@ -534,15 +537,13 @@ Point clouds have a different index scheme. See [point cloud index scheme](docs/
 
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
 
-When the DrawingInfo object is present in the 3dSceneLayerInfo Class, a client application may symbolize an I3S layer by utilizing the Renderer information.  The DrawingInfo can alternativly be captured in the Scene Layer as part of the binary I3S representation in order to support applications that may not be able to override the symbology in a layer.  In this case, the DrawingInfo is described in the CachedDrawingInfo class. 
+When the DrawingInfo object is present in the 3dSceneLayerInfo Class, a client can symbolize an I3S layer using the Renderer information.  The DrawingInfo can alternatively be captured in the Scene Layer as part of the binary I3S representation.  This helps support clients that may not be able to override the symbology in a layer.  In this case, the DrawingInfo is described in the CachedDrawingInfo class. 
 
 See [drawing info](docs/1.6/drawingInfo.cmn.md) for more details.
 
 ### Class Renderer
 
-<p>The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol and any label or descriptions associated with it.</p>
-
-The Class Renderer has the following structure:
+The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol, label and descriptions.
 
 <table>
 	<tr>
@@ -573,12 +574,10 @@ The Class Renderer has the following structure:
 </table>
 <p><em>Table 10: Attributes of the Class <strong>Renderer</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class Symbol</h4>
+### Class Symbol
 
-<p>
-The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only supported type of Symbol.</p>
 
-The Class Symbol has the following structure:
+The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only supported type of Symbol.
 
 <table>
 	<tr>
@@ -599,11 +598,9 @@ The Class Symbol has the following structure:
 </table>
 <p><em>Table 11: Attributes of the Class <strong>Symbol</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class SymbolLayers</h4>
+### Class SymbolLayers
 
-<p>A Collection of symbol objects used to visualize the feature.</p>
-
-The Class SymbolLayers has the following structure:
+A collection of symbol objects used to visualize the feature.
 
 <table>
 	<tr>
@@ -629,35 +626,16 @@ The Class SymbolLayers has the following structure:
 </table>
 <p><em>Table 12: Attributes of the Class <strong>SymbolLayers</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class Material</h4>
+### Class Material
 
-<p>The material used to shade the geometry.</p>
+The material used to shade the geometry.
 
-The Class Material has the following structure:
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>color</td>
-		<td>Material::Color</td>
-		<td>Color is represented as a three-element array (RGB).</td>
-	</tr>
-	<tr>
-		<td>transparency</td>
-		<td>Integer</td>
-		<td>Indicates the transparency value associated with the symbol.The value has to lie between 100 (full transparency) and 0 (full opacity).</td>
-	</tr>
-</table>
-<p><em>Table 13: Attributes of the Class <strong>Material</strong> within the 3dSceneLayerInfo document</em></p>
+See [material](docs/1.6/material.cmn.md) for more details.
 
-<h4>Class Outline</h4>
 
-<p>The Class Outline defines the outline of the mesh fill symbol. It has properties such as color, size and transparency.</p>
+### Class Outline
 
-The Class Outline has the following structure:
+The Class Outline defines the outline of the mesh fill symbol. 
 
 <table>
 	<tr>
@@ -683,9 +661,9 @@ The Class Outline has the following structure:
 </table>
 <p><em>Table 14: Attributes of the Class <strong>Material</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class Color</h4>
+### Class Color
 
-<p>The Color class defines the color of a symbol or the outline. Color is represented as a three-element array. The three elements represent values for red, green and blue in that order. Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.</p>
+The Color class defines the color of a symbol or the outline. Color is represented as a three-element array representing red, green, and blue.  Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.
 
 The Class Color has the following structure:
 
@@ -708,9 +686,9 @@ The Class Color has the following structure:
 </table>
 <p><em>Table 15: Attributes of the Class <strong>Color</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class CachedDrawingInfo</h4>
+### Class CachedDrawingInfo
 
-<p> The Class CachedDrawingInfo is used to indicate if the *DrawingInfo* object is captured as part of the binary I3S representation.</p>
+The Class CachedDrawingInfo is used to indicate if the *DrawingInfo* object is captured as part of the binary I3S representation.
 
 The Class CachedDrawingInfo has the following structure:
 <table>

@@ -757,204 +757,57 @@ Features are representations of the geographic objects stored in a layer. In the
 
 <p><em>Table 20: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
 
-<h4>Class LodSelection</h4>
+### Class Level of Detail Selection (lodSelection)
 
-<p>A LodSelection object provides information on a given metric determined during
-the cooking process of an I3S store. This metric can be used by the client to
-determine whether a representation is of the right quality level for rendering
-or whether a different representation is needed. </p>
+A level of detail selection (lodSelection) object provides information on a metric determined during
+the cooking process of an I3S store.  Clients can use this metric to determine representation quality.
 
-<p>Cookers can add as many <code>LodSelection</code> objects as desired but must provide
-one as soon as the layer's <code>lodType</code> is not null. Of the three
-min/avg/max values, typically only one or two are used.</p>
+Cookers can add as many lodSelection objects as desired, but must provide at least one so that the level of detail type (lodType) is not null. Of the three minimum, average, and maximum values, typically only one or two are used.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>metricType</td>
-		<td>String</td>
-		<td>The name of the error metric, one of <code>{maxScreenThreshold, screenSpaceRelative, ...}</code></td>
-	</tr>
-	<tr>
-		<td>maxValue</td>
-		<td>Float[0..1]</td>
-		<td>maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
-	</tr>
-	<tr>
-		<td>avgValue</td>
-		<td>Float[0..1]</td>
-		<td>average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
-	</tr>
-	<tr>
-		<td>minValue</td>
-		<td>Float[0..1]</td>
-		<td>minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size</td>
-	</tr>
-</table>
 
-<p><em>Table 21: Attributes of the Class <strong>LodSelection</strong> within the NodeIndexDocument</em></p>
+See [level of detail selection](docs/1.6/drawingInfo.cmn.md) for more details.
 
-<h3><a name="_6_4">FeatureData</a></h3>
+### FeatureData
 
-<p>The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors
-to geometry attributes and other references to styling or materials.</p>
+The FeatureData JSON files contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials.
 
-<p>Features have the following structure: </p>
+Features have the following structure:
 
 <div>
 <img src="images/figure-08.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document">
 <p><em>Figure 8: Logical schema of the FeatureData document</em></p>
 </div>
 
-<h4>Class Feature</h4>
+### Class Feature
 
-<p>A Feature is a single object within a GIS data set, usually
-representative of a feature present in the real, geographic world.</p>
+A Feature is a single object within a GIS data set.  It usually represents a real world feature.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>Integer</td>
-		<td>Feature ID, unique within the Node. If <code>lodType</code> is <code>FeatureTree</code>, the ID must be unique in the store.</td>
-	</tr>
-	<tr>
-		<td>position</td>
-		<td>Float[2..3]</td>
-		<td>An array of two or three doubles, giving the x,y(,z) (easting/northing/elevation) position of this feature's minimum bounding sphere center, in the vertexCRS.</td>
-	</tr>
-	<tr>
-		<td>pivotOffset</td>
-		<td>Float[3]</td>
-		<td>An array of three doubles, providing an optional, "semantic" pivot offset that can be used to e.g. correctly drape tree symbols.</td>
-	</tr>
-	<tr>
-		<td>mbb</td>
-		<td>Float[6]</td>
-		<td>An array of six doubles, corresponding to x<sub>min</sub>, y<sub>min</sub>, z<sub>min</sub>, x<sub>max</sub>, y<sub>max</sub> and z<sub>max</sub> of the minimum bounding box of the feature, expressed in the vertexCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes.</td>
-	</tr>
-	<tr>
-		<td>layer</td>
-		<td>String</td>
-		<td>The name of the Feature Class this feature belongs to.</td>
-	</tr>
-	<tr>
-		<td>attributes</td>
-		<td>FeatureAttribute[0..*]</td>
-		<td>The list of GIS attributes the feature has.</td>
-	</tr>
-	<tr>
-		<td>geometries</td>
-		<td>Geometry[1..*]</td>
-		<td>The list of geometries the feature has. A feature always has at least one Geometry.</td>
-	</tr>
-</table>
+See [feature data](docs/1.6/featureData.cmn.md) for more details.
 
-<p><em>Table 22: Attributes of the Class <strong>Feature</strong> within the FeatureData document</em></p>
+### Class FeatureAttribute
 
-<h4>Class FeatureAttribute</h4>
+A FeatureAttribute is a field carrying a value. This value may be a list of complete attributes which are used with reports or metadata.
 
-<p>A FeatureAttribute is a field carrying a value. This value may also be a list of complete attributes, to be used with reports or metadata.</p>
+See [feature attribute](docs/1.6/featureAttribute.cmn.md) for more details.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>String</td>
-		<td>The name of the attribute.</td>
-	</tr>
-	<tr>
-		<td>value</td>
-		<td>String</td>
-		<td>The value of the attribute. If group is set and the type of this attribute is set to esriFieldTypeGroup, the value may be used as a label.</td>
-	</tr>
-	<tr>
-		<td>group</td>
-		<td>FeatureAttribute[0..*]</td>
-		<td>A list of FeatureAttributes belonging to a attribute value group.</td>
-	</tr>
-</table>
 
-<p><em>Table 23: Attributes of the Class <strong>FeatureAttribute</strong> within the FeatureData document</em></p>
+### Class Geometry
 
-<h4>Class Geometry</h4>
+This is the common container class for all types of geometry definitions used in I3S.
 
-<p>This is the common container class for all types of geometry definitions used in I3S.</p>
+See [geometry](docs/1.6/geometry.cmn.md) for more details.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>Integer</td>
-		<td>Reference-able, unique ID of the Geometry in this store.</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>String</td>
-		<td>The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as an internal reference (GeometryReference), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).</td>
-	</tr>
-	<tr>
-		<td>transformation</td>
-		<td>Float[16]</td>
-		<td>3D (4x4) transformation matrix expressed as a linear array of 16 values.</td>
-	</tr>
-	<tr>
-		<td>params</td>
-		<td>GeometryParams</td>
-		<td>The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.</td>
-	</tr>
-</table>
+### Class GeometryParams
 
-<p><em>Table 24: Attributes of the Class <strong>Geometry</strong> within the FeatureData document</em></p>
+This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
 
-<h4>Class GeometryParams</h4>
+See [geometry params](docs/1.6/geometryParams.cmn.md) for more details.
 
-<p>This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.</p>
+### Class GeometryReferenceParams
 
-<h4>Class GeometryReferenceParams</h4>
+Instead of owning a Geometry exclusively, a Feature can also reference a Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
 
-<p>Instead of owning a Geometry exclusively, a Feature can also reference a (part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>$ref</td>
-		<td>Pointer</td>
-		<td>In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the <a href="#_6">I3S json pointer</a> syntax.</td>
-	</tr>
-	<tr>
-		<td>faceRange</td>
-		<td>Integer[2]</td>
-		<td>Inclusive range of faces in this geometry that belongs to this feature.</td>
-	</tr>
-	<tr>
-		<td>lodGeometry</td>
-		<td>Boolean</td>
-		<td>True if this geometry participates in an LoD tree. Always true in mesh-pyramids profile.</td>
-	</tr>
-</table>
-
-<p><em>Table 25: Attributes of the Class <strong>GeometryReferenceParams</strong> within the FeatureData document</em></p>
+See [geometry reference params](docs/1.6/geometryReferenceParams.cmn.md) for more details.
 
 <h4>Class VestedGeometryParams</h4>
 

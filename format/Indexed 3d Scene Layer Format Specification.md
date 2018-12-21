@@ -688,135 +688,17 @@ The Class Color has the following structure:
 
 ### Class CachedDrawingInfo
 
-The Class CachedDrawingInfo is used to indicate if the *DrawingInfo* object is captured as part of the binary I3S representation.
+The Class CachedDrawingInfo is used to indicate if the DrawingInfo object is captured as part of the binary I3S representation.
 
-The Class CachedDrawingInfo has the following structure:
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>color</td>
-		<td>Boolean</td>
-		<td>Indicates if the color component of the <code>drawingInfo</code> object is captured as part of the binary I3S representation.</td>
-	</tr>
-</table>
+See [cached drawing info](docs/1.6/cachedDrawingInfo.cmn.md) for more details.
 
-<p><em>Table 16: Attributes of the Class <strong>CachedDrawingInfo</strong> within the 3dSceneLayerInfo document</em></p>
+### 3dNodeIndexDocument
 
-<h3><a name="_6_3">3dNodeIndexDocument</a></h3>
+The 3dNodeIndexDocument file describes a single index node within a store.  It includdes links to other nodes (children, sibling, and parent), feature data, geometry data, texture data, and other metadata.
 
-<p>The 3dNodeIndexDocument JSON file describes a single index node within a store, with links to other
-nodes (children, sibling, and parent), links to feature data, geometry data and
-texture data resources, metadata such as metrics used for LoD selection, its
-spatial extent.</p>
+Depending on the geometry and level of detail modes, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors.
 
-<p>Depending on the geometry and <code>lodModel</code> used, a node document can be tuned towards being light-weight or more heavy-weight. It is the means clients have to further
-decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, already provides sufficient data for simple visualization by rendering the centroids as point features for example.</p>
-
-<p>The 3dNodeIndexDocument has the following structure:</p>
-
-<div>
-<img src="images/figure-07.png" title="Logical schema of the 3dNodeIndexDocument document" alt="Logical schema of the 3dNodeIndexDocument document">
-<p><em>Figure 7: Logical schema of the 3dNodeIndexDocument</em></p>
-</div>
-
-<h4>Class Node</h4>
-
-<p>The Node is the root object in the 3dNodeIndexDocument. There is always exactly one Node
-object in a 3dNodeIndexDocument.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>String (TreeKey)</td>
-		<td>Tree Key ID, unique within the store. The root node is always "root", all others follow the pattern "2-4-0-15-2". At each level in a subtree, numbering starts at 0.</td>
-	</tr>
-	<tr>
-		<td>level</td>
-		<td>Integer</td>
-		<td>Explicit level of this node within the index tree. The lowest level is 1.</td>
-	</tr>
-	<tr>
-		<td>version</td>
-		<td>UUID</td>
-		<td>The version (store update session ID) of this node.</td>
-	</tr>
-	<tr>
-		<td>mbs</td>
-		<td>Float[4]</td>
-		<td>An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node.</td>
-	</tr>
-	<tr>
-		<td>created</td>
-		<td>Date[0..1]</td>
-		<td>Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone (see <a href="http://www.w3.org/TR/NOTE-datetime">http://www.w3.org/TR/NOTE-datetime</a>).</td>
-	</tr>
-	<tr>
-		<td>expires</td>
-		<td>Date[0..1]</td>
-		<td>Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone (see <a href="http://www.w3.org/TR/NOTE-datetime">http://www.w3.org/TR/NOTE-datetime</a>).</td>
-	</tr>
-	<tr>
-		<td>transform</td>
-		<td>Float[16]</td>
-		<td>Optional, 3D (4x4) transformation matrix expressed as a linear array of 16 values.</td>
-	</tr>
-	<tr>
-		<td>parentNode</td>
-		<td>NodeReference[0..1]</td>
-		<td>Reference to the parent Node of a Node.</td>
-	</tr>
-	<tr>
-		<td>children</td>
-		<td>NodeReference[0..*]</td>
-		<td>Reference to the child Nodes of a Node.</td>
-	</tr>
-	<tr>
-		<td>neighbors</td>
-		<td>NodeReference[0..*]</td>
-		<td>Reference to the neighbor (same level, spatial proximity) Nodes of a Node.</td>
-	</tr>
-	<tr>
-		<td>sharedResource</td>
-		<td>Resource[0..1]</td>
-		<td>Resource reference describing a shared resource document.</td>
-	</tr>
-	<tr>
-		<td>featureData</td>
-		<td>Resource[0..*]</td>
-		<td>Resource reference describing a FeatureData document.</td>
-	</tr>
-	<tr>
-		<td>geometryData</td>
-		<td>Resource[0..*]</td>
-		<td>Resource reference describing a geometry resource.</td>
-	</tr>
-	<tr>
-		<td>textureData</td>
-		<td>Resource[0..*]</td>
-		<td>Resource reference describing a texture resource.</td>
-	</tr>
-	<tr>
-		<td>lodSelection</td>
-		<td>LodSelection[0..*]</td>
-		<td>Metrics for LoD Selection, to be evaluated by the client.</td>
-	</tr>
-	<tr>
-		<td>features</td>
-		<td>Feature[1..*]</td>
-		<td>A list of summary information on the features present in this Node, used for pre-visualisation and LoD switching in featureTree LoD stores.</td>
-	</tr>
-</table>
-
-<p><em>Table 17: Attributes of the Class <strong>Node</strong> within the NodeIndexDocument</em></p>
+See [3D Node Index Document](docs/1.6/3DSNodeIndexDocument.cmn.md) for more details.
 
 <h4>Class NodeReference</h4>
 

@@ -1,9 +1,13 @@
-<h2>Esri Indexed 3d Scene Layer (I3S) and <br>
-Scene Layer Package (*.slpk) Format Specification</h2>
-<p>Version 1.6, March 02, 2017</p>
-<p style="font-size:80%">
-<em>Contributors:</em> Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang<br>
-<em>Acknowledgements:</em> Bart van Andel, Fabien Dachicourt, Carl Reed </p>
+# Esri Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Specification
+
+Version 1.6, January 02, 2018
+
+*Contributors:* Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang
+
+*Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed 
+
+<hr>
+
 
 The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and Scene Services use the I3S infrastructure.
 
@@ -536,7 +540,7 @@ Each 3dSceneLayerInfo object describes a Layer. The 3dSceneLayerInfo is a major 
 
 ### Class Store
 
-The Class Store object describes the exact physical storage of a Layer.  This enables the client to detect when multiple Layers are served from the same Store. Storing multiple layers in a single store allows them to share resources.  When the resources are shared, layers with different attribute schemas or symbology but the same content type can be served efficiently. 
+The Class Store object describes the physical storage of a Layer.  This enables the client to detect when multiple Layers are served from the same Store. Storing multiple layers in a single store allows them to share resources.  When the resources are shared, layers with different attribute schemas or symbology but the same content type can be served efficiently. 
 
 
 <table>
@@ -648,60 +652,13 @@ The Class Store object describes the exact physical storage of a Layer.  This en
 </table>
 *Table 5: Attributes of the **Class Store** within the 3dSceneLayerInfo document*
 
-<h4>Class GeometrySchema</h4>
+### Class GeometrySchema
 
-<p>Used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.
-Reduces redundancies of ArrayBufferView geometry declarations in a store. Reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.</p>
+The Class GeometrySchema describes ?. 
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>geometryType</td>
-		<td>String</td>
-		<td>Low-level default geometry type, one of <code>{triangles, lines, points}</code>; if defined, all geometries in the store are expected to have this type.</td>
-	</tr>
-	<tr>
-		<td>topology</td>
-		<td>String[0..1]</td>
-		<td>one of <code>{*PerAttributeArray*, Indexed}</code>. When "Indexed", the indices must also be declared in the geometry schema ("faces") and precede the vertexAttribute data.</td>
-	</tr>
-	<tr>
-		<td>header</td>
-		<td>HeaderAttribute[0..\*]</td>
-		<td>Defines header fields in the Geometry resources of this store that precede the vertex (and index) data</td>
-	</tr>
-	<tr>
-		<td>ordering</td>
-		<td>String[1..\*]</td>
-		<td>Provides the order of the keys in vertexAttributes and faceAttributes, if present.</td>
-	</tr>
-	<tr>
-		<td>vertexAttributes</td>
-		<td>FeatureData::GeometryAttribute[1..\*]</td>
-		<td>Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates</td>
-	</tr>
-	<tr>
-		<td>faces</td>
-		<td>FeatureData::GeometryAttribute[0..\*]</td>
-		<td>Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates</td>
-	</tr>
-	<tr>
-		<td>featureAttributeOrder</td>
-		<td>String[1..\*]</td>
-		<td>Provides the order of the keys in featureAttributes, if present.</td>
-	</tr>
-	<tr>
-		<td>featureAttributes</td>
-		<td>FeatureData::GeometryAttribute[0..\*]</td>
-		<td>Declaration of the attributes per feature in the geometry, such as feature ID or face range</td>
-	</tr>
-</table>
+It is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.  The Class GeometrySchema reduces redundancy of ArrayBufferView geometry declarations in a store. It reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.
 
-<p><em>Table 5a: Attributes of the Class <strong>GeometrySchema</strong> within the 3dSceneLayerInfo document</em></p>
+See the [default geometry schema](docs/1.6/defaultGeometrySchema.cmn.md) for more details.
 
 <h4>Class HeaderAttribute</h4>
 

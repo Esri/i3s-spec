@@ -363,9 +363,9 @@ See the the [Level of Detail Selection](docs/1.6/lodSelection.cmn.md") for more 
 
 A value schema ensures that the JSON properties follow a fixed pattern and support the following data types
 
-- **String**
-- **Float**
-- **Integer**
+- **String**: utf8 string
+- **Float**: float64
+- **Integer**: int32
 - **UUID**: A hexadecimal universally unique identifier
 - **Date**: An ISO 8601 timestamp YYYY-MM-DDThh:mm:ss.sTZD
 - **URL**: Both relative and absolute
@@ -377,20 +377,10 @@ A value schema ensures that the JSON properties follow a fixed pattern and suppo
 
 Pointers are used to reference specific properties in another document.  They consist of two elements
 
-1. **In-document reference** (required): Reference the current property either relatively or absolutely. 
-2. **URL** (optional):
+1. **In-document reference** (required): Reference the current property. Absolute references should be used for upstream paths, and relative references should be used for downstream paths.   
+2. **URL** (optional): A prefix URL to link to a different document.  Use square brackets
 
-
-
-
- Relative to the currently evaluated property, or document absolute, reference to a property. References are always slash-separated paths through a document tree and can contain wildcards (\*) to indicate that a set or list of properties is to be matched instead of a single property.
-
-Absolute references start with a slash (/). Absolute references may only contain upstream path elements, i.e. they may only point to properties of objects enclosing the property that is being evaluated and indicated by a name.
-
-Relative references start with a property key (e.g. type). Relative properties may only contain downstream path elements and are evaluated from the value being tested. They may not contain wildcards, as appropriate context is already given through the current element being evaluated. In the case of a property that has containerType set to Array or Object, the reference point for a relative path is the individual value element in the container.
-
-optional URL:</strong> The pointer may be prefixed with a URL to a different document. This URL may be relative to the document that is being evaluated or absolute. To identify the URL element of a pointer, it is given in square brackets. Examples:
-relative URL + absolute reference:</em> From FeatureData to 3dSceneLayer.name: <code>[../../]/name</code>
+For example, a pointer from FeatureData to 3DSceneLayer.name using a relative URL and an absolute reference would be written as: `[../../]/name`
 
 <h3><a name="_6_1">SceneServiceInfo</a></h3>
 

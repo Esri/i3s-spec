@@ -933,7 +933,7 @@ UInt64 BuildID(LONG id, int w, int h , int l, int al)
 
 Usage syntax: `UInt64 image_id = BuildID(id, w, h, l, al);`
 
-**Function Parameters**
+**Build ID Function Parameters**
 
 <table>
 	<tr>
@@ -958,29 +958,20 @@ Usage syntax: `UInt64 image_id = BuildID(id, w, h, l, al);`
 	</tr>
 </table>
 
-<h3><a name="_6_7">Geometry.bin</a></h3>
+### Geometry
 
-<p>The binary geometry attribute file follows the <a href="http://www.khronos.org/registry/typedarray/specs/latest/">Khronos Typed Array
+The binary geometry attribute file follows the <a href="http://www.khronos.org/registry/typedarray/specs/latest/">Khronos Typed Array
 specification</a> in the Editor's Draft version of 10<sup>th</sup> April 2013.
-Citing the overview of that spec:</p>
+Citing the overview of that spec:
 
-<blockquote>
-<p>This specification defines an ArrayBuffer
-type, representing a generic fixed-length binary buffer. It is not possible to
-manipulate the contents of an ArrayBuffer directly. Instead, a group of types
-are used to create views of the ArrayBuffer. For example, to access the buffer
-as an array of 32-bit signed integers, an Int32Array would be created that
-refers to the ArrayBuffer.</p>
 
-<p>Multiple typed array views can refer to the
-same ArrayBuffer, of different types, lengths, and offsets. This allows for
-complex data structures to be built up in the ArrayBuffer. As an example, given
-the following code:</p>
+> This specification defines an ArrayBuffer type, representing a generic fixed-length binary buffer. It is not possible to manipulate the contents of an ArrayBuffer directly. Instead, a group of types are used to create views of the ArrayBuffer. For example, to access the buffer as an array of 32-bit signed integers, an Int32Array would be created that refers to the ArrayBuffer.
 
-<pre><code>
+>Multiple typed array views can refer to the same ArrayBuffer, of different types, lengths, and offsets. This allows for complex data structures to be built up in the ArrayBuffer. For example:
+
+```
 // create an 8-byte ArrayBuffer
 var b = new ArrayBuffer(8);
-
 // create a view v1 referring to b, of type Int32, starting at
 // the default byte index (0) and extending until the end of the buffer
 var v1 = new Int32Array(b);
@@ -992,30 +983,22 @@ var v2 = new Uint8Array(b, 2);
 // create a view v3 referring to b, of type Int16, starting at
 // byte index 2 and having a length of 2
 var v3 = new Int16Array(b, 2, 2);
-</code></pre>
+```
 
-<p>This defines an 8-byte buffer b, and three
-views of that buffer, v1, v2, and v3. Each of the views refers to the same
-buffer -- so v1[0] refers to bytes 0..3 as a signed 32-bit integer, v2[0]
-refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as
-a signed 16-bit integer. Any modification to one view is immediately visible in
-the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1
-(where -1 is represented as 0xffff)."</p>
-</blockquote>
+>This defines an 8-byte buffer b, and three views of that buffer, v1, v2, and v3. Each of the views refers to the same buffer -- so v1[0] refers to bytes 0..3 as a signed 32-bit integer, v2[0]
+refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as a signed 16-bit integer. Any modification to one view is immediately visible in the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1 (where -1 is represented as 0xffff).
+
 
 <div>
 <img src="images/figure-10.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
 <p><em>Figure 10: Geometry Buffer Layout with headers</em></p>
 </div>
 
-<p>Note: The expected triangle/face winding order in all geometry resources is
-counterclockwise (CCW).</p>
+*Note:* The expected triangle/face winding order in all geometry resources is counterclockwise.
 
-<p>Note: If normal vectors are present in a geometry, they need to be calculated based on uniform axis units.
-They are always given as if x,y and z axes all had metric units, as a unit vector.
-This means that if WGS84 is used as a horizontal CRS, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local cartesian CRS first.</p>
+*Note:* If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal Coordinate Reference System, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian Coordinate Reference System first.
 
-<h3><a name="_6_8">AttributeData</a></h3>  
+### Attribute Data
 
 This section describes the format for storing attribute data within I3S layers as part of the scene service cache along with geometry, texture and material resources, in an optimized renderer friendly format.  
 
@@ -1369,3 +1352,7 @@ In the case of cloud blob stores, layer resources are stored as either simple ob
 	</tr>
 </table>
 <em>Table 25: A typical example showing the layout of a SceneService in a key value store environment. The example illustrates the structure of the service using a 3D Object scene layer containing textured geometries as well as attribute data.</em>
+
+```
+
+```

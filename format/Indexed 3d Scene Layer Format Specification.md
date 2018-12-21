@@ -861,215 +861,26 @@ Each GeometryAttribute object is an accessor (i.e. a view) into an arraybuffer. 
 
 See [geometry attribute](docs/1.6/geometryAttribute.cmn.md) for more details.
 
-### SharedResources
+## SharedResources
 
-Shared resources are models or textures that can be shared among features within the
-same layer. They are stored as a JSON file entirely. Each node has a shared
-resource which contains materials and symbols used by more than a single
-feature in that node or in features which are stored in the subtree of the
-current node. This approach ensures an optimal distribution of shared resources
-across nodes, while maintaining the node-based updating process.
+Shared Resources are models or textures stored as a JSON file that can be shared among features within the same layer.  The Shared Resources are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process.  
+
+Shared resources include the [material definition](docs/1.6/materialDefinition.cmn.md) and [texture defintion](docs/1.6/textureDefinition.md) for the resource.
+
+See [shared resources](docs/1.6/sharedResources.cmn.md) for more details.
 
 <div>
 <img src="images/figure-9.png" title="Logical schema of the SharedResources document" alt="Logical schema of the SharedResources document">
 <p><em>Figure 9: Logical schema of the SharedResources document</em></p>
 </div>
 
-<h4>Class SharedResource</h4>
+### Class ShaderDefinition
 
-<p>The <code>SharedResource</code> class collects Material definitions, Texture definitions, Shader definitions and geometry
-symbols that need to be instanced.</p>
+ShaderDefinitions are, in this version of the I3S specification, an optional feature to provide API-dependent shader programs with a layer.
 
-<h4>Class Material</h4>
+### Class Symbol
 
-<p>Materials describe how a Feature or a set of Features is to be rendered. This includes
-which shading and which colors to use. The following table provides the set of
-attributes and params for the <code>"type": "standard"</code> material.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>String</td>
-		<td>A name for the material as assigned in the creating application.</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>String</td>
-		<td>Indicates the material type, chosen from the supported values <code>{standard, water, billboard, leafcard, reference}</code></td>
-	</tr>
-	<tr>
-		<td>$ref</td>
-		<td>JSONPointer</td>
-		<td>The href that resolves to the shared resource bundle in which the material definition is contained.</td>
-	</tr>
-	<tr>
-		<td>params.vertexRegions</td>
-		<td>Boolean[0..1]</td>
-		<td>Indicates whether this Material uses per-vertex regions. Defaults to <code>false</code>.</td>
-	</tr>
-	<tr>
-		<td>params.vertexColors</td>
-		<td>Boolean[0..1]</td>
-		<td>Indicates whether this Material use Vertex Colors. Defaults to <code>false</code>.</td>
-	</tr>
-	<tr>
-		<td>params.useVertexColorAlpha</td>
-		<td>Boolean[0..1]</td>
-		<td>Indicates whether Vertex Colors also contain a transparency channel. Defaults to <code>false</code>.</td>
-	</tr>
-	<tr>
-		<td>params.transparency</td>
-		<td>Float </td>
-		<td>Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent.</td>
-	</tr>
-	<tr>
-		<td>params.reflectivity</td>
-		<td>Float</td>
-		<td>Indicates reflectivity of this Material.</td>
-	</tr>
-	<tr>
-		<td>params.shininess</td>
-		<td>Float</td>
-		<td>Indicates shininess of this Material.</td>
-	</tr>
-	<tr>
-		<td>params.ambient</td>
-		<td>Float[3]</td>
-		<td>Ambient color of this Material.</td>
-	</tr>
-	<tr>
-		<td>params.diffuse</td>
-		<td>Float[3]</td>
-		<td>Diffuse color of this Material.</td>
-	</tr>
-	<tr>
-		<td>params.specular</td>
-		<td>Float[3]</td>
-		<td>Specular color of this Material.</td>
-	</tr>
-	<tr>
-		<td>params.renderMode</td>
-		<td>String</td>
-		<td>Rendering mode, any one of <code>{textured, solid, untextured, wireframe}</code></td>
-	</tr>
-	<tr>
-		<td>params.castShadows</td>
-		<td>Boolean</td>
-		<td><code>true</code> if features with this material should cast shadows</td>
-	</tr>
-	<tr>
-		<td>params.receiveShadows</td>
-		<td>Boolean</td>
-		<td><code>true</code> if features with this material should receive shadows</td>
-	</tr>
-	<tr>
-		<td>params.cullFace</td>
-		<td>String</td>
-		<td>Indicates the material culling options {back, front, *none*}. Default being <code>none</code>.</td>
-	</tr>
-</table>
-
-<p><em>Table 30: Attributes of the Class <strong>Material</strong> within the SharedResources document</em></p>
-
-<h4>Class Texture</h4>
-
-<p>A Texture is a set of images, with some parameters specific to the texture/uv mapping to
-geometries.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>encoding</td>
-		<td>MIMEtype[1..*]</td>
-		<td>The encoding/content type that is used by all images in this map</td>
-	</tr>
-	<tr>
-		<td>wrap</td>
-		<td>String[2] </td>
-		<td>UV wrapping modes, from <code>{none, repeat, mirror}</code></td>
-	</tr>
-	<tr>
-		<td>atlas</td>
-		<td>Boolean</td>
-		<td>true if the Map represents a texture atlas.</td>
-	</tr>
-	<tr>
-		<td>uvSet</td>
-		<td>String</td>
-		<td>The name of the UV set to be used as texture coordinates.</td>
-	</tr>
-	<tr>
-		<td>channels</td>
-		<td>String[1..*]</td>
-		<td>indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement, ...</td>
-	</tr>
-</table>
-
-<p><em>Table 31: Attributes of the Class <strong>Texture</strong> within the SharedResources document</em></p>
-
-<h4>Class Image</h4>
-
-<p>An image is a binary resource, containing a single raster that can be used to texture a
-feature or symbol. It represents one specific texture LoD.
-For details on texture organization, please refer to the section on <a href="#_7_6">Texture resources</a>.</p>
-
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>String</td>
-		<td>A unique ID for each image. Generated using the <a href="#_7_6_GenerateID">BuildID</a> function.</td>
-	</tr>
-	<tr>
-		<td>size</td>
-		<td>Integer</td>
-		<td>x size of this image.</td>
-	</tr>
-	<tr>
-		<td>pixelInWorldUnits</td>
-		<td>Float</td>
-		<td>maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)</td>
-	</tr>
-	<tr>
-		<td>href</td>
-		<td>URL[1..*]</td>
-		<td>The href to the image(s), one per encoding, in the same order as the encodings.</td>
-	</tr>
-	<tr>
-		<td>byteOffset</td>
-		<td>Integer[0..*]</td>
-		<td>The byte offset of this image's encodings (one per encoding, in the same order as the encodings.) in the block in which this texture image resides.</td>
-	</tr>
-	<tr>
-		<td>length</td>
-		<td>Integer[0..*]</td>
-		<td>The length in bytes of this image's encodings (one per encoding, in the same order as the encodings).</td>
-	</tr>
-</table>
-
-<p><em>Table 32: Attributes of the Class <strong>Image</strong> within the SharedResources document</em></p>
-
-<h4>Class ShaderDefinition</h4>
-
-<p>ShaderDefinitions are, in this version of the I3S specification, an optional feature to provide
-API-dependent shader programs with a layer.</p>
-
-<h4>Class Symbol</h4>
-
-<p>For Symbols, the same model is used as in the FeatureData Geometry.</p>
+Symbols use the same model as in the FeatureData Geometry.
 
 <h3><a name="_6_6">Textures.bin</a></h3>
 

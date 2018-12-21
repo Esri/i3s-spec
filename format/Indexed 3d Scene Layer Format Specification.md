@@ -700,98 +700,22 @@ Depending on the geometry and level of detail modes, a node document can be tune
 
 See [3D Node Index Document](docs/1.6/3DSNodeIndexDocument.cmn.md) for more details.
 
-<h4>Class NodeReference</h4>
+### Class NodeReference
 
-<p>A NodeReference is a pointer to another node - the parent, a child or a
-neighbor. NodeReferences contain a relative URL pointing to the referenced NID,
-as well as a set of meta information that can be used by the client to determine
-whether to load that node or not, as well as maintaining store consistency.</p>
+A NodeReference is a pointer to another node.  A node can reference the parent, a child or a neighbor. NodeReferences contain a relative URL pointing to the referenced node ID, and metadata that can be used to determine whether to load the node, as well as maintaining store consistency.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>String</td>
-		<td>Tree Key ID (e.g. "1-3-0-5") of the referenced node.</td>
-	</tr>
-	<tr>
-		<td>mbs</td>
-		<td>Float[4]</td>
-		<td>An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node.</td>
-	</tr>
-	<tr>
-		<td>href</td>
-		<td>URL</td>
-		<td>The relative URL to the referenced node resource.</td>
-	</tr>
-	<tr>
-		<td>version</td>
-		<td>UUID</td>
-		<td>Version (store update session ID) of the referenced node.</td>
-	</tr>
-	<tr>
-		<td>featureCount</td>
-		<td>Integer</td>
-		<td>Number of features in the referenced node and its descendants, down to the leaf nodes.</td>
-	</tr>
-</table>
+See [node reference](docs/1.6/nodeReference.cmn.md) for more details.
 
-<p><em>Table 18: Attributes of the Class <strong>NodeReference</strong> within the NodeIndexDocument</em></p>
+### Class Resource
 
-<h4>Class Resource</h4>
+Resource objects are pointers to different types of resources related to a node, like the feature data, geometry attributes, indices, textures and shared resources.
 
-<p>Resource objects are pointers to different types of resources related to a node, such as
-the feature data, the geometry attributes and indices, textures and shared
-resources.</p>
+See [resource](docs/1.6/resource.cmn.md) for more details.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>href</td>
-		<td>String</td>
-		<td>The relative URL to the referenced resource.</td>
-	</tr>
-	<tr>
-		<td>layerContent</td>
-		<td>String[1..*]</td>
-		<td>The list of layer names that indicates which layer features in the bundle belongs to. The client can use this information to selectively download bundles.</td>
-	</tr>
-	<tr>
-		<td>featureRange</td>
-		<td>Integer[2]</td>
-		<td>Only applicable for featureData resources. Provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle.</td>
-	</tr>
-	<tr>
-		<td>multiTextureBundle</td>
-		<td>Boolean</td>
-		<td>Only applicable for textureData resources. <code>true</code> if the bundle contains multiple textures. If <code>false</code> or not set, clients can interpret the entire bundle as a single image. </td>
-	</tr>
-	<tr>
-		<td>vertexElements</td>
-		<td>Integer[0..1]</td>
-		<td>Only applicable for geometryData resources. Represents the Count of elements in vertexAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema.</td>
-	</tr>
-	<tr>
-		<td>faceElements</td>
-		<td>Integer[0..1]</td>
-		<td>Only applicable for geometryData resources. Represents the Count of elements in faceAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema.</td>
-	</tr>
-</table>
 
-<p><em>Table 19: Attributes of the Class <strong>Resource</strong> within the NodeIndexDocument</em></p>
+### Class Feature
 
-<h4>Class Feature</h4>
-
-<p>Features are representations of the geographic objects stored in a layer.
-In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.</p>
+Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.
 
 <table>
 	<tr>

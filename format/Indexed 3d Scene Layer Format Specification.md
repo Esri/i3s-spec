@@ -453,96 +453,13 @@ The Class 3dSceneLayerInfo has the following structure:
 
 Each 3dSceneLayerInfo object describes a Layer. The 3dSceneLayerInfo is a major object in the 3dSceneLayerInfo document. A SceneServiceInfo document can contain 1...* 3dSceneLayerInfo documents. 
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>id</td>
-		<td>Integer</td>
-		<td>Unique numeric ID of the Layer.</td>
-	</tr>
-	<tr>
-		<td>href</td>
-		<td>URL</td>
-		<td>The relative URL to the 3dSceneLayerResource. Only present as part of the SceneServiceInfo resource.</td>
-	</tr>
-	<tr>
-		<td>layerType</td>
-		<td>String</td>
-		<td>The user-visible type of this layer, one of {Point, Line, Polygon, *3DObject*, IntegratedMesh, Pointcloud}</td>
-	</tr>
-	<tr>
-		<td>spatialReference</td>
-		<td>spatialReference</td>
-		<td>The spatialReference of the layer including the vertical coordinate system. wkt is included to support custom spatial references. <code>{wkid, latestWkid, vcsWkid, latestVcsWkid, wkt}</code></td>
-	</tr>
-	<tr>
-		<td>heightModelInfo</td>
-		<td>heightModelInfo</td>
-		<td>Enables consuming clients to perform quick test to determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content.<code>{heightModel, geoid, heightUnit}</code></td>
-	</tr>
-	<tr>
-		<td>version</td>
-		<td>String</td>
-		<td>The ID of the last update session in which any resource belonging to this layer has been updated.</td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>String</td>
-		<td>The name of this layer.</td>
-	</tr>
-	<tr>
-		<td>alias</td>
-		<td>String[0..1]</td>
-		<td>The display alias to be used for this layer.</td>
-	</tr>
-	<tr>
-		<td>description</td>
-		<td>String[0..1]</td>
-		<td>Description string for this layer.</td>
-	</tr>
-	<tr>
-		<td>copyrightText</td>
-		<td>String[0..1]</td>
-		<td>Copyright and usage information for the data in this layer.</td>
-	</tr>
-	<tr>
-		<td>capabilities</td>
-		<td>String[1..3]</td>
-		<td>Capabilities from the Set <code>{View, Query, Edit}</code> that are possible on this layer.</td>
-	</tr>
-	<tr>
-		<td>cachedDrawingInfo</td>
-		<td>cachedDrawingInfo</td>
-		<td>Indicates if any stylization infomraton represented as <code>drawingInfo</code> is addtionally captured as part of the binnary mesh representation for optimal client side access. Currently <code>color</code> component of the <code>drawingInfo</code> is supported.</td>
-	</tr>
-	<tr>
-		<td>drawingInfo</td>
-		<td>drawingInfo</td>
-		<td>Represents the stylization infomraton of the layer.</td>
-	</tr>
-	<tr>
-		<td>fields</td>
-		<td>fields</td>
-		<td>A collection of objects that describe each attribute field regarding its field name, datatype and a user friendly name {<code>name,type,alias</code>}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer.  </td>
-	</tr>
-	<tr>
-		<td>attributeStorageInfo</td>
-		<td>attributeStorageInfo</td>
-		<td>Provides the schema and layout used for storing attribute content in binary format  in I3S.</td>
-	</tr>
-</table>
-
-*Table 4: Attributes of the Class **3dSceneLayerInfo** within the 3dSceneLayerInfo document*
+See [3D Scene Layer Info](docs/1.6/3DSceneLayer.cmn.md) for more details.
 
 ### Class Store
 
 The Class Store object describes the physical storage of a Layer.  This enables the client to detect when multiple Layers are served from the same Store. Storing multiple layers in a single store allows them to share resources.  When the resources are shared, layers with different attribute schemas or symbology but the same content type can be served efficiently. 
 
-See the [class store](docs/1.6/store.cmn.md) for more details.
+See the [store](docs/1.6/store.cmn.md) for more details.
 
 ### Class GeometrySchema
 
@@ -554,107 +471,29 @@ See the [default geometry schema](docs/1.6/defaultGeometrySchema.cmn.md) for mor
 
 <h4>Class HeaderAttribute</h4>
 
-<p>Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.</p>
+Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>property</td>
-		<td>String</td>
-		<td>The name of the property in the header</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>String</td>
-		<td>The element type of the header property, from <code>{UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64}</code></td>
-	</tr>
-</table>
+See [header attribute](docs/1.6/headerAttribute.cmn.md) for more details.
 
-<p><em>Table 5b: Attributes of the Class <strong>HeaderAttribute</strong> within the 3dSceneLayerInfo document</em></p>
+### Class Field
 
-<h4>Class Field</h4>
+The Field class is used to provide schema information for this 3dSceneLayer.
 
-<p>The Field class is used to provide schema information for this 3dSceneLayer.</p>
+See [class field](docs/1.6/field.cmn.md) for more details.
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>String</td>
-		<td>The name of the field.</td>
-	</tr>
-	<tr>
-		<td>type</td>
-		<td>String</td>
-		<td>The type of the field, from this enum: <code>{esriFieldTypeBlob, esriFieldTypeGeometry, esriFieldTypeDate, esriFieldTypeFloat, esriFieldTypeDouble, esriFieldTypeGeometry,
-		esriFieldTypeGlobalID, esriFieldTypeGUID, esriFieldTypeInteger, esriFieldTypeOID,
-		esriFieldTypeSmallInteger, esriFieldTypeString, esriFieldTypeGroup}</code></td>
-	</tr>
-	<tr>
-		<td>alias</td>
-		<td>String[0..1] </td>
-		<td>The display alias to be used for this field.</td>
-	</tr>
-</table>
+### Class AttributeStorageInfo
 
-<p><em>Table 6: Attributes of the Class <strong>Field</strong> within the 3dSceneLayerInfo document</em></p>
+The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. It describes the structure of the binary attributeData resource of a node.
 
-<h4>Class AttributeStorageInfo</h4>
+See [attribute storage info](docs/1.6/attributeStorageInfo.cmn.md) for more details.
 
-<p>The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. An object that describes the structure of the binary attributeData resource of a node.</p>
+### Class IndexScheme
 
-<table>
-	<tr>
-		<td><strong>Name</strong></td>
-		<td><strong>Type</strong></td>
-		<td><strong>Description</strong></td>
-	</tr>
-	<tr>
-		<td>key</td>
-		<td>string</td>
-		<td> The unique field identifier key.</td>
-	</tr>
-	<tr>
-		<td>name</td>
-		<td>string</td>
-		<td>The name of the field.</td>
-	</tr>
-	<tr>
-		<td>header</td>
-		<td>String[1..\*]</td>
-		<td>Declares the headers of the binary attribute data. One of {<code>count</code>, <code>attributeValuesByteCount</code>}. <code>count</code>, should always be present and indicates the count of features in the attribute storage. <code>attributeValuesByteCount</code> will only be present for strings data type and indicates the total byte count of the string data for all features in the binary attribute buffer.</td>
-	</tr>
-	<tr>
-		<td>ordering</td>
-		<td>String[1..*\]</td>
-		<td>Declares the ordering indicating the order in which the array of attribute byte counts and the array of attribute values are stored in the binary attribute data. One of {<code>attributeByteCounts</code>, <code>attributeValues</code>}. <code>attributeValues</code>, should always be present. <code>attributeByteCounts</code> should only be present when working with string data types.</td>
-	</tr>
-	<tr>
-		<td>attributeByteCounts</td>
-		<td>String</td>
-		<td>The element type of the attributeByteCounts property, from <code>{UInt32}</code>.</td>
-	</tr>
-	<tr>
-		<td>attributeValues</td>
-		<td>String</td>
-		<td>The element type of the attributeValues property, from <code>{UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64}</code></td>
-	</tr>
-</table>
+The IndexScheme class declaratively describes computational and structural properties of the index used within an I3S store. This information can be used by clients to better understand how to work with the index.
 
-<p><em>Table 7: Attributes of the Class <strong>attributeStorageInfo</strong> within the 3dSceneLayerInfo document</em></p>
-<h4>Class IndexScheme</h4>
+[Link to general index]
 
-<p>The IndexScheme class declaratively describes computational and structural
-properties of the index used within an I3S store. This information can be used
-by clients to better understand how to work with the index.</p>
+Point clouds have a different index scheme. See [point cloud index scheme](docs/1.6/index.pcsl.md) for more details.
 
 <table>
 	<tr>
@@ -691,7 +530,7 @@ by clients to better understand how to work with the index.</p>
 
 <p><em>Table 8: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo document</em></p>
 
-<h4>Class DrawingInfo</h4>
+### Class DrawingInfo
 
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. When the *DrawingInfo* object is present in the <code>3dSceneLayerInfo</code> Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers, also allow capturing the *DrawingInfo* object as part of the binary I3S representation, in support of applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the <code>CachedDrawingInfo</code> Class, indicating the component of the *DrawingInfo* object that's captured as part of the binary I3S representation.  
 

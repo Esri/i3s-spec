@@ -7,8 +7,6 @@ Version 1.6, January 02, 2018
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed 
 
 <hr>
-
-
 The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and Scene Services use the I3S infrastructure.
 
 
@@ -68,7 +66,7 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 - **User-controllable symbology**: Support efficient rendering of client-side symbology and styling.
 - **Extensibility**: Support new layer types, new geometry types, and new platforms.
 - **Web Friendliness**: Provide easy to handle data using JSON and current web standards.
-- **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and on-premises servers.
+- **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and servers.
 - **Declarative**: Communicate clearly to minimize the amount of required domain knowledge to support the format.
 - **Follow REST/JSON API Best Practices:** Provide navigable links to all resources.
 
@@ -76,21 +74,19 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 
 # 3D Scene Layer
 
-A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data and allow them the flexibility to visualize it according to their needs.  The definition of "data" in this case includes the geometry, attributes, and vertex geometry. 
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data and allow them to visualize it according to their needs.  The definition of "data" in this case includes the geometry, attributes, and vertex geometry. 
 
-A Scene Layer is characterized by a combination of layer type and profile. The *layer type* describes the kind of geospatial data stored within it. The *layer profile* is exposed to clients and includes additional details on the specific I3S implementation. 
+A Scene Layer is characterized by a combination of layer type and profile. The *layer type* describes the kind of geospatial data stored within it. The *layer profile* includes additional details on the specific I3S implementation. 
 
  The supported layer types are:
 
 * [3D Objects](docs/1.6/3Dobjects.md) (e.g. building exteriors, 3D models in various formats)
-* [Integrated Mesh](docs/1.6/integratedMesh.md) (e.g. integrated surface including vegetation, buildings and roads from satellite, aerial or drone imagery) 
+* [Integrated Mesh](docs/1.6/integratedMesh.md) (e.g. integrated surface including vegetation, buildings and roads) 
 * [Points](docs/1.6/points.md) (e.g. hospitals, schools, trees, street furniture, signs)
 * [Point Clouds](docs/1.6/pointCloud.md) (e.g. lidar data)
 * [Building Scene Layer](docs/1.6/buildingSceneLayer.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
-
-
-Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Some layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
+Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
 
 <table>
  <tr>
@@ -150,28 +146,28 @@ The Coordinate Reference System of the Indexed 3D Scene Layer should be selected
 
 To support these considerations, I3S has the following implementation requirements:
 
-1. The location of all index-related data structures, such as node bounding spheres, are specified using a single, global Geographic WGS84 2D CRS. 
+1. The location of all index-related data structures, such as node bounding spheres, are specified using a single, global Geographic WGS84 2D Coordinate Reference System
    - Coordinate bounds are in the range (-180.0000, -90.0000, 180.0000, 90.0000)
    - Elevation and node minimum bounding sphere radius are specified in meters
    - Allowed coordinate system using European Petroleum Survey Group (EPSG) code 4326
 2. All vertex positions are specified using geodetic coordinate reference system
-   1.  The X, Y, and Z axes are all in same unit, with a per-node offset for all vertex positions.  The offset is calculated from the center point of the node's minimum bounding sphere.
+   - The X, Y, and Z axes are all in same unit, with a per-node offset for all vertex positions.  The offset is calculated from the center point of the node's minimum bounding sphere.
 3. The axis order is independent of the Coordinate Reference System.  It will always use the Easting, Northing, Elevation (X, Y, Z) axis order. The Z axis always points up towards the sky.
 
 
-All I3S profiles support writing 3D content in two modes: global and local. In global mode, only European Petroleum Survey Group (EPSG) code 4326 (WGS84) is supported for both index and vertex positions.  It is represented using longitude, latitude, elevation. In local mode, all geodetic Coordinate Reference Systems, including cartesian coordinate systems, are allowed. Both index and position vertex must have the same Coordinate Reference System.
+All I3S profiles support writing 3D content in two modes: global and local. In global mode, only European Petroleum Survey Group (EPSG) code 4326 (WGS84) is supported for both index and vertex positions.  It is represented using longitude, latitude, elevation. In local mode, all geodetic Coordinate Reference Systems, including Cartesian coordinate systems, are allowed. Both index and position vertex must have the same Coordinate Reference System.
 
-All I3S layers indicate the coordinate system via the `spatialReference` property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.
+All I3S layers indicate the coordinate system with the spatialReference property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.
 
-The <a href="../profiles/common/docs/spatialReference.md">Spatial Reference</a> object is common to all i3s profile types.
+The [spatial reference](docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
 
 ### Height Models
 
-The I3S standard allows either ellipsoidal or orthometeric vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications, including those where the definition of elevation and height is important.  
+The I3S standard allows either ellipsoidal or orthometeric vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications. 
 
-At version 1.5, I3S added support for a vertical coordinate systems. The Well-known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The `spatialReference` property also includes a Well-known Id (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
+At version 1.5, I3S added support for a vertical coordinate systems. The Well-known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The spatialReference property also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
 
-The 3dSceneLayerInfo resource includes a coarse metadata property called `heightModelInfo`, which client applications can use to identify if the layer's height model is either orthometric or ellipsoidal.  
+The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or ellipsoidal. 
 
 See the [3DSceneLayerInfo](docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](docs/1.6/heightModelInfo.cmn.md) pages for more details.
 
@@ -189,17 +185,17 @@ Any indexing model can be used to generate indices in I3S.  Both regular partiti
 
 Each node has an ID that is unique within a layer.  I3S supports two types of nodes: *treekeys* and integers.  Treekeys are a string based identifier.  Integer IDs are base on a fixed linearization of the nodes. 
 
-The treekey format is loosely modeled on binary search tree concept.  The key value indicates both the level and sibling association of a given node.  The key also indicates the position of the node in the tree, allowing sorting of all resources on a single dimension. 
+The treekey format is loosely modeled on binary search tree concept.  The key value indicates both the level and sibling association of a given node.  The key also indicates the position of the node in the tree, which allows all resources to be stored in a single dimension.
 
 Treekeys are strings in which levels are separated by dashes.  The root node is at level 1 always gets ID `root`.  
 
-For example, take the node with treekey "3-1-0".  Since it has 3 numeric elements 3, 1 and 0, it can be concluded that the node is on level 4.  The parent node has Treekey  "3-1". 
+For example, take the node with treekey "3-1-0".  Since it has 3 numeric elements 3, 1 and 0, it can be concluded that the node is on level 4.  The parent node has treekey  "3-1". 
 
 ![Figure 1: A sample index tree using Treekeys](images/figure-01.png)
 
 *Figure 1: A sample index tree using Treekeys*
 
-Each node covers the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
+Each node includes the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
 
 Nodes include `NodeIndexDocument`, `FeatureData`, `geometry`, `attribures`, and `SharedResource`.  
 
@@ -210,7 +206,7 @@ Nodes include `NodeIndexDocument`, `FeatureData`, `geometry`, `attribures`, and 
 - [Texture](docs/1.6/textureDefinition.cmn.md): describes how a feature is to be rendered
 - [Shared Resource](docs/1.6/sharedResource.cmn.md): models or textures that can be shared among features within the same layer
 
-An I3S profile uses either a single text-based subresources or separate binary subresources.  The text-based resources contain all the geometry an attribute information (e.g. Point profile).  The separate binary subresources have self-contained geometry and attribute subresources (e.g. mesh pyraminds). Applications that use the separate binary subresources do not need to fetch the feature data in order to interpret them.  
+An I3S profile uses either a single text-based subresource or separate binary subresources.  The text-based resources contain all the geometry and attribute information (e.g. Point profile).  The separate, binary subresources have self-contained geometry and attribute subresources (e.g. mesh pyramids). Applications that use the separate binary subresources do not need to fetch the feature data in order to interpret them.  
 
 Each node has exactly one `NodeIndexDocument` and one `SharedDescirptors` document. The `FeatureData`, `geometry`, and `attribures` can be bundled to help optimize network transfer and client side reactivity.  This helps balance index size and feature splitting with optimal network usage. 
 
@@ -236,7 +232,7 @@ Figure 2 below shows the node tree of an 3D Object Indexed Scene Layer with a me
 
 All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.
 
-The Array Buffer View controls geometry storage and comsumption representation.  For example, the Array Buffer View can be used require per-vertex layout of components.  This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer.
+The Array Buffer View controls geometry storage and consumption representation.  For example, the Array Buffer View can be used require per-vertex layout of components.  This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer.
 
 Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
 
@@ -252,7 +248,7 @@ See the [Textures](docs/1.6/texture.cmn.md) section for more details.
 
 I3S supports two ways to access attribute data.  They can be accessed through  
 
-1. Paired services with REST endpoints 
+1. Paired services with RESTful endpoints 
    - Enables direct access to source data
    - The query uses the unique feature ID key
 2. Fully cached attribute information within the I3S store
@@ -264,7 +260,7 @@ See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details.
 
 
 
-### Oriented Bounding Box (OBB)
+## Oriented Bounding Box (OBB)
 
 See [oriented bounding boxes](docs/1.6/obb.cmn.md) for more details.
 
@@ -277,37 +273,37 @@ Scene Layers include Levels of Detail that apply to the whole layer and summariz
 
 ### Discrete Level of Detail
 
-Discrete Levels of Detail are used to provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer the node is the the root, the lower the level of detail. The detail is can reduced by texture thinning, down-sampling, feature reduction, mesh reduction, or clustering in order to ensure inner nodes have a balanced weight.  The number of discrete levels of detail for the layer corresponds to the number of levels in the index tree.
+Discrete Levels of Detail provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer the node is the the root, the lower the level of detail. The detail is can reduced by texture thinning, down-sampling, clustering, or a number of methods in order to ensure inner nodes have a balanced weight.  The number of discrete levels of detail for the layer corresponds to the number of levels in the index tree.
 
 When navigating the I3S tree nodes, clients must determine how to interpret an unavailable level of detail.  Using the level of detail selection metrics included in the node, they can:
 
 - Stop traversal to the node's children if the current node is not visible
 - Use the data in the node if the quality is appropriate, and then stop traversal to children
-- Continue traversal until nodes with higher quality are found. 
+- Continue traversal until nodes with higher quality are found
 
-I3S supports multiple level of detail selection metrics and switching level of detail models.  Metadata about the level of detail generation processed used can be optionally included in the Scene Layer. 
+I3S supports multiple level of detail selection metrics and switching level of detail models.  Details about the level of detail generation process can be optionally included in the Scene Layer's metadata.
 
-### Levels of Detail: Multiple Representations 
+### Multiple Representations 
 
-I3S Layers can be used to represent input data that have multiple levels of detail. The most common method is to represent each input level of detail as its own I3S Layer with visibility thresholds.  The thresholds can capture the range of distances for which the layer should be used.  A set of I3S Layers that represent a single model can be grouped within the same I3S service. For each layer within the set, the features in the leaf nodes represent the modeled features at the level of detail of the input. Additionally automatically generated detail levels can be generated by extending the viewing range of each input level. 
+I3S Layers can be used to represent input data with multiple levels of detail. The most common method is to represent each input level of detail as its own I3S Layer with visibility thresholds.  The thresholds capture the range of distances for which the layer should be used.  A set of I3S Layers that represent a single model can be grouped within the same I3S service. For each layer within the set, the features in the leaf nodes represent the modeled features at the level of detail of the input. Additional detail levels can be generated automatically by extending the viewing range of each input level. 
 
-A single I3S Layer can be created by combining all of the input level of detail information.  In this case, the height of the I3S Index Tree is fixed to the number of levels of detail present in the input.  Both the feature identities and geometries in each node are set based on the input data.  Using this strategy depends on the extent and the total number of detail levels.
+Depending on the extent and the total number of detail levels, a single I3S Layer can be created by combining all of the input level of detail information.  In this case, the height of the I3S Index Tree is fixed to the number of levels of detail present in the input.  Both the feature identities and geometries in each node are set based on the input data. 
 
-### Level of Detail: Switching Models
+### Switching Models
 
-Node switching allows clients to focus on the display of a node as a whole.  A node switch occurs when the content from a node's children is used to replace the content of an existing node.  This can include features, geometry, attributes and textures. Node switching can be helpful when the user needs to see more detailed information. 
+Node switching lets clients focus on the display of a node as a whole.  A node switch occurs when the content from a node's children is used to replace the content of an existing node.  This can include features, geometry, attributes and textures. Node switching can be helpful when the user needs to see more detailed information. 
 
 Each interior node in the I3S tree has a set of features that represent the reduced level of detail.  This includes the details for all features covered by the node.  Due to generalization at lower levels of detail, not all features are present in reduced level of detail nodes.
 
 The feature IDs link the reduced level of detail feature and an interior node, as well as the descendant nodes.  Applications can determine the visual quality by using the I3S tree to display all of the features in an internal node or use the features found in its descendants. 
 
-### Level of Detail: Generation 
+### Level of Detail Generation 
 
 Integrated Mesh layer types typically come with pre-authored levels of detail.  If the desired level of detail does not exist, it can be generated. 
 
-For example, 3D Object Layers based on the mesh-pyramids profile can create a level of detail pyramid for all features based on generalizing, reducing and fusing the geometries of individual features while preserving feature identity. The same approach can also be used with Integrated Mesh Layers based on the mesh-pyramid profile.  In this case, there are no features and each node contains a generalized version of the mesh covered by its descendants.
+For example, 3D Object Layers based on the mesh-pyramids profile can create a level of detail pyramid for all features based on generalizing, reducing and fusing the geometries of individual features while preserving feature identity. The same approach can also be used with Integrated Mesh Layers based on the mesh-pyramid profile.  In this case, there are no features, and each node contains a generalized version of the mesh covered by its descendants.
 
-First, the bounding volume tree hierarchy is built based on the spatial distribution of the features.  The method used to create the levels depend on the Scene Layer type. 
+The bounding volume tree hierarchy is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type. 
 
 <table>
 	<tr>
@@ -355,7 +351,7 @@ First, the bounding volume tree hierarchy is built based on the spatial distribu
 *Table 2: Example level of detail generation methods based on Scene Layer type*
 
 
-### Level of Detail: Selection Metrics
+### Selection Metrics
 
 Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality. 
 
@@ -382,16 +378,16 @@ A value schema ensures that the JSON properties follow a fixed pattern and suppo
 
 ### Pointers
 
-Pointers are used to reference specific properties in another document.  They consist of two elements
+Pointers are used to reference specific properties in another document.  They consist of two elements:
 
-1. **In-document reference** (required): Reference the current property. Absolute references should be used for upstream paths, and relative references should be used for downstream paths.   
-2. **URL** (optional): A prefix URL to link to a different document.  Use square brackets
+1. **In-document reference** (required): References the current property. Absolute references should be used for upstream paths, and relative references should be used for downstream paths.   
+2. **URL** (optional): A prefix URL to link to a different document. Use square brackets.
 
-For example, a pointer from FeatureData to 3DSceneLayer.name using a relative URL and an absolute reference would be written as: `[../../]/name`
+For example, a pointer from FeatureData to `3DSceneLayer.name` using a relative URL and an absolute reference would be written as: `[../../]/name`
 
 ### SceneServiceInfo
 
-The SceneServiceInfo is a JSON file that describes the capability and data sets offered by an instance of a Scene Service. This file is automatically generated by the Scene Server for each service instance and is not part of a Scene Layer Package (SLPK) file. It is included here only for reference.
+The SceneServiceInfo is a JSON file that describes the capability and data sets offered by an instance of a Scene Service. This file is automatically generated by the Scene Server for each service instance and is not part of a Scene Layer Package (SLPK) file. 
 
 The SceneServiceInfo has the following structure: 
 
@@ -403,7 +399,6 @@ The SceneServiceInfo has the following structure:
 
 The Class SceneServiceInfo describes an active SceneService instance.  There is exactly one SceneServiceInfo object in a document. 
 
-
 <table>
 	<tr>
 		<td><strong>Name</strong></td>
@@ -413,7 +408,7 @@ The Class SceneServiceInfo describes an active SceneService instance.  There is 
 	<tr>
 		<td>serviceName</td>
 		<td>String</td>
-		<td>The type of the service; always SceneService.</td>
+		<td>The type of the service; always begins with SceneService.</td>
 	</tr>
 	<tr>
 		<td>serviceVersion</td>
@@ -436,20 +431,20 @@ The Class SceneServiceInfo describes an active SceneService instance.  There is 
 		<td>The full <a href="#_6_2">3dSceneLayerInfo</a> information.</td>
 	</tr>
 </table>
+
 *Table 3: Attributes of the Class SceneServiceInfo within the SceneServiceInfo document*
 
 See [scene service](service/SceneService.cmn.md) for service examples.
 
 ### 3dSceneLayerInfo
 
-The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information for a layer, which is described in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>. 
+The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>. 
 
 The Class 3dSceneLayerInfo has the following structure:
 
 <div>
 <img src="images/figure-06.png" title="Logical schema of the 3dSceneLayerInfo document" alt="Logical schema of the 3dSceneLayerInfo document">
 </div>
-
 *Figure 4: Logical schema of the 3dSceneLayerInfo document*
 
 ### Class 3dSceneLayerInfo
@@ -460,7 +455,7 @@ See [3D Scene Layer Info](docs/1.6/3DSceneLayer.cmn.md) for more details.
 
 ### Class Store
 
-The Class Store object describes the physical storage of a Layer.  This enables the client to detect when multiple Layers are served from the same Store. Storing multiple layers in a single store allows them to share resources.  When the resources are shared, layers with different attribute schemas or symbology but the same content type can be served efficiently. 
+The Class Store object describes the physical storage of a layer.  This enables the client to detect when multiple layers are served from the same store. Including multiple layers in a single store allows them to share resources.  When the resources are shared, layers with different attribute schemas or symbology, but the same content type, can be served efficiently. 
 
 See the [store](docs/1.6/store.cmn.md) for more details.
 
@@ -468,7 +463,7 @@ See the [store](docs/1.6/store.cmn.md) for more details.
 
 The Class GeometrySchema describes ?. 
 
-It is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.  The Class GeometrySchema reduces redundancy of ArrayBufferView geometry declarations in a store by reusing the GeometryAttribute type from Feature Data.  Only valueType and valuesPerElement are mandatory.
+It is used in stores when all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.  The Class GeometrySchema reduces redundancy of ArrayBufferView geometry declarations by reusing the GeometryAttribute from Feature Data.  Only valueType and valuesPerElement are mandatory.
 
 See the [default geometry schema](docs/1.6/defaultGeometrySchema.cmn.md) for more details.
 
@@ -486,7 +481,7 @@ See [class field](docs/1.6/field.cmn.md) for more details.
 
 ### Class AttributeStorageInfo
 
-The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. It describes the structure of the binary attributeData resource of a node.
+The attributeStorageInfo is a major object in the 3dSceneLayerInfo document. It describes the structure of a node's binary attributeData resource.
 
 See [attribute storage info](docs/1.6/attributeStorageInfo.cmn.md) for more details.
 
@@ -530,8 +525,7 @@ Point clouds have a different index scheme. See [point cloud index scheme](docs/
 		<td>min/max number of neighbors per node.</td>
 	</tr>
 </table>
-
-<p><em>Table 8: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 4: Attributes of the Class <strong>IndexScheme</strong> within the 3dSceneLayerInfo document</em></p>
 
 ### Class DrawingInfo
 
@@ -543,7 +537,7 @@ See [drawing info](docs/1.6/drawingInfo.cmn.md) for more details.
 
 ### Class Renderer
 
-The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol, label and descriptions.
+The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer including its type, symbol, label and descriptions.
 
 <table>
 	<tr>
@@ -572,12 +566,12 @@ The Renderer class contains properties that define the drawing symbology of an I
 		<td>The text string that does not appear in the table of contents but may appear in the legend.</td>
 	</tr>
 </table>
-<p><em>Table 10: Attributes of the Class <strong>Renderer</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 5: Attributes of the Class <strong>Renderer</strong> within the 3dSceneLayerInfo document</em></p>
 
 ### Class Symbol
 
 
-The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only supported type of Symbol.
+The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only symbol supported type.
 
 <table>
 	<tr>
@@ -596,7 +590,7 @@ The Class Symbol represents the render primitive used to symbolize an Indexed 3D
 		<td>An object that represents how all features of this I3S layer will be drawn.</td>
 	</tr>
 </table>
-<p><em>Table 11: Attributes of the Class <strong>Symbol</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 6: Attributes of the Class <strong>Symbol</strong> within the 3dSceneLayerInfo document</em></p>
 
 ### Class SymbolLayers
 
@@ -624,7 +618,7 @@ A collection of symbol objects used to visualize the feature.
 		<td>The outline of the mesh fill symbol.</td>
 	</tr>
 </table>
-<p><em>Table 12: Attributes of the Class <strong>SymbolLayers</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 7: Attributes of the Class <strong>SymbolLayers</strong> within the 3dSceneLayerInfo document</em></p>
 
 ### Class Material
 
@@ -659,7 +653,7 @@ The Class Outline defines the outline of the mesh fill symbol.
 		<td>Indicates the transparency value associated with the outline of the symbol.The value has to lie between 100 (full transparency) and 0 (full opacity).</td>
 	</tr>
 </table>
-<p><em>Table 14: Attributes of the Class <strong>Material</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 8: Attributes of the Class <strong>Material</strong> within the 3dSceneLayerInfo document</em></p>
 
 ### Class Color
 
@@ -684,7 +678,7 @@ The Class Color has the following structure:
 		<td>An object that represents how all features of this I3S layer will be drawn.</td>
 	</tr>
 </table>
-<p><em>Table 15: Attributes of the Class <strong>Color</strong> within the 3dSceneLayerInfo document</em></p>
+<p><em>Table 9: Attributes of the Class <strong>Color</strong> within the 3dSceneLayerInfo document</em></p>
 
 ### Class CachedDrawingInfo
 
@@ -694,28 +688,28 @@ See [cached drawing info](docs/1.6/cachedDrawingInfo.cmn.md) for more details.
 
 ### 3dNodeIndexDocument
 
-The 3dNodeIndexDocument file describes a single index node within a store.  It includdes links to other nodes (children, sibling, and parent), feature data, geometry data, texture data, and other metadata.
+The 3dNodeIndexDocument file describes a single index node within a store.  It includes links to other nodes (children, siblings, and parent), feature data, geometry data, texture data, and other metadata.
 
-Depending on the geometry and level of detail modes, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors.
+Depending on the geometry and level of detail, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors to help the client understand the overall distribution of the data.
 
 See [3D Node Index Document](docs/1.6/3DSNodeIndexDocument.cmn.md) for more details.
 
 ### Class NodeReference
 
-A NodeReference is a pointer to another node.  A node can reference the parent, a child or a neighbor. NodeReferences contain a relative URL pointing to the referenced node ID, and metadata that can be used to determine whether to load the node, as well as maintaining store consistency.
+A NodeReference is a pointer to another node.  A node can reference the parent, a child or a neighbor. Node references contain a relative URL and metadata.  The URL points to the node ID.  The metadata is used to determine which nodes to load and helps maintain store consistency. 
 
 See [node reference](docs/1.6/nodeReference.cmn.md) for more details.
 
 ### Class Resource
 
-Resource objects are pointers to different types of resources related to a node, like the feature data, geometry attributes, indices, textures and shared resources.
+Resource objects are pointers to resources related to a node, like the feature data, geometry attributes, indices, textures and shared resources.
 
 See [resource](docs/1.6/resource.cmn.md) for more details.
 
 
 ### Class Feature
 
-Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.
+Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships.  For example, the features can be used for linking feature representations of multiple levels of detail.
 
 <table>
 	<tr>
@@ -754,15 +748,14 @@ Features are representations of the geographic objects stored in a layer. In the
 		<td>The Tree Key ID of the root node of a feature LoD tree that this feature participates in. Only required if the feature participates in a LoD tree and if it is not the rootFeature itself.</td>
 	</tr>
 </table>
-
-<p><em>Table 20: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
+<p><em>Table 10: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
 
 ### Class Level of Detail Selection (Class LoD Selection)
 
-A level of detail selection (lodSelection) object provides information on a metric determined during
-the cooking process of an I3S store.  Clients can use this metric to determine representation quality.
+A level of detail selection (lodSelection) object provides information about a metrics determined during
+the cooking process.  Clients use these metrics to determine representation quality.
 
-Cookers can add as many lodSelection objects as desired, but must provide at least one so that the level of detail type (lodType) is not null. Of the three minimum, average, and maximum values, typically only one or two are used.
+Cookers can add as many lodSelection objects as desired, but must provide at least one so that the level of detail type (lodType) is not null. Typically, minimum, average, or maximum value is used.
 
 
 See [level of detail selection](docs/1.6/drawingInfo.cmn.md) for more details.
@@ -775,8 +768,9 @@ Features have the following structure:
 
 <div>
 <img src="images/figure-08.png" title="Logical schema of the FeatureData document" alt="Logical schema of the FeatureData document">
-<p><em>Figure 8: Logical schema of the FeatureData document</em></p>
+<p><em>Figure 5: Logical schema of the FeatureData document</em></p>
 </div>
+
 
 ### Class Feature
 
@@ -786,7 +780,7 @@ See [feature data](docs/1.6/featureData.cmn.md) for more details.
 
 ### Class FeatureAttribute
 
-A FeatureAttribute is a field carrying a value. This value may be a list of complete attributes which are used with reports or metadata.
+A FeatureAttribute is a field carrying a value. This value may be a list of complete attributes used with reports or metadata.
 
 See [feature attribute](docs/1.6/featureAttribute.cmn.md) for more details.
 
@@ -805,25 +799,25 @@ See [geometry params](docs/1.6/geometryParams.cmn.md) for more details.
 
 ### Class GeometryReferenceParams
 
-Instead of owning a Geometry exclusively, a Feature can also reference a Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
+Instead of owning a geometry exclusively, a feature can reference a Geometry defined for the node.  Using GeometryReferenceParameters allows clients to pre-aggregate geometries for many features. 
 
 See [geometry reference params](docs/1.6/geometryReferenceParams.cmn.md) for more details.
 
 ### Class VestedGeometryParams
 
-This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry.
+VestedGeometryParams extends GeometryParams.  It is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition.  The definition can be either an ArrayBufferView or an Embedded Geometry.
 
 See [vested geometry params](docs/1.6/vestedGeometryParams.cmn.md) for more details.
 
 ### Class SingleComponentParams
 
-Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries.
+SingleCompenentParams extends VestedGeometryParams.  It uses one texture and one material, and can be used with aggregated geometries.
 
 See [single component params](docs/1.6/singleComponentParams.cmn.md) for more details.
 
 ### Class Component
 
-Component objects provide information on parts of the geometry they belong to, specifically with which material and texture to render them.
+Component objects provide specific geometry information.  This is used to determine which material to use during rendering. 
 
 <table>
 	<tr>
@@ -852,12 +846,11 @@ Component objects provide information on parts of the geometry they belong to, s
 		<td>Optional ID of a texture atlas region which to use with the texture to render this component</td>
 	</tr>
 </table>
-
-<p><em>Table 28: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
+<p><em>Table 11: Attributes of the Class <strong>Component</strong> within the FeatureData document</em></p>
 
 ### Class GeometryAttribute
 
-Each GeometryAttribute object is an accessor (i.e. a view) into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex.  FaceAttributes describe faces and other structures by providing a set of indices. For example, the `faces.position` index attribute defines which vertex positions make up a face.
+Each GeometryAttribute object is an accessor into an array buffer. There are two types of GeometryAttributes: VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex.  FaceAttributes describe faces and other structures by providing a set of indices. For example, the `faces.position` index attribute defines which vertex positions make up a face.
 
 See [geometry attribute](docs/1.6/geometryAttribute.cmn.md) for more details.
 
@@ -871,12 +864,13 @@ See [shared resources](docs/1.6/sharedResources.cmn.md) for more details.
 
 <div>
 <img src="images/figure-9.png" title="Logical schema of the SharedResources document" alt="Logical schema of the SharedResources document">
-<p><em>Figure 9: Logical schema of the SharedResources document</em></p>
+<p><em>Figure 6: Logical schema of the SharedResources document</em></p>
 </div>
+
 
 ### Class ShaderDefinition
 
-ShaderDefinitions are, in this version of the I3S specification, an optional feature to provide API-dependent shader programs with a layer.
+ShaderDefinitions can be optionally included with a feature to provide API-dependent shader programs with a layer.
 
 ### Class Symbol
 
@@ -886,33 +880,31 @@ Symbols use the same model as in the FeatureData Geometry.
 
 # Textures
 
-The Textures file is a binary resource that contains one or more images that are used as textures for the features in the store. A single Texture.bin file contains 1 to n textures for a single specific texture level of detail. It can contain a single texture atlas or multiple individual textures.  The bundling is determined by the authoring application so that specific aspects of the materials and textures used can be taken into account (e.g. tiling).
+The Textures file is a binary resource that contains images to be used as textures for the features in the store.  A single Texture.bin file contains 1 to n textures for a single specific texture level of detail. It can contain a single texture atlas or multiple individual textures.  The bundling is determined by the authoring application so that specific aspects of the materials and textures used can be taken into account (e.g. tiling).
 
 ## Texture Recommendations and Requirements
 
 The number and volume of textures tends to be the limiting display factor, especially for web and mobile clients.  Here are are few guidelines to get the most out of texture resources.
 
-### Image Formats
+**Image Formats**
 
 I3S supports multiple texture formats.  The format used depends on the use case. For example, a client might choose to consume JPEG in low bandwidth conditions since they are efficient to transmit and widely used. However, clients constrained for memory or computing resources might choose to directly consume compressed textures such for scalability and performance.
 
-I3S supports most commonly used image formats such as JPEG/PNG, as well as rendering optimized compressed texture formats such as S3TC. The authoring application needs to provide the appropriate textureEncoding declaration using MIME types such as “image/jpeg” (for JPEG) and “image/vnd-ms.dds” (for S3TC).
+I3S supports most commonly used image formats such as JPEG/PNG, as well as rendering optimized compressed texture formats such as S3TC. The authoring application needs to provide the appropriate texture encoding declaration using MIME types such as “image/jpeg” (for JPEG) and “image/vnd-ms.dds” (for S3TC).
 
-I3S will expand coverage for more compressed texture formats as they become widely adopted.
-
-### Texture Sets
+**Texture Sets**
 
 Multiple textures can be combined into a single texture using array buffer views.  Large texture atlases (e.g. 2048 x 2048 px) with one texture per bundle are recommended.
 
-### Atlas Usage and Regions
+**Atlas Usage and Regions**
 
 Individual textures should be aggregated into texture atlases.  Each individual texture becomes a subtexture.  As with all texture resources, the atlas has to be 2^n sized on both dimensions, where n ranges [3,12].  Width and height do not need to be equal.  Subtextures also need to be 2^n sized with n in range [3,12].  Subtextures with other dimensions can cause border artifacts when filtering or MIP-mapping.  A subtexture can be padded to the nearest lower 2^n size by interpolating or scaling pixels.
 
 Subtexture pixels are identified by the subimageRegion attribute: [umin, vmin, umax, vmax].  Region information is passed to the shader using a separate vertex attribute, which converts a UV vertex coordinate to a UVR coordinate.  R encodes the [umin, vmin, umax, vmax] attribute values into 4 UInt16 values.
 
-### Texture coordinates
+**Texture coordinates**
 
-Texture coordinates are used since client capabilities for handling complex UV cases vary widely. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the "repeat" wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. The client is expected to use the subimageRegion values and the texture coordinates to best handle repeating textures in atlases. 
+Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the "repeat" wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. The client is expected to use the subimage region values and the texture coordinates to best handle repeating textures in atlases. 
 
 
 ### Generating Image IDs
@@ -962,6 +954,7 @@ Usage syntax: `UInt64 image_id = BuildID(id, w, h, l, al);`
 
 The binary geometry attribute file follows the <a href="http://www.khronos.org/registry/typedarray/specs/latest/">Khronos Typed Array
 specification</a> in the Editor's Draft version of 10<sup>th</sup> April 2013.
+
 Citing the overview of that spec:
 
 
@@ -988,14 +981,14 @@ var v3 = new Int16Array(b, 2, 2);
 >This defines an 8-byte buffer b, and three views of that buffer, v1, v2, and v3. Each of the views refers to the same buffer -- so v1[0] refers to bytes 0..3 as a signed 32-bit integer, v2[0]
 refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as a signed 16-bit integer. Any modification to one view is immediately visible in the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1 (where -1 is represented as 0xffff).
 
-
 <div>
 <img src="images/figure-10.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
-<p><em>Figure 10: Geometry Buffer Layout with headers</em></p>
+<p><em>Figure 7: Geometry Buffer Layout with headers</em></p>
 </div>
-*Note:* The expected triangle/face winding order in all geometry resources is counterclockwise.
 
-*Note:* If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal Coordinate Reference System, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian Coordinate Reference System first.
+The expected triangle/face winding order in all geometry resources is counterclockwise.
+
+If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal Coordinate Reference System, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian Coordinate Reference System first.
 
 ### Attribute Data
 
@@ -1003,67 +996,65 @@ Attribute data is stored within I3S layers as part of the Scene Service cache al
 
 Attribute data is the primary input source for scene services. The tabular information is stored as an attribute of a feature class. 
 
-Attribute data for all features in a node are stored and available as discrete, per field resource called **attribute**. The number of attribute resources corresponds to the number of fields in the scene cache.  
+Attribute data for all features in a node are stored and available as discrete, per field resource called *attribute*. The number of attribute resources corresponds to the number of fields in the scene cache.  
 
-Attributes values are stored in the attribute resource in the same order as feature geometries are stored within the geometry resource of the node. This allows clients to render each node efficiently through direct array access instead of object-id based attribute lookups.  
+Attributes values are stored in the attribute resource in the same order as feature geometries are in the geometry resource. This allows clients to render each node efficiently through direct array access instead of object-id based attribute lookups.  
 
-When access to the object-id is needed, the _attribute_ resource representing the object-id field stores the object-id values of each feature within the node, just like the geometry resource.  This facilitates object-id based access. Clients can also build an object-id to array-index dictionary for cases where large numbers of object-id based attribute or geometry look ups within a node are needed.
+When access to the object-id is needed, the _attribute_ resource represents the object-id field stores the object-id values of each feature within the node.  This facilitates object-id based access. Clients can also build an object-id to array-index dictionary for cases where large numbers of object-id based attribute or geometry look ups within a node are needed.
 
-When the same feature is included in more than one node at different levels of detail, the corresponding attributes for the feature are also included as attribute resources in each node. This redundancy in attribute storage allows each node to be rendered independently of any other node.  
+When the same feature is included in more than one node at different levels of detail, the corresponding attributes for the feature are included as attribute resources in each node. This redundancy in attribute storage allows each node to be rendered independently of any other node.  
 
-Metadata on each _attribute_ resource is made available to clients via the scene service layer. When attributes are present within the scene cache, the resourcePattern array in the layers store (layers[id].store.resourcePattern) will include a value called attributes.  The attributes value indicates that attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the resourcePattern, additional metadata in the fields array (layers[id].fields[id]) and attributeStorageInfo array (_layers[id].attributeStorageInfo[id]_), further describe each attribute resource.  
+Metadata on each _attribute_ resource is made available to clients via the scene service layer. When attributes are present within the scene cache, the resourcePattern array in the layers store will include a value called attributes.  The attributes value indicates that attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the resourcePattern, additional metadata in the fields array and attributeStorageInfo array further describe each attribute resource.  
 
 These metadata allow clients to initialize and allocate any required client side resources prior to accessing any attributes of interest.  
 
 <div>
 <img src="images/figure-11.png" title="An example of the fields array." alt="An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.">
-<p>Figure 11: An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias.</p>
+<p>Figure 8: An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias.</p>
 </div>
+
 Clients can use the key property (layers[id].attributeStorageInfo[].key) of the attributeStorageInfo to uniquely identify and request the attribute resource through a RESTful API, called attributes. Clients use the attributeStorageInfo metadata to decode the retrieved attribute binary content.
 
-**The attribute resource header contains:**
+The attribute resource header contains:
 
 - A header section of 4 bytes with the count of features. The count value is present in all attribute resources.  For attributes with string resources, header has an additional 4 bytes indicating the total byte count of the string attribute values.
 - For all numerical field types, the header section is followed by the attribute values array record. The attribute values must always begin at an offset that is divisible by the byte length of a single value. If the header does not end at such an offset, the necessary amount of padding is inserted between the header and the attribute values.
 - For string field types, the header section is followed by a fixed length array whose values are the byte counts of each string data, inclusive of the null termination character. This array is then followed by an array of actual string data. The strings are stored null terminated.
 
-
-_<a href="../profiles/meshpyramids/examples/3dSceneLayer.js">code 1.</a> A scene layer resource illustrating the metadata information found in the fields (layers[id].fields[id]) and attributeStorageInfo arrays (layers[id].attributeStorageInfo[id])._
-
-
-A client application will be able to find the URI of any attribute resource through its href reference from the attributeData array of the Node Index Document (similar access patterns exist for resources such as 'features', 'geometries', etc.). See Figure 12 below:  
+A client application will be able to find the URI of any attribute resource through its reference from the attributeData array of the Node Index Document (similar access patterns exist for resources such as 'features', 'geometries', etc.). See Figure 9 below:  
 
 <div>
 <img src="images/figure-12.png" title="A node resource document illustrating attribute data content access urls (href)" alt="A node resource document illustrating attribute data content access urls (href)">
-<p>Figure 12: A node resource document illustrating attribute data content access urls (href).</p>
+<p>Figure 9: A node resource document illustrating attribute data content access urls (href).</p>
 </div>
+
 
 #### REST API for Accessing Attribute Resources directly from a scene service layer
 
-The Attributes REST API allows client apps to fetch the attribute records of a field using its _Key_ property directly from a scene service layer.  Every scene node (with the exception of 'root' node), exposes attribute fields as discrete _attribute_ resources. These resources are accessible through a relative URL to any Node Index Document.
+The attributes REST API allows client apps to fetch the attribute records of a field using its _key_ property directly from a scene service layer.  Every scene node (with the exception of `root` node), exposes attribute fields as discrete _attribute_ resources. These resources are accessible through a relative URL to any Node Index Document.
 
 The Attributes REST API syntax: 
  URL: **http://&lt;sceneservrice-url&gt;/attributes/&lt;field_key&gt;/&lt;id>**
 
-- _attributes_ -  is the RESTful resource responsible for fetching the binary attribute resource. A client will decode the content based on the metadata found in the scene layer _attributeStorageInfo_ array
-- <i>field\_key</i> - is the field key value that will be used to request the desired feature attribute content.
-- _id_ - is the bundle id of the _attribute_ binary resource, corresponding to the geometry bundle id. By default this value is 0 (same as the geometry bundle id). If a node has more than 1 geometry resource, then the id of the _attribute_ resource will also match the geometry bundle id.
+- _attributes_: the RESTful resource responsible for fetching the binary attribute. Clients will decode the content based on the metadata found in the scene layer _attributeStorageInfo_ array
+- <i>field\_key</i>: the key value used to request the feature attribute content
+- _id_: the bundle ID of the _attribute_ binary resource, corresponding to the geometry bundle id. By default, this value is 0 (same as the geometry bundle id). If a node has more than 1 geometry resource, then the id of the _attribute_ resource will also match the geometry bundle id.
 
 
 #### Usage pattern of the _attributes_ REST API:  
 
 1. A client should get the attribute field from the metadata by fetching the scene server layers REST resource prior to symbolizing the node base on attribute information.  The layers resource contains the files array, which lists all available attribute fields, types, and the Attribute Storage Info array.  
 
-   The fields array object contains a collection of objects that describe each attribute including its name ('name'), datatype ('type') and a user friendly name ('alias'). It includes all fields in the source feature layer of the scene service layer.  
+   - The fields array object contains a collection of objects that describe each attribute, including its name ('name'), datatype ('type') and a user friendly name ('alias'). It includes all fields in the source feature layer of the scene service layer.  
 
-   The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time.
+   - The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time.
 
    See the [attribute storage info model](docs/1.6/attributeStorageInfo.cmn.md) for more details.
 
 
-2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values by supplying the desired field _Key_ as part of the attributes REST request. Furthermore, it is capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
+2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values by using the _key_ as part of the attributes REST request. Furthermore, it is capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
 
-   Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array, should first check in the geometry buffer before requesting it from the _attributes_ REST resource.  
+   Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array should first check in the geometry buffer before requesting it from the _attributes_ REST resource.
 
 
 #### Attribute Resource - Details
@@ -1072,49 +1063,49 @@ A numeric attribute resource is a singe, one dimensional array.  A string attrib
 
 The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
 
-Lets take a look at a sample scene service layer and its field types ([see Figure 14](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
+Lets take a look at a sample scene service layer and its field types ([see Figure 9](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
 
 <div>
 <img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in Figure 11 and the _attributeStorageInfo_ array in Figure 13 is derived from the attribute value of the above feature class.">
-<p>Figure 14: A typical attribute (table) info of a feature class. The fields array that’s shown as an example in Figure 11 and the attributeStorageInfo array in Figure 13 is derived from the attribute value of the above feature class.</p>
+<p>Figure 9: Typical attribute info of a feature class.</p>
 </div>  
 
-As it could be inferred that a scene service layer exposes/includes **only** supported attribute field value types of a feature class. As a result, the 'Shape' field ([see Figure 14](images/figure-14.png)), which is of _esriFieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
 
-[Table 24](Table_24.png) below lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
+A scene service layer includes only supported attribute field value types of a feature class. As a result, the 'Shape' field in Figure 9 is not included in the attribute cache of a scene layer.
+
+Figure 9 shows how the feature class maps to different attribute resources. 
+
+- **OID** (type: `esriFieldTypeOID`) is by default represented as an _UInt32-Array_, with a 1-d array of _UInt32_ value type.
+
+- **NEAR-FID** (type: `esriFieldTypeInteger`) is represented as an _Int32-Array_, with a 1-d array of _Int32_ value type.
+
+- **NEAR_DIST** (type: `esriFieldTypeDouble`) is represented as a _Double-Array_, with a 1-d array of _Float64_ value type.
+
+- **Name** (type: `esriFieldTypeString`) is represented as a _String-Array_. A String-Array supports storage of variable length strings and is stored as two arrays in sequence.  The first fixed length array has the byte counts of each string (null terminated).  The second array stores the actual string values as UTF8 encoded strings. The value type of the first array is _UInt32_ and the value type of the second array is _String_.
+
+The _attributes_ REST API of a scene layer gives access to all scene cache feature attribute data as binary attribute value arrays.  For example, Figure 9 has 5 binary resources, identified by keys *f_0_, f_1_, f_2_, f_3_*  and *f_4*, and are accessible by the respective rest resource URLs (e.g. .../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc.)
+
+[Table 12](Table_24.png) below lists a feature layer's field data types. The valueTypes column indicates the supported types for attribute based mapping and symbology.
+
+The following types of attribute value arrays are supported :
+
+- _Int32-Array_, _UInt32-Array_, _UInt64-Array_, _Float64-Array_, _Float32-Array_, _String-Array_
 
 <div>
 <img src="images/Table_24.png" title="Attribute data types supported by a scene service layer." alt="Attribute data types supported by a scene service layer.">
-<p>Table 24: Attribute data types supported by a scene service layer.</p>
-</div>  
-
-\* String – using UTF-8 Unicode character encoding scheme.
-
-The following types of attribute value arrays are supported :
-_Int32-Array_, _UInt32-Array_, _UInt64-Array_, _Float64-Array_, _Float32-Array_, _String-Array_
-
-Using our example feature class shown in [Figure 14](images/figure-14.png) let's see how it maps to the different types of _attribute_ resources.   
-
-The _'OID'_ field, whose field type is 'esriFieldTypeOID' is by default represented as an _UInt32-Array_. This is a simple 1-d array of _UInt32_ value type.
-
-The next attribute field type in the above example, 'NEAR-FID' which is of field type 'esriFieldTypeInteger' is represented as an _Int32-Array_. This again is also a simple 1-d array of _Int32_ value type.
-
-The 'NEAR_DIST' field is of field type 'esriFieldTypeDouble' field type and is represented as a _Double-Array_, represented as 1-d array of _Float64_ value type.
-
-The 'Name' field is of 'esriFieldTypeString' and is represented as a _String-Array_. A String-Array supports storage of variable length strings and is stored as two arrays in sequence where the first fixed length array has the byte counts of each string (null terminated) in the second array and the second array stores the actual string values as UTF8 encoded strings. The value type of the first array is (_UInt32_) whereas the value type of the second array is _String_.  
-
-The _attributes_ REST api of a scene layer gives access to all scene cache supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in [Figure 14](images/figure-14.png) will have 5 binary resources, as identified by keys <i>f_0_, f_1_, f_2_, f_3_ </i> and <i>f_4</i> and accessible by their respective rest resource URLs (_.../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc..).
+<p>Table 12: Attribute data types supported by a scene service layer.</p>
+</div> 
 
 #### Accessing the legend of a 3D Object Layer
 
 Legends are essential for proper display and complete communication of represented information of a 3D Object Layer.
 
-Clients are responsible for building legend information from the drawingInfo resource for the scene layer.
+Clients are responsible for building legend information from the *drawingInfo* resource for the scene layer.
 Scene layers and scene services behave identically to feature layers and feature services.
 
 # I3S Flexibility
 
-I3S allows different implementation.  Choices can be made for depending on the type of 3D data and the layer profile. Here are typical examples for each layer type:
+I3S supports many different implementations.  The implementation decisions can be made based on the type of 3D data and the layer profile. Here are a few implementation options:
 
 **The Minimum Bounding Volume (MBV)**
 
@@ -1124,24 +1115,24 @@ I3S allows different implementation.  Choices can be made for depending on the t
 **Node Structure**
 
 - Expanded: Supports clients that want to get more complete metadata about a node's position in the bounding volume hierarchy (BVH) and its immediate neighborhood.  Each node index provides pointers to its parent, children, and sibling.  Used by mesh-pyramids and points profiles.
-- Fixed-size: Supports paged access. Minimal structural elements: only the bounding volume, first child reference, child count, level of detail selection data, etc.  used by the Point Cloud profile. 
+- Fixed-size: Supports paged access. Minimal structural elements: only the bounding volume, first child reference, child count, level of detail selection data, etc.  Used by the Point Cloud profile. 
 
 **Embedded Geometry**
 
-- Embedded geometry: as text (JSON) with other metadata within a feature data resource.  Supports profiles where run-length encoding of feature IDs along the vertex data is suboptimal.  Typed array buffer and fixed format binary buffers are supported.   Used by the points profile. 
+- Included as text (JSON) with other metadata within a feature data resource.  Supports profiles where run-length encoding of feature IDs along the vertex data is suboptimal.  Typed array buffer and fixed format binary buffers are supported.  Used by the points profile. 
 
 **Binary Geometry**
 
-- for Voluminous, ready to render geometries and cached attributes.  Typed array buffer and fixed format binary buffers are supported.  used by mesh pyramids (array buffer views using the Khronos Types Array specification) and point clouds (to support domain specific data compression).
+- For Voluminous, ready to render geometries and cached attributes.  Typed array buffer and fixed format binary buffers are supported.  Used by mesh pyramids (array buffer views using the Khronos Types Array specification) and Point Clouds (to support domain specific data compression).
 
 **Level of Detail Selection**
 
 Level of detail switch based on: 
 
-- maxScreenThreshold - the screen size of the node's minimum bounding volume.  Used by mesh pyramids
-- screenSpaceRelative - the scale of the node's minimum bounding volume.  Use by the points profile.
-- distanceRangeFromDefaultCamera: normalized distance of the node's minimum bounding volume from the camera.  Used by the points profile.
-- effectiveDensity: estimation of the point density covered by the node.  Use by point clouds. 
+- maxScreenThreshold: The screen size of the node's minimum bounding volume.  Used by mesh pyramids
+- screenSpaceRelative: The scale of the node's minimum bounding volume.  Use by the points profile.
+- distanceRangeFromDefaultCamera: Normalized distance of the node's minimum bounding volume from the camera.  Used by the points profile.
+- effectiveDensity: Estimation of the point density covered by the node.  Use by Point Clouds. 
 
 
 ### I3S Defining Characteristics
@@ -1149,54 +1140,51 @@ Level of detail switch based on:
 - Attributes may be included on individual entities, on individual point cloud points, or on partial segments of meshes 
 - Attribute based stylization may be modified by client software 
 - Multiple, alternative textures may be provided to optimize for per-platform performance and display 
-- Texture and attribute data should use JSON for index and metadata, binary for large geometries
+- Texture and attribute data be created as JSON for index and metadata, and binary for large geometries
 - A Scene Layer Package format for distribution, or direct use, of the scene layer as a single file (see SLPK section) 
-- Optional paired services that expose queryable and updatable RESTful endpoints enable direct access to dynamic source data 
-- Explicit control over bounding index shape and per-node switching alllows for optimized display and query 
+- Direct access is enabled through optional paired services that expose query-able and updatable RESTful endpoints
+- Explicit control over bounding index shape and per-node switching allows for optimized display and query 
 - Bounding volume hierarchy (BVH) is based on minimum bounding spheres (MBS) and oriented bounding boxes (OBB)
-- Scene layers may be created in Cartesian 3D or in global 3D world coordinate systems 
+- Scene Layers may be created in Cartesian 3D or in global 3D world coordinate systems 
 
 ### Persistence
 
-I3S scene layers can be delivered to web, mobile and desktop clients using a number of patterns. Most users will interact with scene layers using applications with cloud or server based information.  In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface.  These web addressable resources provide access the scene layer, nodes, and associated resources.  
+I3S Scene Layers can be delivered to web, mobile and desktop clients using a number of patterns. Most users will interact with Scene Layers using applications with cloud or server based information.  In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface.  These web addressable resources provide access the scene layer, nodes, and associated resources.  
 
-Alternatively, a scene layer can be delivered as a Scene Layer Package.  This is a single file that includes the complete node tree and all necessary resources into an archive.  It allows direct access to individual nodes and their resources.  
+Alternatively, a scene layer can be delivered as a Scene Layer Package.  This is a single file that includes the complete node tree and all necessary resources in an archive.  It allows direct access to individual nodes and their resources.  
 
 
 All storage methods store the Indexed 3D Scene Layers in a key-value structure, where the key is the access URL and the value is resource (e.g. JSON document).
 
 ### Scene Layer Packages (SLPK files)
 
-Scene Layer Packages (SLPK) serve two purposes: 
+Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be consumed by applications directly. 
 
-1. Allow a complete I3S layer, with all resources, to be transported or exchanged as a single file
-2. Can optionally be directly consumed by applications
-
-A Scene Layer Package is defined by these characteristics
+A Scene Layer Package is
 
 - Always archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) compression
+  - STORE is the preferred compression schema since an SLPK is intended for direct consumption by clients, especially if a resource compression is already applied on the individual resources.
   - This compression scheme has to be either STORE or DEFLATE64.Standard.  DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. 
-- STORE is the preferred compression schema since an SLPK is intended for direct consumption by clients, especially if a resource compression is already applied on the individual resources
-- Every resource, except textures, can be individually compressed. Compressed textures can additionally have GZIP compression applied to them. Only the GZIP scheme is supported, since DEFLATE support is not universally available for all browsers.
+- Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. Only the GZIP scheme is supported, since DEFLATE is not universally supported by all browsers.
 
-The contents of the archive depicted in the figure below shows an SLPK with the BASIC folder pattern. The I3S specification allows an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.  The top level includes a <em>nodes</em> folder with  
+Figure 10 below shows a Scene Layer Package archive with the BASIC folder pattern.  The I3S specification also allows an EXTENDED folder pattern, that uses subtree partitions to avoid problems with very large packages.  The top level includes a <em>nodes</em> folder with  
 
 - A subfolder that contains all node resources
 - A *metadata.json* file that describes the content of the SLPK
-- A *3dSceneLayer.json.gz* file that defines the Scene Layer. 
+- A *3dSceneLayer.json.gz* file that defines the Scene Layer
 
 
 ![Structure of an SLPK file](images/figure-15.png)
 
-*Example of an SLPK with BASIC folder layout.*
+*Figure 10: Example of an SLPK with BASIC folder layout.*
 
-In the example, the *nodes* subfolder contains, nodes named *root*, *1-4-2-0*, etc. Drilling further into one of the nodes, *1-4-2-0*, notice that all file resources are individually compressed with GZIP compression (indicated by the file extension .gz), with the exception of the texture resource that is in JPEG format (*textures/0_0.jpg*).
+The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, and are JSON with GZIP compression.
 
-The resources under the subfolders *geometries* (*geometries/0.bin.gz*) and *attributes* (*attributes/f_0/bin.gz*, *attributes/f_1/bin.gz*, ...), are serialized as binary, and correspond to the geometryData and attributeData resources of a Scene Layer. 
+The *nodes* subfolder contains, nodes named *root*, *1-4-2-0*, and other nodes not pictured.  All file resources within a particular node (e.g. *1-4-2-0*), can be individually compressed with GZIP (indicated by the file extension *.gz*).  Note, the texture resource is not compressed because it is an image (JPEG *textures/0_0.jpg*).
 
-Similarly, *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, and are encoded in JSON with a GZIP compression.
+Resources in subfolders, like *geometries* and *attributes*, are serialized as binary, and correspond to the geometryData and attributeData (e.g. *geometries/0.bin.gz* and *attributes/f_0/bin.gz*)
 
-For the above mentioned use cases, an SLPK file is employed as follows:
+For the above example, an SLPK file is employed as follows:
 
 1. SLPK as a transfer format
    - Archive Compression Type: DEFLATE64
@@ -1208,9 +1196,9 @@ For the above mentioned use cases, an SLPK file is employed as follows:
 
 ###Metadata
 
-The following entries are permitted in the Metadata.json file that is part of every SLPK archive.  All properties are required.  The default is in **bold**.
+Every SLPK archive has a *metadata.json* file. The following entries are required and must be of the specified type.  The default is in **bold**.
 
-| Property                | Notes                                    |
+| Property                | Details                                  |
 | ----------------------- | ---------------------------------------- |
 | folderPattern           | One of {**BASIC**, EXTENDED}             |
 | ArchiveCompressionType  | One of {**STORE**, DEFLATE64, [DEFLATE]} |
@@ -1218,12 +1206,13 @@ The following entries are permitted in the Metadata.json file that is part of ev
 | I3SVersion              | One of {1.2, 1.3, 1.4, **1.6**}          |
 | nodeCount               | Total number of nodes in the SLPK        |
 
+*Table 13: Metadata properties*
 
 ### Key Value Stores 
 
-In this persistence schema, all scene layer resources are stored within either key value based cloud blob stores (e.g. Amazon Simple Storage (S3) or Windows Azure Blob Storage) or with more general key value stores. In cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases, each resource within a scene layer is identified by a unique key.  The default is in **bold**.
+In this persistence schema, all Scene Layer resources are stored within either key value based cloud blob stores (e.g. Amazon Simple Storage (S3), Windows Azure Blob Storage) or with more general key value stores. In cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases, each resource is identified by a unique key.  The default is in **bold**.
 
-This table is an example showing the layout of a SceneService in a key value store environment. The example illustrates the structure of the service using a 3D Object Scene Layer containing textured geometries and attribute data.
+*Table 14: Example SceneService in a key value store environment with textured geometries and attribute data*
 
 | I3S Resource                                   | Required                          | Details                                                      |
 | ---------------------------------------------- | --------------------------------- | ------------------------------------------------------------ |

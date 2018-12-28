@@ -19,6 +19,8 @@ The FeatureData JSON file(s) contain geographical features with a set of attribu
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: 3D Scene Layer info for point scene layer 

@@ -16,3 +16,5 @@ An object defining where a feature is placed within a scene. For example, on the
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

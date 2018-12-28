@@ -11,72 +11,81 @@ Shared resources are models or textures that can be shared among features within
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
-#### Example: Example shared resource 
+#### Example: shared resource 
 
 ```json
  {
   "materialDefinitions": {
-    "type": "standard",
-    "name": "standard",
-    "params": {
-      "reflectivity": 0,
-      "ambient": [
-        0,
-        0,
-        0
-      ],
-      "diffuse": [
-        1,
-        1,
-        1
-      ],
-      "specular": [
-        0.09803921568627451,
-        0.09803921568627451,
-        0.09803921568627451
-      ],
-      "shininess": 1,
-      "renderMode": "solid",
-      "cullFace": "none"
-    }
-  },
-  "textureDefinitions": {
-    "encoding": [
-      "image/jpeg",
-      "image/vnd-ms.dds"
-    ],
-    "wrap": [
-      "none",
-      "none"
-    ],
-    "atlas": false,
-    "uvSet": "uv0",
-    "channels": [
-      "r",
-      "g",
-      "b"
-    ],
-    "images": [
-      {
-        "id": "525",
-        "size": 64,
-        "pixelInWorldUnits": 0,
-        "href": [
-          "../textures/0_0",
-          "../textures/0_0_1"
-        ],
-        "byteOffset": [
+    "Mat48": {
+      "type": "standard",
+      "name": "standard",
+      "params": {
+        "vertexRegions": false,
+        "vertexColors": true,
+        "reflectivity": 0,
+        "useVertexColorAlpha": false,
+        "ambient": [
+          0,
           0,
           0
         ],
-        "length": [
-          737,
-          400
-        ]
+        "diffuse": [
+          1,
+          1,
+          1
+        ],
+        "specular": [
+          0.09803921568627451,
+          0.09803921568627451,
+          0.09803921568627451
+        ],
+        "shininess": 1,
+        "renderMode": "solid",
+        "cullFace": "none"
       }
-    ]
+    }
+  },
+  "textureDefinitions": {
+    "48": {
+      "encoding": [
+        "image/jpeg",
+        "image/vnd-ms.dds"
+      ],
+      "wrap": [
+        "none",
+        "none"
+      ],
+      "atlas": false,
+      "uvSet": "uv0",
+      "channels": [
+        "r",
+        "g",
+        "b"
+      ],
+      "images": [
+        {
+          "id": "525",
+          "size": 64,
+          "pixelInWorldUnits": 0,
+          "href": [
+            "../textures/0_0",
+            "../textures/0_0_1"
+          ],
+          "byteOffset": [
+            0,
+            0
+          ],
+          "length": [
+            737,
+            400
+          ]
+        }
+      ]
+    }
   }
 } 
 ```

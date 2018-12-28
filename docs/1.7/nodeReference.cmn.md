@@ -18,6 +18,8 @@ A NodeReference is a pointer to another node - the parent, a child or a neighbor
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: cachedDrawingInfo for 3D Object scene layer. 

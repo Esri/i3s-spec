@@ -47,6 +47,8 @@ faceRange
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: I3S v1.6 equivalent geometry buffer definition (without UV regions) 

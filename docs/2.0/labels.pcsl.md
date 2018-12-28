@@ -14,6 +14,8 @@ Optionally, the statistics document may contain labeling information for the att
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Class Code labels (LIDAR data) 

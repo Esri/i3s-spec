@@ -4,7 +4,7 @@ Describes the point cloud scene layer.
 
 ### Related:
 
-[pcsl::statistics](statistics.pcsl.md), [pcsl::nodepage](nodepage.pcsl.md)
+[pcsl::nodepage](nodepage.pcsl.md), [pcsl::statistics](statistics.pcsl.md)
 ### Properties
 
 | Property | Type | Description |
@@ -28,6 +28,8 @@ Describes the point cloud scene layer.
 | fields | [field](field.cmn.md)[] |  |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

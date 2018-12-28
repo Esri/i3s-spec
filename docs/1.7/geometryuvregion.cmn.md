@@ -16,7 +16,7 @@
 
 ### Related:
 
-[cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md), [cmn::geometrybuffer](geometrybuffer.cmn.md)
+[cmn::geometrybuffer](geometrybuffer.cmn.md), [cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -27,6 +27,8 @@
 | binding | string | binding<div>Possible values are:<ul><li>`per-vertex`: default</li><li>`per-uvregion`: Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present</li></ul></div> |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

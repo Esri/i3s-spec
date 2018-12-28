@@ -16,6 +16,8 @@ Normals
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Float32 x,y,z  **per-vertex** normals  

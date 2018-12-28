@@ -13,6 +13,8 @@ The vertex buffer description.
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: vertexAttributes 

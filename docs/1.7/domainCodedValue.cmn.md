@@ -14,6 +14,8 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Example 1 

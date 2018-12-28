@@ -4,7 +4,7 @@ Parameter describing the material.
 
 ### Related:
 
-[cmn::materialDefinition](materialDefinition.cmn.md)
+[cmn::materialDefinitionInfo](materialDefinitionInfo.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -19,8 +19,13 @@ Parameter describing the material.
 | castShadows | boolean | TRUE if features with this material should cast shadows. |
 | receiveShadows | boolean | TRUE if features with this material should receive shadows |
 | cullFace | string | Indicates the material culling options {back, front, *none*}. Default is none. |
+| vertexColors | boolean |  |
+| vertexRegions | boolean |  |
+| useVertexColorAlpha | boolean |  |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

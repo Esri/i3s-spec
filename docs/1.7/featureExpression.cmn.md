@@ -13,3 +13,5 @@ Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geom
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

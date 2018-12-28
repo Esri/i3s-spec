@@ -17,6 +17,8 @@ A Texture is a set of images, with some parameters specific to the texture/uv ma
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: textureDefinition 

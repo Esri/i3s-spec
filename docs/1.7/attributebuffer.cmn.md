@@ -20,6 +20,8 @@
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Declaration for per-feature string attribute buffers. Url: `layers/0/nodes/{resource_id}/attributes/12` 

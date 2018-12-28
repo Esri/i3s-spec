@@ -16,6 +16,8 @@ Relative the center of oriented-bounded box of the node
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: {x,y,z} position as float32 

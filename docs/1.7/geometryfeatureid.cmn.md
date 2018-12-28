@@ -16,6 +16,8 @@ FeatureID helps to indentify part of mesh from belonging to a particular GIS `fe
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Feature_id less than 65k, per-feature. `faceRange` attribute will be required 

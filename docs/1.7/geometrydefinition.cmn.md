@@ -14,6 +14,8 @@
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Definition for a v1.6-equivalent geometry buffer and draco compressed geometry buffer 

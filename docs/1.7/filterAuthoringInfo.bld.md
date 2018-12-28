@@ -14,3 +14,5 @@ The filter authoring info object contains metadata about the authoring process f
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

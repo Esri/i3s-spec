@@ -16,6 +16,8 @@ A collection of objects describing each attribute field.
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Fields example 

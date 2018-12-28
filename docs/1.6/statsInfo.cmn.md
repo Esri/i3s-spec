@@ -22,3 +22,5 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

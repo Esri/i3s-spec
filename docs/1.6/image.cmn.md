@@ -4,7 +4,7 @@ An image is a binary resource, containing a single raster that can be used to te
 
 ### Related:
 
-[cmn::textureDefinition](textureDefinition.cmn.md)
+[cmn::textureDefinitionInfo](textureDefinitionInfo.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -17,6 +17,8 @@ An image is a binary resource, containing a single raster that can be used to te
 | length | number[] | The length in bytes of this image's encodings (one per encoding, in the same order as the encodings). |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

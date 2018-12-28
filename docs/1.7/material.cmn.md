@@ -28,3 +28,5 @@ The materialDefinition describes how a feature or a set of features is to be ren
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

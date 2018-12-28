@@ -18,6 +18,8 @@ Resource objects are pointers to different types of resources related to a node,
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Resource example 

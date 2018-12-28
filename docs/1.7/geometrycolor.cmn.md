@@ -16,6 +16,8 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: RGB colors per vertex 

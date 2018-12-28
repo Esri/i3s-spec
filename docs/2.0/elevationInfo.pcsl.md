@@ -14,6 +14,8 @@ The elevationInfo defines how content in a scene layer is aligned to the ground.
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: elevationInfo 

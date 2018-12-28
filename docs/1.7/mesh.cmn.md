@@ -15,6 +15,8 @@ Mesh geometry for a node
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Textured mesh with attributes and features 

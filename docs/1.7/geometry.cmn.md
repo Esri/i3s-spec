@@ -4,7 +4,7 @@ This is the common container class for all types of geometry definitions used in
 
 ### Related:
 
-[cmn::featureData](featureData.cmn.md), [cmn::features](features.cmn.md)
+[cmn::features](features.cmn.md), [cmn::featureData](featureData.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -15,6 +15,8 @@ This is the common container class for all types of geometry definitions used in
 | params | [geometryParams](geometryParams.cmn.md) | The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.       |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

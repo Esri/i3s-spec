@@ -19,6 +19,8 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: spatial reference 

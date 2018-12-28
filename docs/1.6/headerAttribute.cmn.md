@@ -14,6 +14,8 @@ The header definition provides the name of each field and the value type. Header
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Header 3D Object and integrated mesh scene layer 

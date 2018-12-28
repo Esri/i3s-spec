@@ -14,6 +14,8 @@ The file authoring information for a filter, including the filter type and its v
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Building Scene Layer filter authoring info 

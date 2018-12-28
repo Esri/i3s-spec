@@ -18,6 +18,8 @@ Attribute description as field.
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: defaultGeometrySchema 

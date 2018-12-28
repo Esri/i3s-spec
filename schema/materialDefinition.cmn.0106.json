@@ -2,67 +2,49 @@
   "title": "materialDefinition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Materials describe how a feature or a set of features is to be rendered, including shading and color. The following table provides the set of attributes and parameters for the `type`: `standard` material.",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "A name for the material as assigned in the creating application."
-    },
-    "type": {
-      "type": "string",
-      "enum": [
-        "standard",
-        "water",
-        "billboard",
-        "leafcard",
-        "reference"
-      ],
-      "description": "Indicates the material type, chosen from the supported values."
-    },
-    "$ref": {
-      "type": "string",
-      "description": "The href that resolves to the shared resource bundle in which the material definition is contained."
-    },
-    "params": {
+  "description": "Materials describe how a feature or a set of features is to be rendered, including shading and color.",
+  "patternProperties": {
+    "([A-Za-z0-9]+_*)+": {
       "type": "object",
-      "description": "Parameter defined for the material.",
-      "$ref": "params.cmn.0106.json"
+      "description": "Each material definition should be unique for the whole service.",
+      "$ref": "materialDefinitionInfo.cmn.0106.json"
     }
   },
-  "required": [
-    "name"
-  ],
   "additionalProperties": false,
+  "minProperties": 1,
+  "maxProperties": 1,
   "esriDocumentation": {
     "examples": [
       {
-        "title": "3D Scene Layer info for point scene layer"
-      },
-      {
-        "title": "3D Scene Layer info for 3D object scene layer",
+        "title": "material definition",
         "code": {
-          "type": "standard",
-          "name": "standard",
-          "params": {
-            "reflectivity": 0,
-            "ambient": [
-              0,
-              0,
-              0
-            ],
-            "diffuse": [
-              1,
-              1,
-              1
-            ],
-            "specular": [
-              0.098039215686274508,
-              0.098039215686274508,
-              0.098039215686274508
-            ],
-            "shininess": 1,
-            "renderMode": "solid",
-            "cullFace": "none"
+          "Mat43": {
+            "type": "standard",
+            "name": "standard",
+            "params": {
+              "vertexRegions": false,
+              "vertexColors": true,
+              "reflectivity": 0,
+              "useVertexColorAlpha": false,
+              "ambient": [
+                0,
+                0,
+                0
+              ],
+              "diffuse": [
+                1,
+                1,
+                1
+              ],
+              "specular": [
+                0.098039215686274508,
+                0.098039215686274508,
+                0.098039215686274508
+              ],
+              "shininess": 1,
+              "renderMode": "solid",
+              "cullFace": "none"
+            }
           }
         }
       }

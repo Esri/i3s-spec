@@ -19,6 +19,8 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: `String` attribute with `modelName` to specify filterable semantic 

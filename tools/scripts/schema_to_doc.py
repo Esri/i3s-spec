@@ -28,9 +28,6 @@ class Schema_manifest :
         self.version = version
 
     def get_abs_path_from_schema_name( self, name ) :
-        #if len(tok) > 1 :
-        #    assert( tok[0] in Schema_manifest.c_code_to_paths)
-        #fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "schema", fn ) 
         return os.path.realpath( os.path.join( self.ref_path, "schema", name ) );
      
     def get_relative_output_path_from_schema_name( self, name, abs_ref_path=None ) :
@@ -82,9 +79,6 @@ class Schema_manifest :
 
     def get_docs_href_from_schema_name( href) :
         return Schema_manifest._get_href_from_schema_name( href, 'docs')
-
-    #def get_example_href_from_schema_name( abs_path_doc, href) :
-    #    return Schema_manifest._get_href_from_schema_name( abs_path_doc, href, 'examples')
 
     def _get_href_from_schema_name( href, replace_by) :
         folders = []
@@ -160,7 +154,6 @@ class Schema_type :
         self.desc_href=''
         self.custom_related = []
         self.oneOf = []
-        self.include = ''
         self.properties = {}
 
     def parse_from_file(self, abs_path) :
@@ -174,14 +167,12 @@ class Schema_type :
         if 'title' in dom :
             self.title = dom['title']
         self.parse_type( dom, parent_type )
-        # todo: parse example & external md doc if any
 
     def parse_property( self, field, sub_dom, parent_type=None ) :
         prop = Property()
         prop.name = field
 
         if '$ref' in sub_dom :
-            #tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], self.name.split('::')[0] );
             tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name.split('::')[0] );
             if tmp != self.name and ( parent_type is None or tmp != parent_type.name ):
                 prop.href = sub_dom['$ref']
@@ -199,21 +190,32 @@ class Schema_type :
         return prop
 
 
-    def get_properties(self, dom) :
+    # get all properties in schema. Include any properties from an $include schema also
+    def get_all_properties(self, dom) :
         if '$include' in dom :
-            self.include = dom['$include']
-            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, self.include)
+            abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, dom['$include'])
             print("Including schema file: %s" % abs_path_to_include)
             old_schema = json_to_dom( abs_path_to_include )
-            self.get_properties( old_schema )
+            self.get_all_properties( old_schema )
         
         if ( 'properties' in dom ) :
-            for entry in dom['properties'] :
-                self.properties[entry] = dom['properties'][entry]
-            #old_schema = self.parse_from_dom( json_to_dom( abs_path_to_include ) )
-            #props = self.get_properties(old_schema)
+            for name, value in dom['properties'].items() :
+                self.properties[name] = value
+        if ( 'patternProperties' in dom ) :
+            for name, value in dom['patternProperties'].items() :
+                self.properties[name] = value
 
-
+    def get_properties(self, dom) :
+        self.get_all_properties(dom)
+        for field,sub_dom in self.properties.items() :
+            prop = self.parse_property( field, sub_dom, self )
+            prop.is_required = True if 'required' in dom and field in dom['required'] else False
+            prop.is_regex = True if 'patternProperties' in dom and field in dom['patternProperties'] else False
+            if prop.type.json_type == 'array' :
+                prop.type.item_prop.type.back_refs.append( self)
+            else :
+                prop.type.back_refs.append( self)
+            self.props.append( prop )
 
     def parse_type(self, dom, parent_type=None ) :
         if 'type' in dom :
@@ -227,9 +229,6 @@ class Schema_type :
                 self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
 
-        if '$include' in dom :                                                 
-            self.include = dom['$include']
-
         if 'description' in dom :
             self.desc = dom['description']
 
@@ -242,17 +241,8 @@ class Schema_type :
             if 'maxItems' in dom :
                 self.range[1] = str(dom['maxItems'])
 
-        if 'properties' in dom :
+        if 'properties' in dom or 'patternProperties' in dom :
             self.get_properties(dom)
-            #for field,sub_dom in dom['properties'].items() :
-            for field,sub_dom in self.properties.items() :
-                prop = self.parse_property( field, sub_dom, self )
-                prop.is_required = True if 'required' in dom and field in dom['required'] else False
-                if prop.type.json_type == 'array' :
-                    prop.type.item_prop.type.back_refs.append( self)
-                else :
-                    prop.type.back_refs.append( self)
-                self.props.append( prop )
         
         if self.json_type == 'string' and 'enum' in dom :
             for en in dom['enum'] :
@@ -282,6 +272,7 @@ class Property :
         self.is_required=False
         self.out = None
         self.href = ''
+        self.is_regex=False
 
     def get_desc( self ) :
        if self.href != '' and self.prop_desc != ''  :
@@ -312,12 +303,15 @@ class Markdown_writer  :
         self.write_table_row( hd )
         self.write_table_row( [ "---" for x in hd ] ) 
 
-
-    #def get_filename(self, typename ) :
-    #    return os.path.join( self.output_folder, "%s.md" % typename )
-
     def get_property_name( self, prop ) :
-        return ("**%s**" % prop.name) if prop.is_required else prop.name
+        out = prop.name
+        # check if prop is regex. replace the regex with something more legible 
+        if (prop.is_regex) :
+            out = "(identifier)"
+        # then bold if required
+        if prop.is_required :
+            out = ("**%s**" % out)
+        return out
 
 
     def get_property_type( self, prop, postfix='') :
@@ -344,18 +338,6 @@ class Markdown_writer  :
             else :
                 typename = prop.type.name
         return "%s%s" % (typename, postfix )
-
-
-    def get_property_type_old( self, prop ) :
-        postfix = '';
-        if prop.type.json_type == 'array' :
-            range = ''    
-            if prop.type.range[0] == prop.type.range[1] and prop.type.range[0] != '':
-                range = prop.type.range[0] 
-            if prop.type.range[0] != prop.type.range[1] :
-                range = "%s:%s" % prop.type 
-            postfix ='[%s]' % range
-            prop = prop.type.item_prop
         
         typename = prop.type.json_type
         if prop.type.json_type == 'object' :
@@ -390,11 +372,7 @@ class Markdown_writer  :
         if 'code' in ex_dom :
            return json.dumps( ex_dom['code'], ensure_ascii=False, indent=2, separators=(',', ': '))
         if 'code_href' in ex_dom :
-            #load from relative path:
-            #path = os.path.realpath( os.path.join( self.output_folder, "..", ex_dom[ 'code_href' ]) )
-            #rel_path = Schema_manifest.get_example_href_from_schema_name( self.output_path, ex_dom[ 'code_href' ] )
             abs_path = os.path.abspath(os.path.join(os.path.dirname( output_path), 'schema', ex_dom[ 'code_href' ]))
-            #abs_path =  os.path.realpath( os.path.join(self.output_path, '..', ex_dom[ 'code_href' ])) 
             if not os.path.exists( abs_path ) :
                 raise BaseException( "Example 'href=%s' is missing (file %s not found )" %(ex_dom[ 'code_href' ], abs_path)  )
             with open( abs_path, 'r') as f :
@@ -426,6 +404,9 @@ class Markdown_writer  :
                     self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
                 self.write_line()
                 self.write_line( "*Note: properties in **bold** are required*" )
+                #most properties don't make use of regular expressions
+                self.write_line()
+                self.write_line( "*Note: properties in (parentheses) require a unique name*" )
                 self.write_line()
 
             # only print oneOf option if it exists
@@ -459,7 +440,6 @@ def validate_examples(manifest, validated_schemas) :
             if ( len(examples) ) :
                 schema = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
                 for example in examples:
-                    successful_validation = True
                     ex_code = Markdown_writer.get_example_code(example, example)
                     if (ex_code and ex_code != "") :                                   
                         successful_validation = slpk_validator.validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
@@ -485,22 +465,20 @@ if __name__ == "__main__" :
                                     add_help=True,
                                     argument_default=None, # Global argument default
                                     usage=__doc__)
-    #parser.add_argument('-i', '--input', action='store', dest='json_schema_path', required=True, help='The path to the input JSON schema folder.')
-    #parser.add_argument('-s', '--schemas', action='store', dest='schema_names', required=True, help='comma separated list of schemas to process')
     
-    parser.add_argument('-p', '--profile', action='store', dest='profiles', default='pointclouds', nargs='+', help='List of input profile folder names  (e.g: -p pointclouds points)' )
+    parser.add_argument('-v', '--version', action='store', dest='profiles', default='1.6', nargs='+', help='List of input documentation version to be generated  (e.g: -v 1.6 1.7)' )
 
     args = parser.parse_args();
 
     #find 'root' path:
-    print(args.profiles );
+    print( args.profiles );
     root = os.path.realpath(__file__ + "../../../../") 
-    print( "Profile root folder is:", root )
+    print( "Root folder is:", root )
     assert( os.path.exists(root))
 
-    search_folder = os.path.join(root, "schema")
-    manifest_folder = os.path.join(root, "manifest")
-    output_path = os.path.realpath(__file__ + "../../../../docs")
+    search_folder = os.path.join(root, "schema")                         # folder has all the json schemas
+    manifest_folder = os.path.join(root, "manifest")                     # folder has the all the versions of documentation we can generate
+    output_path = os.path.join(root, "docs")
 
     manifest = {}   # {version : Schema_manifest}
 

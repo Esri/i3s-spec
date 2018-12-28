@@ -15,6 +15,8 @@ Oriented bounding boxes
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Global scene (WSG84) oriented-bounding box 

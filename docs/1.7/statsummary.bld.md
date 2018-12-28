@@ -13,6 +13,8 @@ Statistics for all building scene layer sublayers. Captures statistical informat
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Building Scene Layer statistics 

@@ -32,6 +32,8 @@ The store object describes the exact physical storage of a layer and enables the
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Store example 

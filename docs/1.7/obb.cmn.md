@@ -4,7 +4,7 @@ Oriented bounding boxes
 
 ### Related:
 
-[cmn::node](node.cmn.md), [cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md), [cmn::nodeReference](nodeReference.cmn.md)
+[cmn::node](node.cmn.md), [cmn::nodeReference](nodeReference.cmn.md), [cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -14,6 +14,8 @@ Oriented bounding boxes
 | **quaternion** | number[4] | Orientation of the oriented bounding box as a 4-component quaternion. For global scene, quaternion is in Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0). |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

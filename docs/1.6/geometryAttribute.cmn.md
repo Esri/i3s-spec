@@ -4,7 +4,7 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 ### Related:
 
-[cmn::geometryFeature](geometryFeature.cmn.md), [cmn::vertexAttribute](vertexAttribute.cmn.md), [cmn::vestedGeometryParams](vestedGeometryParams.cmn.md)
+[cmn::vestedGeometryParams](vestedGeometryParams.cmn.md), [cmn::vertexAttribute](vertexAttribute.cmn.md), [cmn::geometryFeature](geometryFeature.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -14,4 +14,6 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 | **valuesPerElement** | number | The short number of values need to make a valid element (such as 3 for a xyz position). |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 

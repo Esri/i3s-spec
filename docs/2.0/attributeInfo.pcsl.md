@@ -17,6 +17,8 @@ List of attributes included for this layer.
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: Elevation pseudo-attribute 

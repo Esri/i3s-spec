@@ -13,6 +13,8 @@ The drawingInfo object contains drawing information for a point cloud scene laye
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: drawingInfo 

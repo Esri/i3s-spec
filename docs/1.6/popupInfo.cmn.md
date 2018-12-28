@@ -18,3 +18,5 @@ Defines the look and feel of popup windows when a user clicks or queries a featu
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

@@ -16,6 +16,8 @@ This object extends GeometryParams and is the abstract parent object for all con
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: vestedGeometryParams 

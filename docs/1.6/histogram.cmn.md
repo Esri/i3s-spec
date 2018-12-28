@@ -15,6 +15,8 @@ The histogram of the point cloud scene layer. The bin size may be computed as (m
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example: histogram 

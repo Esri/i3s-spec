@@ -18,6 +18,8 @@ Objects of this type extend VestedGeometryParams and use one texture and one mat
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+
 ### Examples 
 
 #### Example:  info for integrated mesh scene layer 

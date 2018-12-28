@@ -4,7 +4,7 @@ A scalar or vector value.
 
 ### Related:
 
-[pcsl::attributeInfo](attributeInfo.pcsl.md), [pcsl::vertexAttributes](vertexAttributes.pcsl.md)
+[pcsl::vertexAttributes](vertexAttributes.pcsl.md), [pcsl::attributeInfo](attributeInfo.pcsl.md)
 ### Properties
 
 | Property | Type | Description |
@@ -13,6 +13,8 @@ A scalar or vector value.
 | **valuesPerElement** | number | Number of components. |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

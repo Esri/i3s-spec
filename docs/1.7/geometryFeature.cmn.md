@@ -14,3 +14,5 @@ Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. 
 
 *Note: properties in **bold** are required*
 
+*Note: properties in (parentheses) require a unique name*
+

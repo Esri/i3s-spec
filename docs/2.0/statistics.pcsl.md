@@ -10,10 +10,12 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 | Property | Type | Description |
 | --- | --- | --- |
 | attribute | string | Attribute name. Must match the name specified for this attribute in `layer.attributeStorageInfo` |
-| stats | [statsInfo](statsInfo.cmn.md) | Statistics for this attribute |
+| stats | [stats](stats.pcsl.md) | Statistics for this attribute |
 | labels | [labels](labels.pcsl.md) |  The statistics document may contain labeling information for the attribute values. |
 
 *Note: properties in **bold** are required*
+
+*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 
@@ -220,7 +222,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 } 
 ```
 
-#### Example: Flags statistics (LiDAR point cloud) 
+#### Example: Flags statistics (LIDAR point cloud) 
 
 ```json
  {
@@ -410,7 +412,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 } 
 ```
 
-#### Example: Returns statistics (LiDAR point cloud) 
+#### Example: Returns statistics (LIDAR point cloud) 
 
 ```json
  {

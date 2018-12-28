@@ -1112,41 +1112,36 @@ Legends are essential for proper display and complete communication of represent
 Clients are responsible for building legend information from the drawingInfo resource for the scene layer.
 Scene layers and scene services behave identically to feature layers and feature services.
 
-<h2><a name="_7">I3S Flexibility</a></h2>
+# I3S Flexibility
 
+I3S allows different implementation.  Choices can be made for depending on the type of 3D data and the layer profile. Here are typical examples for each layer type:
 
-I3S is flexible and allows for different implementation choices for different types of 3D data or even for the same type of 3D data. The profile for a layer indicates the set of choices made. Choices supported by I3S and made use of by different profiles are described below. In each case the profile listed is the canonical profile for the corresponding layer-type.
+**The Minimum Bounding Volume (MBV)**
 
-1. The Minimum Bounding Volume (MBV) property can be represented as:  
- a. Minimum Bounding Sphere (MBS)  
- b. Oriented Bounding Box (OBB)  
+- Minimum Bounding Sphere (MBS)
+- Oriented Bounding Box (OBB)
 
-2. Node structure  
- a. Expanded – in support of clients that want to gain more complete meta-information about node’s position within BVH topology and its immediate neighborhood  
-  - Each index node provides pointers to its parent, all its children, and sibling neighbors (including their MBVs)  
-	      Used by: mesh-pyramids and points profiles  
+**Node Structure**
 
- b. fixed-size in support of paged access pattern  
-  - A minimal structure – just the essentials: bounding volume; first-child reference; child-count; LoD selection data; etc.  
-	      Used by: the pointclouds profile.  
+- Expanded: Supports clients that want to get more complete metadata about a node's position in the bounding volume hierarchy (BVH) and its immediate neighborhood.  Each node index provides pointers to its parent, children, and sibling.  Used by mesh-pyramids and points profiles.
+- Fixed-size: Supports paged access. Minimal structural elements: only the bounding volume, first child reference, child count, level of detail selection data, etc.  used by the Point Cloud profile. 
 
-3. Embedded versus Binary geometry content format  
- a. Embedded geometry: as text (JSON) inlined with other metadata within featureData resource – to support profiles where run-length encoding of feature-IDs along the vertex data is suboptimal
-	 	      Used by: the canonical points profile.  
+**Embedded Geometry**
 
- b. Binary format: for voluminous, ready to render/use geometries and cached attributes. Both typed array buffer views as well as fixed format binary buffers are supported.  
-​	-	The mesh-pyramids profile uses ‘array buffer views’ (ArrayBufferView follows the Khronos Typed Array specification)  
-​	-	The pointclouds profile uses binary buffers in order to support a domain-specific data compression  
+- Embedded geometry: as text (JSON) with other metadata within a feature data resource.  Supports profiles where run-length encoding of feature IDs along the vertex data is suboptimal.  Typed array buffer and fixed format binary buffers are supported.   Used by the points profile. 
 
-4. LoD Selection based on different metricTypes:  
+**Binary Geometry**
 
- 1.	maxScreenThreshold – LoD switching based on screen ‘size’ of the node’s MBV  
-	 	 ​     Used by: mesh-pyramids profile
- 2.	screenSpaceRelative – LoD switching based on screen ‘scale’ of the node’s MBV  
-        Used by: points profile
- 3.	distancRangeFromDefaultCamera – LoD switching based on normalized distance of the node’s MBV from the camera – used by: points profile
- 3.	effectiveDensity – estimation of the point density covered by the node  
-        Used by: pointclouds profile  
+- for Voluminous, ready to render geometries and cached attributes.  Typed array buffer and fixed format binary buffers are supported.  used by mesh pyramids (array buffer views using the Khronos Types Array specification) and point clouds (to support domain specific data compression).
+
+**Level of Detail Selection**
+
+Level of detail switch based on: 
+
+- maxScreenThreshold - the screen size of the node's minimum bounding volume.  Used by mesh pyramids
+- screenSpaceRelative - the scale of the node's minimum bounding volume.  Use by the points profile.
+- distanceRangeFromDefaultCamera: normalized distance of the node's minimum bounding volume from the camera.  Used by the points profile.
+- effectivDensity: estimation of the point density covered by the node.  Use by point clouds. 
 
 
 #### Summary of I3S Defining Characteristics

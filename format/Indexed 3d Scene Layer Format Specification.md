@@ -11,11 +11,13 @@ Version 1.6, January 02, 2018
 The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and Scene Services use the I3S infrastructure.
 # Table of Contents
 
+
+
 [TOC]
 
 # I3S Design Principles
 
-The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principals:  
+The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principles:  
 
 - **User Experience First**: Provide a positive user experience, including high interactivity and fast display.
 - **Scalability**: Support very large scene layers, including scenes with a global extent and many detailed features.

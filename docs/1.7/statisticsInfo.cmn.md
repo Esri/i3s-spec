@@ -15,8 +15,6 @@ Describes the statistics for the scene layer.
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: statisticsInfo for 3D Object scene layer. 

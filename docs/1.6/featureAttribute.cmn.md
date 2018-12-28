@@ -12,10 +12,6 @@ Declaration of the attributes per feature in the geometry, such as feature ID or
 | id | [value](value.cmn.md) | ID of the feature attribute. |
 | faceRange | [value](value.cmn.md) | Describes the face range of the feature attribute. |
 
-*Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: featureAttribute example 

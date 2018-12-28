@@ -20,7 +20,3 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 | histogram | [histogram](histogram.cmn.md) | Represents the histogram. |
 | mostFrequentValues | [valuecount](valuecount.cmn.md)[] | An array of most frequently used values within the point cloud scene layer. |
 
-*Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
-

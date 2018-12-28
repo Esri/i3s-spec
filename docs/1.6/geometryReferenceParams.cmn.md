@@ -16,8 +16,6 @@ Instead of owning a Geometry exclusively, a Feature can reference part of a Geom
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: geomtryReferenceParams 

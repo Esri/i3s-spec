@@ -8,7 +8,3 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 | --- | --- | --- |
 | stats | [statsInfo](statsInfo.cmn.md) | Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range. |
 
-*Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
-

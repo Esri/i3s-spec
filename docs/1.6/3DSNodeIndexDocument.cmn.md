@@ -29,8 +29,6 @@ Depending on the geometry and LoD Model, a node document can be tuned towards be
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: 3D Scene Layer info for point scene layer 

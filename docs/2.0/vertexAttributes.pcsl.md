@@ -11,10 +11,6 @@ The vertex buffer description.
 | --- | --- | --- |
 | position | [value](value.pcsl.md) | Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position. |
 
-*Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: vertexAttributes 

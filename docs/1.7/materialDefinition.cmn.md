@@ -9,7 +9,7 @@ Materials describe how a feature or a set of features is to be rendered, includi
 
 | Property | Type | Description |
 | --- | --- | --- |
-| (identifier) | [materialDefinitionInfo](materialDefinitionInfo.cmn.md) | Each material definition should be unique for the whole service. |
+| **(identifier)** | [materialDefinitionInfo](materialDefinitionInfo.cmn.md) | Each material definition should be unique for the whole service. |
 
 *Note: properties in **bold** are required*
 

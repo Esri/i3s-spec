@@ -6,7 +6,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 ### Related:
 
-[cmn::fullExtent](fullExtent.cmn.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md), [bld::layer](layer.bld.md)
+[bld::layer](layer.bld.md), [cmn::fullExtent](fullExtent.cmn.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -16,10 +16,6 @@ A spatial reference can optionally include a definition for a vertical coordinat
 | vcsWkid | integer | The WKID value of the vertical coordinate system. |
 | wkid | integer | The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system. |
 | wkt | string | The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both) |
-
-*Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

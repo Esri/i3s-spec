@@ -16,8 +16,6 @@ Materials describe how a feature or a set of features is to be rendered, includi
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: 3D Scene Layer info for 3D object scene layer 

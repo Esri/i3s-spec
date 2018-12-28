@@ -1,6 +1,6 @@
 # textureDefinition
 
-Materials describe how a feature or a set of features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and params for the `type`: `standard` material.
+A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.
 
 ### Related:
 
@@ -17,8 +17,6 @@ Materials describe how a feature or a set of features is to be rendered. This in
 | images | [image](image.cmn.md)[] | An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. |
 
 *Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

@@ -15,8 +15,6 @@ Describe the format(s) available for a texture set. Note: JPEG (or PNG) must alw
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: JPEG texture at `/layers/0/nodes/{resource_id}/1` 

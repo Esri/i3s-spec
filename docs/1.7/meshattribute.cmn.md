@@ -13,8 +13,6 @@ Mesh geometry for a node
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Attribute buffer(s) will be at `/layers/0/nodes/attributes/6/(...) 

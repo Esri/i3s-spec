@@ -19,8 +19,6 @@ An object that describes the structure of the binary attribute data resource of 
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: attributeStorageInfo for 3d object scene layer 

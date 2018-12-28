@@ -30,10 +30,6 @@ The store object describes the exact physical storage of a layer and enables the
 | defaultTextureDefinition | [texture](texture.cmn.md) | A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels. |
 | defaultMaterialDefinition | [material](material.cmn.md) | If a store uses only one material, it can be defined here entirely as a MaterialDefinition. |
 
-*Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Store example 

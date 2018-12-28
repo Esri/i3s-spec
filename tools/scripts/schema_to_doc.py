@@ -154,7 +154,7 @@ class Schema_type :
         self.desc_href=''
         self.custom_related = []
         self.oneOf = []
-        self.properties = {}
+        self.properties = {}    # properties that will be included
 
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
@@ -171,7 +171,6 @@ class Schema_type :
     def parse_property( self, field, sub_dom, parent_type=None ) :
         prop = Property()
         prop.name = field
-
         if '$ref' in sub_dom :
             tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name.split('::')[0] );
             if tmp != self.name and ( parent_type is None or tmp != parent_type.name ):
@@ -187,16 +186,21 @@ class Schema_type :
         else :
             prop.type = Schema_type( self.manifest)
             prop.type.parse_from_dom( sub_dom, self )
+        # for pattern properties
+        # min and max must be equal and set to 1
+        if 'minProperties' in sub_dom and 'maxProperties' in sub_dom :
+            if sub_dom['minProperties'] == sub_dom['maxProperties'] :
+                prop.is_required = True
         return prop
 
 
-    # get all properties in schema. Include any properties from an $include schema also
+    # get all properties in schema. Include any properties from a $include schema also
     def get_all_properties(self, dom) :
         if '$include' in dom :
             abs_path_to_include = Schema_manifest.get_abs_path_from_schema_name(self.manifest, dom['$include'])
             print("Including schema file: %s" % abs_path_to_include)
-            old_schema = json_to_dom( abs_path_to_include )
-            self.get_all_properties( old_schema )
+            included_schema = json_to_dom( abs_path_to_include )
+            self.get_all_properties( included_schema )
         
         if ( 'properties' in dom ) :
             for name, value in dom['properties'].items() :
@@ -209,8 +213,8 @@ class Schema_type :
         self.get_all_properties(dom)
         for field,sub_dom in self.properties.items() :
             prop = self.parse_property( field, sub_dom, self )
-            prop.is_required = True if 'required' in dom and field in dom['required'] else False
-            prop.is_regex = True if 'patternProperties' in dom and field in dom['patternProperties'] else False
+            if 'required' in dom and field in dom['required'] : prop.is_required = True                 # required regex properties handled in parse_property()
+            if 'patternProperties' in dom and field in dom['patternProperties'] : prop.is_regex = True
             if prop.type.json_type == 'array' :
                 prop.type.item_prop.type.back_refs.append( self)
             else :
@@ -396,17 +400,23 @@ class Markdown_writer  :
                 self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[1] +'::'+x.name.split('.')[0], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
             
             # only print properties if any exist
-            if ( len(schema_doc.props) ) :
+            if ( len( schema_doc.props ) ) :
                 self.write_line( "### Properties\n" )
                 self.write_table_header( ["Property", "Type", "Description" ]);
+                print_required_note = False
+                print_regex_note = False
                 # to property table:
                 for prop in  schema_doc.props :
                     self.write_table_row( [ self.get_property_name( prop ), self.get_property_type(prop), self.get_property_desc(prop) ] );
-                self.write_line()
-                self.write_line( "*Note: properties in **bold** are required*" )
-                #most properties don't make use of regular expressions
-                self.write_line()
-                self.write_line( "*Note: properties in (parentheses) require a unique name*" )
+                    if ( prop.is_required ) : print_required_note = True
+                    if ( prop.is_regex ) : print_regex_note = True
+                # only print notes if required
+                if (print_required_note ) :
+                    self.write_line()
+                    self.write_line( "*Note: properties in **bold** are required*" )
+                if (print_regex_note) :
+                    self.write_line()
+                    self.write_line( "*Note: properties in (parentheses) require a unique name*" )
                 self.write_line()
 
             # only print oneOf option if it exists

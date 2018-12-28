@@ -18,8 +18,6 @@ An image is a binary resource, containing a single raster that can be used to te
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Image 

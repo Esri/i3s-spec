@@ -32,8 +32,6 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: 3D Scene Layer info for point scene layer 

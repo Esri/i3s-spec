@@ -15,8 +15,6 @@ A filter block defines what elements will be filtered with a specific filter mod
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Filter block 

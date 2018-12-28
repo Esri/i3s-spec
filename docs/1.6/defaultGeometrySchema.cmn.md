@@ -20,8 +20,6 @@ The defaultGeometry schema is used in stores where all ArrayBufferView geometry 
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: defaultGeometrySchema for 3D Object and integrated mesh scene layer 

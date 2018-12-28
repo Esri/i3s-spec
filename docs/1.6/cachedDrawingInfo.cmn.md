@@ -13,8 +13,6 @@
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: cachedDrawingInfo for 3D Object scene layer. 

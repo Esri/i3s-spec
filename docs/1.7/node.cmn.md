@@ -4,7 +4,7 @@
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::nodes](nodes.cmn.md)
+[cmn::nodes](nodes.cmn.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -16,8 +16,6 @@
 | mesh | [mesh](mesh.cmn.md) | WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1) |
 
 *Note: properties in **bold** are required*
-
-*Note: properties in (parentheses) require a unique name*
 
 ### Examples 
 

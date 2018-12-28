@@ -23,8 +23,6 @@ Assuming [layer.store.index.nodesPerPage](index.md) = 64, then `node id = 78` wi
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Global scene (WSG84, last page) 

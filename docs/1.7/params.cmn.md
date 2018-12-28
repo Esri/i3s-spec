@@ -25,8 +25,6 @@ Parameter describing the material.
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: 3D Scene Layer info for point scene layer 

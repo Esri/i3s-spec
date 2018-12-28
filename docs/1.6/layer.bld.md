@@ -99,8 +99,6 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Building Scene Layer 

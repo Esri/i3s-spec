@@ -25,8 +25,6 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: 64 nodes per page index 

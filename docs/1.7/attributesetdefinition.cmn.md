@@ -13,8 +13,6 @@ Statistics for the attribute will be at `statistics/{attribute_set_index}/{attri
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example:  

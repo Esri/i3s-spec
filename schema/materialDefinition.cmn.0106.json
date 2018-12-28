@@ -7,12 +7,12 @@
     "([A-Za-z0-9]+_*)+": {
       "type": "object",
       "description": "Each material definition should be unique for the whole service.",
-      "$ref": "materialDefinitionInfo.cmn.0106.json"
+      "$ref": "materialDefinitionInfo.cmn.0106.json",
+      "minProperties": 1,
+      "maxProperties": 1
     }
   },
   "additionalProperties": false,
-  "minProperties": 1,
-  "maxProperties": 1,
   "esriDocumentation": {
     "examples": [
       {

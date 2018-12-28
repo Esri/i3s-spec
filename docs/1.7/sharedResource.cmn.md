@@ -11,8 +11,6 @@ Shared resources are models or textures that can be shared among features within
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: shared resource 

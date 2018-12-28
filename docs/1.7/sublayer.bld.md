@@ -20,8 +20,6 @@ A building scene layer is composed of an overview and the full model containing 
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-
 ### Examples 
 
 #### Example: Building Scene Layer simple group 

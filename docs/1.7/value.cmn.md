@@ -15,5 +15,3 @@ Value for attributeByteCount, attributeValues and objectIds.
 
 *Note: properties in **bold** are required*
 
-*Note: properties in (parentheses) require a unique name*
-

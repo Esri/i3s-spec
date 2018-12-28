@@ -1165,48 +1165,46 @@ Alternatively, a scene layer can be delivered as a Scene Layer Package.  This is
 
 All storage methods store the Indexed 3D Scene Layers in a key-value structure, where the key is the access URL and the value is resource (e.g. JSON document).
 
-<h3><a name="_8_1">Scene Layer Packages (SLPK files)</a></h3>
+### Scene Layer Packages (SLPK files)
 
-Scene Layer Packages (SLPK) serve two purposes: They allow a complete I3S layer, with all resources, to be transported or exchanged as a single file,
-and they optionally also allow to be directly consumed by applications such as clients or services.
+Scene Layer Packages (SLPK) serve two purposes: 
 
-The format of the package itself is defined as follows:
+1. Allow a complete I3S layer, with all resources, to be transported or exchanged as a single file
+2. Can optionally be directly consumed by applications
 
-<ul>
-	<li>The Archive type is always <a href="https://en.wikipedia.org/wiki/Zip_(file_format)">Zip</a>.</li>
-	<li>On this Archive, an overall compression scheme may be applied.
-	This compression scheme has to be either STORE or DEFLATE64.
-	Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. </li>
-	<li>STORE is the preferred compression schema for an SLPK intended for direct consumption by client application, especially if a resource compression is already applied on the individual resources (as shown in the figure 15 below).</li>
-	<li>Every resource except textures may also be individually compressed. Compressed textures (such as S3TC) can additionally have GZIP compression applied to them.	</li>
-	<li>For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available in all browsers.</li>
-</ul>
+A Scene Layer Package is defined by these characteristics
 
-The layout show in Figure 15 below is referred to as the BASIC folder pattern.
-The I3S specification allows also for an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.  
+- Always archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) compression
+  - This compression scheme has to be either STORE or DEFLATE64.Standard.  DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. 
+- STORE is the preferred compression schema since an SLPK is intended for direct consumption by clients, especially if a resource compression is already applied on the individual resources
+- Every resource, except textures, can be individually compressed. Compressed textures can additionally have GZIP compression applied to them. Only the GZIP scheme is supported, since DEFLATE support is not universally available for all browsers.
 
-<div>
-<img src="images/figure-15.png" title="Structure of an SLPK file" alt="Structure of an SLPK file">
-<p><em>Figure 15: Example of an SLPK with BASIC folder layout.</em></p>   
-</div>  
+The contents of the archive depicted in the figure below shows an SLPK with the BASIC folder pattern. The I3S specification allows an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages.  The top level includes a <em>nodes</em> folder with  
 
-The contents of the archive depicted in Figure 15 shows an SLPK with the BASIC folder pattern. At the top level, it has a <em>nodes</em> subfolder containing all node resources, a <em>metadata.json</em> file that describes the content of the SLPK and a <em>3dSceneLayer.json.gz</em> file that defines the Scene Layer. In the example, the <em>nodes</em> subfolder contains, nodes named <em>root</em>, <em>1-4-2-0</em>, etc. Drilling further into one of the nodes, <em>1-4-2-0</em>, notice that all file resources are individually compressed with GZIP compression (indicated by the file extension .gz), with the exception of the texture resource that is in JPEG format (<em>textures/0_0.jpg</em>). The resources under the sub folders <em>geometries</em> (<em>geometries/0.bin.gz</em>) and <em>attributes</em> (<em>attributes/f_0/bin.gz</em>, <em>attributes/f_1/bin.gz</em>, ...), serialized as binary, correspond to the geometryData, and attributeData resources of a scene layer, respectively. Similarly, <em>3dNodeIndexDocument.json.gz</em>, <em>features/0.json.gz</em> and <em>SharedResource.json.gz</em> correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, respectively, and are encoded in JSON and are also stored with a GZIP compression.
+- A subfolder that contains all node resources
+- A *metadata.json* file that describes the content of the SLPK
+- A *3dSceneLayer.json.gz* file that defines the Scene Layer. 
 
 
-For the above mentioned two use cases, an SLPK file is employed as follows:
+![Structure of an SLPK file](images/figure-15.png)
 
-<ol>
-	<li>SLPK as a transfer format:
-	<ol>
-		<li>ArchiveCompressionType: DEFLATE64</li>
-		<li>ResourceCompressionType: NONE</li>
-	</ol></li>
-	<li>SLPK as a serving format:
-	<ol>
-		<li>ArchiveCompressionType: STORE</li>
-		<li>ResourceCompressionType: GZIP</li>
-	</ol></li>
-</ol>
+*Example of an SLPK with BASIC folder layout.*
+
+In the example, the *nodes* subfolder contains, nodes named *root*, *1-4-2-0*, etc. Drilling further into one of the nodes, *1-4-2-0*, notice that all file resources are individually compressed with GZIP compression (indicated by the file extension .gz), with the exception of the texture resource that is in JPEG format (*textures/0_0.jpg*).
+
+The resources under the subfolders *geometries* (*geometries/0.bin.gz*) and *attributes* (*attributes/f_0/bin.gz*, *attributes/f_1/bin.gz*, ...), are serialized as binary, and correspond to the geometryData and attributeData resources of a Scene Layer. 
+
+Similarly, *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, and are encoded in JSON with a GZIP compression.
+
+For the above mentioned use cases, an SLPK file is employed as follows:
+
+1. SLPK as a transfer format
+   - Archive Compression Type: DEFLATE64
+   - Resource Compression Type: None
+2. SLPK as a serving format
+   - Archive Compression Type: STORE
+   - Resource Compression Type: GZIP
+
 
 <h4>Metadata</h4>
 

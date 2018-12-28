@@ -1056,19 +1056,9 @@ The Attributes REST API syntax:
 
    The fields array object contains a collection of objects that describe each attribute including its name ('name'), datatype ('type') and a user friendly name ('alias'). It includes all fields in the source feature layer of the scene service layer.  
 
-   The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time. The  attributeStorageInfo includes:  
+   The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time.
 
-  - _name_ (_attributeStorageInfo[id].name_) and _key_ (_attributeStorageInfo[id].key_) properties that identify each  resource.
-
-  - A _header_ (_attributeStorageInfo[id].header_) object, consisting of a _count_ and _valueType_ properties indicating the count of the attributeValue objects. In case of string atttibute values, the _header_ contains an additional object, _attributeByteCounts_, which indicates the total byte count of the string values.
-
-  - An _ordering_ (_attributeStorageInfo[id].ordering_) object that indicates the object storage layout.
-
-  - For string attribute values, the _attributeByteCounts_ object describes each of the string attribute value's byte count.
-
-  - The _attributeValues_ object describes the attribute value array, which contains member properties such as _valueType_ and _valuesPerElement_. String attribute value include an additional property with the unicode encoding (e.g. UTF-8).  A string array can include null attribute values, indicated bya  0 byte count. 
-
-    The _key_ property is automatically computed and that there should not be any assumed relationship to the field index of the source feature class.  This is especially important to note when a user adds or deletes fields during the lifetime of a layer.  
+   See the [attribute storage info model](docs/1.6/attributeStorageInfo.cmn.md) for more details.
 
 
 2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values by supplying the desired field _Key_ as part of the attributes REST request. Furthermore, it is capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
@@ -1078,9 +1068,9 @@ The Attributes REST API syntax:
 
 #### Attribute Resource - Details
 
-An _attribute_ resource consists of either a single one dimensional array in the case of numeric fields (including the object-id field) or two one dimensional arrays that sequentially follow each other in the case of variable length string fields.
+A numeric attribute resource is a singe, one dimensional array.  A string attribute resource is two, sequential, one dimensional arrays.
 
-The structure of each _attribute_ resource is declared upfront in the scene layer resource thru the _attributeStorageInfo_ object. The client application (as stated above in the typical usage pattern) is expected to read the _attributeStorageInfo_ metadata to get the header information, the ordering of the stored records (arrays) as well as their value types before consuming the binary attribute resource.
+The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
 
 Lets take a look at a sample scene service layer and its field types ([see Figure 14](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
 
@@ -1089,9 +1079,9 @@ Lets take a look at a sample scene service layer and its field types ([see Figur
 <p>Figure 14: A typical attribute (table) info of a feature class. The fields array that’s shown as an example in Figure 11 and the attributeStorageInfo array in Figure 13 is derived from the attribute value of the above feature class.</p>
 </div>  
 
-As it could be inferred from [Figure 11](images/figure-11.png) and [Figure 13](images/figure-13.png), a scene service layer exposes/includes **only** supported attribute field value types of a feature class. As a result, the 'Shape' field ([see Figure 14](images/figure-14.png)), which is of _esriFieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
+As it could be inferred that a scene service layer exposes/includes **only** supported attribute field value types of a feature class. As a result, the 'Shape' field ([see Figure 14](images/figure-14.png)), which is of _esriFieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
 
-[see Table 24](Table_24.png) below which lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
+[Table 24](Table_24.png) below lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
 
 <div>
 <img src="images/Table_24.png" title="Attribute data types supported by a scene service layer." alt="Attribute data types supported by a scene service layer.">
@@ -1117,10 +1107,10 @@ The _attributes_ REST api of a scene layer gives access to all scene cache suppo
 
 #### Accessing the legend of a 3D Object Layer
 
-Legends are essential for proper display (complete communication of represented information) of 3D Object Layer (also equally applicable for other layer types).
+Legends are essential for proper display and complete communication of represented information of a 3D Object Layer.
 
 Clients are responsible for building legend information from the drawingInfo resource for the scene layer.
-In this scene layers and scene services behave identically to feature layers and feature services.
+Scene layers and scene services behave identically to feature layers and feature services.
 
 <h2><a name="_7">I3S Flexibility</a></h2>
 

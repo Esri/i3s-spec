@@ -1156,15 +1156,14 @@ Level of detail switch based on:
 - Bounding volume hierarchy (BVH) is based on minimum bounding spheres (MBS) and oriented bounding boxes (OBB)
 - Scene layers may be created in Cartesian 3D or in global 3D world coordinate systems 
 
-<h2><a name="_8">Persistence</a></h2>
+### Persistence
+
+I3S scene layers can be delivered to web, mobile and desktop clients using a number of patterns. Most users will interact with scene layers using applications with cloud or server based information.  In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface.  These web addressable resources provide access the scene layer, nodes, and associated resources.  
+
+Alternatively, a scene layer can be delivered as a Scene Layer Package.  This is a single file that includes the complete node tree and all necessary resources into an archive.  It allows direct access to individual nodes and their resources.  
 
 
-I3S scene layers can be delivered to web, mobile and desktop clients using a number of different patterns.
-Most users will interact with scene layers using applications that access cloud or server based information via RESTful interfaces/services.  In these cases the cache (the I3S nodes and their payloads)  for the scene layer reside on the server and is returned to clients via a RESTful interface that exposes the scene layer, its nodes and  their associated resources (geometries, attributes, textures) as web addressable resources. The I3S specification contains a complete description of the <a href="../service/SceneService.md">web addressable resources</a> and their url scheme.
-Some users will also interact with a scene layer delivered to them as a single large Scene Layer Package – this is a single file that packages the complete node tree and its resources into an archive that supports direct access to the individual nodes and resources within it. <a href="#_8_1">Scene Layer Packages (SLPK files)</a> are part of the current I3S implementation with multiple generators and the ability by clients to consume packages containing hundreds of GB of content.  
-
-
-All storage methods store the Indexed 3D Scene Layers in a simple key-value structure, with the key representing the access URL and the value being the JSON document or other resource type.
+All storage methods store the Indexed 3D Scene Layers in a key-value structure, where the key is the access URL and the value is resource (e.g. JSON document).
 
 <h3><a name="_8_1">Scene Layer Packages (SLPK files)</a></h3>
 

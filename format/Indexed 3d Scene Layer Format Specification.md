@@ -7,52 +7,11 @@ Version 1.6, January 02, 2018
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed 
 
 <hr>
+
 The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and Scene Services use the I3S infrastructure.
+# Table of Contents
 
-
-<h2>Table of Contents</h2>
-
-<ol>
-	<li><a href="#_1">I3S Design Principles</a></li>
-	<li><a href="#_2">3D Scene Layer</a></li>
-	<li><a href="#_3">Coordinate Reference Systems</a>
-		<ol>
-		<li><a href="#_3_1">Height Models</a></li>
-		</ol>
-	<li><a href="#_4">I3S - Organization and Structure</a></li>
-	<ol>
-		<li><a href="#_4_1">Indexing Model and Tree Structure</a></li>
-		<li><a href="#_4_2">Paged node index</a></li>
-		<li><a href="#_4_3">Oriented bounding box</a></li>
-		<li><a href="#_4_4">Geometry Model and Storage</a></li>
-		<li><a href="#_4_5">Textures</a></li>
-		<li><a href="#_4_6">Attribute Model and Storage</a></li>
-	</ol>
-	<li><a href="#_5">Level of Detail Concept</a>
-	<ol>
-		<li><a href="#_5_1">LoD Switching</a></li>
-		<li><a href="#_5_2">LoD Generation</a></li>
-		<li><a href="#_5_3">LoD Selection Metrics</a></li>
-	</ol></li>
-	<li><a href="#_6">Resources Schema and Documentation</a>
-	<ol>
-		<li><a href="#_6_1">SceneServiceInfo</a></li>
-		<li><a href="#_6_2">3dSceneLayerInfo</a></li>
-		<li><a href="#_6_3">3dNodeIndexDocument</a></li>
-		<li><a href="#_6_4">FeatureData</a></li>
-		<li><a href="#_6_5">SharedResources</a></li>
-		<li><a href="#_6_6">Textures</a></li>
-		<li><a href="#_6_7">Geometry</a></li>
-		<li><a href="#_6_8">AttributeData</a></li>
-	</ol></li>
-	<li><a href="#_7">I3S Flexibility</a>
-	<li><a href="#_8">Persistence</a>
-	<ol>
-		<li><a href="#_8_1">Scene Layer Packages (*.slpk files)</a></li>
-		<li><a href="#_8_2">Key Value Stores</a></li>
-	</ol></li>
-</ol>
-
+[TOC]
 
 # I3S Design Principles
 

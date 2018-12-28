@@ -1141,22 +1141,20 @@ Level of detail switch based on:
 - maxScreenThreshold - the screen size of the node's minimum bounding volume.  Used by mesh pyramids
 - screenSpaceRelative - the scale of the node's minimum bounding volume.  Use by the points profile.
 - distanceRangeFromDefaultCamera: normalized distance of the node's minimum bounding volume from the camera.  Used by the points profile.
-- effectivDensity: estimation of the point density covered by the node.  Use by point clouds. 
+- effectiveDensity: estimation of the point density covered by the node.  Use by point clouds. 
 
 
-#### Summary of I3S Defining Characteristics
+### I3S Defining Characteristics
 
-In summary, here are other characteristics, including content data formats, which the scene layer may include:  
-
-•	Attributes may be included on individual entities, on individual point cloud points, or on partial segments of meshes  
-•	Attribute-based stylization may be modified by client software  
-•	Multiple, alternative textures may be provided to optimize for per-platform performance and display  
-•	JSON format for index and metadata, binary for more voluminous geometry, texture and attribute data  
-•	A Scene Layer Package format for distribution, or direct use, of the scene layer as a single file (see SLPK section)  
-•	Optional paired services that expose query-able and updatable RESTful endpoints that enable direct access to dynamic source data  
-•	Explicit control over bounding index shape and per-node switching behavior to provide for optimized display and query  
-• BVH based on bounding spheres (MBS) as well as oriented bounding boxes (OBB) (planned)  
-•	Scene layers may be created in Cartesian 3D or in global 3D world coordinate systems  
+- Attributes may be included on individual entities, on individual point cloud points, or on partial segments of meshes 
+- Attribute based stylization may be modified by client software 
+- Multiple, alternative textures may be provided to optimize for per-platform performance and display 
+- Texture and attribute data should use JSON for index and metadata, binary for large geometries
+- A Scene Layer Package format for distribution, or direct use, of the scene layer as a single file (see SLPK section) 
+- Optional paired services that expose queryable and updatable RESTful endpoints enable direct access to dynamic source data 
+- Explicit control over bounding index shape and per-node switching alllows for optimized display and query 
+- Bounding volume hierarchy (BVH) is based on minimum bounding spheres (MBS) and oriented bounding boxes (OBB)
+- Scene layers may be created in Cartesian 3D or in global 3D world coordinate systems 
 
 <h2><a name="_8">Persistence</a></h2>
 

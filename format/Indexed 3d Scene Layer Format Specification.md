@@ -1208,40 +1208,16 @@ For the above mentioned use cases, an SLPK file is employed as follows:
 
 <h4>Metadata</h4>
 
-The following entries are permitted in the Metadata.json file that is part of every SLPK archive:
+The following entries are permitted in the Metadata.json file that is part of every SLPK archive.  All properties are required.  The default is in **bold**.
 
-<table>
-	<tr>
-		<th>Property</th>
-		<th>Required</th>
-		<th>Notes</th>
-	</tr>
-	<tr>
-		<td>folderPattern</td>
-		<td>True</td>
-		<td>One of {*BASIC*, EXTENDED}</td>
-	</tr>
-	<tr>
-		<td>ArchiveCompressionType</td>
-		<td>True</td>
-		<td>One of {*STORE*, DEFLATE64[,DEFLATE]}</td>
-	</tr>
-	<tr>
-		<td>ResourceCompressionType</td>
-		<td>True</td>
-		<td>One of {NONE, *GZIP*}</td>
-	</tr>
-	<tr>
-		<td>I3SVersion</td>
-		<td>True</td>
-		<td>One of {1.2, 1.3, 1.4, *1.6*}</td>
-	</tr>
-	<tr>
-		<td>nodeCount</td>
-		<td>True</td>
-		<td>Total number of nodes stored in this SLPK.</td>
-	</tr>
-</table>
+| Property                | Notes                                    |
+| ----------------------- | ---------------------------------------- |
+| folderPattern           | One of {**BASIC**, EXTENDED}             |
+| ArchiveCompressionType  | One of {**STORE**, DEFLATE64, [DEFLATE]} |
+| ResourceCompressionType | One of {**GZIP**, NONE}                  |
+| I3SVersion              | One of {1.2, 1.3, 1.4, **1.6**}          |
+| nodeCount               | Total number of nodes in the SLPK        |
+
 
 <h3><a name="_8_2">Key Value Stores</a></h3>  
 

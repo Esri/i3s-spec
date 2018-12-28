@@ -416,7 +416,7 @@ class Markdown_writer  :
                     self.write_line( "*Note: properties in **bold** are required*" )
                 if (print_regex_note) :
                     self.write_line()
-                    self.write_line( "*Note: properties in (parentheses) require a unique name*" )
+                    self.write_line( "*Note: properties in (parentheses) require a unique identifier*" )
                 self.write_line()
 
             # only print oneOf option if it exists

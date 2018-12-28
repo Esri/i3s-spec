@@ -1206,7 +1206,7 @@ For the above mentioned use cases, an SLPK file is employed as follows:
    - Resource Compression Type: GZIP
 
 
-<h4>Metadata</h4>
+###Metadata
 
 The following entries are permitted in the Metadata.json file that is part of every SLPK archive.  All properties are required.  The default is in **bold**.
 
@@ -1219,86 +1219,24 @@ The following entries are permitted in the Metadata.json file that is part of ev
 | nodeCount               | Total number of nodes in the SLPK        |
 
 
-<h3><a name="_8_2">Key Value Stores</a></h3>  
+### Key Value Stores 
 
-In this persistence schema, all scene layer resources are stored within either key value based cloud blob stores such as Windows Azure Blob Storage or Amazon Simple Storage (S3) or within more general key value stores.
-In the case of cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3)  or  blobs within blob containers (Azure). In all cases each resource within a scene layer is identified by a unique key.
-<table>
-	<tr>
-		<th>I3S Resources</th>
-		<th>Optional</th>
-		<th>Notes</th>
-	</tr>
-	<tr>
-		<td>/SceneServer</td>
-		<td>False</td>
-		<td>The <a href="#_7_5">SceneServiceInfo</a> JSON that defines the service name and list the layers
-		offered by this Scene Service {content type: text/plain, content encoding {NONE, *GZIP*}}</td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0</td>
-		<td>False</td>
-		<td>The 3dSceneLayer JSON resource. The layer id (e.g. <code>0</code>) is used as the key of the document {content type: text/plain, content encoding {NONE, *GZIP*}}</td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0/nodes/root</td>
-		<td>False</td>
-		<td>The 3dNodeIndexDocument of the layer as a JSON resource. The node id (e.g. <code>root</code>) is used as the key of the document {content type: text/plain, content encoding: {NONE, *GZIP*}}</td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0/nodes/0</td>
-		<td>False</td>
-		<td>The 3dNodeIndexDocument of the layer as a JSON resource. The node id (e.g. <code>0</code>) is used as the key of the document {content type: text/plain, content encoding: {NONE, *GZIP*}}</td>
-	</tr>
-        <tr>
-		<td>/SceneServer/layers/0/nodes/0/shared</td>
-		<td>False</td>
-		<td>The SharedResource of the node as a JSON resource. The keyword <code>shared</code> is used as the key of the document {content type: text/plain, content encoding {NONE, *GZIP*}}</td>
-	</tr>
-        <tr>
-		<td>/SceneServer/layers/0/nodes/0/features/0</td>
-		<td>True</td>
-		<td>The FeatureData document of the node as a JSON resource. The resource array id (e.g.<code>0</code>) is used as the key of the document {content type: text/plain, content encoding: {NONE, *GZIP*}}</td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0/nodes/0/geometries/0</td>
-		<td>False</td>
-		<td>The GeometryData of the node as a binary resource. The resource array id  (e.g.<code>0</code>) is used as the key of the resource {content type: application/octet-stream, content encoding {NONE, *GZIP*}}</td>
-	</tr>
-    <tr>
-		<td>/SceneServer/layers/0/nodes/0/textures/0_0</td>
-		<td>True</td>
-		<td>The Texture of the node as a binary resource. The resource id (e.g.<code>0_0</code>) is used as the key of the resource {content type: image/jpeg, content encoding {*NONE*}}</td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0/nodes/0/textures/0_0_1</td>
-		<td>True</td>
-		<td>The compressed texture of the node as a binary resource. The resource id (e.g.<code>0_0_1</code>) is used as the key of the resource {content type: image/vnd-ms.dds, content encoding {NONE, *GZIP*}}</td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0/nodes/0/attributes/f_0/0</td>
-		<td>True</td>
-		<td>The AttributeData as a binary resource. The resource id (e.g.<code>0</code>) is used as the key of the resource  {content type: text/plain, content encoding: {NONE, *GZIP*}} </td>
-	</tr>
-	<tr>
-		<td>/SceneServer/layers/0/nodes/0/attributes/f_1/0</td>
-		<td>True</td>
-		<td>same as the attributeData resource <code>f_0/0</code> above</td>
-	</tr>
-	</tr>
-		<tr>
-		<td>....</td>
-		<td>....</td>
-		<td>....</td>
-	</tr>        
-	<tr>
-		<td>/SceneServer/layers/0/nodes/1-4-2-0</td>
-		<td>False</td>
-		<td>same as node resource <code>root</code> and <code>0</code></td>
-	</tr>
-</table>
-<em>Table 25: A typical example showing the layout of a SceneService in a key value store environment. The example illustrates the structure of the service using a 3D Object scene layer containing textured geometries as well as attribute data.</em>
+In this persistence schema, all scene layer resources are stored within either key value based cloud blob stores (e.g. Amazon Simple Storage (S3) or Windows Azure Blob Storage) or with more general key value stores. In cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases, each resource within a scene layer is identified by a unique key.  The default is in **bold**.
 
-```
+This table is an example showing the layout of a SceneService in a key value store environment. The example illustrates the structure of the service using a 3D Object Scene Layer containing textured geometries and attribute data.
 
-```
+| I3S Resource                                   | Required                          | Details                                                      |
+| ---------------------------------------------- | --------------------------------- | ------------------------------------------------------------ |
+| /SceneServer                                   | ![required](images/checkmark.png) | The SceneServiceInfo JSON file that defines the service name and the list of layers included with the Scene Service.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0                          | ![required](images/checkmark.png) | The 3D Scene Layer JSOn resource.  The layer ID is used as the document key (e.g. `0`).<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/nodes/root                 | ![required](images/checkmark.png) | The 3D Node Index Document of the layer as a JSON resource.  The node ID is used as the document key (e.g. `root`)<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/nodes/0                    | ![required](images/checkmark.png) | The 3D Node Index Document of the layer as a JSON resource.  The node ID is used as the document key (e.g. `0`)<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/shared           | ![required](images/checkmark.png) | The Shared Resource of the node as a JSON resource. The keyword "shared" is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/features/0       |                                   | The FeatureData document of the node as a JSON resource. The resource array id (e.g. `0`) is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/geometries/0     | ![required](images/checkmark.png) | The GeometryData of the node as a binary resource. The resource array id  (e.g. `0`) is used as the resource key<br />Content type: application/octet-stream <br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/textures/0_0     |                                   | The Texture of the node as a binary resource. The resource id (e.g. `0_0`) is used as the resource key of the resource <br />Content type: image/jpeg<br />Encoding: {**NONE**} |
+| /SceneServer/layers/0/nodes/0/textures/0_0_1   |                                   | The compressed texture of the node as a binary resource. The resource id (e.g. `0_0_1`) is used as the resource key<br />Content type: image/vnd-ms.dds<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/attributes/f_0/0 |                                   | The AttributeData as a binary resource. The resource id (e.g. `0`) is used as the resource key of the resource<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/attributes/f_1/0 |                                   | Same as resource `f_0/0` above                               |
+| ...                                            | ...                               | ...                                                          |
+| /SceneServer/layers/0/nodes/1-4-2-0            | ![required](images/checkmark.png) | Same as node resource `root` and `0`                         |

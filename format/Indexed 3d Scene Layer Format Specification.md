@@ -464,23 +464,23 @@ The Class Store object describes the physical storage of a Layer.  This enables 
 
 See the [store](docs/1.6/store.cmn.md) for more details.
 
-### Class GeometrySchema
+### Class Geometry Schema
 
 The Class GeometrySchema describes ?. 
 
-It is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.  The Class GeometrySchema reduces redundancy of ArrayBufferView geometry declarations in a store. It reuses the GeometryAttribute type from FeatureData; however, only valueType and valuesPerElement are mandatory.
+It is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements.  The Class GeometrySchema reduces redundancy of ArrayBufferView geometry declarations in a store by reusing the GeometryAttribute type from Feature Data.  Only valueType and valuesPerElement are mandatory.
 
 See the [default geometry schema](docs/1.6/defaultGeometrySchema.cmn.md) for more details.
 
-<h4>Class HeaderAttribute</h4>
+### Class HeaderAttribute
 
-Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.
+Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field and the header valueType.
 
 See [header attribute](docs/1.6/headerAttribute.cmn.md) for more details.
 
 ### Class Field
 
-The Field class is used to provide schema information for this 3dSceneLayer.
+The Field class is used to provide schema information for a 3dSceneLayer.
 
 See [class field](docs/1.6/field.cmn.md) for more details.
 
@@ -492,7 +492,7 @@ See [attribute storage info](docs/1.6/attributeStorageInfo.cmn.md) for more deta
 
 ### Class IndexScheme
 
-The IndexScheme class declaratively describes computational and structural properties of the index used within an I3S store. This information can be used by clients to better understand how to work with the index.
+The IndexScheme class describes the computational and structural properties of the index used within an I3S store.
 
 [Link to general index]
 
@@ -757,7 +757,7 @@ Features are representations of the geographic objects stored in a layer. In the
 
 <p><em>Table 20: Attributes of the Class <strong>Feature</strong> within the NodeIndexDocument</em></p>
 
-### Class Level of Detail Selection (lodSelection)
+### Class Level of Detail Selection (Class LoD Selection)
 
 A level of detail selection (lodSelection) object provides information on a metric determined during
 the cooking process of an I3S store.  Clients can use this metric to determine representation quality.
@@ -993,7 +993,6 @@ refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as 
 <img src="images/figure-10.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
 <p><em>Figure 10: Geometry Buffer Layout with headers</em></p>
 </div>
-
 *Note:* The expected triangle/face winding order in all geometry resources is counterclockwise.
 
 *Note:* If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal Coordinate Reference System, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian Coordinate Reference System first.
@@ -1002,11 +1001,11 @@ refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as 
 
 Attribute data is stored within I3S layers as part of the Scene Service cache along with geometry, texture, and material resources in an optimized, render friendly format. 
 
-Attribute data is the primary input source for scene services. It is the tabular information stored as an attribute of a feature class. 
+Attribute data is the primary input source for scene services. The tabular information is stored as an attribute of a feature class. 
 
 Attribute data for all features in a node are stored and available as discrete, per field resource called **attribute**. The number of attribute resources corresponds to the number of fields in the scene cache.  
 
-Attributes values are stored in the attribute resource in the same order as feature geometries are stored within the geometry resource of the node. This allows clients who fetch these resources to render each node efficiently through direct array access instead of object-id based attribute lookups.  
+Attributes values are stored in the attribute resource in the same order as feature geometries are stored within the geometry resource of the node. This allows clients to render each node efficiently through direct array access instead of object-id based attribute lookups.  
 
 When access to the object-id is needed, the _attribute_ resource representing the object-id field stores the object-id values of each feature within the node, just like the geometry resource.  This facilitates object-id based access. Clients can also build an object-id to array-index dictionary for cases where large numbers of object-id based attribute or geometry look ups within a node are needed.
 
@@ -1020,9 +1019,9 @@ These metadata allow clients to initialize and allocate any required client side
 <img src="images/figure-11.png" title="An example of the fields array." alt="An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.">
 <p>Figure 11: An example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias.</p>
 </div>
-Clients can use the key property (layers[id].attributeStorageInfo[].key) of the attributeStorageInfo to uniquely identify and request the attribute resource throught a new RESTful API, called attributes. Clients use the attributeStorageInfo metadata to decode the retrieved attribute binary content.
+Clients can use the key property (layers[id].attributeStorageInfo[].key) of the attributeStorageInfo to uniquely identify and request the attribute resource through a RESTful API, called attributes. Clients use the attributeStorageInfo metadata to decode the retrieved attribute binary content.
 
-**The attribute resource header contains :**
+**The attribute resource header contains:**
 
 - A header section of 4 bytes with the count of features. The count value is present in all attribute resources.  For attributes with string resources, header has an additional 4 bytes indicating the total byte count of the string attribute values.
 - For all numerical field types, the header section is followed by the attribute values array record. The attribute values must always begin at an offset that is divisible by the byte length of a single value. If the header does not end at such an offset, the necessary amount of padding is inserted between the header and the attribute values.
@@ -1041,48 +1040,41 @@ A client application will be able to find the URI of any attribute resource thro
 
 #### REST API for Accessing Attribute Resources directly from a scene service layer
 
-The **attributes** REST API will allow client apps to fetch the attribute records of a given field as identified by its _Key_ property. As a result, every scene node (with the exception of 'root' node), will expose available attribute fields as discrete _attribute_ resources. These resources are accessible thru a relative URL to any Node Index Document.
+The Attributes REST API allows client apps to fetch the attribute records of a field using its _Key_ property directly from a scene service layer.  Every scene node (with the exception of 'root' node), exposes attribute fields as discrete _attribute_ resources. These resources are accessible through a relative URL to any Node Index Document.
 
-The _attributes_ REST api syntax is as follows:  
+The Attributes REST API syntax: 
  URL: **http://&lt;sceneservrice-url&gt;/attributes/&lt;field_key&gt;/&lt;id>**
 
-- _attributes_ -  is the RESTful resource responsible for fetching the binary attribute resource. A client application will be able to decode the content of this _attribute_ resource solely based on the metadata information found in the scene layer _attributeStorageInfo_ array (which adequately describes the content of the binary data).  
+- _attributes_ -  is the RESTful resource responsible for fetching the binary attribute resource. A client will decode the content based on the metadata found in the scene layer _attributeStorageInfo_ array
 - <i>field\_key</i> - is the field key value that will be used to request the desired feature attribute content.
 - _id_ - is the bundle id of the _attribute_ binary resource, corresponding to the geometry bundle id. By default this value is 0 (same as the geometry bundle id). If a node has more than 1 geometry resource, then the id of the _attribute_ resource will also match the geometry bundle id.
 
 
-#### A typical pattern of usage of the _attributes_ REST API includes:  
+#### Usage pattern of the _attributes_ REST API:  
 
-1. Prior to symbolizing a given node based on attribute information, a client application should get attribute field metadata information by fetching the scene server _layers_ REST resource. The _layers_ resource contain the _fields_ (_layers[Id].Fields[id]_) array, which lists all available attribute fields and types and the _attributeStorageInfo_ (layers[id].attributeStorageInfo[id]) array, which describes the content of each binary _attribute_ resource.  
+1. A client should get the attribute field from the metadata by fetching the scene server layers REST resource prior to symbolizing the node base on attribute information.  The layers resource contains the files array, which lists all available attribute fields, types, and the Attribute Storage Info array.  
 
- The _fields_ array object contains a collection of objects that describe each attribute field regarding its field name ('name'), datatype ('type') and a user friendly name ('alias'). It includes all fields that are present in the source feature layer of the scene service layer.  
+   The fields array object contains a collection of objects that describe each attribute including its name ('name'), datatype ('type') and a user friendly name ('alias'). It includes all fields in the source feature layer of the scene service layer.  
 
- The _attributeStorageInfo_ array contains a collection of objects that describes all _attribute_ binary resources. It includes only fields the publisher/author chose to include as part of the scene cache during publishing time. The  _attributeStorageInfo_, which is metadata information  about the binary _attribute_ resources, is made up of:  
+   The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time. The  attributeStorageInfo includes:  
 
-  1. _name_ (_attributeStorageInfo[id].name_) and _key_ (_attributeStorageInfo[id].key_) properties that identify each  resource.
-  2. A _header_ (_attributeStorageInfo[id].header_) object, consisting of a _count_ and _valueType_ properties indicating the count of the attributeValue objects. In case of string atttibute values the _header_ consists an additional object, _attributeByteCounts_ property, which indicates the total byte count of the string values.
-  3. An _ordering_ (_attributeStorageInfo[id].ordering_) object that indicates the object storage layout.
-  4. For string attribute values, an _attributeByteCounts_ object describing each of the string attribute values byte   count.
-  5. The _attributeValues_ object describing the attribute value array, which contains member properties such as _valueType_ and _valuesPerElement_. For string attribute values in addition to its _valueType_ ('String'), there is an additional property _encoding_ ('UTF-8') that indicates the unicode enconding type. A String-Array is capable of supporting null attribute values (a 0 byte count value indicates a null string).  
+  - _name_ (_attributeStorageInfo[id].name_) and _key_ (_attributeStorageInfo[id].key_) properties that identify each  resource.
 
-  Note that the _key_ property (with values such as <i>f_0</i>, <i>f_1</i>, etc...) is **automatically** computed and that there shouldn't be any relationship _assumed_ to the field index of the source feature class (especially important when a user adds or deletes fields during the lifetime of a layer).  
+  - A _header_ (_attributeStorageInfo[id].header_) object, consisting of a _count_ and _valueType_ properties indicating the count of the attributeValue objects. In case of string atttibute values, the _header_ contains an additional object, _attributeByteCounts_, which indicates the total byte count of the string values.
 
-	<div>
-	<img src="images/figure-13.png" title="An expanded view of a scene layer resource showing the content of an _attributeStorageInfo_ resource." alt="An expanded view of a scene layer resource showing the content of an _attributeStorageInfo_ resource. The example shows 5 objects each corresponding to the 5 field objects of the _fields_ resource (as matched by the 'key' and  'name' properties present in both arrays)">
-	<p>Figure 13: An expanded view of a scene layer resource showing the content of an attributeStorageInfo resource. The example shows 5 objects each corresponding to the 5 objects of the fields resource (as matched by the 'key' and  'name' properties present in both arrays).The JSON representation of the example is located in <a href="../profiles/meshpyramids/examples/3dSceneLayer.js">3D Scene Layer examples section</a>.</p>
-	</div>
+  - An _ordering_ (_attributeStorageInfo[id].ordering_) object that indicates the object storage layout.
+
+  - For string attribute values, the _attributeByteCounts_ object describes each of the string attribute value's byte count.
+
+  - The _attributeValues_ object describes the attribute value array, which contains member properties such as _valueType_ and _valuesPerElement_. String attribute value include an additional property with the unicode encoding (e.g. UTF-8).  A string array can include null attribute values, indicated bya  0 byte count. 
+
+    The _key_ property is automatically computed and that there should not be any assumed relationship to the field index of the source feature class.  This is especially important to note when a user adds or deletes fields during the lifetime of a layer.  
 
 
-2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values of interest just by supplying the desired field _Key_ as part of the **attributes** REST request. Furthermore, it will also be capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
+2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values by supplying the desired field _Key_ as part of the attributes REST request. Furthermore, it is capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
 
- Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array, should first check in the geometry buffer before requesting it from the _attributes_ REST resource.  
+   Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array, should first check in the geometry buffer before requesting it from the _attributes_ REST resource.  
 
- The following example below shows the _attributes_ REST request signature:  
-
-    a.http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-0/<b>attributes/0/f_1</b>  
-    b.http://&lt;myserver&gt;/arcgis/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-/<b>attributes/0/f_2</b>  
-    
-    In _Example 1.a_ we will request the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (<i>f_1</i>) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, _Example 1.b_ will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (<i>f_2</i>).
 
 #### Attribute Resource - Details
 

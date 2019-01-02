@@ -13,8 +13,6 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 | stats | [stats](stats.pcsl.md) | Statistics for this attribute |
 | labels | [labels](labels.pcsl.md) |  The statistics document may contain labeling information for the attribute values. |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: Elevation statistic (point.z statistics) 

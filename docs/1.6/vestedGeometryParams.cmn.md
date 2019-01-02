@@ -14,8 +14,6 @@ This object extends GeometryParams and is the abstract parent object for all con
 | vertexAttributes | [vertexAttribute](vertexAttribute.cmn.md) | A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions. While there are standard keywords such as position, uv0..uv9, normal and color, this is an open, extendable list. |
 | faces | [geometryAttribute](geometryAttribute.cmn.md) | A list of Face Attributes, such as indices to build faces, and their definitions. While there are standard keywords such as position, uv0..uv9, normal and color, this is an open, extendable list. |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: vestedGeometryParams 

@@ -58,6 +58,18 @@
     "cullFace": {
       "type": "string",
       "description": "Indicates the material culling options {back, front, *none*}. Default is none."
+    },
+    "vertexColors": {
+      "type": "boolean",
+      "description": ""
+    },
+    "vertexRegions": {
+      "type": "boolean",
+      "description": ""
+    },
+    "useVertexColorAlpha": {
+      "type": "boolean",
+      "description": ""
     }
   },
   "required": [

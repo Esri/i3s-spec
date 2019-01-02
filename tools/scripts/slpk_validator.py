@@ -81,11 +81,9 @@ def get_common_schema_path( manifest, dir, file ) :
 
     if ( (dir[0].isdigit() or dir == "root") and file == "3dNodeIndexDocument.json.gz"):
         return get_schema_file_name(manifest, 'common', file)
-
     ## e.g /sublayers/#/statistics/f_#/0.json.gz
     if ( (dir.startswith("f_") or dir[0].isdigit()) and file == "0.json.gz" ) :
         return get_schema_file_name(manifest, 'common', file)
-
     if ( dir == "nodepages") :
         return get_schema_file_name(manifest, 'common', "nodepages")
 
@@ -95,6 +93,8 @@ def get_common_schema_path( manifest, dir, file ) :
 
     #if ( ( dir == "shared") and file == "sharedResource.json.gz"):
     #    return get_schema_file_name(manifest, 'common', file)
+
+    # file is not being checked
     return None
 
 
@@ -219,9 +219,6 @@ def load_manifests(path_to_specs_folder) :
         manifest_dom = json_to_dom( os.path.join( path_to_manifest, file ) )
         for profile in manifest_dom['profile'] :
             manifests[version][profile['name']] = profile['schemas']
-            #for schema in profile['schemas'] :
-                #path_to_file = os.path.join(path_to_specs_folder, 'schema', schema['schema'] )
-                #updated_path = load_properties(path_to_file)
     return manifests
 
 # inject the $include files into file if necessary
@@ -296,34 +293,28 @@ def validate_slpk( path_to_slpk, path_to_specs_folder, manifests ):
     error_count = 0
     success_count = 0
     successful_validation = True
-
     # delete the copied i3s directory
     # get all paths in slpk
     reader = Reader(path_to_slpk)
     files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
-
-    # temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files
+    ##temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files##
     if (version == '1.8') :
         version = '1.7'
-
     for file in files:
         # check if file is a json file
         # if so, decompress file and validate schema
         if file.endswith("json.gz"):
             file_contents = (reader.get_file(file)).decode()    # file_contents as string
             file_paths = file.split("/")                                    
-
             # files in root directory will have path length of 1
             # append directory to diffentiate files with similar names
             if ( len(file_paths) > 1) :
                 current_file = os.path.join( file_paths[-2], file_paths[-1] )
             else :
                 current_file = file_paths[-1]
-
             # get the schema for the current json file type
             schema = get_schema(slpk_type, current_file, version, manifests)
-
             # not every file is being validated
             # only proceed if file is being validated
             if (schema) :

@@ -19,8 +19,6 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 | emissiveFactor | number[3] | _TBD_: may not support this |
 | pbrMetallicRoughness | [pbrmetallicroughness](pbrmetallicroughness.cmn.md) | A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply. |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: Metal material 

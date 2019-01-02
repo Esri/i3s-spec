@@ -17,8 +17,6 @@ A spatial reference can optionally include a definition for a vertical coordinat
 | wkid | integer | The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system. |
 | wkt | string | The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both) |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: spatial reference 

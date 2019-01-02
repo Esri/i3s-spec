@@ -12,8 +12,6 @@ Optionally, the statistics document may contain labeling information for the att
 | labels | [label](label.pcsl.md)[] | Array of string label/value pairs. Used when attribute represents a set of values. For example, ClassCode. |
 | bitfieldLabels | [bitfieldlabel](bitfieldlabel.pcsl.md)[] | Array of string label/bitNumber pairs. This is useful when the attribute represent a bitfield. For example, FLAGS. |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: Class Code labels (LIDAR data) 

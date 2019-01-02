@@ -35,11 +35,14 @@
             },
             "description": "Define the layouts of mesh geometry and its attributes"
         },
-      "attributeSetDefinitions": {
-        "type": "object",
-        "$ref": "attributesetdefinition.cmn.0107.json",
-        "description": "Define the layouts of mesh geometry and its attributes"
-      }
+        "attributeDefinitions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "attributedefinition.cmn.0107.json"
+            },
+            "description": "Define the layouts of mesh geometry and its attributes"
+        }
     },
     "required": [
         "id",

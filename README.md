@@ -11,10 +11,10 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 
 The I3S format is declarative and extendable and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
+
 - [3D objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [integrated meshes](docs/1.6/integratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [points](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [point clouds](docs/1.6/pointCloud.md) (e.g. large point data from LiDAR)
 - [building scene layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
@@ -104,15 +104,6 @@ The Table below shows the various scene layer types that are currently supported
     <td></td>
   </tr>
   <tr>
-    <td>Points Clouds</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>Building Scene Layer</td>
     <td></td>
     <td></td>
@@ -153,13 +144,6 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>Points</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-  </tr>
-  <tr>
-    <td>Points Clouds</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
@@ -210,13 +194,6 @@ The Table below shows the various scene layer types that are currently supported
     <td></td>
   </tr>
   <tr>
-    <td>Points Clouds</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>Building Scene Layer</td>
     <td></td>
     <td></td>
@@ -224,6 +201,7 @@ The Table below shows the various scene layer types that are currently supported
     <td></td>
   </tr>
 </table>
+
 
 
 

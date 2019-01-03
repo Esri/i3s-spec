@@ -2,10 +2,10 @@
 
 Building content is derived from some type of Building Information Modeling (BIM). BIM is a best-practice process for optimizing design and construction. BIM processes can produce 3D virtual representations of real-world assets that are commonly used for construction, documentation, and evaluation. BIM processes are applied in multiple domains including architecture and buildings, energy and utilities, or transportation. A building scene layer can represent the 3D model aspect of BIM structuring disciplines such as architectural or piping and its categories such as windows or walls.
 
-![Building Scene Layer](img/Building.jpeg)
+![Building Scene Layer](img/buildingSceneLayer.png)
 
 ## Building scene layer structure
-The buiding scene layer contains discipline and category layers as sublayers allowing to represent a buiding with its different assets. You can create a scene layer package (*.slpk) or a I3S service. A building scene layer contains the following:
+The building scene layer contains discipline and category layers as sublayers allowing to represent a building with its different assets. You can create a scene layer package (*.slpk) or a I3S service. A building scene layer contains the following:
 
 - [Layer description](3dSceneLayer.md)
 - [Sublayers](attribute.md)

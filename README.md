@@ -11,6 +11,7 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 
 The I3S format is declarative and extendable and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
+
 - [3D objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [integrated meshes](docs/1.6/integratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [points](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
@@ -59,14 +60,16 @@ There are few applications that can create and consume scene layers. The tables 
 </table>
 <p><em>Table 1: List of vendors and products that support creation of I3S layers.</em></p>
 
-The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform. </a> 
+The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform</a>. 
+
+This table reflects the current versions of the ArcGIS Clients
 
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
     <th colspan="2">ArcGIS Online</th> 
-    <th colspan="2">ArcGIS API for Javascript<br>4.x</th>
-    <th colspan="2">ArcGIS Runtime<br>100.0</th>
+    <th colspan="2">ArcGIS API for Javascript</th>
+    <th colspan="2">ArcGIS Runtime</th>
   </tr>
   <tr>
     <td>Publishing</td>
@@ -87,7 +90,7 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>Integrated Meshes</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
@@ -105,7 +108,7 @@ The Table below shows the various scene layer types that are currently supported
   </tr>
   <tr>
     <td>Points Clouds</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
@@ -122,6 +125,7 @@ The Table below shows the various scene layer types that are currently supported
     <td></td>
   </tr>
 </table>
+
 
 
 
@@ -253,10 +257,11 @@ Under the following terms:
 
 License history:  
 
-Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are licensed under the older Creative Commons Attribution-NoDerivs 3.0 Unported license.  
-Version 1.6 – present integrated mesh, 3D object, point scene layer(dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
+Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are licensed under the older Creative Commons Attribution-NoDerivs 3.0 Unported license. 
 
-Copies of both licenses are included in this repository.
+Version 1.6 – present integrated mesh, 3D object, point scene layer, building scene layer (dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
+
+Version 2.0 - present point cloud scene layer (01/01/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 
 ## License for JSON resources, validator, and examples
 

@@ -9,7 +9,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 
 - [Layer description](3dSceneLayer.md)
 - Nodes containing [Geometry](defaultGeometry.md) and [Attributes](attribute.md)
-- [Node pages](nodepage.md)
+- [Node pages](nodepage.md) - Update to 3D node document
 - [Statistics](statistics.md)
 
 ```
@@ -41,7 +41,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 	|  +-- 8
 	|  +-- (...)
 ```
-*Example of point cloud scene layer structure.*
+*Example of 3D Object Scene Layer structure.*
 
 # HTTP API Overview
 

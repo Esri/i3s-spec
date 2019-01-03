@@ -2,13 +2,13 @@
 
 Version 1.6, January 02, 2018
 
-*Contributors:* Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Johannes Schmid, Ivonne Seler, Chengliang Shan, Simon Reinhard, Thorsten Reitz, Ben Tan, Moxie Zhang
+*Contributors:* Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang
 
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed 
 
 <hr>
 
-The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS Scene Layers</a> and Scene Services use the I3S infrastructure.
+The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.
 # Table of Contents
 
 [Introducion to 3D Scene Layer](Introducion to 3D Scene Layer)
@@ -27,9 +27,9 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 
 ​		[Attribute Model and Storage](attribute-model-and-storage)
 
-​	[Oriented Bounding Box (OBB)](oriented-bounding-box-obb)
+​	[Oriented Bounding Box](oriented-bounding-box)
 
-​	[Level of Detail (LoD)](level-of-detail-lod)
+​	[Level of Detail](level-of-detail)
 
 ​		[Discrete Level of Detail](discrete-level-of-detail)
 ​	
@@ -175,62 +175,23 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 
  The supported layer types are:
 
-* [3D Objects](docs/1.6/3Dobjects.md) (e.g. building exteriors, 3D models in various formats)
-* [Integrated Mesh](docs/1.6/integratedMesh.md) (e.g. integrated surface including vegetation, buildings and roads) 
-* [Points](docs/1.6/points.md) (e.g. hospitals, schools, trees, street furniture, signs)
-* [Point Clouds](docs/1.6/pointCloud.md) (e.g. lidar data)
-* [Building Scene Layer](docs/1.6/buildingSceneLayer.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
+* [3D Objects](../docs/1.6/3Dobjects.md) (e.g. building exteriors, 3D models in various formats)
+* [Integrated Mesh](../docs/1.6/integratedMesh.md) (e.g. integrated surface including vegetation, buildings and roads) 
+* [Points](../docs/1.6/points.md) (e.g. hospitals, schools, trees, street furniture, signs)
+* [Point Clouds](../docs/1.6/pointCloud.md) (e.g. lidar data)
+* [Building Scene Layer](../docs/1.6/buildingSceneLayer.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
 
-add building scene layer to table
-
-<table>
- <tr>
-  <td><strong>Layer Type</strong></td>
-  <td><strong>Profile
-
-</strong></td>
-	<td><strong>Features with Identity</strong></td>
-  <td><strong>Attributes</strong></td>	  
- </tr>
- <tr>
-  <td><a href="../docs/1.6/3Dobjects.md">3D Objects</a></td>
-  <td>mesh-pyramids</td>
-  <td>Yes</td>
-  <td>Yes</td>
- </tr>
- <tr>
-  <td><a href="../docs/1.6/integratedMesh.md">Integrated Mesh</a></td>
-  <td>mesh-pyramids</td>
-  <td>No</td>
-  <td>Triangle Attributes (planned)</td>
- </tr>
-  <tr>
-  <td><a href="../docs/1.6/points.md">Point</a></td>
-  <td>points</td>
-  <td>Yes</td>
-  <td>Yes</td>
- </tr>
- <tr>
-  <td><a href="../docs/1.6/pointCloud.md">Point Cloud</a></td>
-  <td>pointclouds</td>
-  <td>No</td>
-  <td><a href="../docs/1.6/vertexAttribute.cmn.md">Vertex Attributes</a></td>
- </tr>
-  <tr>
-  <td>Line</td>
-  <td>lines</td>
-  <td>Yes</td>
-  <td>Yes</td>
- </tr>
- <tr>
-  <td>Polygon</td>
-  <td>polygons</a></td>
-  <td>Yes</td>
-  <td>Yes</td>
- </tr>
- </table>
+| Layer Type                                             | Profile       | Features with Identity | Attributes                                              |
+| ------------------------------------------------------ | ------------- | ---------------------- | ------------------------------------------------------- |
+| [3D Objects](../docs/1.6/3Dobject_ReadMe.md)           | mesh-pyramids | Yes                    | Yes                                                     |
+| [Integrated Mesh](../docs/1.6/ntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
+| [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
+| [Point Cloud](../docs/2.0/PointCloud_ReadMe.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
+| Line                                                   | lines         | Yes                    | Yes                                                     |
+| Ploygon                                                | ploygons      | Yes                    | Yes                                                     |
+| Building Scene Layer                                   |               |                        |                                                         |
 
 *Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles*
 
@@ -259,7 +220,7 @@ All I3S profiles support writing 3D content in two modes: global and local. In g
 
 All I3S layers indicate the coordinate system with the spatialReference property in the <a href="_6_2">3dSceneLayerInfo</a> resource. This property is normative.
 
-The [spatial reference](docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
+The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
 
 ### Height Models
 
@@ -269,7 +230,7 @@ At version 1.5, I3S added support for a vertical coordinate systems. The Well-kn
 
 The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related. 
 
-See the [3DSceneLayerInfo](docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](docs/1.6/heightModelInfo.cmn.md) pages for more details.
+See the [3DSceneLayerInfo](../docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](../../docs/1.6/heightModelInfo.cmn.md) pages for more details.
 
 
 
@@ -299,12 +260,12 @@ Each node includes the set of information covered by the nodes below it and is p
 
 Nodes include `NodeIndexDocument`, `FeatureData`, `geometry`, `attribures`, and `SharedResource`.  
 
-- [Node Index Document](docs/1.6/3DSNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
-- [Feature Data](docs/1.6/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference. 
-- [Geometry](docs/1.6/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature their geometry segments.
-- [Attribute](docs/1.6/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
-- [Texture](docs/1.6/textureDefinition.cmn.md): Describes how a feature is to be rendered.
-- [Shared Resource](docs/1.6/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer.
+- [Node Index Document](../docs/1.6/3DSNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
+- [Feature Data](../docs/1.6/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference. 
+- [Geometry](../docs/1.6/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature their geometry segments.
+- [Attribute](../docs/1.6/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
+- [Texture](../docs/1.6/textureDefinition.cmn.md): Describes how a feature is to be rendered.
+- [Shared Resource](../docs/1.6/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer.
 
 An I3S profile uses either a single text-based subresource or separate binary subresources.  The text-based resources contain all the geometry and attribute information (e.g. Point profile).  The separate, binary subresources have self-contained geometry and attribute subresources (e.g. mesh pyramids). Applications that use the separate binary subresources do not need to fetch the feature data in order to interpret them.  
 
@@ -336,14 +297,14 @@ The Array Buffer View controls geometry storage and consumption representation. 
 
 Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
 
-See the [Geometry](docs/1.6/geometry.cmn.md) section for more details regarding Integrated Mesh, 3D objects and point scene layer.
+See the [Geometry](../docs/1.6/geometry.cmn.md) section for more details regarding Integrated Mesh, 3D objects and point scene layer.
 See the [defaultGeometryShema](docs/2.0/defaultGeometrySchema.pcsl.md) for more details regarding point cloud scene layer.
 
 ### Textures
 
 Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats like ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations. 
 
-See the [Textures](docs/1.6/texture.cmn.md) section for more details.
+See the [Textures](../docs/1.6/texture.cmn.md) section for more details.
 
 ### Attribute Model and Storage 
 
@@ -358,7 +319,7 @@ I3S supports two ways to access attribute data.  They can be accessed through:
 
 Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
 
-See [Attribute](docs/1.6/attributeStorageInfo.cmn.md) section for more details regarding Integrated Mesh, 3D object and point scene layer.
+See [Attribute](../docs/1.6/attributeStorageInfo.cmn.md) section for more details regarding Integrated Mesh, 3D object and point scene layer.
 See [AttribiuteInfo](docs/2.0/attributeInfo.pcsl.md) for details regarding point cloud scene layer.
 
 
@@ -366,7 +327,7 @@ See [AttribiuteInfo](docs/2.0/attributeInfo.pcsl.md) for details regarding point
 
 An oriented bounding box (OBB) represents the bounding volume of each node in the scene layer. 
 
-See [oriented bounding box](docs/1.6/obb.cmn.md) for more details regarding all scene layer types.
+See [oriented bounding box](../docs/1.6/obb.cmn.md) for more details regarding all scene layer types.
 
 ## Level of Detail
 
@@ -456,7 +417,7 @@ The bounding volume tree hierarchy is built based on the spatial distribution of
 
 Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality. 
 
-See the the [Level of Detail Selection](docs/1.6/lodSelection.cmn.md") for more details regarding Integrated Mesh, 3D objects and point scene layer.
+See the the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md") for more details regarding Integrated Mesh, 3D objects and point scene layer.
 
 
 # JSON Resources
@@ -537,47 +498,47 @@ The Class 3dSceneLayerInfo describes the properties of a single layer in a store
 
 Each 3dSceneLayerInfo object describes a Layer. The 3dSceneLayerInfo is a major object in the 3dSceneLayerInfo document. A SceneServiceInfo document can contain 1...* 3dSceneLayerInfo documents. 
 
-See [3D Scene Layer Info](docs/1.6/3DSceneLayer.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
+See [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
 See [Layer description](docs/2.0/layer.pcsl.md) for more details regarding point scene layer.
 
 ### Class Store
 
 The Class Store object describes the physical storage of a layer.  This enables the client to detect when multiple layers are served from the same store. Including multiple layers in a single store allows them to share resources.  When the resources are shared, layers with different attribute schemas or symbology, but the same content type, can be served efficiently. 
 
-See the [store](docs/1.6/store.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
+See the [store](../docs/1.6/store.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
 See the [store point cloud scene layer](docs/2.0/store.pcsl.md) for more details regarding point scene layer.
 
 ### Class Geometry Schema
 
 The defaultGeometry schema is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of ArrayBufferView geometry declarations in a store, and reuses the GeometryAttribute type from FeatureData. Only valueType and valuesPerElement are required. 
 
-See the [default geometry schema](docs/1.6/defaultGeometrySchema.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
+See the [default geometry schema](../docs/1.6/defaultGeometrySchema.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
 See the [default geometry schema point cloud scene layer](docs/2.0/defaultGeometrySchema.pcsl.md) for more details regarding point scene layer.
 
 ### Class HeaderAttribute
 
 Headers to Geometry resources must be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field and the header valueType.
 
-See [header attribute](docs/1.6/headerAttribute.cmn.md) for more details regarding 3D objects and point scene layer.
+See [header attribute](../docs/1.6/headerAttribute.cmn.md) for more details regarding 3D objects and point scene layer.
 
 ### Class Field
 
 The Field class is used to provide schema information for a 3dSceneLayer.
 
-See [class field](docs/1.6/field.cmn.md) for more details regarding 3D objects, point cloud and point scene layer.
+See [class field](../docs/1.6/field.cmn.md) for more details regarding 3D objects, point cloud and point scene layer.
 
 ### Class AttributeStorageInfo
 
 The attributeStorageInfo is a major object in the 3dSceneLayerInfo document. It describes the structure of a node's binary attributeData resource.
 
-See [attribute storage info](docs/1.6/attributeStorageInfo.cmn.md) for more details regarding 3D objects and point scene layer.
+See [attribute storage info](../docs/1.6/attributeStorageInfo.cmn.md) for more details regarding 3D objects and point scene layer.
 See [attributeInfo](docs/2.0/attributeInfo.pcsl.md) for more details regarding point cloud scene layer.
 
 ### Class IndexScheme
 
 The IndexScheme class describes the computational and structural properties of the index used within an I3S store.
 
-Point clouds have a different index scheme. See [point cloud index scheme](docs/1.6/index.pcsl.md) for more details.
+Point clouds have a different index scheme. See [point cloud index scheme](../docs/1.6/index.pcsl.md) for more details.
 
 <table>
 	<tr>
@@ -619,21 +580,21 @@ DrawingInfo and the associated classes contain the default symbology (drawing in
 
 When the DrawingInfo object is present in the 3dSceneLayerInfo Class, a client can symbolize an I3S layer using the Renderer information.  The DrawingInfo can alternatively be captured in the Scene Layer as part of the binary I3S representation.  This helps support clients that may not be able to override the symbology in a layer.  In this case, the DrawingInfo is described in the CachedDrawingInfo class. 
 
-See [drawing info](docs/1.6/drawingInfo.cmn.md) for more details regarding 3D objects and point scene layer.
+See [drawing info](../docs/1.6/drawingInfo.cmn.md) for more details regarding 3D objects and point scene layer.
 See [drawing info point cloud scene layer](docs/2.0/drawingInfo.pcsl.md) for more details regarding point cloud scene layer.
 
 ### Class StatisticsInfo
 
 Statistical information help clients to define symbology, definition queries or other functionality which is depending on statistical information. 
 
-See [statisticsInfo](docs/1.6/statisticsInfo.cmn.md) for more details regarding 3D objects and point scene layers.
+See [statisticsInfo](../docs/1.6/statisticsInfo.cmn.md) for more details regarding 3D objects and point scene layers.
 See [statistics](docs/2.0/statistics.pcsl.md) for more details regarding point cloud scene layers.
 
 ### Class Domains
 
 Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. Attribute domains are used to constrain the values allowed in any particular attribute for a table or feature class. If the features in a feature class or nonspatial objects in a table have been grouped into subtypes, different attribute domains can be assigned to each of the subtypes. A domain is a declaration of acceptable attribute values. Whenever a domain is associated with an attribute field, only the values within that domain are valid for the field. In other words, the field will not accept a value that is not in that domain. Using domains helps ensure data integrity by limiting the choice of values for a particular field.
 
-See [domains](docs/1.6/domain.cmn.md) for more details regarding 3D objects scene layer and point scene layer.
+See [domains](../docs/1.6/domain.cmn.md) for more details regarding 3D objects scene layer and point scene layer.
 
 ### Class Renderer
 
@@ -724,7 +685,7 @@ A collection of symbol objects used to visualize the feature.
 
 The material used to shade the geometry.
 
-See [material](docs/1.6/material.cmn.md) for more details regarding Integrated Mesh and 3D object scene layer.
+See [material](../docs/1.6/material.cmn.md) for more details regarding Integrated Mesh and 3D object scene layer.
 
 
 ### Class Outline
@@ -784,7 +745,7 @@ The Class Color has the following structure:
 
 The Class CachedDrawingInfo is used to indicate if the DrawingInfo object is captured as part of the binary I3S representation.
 
-See [cached drawing info](docs/1.6/cachedDrawingInfo.cmn.md) for more details Integrated Mesh and 3D object scene layer.
+See [cached drawing info](../docs/1.6/cachedDrawingInfo.cmn.md) for more details Integrated Mesh and 3D object scene layer.
 
 ### 3dNodeIndexDocument
 
@@ -792,7 +753,7 @@ The 3dNodeIndexDocument file describes a single index node within a store.  It i
 
 Depending on the geometry and level of detail, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors to help the client understand the overall distribution of the data.
 
-See [3D Node Index Document](docs/1.6/3DSNodeIndexDocument.cmn.md) for more details Integrated Mesh, 3D objects and point scene layer.
+See [3D Node Index Document](../docs/1.6/3DSNodeIndexDocument.cmn.md) for more details Integrated Mesh, 3D objects and point scene layer.
 
 _Note: Point cloud scene layer define indexed page nodes. See [page node](docs/2.0/nodepage.pcsl.md) for more details.
 
@@ -800,13 +761,13 @@ _Note: Point cloud scene layer define indexed page nodes. See [page node](docs/2
 
 A NodeReference is a pointer to another node.  A node can reference the parent, a child or a neighbor. Node references contain a relative URL and metadata.  The URL points to the node ID.  The metadata is used to determine which nodes to load and helps maintain store consistency. 
 
-See [node reference](docs/1.6/nodeReference.cmn.md) for more details Integrated Mesh, 3D objects and point scene layer.
+See [node reference](../docs/1.6/nodeReference.cmn.md) for more details Integrated Mesh, 3D objects and point scene layer.
 
 ### Class Resource
 
 Resource objects are pointers to resources related to a node, like the feature data, geometry attributes, indices, textures and shared resources.
 
-See [resource](docs/1.6/resource.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
+See [resource](../docs/1.6/resource.cmn.md) for more details regarding Integrated Mesh, 3D objects and point scene layer.
 
 
 ### Class Feature
@@ -860,7 +821,7 @@ the cooking process.  Clients use these metrics to determine representation qual
 Cookers can add as many lodSelection objects as desired, but must provide at least one so that the level of detail type (lodType) is not null. Typically, minimum, average, or maximum value is used.
 
 
-See [level of detail selection](docs/1.6/lodSelection.cmn.md) for more details Integrated mesh, 3D objects and point scene layer.
+See [level of detail selection](../docs/1.6/lodSelection.cmn.md) for more details Integrated mesh, 3D objects and point scene layer.
 
 ### FeatureData
 
@@ -870,44 +831,44 @@ The FeatureData JSON files contain geographical features with a set of attribute
 
 A Feature is a single object within a GIS data set.  It usually represents a real world feature.
 
-See [feature data](docs/1.6/featureData.cmn.md) for more details 3D objects and point scene layer.
+See [feature data](../docs/1.6/featureData.cmn.md) for more details 3D objects and point scene layer.
 
 ### Class FeatureAttribute
 
 A FeatureAttribute is a field carrying a value. This value may be a list of complete attributes used with reports or metadata.
 
-See [feature attribute](docs/1.6/featureAttribute.cmn.md) for 3D Objects and Point Scene Layers. 
+See [feature attribute](../docs/1.6/featureAttribute.cmn.md) for 3D Objects and Point Scene Layers. 
 
 
 ### Class Geometry
 
 This is the common container class for all types of geometry definitions used in I3S.
 
-See [geometry](docs/1.6/geometry.cmn.md) for more details Integrated mesh and 3D objects scene layer.
+See [geometry](../docs/1.6/geometry.cmn.md) for more details Integrated mesh and 3D objects scene layer.
 
 ### Class GeometryParams
 
 This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
 
-See [geometry params](docs/1.6/geometryParams.cmn.md) for more details Integrated mesh and 3D objects scene layer.
+See [geometry params](../docs/1.6/geometryParams.cmn.md) for more details Integrated mesh and 3D objects scene layer.
 
 ### Class GeometryReferenceParams
 
 Instead of owning a geometry exclusively, a feature can reference a Geometry defined for the node.  Using GeometryReferenceParameters allows clients to pre-aggregate geometries for many features. 
 
-See [geometry reference params](docs/1.6/geometryReferenceParams.cmn.md) for more details Integrated mesh and 3D objects scene layer.
+See [geometry reference params](../docs/1.6/geometryReferenceParams.cmn.md) for more details Integrated mesh and 3D objects scene layer.
 
 ### Class VestedGeometryParams
 
 VestedGeometryParams extends GeometryParams.  It is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition.  The definition can be either an ArrayBufferView or an Embedded Geometry.
 
-See [vested geometry params](docs/1.6/vestedGeometryParams.cmn.md) for more details Integrated mesh and 3D objects scene layer.
+See [vested geometry params](../docs/1.6/vestedGeometryParams.cmn.md) for more details Integrated mesh and 3D objects scene layer.
 
 ### Class SingleComponentParams
 
 SingleCompenentParams extends VestedGeometryParams.  It uses one texture and one material, and can be used with aggregated geometries.
 
-See [single component params](docs/1.6/singleComponentParams.cmn.md) for more details Integrated mesh and 3D objects scene layer..
+See [single component params](../docs/1.6/singleComponentParams.cmn.md) for more details Integrated mesh and 3D objects scene layer..
 
 ### Class Component
 
@@ -946,15 +907,15 @@ Component objects provide specific geometry information.  This is used to determ
 
 Each GeometryAttribute object is an accessor into an array buffer. There are two types of GeometryAttributes: VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex.  FaceAttributes describe faces and other structures by providing a set of indices. For example, the `faces.position` index attribute defines which vertex positions make up a face.
 
-See [geometry attribute](docs/1.6/geometryAttribute.cmn.md) for more details Integrated mesh and 3D objects scene layer.
+See [geometry attribute](../docs/1.6/geometryAttribute.cmn.md) for more details Integrated mesh and 3D objects scene layer.
 
 ## SharedResources
 
 Shared Resources are models or textures stored as a JSON file that can be shared among features within the same layer.  The Shared Resources are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process.  
 
-Shared resources include the [material definition](docs/1.6/materialDefinition.cmn.md) and [texture defintion](docs/1.6/textureDefinition.md) for the resource regarding Integrated mesh and 3D objects scene layer.
+Shared resources include the [material definition](../docs/1.6/materialDefinition.cmn.md) and [texture defintion](../docs/1.6/textureDefinition.md) for the resource regarding Integrated mesh and 3D objects scene layer.
 
-See [shared resources](docs/1.6/sharedResources.cmn.md) for more details regarding Integrated mesh and 3D objects scene layer.
+See [shared resources](../docs/1.6/sharedResources.cmn.md) for more details regarding Integrated mesh and 3D objects scene layer.
 
 ### Class ShaderDefinition
 
@@ -1137,7 +1098,7 @@ The Attributes REST API syntax:
 
    - The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time.
 
-   See the [attribute storage info model](docs/1.6/attributeStorageInfo.cmn.md) for more details.
+   See the [attribute storage info model](../docs/1.6/attributeStorageInfo.cmn.md) for more details.
 
 
 2. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values by using the _key_ as part of the attributes REST request. Furthermore, it is capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  

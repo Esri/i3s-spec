@@ -1,10 +1,10 @@
-# Attribute buffer definition
+# Attribute definition
 
 
 
 ### Related:
 
-[cmn::attributesetdefinition](attributesetdefinition.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

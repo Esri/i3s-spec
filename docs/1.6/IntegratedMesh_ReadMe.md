@@ -1,11 +1,11 @@
-# Integrated mesh  scene layer
+# Integrated Mesh Scene Layer
 
 Three-dimensional mesh data is typically captured by an automated process for constructing 3D objects out of large sets of overlapping imagery. The result integrates the original input image information as a textured mesh including 3D objects, such as buildings and trees, and elevation information. Integrated mesh scene layers  are generally created for citywide 3D mapping. They are often captured by drone and cannot be restyled.
 
-![Integrated Mesh Scene Layer](img/IntegratedMesh.jpeg)
+![Integrated Mesh Scene Layer](img/IM.PNG)
 
 ## Integrated Mesh scene layer structure
-The Integrated Mesh scene layer is structured into a tree of multiple json files. Beside storing information in the json format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
+The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [Layer description](layer.md)
 - Nodes containing [Geometry](geometry_buffer.md) and [Attributes](attribute_buffer.md)

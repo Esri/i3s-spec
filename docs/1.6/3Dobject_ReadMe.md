@@ -2,10 +2,10 @@
 
 A 3D object scene layer can be used to represent and visualize objects such as exterior of buildings that are explicitly modeled in three dimensions. A 3D object scene layer is typically used to create large city models that can be shared. The objects can be displayed with textures or with color symbology depending on the content that is being visualized. 3D object scene layers are often created from GIS data including attributes to allow defining symbology or querying information for individual features.
 
-![3D Object Scene Layer](img/3dobject.jpeg)
+![3D Object Scene Layer](img/Building_trees.png)
 
 ## 3D object scene layer structure
-The 3D object scene layer is structured into a tree of multiple json files. Beside storing information in the json format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
+The 3D object scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [Layer description](3dSceneLayer.md)
 - Nodes containing [Geometry](defaultGeometry.md) and [Attributes](attribute.md)

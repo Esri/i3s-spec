@@ -13,8 +13,6 @@ Mesh geometry for a node
 | geometry | [meshgeometry](meshgeometry.cmn.md) | geometry definition |
 | attribute | [meshattribute](meshattribute.cmn.md) | attribute set definition |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: Textured mesh with attributes and features 

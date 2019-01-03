@@ -11,8 +11,6 @@ Shows all elements that comply with the filter block of a filter in a building s
 | --- | --- | --- |
 | type | string | Declares filter mode of type solid.<div>Must be:<ul><li>`solid`</li></ul></div> |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: filterMode solid 

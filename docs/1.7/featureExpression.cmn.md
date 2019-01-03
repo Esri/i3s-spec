@@ -11,5 +11,3 @@ Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geom
 | --- | --- | --- |
 | value | number |  |
 
-*Note: properties in **bold** are required*
-

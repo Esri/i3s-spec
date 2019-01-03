@@ -9,8 +9,6 @@ Declaration of the attributes per feature in the geometry, such as feature ID or
 | featureData | [featureData](featureData.cmn.md)[] |  |
 | geometryData | [geometry](geometry.cmn.md)[] |  |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example:  

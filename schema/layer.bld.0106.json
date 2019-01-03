@@ -89,6 +89,10 @@
       {
         "title": "Building Scene Layer",
         "code_href": "example/bim.bld.0106.json"
+      },
+      {
+        "title": "Building Scene Layer without overview",
+        "code_href": "example/bimNoOverview.bld.0106.json"
       }
     ]
   }

@@ -26,5 +26,3 @@ The materialDefinition describes how a feature or a set of features is to be ren
 | params.receiveShadows | boolean | true if features with this material should receive shadows. |
 | params.cullFace | string | Indicates the material culling options {back, front, *none*}. Default being none. |
 
-*Note: properties in **bold** are required*
-

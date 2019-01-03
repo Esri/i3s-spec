@@ -178,7 +178,7 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 * [3D Objects](../docs/1.6/3Dobjects.md) (e.g. building exteriors, 3D models in various formats)
 * [Integrated Mesh](../docs/1.6/integratedMesh.md) (e.g. integrated surface including vegetation, buildings and roads) 
 * [Points](../docs/1.6/points.md) (e.g. hospitals, schools, trees, street furniture, signs)
-* [Point Clouds](../docs/1.6/pointCloud.md) (e.g. lidar data)
+* [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data)
 * [Building Scene Layer](../docs/1.6/buildingSceneLayer.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:

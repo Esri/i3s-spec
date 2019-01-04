@@ -7,20 +7,13 @@ A 3D object scene layer can be used to represent and visualize objects such as e
 ## 3D object scene layer structure
 The 3D object scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
-- [Layer description](3dSceneLayer.md)
-- Nodes containing [Geometry](defaultGeometry.md) and [Attributes](attribute.md)
-- [Node pages](nodepage.md)
-- [Statistics](statistics.md)
+- [Layer description](3dSceneLayer.cmn.md)
+- Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributestats.cmn.md)
+- [Statistics](statsInfo.cmn.md)
 
 ```
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
-	+-- nodepages
-	|  +-- 0
-	|  +-- 1   
-	|  +-- 2  
-	|  +-- (...)
-	|  +-- 4  
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
@@ -41,7 +34,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 	|  +-- 8
 	|  +-- (...)
 ```
-*Example of point cloud scene layer structure.*
+*Example of 3DObject layer structure.*
 
 # HTTP API Overview
 

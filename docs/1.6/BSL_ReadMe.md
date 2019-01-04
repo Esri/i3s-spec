@@ -7,9 +7,9 @@ Building content is derived from some type of Building Information Modeling (BIM
 ## Building scene layer structure
 The building scene layer contains discipline and category layers as sublayers allowing to represent a building with its different assets. You can create a scene layer package (*.slpk) or a I3S service. A building scene layer contains the following:
 
-- [Layer description](3dSceneLayer.md)
-- [Sublayers](attribute.md)
-- [Statistics](statistics.md)
+- [Layer description](3dSceneLayer.cmn.md)
+- [Sublayers](sublayer.bld.md)
+- [Statistics](statsummary.bld.md)
 
 ```
 .<host>/SceneServer/layers
@@ -20,11 +20,11 @@ The building scene layer contains discipline and category layers as sublayers al
 |  |  +-- sublayers
 |  |  |  +--0 (3dSceneLayer.json for layer0, layerType='3DObject')
 |  |  |  |  +--nodes
-|  |  |  |  |  +--0
+|  |  |  |  |  +--root
 |  |  |  |  |  |  +--3dNodeIndexDocument.json
 |  |  |  |  |  |  +--geometries (...)
 |  |  |  |  |  |  +--attributes (...)
-|  |  |  |  |  +--1
+|  |  |  |  |  +--0
 |  |  |  |  |  |  +--3dNodeIndexDocument.json
 |  |  |  |  |  |  +--geometries (...)
 |  |  |  |  |  |  +--attributes (...)
@@ -34,7 +34,7 @@ The building scene layer contains discipline and category layers as sublayers al
 |  |  |  |  +-- (...)
 |  |  |  +--(... , layerType='3DObject')
 ```
-*Example of point cloud scene layer structure.*
+*Example of building scene scene layer structure.*
 
 # HTTP API Overview
 

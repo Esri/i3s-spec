@@ -7,22 +7,16 @@ Point scene layers contain point features and their attributes. Point scene laye
 ## Point scene layer structure
 The point scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:
 
-- [Layer description](3dSceneLayer.md)
-- Nodes containing [Geometry](defaultGeometry.md) and [Attributes](attribute.md)
-- [Node Index Document](nodepage.md)
-- [Statistics](statistics.md)
+- [Layer description](3dSceneLayer.cmn.md)
+- Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStats.md)
+- [Node Index Document](3DSNodeIndexDocument.cmn.md)
+- [Statistics](statInfo.cmn.md)
 
 ```
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
-	+-- nodepages
-	|  +-- 0
-	|  +-- 1   
-	|  +-- 2  
-	|  +-- (...)
-	|  +-- 4  
 	+-- nodes
-	|  +--0
+	|  +--root
 	|  |  +-- attributes
 	|  |  |  +--2 
 	|  |  |  +--4
@@ -30,11 +24,6 @@ The point scene layer is structured into a tree of multiple JSON files. Besides 
 	|  |  |  +--(...)
 	|  |  +-- geometries
 	|  |  |  +-- 0
-	|  +--1 
-	|  |  (...) //same structure for all nodes
-	|  +--...
-	|  +-- 259
-	|  |  (...) //same structure for all nodes
 	+--statistics
 	|  +-- 2
 	|  +-- 4

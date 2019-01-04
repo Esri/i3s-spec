@@ -7,20 +7,13 @@ Three-dimensional mesh data is typically captured by an automated process for co
 ## Integrated Mesh scene layer structure
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
-- [Layer description](layer.md)
-- Nodes containing [Geometry](geometry_buffer.md) and [Attributes](attribute_buffer.md)
-- [Node pages](nodepage.md)
-- [Statistics](statistics.md)
+- [Layer description](3DScenelayer.cmn.md)
+- Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStats.cmn.md)
+- [Statistics](statsInfo.cmn.md)
 
 ```
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
-	+-- nodepages
-	|  +-- 0
-	|  +-- 1   
-	|  +-- 2  
-	|  +-- (...)
-	|  +-- 4  
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
@@ -41,7 +34,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 	|  +-- 8
 	|  +-- (...)
 ```
-*Example of point cloud scene layer structure.*
+*Example of integrated mesh scene layer structure.*
 
 # HTTP API Overview
 

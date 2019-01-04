@@ -1,10 +1,10 @@
-# Point scene layer
+# Point Scene Layer
 
 Point scene layers contain point features and their attributes. Point scene layers are often used to visualized large amount of 3D data such as trees or other phenomena that can be visualized by 3D symbols.
 
 ![Point Scene Layer](img/PointSceneLayer.png)
 
-## Point scene layer structure
+## Point Scene Layer Structure
 The point scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:
 
 - [Layer description](3dSceneLayer.cmn.md)

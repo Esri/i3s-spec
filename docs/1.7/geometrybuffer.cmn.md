@@ -45,8 +45,6 @@ faceRange
 | compressedAttributes | [compressedAttributes](compressedAttributes.cmn.md) | Compressed attributes. **Cannot** be combined with any other attributes |
 | normalReferenceFrame | string | Frame of reference for normals. default is `earth-centered` for GCS (geographic), and `vertex-reference-frame` for PCS (projected) <div>Possible values are:<ul><li>`east-north-up`: normals are stored in a node local reference frame defined by the easting, northing and up directions at the OBB/MBS center, and is only valid for geographic(WGS84)</li><li>`earth-centered`: normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0�) and Equator (lat = 0�), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic</li><li>`vertex-reference-frame`: normals are stored in the same reference frame as vertices and is only valid for projected spatial reference</li></ul></div> |
 
-*Note: properties in **bold** are required*
-
 ### Examples 
 
 #### Example: I3S v1.6 equivalent geometry buffer definition (without UV regions) 

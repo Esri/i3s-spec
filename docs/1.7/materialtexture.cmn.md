@@ -4,7 +4,7 @@
 
 ### Related:
 
-[cmn::materialdefinitions](materialdefinitions.cmn.md), [cmn::pbrmetallicroughness](pbrmetallicroughness.cmn.md)
+[cmn::pbrmetallicroughness](pbrmetallicroughness.cmn.md), [cmn::materialdefinitions](materialdefinitions.cmn.md)
 ### Properties
 
 | Property | Type | Description |

@@ -14,5 +14,3 @@ An object defining where a feature is placed within a scene. For example, on the
 | unit | string | A string value indicating the unit for the values in elevationInfo |
 | featureExpression | [featureExpression](featureExpression.cmn.md) | Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geometry z-values. |
 
-*Note: properties in **bold** are required*
-

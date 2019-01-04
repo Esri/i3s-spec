@@ -15,5 +15,3 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 | roughnessFactor | number | the roughness of the material. default=`1.0` |
 | metallicRoughnessTexture | [materialtexture](materialtexture.cmn.md) | he metallic-roughness texture. |
 
-*Note: properties in **bold** are required*
-

@@ -1,0 +1,52 @@
+{
+  "title": "I3S point cloud scene layer: Attribute Statistics",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "related":  "layer.pcsl.2000.json",
+  "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",
+  "properties": {
+    "attribute": {
+      "type": "string",
+      "description": "Attribute name. Must match the name specified for this attribute in `layer.attributeStorageInfo`"
+    },
+    "stats": {
+      "type": "object",
+      "$ref": "stats.pcsl.0200.json",
+      "description": "Statistics for this attribute"
+    },
+    "labels": {
+      "type": "object",
+      "$ref": "labels.pcsl.0200.json",
+      "description": " The statistics document may contain labeling information for the attribute values."
+    }
+  },
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Elevation statistic (point.z statistics)",
+        "code_href": "example/stats_1.pcsl.0200.json"
+      },
+      {
+        "title": "Intensity statistics",
+        "code_href": "example/stats_2.pcsl.0200.json"
+      },
+      {
+        "title": "RGB color statistics ( please note that histogram is not required here)",
+        "code_href": "example/stats_4.pcsl.0200.json"
+      },
+      {
+        "title": "Class code statistics with labels",
+        "code_href": "example/stats_8.pcsl.0200.json"
+      },
+      {
+        "title": "Flags statistics (LIDAR point cloud)",
+        "code_href": "example/stats_16.pcsl.0200.json"
+      },
+      {
+        "title": "Returns statistics (LIDAR point cloud)",
+        "code_href": "example/stats_32.pcsl.0200.json"
+      }
+    ]
+  }
+}

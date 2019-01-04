@@ -16,5 +16,3 @@ Defines the look and feel of popup windows when a user clicks or queries a featu
 | mediaInfos | [] | Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. |
 | popupElements | [] | Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. |
 
-*Note: properties in **bold** are required*
-

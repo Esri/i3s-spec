@@ -295,7 +295,8 @@ The Array Buffer View controls geometry storage and consumption representation. 
 
 Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
 
-For more details regarding 3D objects and point scene layer, see [Geometry](../docs/1.6/geometry.cmn.md).<br/>
+For more details regarding 3D objects and point scene layer, see [Geometry](../docs/1.6/geometry.cmn.md).
+
 For more details regarding point cloud scene layer, see [defaultGeometryShema](../docs/2.0/defaultGeometrySchema.pcsl.md).
 
 ### Textures
@@ -317,8 +318,10 @@ I3S supports two ways to access attribute data.  They can be accessed through:
 
 Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
 
-See [Attribute](../docs/1.6/attributeStorageInfo.cmn.md).
+
 See [AttributeInfo](../docs/2.0/attributeInfo.pcsl.md) for details regarding point cloud scene layer.
+
+See [Attribute](../docs/1.6/attributeStorageInfo.cmn.md) for details on all other scene layer types.
 
 
 ## Oriented Bounding Box
@@ -372,7 +375,7 @@ The bounding volume tree hierarchy is built based on the spatial distribution of
 | Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                              | ![yes](images/checkmark.png) |                      |
 | Generalization | ![yes](images/checkmark.png) |                              | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                              |                      |
 
-*Table 2: Example level of detail generation methods based on Scene Layer type*
+*Example Level of Detail generation methods based on Scene Layer type*
 
 
 ### Selection Metrics
@@ -400,7 +403,7 @@ Figure 10 below shows a Scene Layer Package archive with the BASIC folder patter
 
 ![Structure of an SLPK file](D:/i3s-spec/format/images/figure-15.png)
 
-*Figure 10: Example of an SLPK with BASIC folder layout.*
+*Example of an SLPK with BASIC folder layout.*
 
 The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to 3dNodeIndexDocument, featureData and SharedResource documents of the Scene Layer, and are JSON with GZIP compression.
 
@@ -429,7 +432,7 @@ Every SLPK archive has a *metadata.json* file. The following entries are require
 | I3SVersion              | One of {1.2, 1.3, 1.4, **1.6**}          |
 | nodeCount               | Total number of nodes in the SLPK        |
 
-*Table 13: Metadata properties*
+*Metadata properties*
 
 ### Key Value Stores 
 
@@ -452,6 +455,8 @@ In this persistence schema, all Scene Layer resources are stored within either k
 | /SceneServer/layers/0/nodes/0/attributes/f_1/0 |                                   | Same as resource `f_0/0` above                               |
 | ...                                            | ...                               | ...                                                          |
 | /SceneServer/layers/0/nodes/1-4-2-0            | ![required](images/checkmark.png) | Same as node resource `root` and `0`                         |
+
+
 
 ## REST API for Accessing Attribute Resources directly from a scene service layer
 
@@ -549,15 +554,12 @@ The Class SceneServiceInfo describes an active SceneService instance.  There is 
 
 See [scene service](service/SceneService.cmn.md) for service examples.
 
-### <a name="3dSceneLayerInfo"></a>3dSceneLayerInfo
+### Class 3dSceneLayerInfo
 
 The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>. 
 
-### Class 3dSceneLayerInfo
+For more details regarding Integrated Mesh, 3D objects and point scene layer, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md).
 
-Each 3dSceneLayerInfo object describes a Layer. The 3dSceneLayerInfo is a major object in the 3dSceneLayerInfo document. A SceneServiceInfo document can contain 1...* 3dSceneLayerInfo documents. 
-
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md).<br/>
 For more details regarding point scene layer, see [Layer description](../docs/2.0/layer.pcsl.md).
 
 ### Class Store
@@ -571,8 +573,9 @@ For more details regarding point scene layer, see the [store point cloud scene l
 
 The defaultGeometry schema is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of ArrayBufferView geometry declarations in a store, and reuses the GeometryAttribute type from FeatureData. Only valueType and valuesPerElement are required. 
 
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [default geometry schema](../docs/1.6/defaultGeometrySchema.cmn.md).<br/>
-For more details regarding point scene layer, See the [default geometry schema point cloud scene layer](../docs/2.0/defaultGeometrySchema.pcsl.md).
+For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [default geometry schema](../docs/1.6/defaultGeometrySchema.cmn.md).
+
+For more details regarding point scene layer, see the [default geometry schema point cloud scene layer](../docs/2.0/defaultGeometrySchema.pcsl.md).
 
 ### Class HeaderAttribute
 
@@ -584,14 +587,16 @@ For more details regarding 3D objects and point scene layer, see [header attribu
 
 The Field class is used to provide schema information for a 3dSceneLayer.
 
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [class field](../docs/1.6/field.cmn.md).<br/>
+For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [class field](../docs/1.6/field.cmn.md).
+
 For more details regarding point scene layer, See the [class field](../docs/1.6/field.pcsl.md).
 
 ### Class AttributeStorageInfo
 
 The attributeStorageInfo is a major object in the 3dSceneLayerInfo document. It describes the structure of a node's binary attributeData resource.
 
-For more details regarding 3D objects and point scene layer, see [attribute storage info](../docs/1.6/attributeStorageInfo.cmn.md).<br/>
+For more details regarding 3D objects and point scene layer, see [attribute storage info](../docs/1.6/attributeStorageInfo.cmn.md).
+
 For more details regarding point cloud scene layer, see [attributeInfo](../docs/2.0/attributeInfo.pcsl.md).
 
 ### Class IndexScheme
@@ -601,13 +606,14 @@ The IndexScheme class describes the computational and structural properties of t
 Point clouds have a different index scheme. See [point cloud index scheme](../docs/2.0/index.pcsl.md) for more details.
 
 
-### <a name="Class DrawingInfo"></a>Class DrawingInfo
+### Class DrawingInfo
 
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
 
 When the DrawingInfo object is present in the 3dSceneLayerInfo Class, a client can symbolize an I3S layer using the Renderer information.  The DrawingInfo can alternatively be captured in the Scene Layer as part of the binary I3S representation.  This helps support clients that may not be able to override the symbology in a layer.  In this case, the DrawingInfo is described in the CachedDrawingInfo class. 
 
-For more details regarding 3D objects and point scene layer, see [drawing info](../docs/1.6/drawingInfo.cmn.md).<br/>
+For more details regarding 3D objects and point scene layer, see [drawing info](../docs/1.6/drawingInfo.cmn.md).
+
 For more details regarding point cloud scene, see [drawing info point cloud scene layer](../docs/2.0/drawingInfo.pcsl.md).
 
 ### Class StatisticsInfo
@@ -615,6 +621,7 @@ For more details regarding point cloud scene, see [drawing info point cloud scen
 Statistical information help clients to define symbology, definition queries or other functionality which is depending on statistical information. 
 
 For more details regarding 3D objects and point scene layer, see [statisticsInfo](../docs/1.6/statisticsInfo.cmn.md)
+
 For more details regarding point cloud scene layers, see [statistics](../docs/2.0/statistics.pcsl.md).
 
 ### Class Domains
@@ -732,18 +739,6 @@ Shared resources include the [material definition](../docs/1.6/materialDefinitio
 
 See [shared resources](../docs/1.6/sharedResources.cmn.md) for more details regarding Integrated mesh and 3D objects scene layer.
 
-### Class ShaderDefinition
-
-ShaderDefinitions can be optionally included with a feature to provide API-dependent shader programs with a layer. Ronald?
-
-### Class Symbol
-
-Symbols use the same model as in the FeatureData Geometry. Ronald?
-
-
-
-
-
 ### Class Component
 
 *Note: Class Component is not used by ArcGIS Clients. [DrawingInfo](../docs/1.6/drawingInfo.cmn.md) is used instead.* Component objects provide specific geometry information.  This is used to determine which material to use during rendering.
@@ -779,7 +774,7 @@ Symbols use the same model as in the FeatureData Geometry. Ronald?
 
 ### Class Feature
 
-*Note: Class Feature is not used by ArcGIS Clients. Instead, they use [feature binaries]().* Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships.  For example, the features can be used for linking feature representations of multiple Levels of Detail. 
+*Note: Class Feature is not used by ArcGIS Clients. Instead, they use feature binaries.* Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships.  For example, the features can be used for linking feature representations of multiple Levels of Detail. 
 
 <table>
 	<tr>
@@ -1062,8 +1057,6 @@ refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as 
 <img src="images/figure-10.png" title="Geometry Buffer Layout with headers" alt="Geometry Buffer Layout with headers">
 <p><em>Geometry Buffer Layout with headers</em></p>
 </div>
-
-
 The expected triangle/face winding order in all geometry resources is counterclockwise.
 
 If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal Coordinate Reference System, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian Coordinate Reference System first.

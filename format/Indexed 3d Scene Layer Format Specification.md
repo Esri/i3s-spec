@@ -14,138 +14,89 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 [Introducion to 3D Scene Layer](Introducion to 3D Scene Layer)
 
 ​		[Coordinate Reference Systems](#Coordinate-Reference-Systems)
-
 ​		[Height Models](Height Models)
 
 ​	[Indexed Scene Layer - Organization and Structure](indexed-scene-layers---organization-and-structure)
 
 ​		[I3S - Indexing Model and Tree Structure](i3s---indexing-model-and-tree-structure)
-
 ​		[Geometry Model and Storage](geometry-model-and-storage)
-
 ​		[Textures](textures)
-
 ​		[Attribute Model and Storage](attribute-model-and-storage)
 
 ​	[Oriented Bounding Box](oriented-bounding-box)
 
 ​	[Level of Detail](level-of-detail)
-
 ​		[Discrete Level of Detail](discrete-level-of-detail)
-​	
 ​		[Multiple Representations](multiple-representations)
-​	
 ​		[Switching Models](switching-models)
-​	
 ​		[Level of Detail Generation](level-of-detail-generation)
-
 ​		[Selection Metrics](selection-metrics)
+
+​	[Scene Layer Package File](Scene-Layer-Package-File)
+​		[Metadata](Metadata)
+​		[Key Value Stores](Key-Value-Stores)
+
+​	[REST API for Attribute Resources](rest-api-for-attribute-resources)
+​		[Usage pattern of the *attributes* REST API](usage-pattern-of-the-attributes-rest-api)
+​		[Attribute Resource - Details](attribute-resource---details)
 
 [JSON Resources](json-resources)
 
 ​	[Supported Data Types](supported-data-types)
-
 ​	[Pointers](pointers)
-
 ​	[SceneServiceInfo](SecneServiceInfo)
-
 ​	[Class Scene Service Info](class-scene-service-info)
-
-​	[3dSceneLayerInfo](3dSceneLayerInfo)
-
 ​	[Class 3dSceneLayerInfo](class-3dSceneLayerInfo)
-
+​	[Class 3dSceneLayerInfo](class-3dSceneLayerInfo)
 ​	[Class Store](class-store)
-
 ​	[Class Geometry Schema](class-geometry-schema)
-
 ​	[Class HeaderAttribute](class-headerattribute)
-
 ​	[Class Field](class-field)
-
 ​	[Class AttributeStorageInfo](class-attributestorageinfo)
-
 ​	[Class IndexScheme](class-indexscheme)
-
 ​	[Class DrawingInfo](class-drawinginfo)
-
-   [Class StatisticsInfo](class-statisticsInfo)
-
-   [Class Domains](class-domains)
-
-​	[Class Renderer](class-renderer)
-
-​	[Class Symbol](class-symbol)
-
-​	[Class SymbolLayers](class-symbollayers)
-
+​       [Class StatisticsInfo](class-statisticsInfo)
+​       [Class Domains](class-domains)
 ​	[Class Material](class-material)
-
-​	[Class Outline](class-outline)
-
-​	[Class Color](class-color)
-
 ​	[Class CachedDrawingInfo](class-cacheddrawinginfo)
-
 ​	[3dNodeIndexDocument](3dNodeIndexDocument)
-
 ​	[Class NodeReference](class-nodereference)
-
 ​	[Class Resource][class-resource]
-
-​	[Class Feature](class-feature)
-
 ​	[Class Level of Detail Selection](class-level-of-detail-selection-class-lod-selection)
-
 ​	[FeatureData](FeatureData)
-
 ​	[Class Feature](class-feature)
-
 ​	[Class FeatureAttribute](class-feature-attribute)
-
 ​	[Class Geometry](class-geometry)
-
 ​	[Class GeometryParams](class-geometryparams)
-
 ​	[Class GeometryReferenceParams](class-geometryreferenceparams)
-
 ​	[Class VestedGeometryParams](class-vestedgeometryparams)
-
 ​	[Class SingleComponentParmas](class-singlecomponenetparams)
-
 ​	[Class Component](class-component)
-
 ​	[Class Geometry Attribute](class-geometry-attribute)
-
 [Shared Resources](shared-resources)
-
+​	[Class Component](class-component)
+​	[Class Feature](class-feature)
+​	[Class Outline](class-outline)
+​	[Class Color](class-color)
+​	[Class Renderer](class-renderer)
 ​	[Class Symbol](class-symbol)
+
+
 
 [Textures](textures-1)
 
 ​	[Texture Recommendations and Requirements](texture-recommendations-and-requirements)
-
 ​	[Generating Image IDs](generating-image-ids)
-
 ​	[Geometry](geometry)
-
 ​	[Attribute Data](attribute-data)
+​	[Accessing the Legend of a 3D Object Layer](accessing-the-legend-of-a-3d-object-layer)
 
-​		[REST API for Accessing Attribute Resources directly from a scene service layer](rest-api-for-accessing-attribute-resources-directly-from-a-scene-service-layer)
 
-​		[Usage pattern of the *attributes* REST API](usage-pattern-of-the-attributes-rest-api)
-
-​		[Attribute Resource - Details](attribute-resource---details)
 
 [I3S Flexbility](i3s-flexibility)
 
 ​	[I3S Defining Characteristics](i3s-defining-characteristics)
-
 ​	[Persistence](persistence)
-
-​	[Scene Layer Packaged (SLPK files)](scene-layer-packages-slpk-files)
-
-​	[Key Value Stores](key-value-stores)
 
 [TOC]
 
@@ -384,7 +335,7 @@ Selection metrics help clients determine the which level of detail to render.  F
 
 See the the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md") for more details regarding Integrated Mesh, 3D objects and point scene layer.
 
-## Scene Layer Packages (SLPK files)
+## Scene Layer Packages
 
 Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be consumed by applications directly. 
 
@@ -458,7 +409,7 @@ In this persistence schema, all Scene Layer resources are stored within either k
 
 
 
-## REST API for Accessing Attribute Resources directly from a scene service layer
+## REST API for Attribute Resources
 
 The attributes REST API allows client apps to fetch the attribute records of a field using its _key_ property directly from a scene service layer.  Every scene node (with the exception of `root` node), exposes attribute fields as discrete _attribute_ resources. These resources are accessible through a relative URL to any Node Index Document.
 

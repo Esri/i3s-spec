@@ -39,8 +39,6 @@ class Schema_manifest :
         if len(tok) > 1 :
             assert( tok[0] in Schema_manifest.c_code_to_paths)
             fn = os.path.join( Schema_manifest.c_code_to_paths[tok[0]], "docs", version_num, fn ) 
-        #if abs_ref_path != None :
-        #    fn = os.path.relpath( os.path.join(self.ref_path, "docs", version_num, fn,), os.path.dirname( abs_ref_path) )
         return fn
 
     def get_output_path_from_schema_name( self, name ) :
@@ -245,8 +243,7 @@ class Schema_type :
             if 'maxItems' in dom :
                 self.range[1] = str(dom['maxItems'])
 
-        if 'properties' in dom or 'patternProperties' in dom :
-            self.get_properties(dom)
+        self.get_properties(dom)
         
         if self.json_type == 'string' and 'enum' in dom :
             for en in dom['enum'] :

@@ -4,101 +4,99 @@ Version 1.6, January 02, 2018
 
 *Contributors:* Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang
 
-*Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed 
+*Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed
 
-<hr>
+---
 
 The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.
+
 # Table of Contents
 
-[Introducion to 3D Scene Layer](Introducion to 3D Scene Layer)
+[Introducion to 3D Scene Layer](#Introducion-to-3D-Scene-Layer)
 
-​		[Coordinate Reference Systems](#Coordinate-Reference-Systems)
-​		[Height Models](Height Models)
+​		[Coordinate Reference Systems](#Coordinate-Reference-Systems)  
+​		[Height Models](#Height-Models)  
 
-​	[Indexed Scene Layer - Organization and Structure](indexed-scene-layers---organization-and-structure)
+​	[Indexed Scene Layer - Organization and Structure](#Indexed-Scene-Layers-Organization-and-Structure)  
 
-​		[I3S - Indexing Model and Tree Structure](i3s---indexing-model-and-tree-structure)
-​		[Geometry Model and Storage](geometry-model-and-storage)
-​		[Textures](textures)
-​		[Attribute Model and Storage](attribute-model-and-storage)
+​		[I3S - Indexing Model and Tree Structure](#i3s-indexing-model-and-tree-structure)  
+​		[Geometry Model and Storage](#geometry-model-and-storage)  
+​		[Textures](#textures)  
+​		[Attribute Model and Storage](#attribute-model-and-storage)  
 
-​	[Oriented Bounding Box](oriented-bounding-box)
+​	[Oriented Bounding Box](#oriented-bounding-box)  
 
-​	[Level of Detail](level-of-detail)
-​		[Discrete Level of Detail](discrete-level-of-detail)
-​		[Multiple Representations](multiple-representations)
-​		[Switching Models](switching-models)
-​		[Level of Detail Generation](level-of-detail-generation)
-​		[Selection Metrics](selection-metrics)
+​	[Level of Detail](#level-of-detail)  
+​		[Discrete Level of Detail](#discrete-level-of-detail)  
+​		[Multiple Representations](#multiple-representations)  
+​		[Switching Models](#switching-models)  
+​		[Level of Detail Generation](#level-of-detail-generation)  
+​		[Selection Metrics](#selection-metrics)  
 
-​	[Scene Layer Package File](Scene-Layer-Package-File)
-​		[Metadata](Metadata)
-​		[Key Value Stores](Key-Value-Stores)
+​	[Scene Layer Package](#Scene-Layer-Packages)  
+​		[Metadata](#Metadata)  
+​		[Key Value Stores](#Key-Value-Stores)  
 
-​	[REST API for Attribute Resources](rest-api-for-attribute-resources)
-​		[Usage pattern of the *attributes* REST API](usage-pattern-of-the-attributes-rest-api)
-​		[Attribute Resource - Details](attribute-resource---details)
+​	[REST API for Attribute Resources](#rest-api-for-attribute-resources)  
+​		[Usage pattern of the *attributes* REST API](#Usage-pattern-of-the-attributes-REST-API)  
+​		[Attribute Resource - Details](#Attribute-Resource-Details)  
 
-[JSON Resources](json-resources)
+[JSON Resources](#json-resources)  
 
-​	[Supported Data Types](supported-data-types)
-​	[Pointers](pointers)
-​	[SceneServiceInfo](SecneServiceInfo)
-​	[Class Scene Service Info](class-scene-service-info)
-​	[Class 3dSceneLayerInfo](class-3dSceneLayerInfo)
-​	[Class 3dSceneLayerInfo](class-3dSceneLayerInfo)
-​	[Class Store](class-store)
-​	[Class Geometry Schema](class-geometry-schema)
-​	[Class HeaderAttribute](class-headerattribute)
-​	[Class Field](class-field)
-​	[Class AttributeStorageInfo](class-attributestorageinfo)
-​	[Class IndexScheme](class-indexscheme)
-​	[Class DrawingInfo](class-drawinginfo)
-​       [Class StatisticsInfo](class-statisticsInfo)
-​       [Class Domains](class-domains)
-​	[Class Material](class-material)
-​	[Class CachedDrawingInfo](class-cacheddrawinginfo)
-​	[3dNodeIndexDocument](3dNodeIndexDocument)
-​	[Class NodeReference](class-nodereference)
-​	[Class Resource][class-resource]
-​	[Class Level of Detail Selection](class-level-of-detail-selection-class-lod-selection)
-​	[FeatureData](FeatureData)
-​	[Class Feature](class-feature)
-​	[Class FeatureAttribute](class-feature-attribute)
-​	[Class Geometry](class-geometry)
-​	[Class GeometryParams](class-geometryparams)
-​	[Class GeometryReferenceParams](class-geometryreferenceparams)
-​	[Class VestedGeometryParams](class-vestedgeometryparams)
-​	[Class SingleComponentParmas](class-singlecomponenetparams)
-​	[Class Component](class-component)
-​	[Class Geometry Attribute](class-geometry-attribute)
-[Shared Resources](shared-resources)
-​	[Class Component](class-component)
-​	[Class Feature](class-feature)
-​	[Class Outline](class-outline)
-​	[Class Color](class-color)
-​	[Class Renderer](class-renderer)
-​	[Class Symbol](class-symbol)
-
-
-
-[Textures](textures-1)
-
-​	[Texture Recommendations and Requirements](texture-recommendations-and-requirements)
-​	[Generating Image IDs](generating-image-ids)
-​	[Geometry](geometry)
-​	[Attribute Data](attribute-data)
-​	[Accessing the Legend of a 3D Object Layer](accessing-the-legend-of-a-3d-object-layer)
+​	[Supported Data Types](#supported-data-types)  
+​	[Pointers](#pointers)  
+​	[SceneServiceInfo](#SceneServiceInfo)  
+​	[Class Scene Service Info](#class-SceneServiceInfo)  
+​	[Class 3dSceneLayerInfo](#class-3dSceneLayerInfo)  
+​	[Class Store](#class-store)  
+​	[Class Geometry Schema](#class-geometry-schema)  
+​	[Class HeaderAttribute](#class-headerattribute)  
+​	[Class Field](#class-field)  
+​	[Class AttributeStorageInfo](#class-attributestorageinfo)  
+​	[Class IndexScheme](#class-indexscheme)  
+​	[Class DrawingInfo](#class-drawinginfo)  
+​       [Class StatisticsInfo](#class-statisticsInfo)  
+​       [Class Domains](#class-domains)  
+​	[Class Material](#class-material)  
+​	[Class CachedDrawingInfo](#class-cacheddrawinginfo)  
+​	[3dNodeIndexDocument](#3dNodeIndexDocument)  
+​	[Class NodeReference](#class-nodereference)  
+​	[Class Resource](#class-resource)  
+​	[Class Level of Detail Selection](#class-level-of-detail-selection)  
+​	[FeatureData](#FeatureData)  
+​	[Class Feature](#class-feature)  
+​	[Class FeatureAttribute](#class-featureAttribute)  
+​	[Class Geometry](#class-geometry)  
+​	[Class GeometryParams](#class-geometryparams)  
+​	[Class GeometryReferenceParams](#class-geometryreferenceparams)  
+​	[Class VestedGeometryParams](#class-vestedgeometryparams)  
+​	[Class SingleComponentParmas](#class-singlecomponentparams)  
+​	[Class Component](#class-component)  
+​	[Class Geometry Attribute](#class-GeometryAttribute)  
+[Shared Resources](#shared-resources)  
+​	[Class Component](#class-component)  
+​	[Class Feature](#class-feature)  
+​	[Class Outline](#class-outline)  
+​	[Class Color](#class-color)  
+​	[Class Renderer](#class-renderer)  
+​	[Class Symbol](#class-symbol)  
 
 
 
-[I3S Flexbility](i3s-flexibility)
+[Textures](#Textures)  
 
-​	[I3S Defining Characteristics](i3s-defining-characteristics)
-​	[Persistence](persistence)
+​	[Texture Recommendations and Requirements](#texture-recommendations-and-requirements)  
+​	[Generating Image IDs](#generating-image-ids)  
+​	[Geometry](#geometry)  
+​	[Attribute Data](#attribute-data)  
+​	[Accessing the Legend of a 3D Object Layer](#accessing-the-legend-of-a-3d-object-layer)  
 
-[TOC]
+
+
+[I3S Flexbility](#i3s-flexibility)  
+
+​	[I3S Defining Characteristics](#i3s-defining-characteristics)  
+​	[Persistence](#persistence)  
 
 # I3S Design Principles
 
@@ -135,15 +133,14 @@ Layer types with the same profile can be leveraged to support different use case
 | Layer Type                                             | Profile       | Features with Identity | Attributes                                              |
 | ------------------------------------------------------ | ------------- | ---------------------- | ------------------------------------------------------- |
 | [3D Objects](../docs/1.6/3Dobject_ReadMe.md)           | mesh-pyramids | Yes                    | Yes                                                     |
-| [Integrated Mesh](../docs/1.6/ntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
+| [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
-| [Point Cloud](../docs/2.0/PointCloud_ReadMe.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
+| [Point Cloud](../docs/2.0/pcsl_ReadMe.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
 | Line                                                   | lines         | Yes                    | Yes                                                     |
 | Ploygon                                                | ploygons      | Yes                    | Yes                                                     |
-| Building Scene Layer                                   |               |                        |                                                         |
+| Building Scene Layer                                   |      &nbsp;     |       &nbsp;           |                &nbsp;                                 |
 
 *Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles*
-
 
 ### Coordinate Reference Systems
 
@@ -180,8 +177,6 @@ At version 1.5, I3S added support for a vertical coordinate systems. The Well-kn
 The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related. 
 
 See the [3DSceneLayerInfo](../docs/1.6/3DSceneLayer.cmn.md) and [heightModelInfo](../docs/1.6/heightModelInfo.cmn.md) pages for more details.
-
-
 
 ## Indexed Scene Layers - Organization and Structure
 
@@ -317,21 +312,20 @@ Integrated Mesh layer types typically come with pre-authored Levels of Detail.  
 
 For example, 3D Object Layers based on the mesh-pyramids profile can create a level of detail pyramid for all features based on generalizing, reducing and fusing the geometries of individual features while preserving feature identity. The same approach can also be used with Integrated Mesh Layers based on the mesh-pyramid profile.  In this case, there are no features, and each node contains a generalized version of the mesh covered by its descendants.
 
-The bounding volume tree hierarchy is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type. 
+The bounding volume tree hierarchy is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type.
 
-|                | 3D Object                    | Points                       | Lines                        | Polygons                     | Point Clouds                 | Building Scene Layer |
+|    &nbsp;        | 3D Object                    | Points                       | Lines                        | Polygons                     | Point Clouds                 | Building Scene Layer |
 | -------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | -------------------- |
-| Mesh-pyramids  | ![yes](images/checkmark.png) |                              |                              |                              |                              |                      |
+| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |           &nbsp;             |           &nbsp;             |             &nbsp;           |                      |
 | Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                      |
-| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                              | ![yes](images/checkmark.png) |                      |
-| Generalization | ![yes](images/checkmark.png) |                              | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                              |                      |
+| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |           &nbsp;             | ![yes](images/checkmark.png) |                      |
+| Generalization | ![yes](images/checkmark.png) |             &nbsp;           | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |             &nbsp;           |                      |
 
 *Example Level of Detail generation methods based on Scene Layer type*
 
-
 ### Selection Metrics
 
-Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality. 
+Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality.  
 
 See the the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md") for more details regarding Integrated Mesh, 3D objects and point scene layer.
 
@@ -352,7 +346,7 @@ Figure 10 below shows a Scene Layer Package archive with the BASIC folder patter
 - A *metadata.json* file that describes the content of the SLPK
 - A *3dSceneLayer.json.gz* file that defines the Scene Layer
 
-![Structure of an SLPK file](D:/i3s-spec/format/images/figure-15.png)
+![Structure of an SLPK file](images/figure-15.png)
 
 *Example of an SLPK with BASIC folder layout.*
 
@@ -398,29 +392,27 @@ In this persistence schema, all Scene Layer resources are stored within either k
 | /SceneServer/layers/nodes/root                 | ![required](images/checkmark.png) | The 3D Node Index Document of the layer as a JSON resource.  The node ID is used as the document key (e.g. `root`)<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
 | /SceneServer/layers/nodes/0                    | ![required](images/checkmark.png) | The 3D Node Index Document of the layer as a JSON resource.  The node ID is used as the document key (e.g. `0`)<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
 | /SceneServer/layers/0/nodes/0/shared           | ![required](images/checkmark.png) | The Shared Resource of the node as a JSON resource. The keyword "shared" is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/features/0       |                                   | The FeatureData document of the node as a JSON resource. The resource array id (e.g. `0`) is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/features/0       |          &nbsp;                   | The FeatureData document of the node as a JSON resource. The resource array id (e.g. `0`) is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
 | /SceneServer/layers/0/nodes/0/geometries/0     | ![required](images/checkmark.png) | The GeometryData of the node as a binary resource. The resource array id  (e.g. `0`) is used as the resource key<br />Content type: application/octet-stream <br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/textures/0_0     |                                   | The Texture of the node as a binary resource. The resource id (e.g. `0_0`) is used as the resource key of the resource <br />Content type: image/jpeg<br />Encoding: {**NONE**} |
-| /SceneServer/layers/0/nodes/0/textures/0_0_1   |                                   | The compressed texture of the node as a binary resource. The resource id (e.g. `0_0_1`) is used as the resource key<br />Content type: image/vnd-ms.dds<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/attributes/f_0/0 |                                   | The AttributeData as a binary resource. The resource id (e.g. `0`) is used as the resource key of the resource<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/attributes/f_1/0 |                                   | Same as resource `f_0/0` above                               |
-| ...                                            | ...                               | ...                                                          |
+| /SceneServer/layers/0/nodes/0/textures/0_0     |             &nbsp;                | The Texture of the node as a binary resource. The resource id (e.g. `0_0`) is used as the resource key of the resource <br />Content type: image/jpeg<br />Encoding: {**NONE**} |
+| /SceneServer/layers/0/nodes/0/textures/0_0_1   |               &nbsp;              | The compressed texture of the node as a binary resource. The resource id (e.g. `0_0_1`) is used as the resource key<br />Content type: image/vnd-ms.dds<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/attributes/f_0/0 |            &nbsp;                 | The AttributeData as a binary resource. The resource id (e.g. `0`) is used as the resource key of the resource<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
+| /SceneServer/layers/0/nodes/0/attributes/f_1/0 |              &nbsp;               | Same as resource `f_0/0` above                               |
+| ...                                            | ...          &nbsp;               | ...                                                          |
 | /SceneServer/layers/0/nodes/1-4-2-0            | ![required](images/checkmark.png) | Same as node resource `root` and `0`                         |
-
-
 
 ## REST API for Attribute Resources
 
 The attributes REST API allows client apps to fetch the attribute records of a field using its _key_ property directly from a scene service layer.  Every scene node (with the exception of `root` node), exposes attribute fields as discrete _attribute_ resources. These resources are accessible through a relative URL to any Node Index Document.
 
-The Attributes REST API syntax: 
+The Attributes REST API syntax:
  URL: **http://&lt;sceneservrice-url&gt;/attributes/&lt;field_key&gt;/&lt;id>**
 
-- _attributes_: the RESTful resource responsible for fetching the binary attribute. Clients will decode the content based on the metadata found in the scene layer _attributeStorageInfo_ array
-- <i>field\_key</i>: the key value used to request the feature attribute content
+- *attributes*: the RESTful resource responsible for fetching the binary attribute. Clients will decode the content based on the metadata found in the scene layer _attributeStorageInfo_ array
+- *field\_key*: the key value used to request the feature attribute content
 - _id_: the bundle ID of the _attribute_ binary resource, corresponding to the geometry bundle id. By default, this value is 0 (same as the geometry bundle id). If a node has more than 1 geometry resource, then the id of the _attribute_ resource will also match the geometry bundle id.
 
-### Usage pattern of the _attributes_ REST API:  
+### Usage pattern of the _attributes_ REST API
 
 1. A client should get the attribute field from the metadata by fetching the scene server layers REST resource prior to symbolizing the node base on attribute information.  The layers resource contains the files array, which lists all available attribute fields, types, and the Attribute Storage Info array.  
 
@@ -466,9 +458,7 @@ The following types of attribute value arrays are supported :
 <div>
 <img src="images/Table_24.png" title="Attribute data types supported by a scene service layer." alt="Attribute data types supported by a scene service layer.">
 <p>Attribute data types supported by a scene service layer.</p>
-</div> 
-
-
+</div>
 
 # JSON Resources
 
@@ -484,7 +474,6 @@ A value schema ensures that the JSON properties follow a fixed pattern and suppo
 - **URL**: Both relative and absolute
 - **Pointer**: Any reference to an object in a JSON document, consisting of a URL and a document path
 - **NodeID**: A treekey string that is zero-based (first child is "0", root node is "root")
-
 
 ### Pointers
 
@@ -682,7 +671,7 @@ For more details regarding 3D objects scene layer and point scene layer, see [do
 
 See [geometry attribute](../docs/1.6/geometryAttribute.cmn.md) for more details Integrated mesh and 3D objects scene layer.
 
-## SharedResources
+## Shared Resources
 
 Shared Resources are models or textures stored as a JSON file that can be shared among features within the same layer.  The Shared Resources are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process.  
 
@@ -980,9 +969,7 @@ specification</a> in the Editor's Draft version of 10<sup>th</sup> April 2013.
 
 Citing the overview of that spec:
 
-
-> This specification defines an ArrayBuffer type, representing a generic fixed-length binary buffer. It is not possible to manipulate the contents of an ArrayBuffer directly. Instead, a group of types are used to create views of the ArrayBuffer. For example, to access the buffer as an array of 32-bit signed integers, an Int32Array would be created that refers to the ArrayBuffer.
-
+> This specification defines an ArrayBuffer type, representing a generic fixed-length binary buffer. It is not possible to manipulate the contents of an ArrayBuffer directly. Instead, a group of types are used to create views of the ArrayBuffer. For example, to access the buffer as an array of 32-bit signed integers, an Int32Array would be created that refers to the ArrayBuffer.  
 >Multiple typed array views can refer to the same ArrayBuffer, of different types, lengths, and offsets. This allows for complex data structures to be built up in the ArrayBuffer. For example:
 
 ```
@@ -1048,6 +1035,7 @@ A client application will be able to find the URI of any attribute resource thro
 <img src="images/figure-12.png" title="A node resource document illustrating attribute data content access urls (href)" alt="A node resource document illustrating attribute data content access urls (href)">
 <p>A node resource document illustrating attribute data content access urls (href).</p>
 </div>
+
 ### Accessing the legend of a 3D Object Layer
 
 Legends are essential for proper display and complete communication of represented information of a 3D Object Layer.

@@ -1,5 +1,5 @@
 {
-    "title": "3DSceneLayerInfo",
+    "title": "3DSceneLayerInfo [Common Profiles]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
@@ -134,15 +134,15 @@
         }
     },
     "required": [
-        "id"
+        "id",
+        "version",
+        "layerType",
+        "capabilities",
+        "store"
     ],
     "additionalProperties": false,
     "esriDocumentation": {
         "examples": [
-            {
-                "title": "3D Scene Layer info for point scene layer",
-                "code_href": "example/3dSceneLayerPointSceneLayer.bld.0106.json"
-            },
             {
                 "title": "3D Scene Layer info for 3D object scene layer",
                 "code_href": "example/3dSceneLayer3DObject3dSceneLayer.bld.0106.json"

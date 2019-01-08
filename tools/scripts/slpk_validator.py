@@ -252,8 +252,9 @@ def load_properties(path_to_schema, dom):
         properties['properties'][prop] = value
     #load current properties
     # overwrites included properties
-    for prop in dom['properties']:
-        properties['properties'][prop] = dom['properties'][prop]
+    if ( 'properties' in dom ) :
+        for prop in dom['properties']:
+            properties['properties'][prop] = dom['properties'][prop]
     return properties['properties']
 
 

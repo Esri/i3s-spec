@@ -1,0 +1,49 @@
+{
+  "title": "store [Point Profile]",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. Storing multiple layers in a single store - and thus having them share resources - enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.",
+  "$include": "store.cmn.0106.json",
+  "required": [
+    "profile",
+    "version"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Store example",
+        "code": {
+          "id": "e9ecfade-0d85-4dd7-abb5-a3b0a07b9fd7",
+          "profile": "meshpyramids",
+          "resourcePattern": [
+            "3dNodeIndexDocument",
+            "SharedResource",
+            "Geometry",
+            "Attributes"
+          ],
+          "rootNode": "./nodes/root",
+          "version": "1.4",
+          "extent": [
+            -106.5054122583675,
+            38.994677805489189,
+            -103.99630101552692,
+            39.996971340614706
+          ],
+          "indexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326",
+          "vertexCRS": "http://www.opengis.net/def/crs/EPSG/0/4326",
+          "nidEncoding": "application/vnd.esri.i3s.json+gzip; version=1.4",
+          "featureEncoding": "application/vnd.esri.i3s.json+gzip; version=1.4",
+          "geometryEncoding": "application/octet-stream; version=1.4",
+          "attributeEncoding": "application/octet-stream; version=1.4",
+          "textureEncoding": [
+            "image/jpeg",
+            "image/vnd-ms.dds"
+          ],
+          "lodType": "MeshPyramid",
+          "lodModel": "node-switching"
+        }
+      }
+    ]
+  }
+}

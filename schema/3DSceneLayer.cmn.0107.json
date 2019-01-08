@@ -46,8 +46,10 @@
     },
     "required": [
         "id",
-        "nodePages",
-        "geometryDefinitions"
+        "version",
+        "layerType",
+        "capabilities",
+        "store"
     ],
     "additionalProperties": false,
     "esriDocumentation": {

@@ -41,6 +41,15 @@
           "schema": "sharedResource.cmn.0106.json"
         }
       ]
+    },
+    {
+      "name": "point",
+      "schemas": [
+        {
+          "path": "3dSceneLayer.json.gz",
+          "schema": "3DSceneLayer.psl.0106.json"
+        }
+      ]
     }
   ]
 }

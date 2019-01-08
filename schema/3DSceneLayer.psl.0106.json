@@ -1,0 +1,25 @@
+{
+    "title": "3DSceneLayerInfo [Point Profile]",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
+    "$include": "3DSceneLayer.cmn.0106.json",
+    "properties": {
+        "store": {
+            "type": "object",
+            "description": "The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.",
+            "$ref": "store.psl.0106.json"
+        }
+    },
+    "required": [
+        "id"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+            {
+                "title": "3D Scene Layer info for point scene layer"
+            }
+        ]
+    }
+}

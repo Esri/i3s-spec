@@ -1,4 +1,4 @@
-# store
+# store [Common Profiles]
 
 The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. Storing multiple layers in a single store - and thus having them share resources - enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.
 
@@ -10,10 +10,10 @@ The store object describes the exact physical storage of a layer and enables the
 | Property | Type | Description |
 | --- | --- | --- |
 | id | string | A store ID, unique across a SceneServer. Enables the client to discover which layers are part of a common store, if any. {meshes, polygons, points, lines, analytics, meshpyramids, pointclouds, symbols} |
-| profile | string | Indicates which profile this scene store fulfills. |
+| **profile** | string | Indicates which profile this scene store fulfills. |
 | resourcePattern | string[] | Indicates the resources needed for rendering and the required order in which the client should load them. <div>Possible values for each array string:<ul><li>`3dNodeIndexDocument`: JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent.</li><li>`SharedResource`: Shared resources are models or textures that can be shared among features within the same layer.</li><li>`featureData`: The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.</li><li>`Geometry`: Each geometry resource is an array of geometries.</li><li>`Texture`: The texture resource for a node contains the images that are used as textures for the features stored in the node.</li><li>`Attributes`: Attribute resource for node containing feature data attributes</li></ul></div> |
 | rootNode | string | Relative URL to root node resource. |
-| version | string | Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server. |
+| **version** | string | Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server. |
 | extent | number[4] | The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS. |
 | indexCRS | string | The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL. |
 | vertexCRS | string | The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL. |
@@ -26,9 +26,11 @@ The store object describes the exact physical storage of a layer and enables the
 | lodType | string | Optional field to indicate which LoD generation scheme is used in this store.<div>Possible values are:<ul><li>`MeshPyramid`: Used for integrated mesh and 3D scene layer.</li><li>`AutoThinning`: Use for point scene layer.</li><li>`Clustering`: Fill in which profile types are using this lodType</li><li>`Generalizing`: Fill in which profile types are using this lodType</li></ul></div> |
 | lodModel | string | Optional field to indicate which LoD switching mode clients have to use.<div>Possible values are:<ul><li>`node-switching`: Definition missing!</li><li>`none`: Definition missing!</li></ul></div> |
 | indexingScheme | string | Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used. |
-| defaultGeometrySchema | [defaultGeometrySchema](defaultGeometrySchema.cmn.md) | A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches. |
+| **defaultGeometrySchema** | [defaultGeometrySchema](defaultGeometrySchema.cmn.md) | A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches. |
 | defaultTextureDefinition | [texture](texture.cmn.md) | A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels. |
 | defaultMaterialDefinition | [material](material.cmn.md) | If a store uses only one material, it can be defined here entirely as a MaterialDefinition. |
+
+*Note: properties in **bold** are required*
 
 ### Examples 
 

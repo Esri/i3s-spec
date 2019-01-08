@@ -1,10 +1,10 @@
-# store [Common Profiles]
+# store [Point Profile]
 
 The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. Storing multiple layers in a single store - and thus having them share resources - enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[psl::3DSceneLayer](3DSceneLayer.psl.md)
 ### Properties
 
 | Property | Type | Description |
@@ -26,7 +26,7 @@ The store object describes the exact physical storage of a layer and enables the
 | lodType | string | Optional field to indicate which LoD generation scheme is used in this store.<div>Possible values are:<ul><li>`MeshPyramid`: Used for integrated mesh and 3D scene layer.</li><li>`AutoThinning`: Use for point scene layer.</li><li>`Clustering`: Fill in which profile types are using this lodType</li><li>`Generalizing`: Fill in which profile types are using this lodType</li></ul></div> |
 | lodModel | string | Optional field to indicate which LoD switching mode clients have to use.<div>Possible values are:<ul><li>`node-switching`: Definition missing!</li><li>`none`: Definition missing!</li></ul></div> |
 | indexingScheme | string | Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used. |
-| **defaultGeometrySchema** | [defaultGeometrySchema](defaultGeometrySchema.cmn.md) | A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches. |
+| defaultGeometrySchema | [defaultGeometrySchema](defaultGeometrySchema.cmn.md) | A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches. |
 | defaultTextureDefinition | [texture](texture.cmn.md) | A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels. |
 | defaultMaterialDefinition | [material](material.cmn.md) | If a store uses only one material, it can be defined here entirely as a MaterialDefinition. |
 
@@ -65,59 +65,7 @@ The store object describes the exact physical storage of a layer and enables the
     "image/vnd-ms.dds"
   ],
   "lodType": "MeshPyramid",
-  "lodModel": "node-switching",
-  "defaultGeometrySchema": {
-    "geometryType": "triangles",
-    "header": [
-      {
-        "property": "vertexCount",
-        "type": "UInt32"
-      },
-      {
-        "property": "featureCount",
-        "type": "UInt32"
-      }
-    ],
-    "topology": "PerAttributeArray",
-    "ordering": [
-      "position",
-      "normal",
-      "uv0",
-      "color"
-    ],
-    "vertexAttributes": {
-      "position": {
-        "valueType": "Float32",
-        "valuesPerElement": 3
-      },
-      "normal": {
-        "valueType": "Float32",
-        "valuesPerElement": 3
-      },
-      "uv0": {
-        "valueType": "Float32",
-        "valuesPerElement": 2
-      },
-      "color": {
-        "valueType": "UInt8",
-        "valuesPerElement": 4
-      }
-    },
-    "featureAttributeOrder": [
-      "id",
-      "faceRange"
-    ],
-    "featureAttributes": {
-      "id": {
-        "valueType": "UInt64",
-        "valuesPerElement": 1
-      },
-      "faceRange": {
-        "valueType": "UInt32",
-        "valuesPerElement": 2
-      }
-    }
-  }
+  "lodModel": "node-switching"
 } 
 ```
 

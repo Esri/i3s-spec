@@ -8,7 +8,7 @@
     "type": {
       "type": "string",
       "enum": [
-        "UINT16"
+        "UInt16"
       ],
       "description": "color channel values"
     },
@@ -45,7 +45,7 @@
       {
         "title": "UV region for repeated textures in atlas",
         "code": {
-          "type": "UINT16",
+          "type": "UInt16",
           "component": 4
         }
       }

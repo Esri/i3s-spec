@@ -232,44 +232,6 @@ def load_incomplete_files(abs_path_to_folder) :
             create_file_to_validate( os.path.join( abs_path_to_folder, file ), json.dumps( schema ) )
             
 
-# checks if file uses $include
-# if true, create a new file that loads the included file and return the path to the file
-# return original path otherwise
-def load_properties(path_to_schema, dom):
-    #dom = json_to_dom( os.path.join(path_to_folder, 'schema', file) )
-    if '$include' not in dom :
-        if 'properties' in dom :
-            #properties['properties'] = dom['properties']
-            return dom['properties']
-        
-    # we have to include a file for the full schema
-    include_file = dom['$include']
-    sub_dom = json_to_dom( os.path.join(path_to_schema, include_file) )
-    properties = {}
-    properties['properties'] = {}
-    # load included properties
-    for prop, value in load_properties(path_to_schema, sub_dom).items() :
-        properties['properties'][prop] = value
-    #load current properties
-    # overwrites included properties
-    if ( 'properties' in dom ) :
-        for prop in dom['properties']:
-            properties['properties'][prop] = dom['properties'][prop]
-    return properties['properties']
-
-
-def dom_to_schema(path_to_schema, dom) :
-    # get all the required properties
-    properties = load_properties(path_to_schema, dom)
-    schema = {}
-    schema['properties'] = properties
-    # add required prperties
-    if ( 'required' in dom ) :
-        schema['required'] = dom['required']
-    # guard against additional properties
-    schema['additionalProperties'] = False
-    return schema
-
 ############################################################################
 ##################### Functions for validation #############################
 ############################################################################

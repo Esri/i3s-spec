@@ -64,7 +64,6 @@
         }
     },
     "required": [
-        "geometryType",
         "header",
         "topology",
         "ordering",

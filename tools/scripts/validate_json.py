@@ -78,45 +78,76 @@ def process_error_json_output(json_errors, file_write):
     else:
         uprint( str(json_data) )
 
+# checks if file uses $include
+# if true, create a new file that loads the included file and return the path to the file
+# return original path otherwise
+def load_properties(path_to_schema, dom):
+    if '$include' not in dom :
+        if 'properties' in dom :
+            return dom['properties']
+        return None                     # schema did not have any properties
+        
+    # we have to include a file for the full schema
+    include_file = dom['$include']
+    sub_dom = slpk_validator.json_to_dom( os.path.join(path_to_schema, include_file) )
+    properties = {}
+    properties['properties'] = {}
+    properties['patternProperties'] = {}
+    # load included properties
+    loaded_properties = load_properties(path_to_schema, sub_dom)
+    if loaded_properties:
+        for prop, value in loaded_properties.items() :
+            properties['properties'][prop] = value
+    # overwrites included properties
+    if ( 'properties' in dom ) :
+        for prop, value in dom['properties'].items():
+            properties['properties'][prop] = value
+    return properties
+
+def dom_to_schema(path_to_schema, dom) :
+    # get all the required properties
+    schema = {}
+    properties = load_properties(path_to_schema, dom)
+    if ('properties' in properties and properties['properties']) :
+        schema['properties'] = properties['properties']
+    if ('patternProperties' in properties and properties['patternProperties'] ) :
+        schema['patternProperties'] = properties['patternProperties']
+    # add required prperties
+    if ( 'required' in dom ) :
+        schema['required'] = dom['required']
+    # guard against additional properties
+    schema['additionalProperties'] = False
+    return schema
+
+
 # use this if you want to validate a data file against a schema file
 def validate( data_file_name, schema_file, json_output = False ):
     successful_validation = True
-    json_errors = {}
-    json_errors['errors'] = []
-    with open(data_file_name, 'r', encoding="utf8") as data_file:
-        try: 
-            data = json.load(data_file)
-            return validate_dom(data, schema_file, data_file_name.split('\\')[-1], json_output)
-        except ValueError as e:
-            syntax_error = {}
-            syntax_error['message'] = 'JSON data file syntax error: ' + str(e)
-            json_errors['errors'].append(syntax_error)
-            return False, json_errors
 
-# use this if you want to validate a dom against a schema file
-def validate_dom( data, schema_file, console_output_name, json_output=False ):
+    absolute_path_to_base_directory = os.path.dirname(os.path.join(os.path.dirname(__file__), schema_file));
+    schema_abs_path =os.path.realpath( os.path.join(os.path.dirname(__file__), schema_file));
+    with open(schema_abs_path, 'r', encoding="utf-8") as file_object:
+       schema = json.load(file_object)
+    with open(data_file_name, 'r', encoding="utf8") as data_file:
+        data = json.load(data_file) 
+    return validate_json( data, schema, absolute_path_to_base_directory, data_file_name.split('\\')[-1], json_output )
+
+# data and schema are dictionaries
+def validate_json( data, schema, path_to_dir, console_output_name, json_output=False ):
     successful_validation = True
     json_errors = {}
     json_errors['errors'] = []
-
     data = remove_null(data)
     try:
-        absolute_path_to_base_directory = os.path.dirname(os.path.join(os.path.dirname(__file__), schema_file));
-        schema_abs_path =os.path.realpath( os.path.join(os.path.dirname(__file__), schema_file));
-        with open(schema_abs_path, 'r', encoding="utf-8") as file_object:
-           schema = json.load(file_object)
-        resolver = jsonschema.RefResolver('file:///' + absolute_path_to_base_directory + '/', schema)
+        resolver = jsonschema.RefResolver('file:///' + path_to_dir + '/', schema)
     except:
         raise;# Exception("RefResolver")
    
     # check if we need to include any additionals schemas to successfuly validate
     if ('$include' in schema) :
-        schema = json.dumps(slpk_validator.dom_to_schema(os.path.realpath(schema_file + "../../"), schema))
-        try:
-            schema_file = slpk_validator.create_file_to_validate(schema_file.split('/')[-1], schema)
-            return validate_dom( data, schema_file, json_output)
-        finally:
-            slpk_validator.remove_file(schema_file)
+        schema = json.dumps( dom_to_schema( path_to_dir, schema ) )
+        schema = json.loads( schema ) 
+        return validate_json( data, schema, path_to_dir, console_output_name, json_output)
     else :
         validator = jsonschema.Draft4Validator(schema, resolver=resolver)
 
@@ -126,7 +157,7 @@ def validate_dom( data, schema_file, console_output_name, json_output=False ):
         if json_output:
             json_errors['errors'] = process_error_json(errors, data)
         else:
-            process_error_console(errors, console_output_name)             
+            process_error_console(errors, console_output_name)
 
     return successful_validation, json_errors
 

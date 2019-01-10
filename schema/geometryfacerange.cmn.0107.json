@@ -7,7 +7,7 @@
     "type": {
       "type": "string",
       "enum": [
-        "UINT32"
+        "UInt32"
       ]
     },
     "component": {
@@ -36,7 +36,7 @@
       {
         "title": "FaceRange",
         "code": {
-          "type": "UINT32",
+          "type": "UInt32",
           "component": 2
         }
       }

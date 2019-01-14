@@ -5,8 +5,6 @@ import json
 import jsonschema
 import sys
 from functools import singledispatch # for removing null in the json data files
-import schema_to_doc
-import slpk_validator
 
 files = []
 verbose = ''
@@ -26,6 +24,10 @@ def _process_list(ob):
             if v is not None}
 
 
+#################################################################################################################
+############################################ Error handling #####################################################
+#################################################################################################################
+
 def format_path(path):
     data_path = ''
     for item in path:
@@ -42,11 +44,10 @@ def format_error( error, errors, input_data ):
     data['schemaPath'] = format_path(error.schema_path)
     data['params'] = {}
     data['params'][error.validator] = error.validator_value
-    
+
     if verbose:
         data['parentSchema'] = error.schema
         data['data'] = input_data
-
     return data
 
 def process_error_json(errors, data):
@@ -71,30 +72,33 @@ def process_error_json_output(json_errors, file_write):
     if file_write:
         if os.path.isdir(file_write):
             file_write = os.path.join(file_write, 'validation_errors.json')
-
         with open(file_write, mode='w', encoding='utf-8') as output:
             output.write(json_data)
 
     else:
         uprint( str(json_data) )
 
+#################################################################################################################
+###################################### Resolve incomplete files #################################################
+#################################################################################################################
+
 # checks if file uses $include
-# if true, create a new file that loads the included file and return the path to the file
-# return original path otherwise
-def load_properties(path_to_schema, dom):
+# if true, create a new schema that loads the included file
+# otherwise return the properties
+def load_properties(abs_path_to_schema, dom):
     if '$include' not in dom :
         if 'properties' in dom :
             return dom['properties']
         return None                     # schema did not have any properties
-        
     # we have to include a file for the full schema
     include_file = dom['$include']
-    sub_dom = slpk_validator.json_to_dom( os.path.join(path_to_schema, include_file) )
+    with open( os.path.join(abs_path_to_schema, include_file) , 'r', encoding="utf-8" ) as file_object:
+        sub_dom = json.load(file_object)
     properties = {}
     properties['properties'] = {}
     properties['patternProperties'] = {}
     # load included properties
-    loaded_properties = load_properties(path_to_schema, sub_dom)
+    loaded_properties = load_properties(abs_path_to_schema, sub_dom)
     if loaded_properties:
         for prop, value in loaded_properties.items() :
             properties['properties'][prop] = value
@@ -102,12 +106,15 @@ def load_properties(path_to_schema, dom):
     if ( 'properties' in dom ) :
         for prop, value in dom['properties'].items():
             properties['properties'][prop] = value
+    if ( 'patternProperties' in dom ) :
+        for prop, value in dom['patternProperties'].items():
+            properties['patternProperties'][prop] = value
     return properties
 
-def dom_to_schema(path_to_schema, dom) :
+def dom_to_schema(abs_path_to_schema, dom) :
     # get all the required properties
     schema = {}
-    properties = load_properties(path_to_schema, dom)
+    properties = load_properties(abs_path_to_schema, dom)
     if ('properties' in properties and properties['properties']) :
         schema['properties'] = properties['properties']
     if ('patternProperties' in properties and properties['patternProperties'] ) :
@@ -119,35 +126,56 @@ def dom_to_schema(path_to_schema, dom) :
     schema['additionalProperties'] = False
     return schema
 
+# create a dictionary of { key: uri, value: dom }
+# if a schema uses $include to reference another schema, the included properties will be added
+# to the current schema
+def load_schemas(abs_path_to_folder) :
+    refs = {}
+    for file in glob.glob(os.path.join(abs_path_to_folder, '*.json')):
+        # check files to see if $include in schema
+        with open( file , 'r', encoding="utf-8" ) as file_object:
+            dom = json.load(file_object)
+            if '$include' in dom :
+                dom = dom_to_schema(abs_path_to_folder, dom)
+            uri = 'file:///' + abs_path_to_folder + '/' + file.split('\\')[-1]
+            refs[uri] = dom
+    return refs
+
+
+#################################################################################################################
+############################################ Validation #########################################################
+#################################################################################################################
 
 # use this if you want to validate a data file against a schema file
-def validate( data_file_name, schema_file, json_output = False ):
+def validate( data_file_name, schema_file, json_output = False, store={} ):
     successful_validation = True
-
     absolute_path_to_base_directory = os.path.dirname(os.path.join(os.path.dirname(__file__), schema_file));
     schema_abs_path =os.path.realpath( os.path.join(os.path.dirname(__file__), schema_file));
     with open(schema_abs_path, 'r', encoding="utf-8") as file_object:
        schema = json.load(file_object)
-    with open(data_file_name, 'r', encoding="utf8") as data_file:
-        data = json.load(data_file) 
-    return validate_json( data, schema, absolute_path_to_base_directory, data_file_name.split('\\')[-1], json_output )
+    with open(data_file_name, 'r', encoding="utf-8") as data_file:
+        data = json.load(data_file)
+    # load files with $include and add them to the store for resolving references
+    if ( not store) :
+        store = load_schemas(absolute_path_to_base_directory)
+    return validate_json( data, schema, absolute_path_to_base_directory, data_file_name.split('\\')[-1], json_output, store )
 
 # data and schema are dictionaries
-def validate_json( data, schema, path_to_dir, console_output_name, json_output=False ):
+def validate_json( data, schema, path_to_dir, console_output_name, json_output=False, store = {} ):
     successful_validation = True
     json_errors = {}
     json_errors['errors'] = []
     data = remove_null(data)
     try:
-        resolver = jsonschema.RefResolver('file:///' + path_to_dir + '/', schema)
+        resolver = jsonschema.RefResolver('file:///' + path_to_dir + '/', schema, store=store)
     except:
         raise;# Exception("RefResolver")
    
     # check if we need to include any additionals schemas to successfuly validate
     if ('$include' in schema) :
         schema = json.dumps( dom_to_schema( path_to_dir, schema ) )
-        schema = json.loads( schema ) 
-        return validate_json( data, schema, path_to_dir, console_output_name, json_output)
+        schema = json.loads( schema )
+        return validate_json( data, schema, path_to_dir, console_output_name, json_output, store)
     else :
         validator = jsonschema.Draft4Validator(schema, resolver=resolver)
 
@@ -171,7 +199,10 @@ def uprint(*objects, sep=' ', end='\n', file=sys.stdout):
             print(*map(f, objects), sep=sep, end=end, file=file)
     except Exception as e:
         raise e 
-        
+
+#################################################################################################################
+############################################### Main ############################################################
+#################################################################################################################
 
 def main():
     parser = argparse.ArgumentParser(description='This program validates data given a schema.',
@@ -211,7 +242,6 @@ def main():
                 files.append(data_file_name)
         else:
             raise FileNotFoundError("Data file or folder not found.")
-            
     except FileNotFoundError as e:
         raise e
     except Exception as e:
@@ -223,7 +253,6 @@ def main():
         successful_validation, error_output[root] = validate( data_file_name, schema_file, json_output )
         if not successful_validation:
             error_count += 1
-
     if json_output:
         process_error_json_output(error_output, file_write)
     else:

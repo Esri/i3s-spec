@@ -1,14 +1,12 @@
+import argparse
+import collections
 import sys
 import os
 import glob
 import json
-import argparse
-import re
 import errno
-import collections
-import slpk_validator
-
-
+from validate_json import validate_json
+from validate_json import load_schemas
 
 
 def json_to_dom( path ) :
@@ -99,7 +97,7 @@ class Schema_manifest :
         #instanciate the type:
         assert( len(self.include_stack) > 0 )
         print( "reference:", child_href)
-        abs_path =  os.path.realpath(  os.path.join( self.include_stack[-1], "..", child_href ) )
+        abs_path = os.path.realpath(  os.path.join( self.include_stack[-1], "..", child_href ) )
         if not os.path.exists( abs_path ) :
             raise BaseException( "Schema %s references %s but file %s doesnt exists. Please check href" %( self.include_stack, child_href, abs_path  ))
         #print("Dependency:",child_href)
@@ -157,7 +155,6 @@ class Schema_type :
     def parse_from_file(self, abs_path) :
         """ parse schema definition from json-schema file"""
         self.name = self.manifest.get_schema_name_from_abs_path( abs_path )
-        #self.name = os.path.basename( schema_path ).replace( "_schema.json", "" )
         self.parse_from_dom( json_to_dom( abs_path ) )
 
     def parse_from_dom( self, dom, parent_type=None  ) :
@@ -438,18 +435,19 @@ class Markdown_writer  :
                         self.write_line( "%s \n" % ex['description'] )
                     self.write_line( "```json\n %s \n```\n" % self.get_example_code( ex ))
 
-def validate_examples(manifest, validated_schemas) :
+def validate_examples(manifest, validated_schemas, store) :
     for profile in manifest.types:
         if profile not in validated_schemas:
             validated_schemas.append(profile)
             examples = manifest.types[profile].example_dom
             # examples exist in schema
             if ( len(examples) ) :
-                schema = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
+                schema_abs_path = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
+                schema = json_to_dom(schema_abs_path)
                 for example in examples:
                     ex_code = Markdown_writer.get_example_code(example, example)
                     if (ex_code and ex_code != "") :                                   
-                        successful_validation = slpk_validator.validate_json_string(schema, ex_code, profile)[0]    # first returned argument return success or failure
+                        successful_validation = validate_json( json.loads(ex_code), schema, os.path.join(manifest.ref_path, 'schema'), profile, False, store )[0]    # first returned argument return success or failure
                         if (not successful_validation) :
                             raise BaseException(("Example in %s did not successfully validate against schema" % profile))
 
@@ -489,24 +487,24 @@ if __name__ == "__main__" :
 
     manifest = {}   # {version : Schema_manifest}
 
-    #scan the manifest:
-    for file in os.listdir( manifest_folder ) :
-        if file.endswith(".json"):
-            version = file.split('.')[1]                # e.g manifest.0106.json
-            if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
-                manifest[version] = Schema_manifest(root, version);
-                dom = json_to_dom( os.path.join(manifest_folder, file) )
-                entry_points = get_entry_points_from_dom( dom)
-                for entry_point in entry_points :
-                    abs_path = os.path.join(search_folder, entry_point)
-                    manifest[version].get_type_from_abs_path( abs_path )
+    # scan the manifest:
+    for file in glob.glob(os.path.join(manifest_folder, '*.json')):
+        version = file.split('.')[1]                # e.g manifest.0106.json
+        if (Schema_manifest.c_code_to_versions[version] in args.profiles ):
+            manifest[version] = Schema_manifest(root, version);
+            dom = json_to_dom( os.path.join(manifest_folder, file) )
+            entry_points = get_entry_points_from_dom( dom)
+            for entry_point in entry_points :
+                abs_path = os.path.join(search_folder, entry_point)
+                manifest[version].get_type_from_abs_path( abs_path )
 
-    
+    store = load_schemas(search_folder)
+
     print("Now validating examples")
     try:
         validated_schemas = []            # avoid checking same file multiple times in different versions
         for version in manifest:
-            validate_examples( manifest[version], validated_schemas ) 
+            validate_examples( manifest[version], validated_schemas, store ) 
     except BaseException as e:
         print(e)
         print()

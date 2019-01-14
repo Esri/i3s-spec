@@ -11,7 +11,6 @@ import collections
 import validate_json
 import schema_to_doc
 
-
 verbose = ''
 
 def json_to_dom( path ) :
@@ -52,7 +51,7 @@ def get_schema(slpk_type, file_type, version, manifest_paths) :
         return get_pointcloud_schema_path( manifest_paths[version], dir, file )
 
     if ( slpk_type == "Point" ) :
-        return get_common_schema_path( manifest_paths[version], dir, file )
+        return get_point_schema_path( manifest_paths[version], dir, file )
 
     if ( slpk_type == "3DObject" ) :
         return get_common_schema_path( manifest_paths[version], dir, file )
@@ -86,7 +85,6 @@ def get_common_schema_path( manifest, dir, file ) :
         return get_schema_file_name(manifest, 'common', file)
     if ( dir == "nodepages") :
         return get_schema_file_name(manifest, 'common', "nodepages")
-
     ### not being validated currently ###
     #if ( (dir == "features") and file == "0.json.gz") :
     #    return get_schema_file_name(manifest, 'common', file)
@@ -102,26 +100,28 @@ def get_building_schema_path( manifest, dir, file ) :
     ## e.g 3dSceneLayer.json.gz
     if (dir == ""):
         return get_schema_file_name(manifest,'building', file)
-
     ## e.g statistics/summary.json.gz
     if (dir == "statistics"):
         return get_schema_file_name(manifest,'building', file)
-
     # everything else in common or not being validated
     return get_common_schema_path(manifest, dir, file)
 
+
+def get_point_schema_path( manifest, dir, file ) :
+    # 3dSceneLayer.json.gz
+    if (dir == ""):
+        return get_schema_file_name(manifest,'point', file)
+    # everything else in common or not being validated
+    return get_common_schema_path(manifest, dir, file)
 
 def get_pointcloud_schema_path( manifest, dir, file ) :
     #node pages don't have consistent naming, e.g 0.json, 64.json, 384.json, ...
     if ( dir == "nodepages" ) :
         return  get_schema_file_name(manifest, "pointcloud", "nodepage")
-    
     if ( dir == "statistics" ) :
         return  get_schema_file_name(manifest, "pointcloud", "statistics")
-
     if ( (not dir) and file == "3dSceneLayer.json.gz" ) :
-        return get_schema_file_name(manifest, dir, file)
-
+        return get_schema_file_name(manifest, "pointclout", file)
     # everything else in common or not being validated
     return get_schema_file_name(manifest, dir, file)
 
@@ -222,12 +222,12 @@ def load_manifests(path_to_specs_folder) :
     return manifests
 
 # inject the $include files into file if necessary
-def load_incomplete_files(abs_path_to_folder) :
+def load_schemas(abs_path_to_folder) :
     for file in os.listdir( abs_path_to_folder) :
         # check files to see if $include in schema
         dom = json_to_dom( os.path.join(abs_path_to_folder, file) )
         if '$include' in dom  :
-            schema = dom_to_schema(abs_path_to_folder, dom)
+            schema = validate_json.dom_to_schema(abs_path_to_folder, dom)
             # overwrite the file
             create_file_to_validate( os.path.join( abs_path_to_folder, file ), json.dumps( schema ) )
             
@@ -237,14 +237,14 @@ def load_incomplete_files(abs_path_to_folder) :
 ############################################################################
 # creates temporary file to validate data
 # validates data against json_schema
-def validate_json_string( json_schema, data, temp_file_name = "temp" ):
+def validate_json_string( json_schema, data, store, temp_file_name = "temp" ):
     #create file for validator
     temp_file_name = temp_file_name.replace('\\', '_')
     data_file_path = create_file_to_validate(temp_file_name, data)
 
     #validate the file, then remove it
     try:
-        successful_validation, error_output = validate_json.validate(data_file_path, json_schema.replace('\\', '/'))
+        successful_validation, error_output = validate_json.validate( data_file_path, json_schema.replace('\\', '/'), False, store )
     finally:
         remove_file(temp_file_name)
     return successful_validation, error_output
@@ -355,7 +355,7 @@ def main():
     temp_schema_dir = os.path.join( os.getcwd(), 'schema')
     create_dir(temp_schema_dir)
     copy_files(schema_dir, temp_schema_dir)
-    load_incomplete_files(temp_schema_dir)
+    load_schemas(temp_schema_dir)
     # load the manifests e.g the entry points
     manifests = load_manifests( root )
 

@@ -29,7 +29,8 @@
     "esriDocumentation": {
         "examples": [
             {
-                "title": "3D Scene Layer info for point scene layer"
+                "title": "3D Scene Layer info for point scene layer",
+                "code_href": "example/3dSceneLayerPointSceneLayer.cmn.0106.json"
             }
         ]
     }

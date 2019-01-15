@@ -20,7 +20,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;&emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
 ​&emsp;&emsp;[Textures](#textures-structure)  
 ​&emsp;&emsp;[Attribute Model and Storage](#attribute-model-and-storage)  
-​&emsp;[Oriented Bounding Box](#oriented-bounding-box)  
+​&emsp;[Bounding Volume Hierarchy](#bounding-volume-hierarchy)  
 ​&emsp;[Level of Detail](#level-of-detail)  
 ​&emsp;[Discrete Level of Detail](#discrete-level-of-detail)  
 ​&emsp;[Multiple Representations](#multiple-representations)  
@@ -111,7 +111,7 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 * [3D Objects](../docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, 3D models in various formats)
 * [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) (e.g. integrated surface including vegetation, buildings and roads) 
 * [Points](../docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs)
-* [Point Clouds](../docs/2.0/PointCloud_ReadMe.md) (e.g. lidar data)
+* [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data)
 * [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
@@ -121,12 +121,12 @@ Layer types with the same profile can be leveraged to support different use case
 | [3D Objects](../docs/1.6/3Dobject_ReadMe.md)           | mesh-pyramids | Yes                    | Yes                                                     |
 | [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
-| [Point Cloud](../docs/2.0/pcsl_ReadMe.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
+| [Point Cloud](../docs/2.0/pcsl_README.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
 | Line                                                   | lines         | Yes                    | Yes                                                     |
-| Ploygon                                                | ploygons      | Yes                    | Yes                                                     |
-| Building Scene Layer                                   |      &nbsp;     |       &nbsp;           |                &nbsp;                                 |
+| Polygon                                                | polygons      | Yes                    | Yes                                                     |
+| Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
 
-*Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles*
+*Examples of 3D Scene Layer Layer Types and Layer Profiles*
 
 ### <a name="coordinate-reference-systems"> Coordinate Reference Systems
 
@@ -182,9 +182,9 @@ Treekeys are strings in which levels are separated by dashes.  The root node is 
 
 For example, take the node with treekey "3-1-0".  Since it has 3 numeric elements 3, 1 and 0, it can be concluded that the node is on level 4.  The parent node has treekey  "3-1".
 
-![Figure 1: A sample index tree using Treekeys](images/figure-01.png)
+![A sample index tree using Treekeys](images/figure-01.png)
 
-*Figure 1: A sample index tree using Treekeys*
+*A sample index tree using Treekeys*
 
 Each node includes the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
 
@@ -204,7 +204,7 @@ Each node has exactly one `NodeIndexDocument` and one `SharedDescriptors` docume
 There are always an equal number of `FeatureData` and `geometry` resources.  Each set contains
 the corresponding data elements to render a complete feature.  In order to avoid dependency on the `FeatureData` document, the geometry data is directly available as a binary resource.  The geometry data includes all vertex attributes, feature counts, and mesh segmentation.
 
-Figure 2 below shows the node tree of an 3D Object Indexed Scene Layer with a mesh pyramid profile.
+The figure below shows the node tree of an 3D Object Indexed Scene Layer with a mesh pyramid profile.
 
 - `Nodes` are in green circles.
 - `Node identifiers` are in dark blue rectangles above each node.
@@ -214,9 +214,9 @@ Figure 2 below shows the node tree of an 3D Object Indexed Scene Layer with a me
 - The attribute and texture resources are omitted from the figure for clarity. They follow a similar storage model to geometry.
 - Feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer represented within its payload.
 
-![Figure 2: Example Nodes in a Mesh Pyramid](images/figure-02.png)
+![Example Nodes in a Mesh Pyramid](images/figure-02.png)
 
-*Figure 2: Example 3D Object Indexed Scene Layer with a mesh pyramid profile*
+*Example 3D Object Indexed Scene Layer with a mesh pyramid profile*
 
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 
@@ -253,9 +253,9 @@ For more details regarding point cloud scene layer, see [AttributeInfo](../docs/
 
 For more details on all other scene layer types, see [Attribute](../docs/1.6/attributeStorageInfo.cmn.md).
 
-## <a name="oriented-bounding-box">Oriented Bounding Box</a>
+## <a name="bounding-volume-hierarchy">Bounding Volume Hierarchy</a>
 
-An oriented bounding box (OBB) represents the bounding volume of each node in the scene layer.
+Bounding volume hierarchy (BVH) is based on minimum bounding spheres (MBS) and oriented bounding boxes (OBB). An oriented bounding box (OBB) represents the bounding volume of each node in the scene layer.
 
 For more details regarding all scene layer types, see [oriented bounding box](../docs/1.6/obb.cmn.md).
 
@@ -299,10 +299,10 @@ The bounding volume tree hierarchy is built based on the spatial distribution of
 
 |    &nbsp;        | 3D Object                    | Points                       | Lines                        | Polygons                     | Point Clouds                 | Building Scene Layer |
 | -------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | -------------------- |
-| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |           &nbsp;             |           &nbsp;             |             &nbsp;           |                      |
-| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                      |
-| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |           &nbsp;             | ![yes](images/checkmark.png) |                      |
-| Generalization | ![yes](images/checkmark.png) |             &nbsp;           | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |             &nbsp;           |                      |
+| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |           &nbsp;             |           &nbsp;             |             &nbsp;           |            ![yes](images/checkmark.png)          |
+| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |            ![yes](images/checkmark.png)          |
+| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |           &nbsp;             | ![yes](images/checkmark.png) |         ![yes](images/checkmark.png)             |
+| Generalization | ![yes](images/checkmark.png) |             &nbsp;           | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |             &nbsp;           |          ![yes](images/checkmark.png)            |
 
 *Example Level of Detail generation methods based on Scene Layer type*
 
@@ -323,7 +323,7 @@ A Scene Layer Package is
   - This compression scheme has to be either STORE or DEFLATE64.Standard.  DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs.
 - Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. Only the GZIP scheme is supported, since DEFLATE is not universally supported by all browsers.
 
-Figure 10 below shows a Scene Layer Package archive with the BASIC folder pattern.  The I3S specification also allows an EXTENDED folder pattern, that uses subtree partitions to avoid problems with very large packages.  The top level includes a <em>nodes</em> folder with  
+The figure below shows a Scene Layer Package archive with the BASIC folder pattern.  The I3S specification also allows an EXTENDED folder pattern, that uses subtree partitions to avoid problems with very large packages.  The top level includes a <em>nodes</em> folder with  
 
 - A subfolder that contains all node resources
 - A *metadata.json* file that describes the content of the SLPK
@@ -366,7 +366,7 @@ Every SLPK archive has a *metadata.json* file. The following entries are require
 
 In this persistence schema, all Scene Layer resources are stored within either key value based cloud blob stores (e.g. Amazon Simple Storage (S3), Windows Azure Blob Storage) or with more general key value stores. In cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases, each resource is identified by a unique key.  The default is in **bold**.
 
-*Table 14: Example SceneService in a key value store environment with textured geometries and attribute data*
+*Example SceneService in a key value store environment with textured geometries and attribute data*
 
 | I3S Resource                                   | Required                          | Details                                                      |
 | ---------------------------------------------- | --------------------------------- | ------------------------------------------------------------ |
@@ -414,25 +414,25 @@ A numeric attribute resource is a singe, one dimensional array.  A string attrib
 
 The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
 
-Lets take a look at a sample scene service layer and its field types ([see Figure 9](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
+Lets take a look at a sample scene service layer and its field types ([see the figure below](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
 
 <div>
-<img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in Figure 11 and the _attributeStorageInfo_ array in Figure 13 is derived from the attribute value of the above feature class.">
-<p>Figure 9: Typical attribute info of a feature class.</p>
+<img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in the figure and the _attributeStorageInfo_ array in the figure is derived from the attribute value of the above feature class.">
+<p>Typical attribute info of a feature class.</p>
 </div>  
 
-A scene service layer includes only supported attribute field value types of a feature class. As a result, the 'Shape' field in Figure 9 is not included in the attribute cache of a scene layer.
+A scene service layer includes only supported attribute field value types of a feature class. As a result, the 'Shape' field in the figure is not included in the attribute cache of a scene layer.
 
-Figure 9 shows how the feature class maps to different attribute resources. 
+The figure shows how the feature class maps to different attribute resources. 
 
 - **OID** (type: `esriFieldTypeOID`) is by default represented as an _UInt32-Array_, with a 1-d array of _UInt32_ value type.
 - **NEAR-FID** (type: `esriFieldTypeInteger`) is represented as an _Int32-Array_, with a 1-d array of _Int32_ value type.
 - **NEAR_DIST** (type: `esriFieldTypeDouble`) is represented as a _Double-Array_, with a 1-d array of _Float64_ value type.
 - **Name** (type: `esriFieldTypeString`) is represented as a _String-Array_. A String-Array supports storage of variable length strings and is stored as two arrays in sequence.  The first fixed length array has the byte counts of each string (null terminated).  The second array stores the actual string values as UTF8 encoded strings. The value type of the first array is _UInt32_ and the value type of the second array is _String_.
 
-The _attributes_ REST API of a scene layer gives access to all scene cache feature attribute data as binary attribute value arrays.  For example, Figure 9 has 5 binary resources, identified by keys *f_0_, f_1_, f_2_, f_3_*  and *f_4*, and are accessible by the respective rest resource URLs (e.g. .../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc.)
+The _attributes_ REST API of a scene layer gives access to all scene cache feature attribute data as binary attribute value arrays.  For example, the figure has 5 binary resources, identified by keys *f_0_, f_1_, f_2_, f_3_*  and *f_4*, and are accessible by the respective rest resource URLs (e.g. .../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc.)
 
-[Table 12](Table_24.png) below lists a feature layer's field data types. The valueTypes column indicates the supported types for attribute based mapping and symbology.
+Field Data Types Table below lists a feature layer's field data types. The valueTypes column indicates the supported types for attribute based mapping and symbology.
 
 The following types of attribute value arrays are supported :
 
@@ -1010,7 +1010,7 @@ The attribute resource header contains:
 - For all numerical field types, the header section is followed by the attribute values array record. The attribute values must always begin at an offset that is divisible by the byte length of a single value. If the header does not end at such an offset, the necessary amount of padding is inserted between the header and the attribute values.
 - For string field types, the header section is followed by a fixed length array whose values are the byte counts of each string data, inclusive of the null termination character. This array is then followed by an array of actual string data. The strings are stored null terminated.
 
-A client application will be able to find the URI of any attribute resource through its reference from the attributeData array of the Node Index Document (similar access patterns exist for resources such as 'features', 'geometries', etc.). See Figure 9 below:  
+A client application will be able to find the URI of any attribute resource through its reference from the attributeData array of the Node Index Document (similar access patterns exist for resources such as 'features', 'geometries', etc.). See the figure below:  
 
 <div>
 <img src="images/figure-12.png" title="A node resource document illustrating attribute data content access urls (href)" alt="A node resource document illustrating attribute data content access urls (href)">

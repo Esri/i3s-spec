@@ -47,7 +47,7 @@ The store object describes the exact physical storage of a layer and enables the
     "Attributes"
   ],
   "rootNode": "./nodes/root",
-  "version": "1.4",
+  "version": "1.6",
   "extent": [
     -106.5054122583675,
     38.99467780548919,
@@ -65,7 +65,59 @@ The store object describes the exact physical storage of a layer and enables the
     "image/vnd-ms.dds"
   ],
   "lodType": "MeshPyramid",
-  "lodModel": "node-switching"
+  "lodModel": "node-switching",
+  "defaultGeometrySchema": {
+    "geometryType": "triangles",
+    "header": [
+      {
+        "property": "vertexCount",
+        "type": "UInt32"
+      },
+      {
+        "property": "featureCount",
+        "type": "UInt32"
+      }
+    ],
+    "topology": "PerAttributeArray",
+    "ordering": [
+      "position",
+      "normal",
+      "uv0",
+      "color"
+    ],
+    "vertexAttributes": {
+      "position": {
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "normal": {
+        "valueType": "Float32",
+        "valuesPerElement": 3
+      },
+      "uv0": {
+        "valueType": "Float32",
+        "valuesPerElement": 2
+      },
+      "color": {
+        "valueType": "UInt8",
+        "valuesPerElement": 4
+      }
+    },
+    "featureAttributeOrder": [
+      "id",
+      "faceRange"
+    ],
+    "featureAttributes": {
+      "id": {
+        "valueType": "UInt64",
+        "valuesPerElement": 1
+      },
+      "faceRange": {
+        "valueType": "UInt32",
+        "valuesPerElement": 2
+      }
+    }
+  }
 } 
 ```
 

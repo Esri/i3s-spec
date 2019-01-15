@@ -165,7 +165,7 @@ class Schema_type :
         prop = Property()
         prop.name = field
         if '$ref' in sub_dom :
-            tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name.split('::')[0] );
+            tmp = Schema_manifest.get_schema_name_from_relative_path( sub_dom['$ref'], "" if parent_type is None else parent_type.name);
             if tmp != self.name and ( parent_type is None or tmp != parent_type.name ):
                 prop.href = sub_dom['$ref']
                 if 'description' in sub_dom :

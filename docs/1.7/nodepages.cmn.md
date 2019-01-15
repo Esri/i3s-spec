@@ -20,7 +20,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 | Property | Type | Description |
 | --- | --- | --- |
 | **nodesPerPage** | integer | Number of nodes per page for this layer |
-| **rootIndex** | integer | Index of the root node |
+| rootIndex | integer | Index of the root node |
 | **lodSelectionMetricType** | string | Defines the meaning of `nodes[].lodThreshold` for this layer.<div>Must be:<ul><li>`maxScreenThresholdSQ`: _TBD_: Unless we have a strong case for supporting anything else, we should settle on a **single** type of lod metric</li></ul></div> |
 
 *Note: properties in **bold** are required*

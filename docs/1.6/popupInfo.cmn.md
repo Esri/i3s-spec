@@ -4,7 +4,7 @@ Defines the look and feel of popup windows when a user clicks or queries a featu
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
 ### Properties
 
 | Property | Type | Description |

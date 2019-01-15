@@ -20,7 +20,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;&emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
 ​&emsp;&emsp;[Textures](#textures-structure)  
 ​&emsp;&emsp;[Attribute Model and Storage](#attribute-model-and-storage)  
-​&emsp;[Oriented Bounding Box](#oriented-bounding-box)  
+​&emsp;[Bounding Volume Hierarchy](#bounding-volume-hierarchy)  
 ​&emsp;[Level of Detail](#level-of-detail)  
 ​&emsp;[Discrete Level of Detail](#discrete-level-of-detail)  
 ​&emsp;[Multiple Representations](#multiple-representations)  
@@ -253,9 +253,9 @@ For more details regarding point cloud scene layer, see [AttributeInfo](../docs/
 
 For more details on all other scene layer types, see [Attribute](../docs/1.6/attributeStorageInfo.cmn.md).
 
-## <a name="oriented-bounding-box">Oriented Bounding Box</a>
+## <a name="bounding-volume-hierarchy">Bounding Volume Hierarchy</a>
 
-An oriented bounding box (OBB) represents the bounding volume of each node in the scene layer.
+Bounding volume hierarchy (BVH) is based on minimum bounding spheres (MBS) and oriented bounding boxes (OBB). An oriented bounding box (OBB) represents the bounding volume of each node in the scene layer.
 
 For more details regarding all scene layer types, see [oriented bounding box](../docs/1.6/obb.cmn.md).
 

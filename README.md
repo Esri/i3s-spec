@@ -13,9 +13,9 @@ The I3S format is declarative and extendable and can be used to represent differ
 The following layer types have been specified and the standard validated via implementation and production deployments:
 
 - [3D objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- [integrated meshes](docs/1.6/integratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
+- [integrated meshes](docs/1.6/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [points](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [point clouds](docs/1.6/pointCloud.md) (e.g. large point data from LiDAR)
+- [point clouds](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
 - [building scene layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 

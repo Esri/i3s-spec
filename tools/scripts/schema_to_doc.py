@@ -1,10 +1,10 @@
 import argparse
 import collections
-import sys
-import os
+
 import glob
 import json
-import errno
+import sys
+import os
 from validate_json import validate_json
 from validate_json import load_schemas
 
@@ -50,21 +50,19 @@ class Schema_manifest :
             except OSError:
                 print("Could not create %s" % dir)
         return os.path.realpath( os.path.join(dir, fn ) )
-       
 
     def read_href_resource( self, href) :
         assert( len( self.include_stack) > 0 )
         path = os.path.realpath(  os.path.join(self.include_stack[-1], '..', href) )
         with open(path, 'r') as f :
             return f.read()
-        
+
     def get_schema_name_from_abs_path( self, abs_path ) :
         rel_path = os.path.relpath(abs_path,start=self.ref_path  );
         return Schema_manifest.get_schema_name_from_relative_path( rel_path );
 
-
     def get_schema_name_from_relative_path( rel_path, default_namespace="" ):
-        tok = rel_path.replace('\\','/').split('/')
+        tok = rel_path.split('\\')
         if ( len(tok) > 1 ):
             name = tok[1]
         else:
@@ -86,7 +84,6 @@ class Schema_manifest :
                 if href != "":
                     folders.append(href)
                 break
-
         folders.reverse()
         folders = [ (x if x !='schema' else replace_by ) for x in folders ]
         folders[-1] = folders[-1].replace('.json', '.md')
@@ -131,6 +128,7 @@ class Dummy_type :
         self.name = ""
         self.manifest = manifest
 
+
 class Schema_type :
     def __init__(self, manifest) :
         # init data members:
@@ -140,7 +138,7 @@ class Schema_type :
         self.desc=''
         self.props = [] # array of Property object.
         self.examples = []
-        self.enum = {} # for "enum", {  enum_value : description of this value }
+        self.enum = {} # for "enum", { enum_value : description of this value }
         #self.href='' #externaly defined object type
         self.item_prop = None #array only.
         self.manifest = manifest
@@ -196,7 +194,6 @@ class Schema_type :
             print("Including schema file: %s" % abs_path_to_include)
             included_schema = json_to_dom( abs_path_to_include )
             self.get_all_properties( included_schema )
-        
         if ( 'properties' in dom ) :
             for name, value in dom['properties'].items() :
                 self.properties[name] = value
@@ -227,10 +224,8 @@ class Schema_type :
                 obj.name = related
                 self.custom_related.append( obj )
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
-
         if 'description' in dom :
             self.desc = dom['description']
-
         if 'items' in dom :
             assert( self.json_type == 'array')
             item_dom =  dom['items'] 
@@ -240,8 +235,8 @@ class Schema_type :
             if 'maxItems' in dom :
                 self.range[1] = str(dom['maxItems'])
 
-        self.get_properties(dom)
-        
+        self.get_properties(dom)    # get properties, patternProperties, and $include properties
+
         if self.json_type == 'string' and 'enum' in dom :
             for en in dom['enum'] :
                 self.enum[en]=''
@@ -253,7 +248,6 @@ class Schema_type :
             self.example_dom  = dom['esriDocumentation']['examples']
         if 'description-href' in dom :
             self.desc ="%s\n\n%s" % (self.desc, self.manifest.read_href_resource( dom['description-href'] ) )
-
         if 'oneOf' in dom :
             for schema in dom['oneOf']:
                 for field, sub_dom in schema.items():
@@ -311,7 +305,6 @@ class Markdown_writer  :
             out = ("**%s**" % out)
         return out
 
-
     def get_property_type( self, prop, postfix='') :
         if isinstance(prop.type.json_type,list) :
             return ", ".join( [ "%s%s" %( x , postfix ) for x in prop.type.json_type] )
@@ -364,8 +357,7 @@ class Markdown_writer  :
         if prop.type.json_type == 'array' and len( prop.type.item_prop.type.enum ) > 0 :
             postfix = "<div>Possible values for each array string:%s</div>" % Markdown_writer.get_unordered_list_http( prop.type.item_prop.type.enum ) 
         return prop.get_desc() + postfix;
-    
-     
+
     def get_example_code( self, ex_dom ) :
         if 'code' in ex_dom :
            return json.dumps( ex_dom['code'], ensure_ascii=False, indent=2, separators=(',', ': '))
@@ -418,8 +410,8 @@ class Markdown_writer  :
                 self.write_line( "### oneOf:\n" )
                 for item in schema_doc.oneOf :
                     for key, value in item.items() :
-                        namespace =  schema_doc.name.split('::')[0]
-                        name = Schema_manifest.get_schema_name_from_relative_path( value, namespace )
+
+                        name = Schema_manifest.get_schema_name_from_relative_path( value, schema_doc.name )
                         link = manifest.get_relative_output_path_from_schema_name(name, self.output_path)
                         self.write_line("- [%s](%s)" % (name.split('.')[0], link))
                 self.write_line()
@@ -442,12 +434,10 @@ def validate_examples(manifest, validated_schemas, store) :
             examples = manifest.types[profile].example_dom
             # examples exist in schema
             if ( len(examples) ) :
-                schema_abs_path = os.path.join(manifest.ref_path, 'schema', (profile + '.json') )
-                schema = json_to_dom(schema_abs_path)
                 for example in examples:
                     ex_code = Markdown_writer.get_example_code(example, example)
                     if (ex_code and ex_code != "") :                                   
-                        successful_validation = validate_json( json.loads(ex_code), schema, os.path.join(manifest.ref_path, 'schema'), profile, False, store )[0]    # first returned argument return success or failure
+                        successful_validation = validate_json( json.loads(ex_code), profile+'.json', os.path.join(manifest.ref_path, 'schema'), profile, store )[0]
                         if (not successful_validation) :
                             raise BaseException(("Example in %s did not successfully validate against schema" % profile))
 
@@ -463,7 +453,6 @@ def get_entry_points_from_dom( manifest_dom ) :
 
 
 if __name__ == "__main__" :
-
     ## argument parsing: 
     parser = argparse.ArgumentParser(description='This program creates md files.',
                                     epilog='',
@@ -515,6 +504,3 @@ if __name__ == "__main__" :
             writer = Markdown_writer( output_path );
             for name, obj  in manifest[version].types.items() :
                 writer.write_to_md( manifest[version], obj )
-
-
-

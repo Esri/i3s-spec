@@ -3,8 +3,6 @@ import glob
 import json
 import jsonschema
 import os
-import shutil
-import sys
 import zipfile
 import zlib
 import collections
@@ -13,16 +11,11 @@ import schema_to_doc
 
 verbose = ''
 
-def json_to_dom( path ) :
-    with open( path, 'r') as f :
-      return  json.load(f, object_pairs_hook=collections.OrderedDict)
-
 ############################################################################
 ############### Decompress an slpk file for reading ########################
 ############################################################################
 def from_gzip( content  ) :
     return zlib.decompress( content, 16+zlib.MAX_WBITS)
-    
 
 class Reader :
     def __init__(self, path):
@@ -38,7 +31,6 @@ class Reader :
     def get_file_list( self ):
         return self.zip.namelist()
 
-
 ############################################################################
 ############ Functions to get the appropriate schema path ##################
 ############################################################################
@@ -46,23 +38,16 @@ def get_schema(slpk_type, file_type, version, manifest_paths) :
     dir, file = os.path.split( file_type )
     if ( slpk_type == "Building" ) :
         return get_building_schema_path( manifest_paths[version], dir, file )
-
     if ( slpk_type == "PointCloud" ) :
         return get_pointcloud_schema_path( manifest_paths[version], dir, file )
-
     if ( slpk_type == "Point" ) :
         return get_point_schema_path( manifest_paths[version], dir, file )
-
     if ( slpk_type == "3DObject" ) :
         return get_common_schema_path( manifest_paths[version], dir, file )
-
     if ( slpk_type == "IntegratedMesh" ) :
         return get_common_schema_path( manifest_paths[version], dir, file )
-
     # invalid slpk type
     return None
-    
-
 
 # get the path for the file within the profile type from the manifest
 def get_schema_file_name(manifest, type, file_name) :
@@ -71,7 +56,6 @@ def get_schema_file_name(manifest, type, file_name) :
             if (schema['path'] == file_name) :
                 return schema['schema']
     return None     # type or file not found
-
 
 # includes Point, 3DObject, IM, ...
 def get_common_schema_path( manifest, dir, file ) :
@@ -91,10 +75,8 @@ def get_common_schema_path( manifest, dir, file ) :
 
     #if ( ( dir == "shared") and file == "sharedResource.json.gz"):
     #    return get_schema_file_name(manifest, 'common', file)
-
     # file is not being checked
     return None
-
 
 def get_building_schema_path( manifest, dir, file ) :
     ## e.g 3dSceneLayer.json.gz
@@ -105,7 +87,6 @@ def get_building_schema_path( manifest, dir, file ) :
         return get_schema_file_name(manifest,'building', file)
     # everything else in common or not being validated
     return get_common_schema_path(manifest, dir, file)
-
 
 def get_point_schema_path( manifest, dir, file ) :
     # 3dSceneLayer.json.gz
@@ -125,57 +106,9 @@ def get_pointcloud_schema_path( manifest, dir, file ) :
     # everything else in common or not being validated
     return get_schema_file_name(manifest, dir, file)
 
-
 ############################################################################
 #################### Functions for reading files ###########################
 ############################################################################
-def create_dir(path) :
-    try:
-        os.mkdir(path)
-    except OSError :
-        print("Failed creating directory %s", path)
-    else :
-        print("Creating directory %s", path)
-
-def remove_dir(path) :
-    # check if path is directory
-    if ( os.path.isdir(path) ) :
-        try :
-            shutil.rmtree(path)
-        except Exception as e :
-            print(e)
-            raise
-    else :
-        print("Directory %s does not exist" % path)
-
-
-# copy only files in src, not directories
-def copy_files(src, dst) :
-    src_files = os.listdir(src)
-    for file_name in src_files:
-        fn = os.path.join(src, file_name)
-        if (os.path.isfile(fn)):
-            shutil.copy(fn, dst)
-
-# file_name, data are strings
-# returns path to created file
-def create_file_to_validate( file_name, data ):
-    #create file to pass to validator
-    with open(file_name, "w", encoding="utf-8" ) as f:
-        f.write(data)
-
-    current_dir = os.getcwd()
-    data_file_path = os.path.join(current_dir, file_name)
-
-    return data_file_path
-
-
-# removes file_name, if within same directory as project
-def remove_file( file_name ):
-     if (os.path.exists(file_name) and os.path.isfile(file_name)) :
-         os.remove(file_name)
-
-
 def load_file_to_dom(reader, file) :
     files = reader.get_file_list()
     layer_desc_index = files.index(file)
@@ -183,18 +116,12 @@ def load_file_to_dom(reader, file) :
     layer_desc = layer_desc.decode()                        # to string
     return json.loads(layer_desc)
 
-
 def get_slpk_info(reader) :
     layer_file = "3dSceneLayer.json.gz"
     layer_desc = load_file_to_dom(reader, layer_file)
     # 3dSceneLayer.json in root folder has layer type describing what type of slpk we're validating
     type, version = get_info_from_layer(layer_desc)
-    # older builds of BSL do not have version property
-    # version defaults to 1.6
-    if ( not version ) :
-        version = '1.6'
     return type, version
-
 
 # get the type of slpk, e.g:
 # Building, Point, Pointcloud, ...
@@ -206,6 +133,8 @@ def get_info_from_layer(dom) :
     if ( 'store' in dom ) :
         if ('version' in dom['store'] ) :
             version = dom['store']['version']
+    elif ( 'version' in dom ) :
+        version = dom['version']
     return type, version
 
 def load_manifests(path_to_specs_folder) :
@@ -216,83 +145,49 @@ def load_manifests(path_to_specs_folder) :
         version = schema_to_doc.Schema_manifest.c_code_to_versions[version] 
         manifests[version] = {}
         # load the manifest
-        manifest_dom = json_to_dom( os.path.join( path_to_manifest, file ) )
+        manifest_dom = schema_to_doc.json_to_dom( os.path.join( path_to_manifest, file ) )
         for profile in manifest_dom['profile'] :
             manifests[version][profile['name']] = profile['schemas']
     return manifests
 
-# inject the $include files into file if necessary
-def load_schemas(abs_path_to_folder) :
-    for file in os.listdir( abs_path_to_folder) :
-        # check files to see if $include in schema
-        dom = json_to_dom( os.path.join(abs_path_to_folder, file) )
-        if '$include' in dom  :
-            schema = validate_json.dom_to_schema(abs_path_to_folder, dom)
-            # overwrite the file
-            create_file_to_validate( os.path.join( abs_path_to_folder, file ), json.dumps( schema ) )
-            
-
 ############################################################################
-##################### Functions for validation #############################
+############################ Validation ####################################
 ############################################################################
-# creates temporary file to validate data
-# validates data against json_schema
-def validate_json_string( json_schema, data, store, temp_file_name = "temp" ):
-    #create file for validator
-    temp_file_name = temp_file_name.replace('\\', '_')
-    data_file_path = create_file_to_validate(temp_file_name, data)
-
-    #validate the file, then remove it
-    try:
-        successful_validation, error_output = validate_json.validate( data_file_path, json_schema.replace('\\', '/'), False, store )
-    finally:
-        remove_file(temp_file_name)
-    return successful_validation, error_output
-
-
 # validate an slpk against the i3s specs
-def validate_slpk( path_to_slpk, path_to_specs_folder, manifests ):
+def validate_slpk( path_to_slpk, path_to_specs_folder, schemas, manifest ):
     error_output = {}
     error_count = 0
     success_count = 0
-    successful_validation = True
-    # delete the copied i3s directory
+    successful_validation = True                # returns if slpk validated
     # get all paths in slpk
     reader = Reader(path_to_slpk)
     files = reader.get_file_list()              # list with all the files in slpk   
     slpk_type, version = get_slpk_info(reader)
-    ##temporary. for validation. 1.8 was changed to 1.7, but still written out as 1.8 in some files##
-    if (version == '1.8') :
-        version = '1.7'
     for file in files:
         # check if file is a json file
         # if so, decompress file and validate schema
         if file.endswith("json.gz"):
-            file_contents = (reader.get_file(file)).decode()    # file_contents as string
-            file_paths = file.split("/")                                    
+            data = (reader.get_file(file)).decode()    # data as string
+            data = json.loads( data )
+            split_file_path = file.split("/")          # file path as list
             # files in root directory will have path length of 1
-            # append directory to diffentiate files with similar names
-            if ( len(file_paths) > 1) :
-                current_file = os.path.join( file_paths[-2], file_paths[-1] )
+            # append directory to differentiate files with similar names e.g features/0.json, f_1/0.json
+            if ( len(split_file_path) > 1) :
+                current_file = os.path.join( split_file_path[-2], split_file_path[-1] )
             else :
-                current_file = file_paths[-1]
+                current_file = split_file_path[-1]
             # get the schema for the current json file type
-            schema = get_schema(slpk_type, current_file, version, manifests)
+            schema = get_schema(slpk_type, current_file, version, manifest)
             # not every file is being validated
-            # only proceed if file is being validated
             if (schema) :
                 print("Validating file: %s" % file)
-                path_to_json_schema = os.path.join(path_to_specs_folder, schema)
-                # validate the data against the schema           
-                successful__file_validation, error_output[file] = validate_json_string(path_to_json_schema, file_contents, file_paths[-1])
-
-                if (not successful__file_validation) :
+                # validate the data against the schema
+                successful_file_validation, error_output[file] = validate_json.validate_json( data, schema, path_to_specs_folder, file, schemas )
+                if (not successful_file_validation) :
                     successful_validation = False
-    
-                if not successful__file_validation:
                     error_count += 1
-                else:
-                    success_count += 1
+                else :
+                    success_count +=1
 
     current_slpk = os.path.split(path_to_slpk)[1]
     print()
@@ -300,7 +195,6 @@ def validate_slpk( path_to_slpk, path_to_specs_folder, manifests ):
     print("Number of errors: " + str(error_count))
     print("Number of successful files: " + str(success_count))
     print()
-
     return successful_validation, error_output
 
 
@@ -344,40 +238,31 @@ def main():
                 files.append(data_file_name)
         else:
             raise FileNotFoundError("Slpk or folder not found.")
-            
     except FileNotFoundError as e:
         raise e
     except Exception as e:
         print (e)
 
     ## some pre-processing
-    # copy i3s schemas
-    temp_schema_dir = os.path.join( os.getcwd(), 'schema')
-    create_dir(temp_schema_dir)
-    copy_files(schema_dir, temp_schema_dir)
-    load_schemas(temp_schema_dir)
+    schemas = validate_json.load_schemas( schema_dir )
     # load the manifests e.g the entry points
-    manifests = load_manifests( root )
+    manifest = load_manifests( root )
 
     # validate the slpk/slpks
-    try:
-        for data_file_name in files:
-            head, tail = os.path.split(data_file_name)
-            root, ext = os.path.splitext(tail)
-            print("Now validating slpk: %s" % tail)
-            successful_validation, error_output[root] = validate_slpk( data_file_name, temp_schema_dir, manifests )
-            if not successful_validation:
-                error_count += 1
+    for data_file_name in files:
+        head, tail = os.path.split(data_file_name)
+        root, ext = os.path.splitext(tail)
+        print("Now validating slpk: %s" % tail)
+        successful_validation, error_output[root] = validate_slpk( data_file_name, schema_dir, schemas, manifest )
+        if not successful_validation:
+            error_count += 1
 
-        if json_output:
-            process_error_json_output(error_output, file_write)
-        else:
-            print("Results:")
-            print("Number of errors: " + str(error_count))
-            print("Number of successful files: " + str(len(files) - error_count))
-    finally:
-        remove_dir(temp_schema_dir)
-
+    if json_output:
+        process_error_json_output(error_output, file_write)
+    else:
+        print("Results:")
+        print("Number of errors: " + str(error_count))
+        print("Number of successful files: " + str(len(files) - error_count))
 
 if __name__ == "__main__" :
     main()

@@ -1,8 +1,8 @@
 import argparse
 import glob
-import os
 import json
 import jsonschema
+import os
 import sys
 from functools import singledispatch # for removing null in the json data files
 
@@ -22,7 +22,6 @@ def _process_list(ob):
 def _process_list(ob):
     return {k: remove_null(v) for k, v in ob.items()
             if v is not None}
-
 
 #################################################################################################################
 ############################################ Error handling #####################################################
@@ -74,14 +73,12 @@ def process_error_json_output(json_errors, file_write):
             file_write = os.path.join(file_write, 'validation_errors.json')
         with open(file_write, mode='w', encoding='utf-8') as output:
             output.write(json_data)
-
     else:
         uprint( str(json_data) )
 
 #################################################################################################################
 ###################################### Resolve incomplete files #################################################
 #################################################################################################################
-
 # checks if file uses $include
 # if true, create a new schema that loads the included file
 # otherwise return the properties
@@ -111,7 +108,7 @@ def load_properties(abs_path_to_schema, dom):
             properties['patternProperties'][prop] = value
     return properties
 
-def dom_to_schema(abs_path_to_schema, dom) :
+def load_schema(abs_path_to_schema, dom) :
     # get all the required properties
     schema = {}
     properties = load_properties(abs_path_to_schema, dom)
@@ -119,16 +116,19 @@ def dom_to_schema(abs_path_to_schema, dom) :
         schema['properties'] = properties['properties']
     if ('patternProperties' in properties and properties['patternProperties'] ) :
         schema['patternProperties'] = properties['patternProperties']
-    # add required prperties
+    # add required properties
     if ( 'required' in dom ) :
         schema['required'] = dom['required']
     # guard against additional properties
     schema['additionalProperties'] = False
     return schema
 
-# create a dictionary of { key: uri, value: dom }
-# if a schema uses $include to reference another schema, the included properties will be added
-# to the current schema
+def to_uri(abs_path_to_folder, file, scheme='file:///') :
+    return scheme + abs_path_to_folder + '/' + file
+
+# create a dictionary of { key: uri , value: dom }
+# if a schema uses $include to reference another schema,
+# the included properties will be added to the current schema
 def load_schemas(abs_path_to_folder) :
     refs = {}
     for file in glob.glob(os.path.join(abs_path_to_folder, '*.json')):
@@ -136,49 +136,40 @@ def load_schemas(abs_path_to_folder) :
         with open( file , 'r', encoding="utf-8" ) as file_object:
             dom = json.load(file_object)
             if '$include' in dom :
-                dom = dom_to_schema(abs_path_to_folder, dom)
-            uri = 'file:///' + abs_path_to_folder + '/' + file.split('\\')[-1]
+                dom = load_schema(abs_path_to_folder, dom)
+            uri = to_uri( abs_path_to_folder, os.path.split(file)[1] )
             refs[uri] = dom
     return refs
-
 
 #################################################################################################################
 ############################################ Validation #########################################################
 #################################################################################################################
-
 # use this if you want to validate a data file against a schema file
-def validate( data_file_name, schema_file, json_output = False, store={} ):
-    successful_validation = True
+def validate( data_file, schema_file, json_output = False, store={} ):
     absolute_path_to_base_directory = os.path.dirname(os.path.join(os.path.dirname(__file__), schema_file));
-    schema_abs_path =os.path.realpath( os.path.join(os.path.dirname(__file__), schema_file));
-    with open(schema_abs_path, 'r', encoding="utf-8") as file_object:
-       schema = json.load(file_object)
-    with open(data_file_name, 'r', encoding="utf-8") as data_file:
-        data = json.load(data_file)
+    schema_file_name = os.path.split(schema_file)[1]
+    data_file_name = os.path.split(data_file)[1]
     # load files with $include and add them to the store for resolving references
-    if ( not store) :
+    if ( not store ) :
         store = load_schemas(absolute_path_to_base_directory)
-    return validate_json( data, schema, absolute_path_to_base_directory, data_file_name.split('\\')[-1], json_output, store )
+    with open(data_file, 'r', encoding="utf-8") as data:
+        data = json.load(data)
+    return validate_json( data, schema_file_name, absolute_path_to_base_directory, data_file_name, store, json_output )
 
-# data and schema are dictionaries
-def validate_json( data, schema, path_to_dir, console_output_name, json_output=False, store = {} ):
+def validate_json( data, schema_file, path_to_dir, console_output_name, store, json_output=False):
     successful_validation = True
     json_errors = {}
     json_errors['errors'] = []
     data = remove_null(data)
+    key = to_uri(path_to_dir, schema_file)
+    schema = store[ key ]                   # get the correct schema to validate data
+
     try:
-        resolver = jsonschema.RefResolver('file:///' + path_to_dir + '/', schema, store=store)
+        resolver = jsonschema.RefResolver( to_uri(path_to_dir, ''), schema, store=store )
     except:
         raise;# Exception("RefResolver")
-   
-    # check if we need to include any additionals schemas to successfuly validate
-    if ('$include' in schema) :
-        schema = json.dumps( dom_to_schema( path_to_dir, schema ) )
-        schema = json.loads( schema )
-        return validate_json( data, schema, path_to_dir, console_output_name, json_output, store)
-    else :
-        validator = jsonschema.Draft4Validator(schema, resolver=resolver)
 
+    validator = jsonschema.Draft4Validator(schema, resolver=resolver)
     errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
     if errors:
         successful_validation = False
@@ -186,7 +177,6 @@ def validate_json( data, schema, path_to_dir, console_output_name, json_output=F
             json_errors['errors'] = process_error_json(errors, data)
         else:
             process_error_console(errors, console_output_name)
-
     return successful_validation, json_errors
 
 def uprint(*objects, sep=' ', end='\n', file=sys.stdout):
@@ -203,7 +193,6 @@ def uprint(*objects, sep=' ', end='\n', file=sys.stdout):
 #################################################################################################################
 ############################################### Main ############################################################
 #################################################################################################################
-
 def main():
     parser = argparse.ArgumentParser(description='This program validates data given a schema.',
                                 epilog='',

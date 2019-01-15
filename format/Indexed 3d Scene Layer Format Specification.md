@@ -123,7 +123,7 @@ Layer types with the same profile can be leveraged to support different use case
 | [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
 | [Point Cloud](../docs/2.0/pcsl_ReadMe.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
 | Line                                                   | lines         | Yes                    | Yes                                                     |
-| Ploygon                                                | ploygons      | Yes                    | Yes                                                     |
+| Polygon                                                | polygons      | Yes                    | Yes                                                     |
 | Building Scene Layer                                   |      &nbsp;     |       &nbsp;           |                &nbsp;                                 |
 
 *Table 1: Examples of 3D Scene Layer Layer Types and Layer Profiles*
@@ -299,10 +299,10 @@ The bounding volume tree hierarchy is built based on the spatial distribution of
 
 |    &nbsp;        | 3D Object                    | Points                       | Lines                        | Polygons                     | Point Clouds                 | Building Scene Layer |
 | -------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | -------------------- |
-| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |           &nbsp;             |           &nbsp;             |             &nbsp;           |                      |
-| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |                      |
-| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |           &nbsp;             | ![yes](images/checkmark.png) |                      |
-| Generalization | ![yes](images/checkmark.png) |             &nbsp;           | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |             &nbsp;           |                      |
+| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |           &nbsp;             |           &nbsp;             |             &nbsp;           |            ![yes](images/checkmark.png)          |
+| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |            ![yes](images/checkmark.png)          |
+| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |           &nbsp;             | ![yes](images/checkmark.png) |         ![yes](images/checkmark.png)             |
+| Generalization | ![yes](images/checkmark.png) |             &nbsp;           | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |             &nbsp;           |          ![yes](images/checkmark.png)            |
 
 *Example Level of Detail generation methods based on Scene Layer type*
 

@@ -111,7 +111,7 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 * [3D Objects](../docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, 3D models in various formats)
 * [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) (e.g. integrated surface including vegetation, buildings and roads) 
 * [Points](../docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs)
-* [Point Clouds](../docs/2.0/PointCloud_ReadMe.md) (e.g. lidar data)
+* [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data)
 * [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
@@ -121,7 +121,7 @@ Layer types with the same profile can be leveraged to support different use case
 | [3D Objects](../docs/1.6/3Dobject_ReadMe.md)           | mesh-pyramids | Yes                    | Yes                                                     |
 | [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
-| [Point Cloud](../docs/2.0/pcsl_ReadMe.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
+| [Point Cloud](../docs/2.0/pcsl_README.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
 | Line                                                   | lines         | Yes                    | Yes                                                     |
 | Polygon                                                | polygons      | Yes                    | Yes                                                     |
 | Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
@@ -432,7 +432,7 @@ The figure shows how the feature class maps to different attribute resources.
 
 The _attributes_ REST API of a scene layer gives access to all scene cache feature attribute data as binary attribute value arrays.  For example, the figure has 5 binary resources, identified by keys *f_0_, f_1_, f_2_, f_3_*  and *f_4*, and are accessible by the respective rest resource URLs (e.g. .../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc.)
 
-[Field Data Types Table](Table_24.png) below lists a feature layer's field data types. The valueTypes column indicates the supported types for attribute based mapping and symbology.
+Field Data Types Table below lists a feature layer's field data types. The valueTypes column indicates the supported types for attribute based mapping and symbology.
 
 The following types of attribute value arrays are supported :
 

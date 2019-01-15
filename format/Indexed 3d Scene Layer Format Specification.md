@@ -33,7 +33,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[REST API for Attribute Resources](#rest-api-for-attribute-resources)  
 ​&emsp;[Usage pattern of the *attributes* REST API](#usage-pattern-of-the-attributes-REST-API)  
 ​&emsp;[Attribute Resource - Details](#attribute-resource-details)  
-  
+
 [JSON Resources](#json-resources)  
 ​&emsp;[Supported Data Types](#supported-data-types)  
 ​&emsp;[Pointers](#pointers)  
@@ -64,7 +64,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class VestedGeometryParams](#class-vestedgeometryparams)  
 ​&emsp;[Class SingleComponentParmas](#class-singlecomponentparams)  
 ​&emsp;[Class Geometry Attribute](#class-GeometryAttribute)  
-  
+
 [Shared Resources](#shared-resources)  
 ​&emsp;[Class Component](#class-component)  
 ​&emsp;[Class Feature](#class-feature)  
@@ -72,14 +72,14 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class Color](#class-color)  
 ​&emsp;[Class Renderer](#class-renderer)  
 ​&emsp;[Class Symbol](#class-symbol)  
-  
+
 [Textures](#textures)  
 ​&emsp;[Texture Recommendations and Requirements](#texture-recommendations-and-requirements)  
 ​&emsp;[Generating Image IDs](#generating-image-ids)  
 ​&emsp;[Geometry](#geometry)  
 ​&emsp;[Attribute Data](#attribute-data)  
 ​&emsp;[Accessing the Legend of a 3D Object Layer](#accessing-the-legend-of-a-3d-object-layer)  
-  
+
 [I3S Flexbility](#i3s-flexibility)  
 ​&emsp;[I3S Defining Characteristics](#i3s-defining-characteristics)  
 ​&emsp;[Persistence](#persistence)  
@@ -122,9 +122,7 @@ Layer types with the same profile can be leveraged to support different use case
 | [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
 | [Point Cloud](../docs/2.0/pcsl_README.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
-| Line                                                   | lines         | Yes                    | Yes                                                     |
-| Polygon                                                | polygons      | Yes                    | Yes                                                     |
-| Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
+| [Building Scene Layer](../docs/1.6/BSL_ReadMe.md)                                   |      building     |       Yes           |                Yes                                 |
 
 *Examples of 3D Scene Layer Layer Types and Layer Profiles*
 

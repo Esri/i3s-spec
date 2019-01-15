@@ -1,10 +1,10 @@
-# I3S point cloud scene layer specification
+# I3S Point Cloud Scene Layer Specification
 
 Specification for the I3S point cloud scene layer format.
 
-# Content
-[Point cloud scene layer documentation](documentation.pcsl.md)
+![Point cloud scene layer](img/point-cloud-scene-layer.png)
 
+# Content
 - ../docs/: The documentation generated from the schema/ schema files for each profile type. 
 - examples/: Examples for reference and testing.
 

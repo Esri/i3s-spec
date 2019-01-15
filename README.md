@@ -132,8 +132,8 @@ This table reflects the current versions of the ArcGIS Clients
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
-    <th colspan="2">ArcGIS Enterprise<br>10.5</th> 
-    <th colspan="2">ArcGIS Pro<br>1.4</th>
+    <th colspan="2">ArcGIS Enterprise</th> 
+    <th colspan="2">ArcGIS Pro</th>
   </tr>
   <tr>
     <td>Publishing</td>
@@ -183,8 +183,8 @@ This table reflects the current versions of the ArcGIS Clients
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
-    <th colspan="2">ArcGIS Earth<br>1.3</th>
-    <th colspan="2">Esri City Engine<br>2016.1</th>
+    <th colspan="2">ArcGIS Earth</th>
+    <th colspan="2">Esri City Engine</th>
   </tr>
   <tr>
     <td>Publishing</td>

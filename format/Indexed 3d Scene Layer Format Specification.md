@@ -662,7 +662,7 @@ For more details Integrated mesh and 3D objects scene layer, see [geometry attri
 
 Shared Resources are models or textures stored as a JSON file that can be shared among features within the same layer.  The Shared Resources are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process.  
 
-Shared resources include the [material definition](../docs/1.6/materialDefinition.cmn.md) and [texture defintion](../docs/1.6/textureDefinition.md) for the resource regarding Integrated mesh and 3D objects scene layer.
+Shared resources include the [material definition](../docs/1.6/materialDefinition.cmn.md) and [texture defintion](../docs/1.6/textureDefinition.cmn.md) for the resource regarding Integrated mesh and 3D objects scene layer.
 
 For more details regarding Integrated mesh and 3D objects scene layer, see [shared resources](../docs/1.6/sharedResources.cmn.md).
 

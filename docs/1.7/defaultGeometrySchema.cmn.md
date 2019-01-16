@@ -4,12 +4,12 @@ The defaultGeometry schema is used in stores where all ArrayBufferView geometry 
 
 ### Related:
 
-[cmn::store](store.cmn.md)
+[cmn::store](store.cmn.md), [psl::store](store.psl.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **geometryType** | string | Low-level default geometry type. If defined, all geometries in the store are expected to have this type.<div>Possible values are:<ul><li>`triangles`</li><li>`lines`</li><li>`points`</li></ul></div> |
+| geometryType | string | Low-level default geometry type. If defined, all geometries in the store are expected to have this type.<div>Possible values are:<ul><li>`triangles`</li><li>`lines`</li><li>`points`</li></ul></div> |
 | **topology** | string | Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data.<div>Possible values are:<ul><li>`PerAttributeArray`</li><li>`Indexed`: When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data.</li></ul></div> |
 | **header** | [headerAttribute](headerAttribute.cmn.md)[] | Defines header fields in the geometry resources of this store that precede the vertex (and index) data. |
 | **ordering** | string[] |  |

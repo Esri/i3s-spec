@@ -59,15 +59,11 @@
       "description": "Frame of reference for normals. default is `earth-centered` for GCS (geographic), and `vertex-reference-frame` for PCS (projected) "
     }
   },
-  "required": [
-    "id"
-  ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
         "code": {
-          "id": 0,
           "offset": 4,
           "position": {
             "type": "Float32",
@@ -86,7 +82,7 @@
             "component": 1
           },
           "faceRange": {
-            "type": "UINT32",
+            "type": "UInt32",
             "component": 2
           }
         }
@@ -94,7 +90,6 @@
       {
         "title": "A compressed geometry buffer definition with featureId (without UV regions)",
         "code": {
-          "id": 1,
           "featureId": {
             "type": "UInt32",
             "component": 1,

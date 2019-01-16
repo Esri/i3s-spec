@@ -51,7 +51,6 @@ faceRange
 
 ```json
  {
-  "id": 0,
   "offset": 4,
   "position": {
     "type": "Float32",
@@ -70,7 +69,7 @@ faceRange
     "component": 1
   },
   "faceRange": {
-    "type": "UINT32",
+    "type": "UInt32",
     "component": 2
   }
 } 
@@ -80,7 +79,6 @@ faceRange
 
 ```json
  {
-  "id": 1,
   "featureId": {
     "type": "UInt32",
     "component": 1,

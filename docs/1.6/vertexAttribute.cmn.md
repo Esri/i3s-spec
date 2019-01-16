@@ -1,19 +1,19 @@
 # vertexAttribute
 
-Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face.
+VertexAttributes describe valid properties for a single vertex.
 
 ### Related:
 
-[cmn::vestedGeometryParams](vestedGeometryParams.cmn.md), [cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md)
+[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md), [cmn::vestedGeometryParams](vestedGeometryParams.cmn.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **position** | [geometryAttribute](geometryAttribute.cmn.md) | Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face. |
-| **normal** | [geometryAttribute](geometryAttribute.cmn.md) | Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face. |
-| **uv0** | [geometryAttribute](geometryAttribute.cmn.md) | Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face. |
-| **color** | [geometryAttribute](geometryAttribute.cmn.md) | Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face. |
-| region | [geometryAttribute](geometryAttribute.cmn.md) | Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face. |
+| **position** | [geometryAttribute](geometryAttribute.cmn.md) | Vertex position |
+| **normal** | [geometryAttribute](geometryAttribute.cmn.md) | vertex normal |
+| **uv0** | [geometryAttribute](geometryAttribute.cmn.md) | First set of UV coordinates |
+| **color** | [geometryAttribute](geometryAttribute.cmn.md) | Colors attribute |
+| region | [geometryAttribute](geometryAttribute.cmn.md) | Regions attribute |
 
 *Note: properties in **bold** are required*
 

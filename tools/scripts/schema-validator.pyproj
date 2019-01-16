@@ -12,7 +12,7 @@
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId>Global|PythonCore|3.6</InterpreterId>
-    <CommandLineArguments>-s E:\Repos\i3s-spec\profiles\common\schema\3DSNodeIndexDocument_schema.json -d C:\Users\juan9976\Desktop\slpks\mesh17\optimized_v1.8\portland.optimized.slpk</CommandLineArguments>
+    <CommandLineArguments>-s E:\Repos\i3s-spec\schema\3DSceneLayer.psl.0106.json -d E:\Repos\i3s-spec\schema\example\3dSceneLayerPointSceneLayer.cmn.0106.json</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <Name>schema-validator</Name>
   </PropertyGroup>

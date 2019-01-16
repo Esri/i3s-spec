@@ -15,12 +15,10 @@
         "layerType": {
             "type": "string",
             "enum": [
-                "Point",
                 "Line",
                 "Polygon",
                 "3DObject",
-                "IntegratedMesh",
-                "PointCloud"
+                "IntegratedMesh"
             ],
             "description": "The user-visible layer type"
         },
@@ -145,11 +143,11 @@
         "examples": [
             {
                 "title": "3D Scene Layer info for 3D object scene layer",
-                "code_href": "example/3dSceneLayer3DObject3dSceneLayer.bld.0106.json"
+                "code_href": "example/3dSceneLayer3DObject3dSceneLayer.cmn.0106.json"
             },
             {
                 "title": "3D Scene Layer info for integrated mesh scene layer",
-                "code_href": "example/3dSceneLayerIntegratedMeshSceneLayer.bld.0106.json"
+                "code_href": "example/3dSceneLayerIntegratedMeshSceneLayer.cmn.0106.json"
             }
         ]
     }

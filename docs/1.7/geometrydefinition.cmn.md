@@ -46,7 +46,7 @@
         "binding": "per-feature"
       },
       "faceRange": {
-        "type": "UINT32",
+        "type": "UInt32",
         "component": 2,
         "binding": "per-feature"
       }

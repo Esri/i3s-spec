@@ -13,7 +13,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 # Table of Contents
 
 [Introduction to 3D Scene Layer](#introduction-to-3D-scene-layer)  
-[What's New][#whats-new]  
+[What's New](#whats-new)  
 ​&emsp;&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
 ​&emsp;&emsp;[Height Models](#height-models)  
 ​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  

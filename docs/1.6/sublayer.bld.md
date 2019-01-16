@@ -51,3 +51,36 @@ A building scene layer is composed of an overview and the full model containing 
 } 
 ```
 
+#### Example: Building Scene Layer simple group with Point sublayer 
+
+```json
+ {
+  "id": 100,
+  "layerType": "group",
+  "name": "architectural",
+  "alias": "Architecture",
+  "modelName": "Architectural",
+  "visibility": true,
+  "sublayers": [
+    {
+      "id": 1,
+      "layerType": "3DObject",
+      "name": "Casework",
+      "alias": "Casework",
+      "modelName": "Casework",
+      "discipline": "Architectural",
+      "visibility": true
+    },
+    {
+      "id": 2,
+      "layerType": "Point",
+      "name": "LocationPoints",
+      "alias": "LocationPoints",
+      "modelName": "LocationPoints",
+      "discipline": "Architectural",
+      "visibility": true
+    }
+  ]
+} 
+```
+

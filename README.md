@@ -58,7 +58,7 @@ There are few applications that can create and consume scene layers. The tables 
   <td>IntegratedMesh</td>  
  </tr>
 </table>
-<p><em>Table 1: List of vendors and products that support creation of I3S layers.</em></p>
+<p><em>List of vendors and products that support creation of I3S layers.</em></p>
 
 The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform</a>. 
 

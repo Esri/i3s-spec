@@ -7,7 +7,7 @@ Building content is derived from some type of Building Information Modeling (BIM
 ## Building Scene Layer Structure
 The building scene layer contains discipline and category layers as sublayers allowing to represent a building with its different assets. You can create a scene layer package (*.slpk) or a I3S service. A building scene layer contains the following:
 
-- [Layer description](3dSceneLayer.cmn.md)
+- [Layer description](3DSceneLayer.cmn.md)
 - [Sublayers](sublayer.bld.md)
 - [Statistics](statsummary.bld.md)
 
@@ -47,3 +47,4 @@ The following API methods are available for Building Scene Layer:
 |To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} |
 |To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 |
 |To query  Attribute  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key |
+

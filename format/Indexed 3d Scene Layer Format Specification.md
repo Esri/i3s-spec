@@ -13,6 +13,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 # Table of Contents
 
 [Introduction to 3D Scene Layer](#introduction-to-3D-scene-layer)  
+[What's New][#what's-new]
 ​&emsp;&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
 ​&emsp;&emsp;[Height Models](#height-models)  
 ​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  
@@ -33,7 +34,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[REST API for Attribute Resources](#rest-api-for-attribute-resources)  
 ​&emsp;[Usage pattern of the *attributes* REST API](#usage-pattern-of-the-attributes-REST-API)  
 ​&emsp;[Attribute Resource - Details](#attribute-resource-details)  
-  
+
 [JSON Resources](#json-resources)  
 ​&emsp;[Supported Data Types](#supported-data-types)  
 ​&emsp;[Pointers](#pointers)  
@@ -64,7 +65,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class VestedGeometryParams](#class-vestedgeometryparams)  
 ​&emsp;[Class SingleComponentParmas](#class-singlecomponentparams)  
 ​&emsp;[Class Geometry Attribute](#class-GeometryAttribute)  
-  
+
 [Shared Resources](#shared-resources)  
 ​&emsp;[Class Component](#class-component)  
 ​&emsp;[Class Feature](#class-feature)  
@@ -72,14 +73,14 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class Color](#class-color)  
 ​&emsp;[Class Renderer](#class-renderer)  
 ​&emsp;[Class Symbol](#class-symbol)  
-  
+
 [Textures](#textures)  
 ​&emsp;[Texture Recommendations and Requirements](#texture-recommendations-and-requirements)  
 ​&emsp;[Generating Image IDs](#generating-image-ids)  
 ​&emsp;[Geometry](#geometry)  
 ​&emsp;[Attribute Data](#attribute-data)  
 ​&emsp;[Accessing the Legend of a 3D Object Layer](#accessing-the-legend-of-a-3d-object-layer)  
-  
+
 [I3S Flexbility](#i3s-flexibility)  
 ​&emsp;[I3S Defining Characteristics](#i3s-defining-characteristics)  
 ​&emsp;[Persistence](#persistence)  
@@ -110,9 +111,9 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 
 * [3D Objects](../docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, 3D models in various formats)
 * [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) (e.g. integrated surface including vegetation, buildings and roads) 
-* [Points](../docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs)
-* [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data)
-* [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
+* [Points](../docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs) 
+* **\*New in 2.0\*** [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data) 
+* **\*New in 1.6\*** [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
 
@@ -122,11 +123,16 @@ Layer types with the same profile can be leveraged to support different use case
 | [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | [Point](../docs/1.6/Point_ReadMe.md)                   | points        | Yes                    | Yes                                                     |
 | [Point Cloud](../docs/2.0/pcsl_README.md)        | pointclouds   | No                     | [Vertex Attributes](../docs/1.6/vertexAttribute.cmn.md) |
-| Line                                                   | lines         | Yes                    | Yes                                                     |
-| Polygon                                                | polygons      | Yes                    | Yes                                                     |
-| Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
+| [Building Scene Layer](../docs/1.6/BSL_ReadMe.md)                                   |      building     |       Yes           |                Yes                                 |
 
 *Examples of 3D Scene Layer Layer Types and Layer Profiles*
+
+### What's New 
+
+The 1.6 spec update includes I3S support for the [Building Scene Layer](../docs/1.6/BSL_ReadMe.md).
+
+The 2.0 spec update includes I3S support for [Point Clouds](../docs/2.0/pcsl_README.md).
+
 
 ### <a name="coordinate-reference-systems"> Coordinate Reference Systems
 
@@ -310,7 +316,7 @@ The bounding volume tree hierarchy is built based on the spatial distribution of
 
 Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality.  
 
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md").
+For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md).
 
 ## <a name="scene-layer-packages">Scene Layer Packages</a>
 
@@ -479,7 +485,7 @@ For service examples, see [scene service](service/SceneService.cmn.md).
 
 ### <a name="class-3dSceneLayerInfo">Class 3dSceneLayerInfo</a>
 
-The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>.
+The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class [Class DrawingInfo](../docs/1.6/drawingInfo.cmn.md)
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md).
 

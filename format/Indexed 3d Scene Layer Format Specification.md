@@ -13,7 +13,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 # Table of Contents
 
 [Introduction to 3D Scene Layer](#introduction-to-3D-scene-layer)  
-[What's New][#what's-new]
+[What's New][#whats-new]  
 ​&emsp;&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
 ​&emsp;&emsp;[Height Models](#height-models)  
 ​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  
@@ -662,7 +662,7 @@ For more details Integrated mesh and 3D objects scene layer, see [geometry attri
 
 Shared Resources are models or textures stored as a JSON file that can be shared among features within the same layer.  The Shared Resources are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process.  
 
-Shared resources include the [material definition](../docs/1.6/materialDefinition.cmn.md) and [texture defintion](../docs/1.6/textureDefinition.md) for the resource regarding Integrated mesh and 3D objects scene layer.
+Shared resources include the [material definition](../docs/1.6/materialDefinition.cmn.md) and [texture defintion](../docs/1.6/textureDefinition.cmn.md) for the resource regarding Integrated mesh and 3D objects scene layer.
 
 For more details regarding Integrated mesh and 3D objects scene layer, see [shared resources](../docs/1.6/sharedResources.cmn.md).
 

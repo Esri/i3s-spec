@@ -316,7 +316,7 @@ The bounding volume tree hierarchy is built based on the spatial distribution of
 
 Selection metrics help clients determine the which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality.  
 
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md").
+For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.6/lodSelection.cmn.md).
 
 ## <a name="scene-layer-packages">Scene Layer Packages</a>
 
@@ -485,7 +485,7 @@ For service examples, see [scene service](service/SceneService.cmn.md).
 
 ### <a name="class-3dSceneLayerInfo">Class 3dSceneLayerInfo</a>
 
-The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class <a href="#Class DrawingInfo">DrawingInfo</a>.
+The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class [Class DrawingInfo](../docs/1.6/drawingInfo.cmn.md)
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md).
 

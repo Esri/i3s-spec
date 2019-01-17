@@ -1,29 +1,56 @@
-# I3S Point Cloud Scene Layer Specification
+# Point cloud scene layer
 
-Specification for the I3S point cloud scene layer format.
+Point cloud scene layers quickly display large volumes of symbolized and filtered point cloud data. They are optimized for the display and sharing of many kinds of sensor data, including LiDAR. Point cloud scene layers are scalable, allowing you to work with large point cloud datasets efficiently. Rendering very large point sets is generally slow, partially due to hardware limitations. Point cloud scene layers are efficient because they are rendered at an optimized point resolution for the areas you need to visualize. Point cloud scene layers also support caching attributes such as RGB, Intensity, Flags, Class Code, Returns, User Data, Point Source ID, GPS Time, Scan Angle and Near Infrared. This allows client applications to update the symbology as well as query point information.
 
-![Point cloud scene layer](img/point-cloud-scene-layer.png)
+![Point Cloud Scene Layer](img/point-cloud-scene-layer.png)
 
-# Content
-[Point cloud scene layer documentation](documentation.pcsl.md)
+## Point cloud scene layer structure
+The point cloud scene layer is structured into a tree of multiple json files. Beside storing information in the json format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. Since a *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hash_table.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
 
-- ../docs/: The documentation generated from the schema/ schema files for each profile type. 
-- examples/: Examples for reference and testing.
+- [Layer description](layer.pcsl.md)
+- Nodes containing [Geometry](defaultGeometrySchema.pcsl.md) and [Attributes](attributeInfo.pcsl.md)
+- [Node pages](nodepage.pcsl.md)
+- [Statistics](statistics.pcsl.md)
 
-# Version / Releases
-I3S specification is versioned as major.minor, e.g. 1.6
+```
+.<host>/SceneServer/layers
+	+--0 // layer description (named 3dSceneLayer.json in SLPK)
+	+-- nodepages
+	|  +-- 0
+	|  +-- 1   
+	|  +-- 2  
+	|  +-- (...)
+	|  +-- 4  
+	+-- nodes
+	|  +--0
+	|  |  +-- attributes
+	|  |  |  +--2 
+	|  |  |  +--4
+	|  |  |  +--8
+	|  |  |  +--(...)
+	|  |  +-- geometries
+	|  |  |  +-- 0
+	|  +--1 
+	|  |  (...) //same structure for all nodes
+	|  +--...
+	|  +-- 259
+	|  |  (...) //same structure for all nodes
+	+--statistics
+	|  +-- 2
+	|  +-- 4
+	|  +-- 8
+	|  +-- (...)
+```
+*Example of point cloud scene layer structure.*
 
-Major number denotes a breaking change: 2.x I3S cannot be read by a 1.x client, and must be rejected.
-To indicate patch releases between versions, releases are numbered with an additional patch number z, (x.y.z)
+# HTTP API Overview
 
-Latest I3S point cloud store version: **2.0**
+The following api methods are available for point cloud scene layer:
 
-Version 2.0 - present point cloud scene layer of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.
-
-## ArcGIS clients supporting latest release
-- ArcGIS Pro 2.2 (beta 1)
-- ArcGIS Enterprise 10.6.1
-- ArcGIS Javascript API 4.7
-
-# I3S specification
-For general information about the I3S specification please see I3S schema guide.
+|Method|Example|
+|------|-------|
+|To query SceneLayer document|http://my.server.com/layers/{layerId}|
+|To query attribute, statistics, documents|http://my.server.com/layers/{layerId}/statistics/{AttribKey}|
+|To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} 
+|To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 
+|To query  Attribute  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key 

@@ -481,7 +481,7 @@ The SceneServiceInfo is a JSON file that describes the capability and data sets 
 
 The Class SceneServiceInfo describes an active SceneService instance.  There is exactly one SceneServiceInfo object in a document. 
 
-For service examples, see [scene service](service/SceneService.cmn.md).
+For service examples, see [scene service](../service/SceneService.md).
 
 ### <a name="class-3dSceneLayerInfo">Class 3dSceneLayerInfo</a>
 
@@ -579,7 +579,7 @@ Depending on the geometry and level of detail, a node document can be tuned to b
 
 For more details Integrated Mesh, 3D objects and point scene layer, see [3D Node Index Document](../docs/1.6/3DSNodeIndexDocument.cmn.md).
 
-Point cloud scene layer define indexed page nodes, see [page node](docs/2.0/nodepage.pcsl.md) for more details.
+Point cloud scene layer define indexed page nodes, see [page node](../docs/2.0/nodepage.pcsl.md) for more details.
 
 ### <a name="class-nodereference"></a> Class NodeReference
 

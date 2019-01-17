@@ -481,7 +481,7 @@ The SceneServiceInfo is a JSON file that describes the capability and data sets 
 
 The Class SceneServiceInfo describes an active SceneService instance.  There is exactly one SceneServiceInfo object in a document. 
 
-For service examples, see [scene service](service/SceneService.cmn.md).
+For service examples, see [scene service](../service/SceneService.md).
 
 ### <a name="class-3dSceneLayerInfo">Class 3dSceneLayerInfo</a>
 

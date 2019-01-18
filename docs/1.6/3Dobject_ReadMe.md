@@ -11,7 +11,7 @@ A 3D object scene layer is used to visualize 3D objects.  3D object scene layers
 ![Thematic 3D Object Scene Layer without textures](img/LyonThematic.png)
 
 ## 3D Object Scene Layer Structure
-The 3D object scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
+The 3D object scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStorageInfo.cmn.md)

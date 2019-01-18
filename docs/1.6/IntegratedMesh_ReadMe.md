@@ -1,14 +1,18 @@
 # Integrated Mesh Scene Layer
 
-Three-dimensional mesh data is typically captured by an automated process for constructing 3D objects out of large sets of overlapping imagery. The result integrates the original input image information as a textured mesh including 3D objects, such as buildings and trees, and elevation information. Integrated mesh scene layers  are generally created for citywide 3D mapping. They are often captured by drone and cannot be restyled.
+Integrated mesh scene layers are generally created for citywide 3D mapping.  Integrated mesh scene layers include an entire surface and cannot be restyled.  Three-dimensional mesh data are typically captured by an automated process (e.g. drone) for constructing 3D objects out of large sets of overlapping imagery. The result integrates the original input image information as a textured mesh including 3D objects, such as buildings and trees, and elevation information.
+
+*Example of integrated mesh scene layer*
 
 ![Integrated Mesh Scene Layer](img/IM.PNG)
 
-## Integrated Mesh Scene Layer structure
-The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
+## Integrated Mesh Scene Layer Structure
+The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md) 
+
+*Example of integrated mesh scene layer structure*
 
 ```
 .<host>/SceneServer/layers
@@ -24,7 +28,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 	 |  |  (...) //same structure for all nodes
 	
 ```
-*Example of integrated mesh scene layer structure.*
+
 
 # HTTP API Overview
 

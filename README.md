@@ -50,7 +50,7 @@ Each I3S profile type evolves independently to allow new functionality to be add
 - [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated.  This is used in conjunction with the associated feature layer and editing.
 
 #### Building Scene Layer
-- **NEW!** [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification in version 1.6. The Building Scene Layer is used to visualize and work with buildings. 
+- **NEW!** [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings. 
 
 ## Where Can I Use...?
 

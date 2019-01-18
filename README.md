@@ -45,7 +45,7 @@ Each I3S profile type evolves independendly to allow new functionality to be add
 ### Version 1.6
 
 #### 3D Object Scene Layer
-- New object [obb](docs/1.6/obb.cmn.md") - Support of oriented bounding boxes as bounding volume hierarchy.
+- New object [obb](docs/1.6/obb.cmn.md) - Support of oriented bounding boxes as bounding volume hierarchy.
 - New object [domain](docs/1.6/domain.cmn.md) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. The domain values will be displayed by clients for example when using pop-ups of defining definition queries.
 - New object [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Time stamp allowing to persist the time a 3D object was updated. Used in conjunction with associated feature layer and editing.
 

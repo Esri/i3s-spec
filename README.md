@@ -33,6 +33,25 @@ The I3S format is intrinsically designed to support 3D geospatial content, the r
 
 For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [[License|i3s-spec#license-for-indexed-3d-scene-format-and-rest-endpoint-specification]] section below for more information.
 
+## Whats new?
+
+Each I3S profile type evolves independendly to allow new functionality to be added frequently without effecting already existing scene layer types. 
+
+### Version 2.0
+
+#### Point Cloud Scene Layer
+- public [point cloud scene layer](docs/2.0/pcsl_README.md) spec
+
+### Version 1.6
+
+#### 3D Object Scene Layer
+- New object [obb](docs/1.6/obb.cmn.md") - Support of oriented bounding boxes as bounding volume hierarchy.
+- New object [domain](docs/1.6/domain.cmn.md) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. The domain values will be displayed by clients for example when using pop-ups of defining definition queries.
+- New object [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Time stamp allowing to persist the time a 3D object was updated. Used in conjunction with associated feature layer and editing.
+
+#### Building Scene Layer
+- Newly introduced profile type to visualize and work with [Buildings](docs/1.6/BSL_ReadMe.md), starting with version number 1.6.
+
 ## Where can I use...?
 
 There are few applications that can create and consume scene layers. The tables below list some of those applications. This is an evolving list and will be updated frequently. If an application that's either consuming or generating scene layers is missing, please let us know so we can add it to the list.
@@ -62,22 +81,26 @@ There are few applications that can create and consume scene layers. The tables 
 
 The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform</a>. 
 
-This table reflects the current versions of the ArcGIS Clients
+This table reflects the current versions of the ArcGIS Clients.
+
+_Note: The release when the scene layer type started to be supported are added in brackets._
 
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
     <th colspan="2">ArcGIS Online</th> 
-    <th colspan="2">ArcGIS API for Javascript</th>
-    <th colspan="2">ArcGIS Runtime</th>
+    <th colspan="3">ArcGIS API for Javascript</th>
+    <th colspan="3">ArcGIS Runtime</th>
   </tr>
   <tr>
     <td>Publishing</td>
     <td>Consuming</td>
     <td>Publishing</td>
     <td>Consuming</td>
+    <td>First Released</td>
     <td>Publishing</td>
     <td>Consuming</td>
+    <td>First Released</td>
   </tr>
   <tr>
     <td>3D Objects</td>
@@ -86,7 +109,9 @@ This table reflects the current versions of the ArcGIS Clients
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"> </td>
+    <td>100.2</td>
   </tr>
   <tr>
     <td>Integrated Meshes</td>
@@ -95,7 +120,9 @@ This table reflects the current versions of the ArcGIS Clients
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
+    <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.2</td>
   </tr>
   <tr>
     <td>Points</td>
@@ -103,6 +130,8 @@ This table reflects the current versions of the ArcGIS Clients
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
@@ -114,11 +143,15 @@ This table reflects the current versions of the ArcGIS Clients
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
     <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
     <td></td>
@@ -132,49 +165,61 @@ This table reflects the current versions of the ArcGIS Clients
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
-    <th colspan="2">ArcGIS Enterprise</th> 
-    <th colspan="2">ArcGIS Pro</th>
+    <th colspan="3">ArcGIS Enterprise</th> 
+    <th colspan="3">ArcGIS Pro</th>
   </tr>
   <tr>
     <td>Publishing</td>
     <td>Consuming</td>
+    <td>First Released</td>
     <td>Publishing</td>
     <td>Consuming</td>
+    <td>First Released</td>
   </tr>
   <tr>
     <td>3D Objects</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.4</td>
   </tr>
   <tr>
     <td>Integrated Meshes</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.4/2.1*</td>
   </tr>
   <tr>
     <td>Points</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.4</td>
   </tr>
   <tr>
     <td>Points Clouds</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5.1</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>2.0</td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.7</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>2.2</td>
   </tr>
 </table>
 
@@ -183,31 +228,38 @@ This table reflects the current versions of the ArcGIS Clients
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
-    <th colspan="2">ArcGIS Earth</th>
-    <th colspan="2">Esri City Engine</th>
+    <th colspan="3">ArcGIS Earth</th>
+    <th colspan="3">Esri City Engine</th>
   </tr>
   <tr>
     <td>Publishing</td>
     <td>Consuming</td>
+    <td>First Released</td>
     <td>Publishing</td>
     <td>Consuming</td>
+    <td>First Released</td>
   </tr>
   <tr>
     <td>3D Objects</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.6</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
-  </tr>
+    <td>2017.1</td>
+ </tr>
   <tr>
     <td>Integrated Meshes</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.6</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
     <td>Points</td>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -219,9 +271,13 @@ This table reflects the current versions of the ArcGIS Clients
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>

@@ -7,7 +7,7 @@ Building content is derived from some type of Building Information Modeling (BIM
 ## Building Scene Layer Structure
 The building scene layer contains discipline and category layers as sublayers allowing to represent a building with its different assets. You can create a scene layer package (*.slpk) or a I3S service. A building scene layer contains the following:
 
-- [Layer description](3DSceneLayer.cmn.md)
+- [Layer description](layer.bld.md)
 - [Sublayers](sublayer.bld.md)
 - [Statistics](statsummary.bld.md)
 

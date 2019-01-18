@@ -1,6 +1,6 @@
 # 3D Object Scene Layer
 
-A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.  
+A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes and explicitly modeled in 3D.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.  
 
 *Realistic 3D Object Scene Layer with textures*
 

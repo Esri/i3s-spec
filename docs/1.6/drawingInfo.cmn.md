@@ -4,7 +4,7 @@ The drawingInfo object contains drawing information for a scene layer.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
+[psl::3DSceneLayer](3DSceneLayer.psl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

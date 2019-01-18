@@ -10,44 +10,89 @@
         },
         "description": {
             "type": "string",
-            "enum": [
-                "String",
-                "Null"
-            ],
             "description": "A string that appears in the body of the popup window as a description. It is also possible to specify the description as HTML-formatted content."
         },
         "expressionInfos": {
             "type": "array",
             "items": {
-                "type": "object",
-                "$href": "popupExpressionInfo_schema.json"
+                "type": "object"
             },
-            "description": "List of Arcade expressions added to the pop-up."
+             "description": "List of Arcade expressions added to the pop-up. [See more](https://developers.arcgis.com/web-scene-specification/objects/popupExpressionInfo/) information on supported in ArcGIS clients." 
         },
         "fieldInfos": {
             "type": "array",
             "items": {
-                "type": "object",
-                "$href": "fieldInfo_schema.json"
+                "type": "object"
             },
-            "description": "Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays."
+            "description": "Array of fieldInfo information properties. This information is provided by the service layer definition. [See more](https://developers.arcgis.com/web-scene-specification/objects/fieldInfo/) information on supported in ArcGIS clients." 
         },
         "mediaInfos": {
             "type": "array",
             "items": {
-                "type": "object",
-                "$href": "mediaInfo_schema.json"
+                "type": "object"
+                },
+            "description": "Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. [See more](https://developers.arcgis.com/web-scene-specification/objects/mediaInfo/) information on supported in ArcGIS clients." 
             },
-            "description": "Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays."
-        },
         "popupElements": {
             "type": "array",
             "items": {
-                "type": "object",
-                "$href": "mediaInfo_schema.json"
+                "type": "object"
             },
-            "description": "Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays."
-        }
+               "description": "An array of popupElement objects that represent an ordered list of popup elements. [See more](https://developers.arcgis.com/web-scene-specification/objects/popupElement/) information on supported in ArcGIS clients." 
+            }
     },
-    "additionalProperties": false
+    "additionalProperties": false,
+    "esriDocumentation": {
+        "examples": [
+          {
+            "title": "popupInfo",
+            "code": {
+                
+                    "title": "Buildings",
+                    "mediaInfos": [],
+                    "description": "Buidlings on campus A.",
+                    "fieldInfos": [
+                        {
+                            "fieldName": "OBJECTID",
+                            "visible": true,
+                            "isEditable": false,
+                            "label": "OID"
+                        },
+                        {
+                            "fieldName": "Name",
+                            "visible": true,
+                            "isEditable": true,
+                            "label": "Name"
+                        }
+                    ],
+                    "popupElements": [
+                        {
+                            "text": "Buidlings on campus A.",
+                            "type": "text"
+                        },
+                        {
+                            "fieldInfos": [
+                                {
+                                    "fieldName": "OBJECTID",
+                                    "visible": true,
+                                    "isEditable": false,
+                                    "label": "OID"
+                                },
+                                {
+                                    "fieldName": "Name",
+                                    "visible": true,
+                                    "isEditable": true,
+                                    "label": "Name"
+                                }
+                            ],
+                            "type": "fields"
+                        }
+                    ],
+                    "expressionInfos": []
+                }
+            }
+        ]
+    }
 }
+
+    

@@ -3,13 +3,13 @@ Scene Layers: Service and Package Standard
 
 ![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")[http://www.arcgis.com](http://www.arcgis.com)
 
-This repository hosts the standard for scene layers which are containers for arbitrarily large amounts of geographic data. The delivery format and persistence model for scene layers, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
+This repository hosts the standard for scene layers.  Scene layers are containers for large amounts of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
-The format I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
+The format I3S originated from investigation into technology for rapidly streaming and distributing large volumes of 3D content across enterprise systems.  These systems can include server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
 
 A single I3S data set, referred to as a scene layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. A scene layer is characterized by a combination of layer type and profile to fully describe the behavior of the layer and the manner in which it is realized within the specification.
 
-The I3S format is declarative and extendable and can be used to represent different types of 3D data.
+The I3S format is declarative and extendable, and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
 
 - [3D objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
@@ -24,35 +24,35 @@ The specification of the [indexed 3D scene layer (I3S)](./format/Indexed%203d%20
 
 ## Designed for Web, Mobile and Cloud  
 
-The I3S format is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. The goal is to be able to stream large 3D datasets with high performance and scalability.
+The goal is to be able to stream large 3D datasets with high performance and scalability. The I3S format is designed from the ground up to be cloud, web and mobile friendly. It is based on JSON, REST and modern web standards, making it easy to handle, parse, and render by Web and Mobile Clients. 
 
 ## Designed for 3D
-The I3S format is intrinsically designed to support 3D geospatial content, the requisite coordinate systems and height models in conjunction with a rich set of layer types.
+The I3S format is intrinsically designed to support 3D geospatial content.  The requisite coordinate systems and height models are used in conjunction with a rich set of layer types.
 
 ## Open Standard
 
-For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [[License|i3s-spec#license-for-indexed-3d-scene-format-and-rest-endpoint-specification]] section below for more information.
+For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [license](#license-for-indexed-3d-scene-format-and-rest-endpoint-specification) section below for more information.
 
-## Whats new?
+## What's New?
 
-Each I3S profile type evolves independendly to allow new functionality to be added frequently without effecting already existing scene layer types. 
+Each I3S profile type evolves independently to allow new functionality to be added frequently without effecting already existing scene layer types. 
 
 ### Version 2.0
 
 #### Point Cloud Scene Layer
-- public [point cloud scene layer](docs/2.0/pcsl_README.md) spec
+- **NEW!** [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification
 
 ### Version 1.6
 
 #### 3D Object Scene Layer
-- New object [obb](docs/1.6/obb.cmn.md") - Support of oriented bounding boxes as bounding volume hierarchy.
-- New object [domain](docs/1.6/domain.cmn.md) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. The domain values will be displayed by clients for example when using pop-ups of defining definition queries.
-- New object [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Time stamp allowing to persist the time a 3D object was updated. Used in conjunction with associated feature layer and editing.
+- [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - Introducing support for oriented bounding boxes as bounding volume hierarchy.
+- [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries. 
+- [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated.  This is used in conjunction with the associated feature layer and editing.
 
 #### Building Scene Layer
-- Newly introduced profile type to visualize and work with [Buildings](docs/1.6/BSL_ReadMe.md), starting with version number 1.6.
+- **NEW!** [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification in version 1.6. The Building Scene Layer is used to visualize and work with buildings. 
 
-## Where can I use...?
+## Where Can I Use...?
 
 There are few applications that can create and consume scene layers. The tables below list some of those applications. This is an evolving list and will be updated frequently. If an application that's either consuming or generating scene layers is missing, please let us know so we can add it to the list.
 <table>
@@ -83,7 +83,66 @@ The Table below shows the various scene layer types that are currently supported
 
 This table reflects the current versions of the ArcGIS Clients.
 
-_Note: The release when the scene layer type started to be supported are added in brackets._
+<table>
+  <tr>
+    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
+    <th colspan="3">ArcGIS Enterprise</th> 
+    <th colspan="3">ArcGIS Pro</th>
+  </tr>
+  <tr>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>First Released</td>
+    <td>Publishing</td>
+    <td>Consuming</td>
+    <td>First Released</td>
+  </tr>
+  <tr>
+    <td>3D Objects</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.4</td>
+  </tr>
+  <tr>
+    <td>Integrated Meshes</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.4/2.1*</td>
+  </tr>
+  <tr>
+    <td>Points</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.4</td>
+  </tr>
+  <tr>
+    <td>Points Clouds</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.5.1</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>2.0</td>
+  </tr>
+  <tr>
+    <td>Building Scene Layer</td>
+    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>10.7</td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>2.2</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -160,71 +219,6 @@ _Note: The release when the scene layer type started to be supported are added i
 </table>
 
 
-
-
-<table>
-  <tr>
-    <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
-    <th colspan="3">ArcGIS Enterprise</th> 
-    <th colspan="3">ArcGIS Pro</th>
-  </tr>
-  <tr>
-    <td>Publishing</td>
-    <td>Consuming</td>
-    <td>First Released</td>
-    <td>Publishing</td>
-    <td>Consuming</td>
-    <td>First Released</td>
-  </tr>
-  <tr>
-    <td>3D Objects</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>10.5</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>1.4</td>
-  </tr>
-  <tr>
-    <td>Integrated Meshes</td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>10.5</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>1.4/2.1*</td>
-  </tr>
-  <tr>
-    <td>Points</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>10.5</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>1.4</td>
-  </tr>
-  <tr>
-    <td>Points Clouds</td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>10.5.1</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>2.0</td>
-  </tr>
-  <tr>
-    <td>Building Scene Layer</td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>10.7</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>2.2</td>
-  </tr>
-</table>
-
-
-
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
@@ -255,6 +249,7 @@ _Note: The release when the scene layer type started to be supported are added i
     <td>1.6</td>
     <td></td>
     <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>Points</td>
@@ -284,7 +279,6 @@ _Note: The release when the scene layer type started to be supported are added i
     <td></td>
   </tr>
 </table>
-
 
 
 ## Contributing

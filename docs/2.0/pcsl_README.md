@@ -6,6 +6,8 @@ Point cloud scene layers are scalable, which allows for efficiency when working 
 
 Point cloud scene layers also support caching attributes like RGB, Intensity, Flags, Class Code, Returns, User Data, Point Source ID, GPS Time, Scan Angle and Near Infrared.  This allows client applications to update the symbology as well as query point information.
 
+*Example of point cloud rendering*
+
 ![Point Cloud Scene Layer](img/point-cloud-scene-layer.png)
 
 ## Point Cloud Scene Layer Structure
@@ -15,6 +17,8 @@ The point cloud scene layer is structured into a tree of multiple JSON files. Be
 - Nodes containing [Geometry](defaultGeometrySchema.pcsl.md) and [Attributes](attributeInfo.pcsl.md)
 - [Node pages](nodepage.pcsl.md)
 - [Statistics](statistics.pcsl.md)
+
+*Example of point cloud layer structure*
 
 ```
 .<host>/SceneServer/layers
@@ -45,8 +49,6 @@ The point cloud scene layer is structured into a tree of multiple JSON files. Be
 	|  +-- 8
 	|  +-- (...)
 ```
-*Example of point cloud scene layer structure.*
-
 # HTTP API Overview
 
 The following API methods are available for point cloud scene layer:

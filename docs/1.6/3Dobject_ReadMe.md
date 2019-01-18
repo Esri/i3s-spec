@@ -1,6 +1,6 @@
 # 3D Object Scene Layer
 
-A 3D object scene layer can be used to represent and visualize objects such as exterior of buildings that are explicitly modeled in three dimensions. A 3D object scene layer is typically used to create large city models that can be shared. The objects can be displayed with textures or with color symbology depending on the content that is being visualized. 3D object scene layers are often created from GIS data including attributes to allow defining symbology or querying information for individual features.
+A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.  
 
 *Realistic 3D Object Scene Layer with textures*
 
@@ -11,11 +11,13 @@ A 3D object scene layer can be used to represent and visualize objects such as e
 ![Thematic 3D Object Scene Layer without textures](img/LyonThematic.png)
 
 ## 3D Object Scene Layer Structure
-The 3D object scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. You can create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
+The 3D object scene layer is structured into a tree of multiple JSON files. Beside storing information in the JSON format, some are also provided as binary buffer. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStorageInfo.cmn.md)
 - [Statistics](statsInfo.cmn.md)
+
+*Example of 3DObject layer structure*
 
 ```
 .<host>/SceneServer/layers
@@ -40,8 +42,6 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 	|  +-- 8
 	|  +-- (...)
 ```
-*Example of 3DObject layer structure.*
-
 # HTTP API Overview
 
 The following api methods are available for point cloud scene layer:

@@ -16,9 +16,14 @@ The file authoring information for a filter, including the filter type and its v
 
 ### Examples 
 
-#### Example: Building Scene Layer filter authoring info 
+#### Example: Building Scene Layer filter type 
 
 ```json
- None 
+ {
+  "filterType": "CreatedPhase",
+  "filterValues": [
+    "1"
+  ]
+} 
 ```
 

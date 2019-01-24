@@ -17,18 +17,43 @@
     "filterblocks": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "$ref": "filterBlockAuthoringInfo.bld.0106.json"
       },
-      "description": "Array of filter block authoring info.",
-      "$ref": "filterBlockAuthoringInfo.bld.0106.json"
+      "description": "Array of filter block authoring info."
     }
   },
   "required": [
     "type",
-    "filterTypes"
+    "filterblocks"
   ],
   "additionalProperties": false,
   "esriDocumentation": {
-    "examples": []
+    "examples": [
+      {
+        "title": "Building Scene Layer filter authoring info",
+        "code": {
+          "type": "checkbox",
+          "filterblocks": [
+            {
+              "filterTypes": [
+                {
+                  "filterType": "BldgLevel",
+                  "filterValues": [
+                    "3"
+                  ]
+                },
+                {
+                  "filterType": "CreatedPhase",
+                  "filterValues": [
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

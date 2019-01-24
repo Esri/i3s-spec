@@ -28,7 +28,11 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Building Scene Layer filter authoring info"
+        "title": "Building Scene Layer filter type",
+        "code": {
+          "filterType": "CreatedPhase",
+          "filterValues": ["1"]
+        }
       }
     ]
   }

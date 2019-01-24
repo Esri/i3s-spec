@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: stats",
+  "title": "stats",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",
@@ -45,8 +45,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "valuecount.cmn.0106.json",
-        "description": "An array of most frequently used values within the point cloud scene layer."
+        "$ref": "valuecount.cmn.0106.json"
       },
       "description": "An array of most frequently used values within the point cloud scene layer."
     }

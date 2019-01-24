@@ -17,8 +17,9 @@
             "items": {
                 "type": "number"
             },
-            "description": "Count for the entire layer."
-        }
+            "maxItems": 256,
+            "description": "Count for the entire layer." 
+        } 
     },
     "required": [
         "minimum",

@@ -7,39 +7,41 @@
     "id": {
       "type": "number",
       "description": "An ID of the feature object, unique within the store. The ID is important when using features from multiple stores. The ID must not be re-used e.g. for multiple representation of an input feature that are present in different nodes."
+    },
+    "mbs": {
+      "type": "array",
+      "items": {
+        "type": "number"
       },
-      "mbs": {
-        "type": "array",
-        "items": {
-            "type": "number"        
-        },
-        "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node."
-        },
-        "lodChildFeatures": {
-            "type": "array",
-            "items": {
-                "type": "number"        
-            },
-            "description": "IDs of features in a higher LoD level which together make up this feature."
-            },
-        "lodChildNodes": {
-            "type": "array",
-            "items": {
-                 "type": "string"        
-            },
-            "description": "Tree Key IDs of the nodes in which the lodChildFeatures are found."
-             }, 
-        "rank": {
-            "type": "array",
-             "items": {
-                 "type": "number"        
-            },
-            "description": "The LoD level of this feature. Only required for features that participate in a LoD tree. The lowest rank is 1."
-             }, 
-      "rootFeature":{
-        "type": "string",
-        "description": "The Tree Key ID of the root node of a feature LoD tree that this feature participates in. Only required if the feature participates in a LoD tree and if it is not the rootFeature itself."
-      }
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node."
+    },
+    "lodChildFeatures": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "IDs of features in a higher LoD level which together make up this feature."
+    },
+    "lodChildNodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tree Key IDs of the nodes in which the lodChildFeatures are found."
+    },
+    "rank": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "The LoD level of this feature. Only required for features that participate in a LoD tree. The lowest rank is 1."
+    },
+    "rootFeature": {
+      "type": "string",
+      "description": "The Tree Key ID of the root node of a feature LoD tree that this feature participates in. Only required if the feature participates in a LoD tree and if it is not the rootFeature itself."
+    }
   },
   "required": [
     "href"
@@ -47,14 +49,10 @@
   "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
-       {
-         "title": "Resource example",
-         "code": {
-          
-           }
-        }   
-      ]
-   }
+      {
+        "title": "Resource example",
+        "code": {}
+      }
+    ]
+  }
 }
-
-

@@ -10,7 +10,7 @@
         },
         "position": {
             "type": "array",
-            "minItems": 3,
+            "minItems": 2,
             "maxItems": 3,
             "items": {
                 "type": "number"
@@ -31,6 +31,8 @@
             "items": {
                 "type": "number"
             },
+            "minItems": 6,
+            "maxItems": 6,
             "description": "An array of six doubles, corresponding to xmin, ymin, zmin, xmax, ymax and zmax of the minimum bounding box of the feature, expressed in the vertexCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes."
         },
         "layer": {
@@ -50,6 +52,7 @@
             "items": {
                 "type": "object"
             },
+            "minItems": 1,
             "description": "The list of geometries the feature has. A feature always has at least one Geometry.",
             "$ref": "geometry.cmn.0106.json"
         }

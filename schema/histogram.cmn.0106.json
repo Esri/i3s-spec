@@ -1,8 +1,8 @@
 {
-    "title": "I3S building scene layer: histogram",
+    "title": "I3S: histogram",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "The histogram of the point cloud scene layer. The bin size may be computed as (max-min)/bin count. Please note that stats.histo.min/max is not equivalent to stats.min/max since values smaller than stats.histo.min and greater than stats.histo.max are counted in the first and last bin respectively. The values stats.min and stats.max may be conservative estimates.",
+    "description": "The bin size may be computed as (max-min)/bin count. Please note that stats.histo.min/max is not equivalent to stats.min/max since values smaller than stats.histo.min and greater than stats.histo.max are counted in the first and last bin respectively. The values stats.min and stats.max may be conservative estimates.",
     "properties": {
         "minimum": {
             "type": "number",
@@ -17,6 +17,7 @@
             "items": {
                 "type": "number"
             },
+            "maxItems": 256,
             "description": "Count for the entire layer."
         }
     },

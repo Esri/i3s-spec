@@ -10,7 +10,7 @@ A NodeReference is a pointer to another node - the parent, a child or a neighbor
 | Property | Type | Description |
 | --- | --- | --- |
 | **id** | string | Tree Key ID (e.g. '1-3-0-5') of the referenced node. |
-| mbs | number[] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |
+| mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |
 | href | string | Number of values per element. |
 | version | string | Version (store update session ID) of the referenced node. |
 | featureCount | number | Number of features in the referenced node and its descendants, down to the leaf nodes. |

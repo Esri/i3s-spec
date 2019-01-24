@@ -29,7 +29,7 @@
     "metallicRoughnessTexture": {
       "type": "object",
       "$ref": "materialtexture.cmn.0107.json",
-      "description": "he metallic-roughness texture."
+      "description": "the metallic-roughness texture."
     }
   },
   "esriDocumentation": {

@@ -17,11 +17,13 @@
       "items": {
         "type": "number"
       },
+      "minItems": 16,
+      "maxItems": 16,
       "description": "3D (4x4) transformation matrix expressed as a linear array of 16 values."
     },
     "params": {
       "type": "object",
-      "description": "The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.      ",
+      "description": "The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.",
       "$ref": "geometryParams.cmn.0106.json"
     }
   },

@@ -1,0 +1,84 @@
+    {
+        "title": "I3S point cloud scene layer: defaultGeometrySchema",
+        "type": "object",
+        "$schema": "http://json-schema.org/draft-04/schema",
+        "description": "Attribute description as field.",
+        "properties": {
+            "geometryType": {
+                "type": "string",
+                "enum": [
+                    "points"
+                ],
+                "description": "The type of primitive. Only points are supported for point cloud scene layer."
+            },
+            "header": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "minItems": 0,
+                    "maxItems": 0
+                },
+                "description": "The header in binary buffers. Currently not supported for point cloud scene layer."
+            },
+            "topology": {
+                "type": "string",
+                "enum": [
+                    "PerAttributeArray"
+                ],
+                "description": "This property is currently IGNORED for point cloud scene layer since it only conatains geometry position and not the vertex attributes."
+            },
+            "encoding": {
+                "type": "string",
+                "enum": [
+                    "lepcc-xyz"
+                ],
+                "description": "Only 'lepcc-xyz' compression is currently supported."
+            },
+            "ordering": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "position"
+                    ],
+                    "enum-description": {
+                        "position": "vertex coordinates"
+                    }
+                },
+                "description": "Currently the geometry contains XYZ only, so vertex attribute must only list 'position'."
+            },
+            "vertexAttributes": {
+                "type": "object",
+                "$ref": "vertexAttributes.pcsl.0200.json"
+            }
+        },
+        "required": [
+            "geometryType",
+            "topology",
+            "vertexAttributes",
+            "encoding"
+        ],
+        "additionalProperties": false,
+        "esriDocumentation": {
+            "examples": [
+                {
+                    "title": "defaultGeometrySchema",
+                    "code": {
+                        "geometryType": "points",
+                        "header": [],
+                        "topology": "PerAttributeArray",
+                        "encoding": "lepcc-xyz",
+                        "vertexAttributes": {
+                            "position": {
+                                "valueType": "Float",
+                                "valuesPerElement": 3
+                            }
+                        },
+                        "ordering": [
+                            "position"
+                        ]
+                    }
+                }
+            ]
+        }
+    }

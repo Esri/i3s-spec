@@ -9,7 +9,7 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **type** | string | color channel values<div>Must be:<ul><li>`UINT8`</li></ul></div> |
+| **type** | string | color channel values<div>Must be:<ul><li>`UInt8`</li></ul></div> |
 | **component** | integer | Number of colors. Must be `1` (opaque grayscale: `{R,R,R,255}`),`3`(opaque color `{R,G,B,255}`) or `4` ( transparent color `{R,G,B,A}`). |
 | encoding | string | Encoding<div>Must be:<ul><li>`normalized`: default. Assume 8-bit unsigned color per channel [0,255] -> [0,1]</li></ul></div> |
 | binding | string | <div>Must be:<ul><li>`per-vertex`</li></ul></div> |
@@ -22,7 +22,7 @@ Colors for geometry .TBD: Assumed to be sRGB ??
 
 ```json
  {
-  "type": "UINT8",
+  "type": "UInt8",
   "component": 3
 } 
 ```

@@ -22,7 +22,7 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 ### Examples 
 
-#### Example: Example 1 
+#### Example: domain 
 
 ```json
  {

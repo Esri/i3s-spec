@@ -4,7 +4,7 @@ Defines the look and feel of popup windows when a user clicks or queries a featu
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[psl::3DSceneLayer](3DSceneLayer.psl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -15,6 +15,4 @@ Defines the look and feel of popup windows when a user clicks or queries a featu
 | fieldInfos | [] | Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. |
 | mediaInfos | [] | Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. |
 | popupElements | [] | Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. |
-
-*Note: properties in **bold** are required*
 

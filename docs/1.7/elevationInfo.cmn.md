@@ -4,7 +4,7 @@ An object defining where a feature is placed within a scene. For example, on the
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md)
+[psl::3DSceneLayer](3DSceneLayer.psl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -13,6 +13,4 @@ An object defining where a feature is placed within a scene. For example, on the
 | offset | number | Offset is always added to the result of the above logic except for onTheGround where offset is ignored. |
 | unit | string | A string value indicating the unit for the values in elevationInfo |
 | featureExpression | [featureExpression](featureExpression.cmn.md) | Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geometry z-values. |
-
-*Note: properties in **bold** are required*
 

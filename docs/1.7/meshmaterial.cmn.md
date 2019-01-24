@@ -9,7 +9,7 @@ Mesh geometry for a node
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **definition** | integer | index in [layer.materialDefinitions](layer.bld.md) array. |
+| **definition** | integer | index in [layer.materialDefinitions](3DSceneLayer.cmn.md) array. |
 | resource | integer | Locator ID for the material textures. i.e: `layers/0/nodes/{material.resource}/textures/{tex_index}`. **required** if material declares any textures |
 
 *Note: properties in **bold** are required*

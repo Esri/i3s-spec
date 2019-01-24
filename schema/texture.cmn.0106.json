@@ -22,7 +22,7 @@
         ],
         "enum-description": {
           "none": "",
-          "repeat": ".",
+          "repeat": "",
           "mirror": ""
         },
         "description": "UV wrapping modes, from {none, repeat, mirror}"

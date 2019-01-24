@@ -4,7 +4,7 @@ A collection of objects describing each attribute field.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [pcsl::layer](layer.pcsl.md)
+[psl::3DSceneLayer](3DSceneLayer.psl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

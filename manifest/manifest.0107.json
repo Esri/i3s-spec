@@ -37,7 +37,7 @@
           "schema": "features.cmn.0106.json"
         },
         {
-          "path": "sharedResource",
+          "path": "sharedResource.json.gz",
           "schema": "sharedResource.cmn.0106.json"
         },
         {
@@ -47,19 +47,11 @@
       ]
     },
     {
-      "name": "pointcloud",
+      "name": "point",
       "schemas": [
         {
           "path": "3dSceneLayer.json.gz",
-          "schema": "layer.pcsl.0106.json"
-        },
-        {
-          "path": "statistics",
-          "schema": "statistics.pcsl.0106.json"
-        },
-        {
-          "path": "nodepage",
-          "schema": "nodepage.pcsl.0106.json"
+          "schema": "3DSceneLayer.psl.0106.json"
         }
       ]
     }

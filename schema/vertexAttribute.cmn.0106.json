@@ -1,32 +1,32 @@
 {
-  "title": "geometryAttribute",
+  "title": "vertexAttribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face.",
+  "description": "VertexAttributes describe valid properties for a single vertex.",
   "properties": {
     "position": {
       "type": "object",
-      "description": "",
+      "description": "Vertex position",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "normal": {
       "type": "object",
-      "description": "",
+      "description": "vertex normal",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "uv0": {
       "type": "object",
-      "description": "",
+      "description": "First set of UV coordinates",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "color": {
       "type": "object",
-      "description": "",
+      "description": "Colors attribute",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "region": {
       "type": "object",
-      "description": "",
+      "description": "Regions attribute",
       "$ref": "geometryAttribute.cmn.0106.json"
     }
   },

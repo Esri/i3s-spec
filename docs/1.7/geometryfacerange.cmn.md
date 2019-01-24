@@ -19,7 +19,7 @@ For each feature, `faceRange` indicate its first and last triangles as a pair of
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **type** | string | <div>Must be:<ul><li>`UINT32`</li></ul></div> |
+| **type** | string | <div>Must be:<ul><li>`UInt32`</li></ul></div> |
 | **component** | integer | must be `2`  |
 | encoding | string | <div>Must be:<ul><li>`none`</li></ul></div> |
 | binding | string | <div>Must be:<ul><li>`per-feature`</li></ul></div> |
@@ -32,7 +32,7 @@ For each feature, `faceRange` indicate its first and last triangles as a pair of
 
 ```json
  {
-  "type": "UINT32",
+  "type": "UInt32",
   "component": 2
 } 
 ```

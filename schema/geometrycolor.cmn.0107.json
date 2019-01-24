@@ -7,7 +7,7 @@
     "type": {
       "type": "string",
       "enum": [
-        "UINT8"
+        "UInt8"
       ],
       "description": "color channel values"
     },
@@ -41,7 +41,7 @@
       {
         "title": "RGB colors per vertex",
         "code": {
-          "type": "UINT8",
+          "type": "UInt8",
           "component": 3
         }
       }

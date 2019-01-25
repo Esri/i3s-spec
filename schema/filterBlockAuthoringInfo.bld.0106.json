@@ -7,10 +7,10 @@
     "filterTypes": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "$ref": "filterType.bld.0106.json"
       },
-      "description": "Array of defined filter types. Each filter type has an array of filter values.",
-      "$ref": "filterType.bld.0106.json"
+      "description": "Array of defined filter types. Each filter type has an array of filter values."
     }
   },
   "required": [
@@ -20,7 +20,19 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Building Scene Layer filter block authoring info"
+        "title": "Building Scene Layer filter block authoring info",
+        "code": {
+          "filterTypes": [
+            {
+              "filterType": "BldgLevel",
+              "filterValues": ["3"]
+            },
+            {
+              "filterType": "CreatedPhase",
+              "filterValues": ["1"]
+            }
+          ]
+        }
       }
     ]
   }

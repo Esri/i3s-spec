@@ -303,12 +303,12 @@ For example, 3D Object Layers based on the mesh-pyramids profile can create a le
 
 The bounding volume tree hierarchy is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type.
 
-|    &nbsp;        | 3D Object                    | Points                       | Lines                        | Polygons                     | Point Clouds                 | Building Scene Layer |
-| -------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | -------------------- |
-| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |           &nbsp;             |           &nbsp;             |             &nbsp;           |            ![yes](images/checkmark.png)          |
-| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |            ![yes](images/checkmark.png)          |
-| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |           &nbsp;             | ![yes](images/checkmark.png) |         ![yes](images/checkmark.png)             |
-| Generalization | ![yes](images/checkmark.png) |             &nbsp;           | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |             &nbsp;           |          ![yes](images/checkmark.png)            |
+|    &nbsp;        | 3D Object                    | Points                        | Point Clouds                 | Building Scene Layer |
+| -------------- | ---------------------------- | ---------------------------- |  ---------------------------- | -------------------- |
+| Mesh-pyramids  | ![yes](images/checkmark.png) |           &nbsp;             |               &nbsp;           |            ![yes](images/checkmark.png)          |
+| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |            ![yes](images/checkmark.png)          |
+| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |         ![yes](images/checkmark.png)             |
+| Generalization | ![yes](images/checkmark.png) |             &nbsp;           |              &nbsp;           |          ![yes](images/checkmark.png)            |
 
 *Example Level of Detail generation methods based on Scene Layer type*
 

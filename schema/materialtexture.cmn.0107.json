@@ -6,7 +6,7 @@
   "properties": {
     "textureSetDefinitionId": {
       "type": "integer",
-      "description": "index in [layer.textureSetDefinitions](layer.md)"
+      "description": "index in [layer.textureSetDefinitions](3DSceneLayer.cmn.md)"
     },
     "texCoord": {
       "type": "integer",

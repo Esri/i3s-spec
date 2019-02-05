@@ -9,7 +9,7 @@ The vertex buffer description.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| position | [value](value.pcsl.md) | Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position. |
+| position | [value](value.pcsl.md) | Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `Float64` position. |
 
 ### Examples 
 
@@ -18,7 +18,7 @@ The vertex buffer description.
 ```json
  {
   "position": {
-    "valueType": "Float",
+    "valueType": "Float64",
     "valuesPerElement": 3
   }
 } 

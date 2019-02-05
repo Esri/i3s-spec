@@ -1,6 +1,6 @@
 # I3S point cloud scene layer: Attribute Statistics
 
-Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.
+Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range. By convention,  statistics are stored by attribute at `layers/0/statistics/{attribute_id}`
 
 ### Related:
 

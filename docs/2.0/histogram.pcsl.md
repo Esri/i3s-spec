@@ -11,7 +11,7 @@ The histogram of the point cloud scene layer. The bin size may be computed as (m
 | --- | --- | --- |
 | **minimum** | number | Minimum attribute value for the entire layer. |
 | **maximum** | number | Maximum attribute value for the entire layer. Maximum array size for stats.histo.counts is 256. |
-| **counts** | number[] | Count for the entire layer. |
+| **counts** | number[:256] | Count for the entire layer. |
 
 *Note: properties in **bold** are required*
 

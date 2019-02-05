@@ -27,13 +27,7 @@
     },
     "lodThreshold": {
       "type": "number",
-      "description": "This metric may be used as a threshold to split a parent node into its children. See [layer.store.index.lodSelectionMetricType](index.md)"
-    },
-    "effectiveArea": {
-      "type": "number"
-    },
-    "pointCount": {
-      "type": "number"
+      "description": "This metric may be used as a threshold to split a parent node into its children. See [layer.store.index.lodSelectionMetricType](index.pcsl.md)"
     }
   },
   "required": [

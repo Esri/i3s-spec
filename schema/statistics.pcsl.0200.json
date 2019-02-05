@@ -3,7 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "related":  "layer.pcsl.2000.json",
-  "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",
+  "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range. By convention,  statistics are stored by attribute at `layers/0/statistics/{attribute_id}`",
   "properties": {
     "attribute": {
       "type": "string",

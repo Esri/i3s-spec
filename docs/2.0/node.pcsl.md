@@ -14,9 +14,7 @@ A single bounding volume hierarchy node
 | **childCount** | integer | Number of children for this node. Value is 0 if node is a leaf node. |
 | vertexCount | integer | Number of points for this node. |
 | **obb** | [obb](obb.cmn.md) | Oriented bounding boxes (OBB) are the only supported bounding volumes. |
-| lodThreshold | number | This metric may be used as a threshold to split a parent node into its children. See [layer.store.index.lodSelectionMetricType](index.md) |
-| effectiveArea | number |  |
-| pointCount | number |  |
+| lodThreshold | number | This metric may be used as a threshold to split a parent node into its children. See [layer.store.index.lodSelectionMetricType](index.pcsl.md) |
 
 *Note: properties in **bold** are required*
 

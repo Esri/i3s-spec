@@ -8,16 +8,17 @@ There is a set of REST resources also defined in the I3S format specification th
 
 Mandatory:
 
-- [3dSceneServiceInfo](Scene-Service#3dSceneServiceInfo) (JSON)
-- [3dSceneLayerInfo](Scene-Service#3dSceneLayerInfo)  (JSON)
-- [3dNodeIndexDocument](Scene-Service#3dNodeIndexDocument) (JSON)
-- [SharedResources](Scene-Service#SharedResources) (JSON)
-- [GeometryData](Scene-Service#GeometryData) (Binary)
-- [TextureData](Scene-Service#TextureData)  (Binary)
+- [3dSceneServiceInfo](../docs/1.6/SceneServiceInfo.md) (JSON)
+- [3dSceneLayerInfo](../format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#class-3dSceneLayerInfo)  (JSON)
+- [3dNodeIndexDocument](../format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#3dNodeIndexDocument) (JSON)
+- [SharedResources](../format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#shared-resources) (JSON)
+- [GeometryData](../format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#geometry) (Binary)
+- [TextureData](../format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#textures)  (Binary)
+
 
 Optional:
 
-- [FeatureData](Scene-Service#FeatureData) (JSON) (optional for Mesh-Pyramids profile)
+- [FeatureData](../format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#FeatureData) (JSON) (optional for Mesh-Pyramids profile)
 
 The schema of the individual endpoints is documented in the <a href="../format/Indexed 3d Scene Layer Format Specification.md#_6">JSON Resources Schema and Documentation of the I3S Format specification</a>. This is the REST API for retrieval of these resources:
 

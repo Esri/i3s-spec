@@ -49,7 +49,7 @@ The schema of the individual endpoints is documented in the [JSON Resources Sche
 - *URL Pattern*: ```<layer-url >/nodes/<node-id>```
 - *Method*: ```GET```
 - *Example Service*: [http://3dcities.maps.arcgis.com/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0](http://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0)
-- *Returns*: A file describing a single node in the spatial index, with links to all associated resources such as [FeatureData](docs/1.6/featureData.cmn.md), textures, geometry and [SharedResources](../docs/1.6/sharedResource.cmn.md).
+- *Returns*: A file describing a single node in the spatial index, with links to all associated resources such as [FeatureData](../docs/1.6/featureData.cmn.md), textures, geometry and [SharedResources](../docs/1.6/sharedResource.cmn.md).
 
 ### SharedResources
 

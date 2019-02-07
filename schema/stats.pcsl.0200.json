@@ -6,11 +6,11 @@
   "properties": {
     "min": {
       "type": "number",
-      "description": "Minimum attribute value for the entire layer."
+      "description": "(Conservative) minimum attribute value for the entire layer."
     },
     "max": {
       "type": "number",
-      "description": "Maximum attribute value for the entire layer."
+      "description": "(Conservative) maximum attribute value for the entire layer."
     },
     "count": {
       "type": "number",

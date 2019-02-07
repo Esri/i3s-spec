@@ -38,7 +38,7 @@ Describes storage for the layer.
   "index": {
     "nodeVersion": 1,
     "boundingVolumeType": "obb",
-    "nodePerIndexBlock": 64,
+    "nodesPerPage": 64,
     "lodSelectionMetricType": "density-threshold"
   },
   "defaultGeometrySchema": {
@@ -48,7 +48,7 @@ Describes storage for the layer.
     "encoding": "lepcc-xyz",
     "vertexAttributes": {
       "position": {
-        "valueType": "Float",
+        "valueType": "Float64",
         "valuesPerElement": 3
       }
     },

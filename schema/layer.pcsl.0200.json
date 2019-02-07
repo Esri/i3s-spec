@@ -89,12 +89,6 @@
       "description": "An object containing elevation information.",
       "$ref": "elevationInfo.pcsl.0200.json"
     },
-    "sourceHRef": {
-      "type": "string"
-    },
-    "statsHRef": {
-      "type": "string"
-    },
     "fields": {
       "type": "array",
       "items": {

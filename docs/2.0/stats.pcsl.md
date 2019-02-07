@@ -9,8 +9,8 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **min** | number | Minimum attribute value for the entire layer. |
-| **max** | number | Maximum attribute value for the entire layer. |
+| **min** | number | (Conservative) minimum attribute value for the entire layer. |
+| **max** | number | (Conservative) maximum attribute value for the entire layer. |
 | **count** | number | Count for the entire layer. |
 | sum | number | Sum of the attribute values over the entire layer. |
 | avg | number | Representing average or mean value. For example, sum/count. |

@@ -55,8 +55,8 @@ The following API methods are available for point cloud scene layer:
 
 |Method|Example|
 |------|-------|
-|To query SceneLayer document|http://my.server.com/layers/{layerId}|
-|To query attribute, statistics, documents|http://my.server.com/layers/{layerId}/statistics/{AttribKey}|
-|To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} 
-|To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 
-|To query  Attribute  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key 
+|To query SceneLayer document|http://my.server.com/layers/0|
+|To query attribute, statistics, documents|http://my.server.com/layers/0/statistics/{AttribKey}|
+|To query  NodePage  document|http://my.server.com/layers/0/nodepages/{firstNodeIdInPage} 
+|To query  Geometry  Buffer|http://my.server.com/layers/0/nodes/{resourceID}/geometries/0 
+|To query  Attribute  Buffer|http://my.server.com/layers/0/nodes/{resourceID}/attributes/{AttribKey}  _Note:  {AttribKey}  is listed in  `layer.attributeStorageInfo[].key`_ 

@@ -6,16 +6,16 @@
     "properties": {
         "valueType": {
             "type": "string",
-            "enum": [
-                "Int8",
-                "UInt8",
-                "Int16",
-                "UInt16",
-                "Int32",
-                "UInt32",
-                "Float",
-                "Double"
-            ],
+          "enum": [
+            "Int8",
+            "UInt8",
+            "Int16",
+            "UInt16",
+            "Int32",
+            "UInt32",
+            "Float32",
+            "Float64"
+          ],
             "description": "Type of the attribute values after decompression, if applicable. Please note that `string` is not supported for point cloud scene layer attributes."
         },
         "valuesPerElement": {

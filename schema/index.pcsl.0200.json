@@ -8,7 +8,7 @@
       "type": "integer",
       "description": "The version of the individual nodes format."
     },
-    "nodePerIndexBlock": {
+    "nodesPerPage": {
       "type": "integer",
       "description": "The page size describes the number of nodes per paged index document. 64 is currently expected."
     },
@@ -38,7 +38,7 @@
   },
   "required": [
     "nodeVersion",
-    "nodePerIndexBlock"
+    "nodesPerPage"
   ],
   "additionalProperties": false,
   "esriDocumentation": {
@@ -48,7 +48,7 @@
         "code": {
           "nodeVersion": 1,
           "boundingVolumeType": "obb",
-          "nodePerIndexBlock": 64,
+          "nodesPerPage": 64,
           "lodSelectionMetricType": "density-threshold"
         }
       }

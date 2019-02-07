@@ -25,7 +25,7 @@
                 "enum": [
                     "PerAttributeArray"
                 ],
-                "description": "This property is currently IGNORED for point cloud scene layer since it only conatains geometry position and not the vertex attributes."
+                "description": "This property is currently **ignored* for point cloud scene layer since it only contains geometry position without vertex attributes."
             },
             "encoding": {
                 "type": "string",
@@ -70,7 +70,7 @@
                         "encoding": "lepcc-xyz",
                         "vertexAttributes": {
                             "position": {
-                                "valueType": "Float",
+                                "valueType": "Float64",
                                 "valuesPerElement": 3
                             }
                         },

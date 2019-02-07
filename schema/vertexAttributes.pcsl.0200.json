@@ -3,10 +3,10 @@
     "type": "object",
     "description": "The vertex buffer description.",
     "properties": {
-        "position": {
-            "$ref": "value.pcsl.0200.json",
-            "description": "Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `double` position."
-        }
+      "position": {
+        "$ref": "value.pcsl.0200.json",
+        "description": "Only LEPCC compressed (X,Y,Z) is supported. Decompressed data will be absolute `Float64` position."
+      }
     },
     "additionalProperties": false,
     "esriDocumentation": {
@@ -14,10 +14,10 @@
             {
                 "title": "vertexAttributes",
                 "code": {
-                    "position": {
-                        "valueType": "Float",
-                        "valuesPerElement": 3
-                    }
+                  "position": {
+                    "valueType": "Float64",
+                    "valuesPerElement": 3
+                  }
                 }
             }
         ]

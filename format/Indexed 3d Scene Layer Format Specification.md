@@ -2,7 +2,7 @@
 
 Version 1.6, January 02, 2018
 
-*Contributors:* Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang
+*Contributors:* Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang
 
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed
 
@@ -112,8 +112,8 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 * [3D Objects](../docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, 3D models in various formats)
 * [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) (e.g. integrated surface including vegetation, buildings and roads)
 * [Points](../docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs)
-* **\*New in 2.0\*** [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data)
-* **\*New in 1.6\*** [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
+* [Point Clouds](../docs/2.0/pcsl_README.md) (e.g. lidar data)
+* [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 Layer types with the same profile can be leveraged to support different use cases.  Some layer types represent features using an identity instead of a geospatial field (e.g. mesh or cloud).  Other layer types support attribute storage, either as feature attributes or individual geometry elements.  Here are a few examples:
 
@@ -127,14 +127,7 @@ Layer types with the same profile can be leveraged to support different use case
 
 *Examples of 3D Scene Layer Layer Types and Layer Profiles*
 
-### What's New
-
-The 1.6 spec update includes I3S support for the [Building Scene Layer](../docs/1.6/BSL_ReadMe.md).
-
-The 2.0 spec update includes I3S support for [Point Clouds](../docs/2.0/pcsl_README.md).
-
-
-### <a name="coordinate-reference-systems"> Coordinate Reference Systems
+### <a name="coordinate-reference-systems"> Coordinate Reference Systems</a>
 
 The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be selected with the following considerations:
 
@@ -424,7 +417,7 @@ A numeric attribute resource is a singe, one dimensional array.  A string attrib
 
 The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
 
-Lets take a look at a sample scene service layer and its field types ([see the figure below](images/figure-14.png)). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
+Lets take a look at a sample scene service layer and its field types see the figure below. This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
 
 <div>
 <img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in the figure and the _attributeStorageInfo_ array in the figure is derived from the attribute value of the above feature class.">
@@ -491,9 +484,11 @@ For service examples, see [scene service](../service/SceneService.md).
 
 The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class [Class DrawingInfo](../docs/1.6/drawingInfo.cmn.md)
 
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md).
+For more details regarding Integrated Mesh, 3D objects, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.cmn.md).
 
-For more details regarding point scene layer, see [Layer description](../docs/2.0/layer.pcsl.md).
+For more details regarding point, see [3D Scene Layer Info](../docs/1.6/3DSceneLayer.psl.md).
+
+For more details regarding point cloud, see [Layer description](../docs/2.0/layer.pcsl.md).
 
 ### <a name="class-store">Class Store</a>
 
@@ -523,7 +518,7 @@ The Field class is used to provide schema information for a 3dSceneLayer.
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [class field](../docs/1.6/field.cmn.md).
 
-For more details regarding point scene layer, see the [class field](../docs/1.6/field.pcsl.md).
+For more details regarding point scene layer, see the [class field](../docs/2.0/field.cmn.md).
 
 ### <a name="class-attributestorageinfo">Class AttributeStorageInfo</a>
 
@@ -630,7 +625,7 @@ For 3D Objects and Point Scene Layers, see [feature attribute](../docs/1.6/featu
 
 This is the common container class for all types of geometry definitions used in I3S.
 
-For more details Integrated mesh and 3D objects scene layer, ee [geometry](../docs/1.6/geometry.cmn.md).
+For more details Integrated mesh and 3D objects scene layer, see [geometry](../docs/1.6/geometry.cmn.md).
 
 ### <a name="class-geometryparams"></a> Class GeometryParams
 
@@ -668,7 +663,7 @@ Shared Resources are models or textures stored as a JSON file that can be shared
 
 Shared resources include the [material definition](../docs/1.6/materialDefinition.cmn.md) and [texture defintion](../docs/1.6/textureDefinition.cmn.md) for the resource regarding Integrated mesh and 3D objects scene layer.
 
-For more details regarding Integrated mesh and 3D objects scene layer, see [shared resources](../docs/1.6/sharedResources.cmn.md).
+For more details regarding Integrated mesh and 3D objects scene layer, see [shared resources](../docs/1.6/sharedResource.cmn.md).
 
 ### <a name="class-component"></a> Class Component
 

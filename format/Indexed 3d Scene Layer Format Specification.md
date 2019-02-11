@@ -517,7 +517,7 @@ The Field class is used to provide schema information for a 3dSceneLayer.
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [class field](../docs/1.6/field.cmn.md).
 
-For more details regarding point scene layer, see the [class field](../docs/2.0/field.cmn.md).
+For more details regarding point cloud scene layer, see the [class field](../docs/2.0/field.cmn.md).
 
 ### <a name="class-attributestorageinfo">Class AttributeStorageInfo</a>
 

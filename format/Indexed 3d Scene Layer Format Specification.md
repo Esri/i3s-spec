@@ -416,7 +416,7 @@ A numeric attribute resource is a singe, one dimensional array.  A string attrib
 
 The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
 
-Lets take a look at a sample scene service layer and its field types see the figure below. This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
+Lets take a look at a sample scene service layer and its field types (see the figure below). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
 
 <div>
 <img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in the figure and the _attributeStorageInfo_ array in the figure is derived from the attribute value of the above feature class.">

@@ -16,9 +16,9 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "headerValue.cmn.0106.json",
-                "description": "Declares the headers of the binary attribute data."
-            }
+                "$ref": "headerValue.cmn.0106.json"
+            },
+            "description": "Declares the headers of the binary attribute data."
         },
         "ordering": {
             "type": "array",

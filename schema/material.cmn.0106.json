@@ -21,21 +21,21 @@
       "items": {
         "type": "boolean"
       },
-      "description": "Indicates whether this Material uses per-vertex regions. Defaults to false."
+      "description": "Indicates whether this material uses per-vertex regions. Defaults to false."
     },
     "params.vertexColors": {
       "type": "array",
       "items": {
         "type": "boolean"
       },
-      "description": "Indicates whether this Material use Vertex Colors. Defaults to false."
+      "description": "Indicates whether this material use vertex colors. Defaults to false."
     },
     "params.useVertexColorAlpha": {
       "type": "array",
       "items": {
         "type": "boolean"
       },
-      "description": "Indicates whether Vertex Colors also contain a transparency channel. Defaults to false."
+      "description": "Indicates whether vertex colors also contain a transparency channel. Defaults to false."
     },
     "params.transparency": {
       "type": "number",
@@ -43,32 +43,32 @@
     },
     "params.reflectivity": {
       "type": "number",
-      "description": "Indicates reflectivity of this Material."
+      "description": "Indicates reflectivity of this material."
     },
     "params.shininess": {
       "type": "number",
-      "description": "Indicates shininess of this Material."
+      "description": "Indicates shininess of this material."
     },
     "params.ambient": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Ambient color of this Material."
+      "description": "Ambient color of this material."
     },
     "params.diffuse": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Diffuse color of this Material."
+      "description": "Diffuse color of this material."
     },
     "params.specular": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Specular color of this Material."
+      "description": "Specular color of this material."
     },
     "params.renderMode": {
       "type": "string",

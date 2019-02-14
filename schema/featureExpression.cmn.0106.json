@@ -5,7 +5,8 @@
     "description": "Deprecated with 1.8, use featureExpressionInfo instead. {\"value\":0} ignores geometry z-values.",
     "properties": {
         "value": {
-            "type": "number"
+            "type": "number",
+            "description": "Value of the feature expression."
         }
     },
     "additionalProperties": false

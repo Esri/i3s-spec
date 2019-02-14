@@ -6,11 +6,11 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Text representation of the domain value"
+      "description": "Text representation of the domain value."
     },
     "code": {
       "type": [ "string", "number" ],
-      "description": "coded value (i.e. field value)"
+      "description": "Coded value (i.e. field value)."
     }
   },
   "required": [

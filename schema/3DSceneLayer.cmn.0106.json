@@ -2,7 +2,7 @@
     "title": "3DSceneLayerInfo [Common Profiles]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
+    "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.",
     "properties": {
         "id": {
             "type": "integer",
@@ -43,9 +43,6 @@
             "description": "The time of the last update",
             "$ref": "serviceUpdateTimeStamp.cmn.0106.json"
         },
-        "featureidMappedFromFS": {
-            "type": "number"
-        },
         "alias": {
             "type": "string",
             "description": "The display alias to be used for this layer."
@@ -78,7 +75,7 @@
         },
         "ZFactor": {
             "type": "number",
-            "description": "should we not document this or is it still needed?"
+            "description": "ZFactor to define conversion factor for elevation unit."
         },
         "cachedDrawingInfo": {
             "type": "object",

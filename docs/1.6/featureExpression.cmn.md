@@ -9,5 +9,5 @@ Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geom
 
 | Property | Type | Description |
 | --- | --- | --- |
-| value | number |  |
+| value | number | Value of the feature expression. |
 

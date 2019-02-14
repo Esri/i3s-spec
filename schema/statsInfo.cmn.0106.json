@@ -6,7 +6,7 @@
   "properties": {
     "totalValuesCount": {
       "type": "number",
-      "description": "Represents the count of the value"
+      "description": "Represents the count of the value."
     },
     "min": {
       "type": "number",

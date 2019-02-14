@@ -11,7 +11,7 @@ An object that describes the structure of the binary attribute data resource of 
 | --- | --- | --- |
 | **key** | string | The unique field identifier key. |
 | **name** | string | The name of the field. |
-| **header** | [headerValue](headerValue.cmn.md)[] |  |
+| **header** | [headerValue](headerValue.cmn.md)[] | Declares the headers of the binary attribute data. |
 | ordering | string[] | <div>Possible values for each array string:<ul><li>`attributeByteCounts`: Should only be present when working with string data types.</li><li>`attributeValues`: Should always be present. </li><li>`ObjectIds`</li></ul></div> |
 | attributeValues | [value](value.cmn.md) | Represents the description for value encoding. For example: scalar or vector encoding. |
 | attributeByteCounts | [value](value.cmn.md) | Represents the description for value encoding. For example: scalar or vector encoding. |

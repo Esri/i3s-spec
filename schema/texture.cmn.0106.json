@@ -39,9 +39,9 @@
     "channels": {
       "type": "array",
       "items": {
-        "type": "string",
+        "type": "string"
+      },
         "description": "Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement."
-      }
     }
   },
   "additionalProperties": false,

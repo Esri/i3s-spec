@@ -2,7 +2,7 @@
     "title": "3DSceneLayerInfo [Point Profile]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.",
+    "description": "The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.",
     "$include": "3DSceneLayer.cmn.0106.json",
     "properties": {
         "layerType": {
@@ -10,7 +10,7 @@
             "enum": [
                 "Point"
             ],
-            "description": "The user-visible layer type"
+            "description": "The user-visible layer type."
         },
         "store": {
             "type": "object",

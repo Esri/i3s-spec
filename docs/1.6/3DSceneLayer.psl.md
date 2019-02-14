@@ -1,6 +1,6 @@
 # 3DSceneLayerInfo [Point Profile]
 
-The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.
+The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.
 
 ### Properties
 
@@ -8,18 +8,17 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 | --- | --- | --- |
 | **id** | integer | Unique numeric ID of the layer. |
 | href | string | The relative URL to the 3DSceneLayerResource. Only present as part of the SceneServiceInfo resource. |
-| **layerType** | string | The user-visible layer type<div>Must be:<ul><li>`Point`</li></ul></div> |
+| **layerType** | string | The user-visible layer type.<div>Must be:<ul><li>`Point`</li></ul></div> |
 | spatialReference | [spatialReference](spatialReference.cmn.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
 | heightModelInfo | [heightModelInfo](heightModelInfo.cmn.md) | Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content. |
 | **version** | string | The ID of the last update session in which any resource belonging to this layer has been updated. |
 | name | string | The name of this layer. |
 | serviceUpdateTimeStamp | [serviceUpdateTimeStamp](serviceUpdateTimeStamp.cmn.md) | The time of the last update |
-| featureidMappedFromFS | number |  |
 | alias | string | The display alias to be used for this layer. |
 | description | string | Description string for this layer. |
 | copyrightText | string | Copyright and usage information for the data in this layer. |
 | **capabilities** | string[] | Capabilities supported by this layer.<div>Possible values for each array string:<ul><li>`View`: View is supported.</li><li>`Query`: Query is supported.</li><li>`Edit`: Edit is defined.</li></ul></div> |
-| ZFactor | number | should we not document this or is it still needed? |
+| ZFactor | number | ZFactor to define conversion factor for elevation unit. |
 | cachedDrawingInfo | [cachedDrawingInfo](cachedDrawingInfo.cmn.md) | Indicates if any stylization information represented as drawingInfo is captured as part of the binary mesh representation.  This helps provide optimal client-side access. Currently the color component of the drawingInfo is supported. |
 | drawingInfo | [drawingInfo](drawingInfo.cmn.md) | An object containing drawing information. |
 | elevationInfo | [elevationInfo](elevationInfo.cmn.md) | An object containing elevation drawing information. If absent, any content of the scene layer is drawn at its z coordinate. |

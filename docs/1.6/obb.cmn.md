@@ -1,10 +1,10 @@
-# I3S Point Cloud Scene Layer: Oriented Bounding Boxes
+# Oriented Bounding Boxes
 
-Oriented bounding boxes
+Oriented bounding boxes.
 
 ### Related:
 
-[cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md), [cmn::nodeReference](nodeReference.cmn.md)
+[cmn::nodeReference](nodeReference.cmn.md), [cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
 ### Properties
 
 | Property | Type | Description |

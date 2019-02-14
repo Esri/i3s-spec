@@ -15,6 +15,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 
 - [Layer description](3DSceneLayer.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStorageInfo.cmn.md)
+- [Node Index Document](3DSNodeIndexDocument.cmn.md)
 - [Statistics](statsInfo.cmn.md)
 
 *Example of 3DObject layer structure*

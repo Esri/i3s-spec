@@ -9,8 +9,8 @@ See [a quick tour of attribute domains](http://desktop.arcgis.com/en/arcmap/late
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **name** | string | Text representation of the domain value |
-| **code** | string, number | coded value (i.e. field value) |
+| **name** | string | Text representation of the domain value. |
+| **code** | string, number | Coded value (i.e. field value). |
 
 *Note: properties in **bold** are required*
 

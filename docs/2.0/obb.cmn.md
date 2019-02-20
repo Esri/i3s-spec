@@ -1,6 +1,6 @@
-# I3S Point Cloud Scene Layer: Oriented Bounding Boxes
+# Oriented Bounding Boxes
 
-Oriented bounding boxes
+Oriented bounding boxes.
 
 ### Related:
 

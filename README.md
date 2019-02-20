@@ -35,7 +35,7 @@ For the purpose of encouraging community adoption and feedback, the I3S format i
 
 ## What's New?
 
-Each I3S profile type evolves independently to allow new functionality to be added frequently without effecting already existing scene layer types. 
+Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 
 
 ### Version 2.0
 

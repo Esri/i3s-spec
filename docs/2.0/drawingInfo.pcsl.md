@@ -9,7 +9,7 @@ The drawingInfo object contains drawing information for a point cloud scene laye
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **renderer** |  | An object defining the symbology for the layer. [See more](https://developers.arcgis.com/web-scene-specification/objects/pointCloudRenderers/) information on supported renderer types in ArcGIS clients. |
+| **renderer** |  | An object defining the symbology for the layer. [See more](https://developers.arcgis.com/web-scene-specification/objects/pointCloudRenderers/) information about supported renderer types in ArcGIS clients. |
 
 *Note: properties in **bold** are required*
 

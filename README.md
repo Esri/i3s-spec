@@ -12,11 +12,11 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 The I3S format is declarative and extendable, and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
 
-- [3D objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- [integrated meshes](docs/1.6/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
-- [points](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [point clouds](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
-- [building scene layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
+- [3D Objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
+- [Integrated Meshe](docs/1.6/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
+- [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
+- [Point cloud](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
+- [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
 The specification of the [indexed 3D scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#scene-layer-packages), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.
@@ -98,7 +98,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>First Released</td>
   </tr>
   <tr>
-    <td>3D Objects</td>
+    <td>3D Object</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>10.5</td>
@@ -107,7 +107,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>1.4</td>
   </tr>
   <tr>
-    <td>Integrated Meshes</td>
+    <td>Integrated Mesh</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>10.5</td>
@@ -116,7 +116,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>1.4/2.1*</td>
   </tr>
   <tr>
-    <td>Points</td>
+    <td>Point</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>10.5</td>
@@ -125,7 +125,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>1.4</td>
   </tr>
   <tr>
-    <td>Points Clouds</td>
+    <td>Point Cloud</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>10.5.1</td>
@@ -162,7 +162,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>First Released</td>
   </tr>
   <tr>
-    <td>3D Objects</td>
+    <td>3D Object</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
@@ -173,7 +173,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>100.2</td>
   </tr>
   <tr>
-    <td>Integrated Meshes</td>
+    <td>Integrated Mesh</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
@@ -184,7 +184,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>100.2</td>
   </tr>
   <tr>
-    <td>Points</td>
+    <td>Point</td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
@@ -195,7 +195,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
   <tr>
-    <td>Points Clouds</td>
+    <td>Point Cloud</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
@@ -217,6 +217,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
 </table>
+
 
 
 <table>
@@ -234,7 +235,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>First Released</td>
   </tr>
   <tr>
-    <td>3D Objects</td>
+    <td>3D Object</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>1.6</td>
@@ -243,7 +244,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>2017.1</td>
  </tr>
   <tr>
-    <td>Integrated Meshes</td>
+    <td>Integrated Mesh</td>
     <td></td>
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>1.6</td>
@@ -252,7 +253,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
   <tr>
-    <td>Points</td>
+    <td>Point</td>
     <td></td>
     <td></td>
     <td></td>
@@ -261,7 +262,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
   <tr>
-    <td>Points Clouds</td>
+    <td>Point Cloud</td>
     <td></td>
     <td></td>
     <td></td>
@@ -279,6 +280,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
 </table>
+
 
 
 ## Contributing

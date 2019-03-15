@@ -1,7 +1,7 @@
 Scene Layers: Service and Package Standard
 ===============================================
 
-![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")[http://www.arcgis.com](http://www.arcgis.com)
+![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")
 
 This repository hosts the standard for scene layers.  Scene layers are containers for large amounts of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 

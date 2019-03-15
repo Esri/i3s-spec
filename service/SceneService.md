@@ -42,7 +42,7 @@ The schema of the individual endpoints is documented in the [JSON Resources Sche
 - *URL Pattern*: ```<scene-server-url>/layers/<layer-id>```
 - *Method*: ```GET```
 - *Example Service*: [http://3dcities.maps.arcgis.com/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0](http://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0)
-- *Returns*: Detailed information about a single layer, including symbology, field schema, and profile/store metadata, with a link to the root [3dNodeIndexDocument](../docs/1.6/3DSNodeIndexDocument.cmn.md).
+- *Returns*: Detailed information about a single layer, including symbology, field schema, and profile/store metadata, with a link to the root [3dNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md).
 
 ### 3dNodeIndexDocument
 

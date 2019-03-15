@@ -26,7 +26,7 @@
         },
         {
           "path": "3dNodeIndexDocument.json.gz",
-          "schema": "3DSNodeIndexDocument.cmn.0106.json"
+          "schema": "3DNodeIndexDocument.cmn.0106.json"
         },
         {
           "path": "0.json.gz",

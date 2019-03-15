@@ -1,6 +1,6 @@
-# Oriented Bounding Boxes
+# Oriented Bounding Box
 
-Oriented bounding boxes.
+Oriented bounding box.
 
 ### Related:
 
@@ -15,9 +15,9 @@ Oriented bounding boxes.
 
 *Note: properties in **bold** are required*
 
-### Examples 
+### Examples
 
-#### Example: Global scene (WSG84) oriented-bounding box 
+#### Example: Global scene (WSG84) oriented-bounding box
 
 ```json
  {
@@ -37,6 +37,5 @@ Oriented bounding boxes.
     -0.118217,
     0.897622
   ]
-} 
+}
 ```
-

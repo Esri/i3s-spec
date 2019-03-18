@@ -11,7 +11,7 @@ The point scene layer is structured into a tree of multiple JSON files. Besides 
 
 - [Layer description](3DSceneLayer.psl.md)
 - Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStorageInfo.cmn.md)
-- [Node Index Document](3DSNodeIndexDocument.cmn.md)
+- [Node Index Document](3DNodeIndexDocument.cmn.md)
 - [Statistics](statisticsInfo.cmn.md)
 
 *Example of point scene layer structure*

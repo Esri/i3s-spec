@@ -200,7 +200,7 @@ Each node includes the set of information covered by the nodes below it and is p
 
 The I3S standard models node information using a set of resources, including, `NodeIndexDocument`, `FeatureData`, `geometry`, `attribures`, and `SharedResource`.  
 
-- [Node Index Document](../docs/1.6/3DSNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
+- [Node Index Document](../docs/1.6/3DNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
 - [Feature Data](../docs/1.6/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference.
 - [Geometry](../docs/1.6/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature and  geometry segments.
 - [Attribute](../docs/1.6/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
@@ -588,7 +588,7 @@ The 3dNodeIndexDocument file describes a single index node within a store.  It i
 
 Depending on the geometry and level of detail, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors to help the client understand the overall distribution of the data.
 
-For more details Integrated Mesh, 3D objects and point scene layer, see [3D Node Index Document](../docs/1.6/3DSNodeIndexDocument.cmn.md).
+For more details Integrated Mesh, 3D objects and point scene layer, see [3D Node Index Document](../docs/1.6/3DNodeIndexDocument.cmn.md).
 
 Point cloud scene layer define indexed page nodes, see [page node](../docs/2.0/nodepage.pcsl.md) for more details.
 

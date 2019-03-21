@@ -287,7 +287,7 @@ You are invited to fork this repository and to submit pull requests with ideas f
 
 ## License for indexed 3D scene format and REST endpoint specification
 
-Copyright 2015 - 2017 Esri
+Copyright &copy; 2015 - 2017 Esri
 
 The specification is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International Public License](https://creativecommons.org/licenses/by-nd/4.0/legalcode).
 You can implement the specification in services, clients or processing tools without restrictions.
@@ -316,6 +316,3 @@ Version 2.0 - present point cloud scene layer (01/01/2017 to present) of this sp
 ## License for JSON resources, validator, and examples
 
 The supplementary resources may be updated without notice and are provided for use under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license and may be used, under the terms of that license, at your own risk.
-
-[](Esri Tags: I3S, Indexed 3D Scene Layer, Scene Layer, ArcGIS WebScene, Mesh-Pyramids, ArcGISOnline Scene Service, ArcGISServer, Scene Layer Package, SceneLayer, 3D Object, Point, IntegreatedMesh, PointCloud)
-[](Esri Language: JavaScript)

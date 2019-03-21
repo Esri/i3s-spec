@@ -1,6 +1,6 @@
 # Point Scene Layer
 
-Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings.  Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
+Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings.  Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers. An example schema can be found below and a point scene layer can be downloaded from [this story map](<http://3dcities.maps.arcgis.com/apps/MapSeries/index.html?appid=444de19a88764d58885ea8e211e96ae8>).
 
 *Example of a point scene layer*
 

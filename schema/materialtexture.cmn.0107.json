@@ -10,7 +10,7 @@
     },
     "texCoord": {
       "type": "integer",
-      "description": "Set if UV coordinates vertex attribute to use. Must `0` or `1`. "
+      "description": "Set of UV coordinates use (vertex attribute). Must be `0`. Default=`0` "
     },
     "factor": {
       "type": "number",

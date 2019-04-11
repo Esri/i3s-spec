@@ -8,10 +8,6 @@
       "type": "integer",
       "description": "index in [layer.textureSetDefinitions](3DSceneLayer.cmn.md)"
     },
-    "texCoord": {
-      "type": "integer",
-      "description": "Set if UV coordinates vertex attribute to use. Must `0` or `1`. "
-    },
     "factor": {
       "type": "number",
       "description": "_normal texture_: scalar multiplier applied to each normal vector of the normal texture. For _occlusion texture_,scalar multiplier controlling the amount of occlusion applied. Default=`1`"

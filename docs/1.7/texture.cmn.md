@@ -4,7 +4,7 @@ A Texture is a set of images, with some parameters specific to the texture/uv ma
 
 ### Related:
 
-[cmn::store](store.cmn.md), [psl::store](store.psl.md)
+[psl::store](store.psl.md), [cmn::store](store.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -13,7 +13,7 @@ A Texture is a set of images, with some parameters specific to the texture/uv ma
 | wrap | string[] | <div>Possible values for each array string:<ul><li>`none`</li><li>`repeat`</li><li>`mirror`</li></ul></div> |
 | atlas | boolean | True if the Map represents a texture atlas. |
 | uvSet | string | The name of the UV set to be used as texture coordinates. |
-| channels | string[] |  |
+| channels | string[] | Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement. |
 
 ### Examples 
 

@@ -4,7 +4,7 @@ The materialDefinition describes how a feature or a set of features is to be ren
 
 ### Related:
 
-[cmn::store](store.cmn.md), [psl::store](store.psl.md)
+[psl::store](store.psl.md), [cmn::store](store.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -12,15 +12,15 @@ The materialDefinition describes how a feature or a set of features is to be ren
 | name | string | A name for the material as assigned in the creating application. |
 | type | string | Indicates the material type, chosen from the supported values {standard, water, billboard, leafcard, reference}. |
 | $ref | string | JSONPointer - The href that resolves to the shared resource bundle in which the material definition is contained. |
-| params.vertexRegions | boolean[] | Indicates whether this Material uses per-vertex regions. Defaults to false. |
-| params.vertexColors | boolean[] | Indicates whether this Material use Vertex Colors. Defaults to false. |
-| params.useVertexColorAlpha | boolean[] | Indicates whether Vertex Colors also contain a transparency channel. Defaults to false. |
+| params.vertexRegions | boolean[] | Indicates whether this material uses per-vertex regions. Defaults to false. |
+| params.vertexColors | boolean[] | Indicates whether this material use vertex colors. Defaults to false. |
+| params.useVertexColorAlpha | boolean[] | Indicates whether vertex colors also contain a transparency channel. Defaults to false. |
 | params.transparency | number | Indicates the transparency of the material; 0 = opaque, 1 = fully transparent. |
-| params.reflectivity | number | Indicates reflectivity of this Material. |
-| params.shininess | number | Indicates shininess of this Material. |
-| params.ambient | number[] | Ambient color of this Material. |
-| params.diffuse | number[] | Diffuse color of this Material. |
-| params.specular | number[] | Specular color of this Material. |
+| params.reflectivity | number | Indicates reflectivity of this material. |
+| params.shininess | number | Indicates shininess of this material. |
+| params.ambient | number[] | Ambient color of this material. |
+| params.diffuse | number[] | Diffuse color of this material. |
+| params.specular | number[] | Specular color of this material. |
 | params.renderMode | string | Rendering mode, any one of {textured, solid, untextured, wireframe} |
 | params.castShadows | boolean | true if features with this material should cast shadows. |
 | params.receiveShadows | boolean | true if features with this material should receive shadows. |

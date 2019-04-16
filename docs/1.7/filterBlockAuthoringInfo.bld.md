@@ -9,7 +9,7 @@ The filter authoring info object contains metadata about the authoring process f
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **filterTypes** | [filterType](filterType.bld.md) | Array of defined filter types. Each filter type has an array of filter values. |
+| **filterTypes** | [filterType](filterType.bld.md)[] | Array of defined filter types. Each filter type has an array of filter values. |
 
 *Note: properties in **bold** are required*
 
@@ -18,6 +18,21 @@ The filter authoring info object contains metadata about the authoring process f
 #### Example: Building Scene Layer filter block authoring info 
 
 ```json
- None 
+ {
+  "filterTypes": [
+    {
+      "filterType": "BldgLevel",
+      "filterValues": [
+        "3"
+      ]
+    },
+    {
+      "filterType": "CreatedPhase",
+      "filterValues": [
+        "1"
+      ]
+    }
+  ]
+} 
 ```
 

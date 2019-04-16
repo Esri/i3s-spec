@@ -9,7 +9,7 @@ Contains statistics about each attribute. Statistics are useful to estimate attr
 
 | Property | Type | Description |
 | --- | --- | --- |
-| totalValuesCount | number | Represents the count of the value |
+| totalValuesCount | number | Represents the count of the value. |
 | min | number | Minimum attribute value for the entire layer. |
 | max | number | Maximum attribute value for the entire layer. |
 | count | number | Count for the entire layer. |

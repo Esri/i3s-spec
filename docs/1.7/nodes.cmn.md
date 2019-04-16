@@ -41,16 +41,21 @@
           10.9
         ]
       },
-      "meshes": [
-        {
-          "materialId": 0,
-          "geometryDefinitionId": 0,
-          "attributeDefinitionId": 0,
-          "resourceId": 478,
-          "vertexCount": 526,
-          "featureCount": 0
+      "mesh": {
+        "material": {
+          "definition": 0,
+          "resource": 6
+        },
+        "geometry": {
+          "definition": 0,
+          "resource": 6,
+          "vertexCount": 1092,
+          "featureCount": 7
+        },
+        "attribute": {
+          "resource": 6
         }
-      ]
+      }
     }
   ]
 } 

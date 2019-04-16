@@ -4,7 +4,7 @@ The I3S standard accommodates declaration of a vertical coordinate system that m
 
 ### Related:
 
-[psl::3DSceneLayer](3DSceneLayer.psl.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md), [bld::layer](layer.bld.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md), [bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |

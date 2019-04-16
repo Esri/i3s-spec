@@ -382,6 +382,7 @@ class Markdown_writer  :
             schema_doc.back_refs = list( set(schema_doc.back_refs + schema_doc.custom_related) )
             if len( schema_doc.back_refs ) > 0:
                 # print the related documents (i.e. navigation parents)
+                schema_doc.back_refs.sort(key=lambda x: x.name)
                 self.write_line( "### Related:\n" )
                 self.write_line( ", ".join( [ "[%s](%s)" %( x.name.split('.')[1] +'::'+x.name.split('.')[0], manifest.get_relative_output_path_from_schema_name(x.name, self.output_path).replace('\\','/') ) for x in schema_doc.back_refs ] ) )
             

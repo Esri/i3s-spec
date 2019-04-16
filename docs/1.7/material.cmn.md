@@ -4,7 +4,7 @@ The materialDefinition describes how a feature or a set of features is to be ren
 
 ### Related:
 
-[psl::store](store.psl.md), [cmn::store](store.cmn.md)
+[cmn::store](store.cmn.md), [psl::store](store.psl.md)
 ### Properties
 
 | Property | Type | Description |

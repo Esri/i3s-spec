@@ -70,11 +70,6 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 - Added backed `modelName`.
 - Added statistics
 
-**TBD**
-- Update portal item JSON with mapping between FeatureServer layer ids and BIM SL id !?
-
-
-
 ### Related:
 
 [bld::statsummary](statsummary.bld.md)

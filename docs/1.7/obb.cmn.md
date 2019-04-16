@@ -1,10 +1,11 @@
-# I3S Point Cloud Scene Layer: Oriented Bounding Boxes
+# I3S Point Cloud Scene Layer: Oriented Bounding Box
 
-Oriented bounding boxes
+Oriented Bounding Box
 
 ### Related:
 
 [cmn::3DNodeIndexDocument](3DNodeIndexDocument.cmn.md), [cmn::nodeReference](nodeReference.cmn.md), [cmn::node](node.cmn.md)
+
 ### Properties
 
 | Property | Type | Description |
@@ -15,9 +16,9 @@ Oriented bounding boxes
 
 *Note: properties in **bold** are required*
 
-### Examples 
+### Examples
 
-#### Example: Global scene (WSG84) oriented-bounding box 
+#### Example: Global scene (WSG84) oriented-bounding box
 
 ```json
  {
@@ -37,6 +38,6 @@ Oriented bounding boxes
     -0.118217,
     0.897622
   ]
-} 
+}
 ```
 

@@ -4,7 +4,7 @@ The defaultGeometry schema is used in stores where all ArrayBufferView geometry 
 
 ### Related:
 
-[psl::store](store.psl.md), [cmn::store](store.cmn.md)
+[cmn::store](store.cmn.md), [psl::store](store.psl.md)
 ### Properties
 
 | Property | Type | Description |

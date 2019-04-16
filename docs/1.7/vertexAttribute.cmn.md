@@ -4,7 +4,7 @@ VertexAttributes describe valid properties for a single vertex.
 
 ### Related:
 
-[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md), [cmn::vestedGeometryParams](vestedGeometryParams.cmn.md)
+[cmn::vestedGeometryParams](vestedGeometryParams.cmn.md), [cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md)
 ### Properties
 
 | Property | Type | Description |

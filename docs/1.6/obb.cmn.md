@@ -15,9 +15,9 @@ Oriented bounding box.
 
 *Note: properties in **bold** are required*
 
-### Examples
+### Examples 
 
-#### Example: Global scene (WSG84) oriented-bounding box
+#### Example: Global scene (WSG84) oriented-bounding box 
 
 ```json
  {
@@ -37,5 +37,6 @@ Oriented bounding box.
     -0.118217,
     0.897622
   ]
-}
+} 
 ```
+

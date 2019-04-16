@@ -223,6 +223,7 @@ class Schema_type :
                 obj = Dummy_type( self.manifest);
                 obj.name = related
                 self.custom_related.append( obj )
+            self.custom_related.sort()
         #print("Parsing type '%s' of type %s" % (self.name, self.json_type ) )
         if 'description' in dom :
             self.desc = dom['description']

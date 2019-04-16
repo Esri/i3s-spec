@@ -44,7 +44,7 @@
                   10.9
                 ]
               },
-              "meshes": [
+              "mesh": [
                 {
                   "materialId": 0,
                   "geometryDefinitionId": 0,

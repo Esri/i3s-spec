@@ -4,7 +4,7 @@ minimum bounding sphere.
 
 ### Related:
 
-[cmn::nodeReference](nodeReference.cmn.md), [cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
+[cmn::nodeReference](nodeReference.cmn.md), [cmn::3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)
 ### Properties
 
 | Property | Type | Description |

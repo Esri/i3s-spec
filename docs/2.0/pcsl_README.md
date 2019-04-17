@@ -6,6 +6,8 @@ Point cloud scene layers are scalable, which allows for efficiency when working 
 
 Point cloud scene layers also support caching attributes like RGB, Intensity, Flags, Class Code, Returns, User Data, Point Source ID, GPS Time, Scan Angle and Near Infrared.  This allows client applications to update the symbology as well as query point information.
 
+An example schema can be found below and a point cloud scene layer can be downloaded from [this story map](<http://3dcities.maps.arcgis.com/apps/MapSeries/index.html?appid=444de19a88764d58885ea8e211e96ae8>).
+
 *Example of point cloud rendering*
 
 ![Point Cloud Scene Layer](img/point-cloud-scene-layer.png)

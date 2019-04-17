@@ -1,6 +1,6 @@
 # 3D Object Scene Layer
 
-A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes and explicitly modeled in 3D.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.  
+A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes and explicitly modeled in 3D.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.  An example schema can be found below and a 3D object scene layer can be downloaded from [this story map](<http://3dcities.maps.arcgis.com/apps/MapSeries/index.html?appid=444de19a88764d58885ea8e211e96ae8>).
 
 *Realistic 3D Object Scene Layer with textures*
 
@@ -15,7 +15,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 
 - [Layer description](3DSceneLayer.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStorageInfo.cmn.md)
-- [Node Index Document](3DSNodeIndexDocument.cmn.md)
+- [Node Index Document](3DNodeIndexDocument.cmn.md)
 - [Statistics](statsInfo.cmn.md)
 
 *Example of 3DObject layer structure*

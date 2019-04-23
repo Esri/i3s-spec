@@ -1,6 +1,6 @@
 # 3D Object Scene Layer
 
-A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes and explicitly modeled in 3D.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.  An example schema can be found below and a 3D object scene layer can be downloaded from [this story map](<http://3dcities.maps.arcgis.com/apps/MapSeries/index.html?appid=444de19a88764d58885ea8e211e96ae8>).
+A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes and explicitly modeled in 3D.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.
 
 *Realistic 3D Object Scene Layer with textures*
 
@@ -26,13 +26,13 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
-	|  |  |  +--2 
+	|  |  |  +--2
 	|  |  |  +--4
 	|  |  |  +--8
 	|  |  |  +--(...)
 	|  |  +-- geometries
 	|  |  |  +-- 0
-	|  +--1 
+	|  +--1
 	|  |  (...) //same structure for all nodes
 	|  +--...
 	|  +-- 259
@@ -54,4 +54,3 @@ The following API methods are available for point cloud scene layer:
 |To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} |
 |To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 |
 |To query  Attribute  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key |
-

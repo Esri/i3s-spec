@@ -4,7 +4,7 @@ Oriented bounding box.
 
 ### Related:
 
-[cmn::nodeReference](nodeReference.cmn.md), [cmn::3DSNodeIndexDocument](3DSNodeIndexDocument.cmn.md)
+[cmn::3DNodeIndexDocument](3DNodeIndexDocument.cmn.md), [cmn::nodeReference](nodeReference.cmn.md)
 ### Properties
 
 | Property | Type | Description |
@@ -15,9 +15,9 @@ Oriented bounding box.
 
 *Note: properties in **bold** are required*
 
-### Examples
+### Examples 
 
-#### Example: Global scene (WSG84) oriented-bounding box
+#### Example: Global scene (WSG84) oriented-bounding box 
 
 ```json
  {
@@ -37,5 +37,6 @@ Oriented bounding box.
     -0.118217,
     0.897622
   ]
-}
+} 
 ```
+

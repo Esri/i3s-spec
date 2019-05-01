@@ -7,7 +7,7 @@
   "properties": {
     "nodesPerPage": {
       "type": "integer",
-      "description": "Number of nodes per page for this layer"
+      "description": "Number of nodes per page for this layer. **Must be a power-of-two** less than `4096`"
     },
     "rootIndex": {
       "type": "integer",

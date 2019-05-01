@@ -1,4 +1,4 @@
-# Mesh object
+# Mesh Geometry
 
 Mesh geometry for a node
 
@@ -9,11 +9,10 @@ Mesh geometry for a node
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **definition** | integer | index in [layer.geometryDefinitions](3dSceneLayer.cmn.md) array |
-| **resource** | integer | resource locator to be used to query geometry resources `layers/0/nodes/geometry/{this.resourceId}/...` |
-| texelCountHint | integer | Estimated number of texel for the highest resolution base color texture. i.e. `texture.mip0.width*texture.mip0.height`. Useful to estimate the resource cost of this node and/or texel-resolution based LOD switching. Ignored for un-textured meshes |
-| **vertexCount** | integer | Number of vertices in the geometry buffer of this mesh for the **umcompressed mesh buffer**. `draco` meshes may have less vertices due to de-duplication |
-| featureCount | integer | Number of features for this mesh (must omit or set to `0` if mesh doesn't use `features`) |
+| **definition** | integer | index in [layer.geometryDefinitions](geometrydefinition.cmn.md) array |
+| **resource** | integer | resource locator to be used to query geometry resources: `layers/0/nodes/{this.resource}/geometries/{layer.geometryDefinitions[this.definition].geometryBuffers[0 or 1]}` |
+| vertexCount | integer | Number of vertices in the geometry buffer of this mesh for the **umcompressed mesh buffer**. Please note that `draco` compressed meshes may have less vertices due to de-duplication (actual number of vertices is part of the draco binary blob).  Default=`0` |
+| featureCount | integer | Number of features for this mesh. Default=`0`. (must omit or set to `0` if mesh doesn't use `features`) |
 
 *Note: properties in **bold** are required*
 

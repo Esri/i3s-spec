@@ -9,7 +9,7 @@
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **index** | integer | index in the node array. may be **different than** [`mesh.resourceId`](mesh.cmn.md) |
+| **index** | integer | index in the node array. may be **different than** material, geometry and attribute `resource` id. see [`mesh`](mesh.cmn.md) |
 | lodThreshold | number | When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.cmn.md)  |
 | **obb** | [obb](obb.cmn.md) | Oriented bounding box for this node.  |
 | children | integer[] | index of the children nodes indices |
@@ -23,87 +23,91 @@
 
 ```json
  {
-  "index": 12,
-  "lodThreshold": 50.43,
+  "index": 16,
+  "parentIndex": 11,
+  "lodThreshold": 22968.8125,
   "obb": {
     "center": [
-      20.82,
-      41.988,
-      76.56
+      0.0246379131849151,
+      0.0055829490839741725,
+      6.388948981650174
     ],
     "halfSize": [
-      64.93,
-      11.4,
-      70.315
+      3.54935479,
+      3.52569342,
+      2.38895011
     ],
     "quaternion": [
-      -0.0,
-      0.03,
-      -0.20569,
-      10.9
+      -0.500083148,
+      0.499868125,
+      -0.499916822,
+      0.500131845
     ]
   },
   "mesh": {
     "material": {
       "definition": 0,
-      "resource": 6
+      "resource": 7,
+      "texelCountHint": 262144
     },
     "geometry": {
-      "definition": 0,
-      "resource": 6,
-      "vertexCount": 1092,
-      "featureCount": 7
+      "definition": 1,
+      "resource": 7,
+      "vertexCount": 48,
+      "featureCount": 1
     },
     "attribute": {
-      "resource": 6
+      "resource": 7
     }
   }
 } 
 ```
 
-#### Example: Node with un-textured mesh and two children nodes 
+#### Example: Textured node with two children nodes 
 
 ```json
  {
-  "index": 1024,
-  "lodThreshold": 50.43,
+  "index": 9,
+  "parentIndex": 7,
+  "lodThreshold": 968831.9375,
   "obb": {
     "center": [
-      20.82,
-      41.988,
-      76.56
+      0.02480438053003459,
+      0.00533958737698042,
+      14.604276076890528
     ],
     "halfSize": [
-      64.93,
-      11.4,
-      70.315
+      48.7387047,
+      11.6107492,
+      24.8489189
     ],
     "quaternion": [
-      -0.0,
-      0.03,
-      -0.20569,
-      10.9
+      -0.232766122,
+      -0.20745486,
+      0.675836384,
+      -0.667852938
     ]
   },
-  "children": [
-    1025,
-    1026
-  ],
   "mesh": {
     "material": {
       "definition": 0,
-      "resource": 6
+      "resource": 2,
+      "texelCountHint": 524288
     },
     "geometry": {
       "definition": 0,
-      "resource": 6,
-      "vertexCount": 1092,
-      "featureCount": 7
+      "resource": 2,
+      "vertexCount": 1032,
+      "featureCount": 5
     },
     "attribute": {
-      "resource": 6
+      "resource": 2
     }
-  }
+  },
+  "children": [
+    12,
+    13
+  ]
 } 
 ```
 

@@ -21,48 +21,8 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "FaceRange",
-        "code": {
-          "nodes": [
-            {
-              "index": 12,
-              "lodThreshold": 50.43,
-              "obb": {
-                "center": [
-                  20.82,
-                  41.988,
-                  76.56
-                ],
-                "halfSize": [
-                  64.93,
-                  11.4,
-                  70.3150
-                ],
-                "quaternion": [
-                  -0.00,
-                  0.030,
-                  -0.20569,
-                  10.9
-                ]
-              },
-              "mesh": {
-                "material": {
-                  "definition": 0,
-                  "resource": 6
-                },
-                "geometry": {
-                  "definition": 0,
-                  "resource": 6,
-                  "vertexCount": 1092,
-                  "featureCount": 7
-                },
-                "attribute": {
-                  "resource": 6
-                }
-              }
-            }
-          ]
-        }
+        "title": "Nodepage document",
+        "code_href": "example/example1_nodes.cmn.0107.json"
       }
     ]
   }

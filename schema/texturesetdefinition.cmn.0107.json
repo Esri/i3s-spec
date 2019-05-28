@@ -13,7 +13,7 @@
     },
     "atlas": {
       "type": "boolean",
-      "description": "`true` is texture contains an atlas. Viewer should turn off anisotropic filtering for atlases to avoid sampling artifacts. default=`False`"
+      "description": "`true` is texture contains an atlas and vertexRegions in sharedResource.materialDefinitions is `true`. Viewer should turn off anisotropic filtering for atlases to avoid sampling artifacts. default=`False`"
     }
   },
   "required": [
@@ -51,6 +51,26 @@
               "format": "ktx-etc2"
             }
           ]
+        }
+      },
+      {
+        "title": "Texture set definition with atlas",
+        "code": {
+          "formats": [
+            {
+              "name": "0",
+              "format": "jpg"
+            },
+            {
+              "name": "0_0_1",
+              "format": "dds"
+            },
+            {
+              "name": "0_0_2",
+              "format": "ktx-etc2"
+            }
+          ],
+          "atlas": true
         }
       }
     ]

@@ -14,7 +14,7 @@
       },
       "description": "Declares type or filter authoring info."
     },
-    "filterblocks": {
+    "filterBlocks": {
       "type": "array",
       "items": {
         "type": "object",
@@ -25,7 +25,7 @@
   },
   "required": [
     "type",
-    "filterblocks"
+    "filterBlocks"
   ],
   "additionalProperties": false,
   "esriDocumentation": {
@@ -34,7 +34,7 @@
         "title": "Building Scene Layer filter authoring info",
         "code": {
           "type": "checkbox",
-          "filterblocks": [
+          "filterBlocks": [
             {
               "filterTypes": [
                 {

@@ -1,4 +1,4 @@
-# Mesh definition
+# Geometry definition
 
 
 
@@ -10,38 +10,37 @@
 | Property | Type | Description |
 | --- | --- | --- |
 | topology | string | <div>Must be:<ul><li>`triangle`</li></ul></div> |
-| **geometryBuffers** | [geometrybuffer](geometrybuffer.cmn.md)[1:2] | Array of geometry representation(s) for this class of mesh. When multiple representations are listed, Clients should select the most compact one (e.g. Draco compressed mesh) they support. Length must be 1 or 2 |
+| **geometryBuffers** | [geometrybuffer](geometrybuffer.cmn.md)[1:2] | Array of geometry representation(s) for this class of meshes. When multiple representations are listed, Clients should select the most compact they support (e.g. Draco compressed mesh). For compatibility reasons, _uncompressed_ geometry buffer is always required and must be first (i.e. `geometryBuffers[0]`), so array length must be 1 or 2 |
 
 *Note: properties in **bold** are required*
 
 ### Examples 
 
-#### Example: Definition for a v1.6-equivalent geometry buffer and draco compressed geometry buffer 
+#### Example: Definition for a v1.6-equivalent geometry buffer (`geometryBuffers[0]`) and draco compressed geometry buffer (`geometryBuffers[1]`) 
 
 ```json
  {
-  "topology": "triangle",
   "geometryBuffers": [
     {
-      "id": 0,
-      "offset": 4,
+      "offset": 8,
       "position": {
         "type": "Float32",
-        "component": 3,
-        "binding": "per-vertex"
+        "component": 3
       },
       "normal": {
         "type": "Float32",
-        "component": 3,
-        "binding": "per-vertex"
+        "component": 3
       },
       "uv0": {
         "type": "Float32",
-        "component": 2,
-        "binding": "per-vertex"
+        "component": 2
+      },
+      "color": {
+        "type": "UInt8",
+        "component": 4
       },
       "featureId": {
-        "type": "UInt32",
+        "type": "UInt64",
         "component": 1,
         "binding": "per-feature"
       },
@@ -52,18 +51,12 @@
       }
     },
     {
-      "id": 1,
-      "featureId": {
-        "type": "UInt32",
-        "component": 1,
-        "binding": "per-feature"
-      },
       "compressedAttributes": {
         "encoding": "draco",
         "attributes": [
           "position",
-          "normal",
           "uv0",
+          "color",
           "feature-index"
         ]
       }

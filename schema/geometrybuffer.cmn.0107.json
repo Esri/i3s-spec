@@ -47,58 +47,60 @@
       "type": "object",
       "$ref": "compressedAttributes.cmn.0107.json",
       "description": "Compressed attributes. **Cannot** be combined with any other attributes"
-    },
-    "normalReferenceFrame": {
-      "type": "string",
-      "enum": [ "east-north-up", "earth-centered", "vertex-reference-frame" ],
-      "enum-description": {
-        "east-north-up": "normals are stored in a node local reference frame defined by the easting, northing and up directions at the OBB/MBS center, and is only valid for geographic(WGS84)",
-        "earth-centered": "normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0�) and Equator (lat = 0�), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic",
-        "vertex-reference-frame": "normals are stored in the same reference frame as vertices and is only valid for projected spatial reference"
-      },
-      "description": "Frame of reference for normals. default is `earth-centered` for GCS (geographic), and `vertex-reference-frame` for PCS (projected) "
     }
+
   },
   "esriDocumentation": {
     "examples": [
       {
-        "title": "I3S v1.6 equivalent geometry buffer definition (without UV regions)",
+        "title": "I3S v1.6 equivalent geometry buffer definition (with UV regions)",
         "code": {
-          "offset": 4,
-          "position": {
-            "type": "Float32",
-            "component": 3
-          },
-          "normal": {
-            "type": "Float32",
-            "component": 3
-          },
-          "uv0": {
-            "type": "Float32",
-            "component": 2
-          },
-          "featureId": {
-            "type": "UInt32",
-            "component": 1
-          },
+					"offset": 8,
+					"position": {
+						"type": "Float32",
+						"component": 3
+					},
+					"normal": {
+						"type": "Float32",
+						"component": 3
+					},
+					"uv0": {
+						"type": "Float32",
+						"component": 2
+					},
+					"color": {
+						"type": "UInt8",
+						"component": 4
+					},
+					"uvRegion": {
+						"type": "UInt16",
+						"component": 4
+					},
+					"featureId": {
+						"type": "UInt64",
+						"component": 1,
+						"binding": "per-feature"
+					},
           "faceRange": {
             "type": "UInt32",
-            "component": 2
+            "component": 2,
+            "binding": "per-feature"
           }
-        }
+				}
       },
       {
-        "title": "A compressed geometry buffer definition with featureId (without UV regions)",
+        "title": "A compressed geometry buffer definition with featureId (without normal, with UV regions)",
         "code": {
-          "featureId": {
-            "type": "UInt32",
-            "component": 1,
-            "binding": "per-feature"
-          },
           "compressedAttributes": {
-            "encoding": "draco",
-            "attributes": [ "position", "normal", "uv0", "feature-index" ]
-          }
+						"encoding": "draco",
+            "attributes": [
+              "position",
+              "uv0",
+              "color",
+              "feature-index",
+              "uv-region"
+            ]
+					}
         }
       }
     ]

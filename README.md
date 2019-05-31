@@ -37,9 +37,25 @@ For the purpose of encouraging community adoption and feedback, the I3S format i
 
 Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 
 
+### Version 1.7
+
+### 3D Object Scene Layer and Integrated Mesh Scene Layer
+
+**Performance Improvements**
+
+- Nodes are paged accessed
+- SharedResource has been deprecated 
+
+**Enhancements**
+
+- Support for Draco geometry compression
+- gltf-like material support
+- Backwards compatibility with version 1.6
+
 ### Version 2.0
 
 #### Point Cloud Scene Layer
+
 - [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification
 
 ### Version 1.6

@@ -10,7 +10,7 @@
 | Property | Type | Description |
 | --- | --- | --- |
 | **formats** | [texturesetdefinitionformat](texturesetdefinitionformat.cmn.md)[] | List of formats that are available for this texture set |
-| atlas | boolean | `true` is texture contains an atlas and vertexRegions in sharedResource.materialDefinitions is `true`. Viewer should turn off anisotropic filtering for atlases to avoid sampling artifacts. default=`False` |
+| atlas | boolean | `true` if vertexRegions in sharedResource.materialDefinitions is `true`. |
 
 *Note: properties in **bold** are required*
 

@@ -10,7 +10,7 @@
 | Property | Type | Description |
 | --- | --- | --- |
 | **formats** | [texturesetdefinitionformat](texturesetdefinitionformat.cmn.md)[] | List of formats that are available for this texture set |
-| atlas | boolean | `true` is texture contains an atlas. Viewer should turn off anisotropic filtering for atlases to avoid sampling artifacts. default=`False` |
+| atlas | boolean | `true` if vertexRegions in sharedResource.materialDefinitions is `true`. |
 
 *Note: properties in **bold** are required*
 
@@ -51,6 +51,28 @@ JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/0
       "format": "ktx-etc2"
     }
   ]
+} 
+```
+
+#### Example: Texture set definition with atlas 
+
+```json
+ {
+  "formats": [
+    {
+      "name": "0",
+      "format": "jpg"
+    },
+    {
+      "name": "0_0_1",
+      "format": "dds"
+    },
+    {
+      "name": "0_0_2",
+      "format": "ktx-etc2"
+    }
+  ],
+  "atlas": true
 } 
 ```
 

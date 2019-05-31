@@ -68,9 +68,9 @@
         "vertex-reference-frame"
       ],
       "enum-description": {
-        "east-north-up": "A value of *east-north-up* indicates that normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS.",
-        "earth-centered": "A value of *earth-centered* indicates that normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.",
-        "vertex-reference-frame": "A value of *vertex-reference-frame* indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS."
+        "east-north-up": "Normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS.",
+        "earth-centered": "Normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.  Default value for OGC.",
+        "vertex-reference-frame": "Normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS."
       },
       "description": "Describes the coordinate reference frame used for storing normals.  "
     },

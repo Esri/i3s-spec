@@ -11,7 +11,7 @@
     },
     "rootIndex": {
       "type": "integer",
-      "description": "Index of the root node"
+      "description": "Index of the root node.  Default = 0."
     },
     "lodSelectionMetricType": {
       "type": "string",

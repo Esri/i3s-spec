@@ -46,11 +46,11 @@ Released 06/30/2019
 **Performance Improvements**
 
 - Nodes are now [paged accessed](docs/1.7/nodepages.cmn.md>)
-- SharedResource has been deprecated 
+- [SharedResource](docs/1.7/sharedResource.cmn.md) has been deprecated 
 
 **Enhancements**
 
-- Support for Draco geometry compression
+- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
 - gltf-like material support
 - Backwards compatibility with version 1.6
 

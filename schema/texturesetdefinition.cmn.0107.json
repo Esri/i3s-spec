@@ -13,7 +13,7 @@
     },
     "atlas": {
       "type": "boolean",
-      "description": "`true` if vertexRegions in sharedResource.materialDefinitions is `true`."
+      "description": "Set to `true` if this texture is a texture atlas. It's expected that geometries that use this texture have uv regions to specify the subtexture in the atlas."
     }
   },
   "required": [

@@ -10,7 +10,7 @@
 | Property | Type | Description |
 | --- | --- | --- |
 | **formats** | [texturesetdefinitionformat](texturesetdefinitionformat.cmn.md)[] | List of formats that are available for this texture set |
-| atlas | boolean | `true` if vertexRegions in sharedResource.materialDefinitions is `true`. |
+| atlas | boolean | Set to `true` if this texture is a texture atlas. It's expected that geometries that use this texture have uv regions to specify the subtexture in the atlas. |
 
 *Note: properties in **bold** are required*
 

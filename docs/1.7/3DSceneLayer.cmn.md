@@ -32,7 +32,7 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
 | attributeStorageInfo | [attributeStorageInfo](attributeStorageInfo.cmn.md)[] | Provides the schema and layout used for storing attribute content in binary format in I3S. |
 | statisticsInfo | [statisticsInfo](statisticsInfo.cmn.md)[] | Contains the statistical information for a layer. |
 | nodePages | [nodepages](nodepages.cmn.md) | paged-access index description |
-| materialDefinitions | [materialdefinitions](materialdefinitions.cmn.md)[] | List of materials classes used in this layer. _TBD_ use a separated JSON resource? |
+| materialDefinitions | [materialdefinitions](materialdefinitions.cmn.md)[] | List of materials classes used in this layer. |
 | textureSetDefinitions | [texturesetdefinition](texturesetdefinition.cmn.md)[] | define the set of textures that can be referenced by meshes |
 | geometryDefinitions | [geometrydefinition](geometrydefinition.cmn.md)[] | Define the layouts of mesh geometry and its attributes |
 

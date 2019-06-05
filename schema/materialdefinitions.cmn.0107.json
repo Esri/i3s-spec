@@ -63,7 +63,7 @@
         "front": "cull back-face. ",
         "back": "cull front-face"
       },
-      "description": "TODO: describe winding order convention for I3S"
+      "description": "Winding order is counterclockwise."
     }
   },
   "additionalProperties": false,

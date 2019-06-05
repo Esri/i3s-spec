@@ -1,6 +1,6 @@
 # Material definition
 
-Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) (_TBD: with the exception of emissive texture?_)
+Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials)
 
 ### Related:
 
@@ -14,9 +14,9 @@ Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tre
 | doubleSided | boolean | Specifies whether the material is double sided. For lightning, the opposite normals will be used when original normals are facing away from the camera. default=`false` |
 | cullFace | string | TODO: describe winding order convention for I3S<div>Possible values are:<ul><li>`none`: default. **Must** be none if `doubleSided=True`</li><li>`front`: cull back-face. </li><li>`back`: cull front-face</li></ul></div> |
 | normalTexture | [materialtexture](materialtexture.cmn.md) | The normal map texture. |
-| occlusionTexture | [materialtexture](materialtexture.cmn.md) | The normal map texture. |
-| emissiveTexture | [materialtexture](materialtexture.cmn.md) | _TBD_: may not support this |
-| emissiveFactor | number[3] | _TBD_: may not support this |
+| occlusionTexture | [materialtexture](materialtexture.cmn.md) | The occlusion map texture. |
+| emissiveTexture | [materialtexture](materialtexture.cmn.md) | The emissive map texture. |
+| emissiveFactor | number[3] | The emissive color of the material. |
 | pbrMetallicRoughness | [pbrmetallicroughness](pbrmetallicroughness.cmn.md) | A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply. |
 
 ### Examples 

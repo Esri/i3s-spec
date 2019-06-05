@@ -2,7 +2,7 @@
   "title": "Material definition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) (_TBD: with the exception of emissive texture?_)",
+  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials)",
   "properties": {
     "alphaMode": {
       "type": "string",
@@ -44,12 +44,12 @@
     "occlusionTexture": {
       "type": "object",
       "$ref": "materialtexture.cmn.0107.json",
-      "description": "The normal map texture."
+      "description": "The occlusion map texture."
     },
     "emissiveTexture": {
       "type": "object",
       "$ref": "materialtexture.cmn.0107.json",
-      "description": "_TBD_: may not support this"
+      "description": "The emissive map texture."
     },
     "emissiveFactor": {
       "type": "array",
@@ -58,7 +58,7 @@
       "items": {
         "type": "number"
       },
-      "description": "_TBD_: may not support this"
+      "description": "The emissive color of the material."
     },
     "pbrMetallicRoughness": {
       "type": "object",

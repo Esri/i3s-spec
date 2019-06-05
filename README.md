@@ -51,7 +51,7 @@ Released 06/30/2019
 **Enhancements**
 
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
-- Advanced material (physically based materials PBR)
+- [Advanced material](docs/1.7/material.cmn.md) (physically based materials PBR)
 - Backwards compatibility with version 1.6
 
 ### Version 1.6 

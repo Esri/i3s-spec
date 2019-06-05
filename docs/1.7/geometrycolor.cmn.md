@@ -1,6 +1,6 @@
 # Color vertex attribute
 
-Colors for geometry .TBD: Assumed to be sRGB ??
+Colors for geometry.  Assumed to be sRGB space.
 
 ### Related:
 

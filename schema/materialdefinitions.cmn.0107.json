@@ -60,8 +60,8 @@
       "enum": [ "none", "front", "back" ],
       "enum-description": {
         "none": "default. **Must** be none if `doubleSided=True`",
-        "front": "cull back-face. ",
-        "back": "cull front-face"
+        "front": "Cull front faces (i.e. faces with counter-clockwise winding order)",
+        "back": "Cull back faces (i.e. faces with clockwise winding order)"
       },
       "description": "Winding order is counterclockwise."
     }

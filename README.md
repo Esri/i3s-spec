@@ -79,7 +79,7 @@ There are few applications that can create and consume scene layers. The tables 
   </tr>
   <tr>
   <td>Skyline</td>
-  <td><a href="http://www.skylineglobe.com/SkylineGlobe/corporate/Default.aspx?">Skyline</a></td>
+  <td><a href="http://www.skylineglobe.com/SkylineGlobe/corporate/Products/photomesh.aspx">Skyline</a></td>
   <td>IntegratedMesh</td>  
  </tr>
 </table>

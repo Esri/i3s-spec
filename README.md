@@ -43,16 +43,11 @@ Released 06/30/2019
 
 ### 3D Object Scene Layer and Integrated Mesh Scene Layer
 
-**Performance Improvements**
-
-- Nodes are now [paged accessed](docs/1.7/nodepages.cmn.md>)
-- [SharedResource](docs/1.7/sharedResource.cmn.md) has been deprecated 
-
-**Enhancements**
-
+- Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md>)
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
-- [Advanced material](docs/1.7/materialdefinitions.cmn.md) (physically based materials PBR)
-- Backwards compatibility with version 1.6
+- Support for [advanced material](docs/1.7/materialdefinitions.cmn.md) such as physically based materials
+- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) 
+- New tooling to validate existing slpk and convert integrated mesh or 3d objects scene layer to 1.7.
 
 ### Version 1.6 
 

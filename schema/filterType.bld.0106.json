@@ -12,9 +12,7 @@
       "type": "array",
       "items": {
         "type": [
-          "string",
-          "integer",
-          "number"
+          "string"
         ]
       },
       "description": "Array of filter values. Filter values are the attributes that can be stored for individual fields in a layer."

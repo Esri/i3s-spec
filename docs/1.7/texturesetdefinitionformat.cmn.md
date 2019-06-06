@@ -10,7 +10,7 @@ Describe the format(s) available for a texture set. Note: JPEG (or PNG) must alw
 | Property | Type | Description |
 | --- | --- | --- |
 | **name** | string | location ID for the resource (last segment of the URL path). For best compatibility, must be `"0"` for jpg/png and `"0_0_1"` for DDS |
-| **format** | string | Texture format<div>Possible values are:<ul><li>`jpg`: JPEG compression. no mipmaps. Please note that alpha channel may have been added after the JPEG stream. This alpha channel is alwasy 8bit and zlib compressed. Last 4 byte of the entire stream are the 32 bit offset to the beginning of the alpha stream (little-endian)</li><li>`png`: PNG format, no mipmaps</li><li>`dds`: The DDS header will specify the type of compression and number of mipmaps. **WARNING** only DXT1 (no alpha) and DXT5 (alpha channel) are supported</li><li>`ktx-etc2`: Kronos group container for ETC2 compressed texture. Mipmap may be available</li></ul></div> |
+| **format** | string | Texture format<div>Possible values are:<ul><li>`jpg`: JPEG compression. No mipmaps. Please note that alpha channel may have been added after the JPEG stream. This alpha channel is alwasy 8bit and zlib compressed. Last 4 byte of the entire stream are the 32 bit offset to the beginning of the alpha stream (little-endian)</li><li>`png`: PNG format, no mipmaps</li><li>`dds`: The DDS header will specify the type of compression and number of mipmaps. **WARNING** only DXT1 (no alpha) and DXT5 (alpha channel) are supported</li><li>`ktx-etc2`: Kronos group container for ETC2 compressed texture. Mipmap may be available</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

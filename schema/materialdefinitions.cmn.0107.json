@@ -2,8 +2,37 @@
   "title": "Material definition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) (_TBD: with the exception of emissive texture?_)",
+  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials)",
   "properties": {
+    "pbrMetallicRoughness": {
+      "type": "object",
+      "$ref": "pbrmetallicroughness.cmn.0107.json",
+      "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
+    },
+    "normalTexture": {
+      "type": "object",
+      "$ref": "materialtexture.cmn.0107.json",
+      "description": "The normal map texture."
+    },
+    "occlusionTexture": {
+      "type": "object",
+      "$ref": "materialtexture.cmn.0107.json",
+      "description": "The occlusion map texture."
+    },
+    "emissiveTexture": {
+      "type": "object",
+      "$ref": "materialtexture.cmn.0107.json",
+      "description": "The emissive map texture."
+    },
+    "emissiveFactor": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      },
+      "description": "The emissive color of the material."
+    },
     "alphaMode": {
       "type": "string",
       "enum": [
@@ -31,39 +60,10 @@
       "enum": [ "none", "front", "back" ],
       "enum-description": {
         "none": "default. **Must** be none if `doubleSided=True`",
-        "front": "cull back-face. ",
-        "back": "cull front-face"
+        "front": "Cull front faces (i.e. faces with counter-clockwise winding order)",
+        "back": "Cull back faces (i.e. faces with clockwise winding order)"
       },
-      "description": "TODO: describe winding order convention for I3S"
-    },
-    "normalTexture": {
-      "type": "object",
-      "$ref": "materialtexture.cmn.0107.json",
-      "description": "The normal map texture."
-    },
-    "occlusionTexture": {
-      "type": "object",
-      "$ref": "materialtexture.cmn.0107.json",
-      "description": "The normal map texture."
-    },
-    "emissiveTexture": {
-      "type": "object",
-      "$ref": "materialtexture.cmn.0107.json",
-      "description": "_TBD_: may not support this"
-    },
-    "emissiveFactor": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "number"
-      },
-      "description": "_TBD_: may not support this"
-    },
-    "pbrMetallicRoughness": {
-      "type": "object",
-      "$ref": "pbrmetallicroughness.cmn.0107.json",
-      "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
+      "description": "Winding order is counterclockwise."
     }
   },
   "additionalProperties": false,

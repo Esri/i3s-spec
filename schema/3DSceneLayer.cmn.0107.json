@@ -17,7 +17,7 @@
                 "type": "object",
                 "$ref": "materialdefinitions.cmn.0107.json"
             },
-            "description": "List of materials classes used in this layer. _TBD_ use a separated JSON resource?"
+            "description": "List of materials classes used in this layer."
         },
         "textureSetDefinitions": {
             "type": "array",

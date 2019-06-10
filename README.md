@@ -37,12 +37,21 @@ For the purpose of encouraging community adoption and feedback, the I3S format i
 
 Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 
 
-### Version 2.0
+### Version 1.7
 
-#### Point Cloud Scene Layer
-- [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification
+Released 06/30/2019
 
-### Version 1.6
+### 3D Object Scene Layer and Integrated Mesh Scene Layer
+
+- Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md>)
+- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
+- Support for [advanced material](docs/1.7/materialdefinitions.cmn.md) such as physically based materials
+- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) 
+- New tooling to validate existing slpk and convert integrated mesh or 3d objects scene layer to 1.7.
+
+### Version 1.6 
+
+Released 03/01/2019
 
 #### 3D Object Scene Layer
 - [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - Introducing support for oriented bounding boxes as bounding volume hierarchy.
@@ -51,6 +60,14 @@ Each I3S profile type evolves independently to allow new functionality to be add
 
 #### Building Scene Layer
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings. 
+
+### Version 2.0
+
+Released 03/01/2019
+
+#### Point Cloud Scene Layer
+
+- [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification
 
 ## Where Can I Use...?
 

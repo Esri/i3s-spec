@@ -2,7 +2,7 @@
   "title": "FeatureID attribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "FeatureID helps to indentify part of mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`. _TBD_: meaning when topology is `point` or `line` ",
+  "description": "FeatureID helps to indentify part of mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`.  Spec v1.7 only supports triangle.",
   "properties": {
     "type": {
       "type": "string",

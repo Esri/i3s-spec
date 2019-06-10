@@ -43,7 +43,7 @@ Released 06/30/2019
 
 ### 3D Object Scene Layer and Integrated Mesh Scene Layer
 
-- Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md>)
+- Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md)
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
 - Support for [advanced material](docs/1.7/materialdefinitions.cmn.md) such as physically based materials
 - Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) 

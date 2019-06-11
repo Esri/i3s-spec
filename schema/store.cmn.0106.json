@@ -120,7 +120,7 @@
         "none"
       ],
       "enum-description": {
-        "node-switching": "A parent node is substituted for its children nodes when its lod threshold is exceeded. This implies that: parent and children are never shown at the same time. Bounding volumes of children must be fully enclosed on the bounding volume of their respective parent. Nodes have a single parent, except the root node that have no parent.",
+        "node-switching": "A parent node is substituted for its children nodes when its lod threshold is exceeded. This implies that: parent and children are never shown at the same time.  The bounding volumne of the parent has to enclose the features of all grandchildren. Nodes have a single parent, except the root node that have no parent.",
         "none": "No switching model."
       },
       "description": "Optional field to indicate the LoD switching mode."

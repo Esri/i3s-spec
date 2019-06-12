@@ -25,7 +25,7 @@
           "Attributes"
         ],
         "enum-description": {
-          "3dNodeIndexDocument": "JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent.",
+          "3dNodeIndexDocument": "JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent. [Read more](docs/1.6/3DNodeIndexDocument.cmn.md)",
           "SharedResource": "Shared resources are models or textures that can be shared among features within the same layer.",
           "featureData": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.",
           "Geometry": "Each geometry resource is an array of geometries.",
@@ -123,7 +123,7 @@
         "node-switching": "A parent node is substituted for its children nodes when its lod threshold is exceeded. This implies that: parent and children are never shown at the same time.  The bounding volumne of the parent has to enclose the features of all grandchildren. Nodes have a single parent, except the root node that have no parent.",
         "none": "No switching model."
       },
-      "description": "Optional field to indicate the LoD switching mode."
+      "description": "Optional field to indicate the [LoD switching](docs/1.6/lodSelection.cmn.md) mode."
     },
     "indexingScheme": {
       "type": "string",

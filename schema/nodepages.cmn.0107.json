@@ -19,7 +19,7 @@
         "maxScreenThresholdSQ"
       ],
       "enum-description": {
-        "maxScreenThresholdSQ": "_TBD_: Unless we have a strong case for supporting anything else, we should settle on a **single** type of lod metric"
+        "maxScreenThresholdSQ": "A calculated value used to help with better view frustum culling and increases benefits from the non-isotropic screen projected size. `maxScreenThresholdSQ = PI * 0.25 * maxScreenThreshold * maxScreenThreshold`"
       },
       "description": "Defines the meaning of `nodes[].lodThreshold` for this layer."
     }

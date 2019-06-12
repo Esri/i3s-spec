@@ -22,7 +22,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 | --- | --- | --- |
 | **nodesPerPage** | integer | Number of nodes per page for this layer. **Must be a power-of-two** less than `4096` |
 | rootIndex | integer | Index of the root node.  Default = 0. |
-| **lodSelectionMetricType** | string | Defines the meaning of `nodes[].lodThreshold` for this layer.<div>Must be:<ul><li>`maxScreenThresholdSQ`: _TBD_: Unless we have a strong case for supporting anything else, we should settle on a **single** type of lod metric</li></ul></div> |
+| **lodSelectionMetricType** | string | Defines the meaning of `nodes[].lodThreshold` for this layer.<div>Must be:<ul><li>`maxScreenThresholdSQ`: A calculated value used to help with better view frustum culling and increases benefits from the non-isotropic screen projected size. `maxScreenThresholdSQ = PI * 0.25 * maxScreenThreshold * maxScreenThreshold`</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

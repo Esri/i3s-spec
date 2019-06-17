@@ -25,7 +25,7 @@ Depending on the geometry and LoD Model, a node document can be tuned towards be
 | textureData | [resource](resource.cmn.md)[] | Resource reference describing a texture resource. |
 | attributeData | [resource](resource.cmn.md)[] | Resource reference describing a FeatureData document. |
 | lodSelection | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD Selection, to be evaluated by the client. |
-| features | [lodSelection](lodSelection.cmn.md)[] | A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
+| features | [features](features.cmn.md)[] | A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
 
 *Note: properties in **bold** are required*
 

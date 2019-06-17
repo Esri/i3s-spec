@@ -117,7 +117,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "lodSelection.cmn.0106.json"
+                "$ref": "features.cmn.0106.json"
             },
             "description": "A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores."
         }

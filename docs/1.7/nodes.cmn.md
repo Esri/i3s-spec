@@ -46,7 +46,6 @@
         },
         {
             "index": 1,
-            "parentIndex": 0,
             "lodThreshold": 59.132808685302734,
             "obb": {
                 "center": [
@@ -88,7 +87,6 @@
         },
         {
             "index": 2,
-            "parentIndex": 1,
             "lodThreshold": 236.53123474121094,
             "obb": {
                 "center": [
@@ -130,7 +128,6 @@
         },
         {
             "index": 3,
-            "parentIndex": 2,
             "lodThreshold": 946.12493896484375,
             "obb": {
                 "center": [
@@ -172,7 +169,6 @@
         },
         {
             "index": 4,
-            "parentIndex": 3,
             "lodThreshold": 3784.499755859375,
             "obb": {
                 "center": [
@@ -214,7 +210,6 @@
         },
         {
             "index": 5,
-            "parentIndex": 4,
             "lodThreshold": 15137.9990234375,
             "obb": {
                 "center": [
@@ -256,7 +251,6 @@
         },
         {
             "index": 6,
-            "parentIndex": 5,
             "lodThreshold": 60551.99609375,
             "obb": {
                 "center": [
@@ -299,7 +293,6 @@
         },
         {
             "index": 7,
-            "parentIndex": 6,
             "lodThreshold": 242207.984375,
             "obb": {
                 "center": [
@@ -342,7 +335,6 @@
         },
         {
             "index": 8,
-            "parentIndex": 6,
             "lodThreshold": 1435.5504150390625,
             "obb": {
                 "center": [
@@ -384,7 +376,6 @@
         },
         {
             "index": 9,
-            "parentIndex": 7,
             "lodThreshold": 968831.9375,
             "obb": {
                 "center": [
@@ -427,7 +418,6 @@
         },
         {
             "index": 10,
-            "parentIndex": 7,
             "lodThreshold": 66492.3046875,
             "obb": {
                 "center": [
@@ -470,7 +460,6 @@
         },
         {
             "index": 11,
-            "parentIndex": 8,
             "lodThreshold": 5742.20166015625,
             "obb": {
                 "center": [
@@ -512,7 +501,6 @@
         },
         {
             "index": 12,
-            "parentIndex": 9,
             "lodThreshold": 131033.3515625,
             "obb": {
                 "center": [
@@ -551,7 +539,6 @@
         },
         {
             "index": 13,
-            "parentIndex": 9,
             "lodThreshold": 4139578,
             "obb": {
                 "center": [
@@ -590,7 +577,6 @@
         },
         {
             "index": 14,
-            "parentIndex": 10,
             "lodThreshold": 111908.546875,
             "obb": {
                 "center": [
@@ -629,7 +615,6 @@
         },
         {
             "index": 15,
-            "parentIndex": 10,
             "lodThreshold": 128914.390625,
             "obb": {
                 "center": [
@@ -668,7 +653,6 @@
         },
         {
             "index": 16,
-            "parentIndex": 11,
             "lodThreshold": 22968.8125,
             "obb": {
                 "center": [

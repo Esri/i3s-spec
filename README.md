@@ -196,8 +196,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Point Cloud</td>
@@ -207,8 +207,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>

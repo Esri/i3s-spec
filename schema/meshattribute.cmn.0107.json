@@ -2,11 +2,11 @@
   "title": "Mesh Attribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Mesh geometry for a node",
+  "description": "Mesh geometry for a node.",
   "properties": {
     "resource": {
       "type": "integer",
-      "description": "resource locator to be used attribute resources for this mesh. i.e. `layers/0/nodes/<resource id>/attributes/...`"
+      "description": "The resource locator to be used attribute resources for this mesh. i.e. `layers/0/nodes/<resource id>/attributes/...`"
     }
   },
   "required": [

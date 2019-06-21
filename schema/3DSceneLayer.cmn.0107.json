@@ -9,7 +9,7 @@
         "nodePages": {
             "type": "object",
             "$ref": "nodepages.cmn.0107.json",
-            "description": "paged-access index description"
+            "description": "The paged-access index description."
         },
         "materialDefinitions": {
             "type": "array",
@@ -25,7 +25,7 @@
                 "type": "object",
                 "$ref": "texturesetdefinition.cmn.0107.json"
             },
-            "description": "define the set of textures that can be referenced by meshes"
+            "description": "Defines the set of textures that can be referenced by meshes."
         },
         "geometryDefinitions": {
             "type": "array",
@@ -33,7 +33,7 @@
                 "type": "object",
                 "$ref": "geometrydefinition.cmn.0107.json"
             },
-            "description": "Define the layouts of mesh geometry and its attributes"
+            "description": "Define the layouts of mesh geometry and its attributes."
         }
     },
     "required": [

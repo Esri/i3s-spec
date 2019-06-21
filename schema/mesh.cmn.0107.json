@@ -2,28 +2,28 @@
   "title": "Mesh object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Mesh geometry for a node",
+  "description": "Mesh geometry for a node.",
   "properties": {
     "material": {
       "type": "object",
       "$ref": "meshmaterial.cmn.0107.json",
-      "description": "material definition"
+      "description": "The material definition."
     },
     "geometry": {
       "type": "object",
       "$ref": "meshgeometry.cmn.0107.json",
-      "description": "geometry definition"
+      "description": "The geometry definition."
     },
     "attribute": {
       "type": "object",
       "$ref": "meshattribute.cmn.0107.json",
-      "description": "attribute set definition"
+      "description": "The attribute set definition."
     }
   },
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Textured mesh with attributes and features",
+        "title": "Textured mesh with attributes and features.",
         "code": {
           "material": {
             "definition": 0,

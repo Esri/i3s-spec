@@ -35,15 +35,15 @@ compressedAttributes
 
 | Property | Type | Description |
 | --- | --- | --- |
-| offset | integer | number of bytes to skip from the beginning of the binary buffer (e.g. useful to describe 'legacy' buffer that have a header. Default=`0`) |
-| position | [geometryposition](geometryposition.cmn.md) | Vertex positions relative to Oriented-bounding-box center |
-| normal | [geometrynormal](geometrynormal.cmn.md) | Face/vertex normal  |
-| uv0 | [geometryuv](geometryuv.cmn.md) | First set of UV coordinates (textured mesh only) |
-| color | [geometrycolor](geometrycolor.cmn.md) | Colors attribute  |
-| uvRegion | [geometryuvregion](geometryuvregion.cmn.md) | UV regions (for repeated textures in texture atlases) |
-| featureId | [geometryfeatureid](geometryfeatureid.cmn.md) | FeatureId attribute |
-| faceRange | [geometryfacerange](geometryfacerange.cmn.md) | Face range for feature |
-| compressedAttributes | [compressedAttributes](compressedAttributes.cmn.md) | Compressed attributes. **Cannot** be combined with any other attributes |
+| offset | integer | The number of bytes to skip from the beginning of the binary buffer. Useful to describe 'legacy' buffer that have a header. Default=`0`. |
+| position | [geometryposition](geometryposition.cmn.md) | Vertex positions relative to oriented-bounding-box center. |
+| normal | [geometrynormal](geometrynormal.cmn.md) | Face/vertex normal. |
+| uv0 | [geometryuv](geometryuv.cmn.md) | First set of UV coordinates. Only applies to textured mesh. |
+| color | [geometrycolor](geometrycolor.cmn.md) | The colors attribute. |
+| uvRegion | [geometryuvregion](geometryuvregion.cmn.md) | UV regions, used for repeated textures in texture atlases. |
+| featureId | [geometryfeatureid](geometryfeatureid.cmn.md) | FeatureId attribute. |
+| faceRange | [geometryfacerange](geometryfacerange.cmn.md) | Face range for a feature. |
+| compressedAttributes | [compressedAttributes](compressedAttributes.cmn.md) | Compressed attributes. **Cannot** be combined with any other attributes. |
 
 ### Examples 
 

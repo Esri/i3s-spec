@@ -11,7 +11,7 @@
         "type": "object",
         "$ref": "attributestats.bld.0106.json"
       },
-      "description": "Per-attribute statistics for all sublayers "
+      "description": "Per-attribute statistics for all sublayers."
     }
   },
   "required": [

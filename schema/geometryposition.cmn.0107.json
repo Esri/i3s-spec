@@ -2,18 +2,18 @@
   "title": "Position vertex attribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Relative the center of oriented-bounded box of the node",
+  "description": "Relative to the center of oriented-bounded box of the node.",
   "properties": {
     "type": {
       "type": "string",
       "enum": [
         "Float32"
       ],
-      "description": "Vertex positions relative to Oriented-bounding-box center"
+      "description": "Vertex positions relative to Oriented-bounding-box center."
     },
     "component": {
       "type": "integer",
-      "description": "Number of coordinates per vertex position. Must be 3"
+      "description": "Number of coordinates per vertex position. Must be 3."
     },
     "encoding": {
       "type": "string",

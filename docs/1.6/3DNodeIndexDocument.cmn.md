@@ -1,8 +1,8 @@
 # 3DNodeIndexDocument
 
-The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one Node object in a 3dNodeIndexDocument. 
+The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
 
-Depending on the geometry and LoD Model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, neighbors, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
+Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
 
 ### Properties
 
@@ -23,8 +23,8 @@ Depending on the geometry and LoD Model, a node document can be tuned towards be
 | featureData | [resource](resource.cmn.md)[] | Resource reference describing a FeatureData document. |
 | geometryData | [resource](resource.cmn.md)[] | Resource reference describing a geometry resource. |
 | textureData | [resource](resource.cmn.md)[] | Resource reference describing a texture resource. |
-| attributeData | [resource](resource.cmn.md)[] | Resource reference describing a FeatureData document. |
-| lodSelection | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD Selection, to be evaluated by the client. |
+| attributeData | [resource](resource.cmn.md)[] | Resource reference describing a featureData document. |
+| lodSelection | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD selection, to be evaluated by the client. |
 | features | [features](features.cmn.md)[] | A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
 
 *Note: properties in **bold** are required*

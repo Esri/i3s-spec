@@ -2,7 +2,7 @@
   "title": "Image",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. It represents one specific texture LoD. For details on texture organization, please refer to the section on Texture resources.",
+  "description": "An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. It represents one specific texture LoD. For details on texture organization, please refer to the section on texture resources.",
   "properties": {
     "id": {
       "type": "string",
@@ -14,7 +14,7 @@
     },
     "pixelInWorldUnits": {
       "type": "number",
-      "description": "maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)."
+      "description": "The maximum size of a single pixel in world units. It is used by the client to pick the imate to load and render."
     },
     "href": {
       "type": "array",
@@ -28,14 +28,14 @@
       "items": {
         "type": "number"
       },
-      "description": "The byte offset of this image's encodings (one per encoding, in the same order as the encodings.) in the block in which this texture image resides."
+      "description": "The byte offset of this image's encodings. There is one per encoding, in the same order as the encodings, in the block in which this texture image resides."
     },
     "length": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "The length in bytes of this image's encodings (one per encoding, in the same order as the encodings)."
+      "description": "The length in bytes of this image's encodings. There is one per encoding, in the same order as the encodings."
     }
   },
   "required": [

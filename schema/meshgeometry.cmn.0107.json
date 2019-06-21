@@ -2,23 +2,23 @@
   "title": "Mesh Geometry",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Mesh geometry for a node",
+  "description": "Mesh geometry for a node.",
   "properties": {
     "definition": {
       "type": "integer",
-      "description": "index in [layer.geometryDefinitions](geometrydefinition.cmn.md) array"
+      "description": "The index in [layer.geometryDefinitions](geometrydefinition.cmn.md) array"
     },
     "resource": {
       "type": "integer",
-      "description": "resource locator to be used to query geometry resources: `layers/0/nodes/{this.resource}/geometries/{layer.geometryDefinitions[this.definition].geometryBuffers[0 or 1]}`"
+      "description": "The resource locator to be used to query geometry resources: `layers/0/nodes/{this.resource}/geometries/{layer.geometryDefinitions[this.definition].geometryBuffers[0 or 1]}`."
     },
     "vertexCount": {
       "type": "integer",
-      "description": "Number of vertices in the geometry buffer of this mesh for the **umcompressed mesh buffer**. Please note that `draco` compressed meshes may have less vertices due to de-duplication (actual number of vertices is part of the draco binary blob).  Default=`0`"
+      "description": "Number of vertices in the geometry buffer of this mesh for the **umcompressed mesh buffer**. Please note that `Draco` compressed meshes may have less vertices due to de-duplication (actual number of vertices is part of the Draco binary blob).  Default=`0`"
     },
     "featureCount": {
       "type": "integer",
-      "description": "Number of features for this mesh. Default=`0`. (must omit or set to `0` if mesh doesn't use `features`)"
+      "description": "Number of features for this mesh. Default=`0`. (Must omit or set to `0` if mesh doesn't use `features`.)"
     }
   },
   "required": [

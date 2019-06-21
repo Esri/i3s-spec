@@ -9,7 +9,7 @@
       "enum": [
         "UInt8"
       ],
-      "description": "color channel values"
+      "description": "The color channel values."
     },
     "component": {
       "type": "integer",
@@ -21,9 +21,9 @@
         "normalized"
       ],
       "enum-description": {
-        "normalized": "default. Assume 8-bit unsigned color per channel [0,255] -> [0,1]"
+        "normalized": "Default. Assumes 8-bit unsigned color per channel [0,255] -> [0,1]."
       },
-      "description": "Encoding"
+      "description": "Encoding of the vertex attribute."
     },
     "binding": {
       "type": "string",

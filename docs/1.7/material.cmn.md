@@ -22,7 +22,7 @@ The materialDefinition describes how a feature or a set of features is to be ren
 | params.diffuse | number[] | Diffuse color of this material. |
 | params.specular | number[] | Specular color of this material. |
 | params.renderMode | string | Rendering mode, any one of {textured, solid, untextured, wireframe} |
-| params.castShadows | boolean | true if features with this material should cast shadows. |
-| params.receiveShadows | boolean | true if features with this material should receive shadows. |
+| params.castShadows | boolean | True if features with this material should cast shadows. |
+| params.receiveShadows | boolean | True if features with this material should receive shadows. |
 | params.cullFace | string | Indicates the material culling options {back, front, *none*}. Default being none. |
 

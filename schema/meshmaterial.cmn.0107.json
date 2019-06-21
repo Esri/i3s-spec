@@ -2,19 +2,19 @@
   "title": "Mesh Material",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Mesh geometry for a node",
+  "description": "Mesh geometry for a node.",
   "properties": {
     "definition": {
       "type": "integer",
-      "description": "index in [layer.materialDefinitions](3DSceneLayer.cmn.md) array."
+      "description": "The index in [layer.materialDefinitions](3DSceneLayer.cmn.md) array."
     },
     "resource": {
       "type": "integer",
-      "description": "Locator ID for the material textures. i.e: `layers/0/nodes/{material.resource}/textures/{tex_name}`. **required** if material declares any textures"
+      "description": "Locator ID for the material textures. i.e: `layers/0/nodes/{material.resource}/textures/{tex_name}`. Is **required** if material declares any textures."
     },
     "texelCountHint": {
       "type": "integer",
-      "description": "Estimated number of texel for the highest resolution base color texture. i.e. `texture.mip0.width*texture.mip0.height`. Useful to estimate the resource cost of this node and/or texel-resolution based LOD switching. Ignored for un-textured meshes"
+      "description": "Estimated number of texel for the highest resolution base color texture. i.e. `texture.mip0.width*texture.mip0.height`. Useful to estimate the resource cost of this node and/or texel-resolution based LOD switching. Ignored for un-textured meshes."
     }
 
   },
@@ -25,7 +25,7 @@
     "examples": [
       {
         "title": "Texture material",
-        "description": "Texture(s) will be at `layers/0/nodes/6/textures/{tex_name}`. `tex_name` is from the 5th material definition. For example, the base color texture set would be `layer.materialDefinition[4].pbrMetallicRoughness.baseColorTexture.textureSetDefinitionId`",
+        "description": "Texture(s) will be at `layers/0/nodes/6/textures/{tex_name}`. The `tex_name` is from the 5th material definition. For example, the base color texture set would be `layer.materialDefinition[4].pbrMetallicRoughness.baseColorTexture.textureSetDefinitionId`.",
         "code": {
           "definition": 4,
           "resource": 6,

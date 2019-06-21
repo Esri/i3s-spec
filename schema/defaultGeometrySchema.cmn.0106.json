@@ -2,7 +2,7 @@
     "title": "defaultGeometrySchema",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "The defaultGeometry schema is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of ArrayBufferView geometry declarations in a store, and reuses the GeometryAttribute type from FeatureData. Only valueType and valuesPerElement are required.",
+    "description": "The defaultGeometry schema is used in stores where all arrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of arrayBufferView geometry declarations in a store, and reuses the geometryAttribute type from featureData. Only valueType and valuesPerElement are required.",
     "properties": {
         "geometryType": {
             "type": "string",
@@ -36,9 +36,9 @@
         "ordering": {
             "type": "array",
             "items": {
-                "type": "string",
-                "description": "Defines the ordering of the vertex Attributes"
-            }
+                "type": "string"
+            },
+                "description": "Defines the ordering of the vertex Attributes."
         },
         "vertexAttributes": {
             "type": "object",

@@ -13,10 +13,10 @@ Attribute domains are rules that describe the legal values of a field type, prov
 | **name** | string | Name of the domain. Must be unique per Scene Layer. |
 | description | string | Description of the domain |
 | fieldType | string | The field type is the type of attribute field with which the domain can be associated.<div>Possible values are:<ul><li>`esriFieldTypeDate`</li><li>`esriFieldTypeSingle`</li><li>`esriFieldTypeDouble`</li><li>`esriFieldTypeInteger`</li><li>`esriFieldTypeSmallInteger`</li><li>`esriFieldTypeString`</li></ul></div> |
-| range | number[2] | Range of the domain (numeric types only) |
-| codedValues | [domainCodedValue](domainCodedValue.cmn.md)[] | Range of the domain (string types only) |
-| mergePolicy | string | Merge policy for the domain. (unused by Scene Layers) <div>Possible values are:<ul><li>`esriMPTDefaultValue`</li><li>`esriMPTSumValues`</li><li>`esriMPTAreaWeighted`</li></ul></div> |
-| splitPolicy | string | Split policy for the domain. (unused by Scene Layers) <div>Possible values are:<ul><li>`esriSPTGeometryRatio`</li><li>`esriSPTDuplicate`</li><li>`esriSPTDefaultValue`</li></ul></div> |
+| range | number[2] | Range of the domain. Only numeric types are possible. |
+| codedValues | [domainCodedValue](domainCodedValue.cmn.md)[] | Range of the domain. Only string types are possible. |
+| mergePolicy | string | Merge policy for the domain. Not used by Scene Layers.<div>Possible values are:<ul><li>`esriMPTDefaultValue`</li><li>`esriMPTSumValues`</li><li>`esriMPTAreaWeighted`</li></ul></div> |
+| splitPolicy | string | Split policy for the domain. Not used by Scene Layers. <div>Possible values are:<ul><li>`esriSPTGeometryRatio`</li><li>`esriSPTDuplicate`</li><li>`esriSPTDefaultValue`</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

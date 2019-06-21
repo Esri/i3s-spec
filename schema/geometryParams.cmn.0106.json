@@ -2,7 +2,7 @@
   "title": "GeometryParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The abstract parent object for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.",
+  "description": "The abstract parent object for all geometryParams classes (geometryReferenceParams, vestedGeometryParamas, singleComponentParams). It does not have properties of its own.",
   "oneOf": [
     {
       "$ref": "geometryReferenceParams.cmn.0106.json"

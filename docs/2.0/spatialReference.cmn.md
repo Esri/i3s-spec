@@ -15,7 +15,7 @@ A spatial reference can optionally include a definition for a vertical coordinat
 | latestWkid | integer | Identifies the current WKID value associated with the same spatial reference. For example a WKID of '102100' (Web Mercator) has a latestWKid of '3857'. |
 | vcsWkid | integer | The WKID value of the vertical coordinate system. |
 | wkid | integer | The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system. |
-| wkt | string | The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both) |
+| wkt | string | The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system but not both. |
 
 ### Examples 
 

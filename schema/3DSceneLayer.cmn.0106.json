@@ -27,7 +27,7 @@
       "$ref": "spatialReference.cmn.0106.json"
     },
     "heightModelInfo": {
-      "description": "Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content.",
+      "description": "Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical coordinate system) with existing content.",
       "$ref": "heightModelInfo.cmn.0106.json"
     },
     "version": {
@@ -40,7 +40,7 @@
     },
     "serviceUpdateTimeStamp": {
       "type": "object",
-      "description": "The time of the last update",
+      "description": "The time of the last update.",
       "$ref": "serviceUpdateTimeStamp.cmn.0106.json"
     },
     "alias": {
@@ -99,7 +99,7 @@
     },
     "disablePopup": {
       "type": "boolean",
-      "description": "Indicates if client application will show the popup information."
+      "description": "Indicates if client application will show the popup information. Default is FALSE."
     },
     "store": {
       "type": "object",
@@ -111,7 +111,7 @@
       "items": {
         "$ref": "field.cmn.0106.json"
       },
-      "description": "A collection of objects that describe each attribute field regarding its field name, datatype, and a user friendly name {name,type,alias}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer."
+      "description": "A collection of objects that describe each attribute field regarding its field name, datatype, and a user friendly name {name,type,alias}. It includes all fields that are included as part of the scene layer as derived from a source input feature layer."
     },
     "attributeStorageInfo": {
       "type": "array",

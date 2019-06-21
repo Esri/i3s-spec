@@ -1,6 +1,6 @@
 # vertexAttribute
 
-VertexAttributes describe valid properties for a single vertex.
+The vertexAttributes describe valid properties for a single vertex.
 
 ### Related:
 
@@ -9,11 +9,11 @@ VertexAttributes describe valid properties for a single vertex.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **position** | [geometryAttribute](geometryAttribute.cmn.md) | Vertex position |
-| **normal** | [geometryAttribute](geometryAttribute.cmn.md) | vertex normal |
-| **uv0** | [geometryAttribute](geometryAttribute.cmn.md) | First set of UV coordinates |
-| **color** | [geometryAttribute](geometryAttribute.cmn.md) | Colors attribute |
-| region | [geometryAttribute](geometryAttribute.cmn.md) | Regions attribute |
+| **position** | [geometryAttribute](geometryAttribute.cmn.md) | The vertex position. |
+| **normal** | [geometryAttribute](geometryAttribute.cmn.md) | The vertex normal. |
+| **uv0** | [geometryAttribute](geometryAttribute.cmn.md) | The first set of UV coordinates. |
+| **color** | [geometryAttribute](geometryAttribute.cmn.md) | The color attribute. |
+| region | [geometryAttribute](geometryAttribute.cmn.md) | The region attribute. |
 
 *Note: properties in **bold** are required*
 

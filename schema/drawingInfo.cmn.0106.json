@@ -10,7 +10,7 @@
         }  ,
         "scaleSymbols": {
             "type": "boolean",
-            "description": "Scale symbols for the layer"
+            "description": "Scale symbols for the layer."
         }
     },
     "additionalProperties": false,

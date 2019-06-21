@@ -10,7 +10,7 @@
     },
     "name": {
       "type": "string",
-      "description": "Layer name. **Must be unique** per building scene layer"
+      "description": "Layer name. **Must be unique** per building scene layer."
     },
     "alias": {
       "type": "string",
@@ -31,7 +31,7 @@
     },
     "visibility": {
       "type": "boolean",
-      "description": "Visibility of the sublayer. Default is `true`"
+      "description": "Visibility of the sublayer. Default is `true`."
     },
 
     "sublayers": {

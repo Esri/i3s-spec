@@ -1,6 +1,6 @@
 # Mesh object
 
-Mesh geometry for a node
+Mesh geometry for a node.
 
 ### Related:
 
@@ -9,13 +9,13 @@ Mesh geometry for a node
 
 | Property | Type | Description |
 | --- | --- | --- |
-| material | [meshmaterial](meshmaterial.cmn.md) | material definition |
-| geometry | [meshgeometry](meshgeometry.cmn.md) | geometry definition |
-| attribute | [meshattribute](meshattribute.cmn.md) | attribute set definition |
+| material | [meshmaterial](meshmaterial.cmn.md) | The material definition. |
+| geometry | [meshgeometry](meshgeometry.cmn.md) | The geometry definition. |
+| attribute | [meshattribute](meshattribute.cmn.md) | The attribute set definition. |
 
 ### Examples 
 
-#### Example: Textured mesh with attributes and features 
+#### Example: Textured mesh with attributes and features. 
 
 ```json
  {

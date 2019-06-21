@@ -2,11 +2,11 @@
   "title": "VestedGeometryParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "This object extends GeometryParams and is the abstract parent object for all concrete ('vested') GeometryParams objects that directly contain a geometry definition, either as an ArrayBufferView or as an embedded geometry.",
+  "description": "This object extends geometryParams and is the abstract parent object for all concrete ('vested') geometryParams objects that directly contain a geometry definition, either as an arrayBufferView or as an embedded geometry.",
   "properties": {
     "type": {
       "type": "string",
-      "description": "The primitive type of the geometry defined through a VestedGeometryParams object. One of {*triangles*, lines, points}"
+      "description": "The primitive type of the geometry defined through a vestedGeometryParams object. One of {*triangles*, lines, points}."
     },
     "topology": {
       "type": "string",

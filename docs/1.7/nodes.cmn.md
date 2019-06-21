@@ -9,7 +9,7 @@
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **nodes** | [node](node.cmn.md)[] | Array of nodes |
+| **nodes** | [node](node.cmn.md)[] | Array of nodes. |
 
 *Note: properties in **bold** are required*
 

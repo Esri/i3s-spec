@@ -76,11 +76,11 @@
     },
     "params.castShadows": {
       "type": "boolean",
-      "description": "true if features with this material should cast shadows."
+      "description": "True if features with this material should cast shadows."
     },
     "params.receiveShadows": {
       "type": "boolean",
-      "description": "true if features with this material should receive shadows."
+      "description": "True if features with this material should receive shadows."
     },
     "params.cullFace": {
       "type": "string",

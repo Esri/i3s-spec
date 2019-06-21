@@ -2,7 +2,7 @@
   "title": "geometryAttribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Each GeometryAttribute object is an accessor, i.e. a view, into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. VertexAttributes describe valid properties for a single vertex, and FaceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face.",
+  "description": "Each geometryAttribute object is an accessor, i.e. a view, into an array buffer. There are two types of geometryAttributes - vertexAttributes and faceAttributes. The vertexAttributes describe valid properties for a single vertex, and faceAttributes describe faces and other structures by providing a set of indices. For example, the <code>faces.position</code> index attribute is used to define which vertex positions make up a face.",
   "properties": {
     "id": {
       "type": "object",

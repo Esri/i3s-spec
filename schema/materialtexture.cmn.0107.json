@@ -2,15 +2,15 @@
   "title": "Material texture definition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "",
+  "description": "The material texture definition.",
   "properties": {
     "textureSetDefinitionId": {
       "type": "integer",
-      "description": "index in [layer.textureSetDefinitions](3DSceneLayer.cmn.md)"
+      "description": "The index in [layer.textureSetDefinitions](3DSceneLayer.cmn.md)."
     },
     "factor": {
       "type": "number",
-      "description": "_normal texture_: scalar multiplier applied to each normal vector of the normal texture. For _occlusion texture_,scalar multiplier controlling the amount of occlusion applied. Default=`1`"
+      "description": "The _normal texture_: scalar multiplier applied to each normal vector of the normal texture. For _occlusion texture_,scalar multiplier controlling the amount of occlusion applied. Default=`1`"
     }
   },
   "required": [

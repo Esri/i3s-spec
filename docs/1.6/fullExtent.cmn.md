@@ -1,6 +1,6 @@
-# Building Scene Layer
+# Full Extent
 
-Id-> Feature-service mapping
+Defines the full extent of a scene layer.
 
 ### Related:
 

@@ -7,11 +7,11 @@
   "properties": {
     "index": {
       "type": "integer",
-      "description": "index in the node array. may be **different than** material, geometry and attribute `resource` id. see [`mesh`](mesh.cmn.md)"
+      "description": "The index in the node array. May be **different than** material, geometry and attribute `resource` id. See [`mesh`](mesh.cmn.md) for more information."
     },
     "lodThreshold": {
       "type": "number",
-      "description": "When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.cmn.md) "
+      "description": "When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodepages.cmn.md) for more information."
     },
     "obb": {
       "type": "string",
@@ -23,12 +23,12 @@
       "items": {
         "type": "integer"
       },
-      "description": "index of the children nodes indices"
+      "description": "index of the children nodes indices."
     },
     "mesh": {
       "type": "object",
       "$ref": "mesh.cmn.0107.json",
-      "description": "WARNING: only **SINGLE** mesh is supported at version 1.7. (i.e. `length` **must** be 0 or 1)"
+      "description": " The mesh for this node. **WARNING:** only **SINGLE** mesh is supported at version 1.7 (i.e. `length` **must** be 0 or 1)."
     }
   },
   "required": [

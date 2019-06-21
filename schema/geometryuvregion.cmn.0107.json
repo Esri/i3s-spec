@@ -10,11 +10,11 @@
       "enum": [
         "UInt16"
       ],
-      "description": "color channel values"
+      "description": "Color channel values."
     },
     "component": {
       "type": "integer",
-      "description": "`default =4`, must be 4."
+      "description": "The `default =4`, must be 4."
     },
     "encoding": {
       "type": "string",
@@ -31,7 +31,7 @@
       ],
       "enum-description": {
         "per-vertex": "default",
-        "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present"
+        "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present."
       },
       "description": "binding"
     }

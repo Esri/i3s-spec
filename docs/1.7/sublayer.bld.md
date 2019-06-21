@@ -10,12 +10,12 @@ A building scene layer is composed of an overview and the full model containing 
 | Property | Type | Description |
 | --- | --- | --- |
 | **id** | integer | Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...` |
-| **name** | string | Layer name. **Must be unique** per building scene layer |
+| **name** | string | Layer name. **Must be unique** per building scene layer. |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
 | discipline | string | Semantic for work discipline groups which refine the user experience. <div>Possible values are:<ul><li>`Mechanical`</li><li>`Architectural`</li><li>`Piping`</li><li>`Electrical`</li><li>`Structural`</li></ul></div> |
 | modelName | string | A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](subLayerModelName.md) for sublayers. |
 | **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`3DObject`</li><li>`Point`</li></ul></div> |
-| visibility | boolean | Visibility of the sublayer. Default is `true` |
+| visibility | boolean | Visibility of the sublayer. Default is `true`. |
 | sublayers | [sublayer](sublayer.bld.md)[] | Sublayers contained in this layer. |
 
 *Note: properties in **bold** are required*

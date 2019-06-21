@@ -11,7 +11,7 @@
         "type": "object",
         "$ref": "node.cmn.0107.json"
       },
-      "description": "Array of nodes"
+      "description": "Array of nodes."
     }
   },
   "additionalProperties": false,

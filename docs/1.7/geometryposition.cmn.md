@@ -1,6 +1,6 @@
 # Position vertex attribute
 
-Relative the center of oriented-bounded box of the node
+Relative to the center of oriented-bounded box of the node.
 
 ### Related:
 
@@ -9,8 +9,8 @@ Relative the center of oriented-bounded box of the node
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **type** | string | Vertex positions relative to Oriented-bounding-box center<div>Must be:<ul><li>`Float32`</li></ul></div> |
-| **component** | integer | Number of coordinates per vertex position. Must be 3 |
+| **type** | string | Vertex positions relative to Oriented-bounding-box center.<div>Must be:<ul><li>`Float32`</li></ul></div> |
+| **component** | integer | Number of coordinates per vertex position. Must be 3. |
 | encoding | string | Encoding. <div>Must be:<ul><li>`none`</li></ul></div> |
 | binding | string | <div>Must be:<ul><li>`per-vertex`</li></ul></div> |
 

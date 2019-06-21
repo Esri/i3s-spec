@@ -2,31 +2,31 @@
   "title": "vertexAttribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "VertexAttributes describe valid properties for a single vertex.",
+  "description": "The vertexAttributes describe valid properties for a single vertex.",
   "properties": {
     "position": {
       "type": "object",
-      "description": "Vertex position",
+      "description": "The vertex position.",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "normal": {
       "type": "object",
-      "description": "vertex normal",
+      "description": "The vertex normal.",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "uv0": {
       "type": "object",
-      "description": "First set of UV coordinates",
+      "description": "The first set of UV coordinates.",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "color": {
       "type": "object",
-      "description": "Colors attribute",
+      "description": "The color attribute.",
       "$ref": "geometryAttribute.cmn.0106.json"
     },
     "region": {
       "type": "object",
-      "description": "Regions attribute",
+      "description": "The region attribute.",
       "$ref": "geometryAttribute.cmn.0106.json"
     }
   },

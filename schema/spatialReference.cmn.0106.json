@@ -23,7 +23,7 @@
     },
     "wkt": {
       "type": "string",
-      "description": "The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both)"
+      "description": "The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system but not both."
     }
   },
   "additionalProperties": false,

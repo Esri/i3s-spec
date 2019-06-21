@@ -2,7 +2,7 @@
   "title": "FeatureID attribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "FeatureID helps to indentify part of mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`.  Spec v1.7 only supports triangle.",
+  "description": "FeatureID helps to indentify part of a mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`.  Spec v1.7 only supports triangle.",
   "properties": {
     "type": {
       "type": "string",
@@ -11,7 +11,7 @@
         "UInt32",
         "UInt64"
       ],
-      "description": "A feature integer ID"
+      "description": "A feature integer ID."
     },
     "component": {
       "type": "integer",
@@ -29,7 +29,7 @@
         "per-feature"
       ],
       "enum-description": {
-        "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **Requirement**: a) [`FaceRange`](geometryfacerange.md) attribute must be present** to map features-to-faces and vertices must _be grouped by feature_ **OR** b) [`compressedAttribute.attributes`](compressedAttributes.md) has `uvRegionIndex`. Important: a) and b) are mutually exlusive"
+        "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **Requirement**: a) [`FaceRange`](geometryfacerange.md) attribute must be **present** to map features-to-faces and vertices must _be grouped by feature_. **OR** b) [`compressedAttribute.attributes`](compressedAttributes.md) has `uvRegionIndex`. Important: a) and b) are mutually exlusive."
       }
     }
   },

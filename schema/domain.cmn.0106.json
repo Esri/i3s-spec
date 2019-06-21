@@ -40,14 +40,14 @@
       "items": {
         "type": "number"
       },
-      "description": "Range of the domain (numeric types only)"
+      "description": "Range of the domain. Only numeric types are possible."
     },
     "codedValues": {
       "type": "array",
       "items": {
         "$ref": "domainCodedValue.cmn.0106.json"
       },
-      "description": "Range of the domain (string types only)"
+      "description": "Range of the domain. Only string types are possible."
     },
     "mergePolicy": {
       "type": "string",
@@ -56,7 +56,7 @@
         "esriMPTSumValues",
         "esriMPTAreaWeighted"
       ],
-      "description": "Merge policy for the domain. (unused by Scene Layers) "
+      "description": "Merge policy for the domain. Not used by Scene Layers."
     },
     "splitPolicy": {
       "type": "string",
@@ -65,7 +65,7 @@
         "esriSPTDuplicate",
         "esriSPTDefaultValue"
       ],
-      "description": "Split policy for the domain. (unused by Scene Layers) "
+      "description": "Split policy for the domain. Not used by Scene Layers. "
     }
   },
   "required": [

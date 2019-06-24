@@ -1,6 +1,6 @@
 # Compressed attributes
 
-
+The compressed attributes of a node.
 
 ### Related:
 

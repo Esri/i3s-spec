@@ -43,7 +43,7 @@
         },
         "attributeByteCounts": {
             "type": "object",
-            "description": "Represents the description for value encoding. For example: scalar or vector encoding.",
+            "description": "For string types only. Represents the byte count of the string, including the null character.",
             "$ref": "value.cmn.0106.json"
         },
         "objectIds": {

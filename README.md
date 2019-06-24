@@ -41,6 +41,8 @@ Each I3S profile type evolves independently to allow new functionality to be add
 
 Released 06/30/2019
 
+Supported in ArcGIS Pro 2.4 and ArcGIS Online. 
+
 ### 3D Object Scene Layer and Integrated Mesh Scene Layer
 
 - Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md)
@@ -166,7 +168,6 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>2.2</td>
   </tr>
 </table>
-
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
@@ -214,8 +215,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Point Cloud</td>
@@ -225,8 +226,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
@@ -240,6 +241,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
 </table>
+
 
 
 <table>
@@ -310,7 +312,7 @@ You are invited to fork this repository and to submit pull requests with ideas f
 
 ## License for indexed 3D scene format and REST endpoint specification
 
-Copyright &copy; 2015 - 2017 Esri
+Copyright &copy; 2015 - 2019 Esri
 
 The specification is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International Public License](https://creativecommons.org/licenses/by-nd/4.0/legalcode).
 You can implement the specification in services, clients or processing tools without restrictions.
@@ -333,6 +335,8 @@ License history:
 Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are licensed under the older Creative Commons Attribution-NoDerivs 3.0 Unported license. 
 
 Version 1.6 – present integrated mesh, 3D object, point scene layer, building scene layer (dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
+
+Version 1.7 – present integrated mesh and 3D object (dated 06/30/2019 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 
 Version 2.0 - present point cloud scene layer (01/01/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 

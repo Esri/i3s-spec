@@ -1,6 +1,6 @@
 # Node object
 
-
+The node object.
 
 ### Related:
 

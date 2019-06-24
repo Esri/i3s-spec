@@ -2,7 +2,7 @@
   "title": "Node object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "",
+  "description": "The node object.",
   "related": "3DSceneLayer.cmn.0107.cmn.0107",
   "properties": {
     "index": {

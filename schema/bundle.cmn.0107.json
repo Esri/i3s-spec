@@ -2,6 +2,7 @@
   "title": "Bundled texture",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The bundle of a texture set.",
   "properties": {
     "slot": {
       "type": "integer",

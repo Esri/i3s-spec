@@ -4,7 +4,7 @@ Declaration of the attributes per feature in the geometry, such as feature ID or
 
 ### Related:
 
-[cmn::defaultGeometrySchema](defaultGeometrySchema.cmn.md), [cmn::featureData](featureData.cmn.md)
+[cmn::featureData](featureData.cmn.md)
 ### Properties
 
 | Property | Type | Description |

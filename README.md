@@ -166,7 +166,6 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>2.2</td>
   </tr>
 </table>
-
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
@@ -214,8 +213,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Point Cloud</td>
@@ -225,8 +224,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
@@ -240,6 +239,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
 </table>
+
 
 
 <table>

@@ -1,6 +1,6 @@
 # Geometry definition
 
-
+The geometry definitions used in I3S version 1.7.
 
 ### Related:
 

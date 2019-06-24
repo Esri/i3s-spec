@@ -2,6 +2,7 @@
   "title": "Geometry definition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The geometry definitions used in I3S version 1.7.",
   "properties": {
     "topology": {
       "type": "string",

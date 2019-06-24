@@ -2,6 +2,7 @@
   "title": "Compressed attributes",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The compressed attributes of a node.",
   "properties": {
     "encoding": {
       "type": "string",

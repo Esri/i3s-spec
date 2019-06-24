@@ -59,7 +59,7 @@
         },
         "featureAttributes": {
             "type": "object",
-            "$ref": "geometryFeature.cmn.0106.json",
+            "$ref": "featureAttribute.cmn.0106.json",
             "description": "Declaration of the attributes per feature in the geometry, such as feature ID or face range."
         }
     },

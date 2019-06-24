@@ -41,6 +41,8 @@ Each I3S profile type evolves independently to allow new functionality to be add
 
 Released 06/30/2019
 
+Supported in ArcGIS Pro 2.4 and ArcGIS Online. 
+
 ### 3D Object Scene Layer and Integrated Mesh Scene Layer
 
 - Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md)

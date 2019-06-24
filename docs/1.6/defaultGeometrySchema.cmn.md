@@ -16,7 +16,7 @@ The defaultGeometry schema is used in stores where all arrayBufferView geometry 
 | **vertexAttributes** | [vertexAttribute](vertexAttribute.cmn.md) | Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates. |
 | faces | [vertexAttribute](vertexAttribute.cmn.md) | Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates. |
 | **featureAttributeOrder** | string[] | Provides the order of the keys in featureAttributes, if present. |
-| **featureAttributes** | [geometryFeature](geometryFeature.cmn.md) | Declaration of the attributes per feature in the geometry, such as feature ID or face range. |
+| **featureAttributes** | [featureAttribute](featureAttribute.cmn.md) | Declaration of the attributes per feature in the geometry, such as feature ID or face range. |
 
 *Note: properties in **bold** are required*
 

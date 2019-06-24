@@ -14,7 +14,7 @@ An object that describes the structure of the binary attribute data resource of 
 | **header** | [headerValue](headerValue.cmn.md)[] | Declares the headers of the binary attribute data. |
 | ordering | string[] | <div>Possible values for each array string:<ul><li>`attributeByteCounts`: Should only be present when working with string data types.</li><li>`attributeValues`: Should always be present. </li><li>`ObjectIds`</li></ul></div> |
 | attributeValues | [value](value.cmn.md) | Represents the description for value encoding. For example: scalar or vector encoding. |
-| attributeByteCounts | [value](value.cmn.md) | Represents the description for value encoding. For example: scalar or vector encoding. |
+| attributeByteCounts | [value](value.cmn.md) | For string types only. Represents the byte count of the string, including the null character. |
 | objectIds | [value](value.cmn.md) | Stores the object-id values of each feature within the node. |
 
 *Note: properties in **bold** are required*

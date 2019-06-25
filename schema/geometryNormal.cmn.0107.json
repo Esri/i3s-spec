@@ -2,7 +2,7 @@
   "title": "Normal attribute",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Normals",
+  "description": "Defining the normals of the geometry.",
   "properties": {
     "type": {
       "type": "string",

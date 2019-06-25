@@ -1,6 +1,6 @@
 # Texture coordinates
 
-
+Defines the texture coordinates of the geometry.
 
 ### Related:
 

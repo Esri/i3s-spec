@@ -2,7 +2,7 @@
   "title": "Texture coordinates",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "",
+  "description": "Defines the texture coordinates of the geometry.",
   "properties": {
     "type": {
       "type": "string",

@@ -6,7 +6,8 @@
   "properties": {
     "topology": {
       "type": "string",
-      "enum": [ "triangle"]
+      "enum": [ "triangle"],
+      "description": "Defines the topology type of the mesh."
     },
     "geometryBuffers": {
       "type": "array",

@@ -6,17 +6,17 @@
   "properties": {
     "material": {
       "type": "object",
-      "$ref": "meshmaterial.cmn.0107.json",
+      "$ref": "meshMaterial.cmn.0107.json",
       "description": "The material definition."
     },
     "geometry": {
       "type": "object",
-      "$ref": "meshgeometry.cmn.0107.json",
+      "$ref": "meshGeometry.cmn.0107.json",
       "description": "The geometry definition."
     },
     "attribute": {
       "type": "object",
-      "$ref": "meshattribute.cmn.0107.json",
+      "$ref": "meshAttribute.cmn.0107.json",
       "description": "The attribute set definition."
     }
   },

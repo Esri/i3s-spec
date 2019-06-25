@@ -2,7 +2,7 @@
   "title": "Node page index document",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "related": "nodepages.cmn.0107",
+  "related": "nodePages.cmn.0107",
   "description": "",
   "properties": {
     "nodes": {

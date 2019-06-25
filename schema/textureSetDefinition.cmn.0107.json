@@ -7,7 +7,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "$ref": "texturesetdefinitionformat.cmn.0107.json"
+        "$ref": "textureSetDefinitionFormat.cmn.0107.json"
       },
       "description": "List of formats that are available for this texture set"
     },

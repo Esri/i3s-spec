@@ -8,14 +8,14 @@
     "properties": {
         "nodePages": {
             "type": "object",
-            "$ref": "nodepages.cmn.0107.json",
+            "$ref": "nodePages.cmn.0107.json",
             "description": "The paged-access index description."
         },
         "materialDefinitions": {
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "materialdefinitions.cmn.0107.json"
+                "$ref": "materialDefinitions.cmn.0107.json"
             },
             "description": "List of materials classes used in this layer."
         },
@@ -23,7 +23,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "texturesetdefinition.cmn.0107.json"
+                "$ref": "textureSetDefinition.cmn.0107.json"
             },
             "description": "Defines the set of textures that can be referenced by meshes."
         },
@@ -31,7 +31,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "$ref": "geometrydefinition.cmn.0107.json"
+                "$ref": "geometryDefinition.cmn.0107.json"
             },
             "description": "Define the layouts of mesh geometry and its attributes."
         }

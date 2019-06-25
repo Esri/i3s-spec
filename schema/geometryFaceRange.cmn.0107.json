@@ -2,7 +2,7 @@
   "title": "Face Range",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description-href": "description/geometryfacerange.cmn.0107.md",
+  "description-href": "description/geometryFaceRange.cmn.0107.md",
   "properties": {
     "type": {
       "type": "string",

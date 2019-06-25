@@ -2,7 +2,7 @@
   "title": "Mesh geometry description",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description-href": "description/geometrybuffer.cmn.0107.md",
+  "description-href": "description/geometryBuffer.cmn.0107.md",
   "properties": {
     "offset": {
       "type": "integer",
@@ -10,37 +10,37 @@
     },
     "position": {
       "type": "object",
-      "$ref": "geometryposition.cmn.0107.json",
+      "$ref": "geometryPosition.cmn.0107.json",
       "description": "Vertex positions relative to oriented-bounding-box center."
     },
     "normal": {
       "type": "object",
-      "$ref": "geometrynormal.cmn.0107.json",
+      "$ref": "geometryNormal.cmn.0107.json",
       "description": "Face/vertex normal."
     },
     "uv0": {
       "type": "object",
-      "$ref": "geometryuv.cmn.0107.json",
+      "$ref": "geometryUV.cmn.0107.json",
       "description": "First set of UV coordinates. Only applies to textured mesh."
     },
     "color": {
       "type": "object",
-      "$ref": "geometrycolor.cmn.0107.json",
+      "$ref": "geometryColor.cmn.0107.json",
       "description": "The colors attribute."
     },
     "uvRegion": {
       "type": "object",
-      "$ref": "geometryuvregion.cmn.0107.json",
+      "$ref": "geometryUVRegion.cmn.0107.json",
       "description": "UV regions, used for repeated textures in texture atlases."
     },
     "featureId": {
       "type": "object",
-      "$ref": "geometryfeatureid.cmn.0107.json",
+      "$ref": "geometryFeatureID.cmn.0107.json",
       "description": "FeatureId attribute."
     },
     "faceRange": {
       "type": "object",
-      "$ref": "geometryfacerange.cmn.0107.json",
+      "$ref": "geometryFaceRange.cmn.0107.json",
       "description": "Face range for a feature."
     },
     "compressedAttributes": {

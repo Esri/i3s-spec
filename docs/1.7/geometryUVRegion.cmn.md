@@ -16,7 +16,7 @@
 
 ### Related:
 
-[cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md), [cmn::geometrybuffer](geometrybuffer.cmn.md)
+[cmn::geometryBuffer](geometryBuffer.cmn.md), [cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md)
 ### Properties
 
 | Property | Type | Description |

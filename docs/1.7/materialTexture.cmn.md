@@ -4,7 +4,7 @@ The material texture definition.
 
 ### Related:
 
-[cmn::materialdefinitions](materialdefinitions.cmn.md), [cmn::pbrmetallicroughness](pbrmetallicroughness.cmn.md)
+[cmn::materialDefinitions](materialDefinitions.cmn.md), [cmn::pbrMetallicRoughness](pbrMetallicRoughness.cmn.md)
 ### Properties
 
 | Property | Type | Description |

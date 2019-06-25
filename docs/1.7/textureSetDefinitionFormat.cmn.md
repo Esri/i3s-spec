@@ -4,7 +4,7 @@ Describe the format(s) available for a texture set. Note: JPEG (or PNG) must alw
 
 ### Related:
 
-[cmn::texturesetdefinition](texturesetdefinition.cmn.md)
+[cmn::textureSetDefinition](textureSetDefinition.cmn.md)
 ### Properties
 
 | Property | Type | Description |

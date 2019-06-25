@@ -9,9 +9,9 @@ Mesh geometry for a node.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| material | [meshmaterial](meshmaterial.cmn.md) | The material definition. |
-| geometry | [meshgeometry](meshgeometry.cmn.md) | The geometry definition. |
-| attribute | [meshattribute](meshattribute.cmn.md) | The attribute set definition. |
+| material | [meshMaterial](meshMaterial.cmn.md) | The material definition. |
+| geometry | [meshGeometry](meshGeometry.cmn.md) | The geometry definition. |
+| attribute | [meshAttribute](meshAttribute.cmn.md) | The attribute set definition. |
 
 ### Examples 
 

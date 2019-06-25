@@ -6,7 +6,7 @@
   "properties": {
     "definition": {
       "type": "integer",
-      "description": "The index in [layer.geometryDefinitions](geometrydefinition.cmn.md) array"
+      "description": "The index in [layer.geometryDefinitions](geometryDefinition.cmn.md) array"
     },
     "resource": {
       "type": "integer",

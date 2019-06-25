@@ -4,7 +4,7 @@ The compressed attributes of a node.
 
 ### Related:
 
-[cmn::geometrybuffer](geometrybuffer.cmn.md)
+[cmn::geometryBuffer](geometryBuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

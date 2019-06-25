@@ -6,22 +6,22 @@
   "properties": {
     "pbrMetallicRoughness": {
       "type": "object",
-      "$ref": "pbrmetallicroughness.cmn.0107.json",
+      "$ref": "pbrMetallicRoughness.cmn.0107.json",
       "description": "A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of pbrMetallicRoughness apply."
     },
     "normalTexture": {
       "type": "object",
-      "$ref": "materialtexture.cmn.0107.json",
+      "$ref": "materialTexture.cmn.0107.json",
       "description": "The normal map texture."
     },
     "occlusionTexture": {
       "type": "object",
-      "$ref": "materialtexture.cmn.0107.json",
+      "$ref": "materialTexture.cmn.0107.json",
       "description": "The occlusion map texture."
     },
     "emissiveTexture": {
       "type": "object",
-      "$ref": "materialtexture.cmn.0107.json",
+      "$ref": "materialTexture.cmn.0107.json",
       "description": "The emissive map texture."
     },
     "emissiveFactor": {

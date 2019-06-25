@@ -4,7 +4,7 @@ Colors for geometry.  Assumed to be sRGB space.
 
 ### Related:
 
-[cmn::geometrybuffer](geometrybuffer.cmn.md)
+[cmn::geometryBuffer](geometryBuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

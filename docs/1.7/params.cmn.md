@@ -19,7 +19,7 @@ Parameter describing the material.
 | castShadows | boolean | TRUE if features with this material should cast shadows. |
 | receiveShadows | boolean | TRUE if features with this material should receive shadows |
 | cullFace | string | Indicates the material culling options {back, front, *none*}. Default is none. |
-| vertexColors | boolean | This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering. |
+| vertexColors | boolean | This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering. If texture is present, the vertex colors are multiplied by this color. e.g. `pixel_color = [interpolated]vertex_color * texel_color`. |
 | vertexRegions | boolean | This flag indicates that the geometry has uv region vertex attributes. These are used for adressing subtextures in a texture atlas. The uv coordinate are relative to this subtexture in this case. |
 | useVertexColorAlpha | boolean | The vertex color alpha value. |
 

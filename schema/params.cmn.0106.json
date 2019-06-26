@@ -61,7 +61,7 @@
     },
     "vertexColors": {
       "type": "boolean",
-      "description": "This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering."
+      "description": "This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering. If texture is present, the vertex colors are multiplied by this color. e.g. `pixel_color = [interpolated]vertex_color * texel_color`."
     },
     "vertexRegions": {
       "type": "boolean",

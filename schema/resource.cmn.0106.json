@@ -13,32 +13,32 @@
       "items": {
         "type": "string"
       },
-      "description": "The list of layer names that indicates which layer features in the bundle belongs to. The client can use this information to selectively download bundles."
+      "description": "**Deprecated.** The list of layer names that indicates which layer features in the bundle belongs to. The client can use this information to selectively download bundles."
     },
     "featureRange": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Only applicable for featureData resources. Provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle."
+      "description": "**Deprecated.** Only applicable for featureData resources. Provides inclusive indices of the features list in this node that indicate which features of the node are located in this bundle."
     },
     "multiTextureBundle": {
       "type": "string",
-      "description": "Only applicable for textureData resources. TRUE if the bundle contains multiple textures. If FALSE or not set, clients can interpret the entire bundle as a single image."
+      "description": "**Deprecated.** Only applicable for textureData resources. TRUE if the bundle contains multiple textures. If FALSE or not set, clients can interpret the entire bundle as a single image."
     },
     "vertexElements": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Only applicable for geometryData resources. Represents the count of elements in vertexAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema."
+      "description": "**Deprecated.** Only applicable for geometryData resources. Represents the count of elements in vertexAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema."
     },
     "faceElements": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Only applicable for geometryData resources. Represents the count of elements in faceAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema."
+      "description": "**Deprecated.** Only applicable for geometryData resources. Represents the count of elements in faceAttributes; multiply by the sum of bytes required for each element as defined in the defaultGeometrySchema."
     }
   },
   "required": [
@@ -50,11 +50,7 @@
       {
         "title": "Resource example",
         "code": {
-          "href": "./features/0",
-          "featureRange": [
-            0,
-            3
-          ]
+          "href": "./features/0"
         }
       }
     ]

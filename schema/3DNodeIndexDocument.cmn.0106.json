@@ -119,7 +119,7 @@
                 "type": "object",
                 "$ref": "features.cmn.0106.json"
             },
-            "description": "A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores."
+            "description": "**Deprecated.** A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores."
         }
     },
     "required": [

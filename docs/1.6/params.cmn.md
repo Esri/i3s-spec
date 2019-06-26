@@ -18,10 +18,10 @@ Parameter describing the material.
 | **renderMode** | string | Rendering mode.<div>Possible values are:<ul><li>`textured`</li><li>`solid`</li><li>`untextured`</li><li>`wireframe`</li></ul></div> |
 | castShadows | boolean | TRUE if features with this material should cast shadows. |
 | receiveShadows | boolean | TRUE if features with this material should receive shadows |
-| cullFace | string | Indicates the material culling options {back, front, *none*}. Default is none. |
-| vertexColors | boolean | The vertex color. |
-| vertexRegions | boolean | The vertex region. |
-| useVertexColorAlpha | boolean | The vertex color alpha value. |
+| cullFace | string | Indicates the material culling options {back, front, *none*}. |
+| vertexColors | boolean | This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering. If texture is present, the vertex colors are multiplied by this color. e.g. `pixel_color = [interpolated]vertex_color * texel_color`.  Default is false. |
+| vertexRegions | boolean | This flag indicates that the geometry has uv region vertex attributes. These are used for adressing subtextures in a texture atlas. The uv coordinates are relative to this subtexture in this case.  This is mostly useful for repeated textures in a texture atlas.  Default is false. |
+| useVertexColorAlpha | boolean | Indicates whether Vertex Colors also contain a transparency channel.  Default is false. |
 
 *Note: properties in **bold** are required*
 

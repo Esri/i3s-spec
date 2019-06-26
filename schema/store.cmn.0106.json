@@ -151,7 +151,7 @@
         "type": "object"
       },
       "description": "If a store uses only one material, it can be defined here entirely as a MaterialDefinition.",
-      "$ref": "material.cmn.0106.json"
+      "$ref": "materialDefinition.cmn.0106.json"
     }
   },
   "required": [

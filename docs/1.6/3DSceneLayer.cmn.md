@@ -2,7 +2,7 @@
 
 The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.
 
-When generating scene layers with the meshpyramid cooker, the root node never has any geometry. Any node's offspring nodes represent a higher LOD quality representation of an ancestor node.  Nodes without geometry at the top of the tree are allowable since the lowest LOD of a feature/geometry is not to shown.
+When generating scene layers with the meshpyramid cooker, the root node never has any geometry. Any node's children represent a higher LOD quality than an ancestor node.  Nodes without geometry at the top of the tree are allowable since the lowest LOD of a feature/geometry is not to shown.
 
 ### Properties
 

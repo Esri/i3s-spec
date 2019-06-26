@@ -50,7 +50,7 @@ The following API methods are available for Point Scene Layer:
 |------|-------|-----------------|
 |To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/PointSceneLayer/SceneServer/0|
 |To query statistics|Statistics is listed at  scenelayer.statisticsInfo[].key.|http://my.server.com/PointSceneLayer/SceneServer/layers/0/statistics/f_1/0} |
-|To query  node  document|Users the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/PointSceneLayer/SceneServer/layers/0/nodes/root|
-|To query  feature  |Feature as listed in nodes.featureData.href.|http://my.server.com/layers/SceneServiceLayer/PointSceneLayer/0/nodes/root/features/0 |
+|To query  node  document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/PointSceneLayer/SceneServer/layers/0/nodes/root|
+|To query  feature  |Feature as listed in nodes.featureData.href.|http://my.server.com/layers/PointSceneLayer/0/nodes/root/features/0 |
 |To query  attribute |Attribute is listed at  scenelayer.attributeStorageInfo[].key .|http://my.server.com/PointSceneLayer/SceneServer/layers/0/nodes/root/attributes/f_1/0 |
-|To query resources|Symbol resources for the point features.|http://my.server.com/PointSceneLayer/SceneServer/layers/0/0/resources/styles/root|
+|To query resources|Symbol resources for the point features.|http://my.server.com/PointSceneLayer/SceneServer/layers/0/resources/styles/root|

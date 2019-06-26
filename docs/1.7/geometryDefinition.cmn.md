@@ -9,7 +9,7 @@ The geometry definitions used in I3S version 1.7.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| topology | string | <div>Must be:<ul><li>`triangle`</li></ul></div> |
+| topology | string | Defines the topology type of the mesh.<div>Must be:<ul><li>`triangle`</li></ul></div> |
 | **geometryBuffers** | [geometryBuffer](geometryBuffer.cmn.md)[1:2] | Array of geometry representation(s) for this class of meshes. When multiple representations are listed, Clients should select the most compact they support (e.g. Draco compressed mesh). For compatibility reasons, _uncompressed_ geometry buffer is always required and must be first (i.e. `geometryBuffers[0]`), so array length must be 1 or 2 |
 
 *Note: properties in **bold** are required*

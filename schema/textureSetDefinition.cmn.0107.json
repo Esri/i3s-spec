@@ -9,7 +9,7 @@
         "type": "object",
         "$ref": "textureSetDefinitionFormat.cmn.0107.json"
       },
-      "description": "List of formats that are available for this texture set"
+      "description": "List of formats that are available for this texture set."
     },
     "atlas": {
       "type": "boolean",

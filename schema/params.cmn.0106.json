@@ -61,31 +61,37 @@
     },
     "vertexColors": {
       "type": "boolean",
-      "description": ""
+      "description": "The vertex color."
     },
     "vertexRegions": {
       "type": "boolean",
-      "description": ""
+      "description": "The vertex region."
     },
     "useVertexColorAlpha": {
       "type": "boolean",
-      "description": ""
+      "description": "The vertex color alpha value."
     }
   },
   "required": [
     "renderMode"
   ],
-  "additionalProperties": false,
+  
   "esriDocumentation": {
     "examples": [
       {
-        "title": "3D Scene Layer info for point scene layer"
-      },
-      {
-        "title": "3D Scene Layer info for 3D object scene layer"
-      },
-      {
-        "title": "3D Scene Layer info for integrated mesh scene layer"
+        "title": "3D Scene Layer info for integrated mesh scene layer",
+        "code":{
+           "vertexRegions" : false,
+            "vertexColors" : true,
+            "useVertexColorAlpha" : false,
+            "reflectivity" : 0,
+            "shininess" : 1,
+            "ambient" : [0, 0, 0],
+            "diffuse" : [1, 1, 1],
+            "specular" : [0.0980392173, 0.0980392173, 0.0980392173],
+            "renderMode" : "solid",
+            "cullFace" : "none"
+        }
       }
     ]
   }

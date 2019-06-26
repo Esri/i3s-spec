@@ -19,29 +19,40 @@ Parameter describing the material.
 | castShadows | boolean | TRUE if features with this material should cast shadows. |
 | receiveShadows | boolean | TRUE if features with this material should receive shadows |
 | cullFace | string | Indicates the material culling options {back, front, *none*}. Default is none. |
-| vertexColors | boolean |  |
-| vertexRegions | boolean |  |
-| useVertexColorAlpha | boolean |  |
+| vertexColors | boolean | The vertex color. |
+| vertexRegions | boolean | The vertex region. |
+| useVertexColorAlpha | boolean | The vertex color alpha value. |
 
 *Note: properties in **bold** are required*
 
 ### Examples 
 
-#### Example: 3D Scene Layer info for point scene layer 
-
-```json
- None 
-```
-
-#### Example: 3D Scene Layer info for 3D object scene layer 
-
-```json
- None 
-```
-
 #### Example: 3D Scene Layer info for integrated mesh scene layer 
 
 ```json
- None 
+ {
+  "vertexRegions": false,
+  "vertexColors": true,
+  "useVertexColorAlpha": false,
+  "reflectivity": 0,
+  "shininess": 1,
+  "ambient": [
+    0,
+    0,
+    0
+  ],
+  "diffuse": [
+    1,
+    1,
+    1
+  ],
+  "specular": [
+    0.0980392173,
+    0.0980392173,
+    0.0980392173
+  ],
+  "renderMode": "solid",
+  "cullFace": "none"
+} 
 ```
 

@@ -574,7 +574,7 @@ For more details regarding 3D objects scene layer and point scene layer, see [do
 
 The material used to shade the geometry.
 
-For more details regarding Integrated Mesh and 3D object scene layer, see [material](../docs/1.6/material.cmn.md).
+For more details regarding Integrated Mesh and 3D object scene layer, see [material](../docs/1.6/materialDefinition.cmn.md).
 
 ### <a name="class-cacheddrawinginfo">Class CachedDrawingInfo</a>
 

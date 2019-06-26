@@ -2,7 +2,7 @@
   "title": "Texture set definition format",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Describe the format(s) available for a texture set. Note: JPEG (or PNG) must always be provided.",
+  "description": "Describes the formats available for a texture set. Note: JPEG or PNG must always be provided.",
   "properties": {
     "name": {
       "type": "string",

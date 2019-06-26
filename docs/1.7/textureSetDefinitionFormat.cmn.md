@@ -1,6 +1,6 @@
 # Texture set definition format
 
-Describe the format(s) available for a texture set. Note: JPEG (or PNG) must always be provided.
+Describes the formats available for a texture set. Note: JPEG or PNG must always be provided.
 
 ### Related:
 

@@ -15,7 +15,7 @@ The following layer types have been specified and the standard validated via imp
 - [3D Objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [Point cloud](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
+- [Point Cloud](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 

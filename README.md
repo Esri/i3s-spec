@@ -43,7 +43,7 @@ Released 06/30/2019
 
 Supported in ArcGIS Pro 2.4 and ArcGIS Online. 
 
-### 3D Object Scene Layer and Integrated Mesh Scene Layer
+### [3D Object Scene Layer](../docs/v1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](../docs/v1.7/IntegratedMesh_ReadMe.md)
 
 - Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md)
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
@@ -55,7 +55,7 @@ Supported in ArcGIS Pro 2.4 and ArcGIS Online.
 
 Released 03/01/2019
 
-#### 3D Object Scene Layer
+#### [3D Object Scene Layer](../docs/v1.6/3Dobject_ReadMe.md)
 - [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - Introducing support for oriented bounding boxes as bounding volume hierarchy.
 - [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries. 
 - [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated.  This is used in conjunction with the associated feature layer and editing.

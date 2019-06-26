@@ -17,24 +17,15 @@
       "description": "JSONPointer - The href that resolves to the shared resource bundle in which the material definition is contained."
     },
     "params.vertexRegions": {
-      "type": "array",
-      "items": {
-        "type": "boolean"
-      },
+      "type": "boolean",
       "description": "Indicates whether this material uses per-vertex regions. Defaults to false."
     },
     "params.vertexColors": {
-      "type": "array",
-      "items": {
-        "type": "boolean"
-      },
+      "type": "boolean",
       "description": "Indicates whether this material use vertex colors. Defaults to false."
     },
     "params.useVertexColorAlpha": {
-      "type": "array",
-      "items": {
-        "type": "boolean"
-      },
+      "type": "boolean",
       "description": "Indicates whether vertex colors also contain a transparency channel. Defaults to false."
     },
     "params.transparency": {

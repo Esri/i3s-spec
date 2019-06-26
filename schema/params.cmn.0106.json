@@ -57,19 +57,19 @@
     },
     "cullFace": {
       "type": "string",
-      "description": "Indicates the material culling options {back, front, *none*}. Default is none."
+      "description": "Indicates the material culling options {back, front, *none*}."
     },
     "vertexColors": {
       "type": "boolean",
-      "description": "This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering. If texture is present, the vertex colors are multiplied by this color. e.g. `pixel_color = [interpolated]vertex_color * texel_color`."
+      "description": "This flag indicates that the vertex color attribute of the geometry should be used to color the geometry for rendering. If texture is present, the vertex colors are multiplied by this color. e.g. `pixel_color = [interpolated]vertex_color * texel_color`.  Default is false."
     },
     "vertexRegions": {
       "type": "boolean",
-      "description": "This flag indicates that the geometry has uv region vertex attributes. These are used for adressing subtextures in a texture atlas. The uv coordinate are relative to this subtexture in this case."
+      "description": "This flag indicates that the geometry has uv region vertex attributes. These are used for adressing subtextures in a texture atlas. The uv coordinates are relative to this subtexture in this case.  This is mostly useful for repeated textures in a texture atlas.  Default is false."
     },
     "useVertexColorAlpha": {
       "type": "boolean",
-      "description": "The vertex color alpha value."
+      "description": "Indicates whether Vertex Colors also contain a transparency channel.  Default is false."
     }
   },
   "required": [

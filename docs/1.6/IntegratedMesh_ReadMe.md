@@ -19,6 +19,11 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
 	+-- nodes
 	 +--0
+	 |  +-- textures
+	 |  |  +-- 0_0_1.bin.dds
+	 |  |  +--0_0.jpg
+	 |  +-- shared
+	 |  |  +-- sharedResource
 	 |  +-- geometries
 	 |  |  +-- 0
 	 |  +--1
@@ -34,10 +39,11 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 
 The following API methods are available for Integrated Mesh Scene Layer:
 
-|Method|Example|
-|------|-------|
-|To query SceneLayer document|http://my.server.com/layers/{layerId}|
-|To query attribute, statistics, documents|http://my.server.com/layers/{layerId}/statistics/{AttribKey} |
-|To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} |
-|To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 |
-|To query  Attribute  |Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key |
+|Resource|Description|URL example
+|------|-------|-----------------|
+|To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0|
+|To query  node  document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0|
+|To query textures|Used to query textures for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0/textures/1_0|
+|To query  geometry  |Geometry of the node.|http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/1-0/geometries/0 |
+|To query shared resources|The shared resource such as material definition.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/sharedResource|
+

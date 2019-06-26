@@ -28,7 +28,7 @@ The store object describes the exact physical storage of a layer and enables the
 | indexingScheme | string | Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used. |
 | **defaultGeometrySchema** | [defaultGeometrySchema](defaultGeometrySchema.cmn.md) | A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches. |
 | defaultTextureDefinition | [texture](texture.cmn.md) | A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels. |
-| defaultMaterialDefinition | [material](material.cmn.md) | If a store uses only one material, it can be defined here entirely as a MaterialDefinition. |
+| defaultMaterialDefinition | [materialDefinition](materialDefinition.cmn.md) | If a store uses only one material, it can be defined here entirely as a MaterialDefinition. |
 
 *Note: properties in **bold** are required*
 

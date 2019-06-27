@@ -141,21 +141,21 @@ The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be se
 - Support data with a global extent
 - Support local and global data with high positional accuracy
 
-All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84, as identified by its EPSG code 4326 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
+All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84 ,as identified by its EPSG code 4326 and GCS China Geodetic Coordinate System 2000, as identified by its EPSG 4490 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
 
 In both modes, node index and position vertex must have the same CRS. In addition, all vertex positions are specified as an *offset* from a node's Minimum Bounding Volume (MBV) center. The MBV could be specified as a Minimum Bounding Sphere (MBS) or as an Oriented Bounding Box (OBB).
 
 As a result, for an I3S layer to be in a *global* mode the following requirements must be met:
 
-The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84, where:
-   - The only supported CRS in this mode is EPSG code, 4326
-   - X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees
-   - Elevation (the z component of the vertex position) is specified in meters
-   - The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters
+The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84 or CGCS 2000, where:
+   - The only supported CRS in this mode is EPSG code, 4326 and 4490.
+   - X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
+   - Elevation (the z component of the vertex position) is specified in meters.
+   - The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters.
 
 For an I3S layer to be in a *local* mode the following requirements must be met:
 
-All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 will be treated as in a local mode. In addition:
+All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
   - All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
 
 All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayerInfo](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.

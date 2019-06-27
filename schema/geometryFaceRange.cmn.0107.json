@@ -6,13 +6,17 @@
   "properties": {
     "type": {
       "type": "string",
+      "description": "Data type for the index range",
       "enum": [
         "UInt32"
       ]
     },
     "component": {
       "type": "integer",
-      "description": "must be `2` "
+      "description": "Pair of indices marking first and last triangles for a feature.",
+      "enum": [
+        2
+      ]
     },
     "encoding": {
       "type": "string",

@@ -38,7 +38,7 @@
         },
         {
           "path": "sharedResource.json.gz",
-          "schema": "sharedResource.cmn.0106.json"
+          "schema": "sharedResource.cmn.0107.json"
         },
         {
           "path": "nodepages",

@@ -1,6 +1,6 @@
 # Texture set definition 
 
-
+The set of available textures.
 
 ### Related:
 

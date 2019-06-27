@@ -1,7 +1,7 @@
 Scene Layers: Service and Package Standard
 ===============================================
 
-![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")
+![Multiple scene layers in web scene viewer](./sceneLayers.jpg )
 
 This repository hosts the standard for scene layers.  Scene layers are containers for large amounts of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
@@ -33,6 +33,16 @@ The I3S format is intrinsically designed to support 3D geospatial content.  The 
 
 For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [license](#license-for-indexed-3d-scene-format-and-rest-endpoint-specification) section below for more information.
 
+## Current Version by Profile
+
+| **Profile Type** | **Current Version** |
+| ---------------- | ------------------- |
+| 3D Object        | 1.7                 |
+| Integrated Mesh  | 1.7                 |
+| Point            | 1.6                 |
+| Point Cloud      | 2.0                 |
+| Building         | 1.6                 |
+
 ## What's New?
 
 Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 
@@ -43,11 +53,11 @@ Released 06/30/2019
 
 Supported in ArcGIS Pro 2.4 and ArcGIS Online. 
 
-### [3D Object Scene Layer](../docs/v1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](../docs/v1.7/IntegratedMesh_ReadMe.md)
+### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
 
-- Nodes are now accessible via the [page node index](docs/1.7/nodepages.cmn.md)
+- Nodes are now accessible via the [page node index](docs/1.7/nodePages.cmn.md)
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
-- Support for [advanced material](docs/1.7/materialdefinitions.cmn.md) such as physically based materials
+- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials
 - Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) 
 - New tooling to validate existing slpk and convert integrated mesh or 3d objects scene layer to 1.7.
 
@@ -55,7 +65,7 @@ Supported in ArcGIS Pro 2.4 and ArcGIS Online.
 
 Released 03/01/2019
 
-#### [3D Object Scene Layer](../docs/v1.6/3Dobject_ReadMe.md)
+#### [3D Object Scene Layer](docs/v1.6/3Dobject_ReadMe.md)
 - [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - Introducing support for oriented bounding boxes as bounding volume hierarchy.
 - [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries. 
 - [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated.  This is used in conjunction with the associated feature layer and editing.
@@ -69,7 +79,7 @@ Released 03/01/2019
 
 #### Point Cloud Scene Layer
 
-- [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification
+- [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md) profile specification
 
 ## Where Can I Use...?
 

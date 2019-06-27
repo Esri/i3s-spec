@@ -121,7 +121,7 @@ Layers are described using two properties, type and profile. The type of a layer
 | 3D Objects          | mesh-pyramids | Yes                    | Yes                                                     |
 | Integrated Mesh | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | Point                   | points        | Yes                    | Yes                                                     |
-| Point Cloud       | pointclouds   | No                     | [Vertex Attributes](../docs/2.0/vertexAttribute.cmn.md) |
+| Point Cloud       | pointclouds   | No                     | [Vertex Attributes](../docs/2.0/vertexAttributes.cmn.md) |
 | Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
 
 *Examples of 3D Scene Layer Types and Layer Profiles*
@@ -205,7 +205,8 @@ The I3S standard models node information using a set of resources, including, `N
 - [Geometry](../docs/1.7/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature and  geometry segments.
 - [Attribute](../docs/1.7/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
 - [Texture](../docs/1.7/textureDefinition.cmn.md): Describes how a feature is to be rendered.
-- [Shared Resource](../docs/1.7/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer.
+- [Materials](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
+- *[Shared Resource](../docs/1.7/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer. (Deprecated in v1.7)*
 
 An I3S profile uses either a single text-based sub-resource or separate binary sub-resources.  The text-based resources contain all the geometry and attribute information (e.g. Point profile). The separate, binary sub-resources have self-contained geometry and attribute sub-resources (e.g. mesh pyramids). Applications that use the separate binary sub-resources do not need to fetch the feature data in order to interpret them.  All binary data is stored in little endian. 
 
@@ -245,6 +246,12 @@ For more details regarding point cloud scene layer, see [defaultGeometryShema](.
 Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
 
 For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
+
+### Materials
+
+Materials are feature-compatible with glTF materials.  
+
+For more details, see the [material definition](../docs/v1.7/materialDefinitions.cmn.md)
 
 ### <a name="attribute-model-and-storage">Attribute Model and Storage</a>
 
@@ -494,7 +501,7 @@ For service examples, see [scene service](../service/SceneService.md).
 
 ### <a name="class-3dSceneLayerInfo">Class 3dSceneLayerInfo</a>
 
-The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class [Class DrawingInfo](../docs/1.6/drawingInfo.cmn.md)
+The Class 3dSceneLayerInfo describes the properties of a single layer in a store.  It includes the default symbology, or the stylization information, for a layer.  The symbology is further described in the sub Class [Class DrawingInfo](../docs/1.7/drawingInfo.cmn.md)
 
 For more details regarding Integrated Mesh, 3D objects, see [3D Scene Layer Info](../docs/1.7/3DSceneLayer.cmn.md).
 
@@ -785,7 +792,7 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 
 ### <a name="class-color"></a> Class Color
 
-*Note: Class Outline is not used by ArcGIS Clients. [DrawingInfo](../docs/1.7/drawingInfo.cmn.md) is used instead.*The Color class defines the color of a symbol or the outline. Color is represented as a three-element array representing red, green, and blue.  Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.
+*Note: Class Outline is not used by ArcGIS Clients. [DrawingInfo](../docs/1.7/drawingInfo.cmn.md) is used instead.* The Color class defines the color of a symbol or the outline. Color is represented as a three-element array representing red, green, and blue.  Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.
 
 <table>
 	<tr>

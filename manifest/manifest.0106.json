@@ -39,10 +39,6 @@
         {
           "path": "sharedResource.json.gz",
           "schema": "sharedResource.cmn.0106.json"
-        },
-        {
-          "path":"mbs",
-          "schema": "mbs.cmn.0106.json"
         }
       ]
     },

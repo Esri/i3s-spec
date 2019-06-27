@@ -43,6 +43,10 @@
         {
           "path": "nodepages",
           "schema": "nodes.cmn.0107.json"
+        },
+        {
+          "path":"mbs",
+          "schema": "mbs.cmn.0106.json"
         }
       ]
     },

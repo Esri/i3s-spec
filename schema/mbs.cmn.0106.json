@@ -1,6 +1,9 @@
 {
   "title": "Minimum Bounding Sphere",
   "type": "array",
+  "items": {
+    "type": "number"
+  },
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node.",
   "properties": {
@@ -21,12 +24,12 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title":"Global scene (WSG84) minimum-bounding sphere",
-        "code":{
-          "mbs":[
-            117.182590, 
-            34.055380, 
-            416.65, 
+        "title": "Global scene (WSG84) minimum-bounding sphere",
+        "code": {
+          "mbs": [
+            117.182590,
+            34.055380,
+            416.65,
             2334.5
           ]
         }

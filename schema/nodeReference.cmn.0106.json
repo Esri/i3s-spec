@@ -15,7 +15,8 @@
       },
       "minItems": 4,
       "maxItems": 4,
-      "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node."
+      "description": "An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node.",
+      "$ref":"mbs.cmn.0106.json"
     },
     "href": {
       "type": "string",

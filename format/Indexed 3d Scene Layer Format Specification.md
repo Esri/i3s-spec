@@ -121,7 +121,7 @@ Layers are described using two properties, type and profile. The type of a layer
 | 3D Objects          | mesh-pyramids | Yes                    | Yes                                                     |
 | Integrated Mesh | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
 | Point                   | points        | Yes                    | Yes                                                     |
-| Point Cloud       | pointclouds   | No                     | [Vertex Attributes](../docs/2.0/vertexAttributes.cmn.md) |
+| Point Cloud       | pointclouds   | No                     | [Vertex Attributes](../docs/2.0/vertexAttributes.pcsl.md) |
 | Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
 
 *Examples of 3D Scene Layer Types and Layer Profiles*
@@ -205,7 +205,7 @@ The I3S standard models node information using a set of resources, including, `N
 - [Geometry](../docs/1.7/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature and  geometry segments.
 - [Attribute](../docs/1.7/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
 - [Texture](../docs/1.7/textureDefinition.cmn.md): Describes how a feature is to be rendered.
-- [Materials](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
+- [Material](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
 - *[Shared Resource](../docs/1.7/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer. (Deprecated in v1.7)*
 
 An I3S profile uses either a single text-based sub-resource or separate binary sub-resources.  The text-based resources contain all the geometry and attribute information (e.g. Point profile). The separate, binary sub-resources have self-contained geometry and attribute sub-resources (e.g. mesh pyramids). Applications that use the separate binary sub-resources do not need to fetch the feature data in order to interpret them.  All binary data is stored in little endian. 
@@ -249,9 +249,9 @@ For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
 
 ### Materials
 
-Materials are feature-compatible with glTF materials.  
+Physically based materials that are feature-compatible with glTF materials.  
 
-For more details, see the [material definition](../docs/v1.7/materialDefinitions.cmn.md)
+For more details, see the [material definition](../docs/1.7/materialDefinitions.cmn.md)
 
 ### <a name="attribute-model-and-storage">Attribute Model and Storage</a>
 

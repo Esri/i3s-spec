@@ -15,7 +15,7 @@
       },
       "minItems": 4,
       "maxItems": 4,
-      "description": "An array of four doubles, corresponding to x, y, z and radius of the [minimum bounding sphere](docs/1.6/mbs.cmn.md) of a node."
+      "description": "An array of four doubles, corresponding to x, y, z and radius of the [minimum bounding sphere](mbs.cmn.md) of a node."
     },
     "href": {
       "type": "string",

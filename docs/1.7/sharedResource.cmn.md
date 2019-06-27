@@ -8,8 +8,8 @@ Shared resources are models or textures that can be shared among features within
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **materialDefinitions** | [materialDefinition](materialDefinition.cmn.md) | Materials describe how a feature or a set of features is rendered. |
-| textureDefinitions | [textureDefinition](textureDefinition.cmn.md) | A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries. |
+| **materialDefinitions** | [materialDefinition](materialDefinition.cmn.md) | Materials describe how a Feature or a set of Features is to be rendered. |
+| textureDefinitions | [textureDefinition](textureDefinition.cmn.md) | A Texture is a set of images, with some parameters specific to the texture/uv mapping to geometries. |
 
 *Note: properties in **bold** are required*
 

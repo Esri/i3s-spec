@@ -4,7 +4,7 @@ Point scene layers contain point features and their attributes. Point scene laye
 
 *Example of a point scene layer*
 
-![Point Scene Layer](img/PointSceneLayer.png)
+![Point Scene Layer](../img/PointSceneLayer.png)
 
 ## Point Scene Layer Structure
 The point scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Point scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:

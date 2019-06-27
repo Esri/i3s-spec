@@ -15,6 +15,11 @@ An array of four doubles, corresponding to x, y, z and radius of the minimum bou
 #### Example: Global scene (WSG84) minimum-bounding sphere 
 
 ```json
- None 
+"mbs": [
+        0.027173397137801203,
+        0.0049950922109050205,
+        139.15166463702917,
+        133.99739074707031
+]
 ```
 

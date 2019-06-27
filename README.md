@@ -33,6 +33,16 @@ The I3S format is intrinsically designed to support 3D geospatial content.  The 
 
 For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [license](#license-for-indexed-3d-scene-format-and-rest-endpoint-specification) section below for more information.
 
+## Current Version by Profile
+
+| **Profile Type** | **Current Version** |
+| ---------------- | ------------------- |
+| 3D Object        | 1.7                 |
+| Integrated Mesh  | 1.7                 |
+| Point            | 1.6                 |
+| Point Cloud      | 2.0                 |
+| Building         | 1.6                 |
+
 ## What's New?
 
 Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 

@@ -4,7 +4,7 @@ Integrated mesh scene layers are generally created for citywide 3D mapping.  Int
 
 *Example of integrated mesh scene layer*
 
-![Integrated Mesh Scene Layer](img/IM.PNG)
+![Integrated Mesh Scene Layer](../img/IM.PNG)
 
 ## Integrated Mesh Scene Layer Structure
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:

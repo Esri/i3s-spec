@@ -4,7 +4,7 @@ Building content is derived from a Building Information Modeling (BIM). BIM is a
 
 *Example of a Building Scene Layer*
 
-![Building Scene Layer](img/buildingSceneLayer.png)
+![Building Scene Layer](../img/buildingSceneLayer.png)
 
 ## Building Scene Layer Structure
 The building scene layer contains discipline and category layers as sublayers which represent a building and its assets. Building scene layers can be used to create a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:

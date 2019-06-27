@@ -2,7 +2,7 @@
   "title": "Oriented Bounding Box",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Oriented bounding box.",
+  "description": "Oriented bounding box",
   "properties": {
     "center": {
       "type": "array",

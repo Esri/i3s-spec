@@ -48,7 +48,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 ```
 # HTTP API Overview
 
-The following API methods are available for point cloud scene layer:
+The following API methods are available for 3D Object scene layer:
 
 |Resource|Description|URL example
 |------|-------|-----------------|

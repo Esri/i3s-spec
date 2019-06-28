@@ -15,7 +15,7 @@ The following layer types have been specified and the standard validated via imp
 - [3D Objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [Point Cloud](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
+- [Point Cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
@@ -33,19 +33,9 @@ The I3S format is intrinsically designed to support 3D geospatial content.  The 
 
 For the purpose of encouraging community adoption and feedback, the I3S format is an open standard. By being an open standard, we further hope to ensure that adopting organizations have flexibility in accessing and visualizing their 3D data. The standard is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License. Implementers can use the standard in services, clients or processing tools without restrictions. Consult the [license](#license-for-indexed-3d-scene-format-and-rest-endpoint-specification) section below for more information.
 
-## Current Version by Profile
-
-| **Profile Type** | **Current Version** |
-| ---------------- | ------------------- |
-| 3D Object        | 1.7                 |
-| Integrated Mesh  | 1.7                 |
-| Point            | 1.6                 |
-| Point Cloud      | 2.0                 |
-| Building         | 1.6                 |
-
 ## What's New?
 
-Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 
+Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types.  See the [version history page](versionHistory.md) for more details about previous versions and OGC specification compatibility. 
 
 ### Version 1.7
 

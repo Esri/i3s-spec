@@ -1,6 +1,6 @@
 # Esri Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Specification
 
-Version 1.6, March 01, 2019
+Version 1.7. June 30, 2019
 
 *Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang
 
@@ -8,7 +8,7 @@ Version 1.6, March 01, 2019
 
 ---
 
-The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.
+The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.  See the [version history page](../versionHistory.md) for more details about previous versions and OGC specification compatibility. 
 
 # Table of Contents
 
@@ -18,7 +18,10 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  
 ​&emsp;&emsp;[I3S - Indexing Model and Tree Structure](#i3s-indexing-model-and-tree-structure)  
 ​&emsp;&emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
+​&emsp;&emsp;[geometryDefinition](#geometryDefinition)  
 ​&emsp;&emsp;[Textures](#textures-structure)  
+​&emsp;&emsp;[textureSetDefinition](#textureSetDefinition)  
+​&emsp;&emsp;[materialDefinition](#materialDefinition)  
 ​&emsp;&emsp;[Attribute Model and Storage](#attribute-model-and-storage)  
 ​&emsp;[Bounding Volume Hierarchy](#bounding-volume-hierarchy)  
 ​&emsp;[Level of Detail](#level-of-detail)  
@@ -51,7 +54,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class Domains](#class-domains)  
 ​&emsp;[Class Material](#class-material)  
 ​&emsp;[Class CachedDrawingInfo](#class-cacheddrawinginfo)  
-​&emsp;[3dNodeIndexDocument](#3dNodeIndexDocument)  
+​&emsp;[3DNodeIndexDocument](#3dNodeIndexDocument)  
 ​&emsp;[Class NodeReference](#class-nodereference)  
 ​&emsp;[Class Resource](#class-resource)  
 ​&emsp;[Class Level of Detail Selection](#class-level-of-detail-selection)  
@@ -99,6 +102,8 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 - **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and servers.
 - **Declarative**: Communicate clearly to minimize the amount of required domain knowledge to support the format.
 - **Follow REST/JSON API Best Practices:** Provide navigable links to all resources.
+- **[Version History of I3S](../versionHistory.md)**: Provide an overview on which ESRI I3S specification version is equivalent to OGC I3S specification version.
+- **[I3S Converter](../i3s_converter/i3s_converter_ReadMe.md)**: Allows users to update existing 1.6 3D object or Integrated Mesh Scene layers to update to 1.7
 
 # <a name="introduction-to-3D-scene-layer">Introduction to 3D Scene Layer</a>
 
@@ -114,7 +119,7 @@ A Scene Layer is characterized by a combination of layer type and profile. The *
 * [Point Clouds](../docs/2.0/pcsl_ReadMe.md) (e.g. lidar data)
 * [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
-Layers are described using two properties, type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and Pointclouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases, the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles. For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
+Layers are described using two properties, type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and point clouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases, the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles. For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
 
 | Layer Type                                             | Profile       | Features with Identity | Attributes                                              |
 | ------------------------------------------------------ | ------------- | ---------------------- | ------------------------------------------------------- |
@@ -229,6 +234,30 @@ The figure below shows the node tree of an 3D Object Indexed Scene Layer with a 
 
 *Example illustrating the composition of an I3S tree for a 3D Object Indexed Scene Layer with a mesh pyramid profile. Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys.*
 
+### Node Paging and the Node Page Index
+
+Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they are organized in *pages* of nodes. This allows clients to only load the data that they need instead of all the nodes, which increases performance. 
+
+Children must be **contiguous**, in index range, so they may be located using `firstChild` and `childrenCount` fields.
+
+**Page Number Computation Example:**
+
+```
+page_id = floor( node_id / layer.store.index.nodesPerPage )
+```
+
+Let's say `node id` = 78 and `layer.store.index.nodesPerPage` = 64.
+
+```
+page_id = floor (78 / 64)
+        = floor (1.22)
+        = 1
+```
+
+The `page_id` of this node is `1`. This is the second page since indexing starts at 0.
+
+**IMPORTANT:** Page size must be a power-of-two less than `4096`.
+
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 
 All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.
@@ -241,17 +270,29 @@ For more details regarding 3D objects and point scene layer, see [Geometry](../d
 
 For more details regarding point cloud scene layer, see [defaultGeometryShema](../docs/2.0/defaultGeometrySchema.pcsl.md).
 
+### geometryDefinition
+
+Defines the layouts of the mesh geometry and its attributes.  
+
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../docs/1.7/geometryDefinition.cmn.md).
+
 ### <a name="textures-structure">Textures</a>
 
 Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
 
 For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
 
-### Materials
+### textureSetDefinition
 
-Physically based materials that are feature-compatible with glTF materials.  
+Defies the set of textures that a mesh can reference. 
 
-For more details, see the [material definition](../docs/1.7/materialDefinitions.cmn.md)
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).
+
+### materialDefinition
+
+List of material classes used in this layer. Physically based materials that are feature-compatible with glTF materials.  
+
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
 
 ### <a name="attribute-model-and-storage">Attribute Model and Storage</a>
 
@@ -595,9 +636,11 @@ The 3dNodeIndexDocument file describes a single index node within a store.  It i
 
 Depending on the geometry and level of detail, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors to help the client understand the overall distribution of the data.
 
-For more details Integrated Mesh, 3D objects and point scene layer, see [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).
+For more details Integrated Mesh, 3D objects see [Node Pages](../docs/1.7/nodePages.cmn.md).
 
-Point cloud scene layer define indexed page nodes, see [page node](../docs/2.0/nodepage.pcsl.md) for more details.
+For more details on points, see [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).
+
+Point cloud scene layer define indexed page nodes, see [Node Page](../docs/2.0/nodepage.pcsl.md).
 
 ### <a name="class-nodereference"></a> Class NodeReference
 

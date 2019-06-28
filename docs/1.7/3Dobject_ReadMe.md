@@ -20,6 +20,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 - [Statistics](statsInfo.cmn.md)
 - [Shared Resources](sharedResource.cmn.md)
   
+
 *Shared resources are deprecated as of version 1.7 and are only included for backwards compatibility.*
 
 *Example of 3DObject layer structure*
@@ -54,7 +55,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 ```
 # HTTP API Overview
 
-The following API methods are available for point cloud scene layer:
+The following API methods are available for 3D Object scene layer:
 
 |Resource|Description|URL example
 |------|-------|-----------------|

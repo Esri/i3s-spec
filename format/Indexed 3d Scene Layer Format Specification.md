@@ -18,7 +18,10 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  
 ​&emsp;&emsp;[I3S - Indexing Model and Tree Structure](#i3s-indexing-model-and-tree-structure)  
 ​&emsp;&emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
+​&emsp;&emsp;[geometryDefinition](#geometryDefinition)
 ​&emsp;&emsp;[Textures](#textures-structure)  
+​&emsp;&emsp;[textureSetDefinition](#textureSetDefinition)
+​&emsp;&emsp;[materialDefinition](#materialDefinition)
 ​&emsp;&emsp;[Attribute Model and Storage](#attribute-model-and-storage)  
 ​&emsp;[Bounding Volume Hierarchy](#bounding-volume-hierarchy)  
 ​&emsp;[Level of Detail](#level-of-detail)  
@@ -51,7 +54,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class Domains](#class-domains)  
 ​&emsp;[Class Material](#class-material)  
 ​&emsp;[Class CachedDrawingInfo](#class-cacheddrawinginfo)  
-​&emsp;[3dNodeIndexDocument](#3dNodeIndexDocument)  
+​&emsp;[3DNodeIndexDocument](#3dNodeIndexDocument)  
 ​&emsp;[Class NodeReference](#class-nodereference)  
 ​&emsp;[Class Resource](#class-resource)  
 ​&emsp;[Class Level of Detail Selection](#class-level-of-detail-selection)  
@@ -241,17 +244,29 @@ For more details regarding 3D objects and point scene layer, see [Geometry](../d
 
 For more details regarding point cloud scene layer, see [defaultGeometryShema](../docs/2.0/defaultGeometrySchema.pcsl.md).
 
+### geometryDefinition
+
+Defines the layouts of the mesh geometry and its attributes.
+
+For more details, see the [geometryDefinition](../geometryDefinition.cmn.md).
+
 ### <a name="textures-structure">Textures</a>
 
 Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
 
 For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
 
-### Materials
+### textureSetDefinition
 
-Physically based materials that are feature-compatible with glTF materials.  
+Defies the set of textures that a mesh can reference. 
 
-For more details, see the [material definition](../docs/1.7/materialDefinitions.cmn.md)
+For more details, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).
+
+### materialDefinition
+
+List of material classes used in this layer. Physically based materials that are feature-compatible with glTF materials.  
+
+For more details, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
 
 ### <a name="attribute-model-and-storage">Attribute Model and Storage</a>
 

@@ -59,7 +59,7 @@ Supported in ArcGIS Pro 2.4 and ArcGIS Online.
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
 - Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials
 - Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) 
-- New tooling to validate existing slpk and convert integrated mesh or 3d objects scene layer to 1.7.
+- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert integrated mesh or 3d objects scene layer to 1.7.
 
 ### Version 1.6 
 

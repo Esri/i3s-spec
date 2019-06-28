@@ -14,6 +14,7 @@ A 3D object scene layer is used to visualize 3D objects.  3D object scene layers
 The 3D object scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
+- [Node Pages](nodes.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md) and [Attributes](attributeStorageInfo.cmn.md)
 - [Node Index Document](3DNodeIndexDocument.cmn.md)
 - [Statistics](statsInfo.cmn.md)
@@ -26,6 +27,9 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 ```
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
+	+-- nodePages
+	|  +-- 0
+	|  +-- (...)
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
@@ -55,6 +59,7 @@ The following API methods are available for point cloud scene layer:
 |Resource|Description|URL example
 |------|-------|-----------------|
 |To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/3DObjectSceneLayer/SceneServer/0|
+|To query node page| Uses the node page ID to find a specific node page|http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodepages/0|
 |To query statistics|Statistics is listed at  scenelayer.statisticsInfo[].key.|http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_1/0} |
 |To query  node  document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/root|
 |To query  geometry  |Geometry as listed in nodes.featureData.href.|http://my.server.com/layers/3DObjectSceneLayer/0/nodes/root/geometries/0 |

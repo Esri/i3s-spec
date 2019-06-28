@@ -10,6 +10,7 @@ Integrated mesh scene layers are generally created for citywide 3D mapping.  Int
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
+- [Node Pages](nodes.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md), [Feature Data](featureData.cmn.md]), and [Texture](texture.cmn.md)
 - [Shared Resources](sharedResource.cmn.md)
 
@@ -20,10 +21,13 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 ```
 .<host>/SceneServer/layers
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
+	+-- nodePages
+	|  +-- 0
+	|  +-- (...)
 	+-- nodes
 	 +--0
 	 |  +-- features
-	 |  |  +-- 0.json
+	 |  |  +-- 0
 	 |  +-- textures
 	 |  |  +-- 0_0_1.bin.dds
 	 |  |  +--0_0.jpg
@@ -47,6 +51,7 @@ The following API methods are available for Integrated Mesh Scene Layer:
 |Resource|Description|URL example
 |------|-------|-----------------|
 |To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0|
+|To query node page| Uses the node page ID to find a specific node page|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0|
 |To query node document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0|
 |To query feature data| Used to query feature data for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0/features|
 |To query textures|Used to query textures for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0/textures/1_0|

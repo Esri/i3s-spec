@@ -102,6 +102,8 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 - **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and servers.
 - **Declarative**: Communicate clearly to minimize the amount of required domain knowledge to support the format.
 - **Follow REST/JSON API Best Practices:** Provide navigable links to all resources.
+- **[Version History of I3S](../versionHistory.md)**: Provide an overview on which ESRI I3S specification version is equivalent to OGC I3S specification version.
+- **[I3S Converter](../i3s_converter/i3s_converter_ReadMe.md)**: Allows users to update existing 1.6 3D object or Integrated Mesh Scene layers to update to 1.7
 
 # <a name="introduction-to-3D-scene-layer">Introduction to 3D Scene Layer</a>
 
@@ -232,6 +234,30 @@ The figure below shows the node tree of an 3D Object Indexed Scene Layer with a 
 
 *Example illustrating the composition of an I3S tree for a 3D Object Indexed Scene Layer with a mesh pyramid profile. Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys.*
 
+### Node Paging and the Node Page Index
+
+Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they are organized in *pages* of nodes. This allows clients to only load the data that they need instead of all the nodes, which increases performance. 
+
+Children must be **contiguous**, in index range, so they may be located using `firstChild` and `childrenCount` fields.
+
+**Page Number Computation Example:**
+
+```
+page_id = floor( node_id / layer.store.index.nodesPerPage )
+```
+
+Let's say `node id` = 78 and `layer.store.index.nodesPerPage` = 64.
+
+```
+page_id = floor (78 / 64)
+        = floor (1.22)
+        = 1
+```
+
+The `page_id` of this node is `1`. This is the second page since indexing starts at 0.
+
+**IMPORTANT:** Page size must be a power-of-two less than `4096`.
+
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 
 All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.
@@ -246,9 +272,9 @@ For more details regarding point cloud scene layer, see [defaultGeometryShema](.
 
 ### geometryDefinition
 
-Defines the layouts of the mesh geometry and its attributes.
+Defines the layouts of the mesh geometry and its attributes.  
 
-For more details, see the [geometryDefinition](../geometryDefinition.cmn.md).
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../geometryDefinition.cmn.md).
 
 ### <a name="textures-structure">Textures</a>
 
@@ -260,13 +286,13 @@ For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
 
 Defies the set of textures that a mesh can reference. 
 
-For more details, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).
 
 ### materialDefinition
 
 List of material classes used in this layer. Physically based materials that are feature-compatible with glTF materials.  
 
-For more details, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
 
 ### <a name="attribute-model-and-storage">Attribute Model and Storage</a>
 
@@ -610,9 +636,11 @@ The 3dNodeIndexDocument file describes a single index node within a store.  It i
 
 Depending on the geometry and level of detail, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors to help the client understand the overall distribution of the data.
 
-For more details Integrated Mesh, 3D objects and point scene layer, see [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).
+For more details Integrated Mesh, 3D objects see [Node Pages](../docs/1.7/nodePages.cmn.md).
 
-Point cloud scene layer define indexed page nodes, see [page node](../docs/2.0/nodepage.pcsl.md) for more details.
+For more details on points, see [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).
+
+Point cloud scene layer define indexed page nodes, see [Node Page](../docs/2.0/nodepage.pcsl.md).
 
 ### <a name="class-nodereference"></a> Class NodeReference
 

@@ -20,6 +20,8 @@ page_id = floor (78 / 64)
 
  The `page_id` of this node is `1`.  This is the second page since indexing starts at 0. 
 
+ **IMPORTANT:** Page size must be a power-of-two less than `4096`.
+
 ### Related:
 
 [pcsl::layer](layer.pcsl.md)

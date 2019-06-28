@@ -4,13 +4,14 @@ Integrated mesh scene layers are generally created for citywide 3D mapping.  Int
 
 *Example of integrated mesh scene layer*
 
-![Integrated Mesh Scene Layer](img/IM.PNG)
+![Integrated Mesh Scene Layer](../img/IM.PNG)
 
 ## Integrated Mesh Scene Layer Structure
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
-- Nodes containing [Geometry](geometry.cmn.md)
+- Nodes containing [Geometry](geometry.cmn.md), [Feature Data](featureData.cmn.md]), and [Texture](texture.cmn.md)
+- [Shared Resources](sharedResource.cmn.md)
 
 *Example of integrated mesh scene layer structure*
 
@@ -19,6 +20,13 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 	+--0 // layer description (named 3dSceneLayer.json in SLPK)
 	+-- nodes
 	 +--0
+	 |  +-- features
+	 |  |  +-- 0.json
+	 |  +-- textures
+	 |  |  +-- 0_0_1.bin.dds
+	 |  |  +--0_0.jpg
+	 |  +-- shared
+	 |  |  +-- sharedResource
 	 |  +-- geometries
 	 |  |  +-- 0
 	 |  +--1
@@ -34,10 +42,12 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 
 The following API methods are available for Integrated Mesh Scene Layer:
 
-|Method|Example|
-|------|-------|
-|To query SceneLayer document|http://my.server.com/layers/{layerId}|
-|To query attribute, statistics, documents|http://my.server.com/layers/{layerId}/statistics/{AttribKey} |
-|To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} |
-|To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 |
-|To query  Attribute  |Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key |
+|Resource|Description|URL example
+|------|-------|-----------------|
+|To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0|
+|To query node document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0|
+|To query feature data|Used to query feature data for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0/features|
+|To query textures|Used to query textures for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0/textures/1_0|
+|To query geometry |Geometry of the node.|http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/1-0/geometries/0 |
+|To query shared resources|The shared resource such as material definition.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/sharedResource|
+

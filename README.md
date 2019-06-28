@@ -1,7 +1,7 @@
 Scene Layers: Service and Package Standard
 ===============================================
 
-![App](./sceneLayers.jpg "Multiple scene layers in web scene viewer")
+![Multiple scene layers in web scene viewer](./sceneLayers.jpg )
 
 This repository hosts the standard for scene layers.  Scene layers are containers for large amounts of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
@@ -12,10 +12,10 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 The I3S format is declarative and extendable, and can be used to represent different types of 3D data.
 The following layer types have been specified and the standard validated via implementation and production deployments:
 
-- [3D Objects](docs/1.6/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
+- [3D Objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
+- [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
 - [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
-- [Point cloud](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
+- [Point Cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
@@ -35,22 +35,41 @@ For the purpose of encouraging community adoption and feedback, the I3S format i
 
 ## What's New?
 
-Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types. 
+Each I3S profile type evolves independently to allow new functionality to be added frequently without affecting already existing scene layer types.  See the [version history page](versionHistory.md) for more details about previous versions and OGC specification compatibility. 
 
-### Version 2.0
+### Version 1.7
 
-#### Point Cloud Scene Layer
-- [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification
+Released 06/30/2019
 
-### Version 1.6
+Supported in ArcGIS Pro 2.4 and ArcGIS Online. 
 
-#### 3D Object Scene Layer
+### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
+
+- Nodes are now accessible via the [page node index](docs/1.7/nodePages.cmn.md)
+- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md)
+- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials
+- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) 
+- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert integrated mesh or 3d objects scene layer to 1.7.
+
+### Version 1.6 
+
+Released 03/01/2019
+
+#### [3D Object Scene Layer](docs/v1.6/3Dobject_ReadMe.md)
 - [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - Introducing support for oriented bounding boxes as bounding volume hierarchy.
 - [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries. 
 - [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated.  This is used in conjunction with the associated feature layer and editing.
 
 #### Building Scene Layer
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings. 
+
+### Version 2.0
+
+Released 03/01/2019
+
+#### Point Cloud Scene Layer
+
+- [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md) profile specification
 
 ## Where Can I Use...?
 
@@ -74,6 +93,12 @@ There are few applications that can create and consume scene layers. The tables 
   <tr>
   <td>Pix4D</td>
   <td><a href="https://pix4d.com/">Pix4D</a></td>
+  <td>IntegratedMesh</td>  
+ </tr>
+  </tr>
+  <tr>
+  <td>Skyline</td>
+  <td><a href="http://www.skylineglobe.com/SkylineGlobe/corporate/Products/photomesh.aspx">PhotoMesh</a></td>
   <td>IntegratedMesh</td>  
  </tr>
 </table>
@@ -143,7 +168,6 @@ This table reflects the current versions of the ArcGIS Clients.
     <td>2.2</td>
   </tr>
 </table>
-
 <table>
   <tr>
     <th colspan="1" rowspan="2"><br>Scene Layer Types</th>
@@ -191,8 +215,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Point Cloud</td>
@@ -202,8 +226,8 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>100.5</td>
   </tr>
   <tr>
     <td>Building Scene Layer</td>
@@ -217,6 +241,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
   </tr>
 </table>
+
 
 
 <table>
@@ -287,7 +312,7 @@ You are invited to fork this repository and to submit pull requests with ideas f
 
 ## License for indexed 3D scene format and REST endpoint specification
 
-Copyright &copy; 2015 - 2017 Esri
+Copyright &copy; 2015 - 2019 Esri
 
 The specification is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International Public License](https://creativecommons.org/licenses/by-nd/4.0/legalcode).
 You can implement the specification in services, clients or processing tools without restrictions.
@@ -310,6 +335,8 @@ License history:
 Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are licensed under the older Creative Commons Attribution-NoDerivs 3.0 Unported license. 
 
 Version 1.6 – present integrated mesh, 3D object, point scene layer, building scene layer (dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
+
+Version 1.7 – present integrated mesh and 3D object (dated 06/30/2019 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 
 Version 2.0 - present point cloud scene layer (01/01/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 

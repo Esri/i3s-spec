@@ -10,7 +10,7 @@ The filter authoring info object contains metadata about the authoring process f
 | Property | Type | Description |
 | --- | --- | --- |
 | **type** | string | Declares type or filter authoring info.<div>Must be:<ul><li>`checkbox`: Client UI with checkbox representation for each filter type and filter value.</li></ul></div> |
-| **filterblocks** | [filterBlockAuthoringInfo](filterBlockAuthoringInfo.bld.md)[] | Array of filter block authoring info. |
+| **filterBlocks** | [filterBlockAuthoringInfo](filterBlockAuthoringInfo.bld.md)[] | Array of filter block authoring info. |
 
 *Note: properties in **bold** are required*
 
@@ -21,7 +21,7 @@ The filter authoring info object contains metadata about the authoring process f
 ```json
  {
   "type": "checkbox",
-  "filterblocks": [
+  "filterBlocks": [
     {
       "filterTypes": [
         {

@@ -1,8 +1,8 @@
 # 3DNodeIndexDocument
 
-The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one Node object in a 3dNodeIndexDocument. 
+The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
 
-Depending on the geometry and LoD Model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, neighbors, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
+Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
 
 ### Properties
 
@@ -11,7 +11,7 @@ Depending on the geometry and LoD Model, a node document can be tuned towards be
 | **id** | string | Tree Key ID, unique within the store. The root node is always 'root', all others follow the pattern '2-4-0-15-2'. At each level in a subtree, numbering starts at 0. |
 | level | integer | Explicit level of this node within the index tree. The lowest level is 1. |
 | version | string | The version (store update session ID) of this node. |
-| mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |
+| mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the [minimum bounding sphere](docs/1.6/mbs.cmn.md) of a node. |
 | obb | [obb](obb.cmn.md) | Describes oriented bounding box. |
 | created | string | Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
 | expires | string | Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
@@ -23,9 +23,9 @@ Depending on the geometry and LoD Model, a node document can be tuned towards be
 | featureData | [resource](resource.cmn.md)[] | Resource reference describing a FeatureData document. |
 | geometryData | [resource](resource.cmn.md)[] | Resource reference describing a geometry resource. |
 | textureData | [resource](resource.cmn.md)[] | Resource reference describing a texture resource. |
-| attributeData | [resource](resource.cmn.md)[] | Resource reference describing a FeatureData document. |
-| lodSelection | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD Selection, to be evaluated by the client. |
-| features | [lodSelection](lodSelection.cmn.md)[] | A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
+| attributeData | [resource](resource.cmn.md)[] | Resource reference describing a featureData document. |
+| lodSelection | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD selection, to be evaluated by the client. |
+| features | [features](features.cmn.md)[] | **Deprecated.** A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
 
 *Note: properties in **bold** are required*
 

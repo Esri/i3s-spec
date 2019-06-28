@@ -14,7 +14,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 - Nodes containing [Geometry](geometry.cmn.md), [Feature Data](featureData.cmn.md]), and [Texture](texture.cmn.md)
 - [Shared Resources](sharedResource.cmn.md)
 
-*Shared resources and feature data are deprecated as of version 1.7 and are only included for backwards compatibility.
+*Shared resources and feature data are deprecated as of version 1.7 and are only included for backwards compatibility.*
 
 *Example of integrated mesh scene layer structure*
 

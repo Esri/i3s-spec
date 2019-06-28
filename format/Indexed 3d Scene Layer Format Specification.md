@@ -274,7 +274,7 @@ For more details regarding point cloud scene layer, see [defaultGeometryShema](.
 
 Defines the layouts of the mesh geometry and its attributes.  
 
-For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../geometryDefinition.cmn.md).
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../docs/1.7/geometryDefinition.cmn.md).
 
 ### <a name="textures-structure">Textures</a>
 

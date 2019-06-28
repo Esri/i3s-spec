@@ -20,7 +20,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 - [Statistics](statsInfo.cmn.md)
 - [Shared Resources](sharedResource.cmn.md)
   
-*Shared resources are deprecated as of version 1.7 and are only included for backwards compatibility.
+*Shared resources are deprecated as of version 1.7 and are only included for backwards compatibility.*
 
 *Example of 3DObject layer structure*
 

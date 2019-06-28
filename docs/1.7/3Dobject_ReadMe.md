@@ -58,10 +58,10 @@ The following API methods are available for point cloud scene layer:
 
 |Resource|Description|URL example
 |------|-------|-----------------|
-|To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/3DObjectSceneLayer/SceneServer/0|
-|To query node page| Uses the node page ID to find a specific node page|http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodepages/0|
-|To query statistics|Statistics is listed at  scenelayer.statisticsInfo[].key.|http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_1/0} |
+|To query scene layer document | The layer ID needs to be a number. Default is 0. |http://my.server.com/3DObjectSceneLayer/SceneServer/0|
+|To query node page | Uses the node page ID to find a specific node page. |http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodepages/0|
 |To query  node  document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/root|
-|To query  geometry  |Geometry as listed in nodes.featureData.href.|http://my.server.com/layers/3DObjectSceneLayer/0/nodes/root/geometries/0 |
-|To query  attribute |Attribute is listed at  scenelayer.attributeStorageInfo[].key .|http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/root/attributes/f_1/0 |
-|To query shared resources|The shared resource such as textures.|http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/shared/sharedResource|
+|To query  geometry |Geometry as listed in nodes.featureData.href. |http://my.server.com/layers/3DObjectSceneLayer/0/nodes/root/geometries/0 |
+|To query statistics |Statistics is listed at  scenelayer.statisticsInfo[].key. |http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_1/0} |
+|To query  attribute |Attribute is listed at  scenelayer.attributeStorageInfo[].key. |http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/root/attributes/f_1/0 |
+|To query shared resources |Included for backward compatability. **Not** used in 1.7. |http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/shared/sharedResource|

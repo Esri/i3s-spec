@@ -50,11 +50,10 @@ The following API methods are available for Integrated Mesh Scene Layer:
 
 |Resource|Description|URL example
 |------|-------|-----------------|
-|To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0|
-|To query node page| Uses the node page ID to find a specific node page|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0|
-|To query node document|Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0|
-|To query feature data| Used to query feature data for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0/features|
-|To query textures|Used to query textures for a node.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0/textures/1_0|
-|To query geometry |Geometry of the node.|http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/1-0/geometries/0 |
-|To query shared resources|The shared resource such as material definition.|http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/sharedResource|
+|To query scene layer document | The layer ID needs to be a number. Default is 0. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0|
+|To query node page |Uses the node page ID to find a specific node page |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0 |
+|To query node document |Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0|
+|To query textures |Used to query textures for a node. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0/textures/1_0|
+|To query geometry |Geometry of the node. |http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/1-0/geometries/0 |
+|To query shared resources |Included for backward compatability. **Not** used in 1.7. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/sharedResource|
 

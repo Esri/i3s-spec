@@ -10,8 +10,8 @@ Integrated mesh scene layers are generally created for citywide 3D mapping.  Int
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
-- [Node Pages](nodes.cmn.md)
-- Nodes containing [Geometry](geometry.cmn.md), [Feature Data](featureData.cmn.md]), and [Texture](texture.cmn.md)
+- [Node Pages](nodesPages.cmn.md)
+- [Nodes](nodes.cmn.md) containing [Geometry](geometry.cmn.md), [Feature Data](featureData.cmn.md]), and [Texture](texture.cmn.md)
 - [Shared Resources](sharedResource.cmn.md)
 
 *Shared resources and feature data are deprecated as of version 1.7 and are only included for backwards compatibility.*

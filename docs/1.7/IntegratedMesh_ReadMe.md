@@ -48,7 +48,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 
 The following API methods are available for Integrated Mesh Scene Layer:
 
-|Resource|Description|URL example
+|Resource|Description|URL template
 |------|-------|-----------------|
 |To query scene layer document | The layer ID needs to be a number. Default is 0. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0|
 |To query node page |Uses the node page ID to find a specific node page |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0 |

@@ -237,27 +237,10 @@ The figure below shows the node tree of an 3D Object Indexed Scene Layer with a 
 
 ### Node Paging and the Node Page Index
 
-Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they are organized in *pages* of nodes. This allows clients to only load the data that they need instead of all the nodes, which increases performance. 
+Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they can be organized (statically pre-bundled) in *pages* of nodes. This allows clients to load the node data that they need with more than a single node
+per round-trip, which reduces the overall number of round-trips and increases performance.
 
-Children must be **contiguous**, in index range, so they may be located using `firstChild` and `childrenCount` fields.
-
-**Page Number Computation Example:**
-
-```
-page_id = floor( node_id / layer.store.index.nodesPerPage )
-```
-
-Let's say `node id` = 78 and `layer.store.index.nodesPerPage` = 64.
-
-```
-page_id = floor (78 / 64)
-        = floor (1.22)
-        = 1
-```
-
-The `page_id` of this node is `1`. This is the second page since indexing starts at 0.
-
-**IMPORTANT:** Page size must be a power-of-two less than `4096`.
+Children must be **contiguous**, in index range, so they may be located using `firstChild` and `childrenCount` fields.  Page size must be a power-of-two less than `4096`.
 
 For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePages.cmn.md).
 

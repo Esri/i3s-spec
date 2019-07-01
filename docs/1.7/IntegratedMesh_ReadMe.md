@@ -50,19 +50,44 @@ Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be
 
 The following API methods are available for Integrated Mesh Scene Layer:
 
-|Resource|Description|URL template| URL example
-|------|-------|-----------------| -----------------|
-|To query scene layer document | The layer ID needs to be a number. Default is 0, and Esri software expects this to be 0. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0| http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0 |
-|To query node page |Uses the node page ID to find a specific node page. Must be an integer. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/{node page ID} | http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0 |
-|To query node document |Uses the node ID to find a specific node.  Must be an integer  | http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/{resource ID}| http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1 |
-|To query textures |Used to query textures for a node. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/{root node}-{node page}/textures/{resource ID}| http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/0/textures/1 |
-|To query geometry |Geometry of the node. |http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/0/geometries/{resource ID} | http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/0/geometries/0 |
+
+
+| Resource             | Description                                                  | URL Template                                       |
+| -------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| Scene Layer Document | The layer ID needs to be a number. Default is 0, and Esri software expects this to be 0. | http://{servername}/{SceneLayerName}/SceneServer/0 |
+
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0
+
+| Resource     | Description                                                  | URL Template                                                 |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Node Page ID | Uses the node page ID to find a specific node page. Must be an integer. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/**nodepages**/{node page ID} |
+
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0
+
+| Resource      | Description                                                  | URL Template                                                 |
+| ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Node Document | Uses the node ID to find a specific node.  Must be an integer. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/**nodes**/{resource ID} |
+
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1
+
+| Resource | Description                        | URL Template                                                 |
+| -------- | ---------------------------------- | ------------------------------------------------------------ |
+| Textures | Used to query textures for a node. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/nodes/{node document}/**textures**/{resource ID} |
+
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/0/textures/1
+
+| Resource | Description           | URL Template                                                 |
+| -------- | --------------------- | ------------------------------------------------------------ |
+| Geometry | Geometry of the node. | http://{servername}/{SceneLayerName}/0/nodes/{node document}/**geometries**/{resource ID} |
+
+Example: http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/0/geometries/0 
 
 
 
 # HTTP API Overview 1.6 Compatibility
 
-|Resource|Description|URL template| URL example
-|------|-------|-----------------| -----------------|
+| Resource         | Description                                                  | URL Template                                                 |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Shared Resources | Included for backward compatibility.  Must be an integer. **Not used in 1.7**. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/**shared**/nodes/{resource ID} |
 
-|To query shared resources |Included for backward compatibility.  Must be an integer. **Not used in 1.7**. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/nodes/{resource ID} |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/nodes/0|
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/nodes/0

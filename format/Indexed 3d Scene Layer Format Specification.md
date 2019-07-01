@@ -259,6 +259,10 @@ The `page_id` of this node is `1`. This is the second page since indexing starts
 
 **IMPORTANT:** Page size must be a power-of-two less than `4096`.
 
+For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePages.cmn.md).
+
+For more details regarding Point Cloud in 2.0, see [nodePages](../2.0/nodepage.pcsl).
+
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 
 All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.

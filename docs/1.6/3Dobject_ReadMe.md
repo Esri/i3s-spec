@@ -71,6 +71,19 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
 
 
 
+| Resource | Type                       | Description                   | URL Template                                                 |
+| -------- | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| Textures | `JPG`, `PNG`, `DDS`, `KTX` | The texture resource  (image) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node.
+- `textureID`: String. This ID returns one of the textures available for this node. The same texture may be available in different formats. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/textures/1
+
+
+
+
 | Resource | Type  | Description                              | URL Template                                                 |
 | -------- | ----- | ---------------------------------------- | ------------------------------------------------------------ |
 | Geometry | `bin` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
@@ -79,18 +92,29 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
 - `resourceID`: Integer. ID of the associated node.
 - `geometryID`: Integer. This ID return the geometry available for the node. 
 
-Example: http://my.server.com/layers/3DObjectSceneLayer/0/nodes/98/geometries/1 
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 
 
 
 
-| Resource             | Type   | Description                                                  | URL Template                                                 |
-| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Attribute Statistics | `JSON` | The statistics for a the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
+| Resource   | Type   | Description                                                  | URL Template                                                 |
+| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Statistics | `JSON` | The statistics for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
 
 - `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
 - `attributeID`: Integer.  ID of the specific attribute for the layer.
 
-Example: http://my.server.com/layers/3DObjectSceneLayer/0/statistics/f_48/0 
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0 
+
+
+
+| Resource   | Type   | Description                                                  | URL Template                                                 |
+| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Attributes | `JSON` | The attributes for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `attributeID`: Integer.  ID of the specific attribute for the layer.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0 
 
 
 

@@ -38,7 +38,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 ```
 
 
-# HTTP API Overview
+# HTTP API Overview for 1.6
 
 The following API methods are available for Integrated Mesh Scene Layer:
 

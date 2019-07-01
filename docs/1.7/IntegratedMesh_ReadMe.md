@@ -55,5 +55,5 @@ The following API methods are available for Integrated Mesh Scene Layer:
 |To query node document |Uses the node ID to find a specific node. (e.g. root, 1) |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0|
 |To query textures |Used to query textures for a node. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1-0/textures/1_0|
 |To query geometry |Geometry of the node. |http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/1-0/geometries/0 |
-|To query shared resources |Included for backward compatability. **Not** used in 1.7. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/sharedResource|
+|To query shared resources |Included for backward compatibility. **Not** used in 1.7. |http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared|
 

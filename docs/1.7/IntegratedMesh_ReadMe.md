@@ -1,4 +1,4 @@
-# Integrated Mesh Scene Layer
+# Integrated Mesh Scene Layer (1.7)
 
 Integrated mesh scene layers are generally created for citywide 3D mapping.  Integrated mesh scene layers include an entire surface and cannot be restyled.  Three-dimensional mesh data are typically captured by an automated process (e.g. drone) for constructing 3D objects out of large sets of overlapping imagery. The result integrates the original input image information as a textured mesh including 3D objects, such as buildings and trees, and elevation information.
 
@@ -46,7 +46,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 
 # HTTP API Overview 1.7
 
-Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResrouces are included but not used in 1.7.
+Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResrouces and nodeDocument are included but not used in 1.7.
 
 The following API methods are available for Integrated Mesh Scene Layer:
 
@@ -56,7 +56,9 @@ The following API methods are available for Integrated Mesh Scene Layer:
 
 - `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
 
-Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0
+
+
 
 | Resource  | Type   | Description                                         | URL Template                                                 |
 | --------- | ------ | --------------------------------------------------- | ------------------------------------------------------------ |
@@ -66,6 +68,8 @@ Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0
 - `nodePageID`: Integer. ID of the associated node page.
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/8
+
+
 
 | Resource | Type                       | Description                   | URL Template                                                 |
 | -------- | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
@@ -77,15 +81,19 @@ Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/node
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/textures/1
 
-| Resource | Type           | Description                              | URL Template                                                 |
-| -------- | -------------- | ---------------------------------------- | ------------------------------------------------------------ |
-| Geometry | `bin`, `draco` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
+
+
+| Resource   | Type           | Description                              | URL Template                                                 |
+| ---------- | -------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| Geometries | `bin`, `draco` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
 
 - `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
 - `resourceID`: Integer. ID of the associated node.
 - `geometryID`: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. 
 
 Example: http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/98/geometries/1 
+
+
 
 | Resource             | Type   | Description                                                  | URL Template                                                 |
 | -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -108,6 +116,8 @@ Example: http://my.server.com/layers/IntegratedMeshSceneLayer/0/statistics/f_48/
 - `resourceID`: Integer. ID of the associated node. 
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/shared
+
+
 
 **Node Document must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
 

@@ -50,44 +50,72 @@ Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be
 
 The following API methods are available for Integrated Mesh Scene Layer:
 
+| Resource             | Type   | Description                                                  | URL Template                         |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
+| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
 
-
-| Resource             | Description                                                  | URL Template                                       |
-| -------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
-| Scene Layer Document | The layer ID needs to be a number. Default is 0, and Esri software expects this to be 0. | http://{servername}/{SceneLayerName}/SceneServer/0 |
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/0
 
-| Resource     | Description                                                  | URL Template                                                 |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Node Page ID | Uses the node page ID to find a specific node page. Must be an integer. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/**nodepages**/{node page ID} |
+| Resource  | Type   | Description                                         | URL Template                                                 |
+| --------- | ------ | --------------------------------------------------- | ------------------------------------------------------------ |
+| Node Page | `JSON` | Uses the node page ID to find a specific node page. | `http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/` |
 
-Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/0
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `nodePageID`: Integer. ID of the associated node page.
 
-| Resource      | Description                                                  | URL Template                                                 |
-| ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Node Document | Uses the node ID to find a specific node.  Must be an integer. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/**nodes**/{resource ID} |
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/8
 
-Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/1
+| Resource | Type                       | Description                   | URL Template                                                 |
+| -------- | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| Textures | `JPG`, `PNG`, `DDS`, `KTX` | The texture resource  (image) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}` |
 
-| Resource | Description                        | URL Template                                                 |
-| -------- | ---------------------------------- | ------------------------------------------------------------ |
-| Textures | Used to query textures for a node. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/nodes/{node document}/**textures**/{resource ID} |
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node.
+- `textureID`: String. This ID returns one of the textures available for this node. The same texture may be available in different formats. 
 
-Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/0/textures/1
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/textures/1
 
-| Resource | Description           | URL Template                                                 |
-| -------- | --------------------- | ------------------------------------------------------------ |
-| Geometry | Geometry of the node. | http://{servername}/{SceneLayerName}/0/nodes/{node document}/**geometries**/{resource ID} |
+| Resource | Type           | Description                              | URL Template                                                 |
+| -------- | -------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| Geometry | `bin`, `draco` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
 
-Example: http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/0/geometries/0 
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node.
+- `geometryID`: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. 
+
+Example: http://my.server.com/layers/IntegratedMeshSceneLayer/0/nodes/98/geometries/1 
+
+| Resource             | Type   | Description                                                  | URL Template                                                 |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Attribute Statistics | `JSON` | The statistics for a the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `attributeID`: Integer.  ID of the specific attribute for the layer.
+
+Example: http://my.server.com/layers/IntegratedMeshSceneLayer/0/statistics/f_48/0 
 
 
 
-# HTTP API Overview 1.6 Compatibility
+**Shared Resources must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
 
-| Resource         | Description                                                  | URL Template                                                 |
-| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Shared Resources | Included for backward compatibility.  Must be an integer. **Not used in 1.7**. | http://{servername}/{SceneLayerName}/SceneServer/layers/0/**shared**/nodes/{resource ID} |
+| Resource         | Type   | Description                                                  | URL Template                                                 |
+| ---------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Shared Resources | `JSON` | Legacy texture and material description. **Not used in 1.7.** | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared` |
 
-Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/shared/nodes/0
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node. 
+
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/shared
+
+**Node Document must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
+
+| Resource      | Type   | Description                                   | URL Template                                            |
+| ------------- | ------ | --------------------------------------------- | ------------------------------------------------------- |
+| Node Document | `JSON` | Description of the node. **Not used in 1.7.** | `http://serviceURL/layers/{layerID}/nodes/{resourceID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `resourceID`: Integer. ID of the associated resource. 
+
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98

@@ -13,11 +13,11 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 # Table of Contents
 
 [Introduction to 3D Scene Layer](#introduction-to-3D-scene-layer)  
-​&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
+&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
 ​&emsp;[Height Models](#height-models)  
 ​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  
 ​&emsp;&emsp;[I3S - Indexing Model and Tree Structure](#i3s-indexing-model-and-tree-structure)  
-​&emsp;&emsp;[Node Paging and the Node Page Index](#Node-Paging-and-the-Node Page Index)  
+​&emsp;&emsp;[Node Paging and the Node Page Index](#node-paging-and-the-node-page-index)  
 ​&emsp;&emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
 ​&emsp;&emsp;[geometryDefinition](#geometryDefinition)  
 ​&emsp;&emsp;[Textures](#textures-structure)  
@@ -238,13 +238,15 @@ The figure below shows the node tree of an 3D Object Indexed Scene Layer with a 
 ### Node Paging and the Node Page Index
 
 Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they can be organized (statically pre-bundled) in *pages* of nodes. This allows clients to load the node data that they need with more than a single node
-per round-trip, which reduces the overall number of round-trips and increases performance.
+per round-trip, which reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
 
-Children must be **contiguous**, in index range, so they may be located using `firstChild` and `childrenCount` fields.  Page size must be a power-of-two less than `4096`.
+All nodes are stored in a flat array that is divided by a fixed size page of nodes.  Each node references its children using their index in this flat array.  To traverse the tree, clients will start by loading the node page that contains the root.  Clients need to identify the pages required to access its children.  The process is repeated until the desired nodes have been discovered. 
+
+Only for point cloud scene layers, children have to be stored at **contiguous** indices in the node page array. 
 
 For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePages.cmn.md).
 
-For more details regarding Point Cloud in 2.0, see [nodePages](..docs/2.0/nodepage.pcsl).
+For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl).
 
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 

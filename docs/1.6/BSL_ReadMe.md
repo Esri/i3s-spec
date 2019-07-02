@@ -17,31 +17,31 @@ The building scene layer contains discipline and category layers as sublayers wh
 
 ```
 .<host>/SceneServer/layers
-  +--0 (3dSceneLayer.json, layerType ='building' )
+  +--0 // scene layer document
   |  +-- statistics
   |  |   +-- summary.json
   |  +-- sublayers
-  |  |  +--0 (3dSceneLayer.json for layer0, layerType='3DObject')
+  |  |  +--0 // sublayer document
   |  |  |  +--nodes
   |  |  |  |  +--0
-  |  |  |  |  | +-- attributes
-  |  |  |  |  |  |  |  +--2
-  |  |  |  |  |  |  +--4
-  |  |  |  |  |  |  +--8
-  |  |  |  |  |  +--(...)
-  |  |  |  |  |  +-- geometries
-  |  |  |  |  |  |  +-- 0
-  |  |  |  |  |  +-- shared
-  |  |  |  |  |  |  +-- sharedResource
-  |  |  |  + statistics
-  |  |  |  |  +-- f_1
-  |  |  |  |  |  +-- 0
-  |  |  |  |  |  +-...
-  |  |  |  +--1
-  |  |  |  (...) //same structure for all nodes
-  |  |  |  +--...
-  |  |  |  +-- 259
-  |  |  |  (...) //same structure for all nodes
+  |	 |  |  +-- attributes
+  |	 |  |  |  +--f_2
+  |  |  |  |  +--f_4
+  |  |  |  |  +--(...)
+  |  |  |  +-- geometries
+  |  |  |  |  +-- 0
+  |  |  |  +-- textures
+  |  |  |  |  +-- 0
+  |  |  |  |  +-- 0_0_1
+  |  |  |  |  +--(...)
+  |  |  |  +-- shared 
+  |  |  |  (...) 
+  |  +--statistics
+  |  |  +-- f_2
+  |  |  |  | +--0
+  |  |  +-- f_4
+  |  |  |  | +--0
+  |  |  +-- (...)
 ```
 # HTTP API Overview
 
@@ -57,69 +57,17 @@ Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0
 
 
 
-| Resource      | Type   | Description              | URL Template                                            |
-| ------------- | ------ | ------------------------ | ------------------------------------------------------- |
-| Node Document | `JSON` | Description of the node. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}` |
-
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated resource. 
-
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/nodes/98
-
-
-
-| Resource | Type                       | Description                   | URL Template                                                 |
-| -------- | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
-| Textures | `JPG`, `PNG`, `DDS`, `KTX` | The texture resource  (image) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}` |
+| Resource          | Type   | Description                   | URL Template                                                |
+| ----------------- | ------ | ----------------------------- | ----------------------------------------------------------- |
+| Sublayer Document | `JSON` | Discipline or category layer. | `http://serviceURL/layers/{layerID}/sublayers/{sublayerID}` |
 
 - `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node.
-- `textureID`: String. This ID returns one of the textures available for this node. The same texture may be available in different formats. 
+- `sublayerID`: Integer. ID of the associated resource. 
 
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/nodes/98/textures/1
-
-
-
-| Resource | Type  | Description                              | URL Template                                                 |
-| -------- | ----- | ---------------------------------------- | ------------------------------------------------------------ |
-| Geometry | `bin` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
-
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node.
-- `geometryID`: Integer. This ID return the geometry available for the node. 
-
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 
+Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98
 
 
 
-| Resource   | Type   | Description                                                  | URL Template                                                 |
-| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Statistics | `JSON` | The statistics for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
+Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`.
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `attributeID`: Integer.  ID of the specific attribute for the layer.
-
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/statistics/f_48/0 
-
-
-
-| Resource   | Type   | Description                                                  | URL Template                                                 |
-| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Attributes | `JSON` | The attributes for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0` |
-
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `attributeID`: Integer.  ID of the specific attribute for the layer.
-
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/statistics/f_48/0 
-
-
-
-
-| Resource         | Type   | Description                        | URL Template                                                 |
-| ---------------- | ------ | ---------------------------------- | ------------------------------------------------------------ |
-| Shared Resources | `JSON` | Texture and material descriptions. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared` |
-
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node. 
-
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/nodes/98/shared
+Example:  http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1

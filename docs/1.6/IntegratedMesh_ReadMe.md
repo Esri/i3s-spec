@@ -7,7 +7,7 @@ Integrated mesh scene layers are generally created for citywide 3D mapping.  Int
 ![Integrated Mesh Scene Layer](../img/IM.PNG)
 
 ## Integrated Mesh Scene Layer Structure
-The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
+The Integrated Mesh scene layer is structured into a tree of multiple JSON files.  Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
 - Nodes containing [Geometry](geometry.cmn.md), [Feature Data](featureData.cmn.md), and [Texture](texture.cmn.md)
@@ -17,23 +17,19 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 
 ```
 .<host>/SceneServer/layers
-	+--0 // layer description (named 3dSceneLayer.json in SLPK)
+	+--0 // scene layer document
 	+-- nodes
-	 +--0
-	 |  +-- features
-	 |  |  +-- 0.json
-	 |  +-- textures
-	 |  |  +-- 0_0_1.bin.dds
-	 |  |  +--0_0.jpg
-	 |  +-- shared
-	 |  |  +-- sharedResource
-	 |  +-- geometries
-	 |  |  +-- 0
-	 |  +--1
-	 |  |  (...) //same structure for all nodes
-	 |  +--...
-	 |  +-- 259
-	 |  |  (...) //same structure for all nodes
+	|  +--0
+	|  |  +-- geometries
+	|  |  |  +-- 0
+	|  |  |  +-- 1
+	|  |  |  +--(...)
+	|  |  +-- textures
+	|  |  |  +-- 0
+	|  |  |  +-- 1
+	|  |  |  +--(...)
+	|  |  +-- shared 
+    |  +-- (...)
 
 ```
 
@@ -56,8 +52,8 @@ Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0
 | ------------- | ------ | ------------------------ | ------------------------------------------------------- |
 | Node Document | `JSON` | Description of the node. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}` |
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated resource. 
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: String. ID of the associated resource. 
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98
 
@@ -68,7 +64,7 @@ Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/node
 | Textures | `JPG`, `PNG`, `DDS`, `KTX` | The texture resource  (image) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}` |
 
 - `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node.
+- `resourceID`: String. ID of the associated node.
 - `textureID`: String. This ID returns one of the textures available for this node. The same texture may be available in different formats. 
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/textures/1
@@ -76,15 +72,14 @@ Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/node
 
 
 
-| Resource | Type  | Description                              | URL Template                                                 |
-| -------- | ----- | ---------------------------------------- | ------------------------------------------------------------ |
-| Geometry | `bin` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
+| Resource   | Type  | Description                              | URL Template                                                 |
+| ---------- | ----- | ---------------------------------------- | ------------------------------------------------------------ |
+| Geometries | `bin` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/0` |
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node.
-- `geometryID`: Integer. This ID return the geometry available for the node. 
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: String. ID of the associated node.
 
-Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 
+Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/geometries/0 
 
 
 
@@ -94,6 +89,6 @@ Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/node
 | Shared Resources | `JSON` | Texture and material descriptions. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared` |
 
 - `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node. 
+- `resourceID`: String. ID of the associated node. 
 
 Example: http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/shared

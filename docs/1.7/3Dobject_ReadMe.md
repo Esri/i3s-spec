@@ -11,7 +11,7 @@ A 3D object scene layer is used to visualize 3D objects.  3D object scene layers
 ![Thematic 3D Object Scene Layer without textures](../img/LyonThematic.png)
 
 ## 3D Object Scene Layer Structure
-The 3D object scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
+The 3D object scene layer is structured into a tree of multiple JSON files. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [Layer description](3DSceneLayer.cmn.md)
 - [Node Pages](nodePages.cmn.md)
@@ -27,35 +27,40 @@ The 3D object scene layer is structured into a tree of multiple JSON files. Besi
 
 ```
 .<host>/SceneServer/layers
-	+--0 // layer description (named 3dSceneLayer.json in SLPK)
+	+--0 // layer description
 	+-- nodePages
 	|  +-- 0
 	|  +-- (...)
 	+-- nodes
 	|  +--0
 	|  |  +-- attributes
-	|  |  |  +--2
-	|  |  |  +--4
-	|  |  |  +--8
+	|  |  |  +--f_2
+	|  |  |  +--f_4
+	|  |  |  +--f_8
 	|  |  |  +--(...)
 	|  |  +-- geometries
 	|  |  |  +-- 0
-	|  |  +-- shared
-	|  |  |   +-- sharedResource
+	|  |  |  +-- 1
+	|  |  |  +--(...)
+	|  |  +-- textures
+	|  |  |  +-- 0
+	|  |  |  +-- 0_0_1
+	|  |  |  +--(...)
+	|  |  +-- shared 
 	|  +--1
 	|  |  (...) //same structure for all nodes
 	|  +--...
 	|  +-- 259
 	|  |  (...) //same structure for all nodes
 	+--statistics
-	|  +-- 2
-	|  +-- 4
-	|  +-- 8
+	|  +-- f_2
+	|  +-- f_4
+	|  +-- f_8
 	|  +-- (...)
 ```
 # HTTP API Overview 1.7
 
-Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResrouces and nodeDocument are included but not used in 1.7.
+Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResources and nodeDocument are included but not used in 1.7.
 
 The following API methods are available for 3D Object scene layer:
 
@@ -69,9 +74,9 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0
 
 
 
-| Resource  | Type   | Description                                         | URL Template                                                 |
-| --------- | ------ | --------------------------------------------------- | ------------------------------------------------------------ |
-| Node Page | `JSON` | Uses the node page ID to find a specific node page. | `http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/` |
+| Resource  | Type   | Description      | URL Template                                                 |
+| --------- | ------ | ---------------- | ------------------------------------------------------------ |
+| Node Page | `JSON` | A page of nodes. | `http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/` |
 
 - `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
 - `nodePageID`: Integer. ID of the associated node page.
@@ -96,7 +101,7 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/t
 | ---------- | -------------- | ---------------------------------------- | ------------------------------------------------------------ |
 | Geometries | `bin`, `draco` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
 - `resourceID`: Integer. ID of the associated node.
 - `geometryID`: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. 
 
@@ -108,21 +113,21 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/g
 | ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Statistics | `JSON` | The statistics for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
 - `attributeID`: Integer.  ID of the specific attribute for the layer.
 
 Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0 
 
 
 
-| Resource   | Type   | Description                                                  | URL Template                                                 |
-| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Attributes | `JSON` | The statistics for a the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0` |
+| Resource   | Type  | Description                                        | URL Template                                                 |
+| ---------- | ----- | -------------------------------------------------- | ------------------------------------------------------------ |
+| Attributes | `bin` | The value for a specific  attribute within a node. | `http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0` |
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
 - `attributeID`: Integer.  ID of the specific attribute for the layer.
 
-Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0 
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/attributes/f_48/0 
 
 
 

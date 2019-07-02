@@ -45,9 +45,9 @@ The table below shows how I3S OGC Community Standard relates to the I3S specific
 
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S Version**      | **OGC I3S Community Standard Version**          |                
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
-| MeshPyramids      | [3D Object](../docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
-| Points            | [Point](../docs/1.6/3Dobject_ReadMe.md)                                                                 | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
-| PointClouds       | [Point Cloud](../docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
+| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
+| Points            | [Point](docs/1.6/3Dobject_ReadMe.md)                                                                 | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
+| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
 In addition, the OGC 1.1 update for MeshPyramids Profile is picking up minor additional updates from I3S 1.6 for 3D Objects and Integrated Mesh Scene Layers as detailed in [here](#version-16).
 

@@ -1,7 +1,9 @@
 # nodePages
 
-Nodes are stored contiguously in what can be seen as a _flat_ array of nodes. This array can be accessed by fixed-size pages of nodes for better efficiency of requests.
-All pages contain exactly `layer.nodePages.nodesPerPage` nodes, except for the last page (that may contain less). The children are an array of numbers.
+
+
+Nodes are stored contiguously in what can be seen as a _flat_ array of nodes. This array can be accessed by fixed-size pages of nodes for better requests efficiency of requests.
+All pages contains exactly `layer.nodePages.nodesPerPage` nodes, except for the last page (that may contain less).
 
 We use an integer ID to map a node to its page as follow:
  ```
@@ -9,7 +11,7 @@ page_id         = floor( node_id / node_per_page)
 node_id_in_page = modulo( node_id, node_per_page)
  ```
 
-Node pages are used by Integrated Mesh and 3D Object Scene Layers in 1.7.
+
 
 ### Related:
 
@@ -24,14 +26,15 @@ Node pages are used by Integrated Mesh and 3D Object Scene Layers in 1.7.
 
 *Note: properties in **bold** are required*
 
-### Examples
+### Examples 
 
-#### Example: 64 nodes per page index
+#### Example: 64 nodes per page index 
 
 ```json
  {
   "nodesPerPage": 64,
   "rootIndex": 0,
   "lodSelectionMetricType": "maxScreenThresholdSQ"
-}
+} 
 ```
+

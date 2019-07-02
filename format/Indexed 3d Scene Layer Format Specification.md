@@ -242,11 +242,9 @@ per round-trip, which reduces the overall number of round-trips and increases pe
 
 All nodes are stored in a flat array that is divided by a fixed size page of nodes.  Each node references its children using their index in this flat array.  To traverse the tree, clients will start by loading the node page that contains the root.  Clients need to identify the pages required to access its children.  The process is repeated until the desired nodes have been discovered. 
 
-Only for point cloud scene layers, children have to be stored at **contiguous** indices in the node page array. 
-
 For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePages.cmn.md).
 
-For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl).
+For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl.md).
 
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 

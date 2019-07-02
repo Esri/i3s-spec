@@ -244,7 +244,7 @@ All nodes are stored in a flat array that is divided by a fixed size page of nod
 
 For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePages.cmn.md).
 
-For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl).
+For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl.md).
 
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 

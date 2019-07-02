@@ -8,7 +8,7 @@ Version 1.7. June 30, 2019
 
 ---
 
-The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.  See the [version history page](../versionHistory.md) for more details about previous versions and OGC specification compatibility. 
+The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.  See the [version history on the main ReadMe](../README.md) for more details about previous versions and OGC specification compatibility. 
 
 # Table of Contents
 
@@ -103,7 +103,7 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 - **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and servers.
 - **Declarative**: Communicate clearly to minimize the amount of required domain knowledge to support the format.
 - **Follow REST/JSON API Best Practices:** Provide navigable links to all resources.
-- **[Version History of I3S](../versionHistory.md)**: Provide an overview on which ESRI I3S specification version is equivalent to OGC I3S specification version.
+- **[Version History of I3S](../README.md)**: Provide an overview on which ESRI I3S specification version is equivalent to OGC I3S specification version.
 - **[I3S Converter](../i3s_converter/i3s_converter_ReadMe.md)**: Allows users to update existing 1.6 3D object or Integrated Mesh Scene layers to update to 1.7
 
 # <a name="introduction-to-3D-scene-layer">Introduction to 3D Scene Layer</a>

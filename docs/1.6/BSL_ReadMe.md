@@ -17,44 +17,57 @@ The building scene layer contains discipline and category layers as sublayers wh
 
 ```
 .<host>/SceneServer/layers
-  +--0 (3dSceneLayer.json, layerType ='building' )
+  +--0 // scene layer document
   |  +-- statistics
   |  |   +-- summary.json
   |  +-- sublayers
-  |  |  +--0 (3dSceneLayer.json for layer0, layerType='3DObject')
+  |  |  +--0 // sublayer document
   |  |  |  +--nodes
   |  |  |  |  +--0
-  |  |  |  |  | +-- attributes
-  |  |  |  |  |  |  |  +--2
-  |  |  |  |  |  |  +--4
-  |  |  |  |  |  |  +--8
-  |  |  |  |  |  +--(...)
-  |  |  |  |  |  +-- geometries
-  |  |  |  |  |  |  +-- 0
-  |  |  |  |  |  +-- shared
-  |  |  |  |  |  |  +-- sharedResource
-  |  |  |  + statistics
-  |  |  |  |  +-- f_1
-  |  |  |  |  |  +-- 0
-  |  |  |  |  |  +-...
-  |  |  |  +--1
-  |  |  |  (...) //same structure for all nodes
-  |  |  |  +--...
-  |  |  |  +-- 259
-  |  |  |  (...) //same structure for all nodes
+  |	 |  |  +-- attributes
+  |	 |  |  |  +--f_2
+  |  |  |  |  +--f_4
+  |  |  |  |  +--(...)
+  |  |  |  +-- geometries
+  |  |  |  |  +-- 0
+  |  |  |  +-- textures
+  |  |  |  |  +-- 0
+  |  |  |  |  +-- 0_0_1
+  |  |  |  |  +--(...)
+  |  |  |  +-- shared 
+  |  |  |  (...) 
+  |  +--statistics
+  |  |  +-- f_2
+  |  |  |  | +--0
+  |  |  +-- f_4
+  |  |  |  | +--0
+  |  |  +-- (...)
 ```
 # HTTP API Overview
 
 The following API methods are available for Building Scene Layer:
 
-|Resource|Description|URL example
-|------|-------|-----------------|
-|To query scene layer document| The layer ID needs to be a number. Default is 0.|http://my.server.com/BSL/SceneServer/layers/0|
-|To query statistics|Statistics for the layer|http://my.server.com/BSL/SceneServer/layers/0/statistics/summary |
-|To query scene layer document for a sublayer | Use the layer ID of a specific sublayer | http://my.server.com/BSL/SceneServer/layers/0/sublayers/4/|
-|To query node document|Uses sublayer ID and the node ID to find a specific node. (e.g. sublayer 4, node 1) |http://my.server.com/BSL/SceneServer/layers/0/sublayers/4/nodes/0/|
-|To query geometry  |Geometry of the node.|http://my.server.com/BSL/SceneServer/layers/0/sublayers/4/nodes/0/geometry/0 |
-|To query attribute |Attribute is listed at  scenelayer.attributeStorageInfo[].key .|http://my.server.com/BSL/SceneServer/layers/0/sublayers/0/nodes/18/attributes/f_18/0 |
-|To query statistics|Statistics is listed at  scenelayer.statisticsInfo[].key.|http://my.server.com/BSL/SceneServer/layers/0/sublayers/5/statistics/f_1/0} |
-|To query shared resources|The shared resource such as textures.|http://my.server.com/BSL/SceneServer/layers/0/sublayers/5/nodes/0/shared/0|
+| Resource             | Type   | Description                                                  | URL Template                         |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
+| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
 
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+
+Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0
+
+
+
+| Resource          | Type   | Description                   | URL Template                                                |
+| ----------------- | ------ | ----------------------------- | ----------------------------------------------------------- |
+| Sublayer Document | `JSON` | Discipline or category layer. | `http://serviceURL/layers/{layerID}/sublayers/{sublayerID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `sublayerID`: Integer. ID of the associated resource. 
+
+Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98
+
+
+
+Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`.
+
+Example:  http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1

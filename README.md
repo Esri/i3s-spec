@@ -43,7 +43,7 @@ OGC is currently in the process of updating the I3S Community Standard to versio
 
 The table below shows how I3S OGC Community Standard relates to the I3S specification hosted here.
 
-| **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S Version**      | **OGC I3S Community Standard Version**          |                
+| **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S Version**      | **I3S OGC Community Standard Version**          |                
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
 | MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
 | Points            | [Point](docs/1.6/3Dobject_ReadMe.md)                                                                 | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
@@ -51,7 +51,7 @@ The table below shows how I3S OGC Community Standard relates to the I3S specific
 
 In addition, the OGC 1.1 update for MeshPyramids Profile is picking up minor additional updates from I3S 1.6 for 3D Objects and Integrated Mesh Scene Layers as detailed in [here](#version-16).
 
-The Point Cloud Scene Layer specification that is currently going thru the adoption process for inclusion as part of OGC I3S 1.1 is an example where new layer types are being added be added to I3S Standard. 
+The Point Cloud Scene Layer specification that is currently going thru the adoption process for inclusion as part of I3S OGC 1.1 is an example where new layer types are being added be added to I3S Standard. 
 
 The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC Community Standard :
 - The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification

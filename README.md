@@ -5,7 +5,7 @@ Scene Layers: Service and Package Standard
 
 This repository hosts the specification for scene layers. Scene layers are containers for large amounts of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are specified in detail. Both formats are encoded using JSON and binary ArrayBuffers.
 
-The format I3S originated from investigation into technology for rapidly streaming and distributing large volumes of 3D content across enterprise systems.  These systems can include server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.  
+The format I3S originated from investigation into technology for rapidly streaming and distributing large volumes of 3D content across enterprise systems.  These systems can include server components, cloud hosted components, and a variety of client software from desktop to web to mobile applications.  
 
 A single I3S data set, referred to as a scene layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. A scene layer is characterized by a combination of layer type and profile to fully describe the behavior of the layer and the manner in which it is realized within the specification.
 
@@ -13,13 +13,13 @@ The I3S format is declarative and extendable, and can be used to represent diffe
 The following layer types have been specified and the standard validated via implementation and production deployments:
 
 - [3D Objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, from satellite, aerial or drone imagery via dense matching photogrammetric software)
-- [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals or schools, trees, street furniture, signs, from GIS data)
+- [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
+- [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
 - [Point Cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
-The specification of the [indexed 3D scene layer (I3S)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](./format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#scene-layer-packages), as well as the specification for accessing I3S resources as [scene service REST](./service/SceneService.md) endpoints, are described in this standard as open formats.
+The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#scene-layer-packages), as well as the specification for accessing I3S resources as scene service REST endpoints, are described in this standard as open formats.  The REST endpoint implementations are described in the ReadMe for each profile. 
 
 
 ## Designed for Web, Mobile and Cloud  
@@ -39,23 +39,19 @@ On August 8 2017, the Open Geospatial Consortium (OGC) approved I3S as a communi
 
 The open community GitHub specification hosted in this repository is the sole source of content to the OGC I3S Community Standard. The I3S community specification evolves primarily driven by advancements in technology as well as community needs. The OGC process allows for updating and synchronizing the Community Standard with this open community GitHub version at regular intervals to achieve equivalency.
 
-OGC is currently in the process of updating the OGC I3S Community Standard to version 1.1 to pick up updates from this repository. Each I3S profile in the community specification evolves and is versioned independently. The community specifications evolve in a manner that places high priority on compatibility with earlier versions of the community specification as well as of the OGC community standard. This allows new capabilities to be delivered rapidly to the community with subsequent incorporation into the OGC I3S Community Standard at the appropriate time.
+OGC is in the process of updating the I3S Community Standard to Version 1.1 to pick up updates from this repository. To facilitate this process, as well as provide new capabilities fast to the community without impacting existing scene layer types and profiles, each I3S profile evolves and is versioned independently.
 
-The table below shows how OGC I3S Community Standard relates to the I3S specification hosted here.
+The table below shows how the OGC I3S Community Standard relates to the I3S specification hosted here.
 
-| **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S Version**      | **OGC I3S Community Standard Version**          |                
+| **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S Version**      | **OGC I3S Community Standard Version**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
-| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
-| Points            | [Point](docs/1.6/3Dobject_ReadMe.md)                                                                 | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
+| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
+| Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
-A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
+A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update
 
-The Point Cloud Scene Layer specification that is currently going thru the adoption process for inclusion as part of OGC I3S Community Standard at version 1.1 is an example where new layer types are being added be added to I3S Standard. 
-
-The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC I3S Community Standard :
-- The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification
-- Inclusion of the [Building Scene Layer](docs/1.6/BSL_ReadMe.md) first introduced at I3S 1.6
+The Point Cloud Scene Layer specification is going through the adoption process for inclusion as part of OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard. Similarly, the [Building Scene Layer](https://devtopia.esri.com/ArcGISPro/i3s-spec/blob/master/docs/1.6/BSL_ReadMe.md), as well as performance optimizations for MeshPyramids profile released under I3S 1.6 and 1.7 specification respectively, will be submitted for inclusion as part of I3S OGC standard.
 
 ## What's New?
 
@@ -64,9 +60,9 @@ The following changes to the I3S community specification are yet to be proposed 
 Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
 
 #### [3D Object Scene Layer](docs/1.6/3Dobject_ReadMe.md)
-- [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - introduces support for Oriented Bounding Boxes as a bounding volume
-- [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute Domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries
-- [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - provides the time stamp when the I3S service or the source of the service was created or updated. This property can be used in conjunction with the associated feature layer for editing purposes
+- [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - Introduces support for Oriented Bounding Boxes as a bounding volume.
+- [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute Domains are rules that describe the allowed values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries.
+- [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated. This property can be used in conjunction with the associated feature layer for editing.
 
 #### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
@@ -77,25 +73,25 @@ Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
 
 ### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
 
-- Nodes are now accessible via the [page node index](docs/1.7/nodePages.cmn.md) - significantly reducing server-client traffic
-- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads
-- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials
-- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource
-- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3d Objects scene layer to I3S 1.7
+- Nodes are now accessible as pages using a [page node index](docs/1.7/nodePages.cmn.md) - significantly reducing server-client traffic.
+- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
+- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
+- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.
+- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3D Object scene layers to I3S 1.7.
 
-I3S specification version 1.7 is backward compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online. More support of I3S 1.7 across the ArcGIS platform will role out in upcoming releases.
+I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online.  More support of I3S 1.7 across the ArcGIS platform will role out in upcoming releases.
 
 ### Version 2.0
 
-Released 03/01/2019  - (applies to [PointClouds](docs/1.6/store.cmn.md) profile)
+Released 03/01/2019  - (applies to [Point Cloud](docs/1.6/store.cmn.md) profile)
 
 #### [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md)
 
-- The full specification for [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md)
+- [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md) profile specification.  The Point Cloud Scene Layer is used to visualize sensor data, including LiDAR.
 
 ## Where Can I Use...?
 
-There are few applications that can create and consume scene layers. The tables below list some of those applications. This is an evolving list and will be updated frequently. If an application that's either consuming or generating scene layers is missing, please let us know so we can add it to the list.
+There are several applications that can create and consume scene layers. The tables below list some of these applications. This is an evolving list and will be updated frequently. If an application that either consumes or generates scene layers is missing, please let us know so we can add it to the list.
 <table>
  <tr>
   <td><strong>Vendor</strong></td>  
@@ -126,7 +122,7 @@ There are few applications that can create and consume scene layers. The tables 
 </table>
 <p><em>List of vendors and products that support creation of I3S layers.</em></p>
 
-The Table below shows the various scene layer types that are currently supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform</a>.
+The Table below shows the various scene layer types that are supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform</a>.
 
 This table reflects the current versions of the ArcGIS Clients.
 

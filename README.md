@@ -49,7 +49,7 @@ The table below shows how OGC I3S Community Standard relates to the I3S specific
 | Points            | [Point](docs/1.6/3Dobject_ReadMe.md)                                                                 | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
-In addition, the OGC 1.1 update for MeshPyramids Profile is picking up minor additional updates from I3S 1.6 for 3D Objects and Integrated Mesh Scene Layers as detailed in [here](#version-16).
+A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
 
 The Point Cloud Scene Layer specification that is currently going thru the adoption process for inclusion as part of OGC I3S Community Standard at version 1.1 is an example where new layer types are being added be added to I3S Standard. 
 
@@ -58,6 +58,18 @@ The following changes to the I3S community specification are yet to be proposed 
 - Inclusion of the [Building Scene Layer](docs/1.6/BSL_ReadMe.md) first introduced at I3S 1.6
 
 ## What's New?
+
+### Version 1.6
+
+Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
+
+#### [3D Object Scene Layer](docs/1.6/3Dobject_ReadMe.md)
+- [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - introduces support for Oriented Bounding Boxes as a bounding volume
+- [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute Domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries
+- [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - provides the time stamp when the I3S service or the source of the service was created or updated. This property can be used in conjunction with the associated feature layer for editing purposes
+
+#### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
+- [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
 
 ### Version 1.7
 Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
@@ -72,18 +84,6 @@ Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
 - New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3d Objects scene layer to I3S 1.7
 
 I3S specification version 1.7 is backward compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online. More support of I3S 1.7 across the ArcGIS platform will role out in upcoming releases.
-
-### Version 1.6
-
-Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
-
-#### [3D Object Scene Layer](docs/1.6/3Dobject_ReadMe.md)
-- [Oriented Bounding Boxes](docs/1.6/obb.cmn.md) - introduces support for Oriented Bounding Boxes as a bounding volume
-- [Attribute Domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute Domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries
-- [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - provides the time stamp when the I3S service or the source of the service was created or updated. This property can be used in conjunction with the associated feature layer for editing purposes
-
-#### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
-- [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
 
 ### Version 2.0
 

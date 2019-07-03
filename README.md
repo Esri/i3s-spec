@@ -51,7 +51,7 @@ The table below shows how the OGC I3S Community Standard relates to the I3S spec
 
 A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
 
-The Point Cloud Scene Layer specification is going through the adoption process for inclusion as part of OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard.
+The Point Cloud Scene Layer specification is going through the adoption process for inclusion in OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard.
 
 The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC I3S Community Standard:
 

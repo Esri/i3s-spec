@@ -4,7 +4,7 @@ Materials describe how a feature or a set of features is to be rendered, includi
 
 ### Related:
 
-[cmn::sharedResource](sharedResource.cmn.md)
+[cmn::sharedResource](sharedResource.cmn.md), [cmn::store](store.cmn.md), [psl::store](store.psl.md)
 ### Properties
 
 | Property | Type | Description |

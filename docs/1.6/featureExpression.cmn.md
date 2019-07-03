@@ -1,6 +1,6 @@
 # I3S Scene Layer: fieldInfo
 
-Deprecated with 1.8, use featureExpressionInfo instead. {"value":0} ignores geometry z-values.
+Deprecated with 1.7, use featureExpressionInfo instead. {"value":0} ignores geometry z-values.
 
 ### Related:
 

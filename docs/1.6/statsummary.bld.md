@@ -9,7 +9,7 @@ Statistics for all building scene layer sublayers. Captures statistical informat
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **summary** | [attributestats](attributestats.bld.md)[] | Per-attribute statistics for all sublayers  |
+| **summary** | [attributestats](attributestats.bld.md)[] | Per-attribute statistics for all sublayers. |
 
 *Note: properties in **bold** are required*
 

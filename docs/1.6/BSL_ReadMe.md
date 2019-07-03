@@ -4,7 +4,7 @@ Building content is derived from a Building Information Modeling (BIM). BIM is a
 
 *Example of a Building Scene Layer*
 
-![Building Scene Layer](img/buildingSceneLayer.png)
+![Building Scene Layer](../img/buildingSceneLayer.png)
 
 ## Building Scene Layer Structure
 The building scene layer contains discipline and category layers as sublayers which represent a building and its assets. Building scene layers can be used to create a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:
@@ -17,36 +17,57 @@ The building scene layer contains discipline and category layers as sublayers wh
 
 ```
 .<host>/SceneServer/layers
-	+-- layers
-|  +-- 10 (3dSceneLayer.json for layer10, layerType ='building' )
-|  |  +-- statistics
-|  |  |   +-- summary.json
-|  |  +-- sublayers
-|  |  |  +--0 (3dSceneLayer.json for layer0, layerType='3DObject')
-|  |  |  |  +--nodes
-|  |  |  |  |  +--root
-|  |  |  |  |  |  +--3dNodeIndexDocument.json
-|  |  |  |  |  |  +--geometries (...)
-|  |  |  |  |  |  +--attributes (...)
-|  |  |  |  |  +--0
-|  |  |  |  |  |  +--3dNodeIndexDocument.json
-|  |  |  |  |  |  +--geometries (...)
-|  |  |  |  |  |  +--attributes (...)
-|  |  |  |  |  +--(...)
-|  |  |  |  +--statistics
-|  |  |  +--1 (3dSceneLayer.json for layer1, layerType='3DObject')
-|  |  |  |  +-- (...)
-|  |  |  +--(... , layerType='3DObject')
+  +--0 // scene layer document
+  |  +-- statistics
+  |  |   +-- summary.json
+  |  +-- sublayers
+  |  |  +--0 // sublayer document
+  |  |  |  +--nodes
+  |  |  |  |  +--0
+  |	 |  |  +-- attributes
+  |	 |  |  |  +--f_2
+  |  |  |  |  +--f_4
+  |  |  |  |  +--(...)
+  |  |  |  +-- geometries
+  |  |  |  |  +-- 0
+  |  |  |  +-- textures
+  |  |  |  |  +-- 0
+  |  |  |  |  +-- 0_0_1
+  |  |  |  |  +--(...)
+  |  |  |  +-- shared 
+  |  |  |  (...) 
+  |  +--statistics
+  |  |  +-- f_2
+  |  |  |  | +--0
+  |  |  +-- f_4
+  |  |  |  | +--0
+  |  |  +-- (...)
 ```
 # HTTP API Overview
 
 The following API methods are available for Building Scene Layer:
 
-|Method|Example|
-|------|-------|
-|To query SceneLayer document|http://my.server.com/layers/{layerId}|
-|To query attribute, statistics, documents|http://my.server.com/layers/{layerId}/statistics/{AttribKey} |
-|To query  NodePage  document|http://my.server.com/layers/{layerId}/nodepages/{firstNodeIdInPage} |
-|To query  Geometry  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/geometries/0 |
-|To query  Attribute  Buffer|http://my.server.com/layers/{layerId}/nodes/{resourceID}/attributes/{AttribKey}  Node:  {AttribKey}  is listed at  scenelayer.attributeStorageInfo[].key |
+| Resource             | Type   | Description                                                  | URL Template                         |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
+| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
 
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+
+Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0
+
+
+
+| Resource          | Type   | Description                   | URL Template                                                |
+| ----------------- | ------ | ----------------------------- | ----------------------------------------------------------- |
+| Sublayer Document | `JSON` | Discipline or category layer. | `http://serviceURL/layers/{layerID}/sublayers/{sublayerID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `sublayerID`: Integer. ID of the associated resource. 
+
+Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98
+
+
+
+Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`.
+
+Example:  http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1

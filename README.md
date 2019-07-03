@@ -49,9 +49,14 @@ The table below shows how the OGC I3S Community Standard relates to the I3S spec
 | Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
-A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update
+A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
 
-The Point Cloud Scene Layer specification is going through the adoption process for inclusion as part of OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard. Similarly, the [Building Scene Layer](https://devtopia.esri.com/ArcGISPro/i3s-spec/blob/master/docs/1.6/BSL_ReadMe.md), as well as performance optimizations for MeshPyramids profile released under I3S 1.6 and 1.7 specification respectively, will be submitted for inclusion as part of I3S OGC standard.
+The Point Cloud Scene Layer specification is going through the adoption process for inclusion as part of OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard.
+
+The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC I3S Community Standard:
+
+- The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification.
+- Inclusion of the [Building Scene Layer](docs/1.6/BSL_ReadMe.md), first introduced at I3S 1.6.
 
 ## What's New?
 

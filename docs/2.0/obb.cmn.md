@@ -1,6 +1,6 @@
 # Oriented Bounding Box
 
-Oriented bounding box.
+Oriented bounding box
 
 ### Related:
 

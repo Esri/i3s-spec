@@ -35,11 +35,11 @@ For the purpose of encouraging community adoption and feedback, the I3S format i
 
 ## An OGC Community Standard
 
-On August 8 2017, the Open Geospatial Consortium (OGC) approved I3S as a community Standard and was released to the public as [OGC Indexed 3d Scene Layer (I3S) and Scene Layer Package Format Specification](https://www.opengeospatial.org/standards/i3s) version 1.0.
+On August 8 2017, the Open Geospatial Consortium (OGC) approved I3S as a community Standard which was released to the public as [OGC Indexed 3d Scene Layer (I3S) and Scene Layer Package Format Specification](https://www.opengeospatial.org/standards/i3s) version 1.0.
 
-The open community GitHub specification hosted in this repository is the sole source of I3S OGC Community Standard. I3S evolves primarily driven by advancements in technology as well as community needs. The OGC process allows for updating and synchronizing the Community Standard with the open community GitHub version at regular intervals to achieve equivalency.
+The open community GitHub specification hosted in this repository is the sole source of content to the I3S OGC Community Standard. The I3S community specification evolves primarily driven by advancements in technology as well as community needs. The OGC process allows for updating and synchronizing the Community Standard with this open community GitHub version at regular intervals to achieve equivalency.
 
-OGC is currently in the process of updating the I3S Community Standard to Version 1.1 to pick up updates form this repository. To facilitate this process, as well as provide new capabilities fast to the community without impacting existing scene layer types and profiles, each I3S profile evolves and is versioned independently.
+OGC is currently in the process of updating the I3S Community Standard to version 1.1 to pick up updates from this repository. Each I3S profile in the community specification evolves and is versioned independently. The community specifications evolve in a manner that places  high priority on compatibility with earlier versions of the community specification as well as of the OGC community standard. This allows new capabilities to be delivered rapidly to the community with subsequent incorporation into the I3S OGC Community Standard at the appropriate time.  
 
 The table below shows how I3S OGC Community Standard relates to the I3S specification hosted here.
 
@@ -51,7 +51,11 @@ The table below shows how I3S OGC Community Standard relates to the I3S specific
 
 In addition, the OGC 1.1 update for MeshPyramids Profile is picking up minor additional updates from I3S 1.6 for 3D Objects and Integrated Mesh Scene Layers as detailed in [here](#version-16).
 
-The Point Cloud Scene Layer specification that is currently going thru the adoption process for inclusion as part of OGC I3S 1.1 is an example where new layer types could be added to I3S Standard. Similarly, [Building Scene Layer](docs/1.6/BSL_ReadMe.md) as well as performance optimizations for MeshPyramids profile released under I3S 1.6 and 1.7 specification respectively, will be submitted for inclusion as part of I3S OGC standard.
+The Point Cloud Scene Layer specification that is currently going thru the adoption process for inclusion as part of OGC I3S 1.1 is an example where new layer types are being added be added to I3S Standard. 
+
+The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC Community Standard :
+- The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification
+- Inclusion of the [Building Scene Layer](docs/1.6/BSL_ReadMe.md) first introduced at I3S 1.6
 
 ## What's New?
 

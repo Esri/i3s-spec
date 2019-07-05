@@ -15,7 +15,7 @@ The following layer types have been specified and the standard validated via imp
 - [3D Objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
 - [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
-- [Point Cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
+- [Point Cloud](docs/2.0/pcsl_README.md) (e.g. large point data from LiDAR)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
@@ -47,7 +47,7 @@ The table below shows how the OGC I3S Community Standard relates to the I3S spec
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
 | MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
 | Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
-| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
+| PointClouds       | [Point Cloud](docs/2.0/pcsl_README.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
 A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
 
@@ -90,9 +90,9 @@ I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and i
 
 Released 03/01/2019  - (applies to [Point Cloud](docs/1.6/store.cmn.md) profile)
 
-#### [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md)
+#### [Point Cloud Scene Layer](docs/2.0/pcsl_README.md)
 
-- [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md) profile specification.  The Point Cloud Scene Layer is used to visualize sensor data, including LiDAR.
+- [Point Cloud Scene Layer](docs/2.0/pcsl_README.md) profile specification.  The Point Cloud Scene Layer is used to visualize sensor data, including LiDAR.
 
 ## Where Can I Use...?
 

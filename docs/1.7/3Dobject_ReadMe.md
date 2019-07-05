@@ -19,15 +19,16 @@ The 3D object scene layer is structured into a tree of multiple JSON files. A 3D
 - [Node Index Document](3DNodeIndexDocument.cmn.md)
 - [Statistics](statsInfo.cmn.md)
 - [Shared Resources](sharedResource.cmn.md)
-  
 
 *Shared resources are deprecated as of version 1.7 and are only included for backwards compatibility.*
+
+3D object scene layer packages can optionally contain a [hash table](slpk_hashtable.cmn.md) for faster indexing. 
 
 *Example of 3DObject layer structure*
 
 ```
 .<host>/SceneServer/layers
-	+--0 // layer description
+	+--0 // scene layer document
 	+-- nodePages
 	|  +-- 0
 	|  +-- (...)
@@ -36,7 +37,6 @@ The 3D object scene layer is structured into a tree of multiple JSON files. A 3D
 	|  |  +-- attributes
 	|  |  |  +--f_2
 	|  |  |  +--f_4
-	|  |  |  +--f_8
 	|  |  |  +--(...)
 	|  |  +-- geometries
 	|  |  |  +-- 0
@@ -47,15 +47,10 @@ The 3D object scene layer is structured into a tree of multiple JSON files. A 3D
 	|  |  |  +-- 0_0_1
 	|  |  |  +--(...)
 	|  |  +-- shared 
-	|  +--1
-	|  |  (...) //same structure for all nodes
-	|  +--...
-	|  +-- 259
-	|  |  (...) //same structure for all nodes
+	|  |  (...) 
 	+--statistics
 	|  +-- f_2
 	|  +-- f_4
-	|  +-- f_8
 	|  +-- (...)
 ```
 # HTTP API Overview 1.7

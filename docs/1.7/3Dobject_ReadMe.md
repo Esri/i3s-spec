@@ -28,7 +28,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. A 3D
 
 ```
 .<host>/SceneServer/layers
-	+--0 // layer description
+	+--0 // scene layer document
 	+-- nodePages
 	|  +-- 0
 	|  +-- (...)

@@ -42,7 +42,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Supported Data Types](#supported-data-types)  
 ​&emsp;[Pointers](#pointers)  
 ​&emsp;[SceneServiceInfo](#sceneServiceInfo)  
-​&emsp;[Class 3dSceneLayerInfo](#class-3dSceneLayerInfo)  
+​&emsp;[Class 3DSceneLayer](#class-3dSceneLayer)  
 ​&emsp;[Class Store](#class-store)  
 ​&emsp;[Class Geometry Schema](#class-geometry-schema)  
 ​&emsp;[Class HeaderAttribute](#class-headerAttribute)  
@@ -163,7 +163,7 @@ For an I3S layer to be in a *local* mode the following requirements must be met:
 All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
   - All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
 
-All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayerInfo](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
+All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
 
 The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
 

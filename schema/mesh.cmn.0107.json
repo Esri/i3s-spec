@@ -1,8 +1,8 @@
 {
-  "title": "Mesh object",
+  "title": "mesh",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Mesh geometry for a node.",
+  "description": "Mesh object. Mesh geometry for a node.",
   "properties": {
     "material": {
       "type": "object",

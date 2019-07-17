@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: nodepage
+# nodePage [point cloud profile]
 
 
 

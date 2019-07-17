@@ -1,5 +1,5 @@
 {
-    "title": "I3S Scene Layer: fieldInfo",
+    "title": "mediaInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Defines an image or a chart to be displayed in a popup window.",

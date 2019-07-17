@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: Attribute Statistics",
+  "title": "Attribute Statistics [point cloud profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "related":  "layer.pcsl.2000.json",

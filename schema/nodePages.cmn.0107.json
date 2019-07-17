@@ -1,5 +1,5 @@
 {
-  "title": "nodePages",
+  "title": "nodePages [common profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/nodePages.cmn.0107.md",

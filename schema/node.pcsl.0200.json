@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: node",
+  "title": "node [point cloud profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A single bounding volume hierarchy node",

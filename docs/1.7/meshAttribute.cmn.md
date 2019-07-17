@@ -1,4 +1,4 @@
-# Mesh Attribute
+# meshAttribute
 
 Mesh geometry for a node.
 

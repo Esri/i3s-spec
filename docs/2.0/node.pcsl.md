@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: node
+# node [point cloud profile]
 
 A single bounding volume hierarchy node
 

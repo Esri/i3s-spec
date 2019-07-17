@@ -1,4 +1,4 @@
-# Node object
+# node [common profiles]
 
 The node object.
 

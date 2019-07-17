@@ -1,5 +1,5 @@
 {
-    "title": "I3S Scene Layer: attributeStorageInfo",
+    "title": "attributeStorageInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "An object that describes the structure of the binary attribute data resource of a node.",

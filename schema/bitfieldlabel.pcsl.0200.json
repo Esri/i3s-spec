@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: Bit Field Label",
+  "title": "bitFieldLabel [point cloud profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/bitfiedlabel.pcsl.0200.md",

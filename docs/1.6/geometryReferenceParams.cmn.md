@@ -1,4 +1,4 @@
-# GeometryReferenceParams
+# geometryReferenceParams
 
 Instead of owning a geometry exclusively, a feature can reference part of a geometry defined for the node. This allows to pre-aggregate geometries for many features. In this case, geometryReferenceParams must be used.
 

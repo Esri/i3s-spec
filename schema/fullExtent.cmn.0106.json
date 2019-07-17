@@ -1,5 +1,5 @@
 {
-  "title": "Full Extent",
+  "title": "fullExtent",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Defines the full extent of a scene layer.",

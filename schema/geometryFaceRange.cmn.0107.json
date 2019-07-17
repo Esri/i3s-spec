@@ -1,5 +1,5 @@
 {
-  "title": "Face Range",
+  "title": "geometryFaceRange",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/geometryFaceRange.cmn.0107.md",

@@ -1,5 +1,5 @@
 {
-  "title": "Mesh geometry description",
+  "title": "geometryBuffer",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/geometryBuffer.cmn.0107.md",

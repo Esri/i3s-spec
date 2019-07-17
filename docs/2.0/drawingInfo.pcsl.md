@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: drawingInfo
+# drawingInfo [point cloud profile]
 
 The drawingInfo object contains drawing information for a point cloud scene layer. 
 

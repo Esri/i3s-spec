@@ -1,4 +1,4 @@
-# Compressed attributes
+# compressedAttributes
 
  I3S version 1.7 allows compressing the geometryBuffer of an Integrated Mesh and 3D Object Layers using [Draco](https://github.com/google/draco) compression, which is optimized for compressing and decompressing 3D geometric meshes and point clouds.
 

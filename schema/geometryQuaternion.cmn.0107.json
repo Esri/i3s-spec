@@ -1,8 +1,8 @@
 {
-  "title": "Unit quaternion (for rotation)",
+  "title": "geometryQuaternion",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "4-component quaternion rotation. See [quaternion in relation to rotation](http://run.usc.edu/cs520-s12/quaternions/quaternions-cs520.pdf) for details",
+  "description": "Unit quaternion (for rotation).  4-component quaternion rotation. See [quaternion in relation to rotation](http://run.usc.edu/cs520-s12/quaternions/quaternions-cs520.pdf) for details",
   "properties": {
     "type": {
       "type": "string",

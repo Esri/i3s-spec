@@ -1,4 +1,4 @@
-# Filter Mode: wire frame
+# filterMode: wire frame [building profile]
 
 Shows all elements that comply with the filter block of a filter in a building scene layer.  The elements are drawn with an edge line.
 

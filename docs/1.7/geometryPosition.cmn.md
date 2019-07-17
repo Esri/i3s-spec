@@ -1,6 +1,6 @@
-# Position vertex attribute
+# geometryPosition
 
-Relative to the center of oriented-bounded box of the node.
+Position vertex attribute.  Relative to the center of oriented-bounded box of the node.
 
 ### Related:
 

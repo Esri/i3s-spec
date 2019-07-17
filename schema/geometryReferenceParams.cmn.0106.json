@@ -1,5 +1,5 @@
 {
-  "title": "GeometryReferenceParams",
+  "title": "geometryReferenceParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Instead of owning a geometry exclusively, a feature can reference part of a geometry defined for the node. This allows to pre-aggregate geometries for many features. In this case, geometryReferenceParams must be used.",

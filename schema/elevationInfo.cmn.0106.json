@@ -1,5 +1,5 @@
 {
-    "title": "I3S Scene Layer: elevationInfo",
+    "title": "elevationInfo [common profiles]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "An object defining where a feature is placed within a scene. For example, on the ground or at an absolute height. [See more](https://developers.arcgis.com/web-scene-specification/objects/elevationInfo/) information on elevation in ArcGIS clients.",

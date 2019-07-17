@@ -1,6 +1,6 @@
-# FeatureID attribute
+# geometryFeatureID
 
-FeatureID helps to indentify part of a mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`.  Spec v1.7 only supports triangle.
+FeatureID attribute helps to indentify part of a mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`.  Spec v1.7 only supports triangle.
 
 ### Related:
 

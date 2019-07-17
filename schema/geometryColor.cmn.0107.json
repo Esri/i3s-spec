@@ -1,8 +1,8 @@
 {
-  "title": "Color vertex attribute",
+  "title": "geometryColor",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Colors for geometry.  Assumed to be sRGB space.",
+  "description": "Color vertex attribute.  Assumed to be sRGB space.",
   "properties": {
     "type": {
       "type": "string",

@@ -1,5 +1,5 @@
 {
-    "title": "I3S Scene Layer: fieldInfo",
+    "title": "fieldExpression",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Deprecated with 1.7, use featureExpressionInfo instead. {\"value\":0} ignores geometry z-values.",

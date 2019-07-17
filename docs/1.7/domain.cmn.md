@@ -1,4 +1,4 @@
-# I3S Attribute (i.e. Field) domain
+# domain (i.e. field)
 
 Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. Attribute domains are used to constrain the values allowed in a particular attribute. Using domains helps ensure data integrity by limiting the choice of values for a particular field. Attribute domains can be shared across scene layers like 3D Object scene layers or Building Scene Layers.
 

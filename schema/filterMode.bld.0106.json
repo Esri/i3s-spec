@@ -1,5 +1,5 @@
 {
-  "title": "Filter Mode",
+  "title": "filterMode [building profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Filter mode represents the way elements draw when participating in a filter block.",

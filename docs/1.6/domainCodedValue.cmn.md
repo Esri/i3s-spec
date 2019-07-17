@@ -1,4 +1,4 @@
-# Domain Coded Value
+# domainCodedValue
 
 Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. Attribute domains are used to constrain the values allowed in any particular attribute. Whenever a domain is associated with an attribute field, only the values within that domain are valid for the field. Using domains helps ensure data integrity by limiting the choice of values for a particular field. The domain code value contains the coded values for a domain as well as an associated description of what that value represents.
 

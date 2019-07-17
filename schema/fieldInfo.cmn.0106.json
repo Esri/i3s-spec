@@ -1,5 +1,5 @@
 {
-    "title": "I3S Scene Layer: fieldInfo",
+    "title": "fieldInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Defines how a field in the dataset participates (or does not participate) in a popup window.",

@@ -1,4 +1,4 @@
-# Building scene layer attribute statistics
+# attributeStatistics [building profile]
 
 Concatenated attribute statistics. If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields.
 

@@ -1,6 +1,8 @@
-# Mesh geometry description
+# geometryBuffer
 
 
+
+Mesh Geometry Description
 
 **Important**: The order of the vertex attributes in the buffer is **fixed** to simplify binary parsing:
 
@@ -20,7 +22,7 @@ or
 ```
 compressedAttributes
 ```
- 
+
  **Important:**
 - Attribute that are present are store contiguously in the corresponding geometry buffers.
 - All vertex attributes ( **except** `compressedAttributes`) have a fixed size that may be computed as:

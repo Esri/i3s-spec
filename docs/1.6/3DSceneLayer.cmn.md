@@ -1,4 +1,4 @@
-# 3DSceneLayer [Common Profiles]
+# 3DSceneLayer [common profiles]
 
 The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.
 

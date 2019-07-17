@@ -1,5 +1,5 @@
 {
-  "title": "Building scene layer attribute statistics",
+  "title": "attributeStatistics [building profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Concatenated attribute statistics. If needed, the type of the attribute (string or number) may be inferred from `mostFrequentValues` and/or `min`/`max` fields.",

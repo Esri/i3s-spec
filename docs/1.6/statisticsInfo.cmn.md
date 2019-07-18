@@ -1,6 +1,6 @@
 # statisticsInfo
 
-Describes the statistics for the scene layer.
+Describes the attribute statistics for the scene layer.
 
 ### Related:
 

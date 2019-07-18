@@ -1,4 +1,4 @@
-# Building scene layer Statistics
+# statistics [building profile]
 
 Statistics for all building scene layer sublayers. Captures statistical information for each field in the building scene layer and the sublayers containing this fields.
 

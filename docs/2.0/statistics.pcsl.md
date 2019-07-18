@@ -1,4 +1,4 @@
-# Attribute Statistics [point cloud profile]
+# statistics [point cloud profile]
 
 Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range. By convention,  statistics are stored by attribute at `layers/0/statistics/{attribute_id}`
 

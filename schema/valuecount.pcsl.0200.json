@@ -1,5 +1,5 @@
 {
-  "title": "I3S point cloud scene layer: Values",
+  "title": "valueCount [point cloud profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A scalar or vector value.",

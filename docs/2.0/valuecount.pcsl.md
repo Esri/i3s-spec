@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: Values
+# valueCount [point cloud profile]
 
 A scalar or vector value.
 

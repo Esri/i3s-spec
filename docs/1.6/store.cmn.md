@@ -1,4 +1,4 @@
-# store [Common Profiles]
+# store [common profiles]
 
 The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. Storing multiple layers in a single store - and thus having them share resources - enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.
 

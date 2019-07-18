@@ -1,5 +1,5 @@
 {
-  "title": "I3S building scene layer: Values",
+  "title": "valueCount [common profiles]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A string or numeric value.",

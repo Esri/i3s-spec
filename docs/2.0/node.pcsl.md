@@ -4,7 +4,7 @@ A single bounding volume hierarchy node
 
 ### Related:
 
-[pcsl::nodepage](nodepage.pcsl.md)
+[pcsl::nodePageDefinition](nodePageDefinition.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

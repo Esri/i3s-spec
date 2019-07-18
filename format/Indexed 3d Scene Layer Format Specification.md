@@ -243,7 +243,7 @@ All nodes are stored in a flat array that is divided by a fixed size page of nod
 
 For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
 
-For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl.md).
+For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodePageDefinition.pcsl.md).
 
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 
@@ -625,7 +625,7 @@ For more details Integrated Mesh, 3D objects see [Node Pages](../docs/1.7/nodePa
 
 For more details on points, see [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).
 
-Point cloud scene layer define indexed page nodes, see [Node Page](../docs/2.0/nodepage.pcsl.md).
+Point cloud scene layer define indexed page nodes, see [Node Page](../docs/2.0/nodePageDefinition.pcsl.md).
 
 ### <a name="class-nodereference"></a> Class NodeReference
 

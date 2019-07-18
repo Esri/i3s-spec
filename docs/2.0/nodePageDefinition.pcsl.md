@@ -1,4 +1,4 @@
-# nodePage [point cloud profile]
+# nodePageDefinition [point cloud profile]
 
 
 

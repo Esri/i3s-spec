@@ -4,7 +4,7 @@
 
 ### Related:
 
-[cmn::nodePages](nodePages.cmn.md)
+[cmn::nodePageDefinition](nodePageDefinition.cmn.md)
 ### Properties
 
 | Property | Type | Description |

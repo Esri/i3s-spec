@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: elevationInfo
+# elevationInfo [point cloud profile]
 
 The elevationInfo defines how content in a scene layer is aligned to the ground.
 

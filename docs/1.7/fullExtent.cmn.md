@@ -1,4 +1,4 @@
-# Full Extent
+# fullExtent
 
 Defines the full extent of a scene layer.
 

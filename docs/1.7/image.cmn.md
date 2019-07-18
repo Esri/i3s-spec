@@ -1,4 +1,4 @@
-# Image
+# image
 
 An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. It represents one specific texture LoD. For details on texture organization, please refer to the section on texture resources.
 

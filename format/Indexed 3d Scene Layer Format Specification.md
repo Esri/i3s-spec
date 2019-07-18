@@ -42,7 +42,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Supported Data Types](#supported-data-types)  
 ​&emsp;[Pointers](#pointers)  
 ​&emsp;[SceneServiceInfo](#sceneServiceInfo)  
-​&emsp;[Class 3dSceneLayerInfo](#class-3dSceneLayerInfo)  
+​&emsp;[Class 3DSceneLayer](#class-3dSceneLayer)  
 ​&emsp;[Class Store](#class-store)  
 ​&emsp;[Class Geometry Schema](#class-geometry-schema)  
 ​&emsp;[Class HeaderAttribute](#class-headerAttribute)  
@@ -163,7 +163,7 @@ For an I3S layer to be in a *local* mode the following requirements must be met:
 All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
   - All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
 
-All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayerInfo](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
+All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
 
 The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
 
@@ -241,9 +241,9 @@ per round-trip, which reduces the overall number of round-trips and increases pe
 
 All nodes are stored in a flat array that is divided by a fixed size page of nodes.  Each node references its children using their index in this flat array.  To traverse the tree, clients will start by loading the node page that contains the root.  Clients need to identify the pages required to access its children.  The process is repeated until the desired nodes have been discovered. 
 
-For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePages.cmn.md).
+For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
 
-For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodepage.pcsl.md).
+For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodePageDefinition.pcsl.md).
 
 ### <a name="geometry-model-and-storage">Geometry Model and Storage</a>
 
@@ -621,11 +621,11 @@ The 3dNodeIndexDocument file describes a single index node within a store.  It i
 
 Depending on the geometry and level of detail, a node document can be tuned to be light-weight or heavy-weight.  Clients decide which data to retrieve.  A simple data visualization can be created using centroids with the details from the node, its parent, its children, and neighbors to help the client understand the overall distribution of the data.
 
-For more details Integrated Mesh, 3D objects see [Node Pages](../docs/1.7/nodePages.cmn.md).
+For more details Integrated Mesh, 3D objects see [Node Pages](../docs/1.7/nodePageDefinition.cmn.md).
 
 For more details on points, see [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).
 
-Point cloud scene layer define indexed page nodes, see [Node Page](../docs/2.0/nodepage.pcsl.md).
+Point cloud scene layer define indexed page nodes, see [Node Page](../docs/2.0/nodePageDefinition.pcsl.md).
 
 ### <a name="class-nodereference"></a> Class NodeReference
 

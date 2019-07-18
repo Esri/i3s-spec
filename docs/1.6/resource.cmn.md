@@ -1,4 +1,4 @@
-# Resource
+# resource
 
 Resource objects are pointers to different types of resources related to a node, such as the feature data, the geometry attributes and indices, textures and shared resources.
 

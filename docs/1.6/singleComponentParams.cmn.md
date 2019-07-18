@@ -1,4 +1,4 @@
-# SingleComponentParams
+# singleComponentParams
 
 Objects of this type extend vestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries. Component objects provide information on parts of the geometry they belong to, specifically with which material and texture to render them.
 

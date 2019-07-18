@@ -1,4 +1,4 @@
-# Mesh Material
+# meshMaterial
 
 Mesh geometry for a node.
 

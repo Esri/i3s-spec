@@ -1,4 +1,4 @@
-# I3S Scene Layer: attributeStorageInfo
+# attributeStorageInfo
 
 An object that describes the structure of the binary attribute data resource of a node.
 

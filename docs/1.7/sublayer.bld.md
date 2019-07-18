@@ -1,6 +1,6 @@
-# Building Scene Layer Sublayer
+# sublayer [building profile]
 
-A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayers (i.e `group`) to form a nested structure.  The order of the layers is inverted, meaning the first layer is on the bottom and the last layer is on the top.
+Sublayer of a building scene layer. A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayers (i.e `group`) to form a nested structure.  The order of the layers is inverted, meaning the first layer is on the bottom and the last layer is on the top.
 
 ### Related:
 

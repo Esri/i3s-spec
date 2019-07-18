@@ -78,7 +78,7 @@ Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
 
 ### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
 
-- Nodes are now accessible as pages using a [page node index](docs/1.7/nodePages.cmn.md) - significantly reducing server-client traffic.
+- Nodes are now accessible as pages using a [page node index](docs/1.7/nodePageDefinition.cmn.md) - significantly reducing server-client traffic.
 - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
 - Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
 - Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.

@@ -1,10 +1,10 @@
-# I3S point cloud scene layer definition
+# Point Cloud Scene Layer Definition
 
 Describes the point cloud scene layer.
 
 ### Related:
 
-[pcsl::nodepage](nodepage.pcsl.md), [pcsl::statistics](statistics.pcsl.md)
+[pcsl::nodePageDefinition](nodePageDefinition.pcsl.md), [pcsl::statistics](statistics.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

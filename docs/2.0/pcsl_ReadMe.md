@@ -17,7 +17,7 @@ The point cloud scene layer is structured into a tree of multiple JSON files.  P
 
 - [Layer description](layer.pcsl.md)
 - Nodes containing [Geometry](defaultGeometrySchema.pcsl.md) and [Attributes](attributeInfo.pcsl.md)
-- [Node pages](nodepage.pcsl.md)
+- [Node pages](nodePageDefinition.pcsl.md)
 - [Statistics](statistics.pcsl.md)
 
 *Example of point cloud layer structure*

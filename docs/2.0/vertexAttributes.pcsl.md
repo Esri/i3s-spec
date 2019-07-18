@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: vertexAttributes
+# vertexAttributes [point cloud profile]
 
 The vertex buffer description.
 

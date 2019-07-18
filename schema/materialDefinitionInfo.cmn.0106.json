@@ -26,7 +26,7 @@
     "params": {
       "type": "object",
       "description": "Parameter defined for the material.",
-      "$ref": "params.cmn.0106.json"
+      "$ref": "materialParams.cmn.0106.json"
     }
   },
   "required": [

@@ -2,6 +2,8 @@
 
 Materials describe how a feature or a set of features is to be rendered, including shading and color. The following table provides the set of attributes and parameters for the `type`: `standard` material.
 
+Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
+
 ### Related:
 
 [cmn::materialDefinition](materialDefinition.cmn.md)

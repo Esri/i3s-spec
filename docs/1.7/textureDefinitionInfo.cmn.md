@@ -1,6 +1,8 @@
-# textureDefinition
+# textureDefinitionInfo
 
 A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.
+
+Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
 
 ### Related:
 

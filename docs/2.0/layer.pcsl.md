@@ -1,4 +1,4 @@
-# I3S point cloud scene layer definition
+# Point Cloud Scene Layer Definition
 
 Describes the point cloud scene layer.
 

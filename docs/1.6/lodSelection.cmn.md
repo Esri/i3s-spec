@@ -1,4 +1,4 @@
-# lodDelection
+# lodSelection
 
 LOD (Level of Detail) selection.  A client needs information to determine whether a node's contents are "good enough" to render in the current 3D view under constraints such as resolution, screen size, bandwidth and available memory and target minimum quality goals. Multiple LoD selection metrics can be included. 
 

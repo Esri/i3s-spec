@@ -1,4 +1,4 @@
-# nodePagesz [common profile]
+# nodePages [common profile]
 
 
 

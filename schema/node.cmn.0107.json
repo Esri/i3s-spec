@@ -11,7 +11,7 @@
     },
     "lodThreshold": {
       "type": "number",
-      "description": "When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodePages.cmn.md) for more information."
+      "description": "When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodePageDefinition.cmn.md) for more information."
     },
     "obb": {
       "type": "string",

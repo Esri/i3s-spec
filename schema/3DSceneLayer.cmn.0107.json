@@ -8,7 +8,7 @@
     "properties": {
         "nodePages": {
             "type": "object",
-            "$ref": "nodePages.cmn.0107.json",
+            "$ref": "nodePageDefinition.cmn.0107.json",
             "description": "The paged-access index description."
         },
         "materialDefinitions": {

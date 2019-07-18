@@ -2,6 +2,8 @@
 
 Materials describe how a feature or a set of features is to be rendered, including shading and color.
 
+Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
+
 ### Related:
 
 [cmn::sharedResource](sharedResource.cmn.md), [cmn::store](store.cmn.md), [psl::store](store.psl.md)

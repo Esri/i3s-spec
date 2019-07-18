@@ -1,5 +1,5 @@
 {
-  "title": "Material definition",
+  "title": "materialDefinitions",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials).",

@@ -4,7 +4,7 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
 
 ### Related:
 
-[bld::statsummary](statsummary.bld.md)
+[bld::stats](stats.bld.md)
 ### Properties
 
 | Property | Type | Description |

@@ -2,6 +2,8 @@
 
 A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.
 
+Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
+
 ### Related:
 
 [cmn::sharedResource](sharedResource.cmn.md)
@@ -9,7 +11,7 @@ A texture is a set of images, with some parameters specific to the texture/uv ma
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **(identifier)** | [textureDefinitionInfo](textureDefinitionInfo.cmn.md) | A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries. |
+| **(identifier)** | [textureDefinitionInfo](textureDefinitionInfo.cmn.md) | A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.  Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7. |
 
 *Note: properties in **bold** are required*
 

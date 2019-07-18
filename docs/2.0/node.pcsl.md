@@ -1,10 +1,10 @@
-# I3S point cloud scene layer: node
+# node [point cloud profile]
 
 A single bounding volume hierarchy node
 
 ### Related:
 
-[pcsl::nodepage](nodepage.pcsl.md)
+[pcsl::nodePageDefinition](nodePageDefinition.pcsl.md)
 ### Properties
 
 | Property | Type | Description |

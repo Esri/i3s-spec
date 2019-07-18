@@ -1,8 +1,8 @@
 {
-  "title": "nodePages",
+  "title": "nodePageDefinition [common profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description-href": "description/nodePages.cmn.0107.md",
+  "description-href": "description/nodePageDefinition.cmn.0107.md",
   "related": "node.cmn.0107",
   "properties": {
     "nodesPerPage": {

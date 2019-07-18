@@ -1,4 +1,4 @@
-# Filter
+# filter [building profile]
 
 The filter object can be applied to a building scene layer. Filter allows client applications to reduce the drawn elements of a building to specific types and values.
 

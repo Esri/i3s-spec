@@ -1,4 +1,4 @@
-# Filter Type
+# filterType [building profile]
 
 The file authoring information for a filter, including the filter type and its value settings.
 

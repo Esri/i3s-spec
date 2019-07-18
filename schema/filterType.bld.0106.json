@@ -1,5 +1,5 @@
 {
-  "title": "Filter Type",
+  "title": "filterType [building profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The file authoring information for a filter, including the filter type and its value settings.",

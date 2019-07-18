@@ -1,6 +1,6 @@
-# Normal attribute
+# geometryNormal
 
-Defining the normals of the geometry.
+Normal attribute. Defines the normals of the geometry.
 
 ### Related:
 

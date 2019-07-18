@@ -1,8 +1,8 @@
 {
-  "title": "Position vertex attribute",
+  "title": "geometryPosition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Relative to the center of oriented-bounded box of the node.",
+  "description": "Position vertex attribute.  Relative to the center of oriented-bounded box of the node.",
   "properties": {
     "type": {
       "type": "string",

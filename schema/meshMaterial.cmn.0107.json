@@ -1,5 +1,5 @@
 {
-  "title": "Mesh Material",
+  "title": "meshMaterial",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Mesh geometry for a node.",

@@ -1,5 +1,5 @@
 {
-  "title": "UV region for repeated textures",
+  "title": "geometryUVRegion",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/geometryUVRegion.cmn.0107.md",

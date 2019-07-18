@@ -1,5 +1,5 @@
 {
-    "title": "I3S point cloud scene layer: drawingInfo",
+    "title": "drawingInfo [point cloud profile]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "The drawingInfo object contains drawing information for a point cloud scene layer. ",

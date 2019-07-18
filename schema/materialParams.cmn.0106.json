@@ -1,5 +1,5 @@
 {
-  "title": "params",
+  "title": "materialParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Parameter describing the material.",

@@ -1,5 +1,5 @@
 {
-  "title": "stats",
+  "title": "statsInfo",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.",

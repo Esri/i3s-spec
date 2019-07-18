@@ -1,5 +1,5 @@
 {
-  "title": "Filter Mode: wire frame",
+  "title": "filterMode: wire frame [building profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Shows all elements that comply with the filter block of a filter in a building scene layer.  The elements are drawn with an edge line.",

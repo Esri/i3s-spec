@@ -1,5 +1,5 @@
 {
-  "title": "Feature",
+  "title": "feature",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs",

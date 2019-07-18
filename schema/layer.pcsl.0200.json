@@ -1,8 +1,8 @@
 {
-  "title": "I3S point cloud scene layer definition",
+  "title": "Point Cloud Scene Layer Definition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "related": [ "statistics.pcsl.0200.json", "nodepage.pcsl.0200.json" ],
+  "related": [ "statistics.pcsl.0200.json", "nodePageDefinition.pcsl.0200.json" ],
   "description": "Describes the point cloud scene layer.",
   "properties": {
     "id": {

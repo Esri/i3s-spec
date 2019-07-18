@@ -1,4 +1,4 @@
-# I3S Scene Layer: cachedDrawingInfo
+# cachedDrawingInfo
 
  The cachedDrawingInfo object indicates if the *drawingInfo* object is captured as part of the binary scene layer representation. This object is used for 3dObject and integrated mesh scene layer.
 

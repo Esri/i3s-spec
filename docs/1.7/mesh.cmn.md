@@ -1,6 +1,6 @@
-# Mesh object
+# mesh
 
-Mesh geometry for a node.
+Mesh object. Mesh geometry for a node.
 
 ### Related:
 

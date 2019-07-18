@@ -10,7 +10,7 @@ The SceneServiceInfo file is a JSON file that describes the capability and data 
 | serviceVersion | string[1..*] | The version of the service protocol/REST endpoint.|
 | **supportedBindings** | string | List of bindings. |
 | supportedOperations | String[1..3]| Supported profiles of the service from the choice {Base, Dynamic, Editing}. |
-| layers | [3DSceneLayerInfo](3DSceneLayer.cmn.md)[1..*] | The 3dSceneLayerInfo information. |
+| layers | [3DSceneLayer](3DSceneLayer.cmn.md)[1..*] | The 3dSceneLayer information. |
 
 *Note: properties in **bold** are required*
 

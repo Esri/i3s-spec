@@ -2,7 +2,7 @@
   "title": "materialDefinition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Materials describe how a feature or a set of features is to be rendered, including shading and color.",
+  "description": "Materials describe how a feature or a set of features is to be rendered, including shading and color.\n\nPart of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.",
   "patternProperties": {
     "([A-Za-z0-9]+_*)+": {
       "type": "object",

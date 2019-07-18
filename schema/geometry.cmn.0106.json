@@ -1,5 +1,5 @@
 {
-  "title": "Geometry",
+  "title": "geometry",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "This is the common container class for all types of geometry definitions used in I3S.",

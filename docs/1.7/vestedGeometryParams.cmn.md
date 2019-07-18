@@ -1,4 +1,4 @@
-# VestedGeometryParams
+# vestedGeometryParams
 
 This object extends geometryParams and is the abstract parent object for all concrete ('vested') geometryParams objects that directly contain a geometry definition, either as an arrayBufferView or as an embedded geometry.
 

@@ -1,4 +1,4 @@
-# Oriented Bounding Box
+# Oriented Bounding Box (OBB)
 
 Oriented bounding box
 

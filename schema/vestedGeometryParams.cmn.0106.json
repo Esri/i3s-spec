@@ -1,5 +1,5 @@
 {
-  "title": "VestedGeometryParams",
+  "title": "vestedGeometryParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "This object extends geometryParams and is the abstract parent object for all concrete ('vested') geometryParams objects that directly contain a geometry definition, either as an arrayBufferView or as an embedded geometry.",

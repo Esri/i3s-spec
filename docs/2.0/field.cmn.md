@@ -1,4 +1,4 @@
-# fields
+# field
 
 A collection of objects describing each attribute field.
 

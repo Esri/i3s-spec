@@ -1,4 +1,4 @@
-# SharedResources
+# sharedResources
 
 **Shared Resources are deprecated for v1.7.  They must be included for backwards compatibility, but are not used.**
 

@@ -11,7 +11,7 @@ The building scene layer contains discipline and category layers as sublayers wh
 
 - [Layer description](layer.bld.md)
 - [Sublayers](sublayer.bld.md)
-- [Statistics](statsummary.bld.md)
+- [Statistics](stats.bld.md)
 
 *Example of building scene scene layer structure*
 

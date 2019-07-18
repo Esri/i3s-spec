@@ -1,4 +1,4 @@
-# Material texture definition
+# materialTexture
 
 The material texture definition.
 

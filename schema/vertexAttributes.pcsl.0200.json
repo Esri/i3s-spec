@@ -1,5 +1,5 @@
 {
-    "title": "I3S point cloud scene layer: vertexAttributes",
+    "title": "vertexAttributes [point cloud profile]",
     "type": "object",
     "description": "The vertex buffer description.",
     "properties": {

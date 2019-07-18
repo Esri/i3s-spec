@@ -1,8 +1,8 @@
 {
-    "title": "I3S Scene Layer: statisticsInfo",
+    "title": "statisticsInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "Describes the statistics for the scene layer.",
+    "description": "Describes the attribute statistics for the scene layer.",
     "properties": {
         "key": {
             "type": "string",

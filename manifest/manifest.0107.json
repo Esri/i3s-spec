@@ -13,7 +13,7 @@
         },
         {
           "path": "summary.json.gz",
-          "schema": "statsummary.bld.0106.json"
+          "schema": "stats.bld.0106.json"
         }
       ]
     },

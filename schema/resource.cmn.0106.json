@@ -1,5 +1,5 @@
 {
-  "title": "Resource",
+  "title": "resource",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "Resource objects are pointers to different types of resources related to a node, such as the feature data, the geometry attributes and indices, textures and shared resources.",

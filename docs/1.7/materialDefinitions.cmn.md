@@ -1,4 +1,4 @@
-# Material definition
+# materialDefinitions
 
 Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials).
 

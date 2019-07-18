@@ -17,7 +17,7 @@
         },
         {
           "path": "nodepage",
-          "schema": "nodepage.pcsl.0200.json"
+          "schema": "nodePageDefinition.pcsl.0200.json"
         }
       ]
     }

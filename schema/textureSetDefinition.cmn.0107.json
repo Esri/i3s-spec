@@ -1,5 +1,5 @@
 {
-  "title": "Texture set definition ",
+  "title": "textureSetDefinition",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "The set of available textures.",

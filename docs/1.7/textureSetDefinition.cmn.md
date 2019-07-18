@@ -1,4 +1,4 @@
-# Texture set definition 
+# textureSetDefinition
 
 The set of available textures.
 

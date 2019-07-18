@@ -1,5 +1,5 @@
 {
-    "title": "I3S point cloud scene layer: store",
+    "title": "store [point cloud profile]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "description": "Describes storage for the layer.",

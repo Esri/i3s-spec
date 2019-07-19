@@ -1,4 +1,4 @@
-# Texture set definition format
+# textureSetDefinitionFormat
 
 Describes the formats available for a texture set. Note: JPEG or PNG must always be provided.
 

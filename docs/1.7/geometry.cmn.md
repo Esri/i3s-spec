@@ -1,4 +1,4 @@
-# Geometry
+# geometry
 
 This is the common container class for all types of geometry definitions used in I3S.
 

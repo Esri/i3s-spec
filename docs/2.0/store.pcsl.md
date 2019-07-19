@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: store
+# store [point cloud profile]
 
 Describes storage for the layer.
 

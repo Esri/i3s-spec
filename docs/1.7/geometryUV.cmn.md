@@ -1,4 +1,4 @@
-# Texture coordinates
+# geometryUV
 
 Defines the texture coordinates of the geometry.
 

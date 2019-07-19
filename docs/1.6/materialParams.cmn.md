@@ -1,4 +1,4 @@
-# params
+# materialParams
 
 Parameter describing the material.
 

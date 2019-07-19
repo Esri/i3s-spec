@@ -1,6 +1,6 @@
-# textureDefinition
+# texture
 
-A Texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.
+A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.
 
 ### Related:
 

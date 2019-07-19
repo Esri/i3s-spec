@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: Bit Field Label
+# bitFieldLabel [point cloud profile]
 
 
 

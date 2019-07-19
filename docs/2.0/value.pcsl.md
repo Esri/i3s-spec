@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: Values
+# value [point cloud profile]
 
 A scalar or vector value.
 

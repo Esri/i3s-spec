@@ -1,4 +1,4 @@
-# Filter Mode
+# filterMode [building profile]
 
 Filter mode represents the way elements draw when participating in a filter block.
 

@@ -12,5 +12,4 @@ An object defining where a feature is placed within a scene. For example, on the
 | mode | string | <div>Possible values are:<ul><li>`relativeToGround`</li><li>`absoluteHeight`</li><li>`onTheGround`</li><li>`relativeToScene`</li></ul></div> |
 | offset | number | Offset is always added to the result of the above logic except for onTheGround where offset is ignored. |
 | unit | string | A string value indicating the unit for the values in elevationInfo |
-| featureExpression | [featureExpression](featureExpression.cmn.md) | Deprecated with 1.7, use featureExpressionInfo instead. {"value":0} ignores geometry z-values. |
 

@@ -28,9 +28,6 @@
     ],
     "elevationInfo": {
         "mode": "relativeToGround",
-        "featureExpression": {
-            "value": 0
-        },
         "unit": "us-foot"
     },
     "drawingInfo": {

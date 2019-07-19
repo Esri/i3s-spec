@@ -20,10 +20,6 @@
         "unit": {
             "type" : "string",
             "description": "A string value indicating the unit for the values in elevationInfo"
-        },
-        "featureExpression": {
-            "type": "object",
-            "$ref": "featureExpression.cmn.0106.json"
         }
     },
     "additionalProperties": false

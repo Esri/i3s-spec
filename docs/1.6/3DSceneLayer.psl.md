@@ -66,9 +66,6 @@ The object 3DSceneLayerInfo describes the properties of a layer in a store. Ever
     ],
     "elevationInfo": {
         "mode": "relativeToGround",
-        "featureExpression": {
-            "value": 0
-        },
         "unit": "us-foot"
     },
     "drawingInfo": {

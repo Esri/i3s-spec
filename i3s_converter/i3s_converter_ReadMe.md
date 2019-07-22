@@ -11,7 +11,7 @@ Command line tool to validate a 1.6 Scene Layer Package (slpk ) or convert a 1.6
 | Pointcloud      |     X    | &nbsp;  |
 | Building        |     X    | &nbsp;  |
 
-*Note:* 1.7 maintains backwards compatibility with 1.6 The resultant 1.7 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, buy this may result in slower drawing performance.  
+*Note:* 1.7 maintains backwards compatibility with 1.6. The resultant 1.7 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
 
 ## Running the executable
 

@@ -15,3 +15,14 @@ The material texture definition.
 
 *Note: properties in **bold** are required*
 
+### Examples 
+
+#### Example:  
+
+```json
+ {
+  "textureSetDefinitionId": 0,
+  "texCoord": 0
+} 
+```
+

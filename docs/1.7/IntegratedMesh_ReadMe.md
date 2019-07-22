@@ -16,6 +16,8 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 
 *Shared resources and feature data are deprecated as of version 1.7 and are only included for backwards compatibility.*
 
+Integrated mesh scene layer packages can optionally contain a [hash table](slpk_hashtable.cmn.md) for faster indexing. 
+
 *Example of integrated mesh scene layer structure*
 
 ```

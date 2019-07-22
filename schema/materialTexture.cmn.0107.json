@@ -8,11 +8,16 @@
       "type": "integer",
       "description": "The index in [layer.textureSetDefinitions](3DSceneLayer.cmn.md)."
     },
+    "texCoord":{
+      "type":"integer",
+      "description": "The set index of texture's TEXCOORD attribute used for texture coordinate mapping."
+    },
     "factor": {
       "type": "number",
       "description": "The _normal texture_: scalar multiplier applied to each normal vector of the normal texture. For _occlusion texture_,scalar multiplier controlling the amount of occlusion applied. Default=`1`"
     }
   },
+  "additionalProperties": false,
   "required": [
     "textureSetDefinitionId", "texCoord"     
   ],

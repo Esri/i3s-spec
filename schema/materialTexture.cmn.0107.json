@@ -8,8 +8,8 @@
       "type": "integer",
       "description": "The index in [layer.textureSetDefinitions](3DSceneLayer.cmn.md)."
     },
-    "texCoord":{
-      "type":"integer",
+    "texCoord": {
+      "type": "integer",
       "description": "The set index of texture's TEXCOORD attribute used for texture coordinate mapping."
     },
     "factor": {
@@ -19,11 +19,18 @@
   },
   "additionalProperties": false,
   "required": [
-    "textureSetDefinitionId", "texCoord"     
+    "textureSetDefinitionId",
+    "texCoord"
   ],
   "esriDocumentation": {
     "examples": [
-
+      {
+        "title": "materialTexture",
+        "code":{
+        "textureSetDefinitionId": 0,
+        "texCoord": 0
+        }
+      }
     ]
   }
 }

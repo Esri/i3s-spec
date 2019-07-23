@@ -19,8 +19,7 @@
   },
   "additionalProperties": false,
   "required": [
-    "textureSetDefinitionId",
-    "texCoord"
+    "textureSetDefinitionId"
   ],
   "esriDocumentation": {
     "examples": [

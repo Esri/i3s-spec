@@ -392,60 +392,21 @@ The example below shows a Scene Layer Package archive with the `BASIC` folder pa
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](./docs/1.7/3DSceneLayer.cmn.md)
 - An MD5 [hash](./docs/1.7/slpk_hashtable.cmn.md) to improve loading time
 
-<img src="images/slpk_17_topfolder.PNG" align="left"><i>Example top level folder in an I3S 1.7 SLPK opened in 7-Zip</i>
-
-
-
-
-
-
-
-
+![](images/slpk_17_topfolder.PNG) *Example top level folder in an I3S 1.7 SLPK opened in 7-Zip*
 
 The nodepages folder contains the list of nodes in each page.  The nodepages are JSON with GIZP compression.  Nodes are stored contiguously in a _flat_ array. This array can be accessed by fixed-size pages of nodes for better requests efficiency of requests.
 
-<img src="images/slpk_17_nodepage.PNG" align="left"><i>Example nodepages folder in a 1.7 SLPK</i>
-
-
-
-
-
-
-
-
-
-
-
+![](images/slpk_17_nodepage.PNG) *Example nodepages folder in a 1.7 SLPK*
 
 
 The nodes folder contains the full list of nodes and all of the corresponding resources.  
 
-<img src="images/slpk_17_nodelist.PNG" alt="The nodes folder contains the nodes" align="left"><i>Example nodes folder in a 1.7 SLPK</i>
-
-
-
-
-
-
-
-
-
-
-
-
-
+![](images/slpk_17_nodelist.PNG) *Example nodes folder contains the nodes*
 
 
 Each node contains its own resources including [attributes](./docs/1.7/attributeStorageInfo.cmn.md), [features](./docs/1.7/featureAttribute.cmn.md), [geometries](./docs/1.7/geometryAttribute.cmn.md), [shared resources](./docs/1.7/sharedResource.cmn.md), [textures](./docs/1.7/texture.cmn.md), and a [3D Node Index Document](./docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
 
-<img src="images/slpk_17_individualnode.PNG" align="left"><i>Example node 1 in a 1.7 SLPK</i>
-
-
-
-
-
-
-
+![](images/slpk_17_individualnode.PNG)*Example node 1 in a 1.7 SLPK*
 
 
 ### 1.6 SLPK Structure

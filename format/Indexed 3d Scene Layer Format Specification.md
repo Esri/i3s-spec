@@ -368,7 +368,7 @@ Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to b
 
 A Scene Layer Package is
 
-- Always archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format%29) compression
+- Archived using [zip]("https://en.wikipedia.org/wiki/Zip_(file_format%29") compression
   - `STORE` is the preferred compression schema. SLPKs are intended for direct consumption by clients, and this compression schema is beneficial if a resource compression is already applied to the individual resources.
   - This compression scheme has to be either `STORE` or `DEFLATE64`. `DEFLATE` is acceptable as a fallback if `DEFLATE64` is not available, but will only work with smaller SLPKs.
 - Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. Only the `GZIP` scheme is supported since `DEFLATE` is not universally supported by all browsers.
@@ -386,10 +386,10 @@ Recommended SLPK compression
 
 The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  The top level folder includes: 
 
-- A folder "nodepages" that contains the [node pages](./docs/1.7/nodePageDefinition.cmn.md)
-- A folder "nodes" that contains the [node](./docs/1.7/nodePageDefinition.cmn.md) resources
-- A folder "statistics" that contains the [statistical](./docs/1.7/statsInfo.cmn.md) summary of the nodes
-- A *3dSceneLayer.json.gz* file that defines the [Scene Layer](./docs/1.7/3DSceneLayer.cmn.md)
+- A folder "nodepages" that contains the [node pages](../docs/1.7/nodePageDefinition.cmn.md)
+- A folder "nodes" that contains the [node](../docs/1.7/nodePageDefinition.cmn.md) resources
+- A folder "statistics" that contains the [statistical](../docs/1.7/statsInfo.cmn.md) summary of the nodes
+- A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.7/3DSceneLayer.cmn.md)
 - An MD5 [hash](./docs/1.7/slpk_hashtable.cmn.md) to improve loading time
 
 ![](images/slpk_17_topfolder.PNG) *Example top level folder in an I3S 1.7 SLPK opened in 7-Zip*
@@ -404,7 +404,7 @@ The nodes folder contains the full list of nodes and all of the corresponding re
 ![](images/slpk_17_nodelist.PNG) *Example nodes folder contains the nodes*
 
 
-Each node contains its own resources including [attributes](./docs/1.7/attributeStorageInfo.cmn.md), [features](./docs/1.7/featureAttribute.cmn.md), [geometries](./docs/1.7/geometryAttribute.cmn.md), [shared resources](./docs/1.7/sharedResource.cmn.md), [textures](./docs/1.7/texture.cmn.md), and a [3D Node Index Document](./docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
+Each node contains its own resources including [attributes](../docs/1.7/attributeStorageInfo.cmn.md), [features](../docs/1.7/featureAttribute.cmn.md), [geometries](../docs/1.7/geometryAttribute.cmn.md), [shared resources](../docs/1.7/sharedResource.cmn.md), [textures](../docs/1.7/texture.cmn.md), and a [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
 
 ![](images/slpk_17_individualnode.PNG) *Example node 1 in a 1.7 SLPK*
 
@@ -440,15 +440,13 @@ The *nodes* folder contains each node in a folder in a tree structure.
 
 ![](images/slpk_16_nodesfolder.PNG) *Example nodes folder in a 1.6 SLPK*
 
-Each node contains its own resources including attributes, features, geometries, shared resources, textures, and a 3D Node Index Document.  The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to [3DNodeIndexDocument](./docs/1.6/3DNodeIndexDocument.cmn.md), [featureData](./docs/1.6/featureData.cmn.md) and [SharedResource](./docs/1.6/sharedResource.cmn.md) documents of the Scene Layer respectively.  They are JSON with GZIP compression.
+Each node contains its own resources including attributes, features, geometries, shared resources, textures, and a 3D Node Index Document.  The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md), [featureData](../docs/1.6/featureData.cmn.md) and [SharedResource](../docs/1.6/sharedResource.cmn.md) documents of the Scene Layer respectively.  They are JSON with GZIP compression.
 
 ![](images/slpk_16_individualnode.PNG) *Example node 1-0 in a 1.6 SLPK*
 
 All file resources within a particular node (e.g. *1-0*) can be individually compressed with GZIP. However, the texture resource is not compressed because it is an image (JPEG *textures/0_0.jpg*).  Resources in subfolders, like *geometries* and *attributes*, are serialized as binary, and correspond to the geometryData and attributeData (e.g. *geometries/0.bin.gz* and *attributes/f_0/bin.gz*).
 
-![](images/slpk_16_compressedresource.PNG) 
-
-*Example compressed attribute resource in node 1-0*
+![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0*
 
 ### <a name="key-value-stores">Key Value Stores</a>
 

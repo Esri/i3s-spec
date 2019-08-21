@@ -392,9 +392,8 @@ The example below shows a Scene Layer Package archive with the `BASIC` folder pa
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](./docs/1.7/3DSceneLayer.cmn.md)
 - An MD5 [hash](./docs/1.7/slpk_hashtable.cmn.md) to improve loading time
 
-<img src="images/slpk_17_topfolder.PNG" alt="Top Level Folder of I3S 1.7 Scene Layer Package opened in 7-Zip" align="left">
+<p><img src="images/slpk_17_topfolder.PNG" alt="Top Level Folder of I3S 1.7 Scene Layer Package opened in 7-Zip" align="left"><i>Top Level Folder of I3S 1.7 Scene Layer Package opened in 7-Zip</i></p>
 
-*Top Level Folder of I3S 1.7 Scene Layer Package opened in 7-Zip.*
 
 The nodepages folder contains the list of nodes in each page.  The nodepages are JSON with GIZP compression.  Nodes are stored contiguously in a _flat_ array. This array can be accessed by fixed-size pages of nodes for better requests efficiency of requests.
 

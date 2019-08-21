@@ -375,17 +375,15 @@ This is an example of a geometry resource opened in 7-zip.  Notice that both the
 
 ![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
 
-
-
 This is an example of a standard zip archive. Notice that the Size and Packaged Size are not equal, and that the method listed is `DEFLATE`.
 
 ![Example of standard zip archive](images/slpk_17_badzip.PNG) *Standard zip archive*
 
 **Resource Compression** 
 
-Optionally, resources can be individually compressed before they are added to the archive.  This approach is recommended for most resource types tha. no point in compressing png and jpg, only compress types that woudl benefit from additional compression. compression is not mandatory but of course recommended. 
+Optionally, resources can be individually compressed before they are added to the archive.  Compression is not mandatory but is recommended for most resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
 
--  `GZIP` is the only supported scheme. (`DEFLATE` is not universally supported by all browsers)
+`GZIP` is the only supported compression scheme.
 
 **Folder Pattern**
 
@@ -397,7 +395,7 @@ Some resoruces have been renamed (mostly legacy)
 - 3dscenelayer doc
 - shared resource file name
 
-**Extensions**
+**File Extensions**
 
 Service, no file extensions needed as provided by the http protocol request. In slpk, you only have a name which is used ot infer the type. We use file extension
 

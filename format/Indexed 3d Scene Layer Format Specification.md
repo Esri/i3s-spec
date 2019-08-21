@@ -263,7 +263,7 @@ Defines the layouts of the mesh geometry and its attributes.
 
 For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../docs/1.7/geometryDefinition.cmn.md).
 
-### <a name="textures-structure">Textures</a>
+### Textures
 
 Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
 
@@ -281,7 +281,7 @@ List of material classes used in this layer. Physically based materials that are
 
 For more details regarding Integrated Mesh and 3D objects in 1.7, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
 
-### <a name="attribute-model-and-storage">Attribute Model and Storage</a>
+### Attribute Model and Storage
 
 I3S supports two ways to access attribute data.  They can be accessed through:
 
@@ -298,20 +298,20 @@ For more details regarding point cloud scene layer, see [AttributeInfo](../docs/
 
 For more details on all other scene layer types, see [Attribute](../docs/1.7/attributeStorageInfo.cmn.md).
 
-## <a name="bounding-volume-hierarchy">Bounding Volume Hierarchy</a>
+## Bounding Volume Hierarchy
 
 Bounding volume hierarchy (BVH) is based on minimum bounding sphere (MBS) or oriented bounding box (OBB).
 The mesh-pyramids profile supports specifying the bounding volume in either MBS or OBB representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
 
 For more details regarding the two types of bounding volumes see [minimum bounding box](../docs/1.7/mbs.cmn.md) and [oriented bounding box](../docs/1.7/obb.cmn.md) sections.
 
-## <a name="level-of-detail">Level of Detail</a>
+## Level of Detail
 
 Scene Layers include Levels of Detail (LoD) that apply to the whole layer and serve to generalize the layer. They are similar to image pyramids or raster vector tiling schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene Layers support Levels of Detail in a manner that preserves the identity of the individual features that are retained within any level of detail. Levels of Detail can be used to split heavy features, thin or cluster for better visuals, and integrate externally authored multiple LOD files.
 
 Note that the I3S Level of Detail concept is orthogonal to the concept of consolidated storage (batches) for a set of geometries within a level of detail. Batching  of geometries into larger geometry collection assists in optimal rendering. Geometry Array Buffers can be used to provide access to the individual geometries when needed, preserving the feature to geometry element mapping within the consolidated geometries.
 
-### <a name="discrete-level-of-detail">Discrete Level of Detail</a>
+### Discrete Level of Detail
 
 Discrete Levels of Detail provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer a node is to the root (in the BVH tree), the lower the level of detail. The detail is reduced by texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning in order to ensure inner nodes have a balanced weight. The number of discrete Levels of Detail for the layer corresponds to the number of levels in the index tree.
 
@@ -323,7 +323,7 @@ By using only information found in the node index document, such as bounding vol
 
 I3S supports multiple level of detail selection metrics and switching level of detail models.  Details about the level of detail generation process can be optionally included in the Scene Layer's metadata.
 
-### <a name="multiple-representations">Multiple Representations</a>
+### Multiple Representations
 
 I3S Layers can be used to represent input data that already have multiple, semantically authored, levels of detail. The most common method is to represent each  semantically authored input level of detail as its own I3S Layer with visibility thresholds. The thresholds capture the range of distances for which the layer should be used.
 
@@ -331,7 +331,7 @@ A set of I3S Layers that represent a single level of detail can be grouped withi
 
 Tools can also be developed to load a semantically authored levels of detail input data into a single I3S layer. In this case, the depth of the I3S index tree is fixed to the number of levels of detail present in the input data. Feature identities and geometries in each node are set based upon the input data.
 
-### <a name="switching-models">Switching Models</a>
+### Switching Models
 
 Node switching lets clients focus on the display of a node as a whole.  A node switch occurs when the content from a node's children is used to replace the content of an existing node.  This can include features, geometry, attributes and textures. Node switching can be helpful when the user needs to see more detailed information.
 
@@ -339,7 +339,7 @@ Each interior node in the I3S tree has a set of features that represent the redu
 
 The feature IDs link the reduced level of detail feature and an interior node, as well as the descendant nodes.  Applications can determine the visual quality by using the I3S tree to display all of the features in an internal node or use the features found in its descendants.
 
-### <a name="level-of-detail-generation">Level of Detail Generation</a>
+### Level of Detail Generation
 
 Integrated Mesh layer types typically come with pre-authored Levels of Detail.  If the desired level of detail does not exist, it can be generated.
 
@@ -356,13 +356,13 @@ The bounding volume hierarchy tree is built based on the spatial distribution of
 
 *Example Level of Detail generation methods based on Scene Layer type*
 
-### <a name="selection-metrics">Selection Metrics</a>
+### Selection Metrics
 
 Selection metrics help clients determine which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality.  
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.7/lodSelection.cmn.md).
 
-## <a name="scene-layer-packages">Scene Layer Packages</a>
+## Scene Layer Packages
 
 Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be consumed by applications directly.
 
@@ -390,23 +390,23 @@ The example below shows a Scene Layer Package archive with the `BASIC` folder pa
 - A folder "nodes" that contains the [node](../docs/1.7/nodePageDefinition.cmn.md) resources
 - A folder "statistics" that contains the [statistical](../docs/1.7/statsInfo.cmn.md) summary of the nodes
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.7/3DSceneLayer.cmn.md)
-- An MD5 [hash](./docs/1.7/slpk_hashtable.cmn.md) to improve loading time
+- An MD5 [hash](../docs/1.7/slpk_hashtable.cmn.md) to improve loading time
 
 ![](images/slpk_17_topfolder.PNG) *Example top level folder in an I3S 1.7 SLPK opened in 7-Zip*
 
-The nodepages folder contains the list of nodes in each page.  The nodepages are JSON with GIZP compression.  Nodes are stored contiguously in a _flat_ array. This array can be accessed by fixed-size pages of nodes for better requests efficiency of requests.
+The nodepages folder contains the list of nodes in each page.  The nodepages are JSON with GIZP compression.  Nodes are stored contiguously in a flat array. This array can be accessed by fixed-size pages of nodes for more efficient requests.
 
 ![](images/slpk_17_nodepage.PNG) *Example nodepages folder in a 1.7 SLPK*
 
 
 The nodes folder contains the full list of nodes and all of the corresponding resources.  
 
-![](images/slpk_17_nodelist.PNG) *Example nodes folder contains the nodes*
+![](images/slpk_17_nodelist.PNG) *Example nodes folder in a 1.7 SLPK*
 
 
 Each node contains its own resources including [attributes](../docs/1.7/attributeStorageInfo.cmn.md), [features](../docs/1.7/featureAttribute.cmn.md), [geometries](../docs/1.7/geometryAttribute.cmn.md), [shared resources](../docs/1.7/sharedResource.cmn.md), [textures](../docs/1.7/texture.cmn.md), and a [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
 
-![](images/slpk_17_individualnode.PNG) *Example node 1 in a 1.7 SLPK*
+![](images/slpk_17_individualnode.PNG) *Example node in a 1.7 SLPK*
 
 
 ### 1.6 SLPK Structure
@@ -448,7 +448,7 @@ All file resources within a particular node (e.g. *1-0*) can be individually com
 
 ![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0*
 
-### <a name="key-value-stores">Key Value Stores</a>
+## Key Value Stores
 
 In this persistence schema, all Scene Layer resources are stored within either key value based cloud blob stores (e.g. Amazon Simple Storage (S3), Windows Azure Blob Storage) or with more general key value stores. In cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases, each resource is identified by a unique key.  The default is in **bold**.
 

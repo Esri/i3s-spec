@@ -373,11 +373,55 @@ A Scene Layer Package is
   - This compression scheme has to be either `STORE` or `DEFLATE64`. `DEFLATE` is acceptable as a fallback if `DEFLATE64` is not available, but will only work with smaller SLPKs.
 - Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. Only the `GZIP` scheme is supported since `DEFLATE` is not universally supported by all browsers.
 
-### I3S 1.6 SLPK
+Recommended SLPK compression
 
-The figure below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  The top level includes a <em>nodes</em> folder with  
+1. SLPK as a transfer format
+   - Archive Compression Type: `DEFLATE64`
+   - Resource Compression Type: `None`
+2. SLPK as a serving format
+   - Archive Compression Type: `STORE`
+   - Resource Compression Type: `GZIP`
 
-- A subfolder that contains all node resources
+### 1.7 SLPK Structure
+
+The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  The top level folder includes: 
+
+- A folder "nodepages" that contains the [node pages](./docs/1.7/nodePageDefinition.cmn.md)
+- A folder "nodes" that contains the [node](./docs/1.7/nodePageDefinition.cmn.md) resources
+- A folder "statistics" that contains the [statistical](./docs/1.7/statsInfo.cmn.md) summary of the nodes
+- A *3dSceneLayer.json.gz* file that defines the [Scene Layer](./docs/1.7/3DSceneLayer.cmn.md)
+- An MD5 [hash](./docs/1.7/slpk_hashtable.cmn.md) to improve loading time
+
+<img src="images/slpk_17_topfolder.PNG" alt="Top Level Folder of I3S 1.7 Scene Layer Package opened in 7-Zip" align="left">
+
+*Top Level Folder of I3S 1.7 Scene Layer Package opened in 7-Zip.*
+
+The nodepages folder contains the list of nodes in each page.  The nodepages are JSON with GIZP compression.  Nodes are stored contiguously in a _flat_ array. This array can be accessed by fixed-size pages of nodes for better requests efficiency of requests.
+
+<img src="images/slpk_17_nodepage.PNG" alt="The nodepages folder contains the node pages" align="left">
+
+*The nodepages folder contains the node pages in a 1.7 SLPK*
+
+The nodes folder contains the full list of nodes and all of the corresponding resources.  
+
+<img src="images/slpk_17_nodelist.PNG" alt="The nodes folder contains the nodes" align="left">
+
+*The nodes folder contains the nodes in a 1.7 SLPK*
+
+Each node contains its own resources including [attributes](./docs/1.7/attributeStorageInfo.cmn.md), [features](./docs/1.7/featureAttribute.cmn.md), [geometries](./docs/1.7/geometryAttribute.cmn.md), [shared resources](./docs/1.7/sharedResource.cmn.md), [textures](./docs/1.7/texture.cmn.md), and a [3D Node Index Document](./docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
+
+<img src="images/slpk_17_individualnode.PNG" alt="Example node 1 in a 1.7 SLPK" align="left">
+
+*Example node 1 in a 1.7 SLPK*
+
+
+
+### 1.6 SLPK Structure
+
+The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  The top level includes:
+
+- A folder "nodes" that contains all node resources
+- A folder "statistics" that includes a statistical summary of the nodes
 - A *metadata.json* file that describes the content of the SLPK
 - A *3dSceneLayer.json.gz* file that defines the Scene Layer
 
@@ -385,23 +429,17 @@ The figure below shows a Scene Layer Package archive with the `BASIC` folder pat
 
 *Top Level Folder of I3S 1.6 Scene Layer Package opened in 7-Zip*
 
-The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to [3DNodeIndexDocument](./docs/1.6/3DNodeIndexDocument.cmn.md), [featureData](./docs/1.6/featureData.cmn.md) and [SharedResource](./docs/1.6/sharedResource.cmn.md) documents of the Scene Layer respectively.  They are JSON with GZIP compression.
-
-The *nodes* folder contains each node in a folder in a tree structure.
+The *nodes* folder contains each node in a folder in a tree structure. 
 
 <img src="images/slpk_16_nodesfolder.PNG" alt="Example nodes folder in a 1.6 SLPK" align="left">
 
 *Example nodes folder in a 1.6 SLPK*
 
-
-
-Each node contains its own resources including attributes, features, geometries, shared resources, textures, and a 3D Node Index Document. 
+Each node contains its own resources including attributes, features, geometries, shared resources, textures, and a 3D Node Index Document.  The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to [3DNodeIndexDocument](./docs/1.6/3DNodeIndexDocument.cmn.md), [featureData](./docs/1.6/featureData.cmn.md) and [SharedResource](./docs/1.6/sharedResource.cmn.md) documents of the Scene Layer respectively.  They are JSON with GZIP compression.
 
 <img src="images/slpk_16_individualnode.PNG" alt="Example node 1-0 in a 1.6 SLPK" align="left">
 
 *Example node 1-0 in a 1.6 SLPK*
-
-
 
 All file resources within a particular node (e.g. *1-0*) can be individually compressed with GZIP. However, the texture resource is not compressed because it is an image (JPEG *textures/0_0.jpg*).  Resources in subfolders, like *geometries* and *attributes*, are serialized as binary, and correspond to the geometryData and attributeData (e.g. *geometries/0.bin.gz* and *attributes/f_0/bin.gz*).
 
@@ -410,15 +448,6 @@ All file resources within a particular node (e.g. *1-0*) can be individually com
 *Example compressed attribute resource in node 1-0*
 
 
-
-Recommended SLPK compression
-
-1. SLPK as a transfer format
-   - Archive Compression Type: DEFLATE64
-   - Resource Compression Type: None
-2. SLPK as a serving format
-   - Archive Compression Type: STORE
-   - Resource Compression Type: GZIP
 
 ### <a name="metadata">Metadata</a>
 

@@ -366,27 +366,40 @@ For more details regarding Integrated Mesh, 3D objects and point scene layer, se
 
 Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be consumed by applications directly.
 
-**Compression**
+A Scene Layer Package is archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) compression.
 
-A Scene Layer Package is
+**Archive Compression Types**
 
-- Archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) compression
-  - `STORE` is the preferred compression schema. SLPKs are intended for direct consumption by clients, and this compression schema is beneficial if a resource compression is already applied to the individual resources.
-  - This compression scheme has to be either `STORE` or `DEFLATE64`. `DEFLATE` is acceptable as a fallback if `DEFLATE64` is not available, but will only work with smaller SLPKs.
-- Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. Only the `GZIP` scheme is supported since `DEFLATE` is not universally supported by all browsers.
+SLPK are intended for direct consumption by clients.  The compression schema is beneficial since compression is already applied to the individual resources.
 
-Recommended SLPK compression
+ - `STORE` is the preferred archive compression schema. 
+ - `DEFLATE64` is recommended if the SLPK is used as a transfer format instead of a service.
+  - `DEFLATE` is acceptable as a fallback if `DEFLATE64` is not available, but will only work for smaller SLPKs.
 
-1. SLPK as a transfer format
-   - Archive Compression Type: `DEFLATE64`
-   - Resource Compression Type: `None`
-2. SLPK as a serving format
-   - Archive Compression Type: `STORE`
-   - Resource Compression Type: `GZIP`
+**Resource Compression** 
+
+Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. 
+
+-  `GZIP` is the only supported scheme. (`DEFLATE` is not universally supported by all browsers)
+- `NONE` is recommended if the SLPK is used as a transfer format instead of a service.
+
+The following entries are required and must be of the specified type.  The default is in **bold**.
+
+| Property                | Details                                   |
+| ----------------------- | ----------------------------------------- |
+| folderPattern           | One of {**BASIC**, EXTENDED}              |
+| ArchiveCompressionType  | One of {**STORE**, DEFLATE64, [DEFLATE]}  |
+| ResourceCompressionType | One of {**GZIP**, NONE}                   |
+| I3SVersion              | One of {1.3, 1.4, 1.5, 1.6, **1.7**, 2.0} |
+| nodeCount               | Total number of nodes in the SLPK         |
+
+**Folder Pattern**
+
+The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  
 
 ### 1.7 SLPK Structure
 
-The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  The top level folder includes: 
+The top level folder includes: 
 
 - A folder "nodepages" that contains the [node pages](../docs/1.7/nodePageDefinition.cmn.md)
 - A folder "nodes" that contains the [node](../docs/1.7/nodePageDefinition.cmn.md) resources
@@ -421,22 +434,6 @@ The example below shows a Scene Layer Package archive with the `BASIC` folder pa
 - A *3dSceneLayer.json.gz* file that defines the Scene Layer
 
 ![](images/slpk_16_topfolder.PNG) *Top Level Folder of I3S 1.6 Scene Layer Package opened in 7-Zip*
-
-
-
-1.6 SLPK  have a *metadata.json* file. The following entries are required and must be of the specified type.  The default is in **bold**.
-
-| Property                | Details                                  |
-| ----------------------- | ---------------------------------------- |
-| folderPattern           | One of {**BASIC**, EXTENDED}             |
-| ArchiveCompressionType  | One of {**STORE**, DEFLATE64, [DEFLATE]} |
-| ResourceCompressionType | One of {**GZIP**, NONE}                  |
-| I3SVersion              | One of {1.2, 1.3, 1.4, **1.6**}          |
-| nodeCount               | Total number of nodes in the SLPK        |
-
-*Metadata properties*
-
-
 
 The *nodes* folder contains each node in a folder in a tree structure. 
 

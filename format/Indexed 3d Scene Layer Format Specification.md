@@ -32,7 +32,6 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;&emsp;[Level of Detail Generation](#level-of-detail-generation)  
 ​&emsp;&emsp;[Selection Metrics](#selection-metrics)  
 ​&emsp;[Scene Layer Package](#scene-layer-packages)  
-​&emsp;&emsp;[Metadata](#metadata)  
 ​&emsp;&emsp;[Key Value Stores](#key-value-stores)  
 ​&emsp;[REST API for Attribute Resources](#rest-api-for-attribute-resources)  
 ​&emsp;[Usage pattern of the *attributes* REST API](#usage-pattern-of-the-attributes-REST-API)  
@@ -364,40 +363,49 @@ For more details regarding Integrated Mesh, 3D objects and point scene layer, se
 
 ## Scene Layer Packages
 
-Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be consumed by applications directly.
+Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be directly consumed by applications.
 
-A Scene Layer Package is archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) compression.
+An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources.  The archiving method for the SLPK must be `STORE`, meaning that the archive itself is not compressed.  The individual resources within the SLPK may be compressed.  Resource compression is recommended but not required.
 
-**Archive Compression Types**
+Both 64 bit and 32 bit zip archives are supported.  64 bit is require for data larger than 2GB.
 
-SLPK are intended for direct consumption by clients.  The compression schema is beneficial since compression is already applied to the individual resources.
+Please note that this is method is slightly different than a standard zip archive.  Typically, when a file is added to a zip archive, the new file is individually compressed and the overall archive is compressed. **That is not the case for SLPK.**  When adding files to an SLPK, the new file is compressed, but the overall archive is **not** compressed. 
 
- - `STORE` is the preferred archive compression schema. 
- - `DEFLATE64` is recommended if the SLPK is used as a transfer format instead of a service.
-  - `DEFLATE` is acceptable as a fallback if `DEFLATE64` is not available, but will only work for smaller SLPKs.
+This is an example of a geometry resource opened in 7-zip.  Notice that both the Size and the Packaged Size are equal.  The method is listed as `STORE`.
+
+![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
+
+
+
+This is an example of a standard zip archive. Notice that the Size and Packaged Size are not equal, and that the method listed is `DEFLATE`.
+
+![Example of standard zip archive](images/slpk_17_badzip.PNG) *Standard zip archive*
 
 **Resource Compression** 
 
-Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. 
+Optionally, resources can be individually compressed before they are added to the archive.  This approach is recommended for most resource types tha. no point in compressing png and jpg, only compress types that woudl benefit from additional compression. compression is not mandatory but of course recommended. 
 
 -  `GZIP` is the only supported scheme. (`DEFLATE` is not universally supported by all browsers)
-- `NONE` is recommended if the SLPK is used as a transfer format instead of a service.
 
 **Folder Pattern**
 
-The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  I3S also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  
+The folder pattern follows the URL pattern of the service.  
 
-The following entries the allowed types.  The default is in **bold**.
+Some resoruces have been renamed (mostly legacy)
 
-| Property                | Details                                   |
-| ----------------------- | ----------------------------------------- |
-| folderPattern           | One of {**BASIC**, EXTENDED}              |
-| ArchiveCompressionType  | One of {**STORE**, DEFLATE64, [DEFLATE]}  |
-| ResourceCompressionType | One of {**GZIP**, NONE}                   |
-| I3SVersion              | One of {1.3, 1.4, 1.5, 1.6, **1.7**, 2.0} |
-| nodeCount               | Total number of nodes in the SLPK         |
+- legacy 3d node index doc
+- 3dscenelayer doc
+- shared resource file name
 
+**Extensions**
 
+Service, no file extensions needed as provided by the http protocol request. In slpk, you only have a name which is used ot infer the type. We use file extension
+
+- this will be a list
+
+Use tree in windows explorer for files
+
+hash - must be at the end of the central directory and be the last item. special file. 
 
 ### 1.7 SLPK Structure
 

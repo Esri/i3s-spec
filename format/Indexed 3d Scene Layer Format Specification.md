@@ -368,7 +368,7 @@ Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to b
 
 A Scene Layer Package is
 
-- Archived using [zip]("https://en.wikipedia.org/wiki/Zip_(file_format%29") compression
+- Archived using [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) compression
   - `STORE` is the preferred compression schema. SLPKs are intended for direct consumption by clients, and this compression schema is beneficial if a resource compression is already applied to the individual resources.
   - This compression scheme has to be either `STORE` or `DEFLATE64`. `DEFLATE` is acceptable as a fallback if `DEFLATE64` is not available, but will only work with smaller SLPKs.
 - Every resource, except textures, can be individually compressed. Compressed textures can have additional GZIP compression applied. Only the `GZIP` scheme is supported since `DEFLATE` is not universally supported by all browsers.

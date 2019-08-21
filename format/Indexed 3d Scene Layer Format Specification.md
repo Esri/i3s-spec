@@ -383,7 +383,11 @@ Every resource, except textures, can be individually compressed. Compressed text
 -  `GZIP` is the only supported scheme. (`DEFLATE` is not universally supported by all browsers)
 - `NONE` is recommended if the SLPK is used as a transfer format instead of a service.
 
-The following entries are required and must be of the specified type.  The default is in **bold**.
+**Folder Pattern**
+
+The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  I3S also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  
+
+The following entries the allowed types.  The default is in **bold**.
 
 | Property                | Details                                   |
 | ----------------------- | ----------------------------------------- |
@@ -393,9 +397,7 @@ The following entries are required and must be of the specified type.  The defau
 | I3SVersion              | One of {1.3, 1.4, 1.5, 1.6, **1.7**, 2.0} |
 | nodeCount               | Total number of nodes in the SLPK         |
 
-**Folder Pattern**
 
-The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  
 
 ### 1.7 SLPK Structure
 

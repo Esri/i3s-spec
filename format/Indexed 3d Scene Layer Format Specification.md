@@ -363,39 +363,47 @@ For more details regarding Integrated Mesh, 3D objects and point scene layer, se
 
 ## Scene Layer Packages
 
-Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file.  It can be directly consumed by applications.
+Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be consolidate into a single file.  It can be directly consumed by applications.
 
-An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources.  The archiving method for the SLPK must be `STORE`, meaning that the archive itself is not compressed.  The individual resources within the SLPK may be compressed.  Resource compression is recommended but not required.
+An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources.  The archiving method for SLPK is `STORE`, meaning that the archive itself is not compressed.  The individual resources within the SLPK may be compressed.  Resource compression is recommended but not required.
 
 Both 64 bit and 32 bit zip archives are supported.  64 bit is require for data larger than 2GB.
 
-Please note that this is method is slightly different than a standard zip archive.  Typically, when a file is added to a zip archive, the new file is individually compressed and the overall archive is compressed. **That is not the case for SLPK.**  When adding files to an SLPK, the new file is compressed, but the overall archive is **not** compressed. 
+Please note that this is method is slightly different than a typical zip archive.  Generally, when a file is added to a zip archive, the new file is individually compressed and the overall archive is compressed. **That is not the case for SLPK.**  When adding files to an SLPK, the new file is compressed, but the overall archive is remains uncompressed and is archived using `STORE`. 
 
 This is an example of a geometry resource opened in 7-zip.  Notice that both the Size and the Packaged Size are equal.  The method is listed as `STORE`.
 
 ![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
 
-This is an example of a standard zip archive. Notice that the Size and Packaged Size are not equal, and that the method listed is `DEFLATE`.
+This is an example of a typical zip archive. Notice that the Size and Packaged Size are not equal, and that the method listed is `DEFLATE`.
 
-![Example of standard zip archive](images/slpk_17_badzip.PNG) *Standard zip archive*
+![Example of standard zip archive](images/slpk_17_badzip.PNG) *Typical zip archive*
 
 **Resource Compression** 
 
-Optionally, resources can be individually compressed before they are added to the archive.  Compression is not mandatory but is recommended for most resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
+Resources can be individually compressed before they are added to the archive.  Compression is not mandatory but is recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
 
 `GZIP` is the only supported compression scheme.
 
 **Folder Pattern**
 
-The folder pattern follows the URL pattern of the service.  
+In general, the folder pattern follows the URL pattern of the service.  Check the ReadMe documents for each profile type to see the schemas.
 
-Some resoruces have been renamed (mostly legacy)
+However, there are some legacy resources that do not follow the the other folder pattern.
 
-- legacy 3d node index doc
-- 3dscenelayer doc
-- shared resource file name
+- `3DSceneLayer.json.gz`
+  - Stored in the top folder of the SLPK
+  - E.g. C:\Temp\example.slpk\3DSceneLayer.json.gz
+- `3DNodeIndexDocument.json.gz` 
+  - Stored directly in the node resource
+- E.g. C:\Temp\example.slpk\nodes\\{nodeID}\3DNodeIndexDocument.json.gz
+- `sharedResource.json.gz`
+  - Stored in the shared folder in the node resource
+  - E.g. C:\Temp\example.slpk\nodes\\{nodeID}\shared\sharedResource.json.gz
 
 **File Extensions**
+
+SLPK require file extensions to determine the file type.  In a scene service, no file extensions are needed because the are provided by the http protocol request. 
 
 Service, no file extensions needed as provided by the http protocol request. In slpk, you only have a name which is used ot infer the type. We use file extension
 
@@ -403,7 +411,9 @@ Service, no file extensions needed as provided by the http protocol request. In 
 
 Use tree in windows explorer for files
 
-hash - must be at the end of the central directory and be the last item. special file. 
+**Hash**
+
+An M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
 
 ### 1.7 SLPK Structure
 

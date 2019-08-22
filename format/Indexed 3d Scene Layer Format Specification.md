@@ -405,11 +405,11 @@ However, there are some legacy resources that do not follow the the other folder
 
 SLPK require file extensions to determine the file type.  In a scene service, no file extensions are needed because the are provided by the http protocol request. 
 
-Service, no file extensions needed as provided by the http protocol request. In slpk, you only have a name which is used ot infer the type. We use file extension
+SLPK use the following file extensions
 
-- this will be a list
-
-Use tree in windows explorer for files
+- .jpg
+- .bin.dds
+- 
 
 **Hash**
 

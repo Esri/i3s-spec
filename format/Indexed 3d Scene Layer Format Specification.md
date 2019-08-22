@@ -405,17 +405,54 @@ However, there are some legacy resources that do not follow the the other folder
 
 SLPK require file extensions to determine the file type.  In a scene service, no file extensions are needed because the are provided by the http protocol request. 
 
-SLPK use the following file extensions
+SLPK use the following file extensions:
 
 - .jpg
+- .bin
 - .bin.dds
-- 
+- .json
 
 **Hash**
 
 An M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
 
+
 ### 1.7 SLPK Structure
+
+**1.7 SLPK Structure Summary**
+
+```
+.\example_17.slpk
+	+-- nodePages
+	|  +-- 0.json.gz
+	|  +-- (...)
+	+-- nodes
+	|  +--0
+	|  |  +-- attributes
+	|  |  |  +--f_0
+	|  |  |  |  +-- 0.bin.gz
+	|  |  |  +--(...)
+	|  |  +-- features
+	|  |  |  +-- 0.json.gz
+	|  |  |  +--(...)
+	|  |  +-- geometries
+	|  |  |  +-- 0.bin.gz
+	|  |  |  +--(...)
+	|  |  +-- textures
+	|  |  |  +-- 0.jpg
+	|  |  |  +-- 0_0_1.bin.dds.gz
+	|  |  |  +--(...)
+	|  |  +-- shared 
+	|  |  |  +-- sharedResource.json.gz
+	|  |  + 3dNodeIndexDocument.json.gz
+	|  +--(...)
+	+--statistics
+	|  +-- f_1
+	|  |  +-- 0.json.gz
+	|  +-- (...)
+	+-- 3dSceneLayer.json.gz
+	+-- @specialIndexFileHASH128@
+```
 
 The top level folder includes: 
 
@@ -441,10 +478,55 @@ Each node contains its own resources including [attributes](../docs/1.7/attribut
 
 ![](images/slpk_17_individualnode.PNG) *Example node in a 1.7 SLPK*
 
+Each resource can be individually compressed with `GZIP`.
+
+![slpk_17_individualnode](images/slpk_17_compressedresource.PNG) *Example compressed attribute resource in node 1 in a 1.7 SLPK*
 
 ### 1.6 SLPK Structure
 
-The example below shows a Scene Layer Package archive with the `BASIC` folder pattern.  The I3S specification also allows an `EXTENDED` folder pattern, which uses subtree partitions to avoid problems with very large packages.  The top level includes:
+**1.6 Structure Summary**
+
+```
+.\example_16.slpk
+	+-- nodes
+	|  +--0
+	|  |  +-- attributes
+	|  |  |  +--f_0
+	|  |  |  |  +-- 0.bin.gz
+	|  |  |  +--(...)
+	|  |  +-- features
+	|  |  |  +-- 0.json.gz
+	|  |  |  +--(...)
+	|  |  +-- geometries
+	|  |  |  +-- 0.bin.gz
+	|  |  |  +--(...)
+	|  |  +-- textures
+	|  |  |  +-- 0.jpg
+	|  |  |  +-- 0_0_1.bin.dds.gz
+	|  |  |  +--(...)
+	|  |  +-- shared 
+	|  |  |  +-- sharedResource.json.gz
+	|  |  + 3dNodeIndexDocument.json.gz
+	|  +--0-0
+	|  |  +--(...)
+	|  +--0-0-0
+	|  |  +--(...)
+	|  +--1 
+	|  |  +--(...)
+	|  +--1-0
+	|  |  +--(...)
+	|  +--1-0-0
+	|  |  +--(...)
+	|  +--(...)
+	+--statistics
+	|  +-- f_1
+	|  |  +-- 0.json.gz
+	|  +-- (...)
+	+-- 3dSceneLayer.json.gz
+	+-- metadata.json
+```
+
+The top level includes:
 
 - A folder "nodes" that contains all node resources
 - A folder "statistics" that includes a statistical summary of the nodes
@@ -457,13 +539,13 @@ The *nodes* folder contains each node in a folder in a tree structure.
 
 ![](images/slpk_16_nodesfolder.PNG) *Example nodes folder in a 1.6 SLPK*
 
-Each node contains its own resources including attributes, features, geometries, shared resources, textures, and a 3D Node Index Document.  The *3dNodeIndexDocument.json.gz*, *features/0.json.gz* and *SharedResource.json.gz* correspond to [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md), [featureData](../docs/1.6/featureData.cmn.md) and [SharedResource](../docs/1.6/sharedResource.cmn.md) documents of the Scene Layer respectively.  They are JSON with GZIP compression.
+Each node contains its own resources including [attributes](../docs/1.6/attributeStorageInfo.cmn.md), [features](../docs/1.6/featureData.cmn.md), [geometries](../docs/1.6/geometryAttribute.cmn.md), [shared resources](../docs/1.6/sharedResource.cmn.md), textures, and a [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md).
 
 ![](images/slpk_16_individualnode.PNG) *Example node 1-0 in a 1.6 SLPK*
 
-All file resources within a particular node (e.g. *1-0*) can be individually compressed with GZIP. However, the texture resource is not compressed because it is an image (JPEG *textures/0_0.jpg*).  Resources in subfolders, like *geometries* and *attributes*, are serialized as binary, and correspond to the geometryData and attributeData (e.g. *geometries/0.bin.gz* and *attributes/f_0/bin.gz*).
+Each resource can be individually compressed with `GZIP`.
 
-![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0*
+![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0 in a 1.6 SLPK*
 
 ## Key Value Stores
 

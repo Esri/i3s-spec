@@ -381,7 +381,7 @@ This is an example of a typical zip archive. Notice that the Size and Packaged S
 
 **Resource Compression** 
 
-Resources can be individually compressed before they are added to the archive.  Compression is not mandatory but is recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
+Resources may be individually compressed before they are added to the archive.  Compression is not mandatory but is recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
 
 `GZIP` is the only supported compression scheme.
 
@@ -395,7 +395,7 @@ However, there are some legacy resources that do not follow the the folder patte
   - Stored in the central directory of the SLPK
   - E.g. C:\Temp\example.slpk\3DSceneLayer.json.gz
 - `3DNodeIndexDocument.json.gz` 
-  - Stored directly in the node resource
+  - Stored in the node resource
   - E.g. C:\Temp\example.slpk\nodes\\{nodeID}\3DNodeIndexDocument.json.gz
 - `sharedResource.json.gz`
   - Stored in the shared folder in the node resource
@@ -414,7 +414,7 @@ SLPK use the following file extensions:
 
 **Hash**
 
-An M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
+In 1.7, an M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
 
 
 ### 1.7 SLPK Structure
@@ -466,12 +466,12 @@ The central directory includes:
 
 ![](images/slpk_17_topfolder.PNG) *Example central directory in an I3S 1.7 SLPK opened in 7-Zip.*
 
-The nodepages folder contains the list of nodes in each page.  The nodepages are JSON with `GZIP` compression.  Nodes are stored contiguously in a flat array which can be accessed by fixed-size pages of nodes.
+The nodepages folder contains the list of nodes in each page.  Nodes are stored fixed-size pages in contiguously in a flat array.
 
-![](images/slpk_17_nodepage.PNG) *Example nodepages folder in a 1.7 SLPK.*
+![](images/slpk_17_nodepage.PNG) *Example node pages folder in a 1.7 SLPK.*
 
 
-The nodes folder contains the full list of nodes and all of the corresponding resources.  
+The nodes folder contains the full list of nodes.  
 
 ![](images/slpk_17_nodelist.PNG) *Example nodes folder in a 1.7 SLPK.*
 
@@ -532,10 +532,10 @@ Each resource can be individually compressed with `GZIP`.
 
 The central directory includes:
 
-- A folder "nodes" that contains all node resources
-- A folder "statistics" that includes a statistical summary of the nodes
+- A folder "nodes" that contains all [node](../docs/1.6/nodeReference.cmn.md) resources
+- A folder "statistics" that includes a [statistical](../docs/1.6/statisticsInfo.cmn.md) summary of the nodes
+- A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.6/3DSceneLayer.cmn.md)
 - A *metadata.json* file that describes the content of the SLPK
-- A *3dSceneLayer.json.gz* file that defines the Scene Layer
 
 ![](images/slpk_16_topfolder.PNG) *Example central directory in an I3S 1.6 SLPK opened in 7-Zip.*
 
@@ -543,7 +543,7 @@ The *nodes* folder contains each node in a folder in a tree structure.
 
 ![](images/slpk_16_nodesfolder.PNG) *Example nodes folder in a 1.6 SLPK.*
 
-Each node contains its own resources including [attributes](../docs/1.6/attributeStorageInfo.cmn.md), [features](../docs/1.6/featureData.cmn.md), [geometries](../docs/1.6/geometryAttribute.cmn.md), [shared resources](../docs/1.6/sharedResource.cmn.md), textures, and a [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md).
+Each node contains its own resources including [attributes](../docs/1.6/attributeStorageInfo.cmn.md), [features](../docs/1.6/featureData.cmn.md), [geometries](../docs/1.6/geometryAttribute.cmn.md), [shared resources](../docs/1.6/sharedResource.cmn.md), [textures](../docs/1.6/texture.cmn.md), and a [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md).
 
 ![](images/slpk_16_individualnode.PNG) *Example node 1-0 in a 1.6 SLPK.*
 

@@ -377,7 +377,7 @@ This is an example of a geometry resource opened in 7-zip.  Notice that both the
 
 Here is a counter example with a typical zip archive. Notice that the Size and Packaged Size are not equal, and that the method is `DEFLATE`.
 
-![Example of standard zip archive](images/slpk_17_badzip.PNG) *Typical zip archive.*
+![Example of standard zip archive](images/slpk_17_badzip.PNG) *Counter example zip archive.*
 
 **Resource Compression** 
 

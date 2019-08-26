@@ -422,7 +422,7 @@ In 1.7, an M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve load
 
 ### 1.7 SLPK Structure
 
-**Example1.7 SLPK Structure Summary for 3D Objects**
+**Example 1.7 SLPK Structure Summary for 3D Objects**
 
 ```
 .\example_17.slpk

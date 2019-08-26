@@ -31,15 +31,11 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Switching Models](#switching-models)  
 ​&emsp;&emsp;[Level of Detail Generation](#level-of-detail-generation)  
 ​&emsp;&emsp;[Selection Metrics](#selection-metrics)  
+​&emsp;[REST API](#rest-API)  
 ​&emsp;[Scene Layer Package](#scene-layer-packages)  
-​&emsp;&emsp;[Key Value Stores](#key-value-stores)  
-​&emsp;[REST API for Attribute Resources](#rest-api-for-attribute-resources)  
-​&emsp;[Usage pattern of the *attributes* REST API](#usage-pattern-of-the-attributes-REST-API)  
-​&emsp;[Attribute Resource - Details](#attribute-resource-details)  
 
 [JSON Resources](#json-resources)  
 ​&emsp;[Supported Data Types](#supported-data-types)  
-​&emsp;[Pointers](#pointers)  
 ​&emsp;[SceneServiceInfo](#sceneServiceInfo)  
 ​&emsp;[Class 3DSceneLayer](#class-3dSceneLayer)  
 ​&emsp;[Class Store](#class-store)  
@@ -361,17 +357,27 @@ Selection metrics help clients determine which level of detail to render.  For e
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.7/lodSelection.cmn.md).
 
+
+
 ## REST API 
 
-I3S is a REST API.  
+I3S is a REST API.  Each scene layer profile has different components and features.  For details on a specific profile and version, refer to the individual README documents. 
 
-The API will be explained through an example of 3D Objects.  Each profile has an example of the nuances in the API.
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md) and [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md).
 
-**Example 3D Object REST API**
+Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
+
+Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
+
+
+
+The following examples are included to provide a structural overview. 
+
+**REST API 1.7: 3D Object Example**
 
 ```
 .<host>/SceneServer/layers
-	+--0 // scene layer document
+	+--0 // Scene Layer Document
 	+-- nodePages
 	|  +-- 0
 	|  +-- (...)
@@ -398,10 +404,7 @@ The API will be explained through an example of 3D Objects.  Each profile has an
 ```
 
 
-
-### HTTP API Overview 1.7
-
-Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResources and nodeDocument are included but not used in 1.7.
+Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, `sharedResources` and `nodeDocument` are included but not used in 1.7.
 
 The following API methods are available for 3D Object scene layer:
 
@@ -499,9 +502,7 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
 
 
 
-### HTTP API Overview 1.6
-
-*Example of 3DObject layer structure*
+**REST API 1.6: 3D Object Example**
 
 ```
 .<host>/SceneServer/layers
@@ -527,8 +528,6 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
 	|  |  | +--0
 	|  +-- (...)
 ```
-
-### HTTP API Overview 1.6
 
 The following API methods are available for 3D Object scene layer:
 
@@ -817,15 +816,6 @@ A value schema ensures that the JSON properties follow a fixed pattern and suppo
 - **URL**: Both relative and absolute
 - **Pointer**: Any reference to an object in a JSON document, consisting of a URL and a document path
 - **NodeID**: A treekey string that is zero-based (first child is "0", root node is "root")
-
-### Pointers
-
-Pointers are used to reference specific properties in another document.  They consist of two elements:
-
-1. **In-document reference** (required): References the current property. Absolute references should be used for upstream paths, and relative references should be used for downstream paths.   
-2. **URL** (optional): A prefix URL to link to a different document. Use square brackets.
-
-For example, a pointer from FeatureData to `3DSceneLayer.name` using a relative URL and an absolute reference would be written as: `[../../]/name`
 
 ### SceneServiceInfo
 

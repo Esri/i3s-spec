@@ -375,7 +375,7 @@ This is an example of a geometry resource opened in 7-zip.  Notice that both the
 
 ![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
 
-This is an example of a typical zip archive. Notice that the Size and Packaged Size are not equal, and that the method is `DEFLATE`.
+Here is a counter example with a typical zip archive. Notice that the Size and Packaged Size are not equal, and that the method is `DEFLATE`.
 
 ![Example of standard zip archive](images/slpk_17_badzip.PNG) *Typical zip archive.*
 
@@ -405,12 +405,15 @@ However, there are some legacy resources that do not follow the the folder patte
 
 SLPK require file extensions to determine the file type.  In a scene service, no file extensions are needed because the are provided by the http protocol request. 
 
-SLPK use the following file extensions:
+Here are a few examples of SLPK file extensions:
 
 - .jpg
 - .bin (PNG)
 - .bin.dds
 - .json
+- (and more)
+
+These file types can be compressed with `GZIP`, which includes the previous extension followed by `.gz`.  For example, `.json.gz`.
 
 **Hash**
 
@@ -419,7 +422,7 @@ In 1.7, an M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve load
 
 ### 1.7 SLPK Structure
 
-**1.7 SLPK Structure Summary**
+**Example1.7 SLPK Structure Summary for 3D Objects**
 
 ```
 .\example_17.slpk
@@ -464,21 +467,21 @@ The central directory includes:
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.7/3DSceneLayer.cmn.md)
 - An MD5 [hash](../docs/1.7/slpk_hashtable.cmn.md) to improve loading time
 
-![](images/slpk_17_topfolder.PNG) *Example central directory in an I3S 1.7 SLPK opened in 7-Zip.*
+![](images/slpk_17_topfolder.PNG) *Example central directory in an 3D Object I3S 1.7 SLPK opened in 7-Zip.*
 
 The nodepages folder contains the list of nodes in each page.  Nodes are stored fixed-size pages in contiguously in a flat array.
 
-![](images/slpk_17_nodepage.PNG) *Example node pages folder in a 1.7 SLPK.*
+![](images/slpk_17_nodepage.PNG) *Example node pages folder in a 3D Object 1.7 SLPK.*
 
 
 The nodes folder contains the full list of nodes.  
 
-![](images/slpk_17_nodelist.PNG) *Example nodes folder in a 1.7 SLPK.*
+![](images/slpk_17_nodelist.PNG) *Example nodes folder in a 3D Object 1.7 SLPK.*
 
 
 Each node contains its own resources including [attributes](../docs/1.7/attributeStorageInfo.cmn.md), [features](../docs/1.7/featureAttribute.cmn.md), [geometries](../docs/1.7/geometryAttribute.cmn.md), [shared resources](../docs/1.7/sharedResource.cmn.md), [textures](../docs/1.7/texture.cmn.md), and a [3DNodeIndexDocument](../docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
 
-![](images/slpk_17_individualnode.PNG) *Example node in a 1.7 SLPK.*
+![](images/slpk_17_individualnode.PNG) *Example node in a 3D Object 1.7 SLPK.*
 
 Each resource can be individually compressed with `GZIP`.
 
@@ -486,7 +489,7 @@ Each resource can be individually compressed with `GZIP`.
 
 ### 1.6 SLPK Structure
 
-**1.6 Structure Summary**
+**Example 1.6 Structure Summary for 3D Objects**
 
 ```
 .\example_16.slpk
@@ -537,19 +540,19 @@ The central directory includes:
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.6/3DSceneLayer.cmn.md)
 - A *metadata.json* file that describes the content of the SLPK
 
-![](images/slpk_16_topfolder.PNG) *Example central directory in an I3S 1.6 SLPK opened in 7-Zip.*
+![](images/slpk_16_topfolder.PNG) *Example central directory in an I3S 3D Object 1.6 SLPK opened in 7-Zip.*
 
 The *nodes* folder contains each node in a folder in a tree structure. 
 
-![](images/slpk_16_nodesfolder.PNG) *Example nodes folder in a 1.6 SLPK.*
+![](images/slpk_16_nodesfolder.PNG) *Example nodes folder in a 3D Object 1.6 SLPK.*
 
 Each node contains its own resources including [attributes](../docs/1.6/attributeStorageInfo.cmn.md), [features](../docs/1.6/featureData.cmn.md), [geometries](../docs/1.6/geometryAttribute.cmn.md), [shared resources](../docs/1.6/sharedResource.cmn.md), [textures](../docs/1.6/texture.cmn.md), and a [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md).
 
-![](images/slpk_16_individualnode.PNG) *Example node 1-0 in a 1.6 SLPK.*
+![](images/slpk_16_individualnode.PNG) *Example node 1-0 in a 3D Object 1.6 SLPK.*
 
 Each resource can be individually compressed with `GZIP`.
 
-![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0 in a 1.6 SLPK.*
+![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0 in a 3D Object 1.6 SLPK.*
 
 ## Key Value Stores
 
@@ -885,7 +888,6 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 	</tr>
 </table>
 <p><em>Attributes of the Class Component within the FeatureData document</em></p>
-
 ### Class Feature
 
 *Note: Class Feature is not used by ArcGIS Clients. Instead, they use feature binaries.* Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships.  For example, the features can be used for linking feature representations of multiple Levels of Detail.
@@ -928,7 +930,6 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 	</tr>
 </table>
 <p><em>Attributes of the Class Feature within the NodeIndexDocument</em></p>
-
 ### Class Outline
 
 *Note: Class Outline is not used by ArcGIS Clients. [DrawingInfo](../docs/1.7/drawingInfo.cmn.md) is used instead.* The Class Outline defines the outline of the mesh fill symbol.
@@ -956,7 +957,6 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 	</tr>
 </table>
 <p><em>Attributes of the Class Material within the 3dSceneLayerInfo document</em></p>
-
 ### Class Color
 
 *Note: Class Outline is not used by ArcGIS Clients. [DrawingInfo](../docs/1.7/drawingInfo.cmn.md) is used instead.* The Color class defines the color of a symbol or the outline. Color is represented as a three-element array representing red, green, and blue.  Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.
@@ -979,7 +979,6 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 	</tr>
 </table>
 <p><em>Attributes of the Class Color within the 3dSceneLayerInfo document</em></p>
-
 ### Class Renderer
 
 *Note: Class Renderer is not used by ArcGIS Clients. [Drawing Info](../docs/1.7/drawingInfo.cmn.md) is used instead.* The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer including its type, symbol, label and descriptions.  
@@ -1012,7 +1011,6 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 	</tr>
 </table>
 <p><em>Attributes of the Class Renderer within the 3dSceneLayerInfo document</em></p>
-
 ### Class Symbol
 
 *Note: Class Symbol is not used by ArcGIS Clients. [Drawing Info](../docs/1.7/drawingInfo.cmn.md) is used instead.* The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only symbol supported type.
@@ -1035,7 +1033,6 @@ For more details regarding Integrated mesh and 3D objects scene layer, see [shar
 	</tr>
 </table>
 <p><em>Attributes of the Class Symbol within the 3dSceneLayerInfo document</em></p>
-
 For more details, see [feature attribute](../docs/1.7/featureAttribute.cmn.md).
 
 *Note: Class SymbolLayers is not used by ArcGIS Clients.  [Drawing Info](../docs/1.7/drawingInfo.cmn.md) is used instead.* A collection of symbol objects used to visualize the feature.
@@ -1063,7 +1060,6 @@ For more details, see [feature attribute](../docs/1.7/featureAttribute.cmn.md).
 	</tr>
 </table>
 <p><em>Attributes of the Class SymbolLayers within the 3dSceneLayerInfo document</em></p>
-
 # Textures
 
 The Textures file is a binary resource that contains images to be used as textures for the features in the store.  A single Texture.bin file contains 1 to n textures for a single specific texture level of detail. It can contain a single texture atlas or multiple individual textures.  The bundling is determined by the authoring application so that specific aspects of the materials and textures used can be taken into account (e.g. tiling).

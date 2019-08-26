@@ -485,7 +485,7 @@ Each node contains its own resources including [attributes](../docs/1.7/attribut
 
 Each resource can be individually compressed with `GZIP`.
 
-![slpk_17_individualnode](images/slpk_17_compressedresource.PNG) *Example compressed attribute resource in node 1 in a 1.7 SLPK*
+![slpk_17_individualnode](images/slpk_17_compressedresource.PNG) *Example compressed attribute resource in node 1 in a 3D Object 1.7 SLPK*
 
 ### 1.6 SLPK Structure
 

@@ -361,7 +361,256 @@ Selection metrics help clients determine which level of detail to render.  For e
 
 For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.7/lodSelection.cmn.md).
 
-## Scene Layer Packages
+## REST API 
+
+I3S is a REST API.  
+
+The API will be explained through an example of 3D Objects.  Each profile has an example of the nuances in the API.
+
+**Example 3D Object REST API**
+
+```
+.<host>/SceneServer/layers
+	+--0 // scene layer document
+	+-- nodePages
+	|  +-- 0
+	|  +-- (...)
+	+-- nodes
+	|  +--0
+	|  |  +-- attributes
+	|  |  |  +--f_2
+	|  |  |  +--f_4
+	|  |  |  +--(...)
+	|  |  +-- geometries
+	|  |  |  +-- 0
+	|  |  |  +-- 1
+	|  |  |  +--(...)
+	|  |  +-- textures
+	|  |  |  +-- 0
+	|  |  |  +-- 0_0_1
+	|  |  |  +--(...)
+	|  |  +-- shared 
+	|  |  (...) 
+	+--statistics
+	|  +-- f_2
+	|  +-- f_4
+	|  +-- (...)
+```
+
+
+
+### HTTP API Overview 1.7
+
+Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResources and nodeDocument are included but not used in 1.7.
+
+The following API methods are available for 3D Object scene layer:
+
+| Resource             | Type   | Description                                                  | URL Template                         |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
+| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0
+
+
+
+| Resource  | Type   | Description      | URL Template                                                 |
+| --------- | ------ | ---------------- | ------------------------------------------------------------ |
+| Node Page | `JSON` | A page of nodes. | `http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `nodePageID`: Integer. ID of the associated node page.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodepages/8
+
+
+
+| Resource | Type                       | Description                   | URL Template                                                 |
+| -------- | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| Textures | `JPG`, `PNG`, `DDS`, `KTX` | The texture resource  (image) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node.
+- `textureID`: String. This ID returns one of the textures available for this node. The same texture may be available in different formats. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/textures/1
+
+
+
+| Resource   | Type           | Description                              | URL Template                                                 |
+| ---------- | -------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| Geometries | `bin`, `draco` | The geometry resource (mesh information) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node.
+- `geometryID`: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 
+
+
+
+| Resource   | Type   | Description                                                  | URL Template                                                 |
+| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Statistics | `JSON` | The statistics for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `attributeID`: Integer.  ID of the specific attribute for the layer.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0 
+
+
+
+| Resource   | Type  | Description                                        | URL Template                                                 |
+| ---------- | ----- | -------------------------------------------------- | ------------------------------------------------------------ |
+| Attributes | `bin` | The value for a specific  attribute within a node. | `http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `attributeID`: Integer.  ID of the specific attribute for the layer.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/attributes/f_48/0 
+
+
+
+
+**Shared Resources must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
+
+| Resource         | Type   | Description                                                  | URL Template                                                 |
+| ---------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Shared Resources | `JSON` | Legacy texture and material description. **Not used in 1.7.** | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared` |
+
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/shared
+
+
+
+**Node Document must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
+
+| Resource      | Type   | Description                                   | URL Template                                            |
+| ------------- | ------ | --------------------------------------------- | ------------------------------------------------------- |
+| Node Document | `JSON` | Description of the node. **Not used in 1.7.** | `http://serviceURL/layers/{layerID}/nodes/{resourceID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `resourceID`: Integer. ID of the associated resource. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
+
+
+
+### HTTP API Overview 1.6
+
+*Example of 3DObject layer structure*
+
+```
+.<host>/SceneServer/layers
+	+--0 // scene layer document
+	+-- nodes
+	|  +--0
+	|  |  +-- attributes
+	|  |  |  +--f_2
+	|  |  |  +--f_4
+	|  |  |  +--(...)
+	|  |  +-- geometries
+	|  |  |  +-- 0
+	|  |  +-- textures
+	|  |  |  +-- 0
+	|  |  |  +-- 0_0_1
+	|  |  |  +--(...)
+	|  |  +-- shared 
+	|  |  (...) 
+	+--statistics
+	|  +-- f_2
+	|  |  | +--0
+	|  +-- f_4
+	|  |  | +--0
+	|  +-- (...)
+```
+
+### HTTP API Overview 1.6
+
+The following API methods are available for 3D Object scene layer:
+
+| Resource             | Type   | Description                                                  | URL Template                         |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
+| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0
+
+
+
+| Resource      | Type   | Description              | URL Template                                            |
+| ------------- | ------ | ------------------------ | ------------------------------------------------------- |
+| Node Document | `JSON` | Description of the node. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: String. ID of the associated resource. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
+
+
+
+| Resource | Type                       | Description                   | URL Template                                                 |
+| -------- | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| Textures | `JPG`, `PNG`, `DDS`, `KTX` | The texture resource  (image) | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: String. ID of the associated node.
+- `textureID`: String. This ID returns one of the textures available for this node. The same texture may be available in different formats. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/textures/1
+
+
+
+
+| Resource   | Type  | Description            | URL Template                                                 |
+| ---------- | ----- | ---------------------- | ------------------------------------------------------------ |
+| Geometries | `bin` | The geometry resource. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: String. ID of the associated node.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 
+
+
+
+| Resource   | Type   | Description                                                  | URL Template                                                 |
+| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Statistics | `JSON` | The statistics for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `attributeID`: Integer.  ID of the specific attribute for the layer.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0 
+
+
+
+| Resource   | Type   | Description                                                  | URL Template                                                 |
+| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Attributes | `JSON` | The attributes for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `attributeID`: Integer.  ID of the specific attribute for the layer.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/attributes/f_48/0 
+
+
+
+| Resource         | Type   | Description                        | URL Template                                                 |
+| ---------------- | ------ | ---------------------------------- | ------------------------------------------------------------ |
+| Shared Resources | `JSON` | Texture and material descriptions. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: String. ID of the associated node. 
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/shared
+
+
+
+# Scene Layer Packages
 
 Scene Layer Packages (SLPK) allow a complete I3S layer to be consolidated into a single file.  It is designed to be directly consumed by applications.
 
@@ -553,87 +802,6 @@ Each node contains its own resources including [attributes](../docs/1.6/attribut
 Each resource can be individually compressed with `GZIP`.
 
 ![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0 in a 3D Object 1.6 SLPK.*
-
-## Key Value Stores
-
-In this persistence schema, all Scene Layer resources are stored within either key value based cloud blob stores (e.g. Amazon Simple Storage (S3), Windows Azure Blob Storage) or with more general key value stores. In cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases, each resource is identified by a unique key.  The default is in **bold**.
-
-*Example SceneService in a key value store environment with textured geometries and attribute data*
-
-| I3S Resource                                   | Required                          | Details                                                      |
-| ---------------------------------------------- | --------------------------------- | ------------------------------------------------------------ |
-| /SceneServer                                   | ![required](images/checkmark.png) | The SceneServiceInfo JSON file that defines the service name and the list of layers included with the Scene Service.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0                          | ![required](images/checkmark.png) | The 3D Scene Layer JSON resource.  The layer ID is used as the document key (e.g. `0`).<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/root                 | ![required](images/checkmark.png) | The 3D Node Index Document of the layer as a JSON resource.  The node ID is used as the document key (e.g. `root`)<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0                    | ![required](images/checkmark.png) | The 3D Node Index Document of the layer as a JSON resource.  The node ID is used as the document key (e.g. `0`)<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/shared           | ![required](images/checkmark.png) | The Shared Resource of the node as a JSON resource. The keyword "shared" is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/features/0       |          &nbsp;                   | The FeatureData document of the node as a JSON resource. The resource array id (e.g. `0`) is used as the document key.<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/geometries/0     | ![required](images/checkmark.png) | The GeometryData of the node as a binary resource. The resource array id  (e.g. `0`) is used as the resource key<br />Content type: application/octet-stream <br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/textures/0_0     |             &nbsp;                | The Texture of the node as a binary resource. The resource id (e.g. `0_0`) is used as the resource key of the resource <br />Content type: image/jpeg<br />Encoding: {**NONE**} |
-| /SceneServer/layers/0/nodes/0/textures/0_0_1   |               &nbsp;              | The compressed texture of the node as a binary resource. The resource id (e.g. `0_0_1`) is used as the resource key<br />Content type: image/vnd-ms.dds<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/attributes/f_0/0 |            &nbsp;                 | The AttributeData as a binary resource. The resource id (e.g. `0`) is used as the resource key of the resource<br />Content type: plain text<br />Encoding: {**GZIP**, NONE} |
-| /SceneServer/layers/0/nodes/0/attributes/f_1/0 |              &nbsp;               | Same as resource `f_0/0` above                               |
-| ...                                            | ...          &nbsp;               | ...                                                          |
-| /SceneServer/layers/0/nodes/1-4-2-0            | ![required](images/checkmark.png) | Same as node resource `root` and `0`                         |
-
-## REST API for Attribute Resources
-
-The attributes REST API allows client apps to fetch the attribute records of a field using its _key_ property directly from a scene service layer.  Every scene node (with the exception of `root` node), exposes attribute fields as discrete _attribute_ resources. These resources are accessible through a relative URL to any Node Index Document.
-
-The Attributes REST API syntax:
- URL: **http://&lt;sceneservrice-url&gt;/attributes/&lt;field_key&gt;/&lt;id>**
-
-- *attributes*: the RESTful resource responsible for fetching the binary attribute. Clients will decode the content based on the metadata found in the scene layer _attributeStorageInfo_ array
-- *field\_key*: the key value used to request the feature attribute content
-- _id_: the bundle ID of the _attribute_ binary resource, corresponding to the geometry bundle id. By default, this value is 0 (same as the geometry bundle id). If a node has more than 1 geometry resource, then the id of the _attribute_ resource will also match the geometry bundle id.
-
-### Usage pattern of the _attributes_ REST API
-
-1. A client should get the attribute field from the metadata by fetching the scene server layers REST resource prior to symbolizing the node base on attribute information.  The layers resource contains the files array, which lists all available attribute fields, types, and the Attribute Storage Info array.  
-
-   - The fields array object contains a collection of objects that describe each attribute, including its name ('name'), datatype ('type') and a user friendly name ('alias'). It includes all fields in the source feature layer of the scene service layer.  
-   - The attributeStorageInfo array contains a collection of objects that describes all attribute binary resources. It includes only fields the publisher chose to include as part of the scene cache during publishing time.
-
-   For more details, see the [attribute storage info model](../docs/1.7/attributeStorageInfo.cmn.md).
-
-1. A client application equipped with the list of available fields and the corresponding attribute-value-array metadata, can then fetch the attribute values by using the _key_ as part of the attributes REST request. Furthermore, it is capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.  
-
-   Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array should first check in the geometry buffer before requesting it from the _attributes_ REST resource.
-
-### Attribute Resource - Details
-
-A numeric attribute resource is a singe, one dimensional array.  A string attribute resource is two, sequential, one dimensional arrays.
-
-The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
-
-Let's take a look at a sample scene service layer and its field types (see the figure below). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'.  
-
-<div>
-<img src="images/figure-14.png" title="A typical attribute (table) info of a feature class" alt="A typical attribute (table) info of a feature class. The _fields_ array that’s shown as an example in the figure and the _attributeStorageInfo_ array in the figure is derived from the attribute value of the above feature class.">
-<p>Typical attribute info of a feature class.</p>
-</div>  
-
-A scene service layer includes only supported attribute field value types of a feature class. As a result, the 'Shape' field in the figure is not included in the attribute cache of a scene layer.
-
-The figure shows how the feature class maps to different attribute resources.
-
-- **OID** (type: `esriFieldTypeOID`) is by default represented as an _UInt32-Array_, with a 1-d array of _UInt32_ value type.
-- **NEAR-FID** (type: `esriFieldTypeInteger`) is represented as an _Int32-Array_, with a 1-d array of _Int32_ value type.
-- **NEAR_DIST** (type: `esriFieldTypeDouble`) is represented as a _Double-Array_, with a 1-d array of _Float64_ value type.
-- **Name** (type: `esriFieldTypeString`) is represented as a _String-Array_. A String-Array supports storage of variable length strings and is stored as two arrays in sequence.  The first fixed length array has the byte counts of each string (null terminated).  The second array stores the actual string values as UTF8 encoded strings. The value type of the first array is _UInt32_ and the value type of the second array is _String_.
-
-The _attributes_ REST API of a scene layer gives access to all scene cache feature attribute data as binary attribute value arrays.  For example, the figure has 5 binary resources, identified by keys *f_0_, f_1_, f_2_, f_3_*  and *f_4*, and are accessible by the respective rest resource URLs (e.g. .../nodes/&lt;nodeID&gt;/attributes/0/f\_0, .../nodes/&lt;nodeID&gt;/attributes/0/f_1, etc.)
-
-Field Data Types Table below lists a feature layer's field data types. The valueTypes column indicates the supported types for attribute based mapping and symbology.
-
-The following types of attribute value arrays are supported :
-
-- _Int32-Array_, _UInt32-Array_, _UInt64-Array_, _Float64-Array_, _Float32-Array_, _String-Array_
-
-<div>
-<img src="images/Table_24.png" title="Attribute data types supported by a scene service layer." alt="Attribute data types supported by a scene service layer.">
-<p>Attribute data types supported by a scene service layer.</p>
-</div>
 
 # JSON Resources
 

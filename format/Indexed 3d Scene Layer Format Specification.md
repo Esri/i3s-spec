@@ -84,7 +84,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 
 # I3S Design Principles
 
-The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principles:  
+The Esri Indexed 3d Scene Layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) utilize these design principles:  
 
 - **User Experience First**: Provide a positive user experience, including high interactivity and fast display.
 - **Scalability**: Support very large scene layers, including scenes with a global extent and many detailed features.
@@ -102,15 +102,15 @@ The Esri Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer P
 
 # Introduction to 3D Scene Layer
 
-A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide clients access to data and allow them to visualize it according to their needs.  The definition of "data" in this case includes geometry, attributes, and texture.
+A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide a structured way for clients to visualize data according to their needs.
 
-A Scene Layer is characterized by a combination of layer type and profile. The *layer type* describes the kind of geospatial data stored within it. The *layer profile* includes additional details on the specific I3S implementation.
+A Scene Layer is characterized by a combination of layer type and profile. The layer *type* describes the kind of geospatial data. The layer *profile* includes additional details on the specific I3S implementation.
 
  The supported layer types are:
 
-* [3D Objects](../docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, 3D models in various formats)
+* [3D Objects](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
 * [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. integrated surface including vegetation, buildings and roads)
-* [Points](../docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs)
+* [Points](../docs/1.6/Point_ReadMe.md) (e.g. a collection of point data, like individual trees in a forest)
 * [Point Clouds](../docs/2.0/pcsl_ReadMe.md) (e.g. lidar data)
 * [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
@@ -128,9 +128,9 @@ Layers are described using two properties, type and profile. The type of a layer
 
 ### Coordinate Reference Systems
 
-The I3S specification supports specifying the Coordinate Refence System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
+The I3S specification supports specifying the Coordinate Reference System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
 
-In I3S implementation the CRS MAY be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
+In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
 
 Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS client applications support WKT2 yet.  
 
@@ -215,24 +215,9 @@ Each node has exactly one `NodeIndexDocument` and one `SharedDescriptors` docume
 There are always an equal number of `FeatureData` and `geometry` resources.  Each set contains
 the corresponding data elements to render a complete feature.  In order to avoid dependency on the `FeatureData` document, the geometry data is directly available as a binary resource. The geometry data includes all vertex attributes, feature counts, and mesh segmentation.
 
-The figure below shows the node tree of an 3D Object Indexed Scene Layer with a mesh pyramid profile.
-
-- `Nodes` are in green circles.
-- `Node identifiers` are in dark blue rectangles above each node.
-- `Features` are in orange rectangles within each node.  The numbers in the rectangle are the feature identifiers.
-- `Geometry` is in turquoise rectangles. Each geometry resource is an array of geometries. It can also include mesh-segmentation information along with a feature identifier.
-- Each node is connected to its children with a green line.
-- The attribute and texture resources are omitted from the figure for clarity. They follow a similar storage model to geometry.
-- Feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer represented within its payload.
-
-![Example Nodes in a Mesh Pyramid](images/figure-02.png)
-
-*Example illustrating the composition of an I3S tree for a 3D Object Indexed Scene Layer with a mesh pyramid profile. Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys.*
-
 ### Node Paging and the Node Page Index
 
-Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they can be organized (statically pre-bundled) in *pages* of nodes. This allows clients to load the node data that they need with more than a single node
-per round-trip, which reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
+Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they can be organized into *pages* of nodes. This allows clients to load the node data that they need with more than a single node per round-trip, which reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
 
 All nodes are stored in a flat array that is divided by a fixed size page of nodes.  Each node references its children using their index in this flat array.  To traverse the tree, clients will start by loading the node page that contains the root.  Clients need to identify the pages required to access its children.  The process is repeated until the desired nodes have been discovered. 
 

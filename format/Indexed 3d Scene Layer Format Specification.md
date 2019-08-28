@@ -13,11 +13,11 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 # Table of Contents
 
 [Introduction to 3D Scene Layer](#introduction-to-3D-scene-layer)  
-&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
-​&emsp;[Height Models](#height-models)  
-​&emsp;[Indexed Scene Layer - Organization and Structure](#indexed-scene-layer)  
-​&emsp;&emsp;[I3S - Indexing Model and Tree Structure](#i3s-indexing-model-and-tree-structure)  
+​&emsp;[Organization and Structure](#organization-and-structure)  
+​&emsp;&emsp;[Indexing Model and Tree Structure](#indexing-model-and-tree-structure)  
 ​&emsp;&emsp;[Node Paging and the Node Page Index](#node-paging-and-the-node-page-index)  
+​&emsp;&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
+​&emsp;&emsp;[Height Models](#height-models)  
 ​&emsp;&emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
 ​&emsp;&emsp;[geometryDefinition](#geometryDefinition)  
 ​&emsp;&emsp;[Textures](#textures-structure)  
@@ -26,9 +26,9 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;&emsp;[Attribute Model and Storage](#attribute-model-and-storage)  
 ​&emsp;[Bounding Volume Hierarchy](#bounding-volume-hierarchy)  
 ​&emsp;[Level of Detail](#level-of-detail)  
-​&emsp;[Discrete Level of Detail](#discrete-level-of-detail)  
-​&emsp;[Multiple Representations](#multiple-representations)  
-​&emsp;[Switching Models](#switching-models)  
+​&emsp;&emsp;[Discrete Level of Detail](#discrete-level-of-detail)  
+​&emsp;&emsp;[Multiple Representations](#multiple-representations)  
+​&emsp;&emsp;[Switching Models](#switching-models)  
 ​&emsp;&emsp;[Level of Detail Generation](#level-of-detail-generation)  
 ​&emsp;&emsp;[Selection Metrics](#selection-metrics)  
 ​&emsp;[REST API](#rest-API)  
@@ -126,57 +126,12 @@ Layers are described using two properties, type and profile. The type of a layer
 
 *Examples of 3D Scene Layer Types and Layer Profiles*
 
-### Coordinate Reference Systems
 
-The I3S specification supports specifying the Coordinate Reference System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
-
-In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
-
-Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS client applications support WKT2 yet.  
-
-The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be selected with the following considerations:
-
-- Minimize the need for re-projection on the client side
-- Render in both geographic and projected coordinate reference systems
-- Support data with a global extent
-- Support local and global data with high positional accuracy
-
-All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84 ,as identified by its EPSG code 4326 and GCS China Geodetic Coordinate System 2000, as identified by its EPSG 4490 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
-
-In both modes, node index and position vertex must have the same CRS. In addition, all vertex positions are specified as an *offset* from a node's Minimum Bounding Volume (MBV) center. The MBV could be specified as a Minimum Bounding Sphere (MBS) or as an Oriented Bounding Box (OBB).
-
-As a result, for an I3S layer to be in a *global* mode the following requirements must be met:
-
-The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84 or CGCS 2000, where:
-   - The only supported CRS in this mode is EPSG code, 4326 and 4490.
-   - X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
-   - Elevation (the z component of the vertex position) is specified in meters.
-   - The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters.
-
-For an I3S layer to be in a *local* mode the following requirements must be met:
-
-All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
-  - All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
-
-All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
-
-The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
-
-### Height Models
-
-The I3S standard allows either ellipsoidal or gravity-related vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications.
-
-At version 1.5, I3S added support for vertical coordinate systems. The Well known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The [spatial reference](../docs/1.6/spatialReference.cmn.md) object also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
-
-The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
-
-For more details, see the [3DSceneLayerInfo-common](../docs/1.6/3DSceneLayer.cmn.md), [3DSceneLayerInfo-point](../docs/1.6/3DSceneLayer.psl.md) and [heightModelInfo](../docs/1.6/heightModelInfo.cmn.md) pages.
-
-## Indexed Scene Layers - Organization and Structure
+## Organization and Structure
 
 I3S organizes information using a hierarchical, node-based spatial index.  Each node contains features with geometry, textures and attributes.
 
-### I3S - Indexing Model and Tree Structure
+### Indexing Model and Tree Structure
 
 Indexing allows fast access to data blocks. In an Indexed 3D Scene Layer, the spatial extent of the data is split into regions called *nodes*.  Each node has roughly equivalent amounts of data and is organized hierarchically.  The node index allows clients to efficiently determine which data it needs and allows the  server to quickly locate the data requested by any client.  Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node.
 
@@ -224,6 +179,52 @@ All nodes are stored in a flat array that is divided by a fixed size page of nod
 For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
 
 For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodePageDefinition.pcsl.md).
+
+### Coordinate Reference Systems
+
+The I3S specification supports specifying the Coordinate Reference System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
+
+In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
+
+Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS client applications support WKT2 yet.  
+
+The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be selected with the following considerations:
+
+- Minimize the need for re-projection on the client side
+- Render in both geographic and projected coordinate reference systems
+- Support data with a global extent
+- Support local and global data with high positional accuracy
+
+All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84 ,as identified by its EPSG code 4326 and GCS China Geodetic Coordinate System 2000, as identified by its EPSG 4490 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
+
+In both modes, node index and position vertex must have the same CRS. In addition, all vertex positions are specified as an *offset* from a node's Minimum Bounding Volume (MBV) center. The MBV could be specified as a Minimum Bounding Sphere (MBS) or as an Oriented Bounding Box (OBB).
+
+As a result, for an I3S layer to be in a *global* mode the following requirements must be met:
+
+The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84 or CGCS 2000, where:
+   - The only supported CRS in this mode is EPSG code, 4326 and 4490.
+   - X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
+   - Elevation (the z component of the vertex position) is specified in meters.
+   - The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters.
+
+For an I3S layer to be in a *local* mode the following requirements must be met:
+
+All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
+  - All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
+
+All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
+
+The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
+
+### Height Models
+
+The I3S standard allows either ellipsoidal or gravity-related vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications.
+
+At version 1.5, I3S added support for vertical coordinate systems. The Well known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The [spatial reference](../docs/1.6/spatialReference.cmn.md) object also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
+
+The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
+
+For more details, see the [3DSceneLayerInfo-common](../docs/1.6/3DSceneLayer.cmn.md), [3DSceneLayerInfo-point](../docs/1.6/3DSceneLayer.psl.md) and [heightModelInfo](../docs/1.6/heightModelInfo.cmn.md) pages.
 
 ### Geometry Model and Storage
 
@@ -799,7 +800,6 @@ A value schema ensures that the JSON properties follow a fixed pattern and suppo
 - **UUID**: A hexadecimal universally unique identifier
 - **Date**: An ISO 8601 timestamp YYYY-MM-DDThh:mm:ss.sTZD
 - **URL**: Both relative and absolute
-- **Pointer**: Any reference to an object in a JSON document, consisting of a URL and a document path
 - **NodeID**: A treekey string that is zero-based (first child is "0", root node is "root")
 
 ### SceneServiceInfo

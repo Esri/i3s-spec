@@ -13,7 +13,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 # Table of Contents
 
 [Introduction to Scene Layers](#introduction-to-scene-layers)  
-​&emsp;[Organization and Structure](#organization-and-structure)  
+[Organization and Structure](#organization-and-structure)  
 ​&emsp;&emsp;[Indexing Model and Tree Structure](#indexing-model-and-tree-structure)  
 ​&emsp;&emsp;[Node Paging and the Node Page Index](#node-paging-and-the-node-page-index)  
 ​&emsp;&emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
@@ -112,7 +112,7 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
 * [Building](../docs/1.6/BSL_ReadMe.md) (e.g. a building including its components, such as windows, doors, chairs, etc.)
 
 
-## Organization and Structure
+# Organization and Structure
 
 I3S organizes information using a hierarchical, node-based spatial index.  Each node contains features with geometry, textures and attributes.
 
@@ -128,7 +128,7 @@ The I3S standard models node information using a set of resources, including:
 
 - [Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
 - [Feature Data](../docs/1.7/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference.
-- [Geometry](../docs/1.7/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature and  geometry segments.
+- [Geometry](../docs/1.7/geometry.cmn.md): Describes the geometries of the features and the mapping between individual feature and geometry segments.
 - [Attribute](../docs/1.7/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
 - [Texture](../docs/1.7/textureDefinition.cmn.md): Describes how a feature is to be rendered.
 - [Material](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
@@ -136,7 +136,7 @@ The I3S standard models node information using a set of resources, including:
 
 ### Indexing Model and Tree Structure
 
-The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index).  In I3S version 1.6, nodes can be indexed using most common indexing models (e.g. treekeys, quadress, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to navigate.   
+The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6, nodes can be indexed using most common indexing models (e.g. [treekeys](treekey-indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to navigate.   
 
 ### Node Paging and the Node Page Index for I3S 1.7
 

@@ -106,21 +106,49 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
  There are several Scene Layer profile types:
 
 * [3D Object](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
-* [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. integrated surface that may include vegetation, buildings and roads)
+* [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface that may include vegetation, buildings and roads)
 * [Point](../docs/1.6/Point_ReadMe.md) (e.g. a collection of point data, like individual trees in a forest)
-* [Point Cloud](../docs/2.0/pcsl_ReadMe.md) (e.g. lidar data)
-* [Building](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
+* [Point Cloud](../docs/2.0/pcsl_ReadMe.md) (e.g. a volumetric collection of point data, like lidar data)
+* [Building](../docs/1.6/BSL_ReadMe.md) (e.g. a building including its components, such as windows, doors, chairs, etc.)
 
 
 ## Organization and Structure
 
 I3S organizes information using a hierarchical, node-based spatial index.  Each node contains features with geometry, textures and attributes.
 
+### Nodes 
+
+In a Scene Layer, the spatial extent of the data is split into regions called *nodes*.  The nodes contain the texture, geometry, and attribute information for the region.  Each node has an index, which allows clients to efficiently locate and load the resources. 
+
+Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node.  Nodes are hierarchical and have roughly equivalent amount of data. 
+
+Each node includes the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
+
+The I3S standard models node information using a set of resources, including:
+
+- [Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
+- [Feature Data](../docs/1.7/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference.
+- [Geometry](../docs/1.7/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature and  geometry segments.
+- [Attribute](../docs/1.7/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
+- [Texture](../docs/1.7/textureDefinition.cmn.md): Describes how a feature is to be rendered.
+- [Material](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
+- *[Shared Resource](../docs/1.7/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer. (Deprecated in v1.7)*
+
 ### Indexing Model and Tree Structure
 
-Indexing allows fast access to data blocks. In an Indexed 3D Scene Layer, the spatial extent of the data is split into regions called *nodes*.  Nodes are hierarchical and have roughly equivalent amount of data.  The node index allows clients to efficiently determine which data it needs and allows the  server to quickly locate the data requested by any client.  Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node.
+The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index).  In I3S version 1.6, nodes can be indexed using most common indexing models (e.g. treekeys, quadress, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to navigate.   
 
-I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. Quadtrees and Octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree exposed as web resources. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume hierarchy (BVH) tree.
+### Node Paging and the Node Page Index for I3S 1.7
+
+Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they can be organized into *pages* of nodes. This allows clients to load the node data that they need with more than a single node per round-trip, which reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
+
+All nodes are stored in a flat array that is divided by a fixed size page of nodes.  Each node references its children using their index in this flat array.  To traverse the tree, clients will start by loading the node page that contains the root.  Clients need to identify the pages required to access its children.  The process is repeated until the desired nodes have been discovered. 
+
+For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
+
+For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodePageDefinition.pcsl.md).
+
+### Treekey Indexing for I3S 1.6 and earlier
 
 Each node has an address and nodes may be thought of as equivalent to tiles. A node has an ID that is unique within a layer. I3S supports two types of node ID formats: *treekeys* and integers. Treekeys are a string based identifiers. Integer IDs are based on a fixed linearization of the nodes.
 
@@ -136,34 +164,12 @@ The information for a node is stored in multiple individually accessible resourc
 
 The decision to render a node by the client application is based on its bounding-volume visibility in the current 3D view. Once the node's bounding volume is determined to be within the current 3D view of the application, then further evaluation is performed by the client app to determine the visual quality of the node. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.
 
-Each node includes the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
-
-The I3S standard models node information using a set of resources, including, `NodeIndexDocument`, `FeatureData`, `geometry`, `attribures`, and `SharedResource`.  
-
-- [Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
-- [Feature Data](../docs/1.7/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference.
-- [Geometry](../docs/1.7/geometry.cmn.md): The geometries of the features, the identifiers of the owning features, the mapping between individual feature and  geometry segments.
-- [Attribute](../docs/1.7/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
-- [Texture](../docs/1.7/textureDefinition.cmn.md): Describes how a feature is to be rendered.
-- [Material](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
-- *[Shared Resource](../docs/1.7/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer. (Deprecated in v1.7)*
-
 An I3S profile uses either a single text-based sub-resource or separate binary sub-resources.  The text-based resources contain all the geometry and attribute information (e.g. Point profile). The separate, binary sub-resources have self-contained geometry and attribute sub-resources (e.g. mesh pyramids). Applications that use the separate binary sub-resources do not need to fetch the feature data in order to interpret them.  All binary data is stored in little endian. 
 
-Each node has exactly one `NodeIndexDocument` and one `SharedDescriptors` document. The `FeatureData`, `geometry`, and `attributes` can be bundled to help optimize network transfer and client-side reactivity.  This helps balance index size and feature splitting with optimal network usage.
+Each node has exactly one `NodeIndexDocument` and one `SharedResources` document. The `FeatureData`, `geometry`, and `attributes` can be bundled to help optimize network transfer and client-side reactivity.  This helps balance index size and feature splitting with optimal network usage.
 
 There are always an equal number of `FeatureData` and `geometry` resources.  Each set contains
 the corresponding data elements to render a complete feature.  In order to avoid dependency on the `FeatureData` document, the geometry data is directly available as a binary resource. The geometry data includes all vertex attributes, feature counts, and mesh segmentation.
-
-### Node Paging and the Node Page Index
-
-Nodes represent the spatial index of the data as a bounding-volume hierarchy. To reduce the number of requests required to traverse this index tree, they can be organized into *pages* of nodes. This allows clients to load the node data that they need with more than a single node per round-trip, which reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
-
-All nodes are stored in a flat array that is divided by a fixed size page of nodes.  Each node references its children using their index in this flat array.  To traverse the tree, clients will start by loading the node page that contains the root.  Clients need to identify the pages required to access its children.  The process is repeated until the desired nodes have been discovered. 
-
-For more details regarding Integrated Mesh and 3D objects in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
-
-For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodePageDefinition.pcsl.md).
 
 ### Coordinate Reference Systems
 

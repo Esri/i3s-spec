@@ -124,19 +124,19 @@ Node creation is capacity driven. For example, the smaller the node capacity, th
 
 Each node includes the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
 
-The I3S standard models node information using a set of resources, including:
+Nodes include the following resources:
 
-- [Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md): A lightweight resource that represents a node, its topology, and other sub-resources.
-- [Feature Data](../docs/1.7/featureData.cmn.md): A text resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference.
-- [Geometry](../docs/1.7/geometry.cmn.md): Describes the geometries of the features and the mapping between individual feature and geometry segments.
-- [Attribute](../docs/1.7/attributeStorageInfo.cmn.md): Describes the structure of the binary attribute data.
-- [Texture](../docs/1.7/textureDefinition.cmn.md): Describes how a feature is to be rendered.
-- [Material](../docs/1.7/materialDefinitions.cmn.md): Describes how a material is to be rendered. *Only supported in v1.7.*
-- *[Shared Resource](../docs/1.7/sharedResource.cmn.md): Models or textures that can be shared among features within the same layer. (Deprecated in v1.7)*
+- [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md): A JSON resource that represents a node, its topology, and other sub-resources.
+- [Features](../docs/1.7/featureData.cmn.md): A JSON resource that identifies the features within a node. It can store the geometry and attributes for all the features in the node either by value or by reference.
+- [Geometries](../docs/1.7/geometry.cmn.md): Describes the geometries of the features and the mapping between individual feature and geometry segments.
+- [Attributes](../docs/1.7/attributeStorageInfo.cmn.md): A binary resources describing the structure of the attribute data.
+- [Textures](#textures): A binary resource containing the texture. 
+- [Materials](../docs/1.7/materialDefinitions.cmn.md): A JSON resource that describes the material rendering.  It is feature-compatible with glTF materials.  *Only supported in v1.7.*
+- *[Shared Resource](../docs/1.7/sharedResource.cmn.md): A JSON resource with models or textures that can be shared among features within the same layer. (Deprecated in v1.7)*
 
 ### Indexing Model and Tree Structure
 
-The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6, nodes can be indexed using most common indexing models (e.g. [treekeys](treekey-indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to navigate.   
+The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](treekey-indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to navigate.   
 
 ### Node Paging and the Node Page Index for I3S 1.7
 

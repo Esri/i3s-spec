@@ -12,7 +12,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 
 # Table of Contents
 
-[Introduction to 3D Scene Layer](#introduction-to-3D-scene-layer)  
+[Introduction to Scene Layers](#introduction-to-scene-layers)  
 ​&emsp;[Organization and Structure](#organization-and-structure)  
 ​&emsp;&emsp;[Indexing Model and Tree Structure](#indexing-model-and-tree-structure)  
 ​&emsp;&emsp;[Node Paging and the Node Page Index](#node-paging-and-the-node-page-index)  
@@ -62,8 +62,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 ​&emsp;[Class VestedGeometryParams](#class-vestedgeometryparams)  
 ​&emsp;[Class SingleComponentParmas](#class-singlecomponentparams)  
 ​&emsp;[Class Geometry Attribute](#class-GeometryAttribute)  
-
-[Shared Resources](#shared-resources)  
+​&emsp;[Shared Resources](#shared-resources)  
 ​&emsp;[Class Component](#class-component)  
 ​&emsp;[Class Feature](#class-feature)  
 ​&emsp;[Class Outline](#class-outline)  
@@ -100,31 +99,17 @@ The Esri Indexed 3d Scene Layer (I3S) format and the corresponding Scene Layer P
 - **[Version History of I3S](../README.md)**: Provide an overview on which ESRI I3S specification version is equivalent to OGC I3S specification version.
 - **[I3S Converter](../i3s_converter/i3s_converter_ReadMe.md)**: Allows users to update existing 1.6 3D object or Integrated Mesh Scene layers to update to 1.7
 
-# Introduction to 3D Scene Layer
+# Introduction to Scene Layers
 
-A single I3S data set is referred to as a Scene Layer.  It is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data.  Scene Layers provide a structured way for clients to visualize data according to their needs.
+An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Layers provide a structured way for clients to store and visualize large amounts of data.  
 
-A Scene Layer is characterized by a combination of layer type and profile. The layer *type* describes the kind of geospatial data. The layer *profile* includes additional details on the specific I3S implementation.
+ There are several Scene Layer profile types:
 
- The supported layer types are:
-
-* [3D Objects](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
-* [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. integrated surface including vegetation, buildings and roads)
-* [Points](../docs/1.6/Point_ReadMe.md) (e.g. a collection of point data, like individual trees in a forest)
-* [Point Clouds](../docs/2.0/pcsl_ReadMe.md) (e.g. lidar data)
-* [Building Scene Layer](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
-
-Layers are described using two properties, type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons and point clouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases, the same layer type can support multiple profiles optimized for different use cases. The following table shows the layer types and profiles. For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
-
-| Layer Type                                             | Profile       | Features with Identity | Attributes                                              |
-| ------------------------------------------------------ | ------------- | ---------------------- | ------------------------------------------------------- |
-| 3D Objects          | mesh-pyramids | Yes                    | Yes                                                     |
-| Integrated Mesh | mesh-pyramids | No                     | Triangle Attributes (planned)                           |
-| Point                   | points        | Yes                    | Yes                                                     |
-| Point Cloud       | pointclouds   | No                     | [Vertex Attributes](../docs/2.0/vertexAttributes.pcsl.md) |
-| Building Scene Layer                                   |      building     |       Yes           |                Yes                                 |
-
-*Examples of 3D Scene Layer Types and Layer Profiles*
+* [3D Object](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
+* [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. integrated surface that may include vegetation, buildings and roads)
+* [Point](../docs/1.6/Point_ReadMe.md) (e.g. a collection of point data, like individual trees in a forest)
+* [Point Cloud](../docs/2.0/pcsl_ReadMe.md) (e.g. lidar data)
+* [Building](../docs/1.6/BSL_ReadMe.md) (e.g. building including its components, such as windows, doors, chairs, etc.)
 
 
 ## Organization and Structure
@@ -133,7 +118,7 @@ I3S organizes information using a hierarchical, node-based spatial index.  Each 
 
 ### Indexing Model and Tree Structure
 
-Indexing allows fast access to data blocks. In an Indexed 3D Scene Layer, the spatial extent of the data is split into regions called *nodes*.  Each node has roughly equivalent amounts of data and is organized hierarchically.  The node index allows clients to efficiently determine which data it needs and allows the  server to quickly locate the data requested by any client.  Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node.
+Indexing allows fast access to data blocks. In an Indexed 3D Scene Layer, the spatial extent of the data is split into regions called *nodes*.  Nodes are hierarchical and have roughly equivalent amount of data.  The node index allows clients to efficiently determine which data it needs and allows the  server to quickly locate the data requested by any client.  Node creation is capacity driven. For example, the smaller the node capacity, the smaller the spatial extent of the node.
 
 I3S is agnostic with respect to the model used to index objects/features in 3D space. Both regular partitions of space (e.g. Quadtrees and Octrees) as well as density dependent partitioning of space (e.g. R-Trees) are supported. The specific partitioning scheme is hidden from clients who navigate the nodes in the tree exposed as web resources. The partitioning results in a hierarchical subdivision of 3D space into regions represented by nodes, organized in a bounding volume hierarchy (BVH) tree.
 
@@ -228,7 +213,7 @@ For more details, see the [3DSceneLayerInfo-common](../docs/1.6/3DSceneLayer.cmn
 
 ### Geometry Model and Storage
 
-All Scene Layer types make use of the same fundamental set of geometry types: points, lines and triangles.
+All Scene Layer types make use of the same fundamental set of geometry types: points and triangles.
 
 The Array Buffer View controls geometry storage and consumption representation.  For example, the Array Buffer View can require per-vertex layout of components.  This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer.
 
@@ -989,7 +974,21 @@ For more details regarding 3D objects scene layer and point scene layer, see [do
 
 For more details Integrated mesh and 3D objects scene layer, see [geometry attribute](../docs/1.7/geometryAttribute.cmn.md).
 
-## Shared Resources
+### layerType and profile strings
+
+Layers are described in the JSON properties using two properties, type and profile. The type of a layer describes the type of geospatial data. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. 
+
+The following table shows the strings regarding the layer types and profiles. 
+
+| layerType String | profile String | Attributes                                                |
+| ---------------- | -------------- | --------------------------------------------------------- |
+| 3DObject         | meshpyramids   | Yes                                                       |
+| IntegratedMesh   | meshpyramids   | Triangle Attributes (planned)                             |
+| Point            | points         | Yes                                                       |
+| PointCloud       | PointCloud     | [Vertex Attributes](../docs/2.0/vertexAttributes.pcsl.md) |
+| Building         | Building       | Yes                                                       |
+
+### Shared Resources
 
 **Note: Shared resources are deprecated with spec version 1.7.**  The [material definition](../docs/1.7/materialDefinition.cmn.md) and [texture defintion](../docs/1.7/textureDefinition.cmn.md) are now independent resources. 
 
@@ -1232,7 +1231,7 @@ Subtexture pixels are identified by the subimageRegion attribute: [umin, vmin, u
 Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the "repeat" wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. The client is expected to use the subimage region values and the texture coordinates to best handle repeating textures in atlases.
 
 
-### Generating Image IDs
+### Generating Image IDs (not used)
 
 Generated using the BuildID function
 
@@ -1355,6 +1354,10 @@ Legends are essential for proper display and complete communication of represent
 
 Clients are responsible for building legend information from the *drawingInfo* resource for the scene layer.
 Scene layers and scene services behave identically to feature layers and feature services.
+
+
+
+
 
 # I3S Flexibility
 

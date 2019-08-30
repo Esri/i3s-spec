@@ -17,6 +17,9 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Nodes](#nodes)  
 &emsp;&emsp;[Indexing Model and Tree Structure](#indexing-model-and-tree-structure)  
 &emsp;&emsp;[Node Paging and the Node Page Index](#node-paging-and-the-node-page-index)  
+&emsp;&emsp;[Indexing for I3S 1.6 and earlier](#Indexing-for-I3S-1.6-and-earlier)  
+&emsp;[REST API](#rest-API)  
+&emsp;[Scene Layer Package](#scene-layer-packages)  
 &emsp;[Coordinate Reference Systems](#coordinate-reference-systems)  
 &emsp;[Height Models](#height-models)  
 &emsp;[Geometry Model and Storage](#geometry-model-and-storage)  
@@ -32,8 +35,6 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;&emsp;[Switching Models](#switching-models)  
 &emsp;&emsp;[Level of Detail Generation](#level-of-detail-generation)  
 &emsp;&emsp;[Selection Metrics](#selection-metrics)  
-&emsp;[REST API](#rest-API)  
-&emsp;[Scene Layer Package](#scene-layer-packages)  
 
 [JSON Resources](#json-resources)  
 ​&emsp;[Supported Data Types](#supported-data-types)  
@@ -141,7 +142,7 @@ A node's bounding-volume determines if a node is within the current 3D view. If 
 
 The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to load resources.
 
-### Node Paging and the Node Page Index for I3S 1.7
+### Node Paging and the Node Page Index
 
 Nodes represent the spatial index of the data as a [bounding-volume hierarchy](#bounding-volume-hierarchy). To reduce the number of requests required to traverse the tree, they are organized into pages. Loading a page of nodes instead of an individual node allows clients to get more data with a single round-trip.  This structure reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
 
@@ -155,7 +156,7 @@ For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodeP
 
 ### Indexing for I3S 1.6 and earlier
 
-Since paging was not introduced until I3S version 1.7, any indexing scheme can be used for I3S version 1.6 and earlier.  This is a brief example for "treekeys". 
+Prior to the introduction of node paging, any indexing scheme can be used for I3S version 1.6 and earlier.  This is a brief example for "treekeys". 
 
 The treekey format is loosely modeled on binary search trees. The key value indicates the level and sibling association of a given node.  Since the key directly indicates the position of the node in the tree, it allows the nodes to be sorted in a single dimension.  They treekeys are stingified integers.
 
@@ -164,170 +165,6 @@ Treekeys contain levels which are separated by dashes.  The root node is at leve
 ![A sample index tree using Treekeys](images/figure-01.png)
 
 *A sample index tree using Treekeys.*
-
-## Coordinate Reference Systems
-
-The I3S specification supports specifying the Coordinate Reference System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
-
-In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
-
-Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS client applications support WKT2 yet.  
-
-The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be selected with the following considerations:
-
-- Minimize the need for re-projection on the client side
-- Render in both geographic and projected coordinate reference systems
-- Support data with a global extent
-- Support local and global data with high positional accuracy
-
-All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84 ,as identified by its EPSG code 4326 and GCS China Geodetic Coordinate System 2000, as identified by its EPSG 4490 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
-
-In both modes, node index and position vertex must have the same CRS. In addition, all vertex positions are specified as an *offset* from a node's Minimum Bounding Volume (MBV) center. The MBV could be specified as a Minimum Bounding Sphere (MBS) or as an Oriented Bounding Box (OBB).
-
-As a result, for an I3S layer to be in a *global* mode the following requirements must be met:
-
-The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84 or CGCS 2000, where:
-   - The only supported CRS in this mode is EPSG code, 4326 and 4490.
-   - X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
-   - Elevation (the z component of the vertex position) is specified in meters.
-   - The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters.
-
-For an I3S layer to be in a *local* mode the following requirements must be met:
-
-All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
-  - All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
-
-All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
-
-The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
-
-## Height Models
-
-The I3S standard allows either ellipsoidal or gravity-related vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications.
-
-At version 1.5, I3S added support for vertical coordinate systems. The Well known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The [spatial reference](../docs/1.6/spatialReference.cmn.md) object also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
-
-The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
-
-For more details, see the [3DSceneLayerInfo-common](../docs/1.6/3DSceneLayer.cmn.md), [3DSceneLayerInfo-point](../docs/1.6/3DSceneLayer.psl.md) and [heightModelInfo](../docs/1.6/heightModelInfo.cmn.md) pages.
-
-## Geometry Model and Storage
-
-All Scene Layer types make use of the same fundamental set of geometry types: points and triangles.
-
-The Array Buffer View controls geometry storage and consumption representation.  For example, the Array Buffer View can require per-vertex layout of components.  This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer.
-
-Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the meshpyramid profile. The meshpyramid profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
-
-For more details regarding 3D objects and point scene layer, see [Geometry](../docs/1.7/geometry.cmn.md).
-
-For more details regarding point cloud scene layer, see [defaultGeometryShema](../docs/2.0/defaultGeometrySchema.pcsl.md).
-
-## geometryDefinition
-
-Defines the layouts of the mesh geometry and its attributes.  
-
-For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../docs/1.7/geometryDefinition.cmn.md).
-
-## Textures
-
-Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
-
-For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
-
-## textureSetDefinition
-
-Defies the set of textures that a mesh can reference. 
-
-For more details regarding Integrated Mesh and 3D objects in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).
-
-## materialDefinition
-
-List of material classes used in this layer. Physically based materials that are feature-compatible with glTF materials.  
-
-For more details regarding Integrated Mesh and 3D objects in 1.7, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
-
-## Attribute Model and Storage
-
-I3S supports two ways to access attribute data.  They can be accessed through:
-
-1. Paired services with RESTful endpoints.
-   - Enables direct access to source data.
-   - The query uses the unique feature ID key.
-
-2. Fully cached attribute information within the I3S store.
-   - Binary storage representation, which provides a significant performance benefit.
-
-Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
-
-For more details regarding point cloud scene layer, see [AttributeInfo](../docs/2.0/attributeInfo.pcsl.md).
-
-For more details on all other scene layer types, see [Attribute](../docs/1.7/attributeStorageInfo.cmn.md).
-
-## Bounding Volume Hierarchy
-
-Bounding volume hierarchy (BVH) is based on minimum bounding sphere (MBS) or oriented bounding box (OBB).
-
-The meshpyramid profile supports specifying the bounding volume in either MBS or OBB representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
-
-For more details regarding the two types of bounding volumes see [minimum bounding box](../docs/1.7/mbs.cmn.md) and [oriented bounding box](../docs/1.7/obb.cmn.md) sections.
-
-## Level of Detail
-
-Scene Layers include Levels of Detail (LoD) that apply to the whole layer and serve to generalize the layer. They are similar to image pyramids or raster vector tiling schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene Layers support Levels of Detail in a manner that preserves the identity of the individual features that are retained within any level of detail. Levels of Detail can be used to split heavy features, thin or cluster for better visuals, and integrate externally authored multiple LOD files.
-
-Note that the I3S Level of Detail concept is orthogonal to the concept of consolidated storage (batches) for a set of geometries within a level of detail. Batching  of geometries into larger geometry collection assists in optimal rendering. Geometry Array Buffers can be used to provide access to the individual geometries when needed, preserving the feature to geometry element mapping within the consolidated geometries.
-
-### Discrete Level of Detail
-
-Discrete Levels of Detail provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer a node is to the root (in the BVH tree), the lower the level of detail. The detail is reduced by texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning in order to ensure inner nodes have a balanced weight. The number of discrete Levels of Detail for the layer corresponds to the number of levels in the index tree.
-
-By using only information found in the node index document, such as bounding volume and level of detail selection metrics, a client application traversing an I3S tree can readily decide if it needs to:
-
-- Stop traversal to the node's children if the current node bounding volume is not visible.
-- Use the data in the node if the quality is appropriate, and then stop traversal to children.
-- Continue traversal until nodes with higher quality are found.
-
-I3S supports multiple level of detail selection metrics and switching level of detail models.  Details about the level of detail generation process can be optionally included in the Scene Layer's metadata.
-
-### Multiple Representations
-
-I3S Layers can be used to represent input data that already have multiple, semantically authored, levels of detail. The most common method is to represent each  semantically authored input level of detail as its own I3S Layer with visibility thresholds. The thresholds capture the range of distances for which the layer should be used.
-
-A set of I3S Layers that represent a single level of detail can be grouped within the same I3S service. For each layer within the set, the features in the leaf nodes represent the modeled features at the level of detail of the input data. Additional levels of detail can be generated automatically by extending the viewing range of each input level.
-
-Tools can also be developed to load a semantically authored levels of detail input data into a single I3S layer. In this case, the depth of the I3S index tree is fixed to the number of levels of detail present in the input data. Feature identities and geometries in each node are set based upon the input data.
-
-### Switching Models
-
-Node switching lets clients focus on the display of a node as a whole.  A node switch occurs when the content from a node's children is used to replace the content of an existing node.  This can include features, geometry, attributes and textures. Node switching can be helpful when the user needs to see more detailed information.
-
-Each interior node in the I3S tree has a set of features that represent the reduced level of detail.  This includes the details for all features covered by the node.  Due to generalization at lower Levels of Detail, not all features are present in reduced level of detail nodes.
-
-The feature IDs link the reduced level of detail feature and an interior node, as well as the descendant nodes.  Applications can determine the visual quality by using the I3S tree to display all of the features in an internal node or use the features found in its descendants.
-
-### Level of Detail Generation
-
-Integrated Mesh layer types typically come with pre-authored Levels of Detail.  If the desired level of detail does not exist, it can be generated.
-
-For example, 3D Object Layers based on the meshpyramids profile can create a level of detail pyramid for all features based on generalizing, reducing and fusing the geometries of individual features while preserving feature identity. The same approach can also be used with Integrated Mesh Layers based on the meshpyramid profile.  In this case, there are no features, and each node contains a generalized version of the mesh covered by its descendants.
-
-The bounding volume hierarchy tree is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type.
-
-|    &nbsp;        | 3D Object                    | Points                        | Point Clouds                 | Building Scene Layer |
-| -------------- | ---------------------------- | ---------------------------- |  ---------------------------- | -------------------- |
-| meshpyramids  | ![yes](images/checkmark.png) |           &nbsp;             |               &nbsp;           |            ![yes](images/checkmark.png)          |
-| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |            ![yes](images/checkmark.png)          |
-| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |         ![yes](images/checkmark.png)             |
-| Generalization | ![yes](images/checkmark.png) |             &nbsp;           |              &nbsp;           |          ![yes](images/checkmark.png)            |
-
-*Example Level of Detail generation methods based on Scene Layer type*
-
-### Selection Metrics
-
-Selection metrics help clients determine which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality.  
-
-For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.7/lodSelection.cmn.md).
 
 
 
@@ -773,6 +610,175 @@ Each node contains its own resources including [attributes](../docs/1.6/attribut
 Each resource can be individually compressed with `GZIP`.
 
 ![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0 in a 3D Object 1.6 SLPK.*
+
+
+
+## Coordinate Reference Systems
+
+The I3S specification supports specifying the Coordinate Reference System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
+
+In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
+
+Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS client applications support WKT2 yet.  
+
+The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be selected with the following considerations:
+
+- Minimize the need for re-projection on the client side
+- Render in both geographic and projected coordinate reference systems
+- Support data with a global extent
+- Support local and global data with high positional accuracy
+
+All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84 ,as identified by its EPSG code 4326 and GCS China Geodetic Coordinate System 2000, as identified by its EPSG 4490 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
+
+In both modes, node index and position vertex must have the same CRS. In addition, all vertex positions are specified as an *offset* from a node's Minimum Bounding Volume (MBV) center. The MBV could be specified as a Minimum Bounding Sphere (MBS) or as an Oriented Bounding Box (OBB).
+
+As a result, for an I3S layer to be in a *global* mode the following requirements must be met:
+
+The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84 or CGCS 2000, where:
+
+- The only supported CRS in this mode is EPSG code, 4326 and 4490.
+- X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
+- Elevation (the z component of the vertex position) is specified in meters.
+- The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters.
+
+For an I3S layer to be in a *local* mode the following requirements must be met:
+
+All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
+
+- All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
+
+All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
+
+The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to all i3s profile types.
+
+## Height Models
+
+The I3S standard allows either ellipsoidal or gravity-related vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications.
+
+At version 1.5, I3S added support for vertical coordinate systems. The Well known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The [spatial reference](../docs/1.6/spatialReference.cmn.md) object also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
+
+The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
+
+For more details, see the [3DSceneLayerInfo-common](../docs/1.6/3DSceneLayer.cmn.md), [3DSceneLayerInfo-point](../docs/1.6/3DSceneLayer.psl.md) and [heightModelInfo](../docs/1.6/heightModelInfo.cmn.md) pages.
+
+## Geometry Model and Storage
+
+All Scene Layer types make use of the same fundamental set of geometry types: points and triangles.
+
+The Array Buffer View controls geometry storage and consumption representation.  For example, the Array Buffer View can require per-vertex layout of components.  This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer.
+
+Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the meshpyramid profile. The meshpyramid profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
+
+For more details regarding 3D objects and point scene layer, see [Geometry](../docs/1.7/geometry.cmn.md).
+
+For more details regarding point cloud scene layer, see [defaultGeometryShema](../docs/2.0/defaultGeometrySchema.pcsl.md).
+
+## geometryDefinition
+
+Defines the layouts of the mesh geometry and its attributes.  
+
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../docs/1.7/geometryDefinition.cmn.md).
+
+## Textures
+
+Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
+
+For more details, see the [Textures](../docs/1.7/texture.cmn.md) section.
+
+## textureSetDefinition
+
+Defies the set of textures that a mesh can reference. 
+
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).
+
+## materialDefinition
+
+List of material classes used in this layer. Physically based materials that are feature-compatible with glTF materials.  
+
+For more details regarding Integrated Mesh and 3D objects in 1.7, see the [material definition](../docs/1.7/materialDefinitions.cmn.md).
+
+## Attribute Model and Storage
+
+I3S supports two ways to access attribute data.  They can be accessed through:
+
+1. Paired services with RESTful endpoints.
+   - Enables direct access to source data.
+   - The query uses the unique feature ID key.
+2. Fully cached attribute information within the I3S store.
+   - Binary storage representation, which provides a significant performance benefit.
+
+Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field, key-value pair arrays.  
+
+For more details regarding point cloud scene layer, see [AttributeInfo](../docs/2.0/attributeInfo.pcsl.md).
+
+For more details on all other scene layer types, see [Attribute](../docs/1.7/attributeStorageInfo.cmn.md).
+
+## Bounding Volume Hierarchy
+
+Bounding volume hierarchy (BVH) is based on minimum bounding sphere (MBS) or oriented bounding box (OBB).
+
+The meshpyramid profile supports specifying the bounding volume in either MBS or OBB representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
+
+For more details regarding the two types of bounding volumes see [minimum bounding box](../docs/1.7/mbs.cmn.md) and [oriented bounding box](../docs/1.7/obb.cmn.md) sections.
+
+## Level of Detail
+
+Scene Layers include Levels of Detail (LoD) that apply to the whole layer and serve to generalize the layer. They are similar to image pyramids or raster vector tiling schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene Layers support Levels of Detail in a manner that preserves the identity of the individual features that are retained within any level of detail. Levels of Detail can be used to split heavy features, thin or cluster for better visuals, and integrate externally authored multiple LOD files.
+
+Note that the I3S Level of Detail concept is orthogonal to the concept of consolidated storage (batches) for a set of geometries within a level of detail. Batching  of geometries into larger geometry collection assists in optimal rendering. Geometry Array Buffers can be used to provide access to the individual geometries when needed, preserving the feature to geometry element mapping within the consolidated geometries.
+
+### Discrete Level of Detail
+
+Discrete Levels of Detail provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer a node is to the root (in the BVH tree), the lower the level of detail. The detail is reduced by texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning in order to ensure inner nodes have a balanced weight. The number of discrete Levels of Detail for the layer corresponds to the number of levels in the index tree.
+
+By using only information found in the node index document, such as bounding volume and level of detail selection metrics, a client application traversing an I3S tree can readily decide if it needs to:
+
+- Stop traversal to the node's children if the current node bounding volume is not visible.
+- Use the data in the node if the quality is appropriate, and then stop traversal to children.
+- Continue traversal until nodes with higher quality are found.
+
+I3S supports multiple level of detail selection metrics and switching level of detail models.  Details about the level of detail generation process can be optionally included in the Scene Layer's metadata.
+
+### Multiple Representations
+
+I3S Layers can be used to represent input data that already have multiple, semantically authored, levels of detail. The most common method is to represent each  semantically authored input level of detail as its own I3S Layer with visibility thresholds. The thresholds capture the range of distances for which the layer should be used.
+
+A set of I3S Layers that represent a single level of detail can be grouped within the same I3S service. For each layer within the set, the features in the leaf nodes represent the modeled features at the level of detail of the input data. Additional levels of detail can be generated automatically by extending the viewing range of each input level.
+
+Tools can also be developed to load a semantically authored levels of detail input data into a single I3S layer. In this case, the depth of the I3S index tree is fixed to the number of levels of detail present in the input data. Feature identities and geometries in each node are set based upon the input data.
+
+### Switching Models
+
+Node switching lets clients focus on the display of a node as a whole.  A node switch occurs when the content from a node's children is used to replace the content of an existing node.  This can include features, geometry, attributes and textures. Node switching can be helpful when the user needs to see more detailed information.
+
+Each interior node in the I3S tree has a set of features that represent the reduced level of detail.  This includes the details for all features covered by the node.  Due to generalization at lower Levels of Detail, not all features are present in reduced level of detail nodes.
+
+The feature IDs link the reduced level of detail feature and an interior node, as well as the descendant nodes.  Applications can determine the visual quality by using the I3S tree to display all of the features in an internal node or use the features found in its descendants.
+
+### Level of Detail Generation
+
+Integrated Mesh layer types typically come with pre-authored Levels of Detail.  If the desired level of detail does not exist, it can be generated.
+
+For example, 3D Object Layers based on the meshpyramids profile can create a level of detail pyramid for all features based on generalizing, reducing and fusing the geometries of individual features while preserving feature identity. The same approach can also be used with Integrated Mesh Layers based on the meshpyramid profile.  In this case, there are no features, and each node contains a generalized version of the mesh covered by its descendants.
+
+The bounding volume hierarchy tree is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type.
+
+| &nbsp;         | 3D Object                    | Points                       | Point Clouds                 | Building Scene Layer         |
+| -------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| meshpyramids   | ![yes](images/checkmark.png) | &nbsp;                       | &nbsp;                       | ![yes](images/checkmark.png) |
+| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
+| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
+| Generalization | ![yes](images/checkmark.png) | &nbsp;                       | &nbsp;                       | ![yes](images/checkmark.png) |
+
+*Example Level of Detail generation methods based on Scene Layer type*
+
+### Selection Metrics
+
+Selection metrics help clients determine which level of detail to render.  For example, clients need to weigh the options of screen size, resolution, bandwidth, and memory to reach the target quality.  
+
+For more details regarding Integrated Mesh, 3D objects and point scene layer, see the [Level of Detail Selection](../docs/1.7/lodSelection.cmn.md).
+
+
 
 # JSON Resources
 

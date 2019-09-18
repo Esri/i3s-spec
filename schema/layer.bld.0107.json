@@ -5,6 +5,15 @@
   "description-href": "description/layer.bld.0106.md",
   "related": "stats.bld.0107",
   "$include": "layer.bld.0106.json",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "layerType",
+    "fullExtent",
+    "spatialReference",
+    "sublayers"
+  ],
   "additionalProperties": false,
   "esriDocumentation": {
     "examples": [

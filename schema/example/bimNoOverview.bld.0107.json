@@ -1,0 +1,72 @@
+{
+    "id": 0,
+    "name": "11 Jay St - 2015",
+    "layerType": "Building",
+    "alias": "11 Jay St - 2015",
+    "version": "1.7",
+    "spatialReference": {
+        "wkid": 2875,
+        "latestWkid": 2875
+    },
+    "fullExtent": {
+        "xmin": 6275739.750599888153,
+        "ymin": 2329145.64472599281,
+        "xmax": 6275810.25458117947,
+        "ymax": 2329220.688075052574,
+        "spatialReference": {
+            "wkid": 4326,
+            "latestWkid": 4326,
+            "vcsWkid": 5703,
+            "latestVcsWkid": 5703
+        },
+        "zmin": 396.6794973805014,
+        "zmax": 412.033626022210115
+    },
+    "sublayers": [
+        {
+            "id": 1,
+            "layerType": "3DObject",
+            "name": "ElectricalFixtures",
+            "alias": "ElectricalFixtures",
+            "modelName": "ElectricalFixtures",
+            "discipline": "Electrical",
+            "visibility": true
+        },
+        {
+            "id": 2,
+            "layerType": "3DObject",
+            "name": "LightingFixtures",
+            "alias": "LightingFixtures",
+            "modelName": "LightingFixtures",
+            "discipline": "Electrical",
+            "visibility": true
+        },
+        {
+            "id": 3,
+            "layerType": "3DObject",
+            "name": "DuctFitting",
+            "alias": "DuctFitting",
+            "modelName": "DuctFitting",
+            "discipline": "Mechanical",
+            "visibility": true
+        },
+        {
+            "id": 4,
+            "layerType": "3DObject",
+            "name": "Ducts",
+            "alias": "Ducts",
+            "modelName": "Ducts",
+            "discipline": "Mechanical",
+            "visibility": true
+        },
+        {
+            "id": 5,
+            "layerType": "3DObject",
+            "name": "MechanicalEquipment",
+            "alias": "MechanicalEquipment",
+            "modelName": "MechanicalEquipment",
+            "discipline": "Mechanical",
+            "visibility": true
+        }
+    ]
+}

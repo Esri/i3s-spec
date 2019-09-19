@@ -1,0 +1,7 @@
+{
+  "title": "filter [building profile]",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The filter object can be applied to a building scene layer. Filter allows client applications to reduce the drawn elements of a building to specific types and values.",
+  "$include": "filter.bld.0106.json"
+}

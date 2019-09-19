@@ -1,0 +1,30 @@
+{
+  "title": "Building Scene Layer",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description-href": "description/layer.bld.0106.md",
+  "related": "stats.bld.0107",
+  "$include": "layer.bld.0106.json",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "layerType",
+    "fullExtent",
+    "spatialReference",
+    "sublayers"
+  ],
+  "additionalProperties": false,
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Building Scene Layer",
+        "code_href": "example/bim.bld.0107.json"
+      },
+      {
+        "title": "Building Scene Layer without overview",
+        "code_href": "example/bimNoOverview.bld.0107.json"
+      }
+    ]
+  }
+}

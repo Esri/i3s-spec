@@ -16,7 +16,7 @@ The following layer types have been specified and the standard validated via imp
 - [Integrated Mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
 - [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
 - [Point Cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
-- [Building Scene Layer](docs/1.6/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
+- [Building Scene Layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
 The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#scene-layer-packages), as well as the specification for accessing I3S resources as scene service REST endpoints, are described in this standard as open formats.  The REST endpoint implementations are described in the ReadMe for each profile. 
@@ -56,9 +56,15 @@ The Point Cloud Scene Layer specification is going through the adoption process 
 The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC I3S Community Standard:
 
 - The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification.
-- Inclusion of the [Building Scene Layer](docs/1.6/BSL_ReadMe.md), first introduced at I3S 1.6.
+- Inclusion of the [Building Scene Layer](docs/1.7/BSL_ReadMe.md), first introduced at I3S 1.6.
 
 ## What's New?
+
+### Version 1.7
+
+Released 10/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specificaiton upgrade to 1.7.
+
+Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
 
 ### Version 1.6
 
@@ -71,9 +77,6 @@ Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
 
 #### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
-
-### Version 1.7
-Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
 
 
 ### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)

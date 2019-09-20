@@ -140,7 +140,7 @@ A node's bounding-volume determines if a node is within the current 3D view. If 
 
 ### Indexing Model and Tree Structure
 
-The indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to load resources.
+Depending on the I3S version, the indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to load resources.
 
 ### Node Paging and the Node Page Index
 
@@ -148,7 +148,7 @@ Nodes represent the spatial index of the data as a [bounding-volume hierarchy](#
 
 Nodes are stored in a flat array and divided by a fixed size page.  Each node references its children using their index in this array.  To traverse the tree, clients start by loading the node page that contains the root.  Then, clients identify the pages required to access its children within the view.  The process is repeated until the desired nodes have been discovered.   
 
-Note that for historical reasons, the node index must be a **stringified integer**.   This index must be unique and is used for identification only.  It has no other semantic meaning in I3S. 
+Note that for backward compatability reasons, the node index must be a **stringified integer**.   This index must be unique and is used for identification only.  It has no other semantic meaning in I3S. 
 
 For more details regarding 3D Objects and Integrated Mesh in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
 
@@ -158,7 +158,7 @@ For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodeP
 
 Prior to the introduction of node paging, any indexing scheme can be used for I3S version 1.6 and earlier.  This is a brief example for "treekeys". 
 
-The treekey format is loosely modeled on binary search trees. The key value indicates the level and sibling association of a given node.  Since the key directly indicates the position of the node in the tree, it allows the nodes to be sorted in a single dimension.  They treekeys are stingified integers.
+The treekey format is loosely modeled on binary search trees. The key value indicates the level and sibling association of a given node.  Since the key directly indicates the position of the node in the tree, it allows the nodes to be sorted in a single dimension.  Treekeys are stringified integers.
 
 Treekeys contain levels which are separated by dashes.  The root node is at level 1 and should always be indicated by the ID `root`.
 
@@ -172,9 +172,9 @@ Treekeys contain levels which are separated by dashes.  The root node is at leve
 
 I3S is a REST API.  Each scene layer profile has different components and features.  For details on a specific profile and version, refer to the individual README documents. 
 
-Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md) and [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md).
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).
 
-Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.7/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
+Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
 Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
 
@@ -213,7 +213,7 @@ The following examples are included to provide a structural overview.
 ```
 
 
-Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, `sharedResources` and `nodeDocument` are included but not used in 1.7.
+Spec version 1.7 is backward compatible with 1.6.  For all of clients to be able to read 1.7, `sharedResources` and `nodeDocument` are included but not used in 1.7.
 
 The following API methods are available for 3D Object scene layer:
 
@@ -420,43 +420,23 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/s
 
 # Scene Layer Packages
 
-Scene Layer Packages (SLPK) allow a complete I3S layer to be consolidated into a single file.  It is designed to be directly consumed by applications.
+Scene Layer Packages (SLPK) consolidate an I3S layer into a single file.  It is designed to be directly consumed by applications.
 
 An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources.  The archiving method for SLPK is `STORE`, meaning that the archive itself is not compressed.  The individual resources within the SLPK may be compressed.  Resource compression is recommended but not required.
 
 Both 64-bit and 32-bit zip archives are supported.  64-bit is required for data larger than 2GB.
 
-Please note that this is method is slightly different than a typical zip archive.  Generally, when a file is added to a zip archive, the new file is individually compressed and the overall archive is compressed. **That is not the case for SLPK.**  When adding files to an SLPK, the new file is compressed, but the overall archive remains uncompressed and is archived using `STORE`. 
+Please note that this method is slightly different than a typical zip archive.  In general, when a file is added to a zip archive, the new file is individually compressed and the overall archive is compressed. **That is not the case for SLPK.**  When adding files to an SLPK, the new file is compressed, but the overall archive remains uncompressed and is archived using `STORE`. 
 
 This is an example of a geometry resource opened in 7-zip.  Notice that both the Size and the Packaged Size are equal.  The method is `STORE`.
 
 ![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
 
-Here is a counter example with a typical zip archive. Notice that the Size and Packaged Size are not equal, and that the method is `DEFLATE`.
-
-![Example of standard zip archive](images/slpk_17_badzip.PNG) *Counter example zip archive.*
-
 **Resource Compression** 
 
-Resources may be individually compressed before they are added to the archive.  Compression is not mandatory but is recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
+Resources may be individually compressed before they are added to the archive. Compression is not mandatory, but recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
 
 `GZIP` is the only supported compression scheme.
-
-**Folder Pattern**
-
-In general, the folder pattern follows the URL pattern of the service.  Check the ReadMe documents for each profile type to see the schemas.
-
-However, there are some legacy resources that do not follow the the folder pattern.
-
-- `3DSceneLayer.json.gz`
-  - Stored in the central directory of the SLPK
-  - E.g. C:\Temp\example.slpk\3DSceneLayer.json.gz
-- `3DNodeIndexDocument.json.gz` 
-  - Stored in the node resource
-  - E.g. C:\Temp\example.slpk\nodes\\{nodeID}\3DNodeIndexDocument.json.gz
-- `sharedResource.json.gz`
-  - Stored in the shared folder in the node resource
-  - E.g. C:\Temp\example.slpk\nodes\\{nodeID}\shared\sharedResource.json.gz
 
 **File Extensions**
 
@@ -468,7 +448,6 @@ Here are a few examples of SLPK file extensions:
 - .bin (PNG)
 - .bin.dds
 - .json
-- (and more)
 
 These file types can be compressed with `GZIP`, which includes the previous extension followed by `.gz`.  For example, `.json.gz`.
 
@@ -524,25 +503,12 @@ The central directory includes:
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.7/3DSceneLayer.cmn.md)
 - An MD5 [hash](../docs/1.7/slpk_hashtable.cmn.md) to improve loading time
 
-![](images/slpk_17_topfolder.PNG) *Example central directory in an 3D Object I3S 1.7 SLPK opened in 7-Zip.*
-
-The nodepages folder contains the list of nodes in each page.  Nodes are stored fixed-size pages in contiguously in a flat array.
-
-![](images/slpk_17_nodepage.PNG) *Example node pages folder in a 3D Object 1.7 SLPK.*
-
-
-The nodes folder contains the full list of nodes.  
-
-![](images/slpk_17_nodelist.PNG) *Example nodes folder in a 3D Object 1.7 SLPK.*
-
+The nodepages folder contains the list of nodes in each page.  Nodes are stored fixed-size pages in contiguously in a flat array. The nodes folder contains the full list of nodes.  
 
 Each node contains its own resources including [attributes](../docs/1.7/attributeStorageInfo.cmn.md), [features](../docs/1.7/featureAttribute.cmn.md), [geometries](../docs/1.7/geometryAttribute.cmn.md), [shared resources](../docs/1.7/sharedResource.cmn.md), [textures](../docs/1.7/texture.cmn.md), and a [3DNodeIndexDocument](../docs/1.7/3DNodeIndexDocument.cmn.md).  The shared resources are included for backwards compatibility with 1.6 and are not used in 1.7.
 
-![](images/slpk_17_individualnode.PNG) *Example node in a 3D Object 1.7 SLPK.*
 
 Each resource can be individually compressed with `GZIP`.
-
-![slpk_17_individualnode](images/slpk_17_compressedresource.PNG) *Example compressed attribute resource in node 1 in a 3D Object 1.7 SLPK*
 
 ### 1.6 SLPK Structure
 
@@ -597,21 +563,11 @@ The central directory includes:
 - A *3dSceneLayer.json.gz* file that defines the [Scene Layer](../docs/1.6/3DSceneLayer.cmn.md)
 - A *metadata.json* file that describes the content of the SLPK
 
-![](images/slpk_16_topfolder.PNG) *Example central directory in an I3S 3D Object 1.6 SLPK opened in 7-Zip.*
-
 The *nodes* folder contains each node in a folder in a tree structure. 
-
-![](images/slpk_16_nodesfolder.PNG) *Example nodes folder in a 3D Object 1.6 SLPK.*
 
 Each node contains its own resources including [attributes](../docs/1.6/attributeStorageInfo.cmn.md), [features](../docs/1.6/featureData.cmn.md), [geometries](../docs/1.6/geometryAttribute.cmn.md), [shared resources](../docs/1.6/sharedResource.cmn.md), [textures](../docs/1.6/texture.cmn.md), and a [3DNodeIndexDocument](../docs/1.6/3DNodeIndexDocument.cmn.md).
 
-![](images/slpk_16_individualnode.PNG) *Example node 1-0 in a 3D Object 1.6 SLPK.*
-
 Each resource can be individually compressed with `GZIP`.
-
-![](images/slpk_16_compressedresource.PNG) *Example compressed attribute resource in node 1-0 in a 3D Object 1.6 SLPK.*
-
-
 
 ## Coordinate Reference Systems
 
@@ -763,12 +719,12 @@ For example, 3D Object Layers based on the meshpyramids profile can create a lev
 
 The bounding volume hierarchy tree is built based on the spatial distribution of the features.  The method used to create the levels depends on the Scene Layer type.
 
-| &nbsp;         | 3D Object                    | Points                       | Point Clouds                 | Building Scene Layer         |
-| -------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| meshpyramids   | ![yes](images/checkmark.png) | &nbsp;                       | &nbsp;                       | ![yes](images/checkmark.png) |
-| Thinning       | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
-| Clustering     | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
-| Generalization | ![yes](images/checkmark.png) | &nbsp;                       | &nbsp;                       | ![yes](images/checkmark.png) |
+| &nbsp;         |Integrated Mesh  | 3D Object                    | Points                       | Point Clouds                 | Building Scene Layer         |
+| -------------- | ----------------|---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| meshpyramids   | ![yes](images/checkmark.png) |![yes](images/checkmark.png) | &nbsp;                       | &nbsp;                       | ![yes](images/checkmark.png) |
+| Thinning       | ![yes](images/checkmark.png) |![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
+| Clustering     | ![yes](images/checkmark.png) |![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
+| Generalization | ![yes](images/checkmark.png) |![yes](images/checkmark.png) | &nbsp;                       | &nbsp;                       | ![yes](images/checkmark.png) |
 
 *Example Level of Detail generation methods based on Scene Layer type*
 

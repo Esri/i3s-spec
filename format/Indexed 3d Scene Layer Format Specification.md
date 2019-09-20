@@ -111,7 +111,7 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
 * [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface that may include vegetation, buildings and roads)
 * [Point](../docs/1.6/Point_ReadMe.md) (e.g. a collection of point data, like individual trees in a forest)
 * [Point Cloud](../docs/2.0/pcsl_ReadMe.md) (e.g. a volumetric collection of point data, like lidar data)
-* [Building](../docs/1.6/BSL_ReadMe.md) (e.g. a building including its components, such as windows, doors, chairs, etc.)
+* [Building](../docs/1.7/BSL_ReadMe.md) (e.g. a building including its components, such as windows, doors, chairs, etc.)
 
 
 # Organization and Structure
@@ -174,7 +174,7 @@ I3S is a REST API.  Each scene layer profile has different components and featur
 
 Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md) and [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md).
 
-Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
+Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.7/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
 Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
 

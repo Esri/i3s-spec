@@ -15,8 +15,8 @@ The store object describes the exact physical storage of a layer and enables the
 | rootNode | string | Relative URL to root node resource. |
 | **version** | string | Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server. |
 | extent | number[4] | The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS. |
-| indexCRS | string | The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL. |
-| vertexCRS | string | The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL. |
+| indexCRS | string | The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL. Needs to be identical with the spatial reference. |
+| vertexCRS | string | The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL. Needs to be identical with the spatial reference. |
 | normalReferenceFrame | string | Describes the coordinate reference frame used for storing normals.  <div>Possible values are:<ul><li>`east-north-up`: Normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS.</li><li>`earth-centered`: Normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.  Default value for OGC.</li><li>`vertex-reference-frame`: Normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS.</li></ul></div> |
 | nidEncoding | string | MIME type for the encoding used for the Node Index Documents. Example: application/vnd.esri.I3S.json+gzip; version=1.6. |
 | featureEncoding | string | MIME type for the encoding used for the Feature Data Resources. For example: application/vnd.esri.I3S.json+gzip; version=1.6. |

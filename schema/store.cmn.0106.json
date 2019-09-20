@@ -54,11 +54,11 @@
     },
     "indexCRS": {
       "type": "string",
-      "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL. Needs to be identical with the spaticial reference."
+      "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL. Needs to be identical with the spatial reference."
     },
     "vertexCRS": {
       "type": "string",
-      "description": "The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL. Needs to be identical with the spaticial reference."
+      "description": "The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL. Needs to be identical with the spatial reference."
     },
     "normalReferenceFrame": {
       "type": "string",

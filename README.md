@@ -60,6 +60,12 @@ The following changes to the I3S community specification are yet to be proposed 
 
 ## What's New?
 
+### Version 1.7
+
+Released 10/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specificaiton upgrade to 1.7.
+
+Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
+
 ### Version 1.6
 
 Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
@@ -70,10 +76,7 @@ Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
 - [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated. This property can be used in conjunction with the associated feature layer for editing.
 
 #### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
-- [Building Scene Layer](docs/1.7/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
-
-### Version 1.7
-Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
+- [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
 
 
 ### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)

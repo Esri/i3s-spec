@@ -140,7 +140,7 @@ A node's bounding-volume determines if a node is within the current 3D view. If 
 
 ### Indexing Model and Tree Structure
 
-Depending on the I3S version the indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to load resources.
+Depending on the I3S version, the indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to load resources.
 
 ### Node Paging and the Node Page Index
 
@@ -158,7 +158,7 @@ For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodeP
 
 Prior to the introduction of node paging, any indexing scheme can be used for I3S version 1.6 and earlier.  This is a brief example for "treekeys". 
 
-The treekey format is loosely modeled on binary search trees. The key value indicates the level and sibling association of a given node.  Since the key directly indicates the position of the node in the tree, it allows the nodes to be sorted in a single dimension.  They treekeys are stringified integers.
+The treekey format is loosely modeled on binary search trees. The key value indicates the level and sibling association of a given node.  Since the key directly indicates the position of the node in the tree, it allows the nodes to be sorted in a single dimension.  Treekeys are stringified integers.
 
 Treekeys contain levels which are separated by dashes.  The root node is at level 1 and should always be indicated by the ID `root`.
 
@@ -420,7 +420,7 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/s
 
 # Scene Layer Packages
 
-Scene Layer Packages (SLPK) allows to consolidate a I3S layer into a single file.  It is designed to be directly consumed by applications.
+Scene Layer Packages (SLPK) consolidate an I3S layer into a single file.  It is designed to be directly consumed by applications.
 
 An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources.  The archiving method for SLPK is `STORE`, meaning that the archive itself is not compressed.  The individual resources within the SLPK may be compressed.  Resource compression is recommended but not required.
 
@@ -434,7 +434,7 @@ This is an example of a geometry resource opened in 7-zip.  Notice that both the
 
 **Resource Compression** 
 
-Resources may be individually compressed before they are added to the archive. Compression is not mandatory but recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
+Resources may be individually compressed before they are added to the archive. Compression is not mandatory, but recommended for resource types that would benefit from additional compression. In the case of an SLPK, all resources should be compressed except for PNG and JPG.  
 
 `GZIP` is the only supported compression scheme.
 

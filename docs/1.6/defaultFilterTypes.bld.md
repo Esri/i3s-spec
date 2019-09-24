@@ -1,6 +1,6 @@
 # Default Filter Types for Building Scene Layer 
 
-Building scene layers can be filtered by field types in the building category layer.  These predefined filter types are always included in the statistical information of the building scene layer.  Some filter types are common to all buildings. In addition to the default filters, other fields can be included by setting the modelName to custom.  Filter types are used in the buildings [statistical information](attributestats.md) as well as in the [filter authoring info](filterAuthoringInfo.md). The following list contains all default filter types and modelNames when creating a building scene layer using ArcGIS.
+Building scene layers can be filtered by field types in the building category layer.  These predefined filter types are always included in the statistical information of the building scene layer.  Some filter types are common to all buildings. In addition to the default filters, other fields can be included by setting the modelName to custom.  Filter types are used in the buildings [statistical information](attributestats.bld.md) as well as in the [filter authoring info](filterAuthoringInfo.bld.md). The following list contains all default filter types and modelNames when creating a building scene layer using ArcGIS.
 
 ### Overiew default filter types
 

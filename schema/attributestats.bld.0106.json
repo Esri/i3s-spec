@@ -30,7 +30,7 @@
         "systemClass",
         "custom"
       ],
-      "description": "A fixed string of building information, similar to a filter. Used by client applications to define specific behavior for the modelName. The [default filter types](description/defaultFilterTypes.bld.0106.md) define the modelName for the attribute statistics."
+      "description": "A fixed string of building information, similar to a filter. Used by client applications to define specific behavior for the modelName. The [default filter types](./defaultFilterTypes.bld.md) define the modelName for the attribute statistics."
     },
     "min": {
       "type": "number",

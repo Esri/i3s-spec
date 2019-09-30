@@ -17,10 +17,12 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Nodes](#nodes)  <br />
 &emsp;&emsp;[Node resources](#Node-resources) <br />
 &emsp;&emsp;&emsp;[3D Node Index Document](#3D-Node-Index-Document) <br />
+&emsp;&emsp;&emsp;[Features](#Features) <br />
 &emsp;&emsp;&emsp;[Geometry](#Geometry) <br />
 &emsp;&emsp;&emsp;[Attributes](#Attributes) <br />
 &emsp;&emsp;&emsp;[Textures](#Textures) <br />
 &emsp;&emsp;&emsp;[Materials](#Materials) <br />
+&emsp;&emsp;[Node resources for I3S 1.6 and earlier](Node-resources-for-I3S-1.6-and-earlier) <br />
 &emsp;[Indexing Model and Tree Structure](#indexing-model-and-tree-structure)  <br />
 &emsp;&emsp;[Node Paging and the Node Page Index](#node-paging-and-the-node-page-index)  <br />
 &emsp;&emsp;[Indexing for I3S 1.6 and earlier](#Indexing-for-I3S-1.6-and-earlier)  <br />
@@ -99,7 +101,7 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
 
 Depending on the I3S version, the indexing model can vary.  In I3S version 1.7, nodes are indexed using a [node page index](#Node-Paging-and-the-Node-Page-Index-for-I3S-1.7).  In I3S version 1.6 and earlier, nodes can be indexed using most common indexing models (e.g. [treekeys](indexing-for-I3S-1.6-and-earlier), quadtrees, R-trees).  Within the indexing scheme, the regions are organized in a [bounding volume hierarchy](#Bounding-Volume-Hierarchy).  The specific indexing scheme is hidden from clients since they only need to load resources.
 
-### Node Paging and the Node Page Index
+### Node Page Index
 
 Nodes represent the spatial index of the data as a [bounding-volume hierarchy](#bounding-volume-hierarchy). To reduce the number of requests required to traverse the tree, they are organized into pages. Loading a page of nodes instead of an individual node allows clients to get more data with a single round-trip.  This structure reduces the overall number of round-trips and increases performance.  One node page is considered one resource.
 
@@ -122,7 +124,7 @@ For more details regarding Point Cloud in 2.0, see [nodePages](../docs/2.0/nodeP
 
 Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodepages/8
 
-### Indexing for I3S 1.6 and earlier
+### Node Index for I3S 1.6 and earlier
 
 Prior to the introduction of node paging, any indexing scheme can be used for I3S version 1.6 and earlier.  This is a brief example for "treekeys". 
 
@@ -133,6 +135,22 @@ Treekeys contain levels which are separated by dashes.  The root node is at leve
 ![A sample index tree using Treekeys](images/figure-01.png)
 
 *A sample index tree using Treekeys.*
+
+### 3D Node Index Document
+
+The [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md) is a JSON resource that describes a node, its index, and information about other sub-resources including bounding-volume information, LoD selection criteria, and parent-child relationships.  This resource allows for paging or tree traversal without the need to access the more voluminous content within a node.
+
+**Access the 3D Node Index Document from REST API**
+
+The following API methods are available for 3D Object scene layer:
+
+| Resource             | Type   | Description                                                  | URL Template                         |
+| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
+| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
+
+- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+
+Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0
 
 ### Bounding Volume Hierarchy
 
@@ -160,23 +178,6 @@ Features, attributes, and geometry are bundled.  This balances the node size, wh
 Each set of features and geometries contains all the data elements to render a complete feature.  In order to avoid dependency on the features, the geometries are available as a separate binary resource. The geometry data includes all vertex attributes, feature counts, and mesh segmentation.  There are always an equal number of features and geometries.  
 
 A node's bounding-volume determines if a node is within the current 3D view. If a node is in view, then the client determines the level of detail to display based on the view parameters, the node's bounding volume, and the [level of detail selection metrics](../docs/1.7/lodSelection.cmn.md).  Nodes are loaded according to their indexing model.
-
-
-### 3D Node Index Document
-
-The [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md) is a JSON resource that describes a node, its index, and information about other sub-resources including bounding-volume information, LoD selection criteria, and parent-child relationships.  This resource allows for paging or tree traversal without the need to access the more voluminous content within a node.
-
-**Access the 3D Node Index Document from REST API**
-
-The following API methods are available for 3D Object scene layer:
-
-| Resource             | Type   | Description                                                  | URL Template                         |
-| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
-| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
-
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-
-Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0
 
 ### Geometry
 
@@ -347,29 +348,20 @@ For more details regarding Integrated Mesh and 3D objects in 1.7, see the [mater
 
 ## Node resources for I3S 1.6 and earlier
 
-**Shared Resources must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
+To assure backwardcompatability with 1.6 clients need to have the Node index document as well as the shared resources avialable.
+
+### Shared
+
+Shared resource includes the material definition of the node.
 
 | Resource         | Type   | Description                                                  | URL Template                                                 |
 | ---------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Shared Resources | `JSON` | Legacy texture and material description. **Not used in 1.7.** | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared` |
 
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
+- `layerID`: Integer. ID of the associated layer. ArcGIS clients expect this to be `0`.
 - `resourceID`: Integer. ID of the associated node. 
 
 Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/shared
-
-
-
-**Node Document must be included for backwards compatibility with 1.6, but is only used by 1.6 clients.**
-
-| Resource      | Type   | Description                                   | URL Template                                            |
-| ------------- | ------ | --------------------------------------------- | ------------------------------------------------------- |
-| Node Document | `JSON` | Description of the node. **Not used in 1.7.** | `http://serviceURL/layers/{layerID}/nodes/{resourceID}` |
-
-- `layerID`: Integer. ID of the associated layer. Esri clients expect this to be `0`.
-- `resourceID`: Integer. ID of the associated resource. 
-
-Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98
 
 ## Statistics
 Statistics are used by clients. (Need to have full definition of statistics and how they are used)

@@ -355,29 +355,27 @@ Example: http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/attributes
 
 ### Textures
 
-Textures are stored as a binary resource with a node. The texture resource contains the texture images.  I3S supports most commonly used image formats, like JPEG and PNG, and compressed texture formats such as S3TC and ETC2.  Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using `textureEncoding` declarations.
+The texture resource contains texture image files.  Textures are stored as a binary resource within a node.  I3S supports the image formats JPEG and PNG, as well as compressed texture formats S3TC and ETC2.  The authoring application needs to provide the appropriate texture encoding declaration, using MIME types such as “image/jpeg” (for JPEG) and “image/vnd-ms.dds” (for S3TC).   Textures should be in RGBA format. The integrated mesh and 3D object profile types support textures.  
 
-For more details, see the [Textures](../docs/1.7/texture.cmn.md) section or in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md). .
+The textures file is a binary resource that contains images to be used as textures for the features in the node.  A single texture file contains 1 to n textures for a single specific texture level of detail. It can contain a single texture or multiple individual textures, as part of a texture atlas.  
 
-The Textures file is a binary resource that contains images to be used as textures for the features in the store.  A single Texture.bin file contains 1 to n textures for a single specific texture level of detail. It can contain a single texture atlas or multiple individual textures.  The bundling is determined by the authoring application so that specific aspects of the materials and textures used can be taken into account (e.g. tiling).
+Textures are expected in the following formats: 0_0.jpg for JPEG, 0.bin for PNG, 0_0_1.dds for S3TC, and 0_0_2.ktx for ETC2. The texture resource must include either a JPEG or PNG texture file for proper drawing.
 
-The number and volume of textures tends to be the limiting display factor, especially for web and mobile clients.  Here are are few guidelines to get the most out of texture resources.
+In 1.6, the size property will give you the width of a texture. In 1.7, the texelCountHint can be used to determine the cost of loading a node as well as for use in texel-resolution based LOD switching. Compressed textures such as S3TC and ETC may contain mipmaps, which can also be used for LOD switching. When compressing textures with with mipmaps,  the texture dimensions must 2^n sized and the smallest size allowed is 4x4.  
 
-I3S supports multiple texture formats.  The format used depends on the use case. For example, a client might choose to consume JPEG in low bandwidth conditions since they are efficient to transmit and widely used. However, clients constrained for memory or computing resources might choose to directly consume compressed textures such for scalability and performance.
+The number and volume of textures tends to be the limiting display factor, especially for web and mobile clients.  The format used depends on the use case. For example, a client might choose to consume JPEG in low bandwidth conditions since they are efficient to transmit and widely used. Clients constrained for memory or computing resources might choose to directly consume compressed textures performance reasons.
 
-I3S supports most commonly used image formats such as JPEG/PNG, as well as rendering optimized compressed texture formats such as S3TC. The authoring application needs to provide the appropriate texture encoding declaration using MIME types such as “image/jpeg” (for JPEG) and “image/vnd-ms.dds” (for S3TC).
-
-Multiple textures can be combined into a single texture using array buffer views.  Large texture atlases (e.g. 2048 x 2048 px) with one texture per bundle are recommended.
+For more details, see the [Textures](../docs/1.7/texture.cmn.md) section or in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).  
 
 **Atlas Usage and Regions**
 
-Individual textures should be aggregated into texture atlases.  Each individual texture becomes a subtexture.  As with all texture resources, the atlas has to be 2^n sized on both dimensions, where n ranges [3,12].  Width and height do not need to be equal.  Subtextures also need to be 2^n sized with n in range [3,12].  Subtextures with other dimensions can cause border artifacts when filtering or MIP-mapping.  A subtexture can be padded to the nearest lower 2^n size by interpolating or scaling pixels.
+Individual textures should be aggregated into texture atlases. Large texture atlases (e.g. 2048 x 2048 px) with one texture per node are recommended. Each individual texture becomes a subtexture.  As with all texture resources, the atlas has to be 2^n sized on both dimensions, where n ranges [3,12].  Width and height do not need to be equal.  Subtextures also need to be 2^n sized with n in range [3,12].  Subtextures with other dimensions can cause border artifacts when filtering or MIP-mapping.  A subtexture can be padded to the nearest greater 2^n size by interpolating or scaling pixels.
 
 Subtexture pixels are identified by the subimageRegion attribute: [umin, vmin, umax, vmax].  Region information is passed to the shader using a separate vertex attribute, which converts a UV vertex coordinate to a UVR coordinate.  R encodes the [umin, vmin, umax, vmax] attribute values into 4 UInt16 values.
 
 **Texture coordinates**
 
-Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the "repeat" wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. The client is expected to use the subimage region values and the texture coordinates to best handle repeating textures in atlases.
+Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the "repeat" wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. Repeating textures may repeat vertically, horizontally, or both. The client is expected to use the subimage region values and the texture coordinates to best handle repeating textures in atlases.
 
 **Access for textures from REST API**
 

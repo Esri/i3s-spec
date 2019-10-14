@@ -94,6 +94,59 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
 * [Point Cloud](../docs/2.0/pcsl_ReadMe.md) (e.g. a volumetric collection of point data, like lidar data)
 * [Building](../docs/1.7/BSL_ReadMe.md) (e.g. a building including its components, such as windows, doors, chairs, etc.)
 
+I3S is designed to support very large 3D content of global extent with many detailed features. Clients can visualize scene layers takign advantage of the multi-LOD representation and defining symbology to create the right experience for their 3D content. You can convert and validate your I3S scene layers (SLPK) using the [I3S Converter](../i3s_converter/i3s_converter_ReadMe.md). I3S continues to evolve adding more functionality. You can find an overview of [Version History of I3S](../README.md).
+
+
+I3S supports many different implementations.  The implementation decisions can be made based on the type of 3D data and the layer profile. Here are a few implementation options:
+
+**The Minimum Bounding Volume (MBV)**
+
+- Minimum Bounding Sphere (MBS)
+- Oriented Bounding Box (OBB)
+
+**Node Structure**
+
+- Expanded: Supports clients that want to get more complete metadata about a node's position in the bounding volume hierarchy (BVH) and its immediate neighborhood.  Each node index provides pointers to its parent, children, and sibling.  Used by meshpyramids and points profiles.
+- Fixed-size: Supports paged access. Minimal structural elements: only the bounding volume, first child reference, child count, level of detail selection data, etc.  Used by the Point Cloud profile.
+
+**Embedded Geometry**
+
+- Included as text (JSON) with other metadata within a feature data resource.  Supports profiles where run-length encoding of feature IDs along the vertex data is suboptimal.  Typed array buffer and fixed format binary buffers are supported.  Used by the points profile.
+
+**Binary Geometry**
+
+- For Voluminous, ready to render geometries and cached attributes.  Typed array buffer and fixed format binary buffers are supported.  Used by mesh pyramids (array buffer views using the Khronos Types Array specification) and Point Clouds (to support domain specific data compression).
+
+**Level of Detail Selection**
+
+Level of detail switch based on:
+
+- maxScreenThreshold: The screen size of the node's minimum bounding volume.  Used by mesh pyramids
+- screenSpaceRelative: The scale of the node's minimum bounding volume.  used by the points profile.
+- distanceRangeFromDefaultCamera: Normalized distance of the node's minimum bounding volume from the camera.  Used by the points profile.
+- effectiveDensity: Estimation of the point density covered by the node.  Used by Point Clouds.
+
+### I3S Defining Characteristics
+
+- Attributes may be included on individual entities, on individual point cloud points, or on partial segments of meshes
+- Attribute based stylization may be modified by client software
+- Multiple, alternative textures may be provided to optimize for per-platform performance and display
+- Texture and attribute data be created as JSON for index and metadata, and binary for large geometries
+- A Scene Layer Package format for distribution, or direct use, of the scene layer as a single file (see SLPK section)
+- Direct access is enabled through optional paired services that expose query-able and updatable RESTful endpoints
+- Explicit control over bounding index shape and per-node switching allows for optimized display and query
+- Bounding volume hierarchy (BVH) is based on minimum bounding sphere (MBS) or oriented bounding box (OBB)
+- Scene Layers may be created in Cartesian 3D or in global 3D world coordinate systems
+
+### Persistence
+
+I3S Scene Layers can be delivered to web, mobile and desktop clients using a number of patterns. Most users will interact with Scene Layers using applications with cloud or server based information.  In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources.  
+
+Alternatively, a scene layer can be delivered as a Scene Layer Package.  This is a single file that includes the complete node tree and all necessary resources in an archive.  It allows direct access to individual nodes and their resources.  
+
+
+All storage methods store the Indexed 3D Scene Layers in a simple key-value structure, where the key is the access URL and the value is resource (e.g. JSON document).
+
 
 # Organization and Structure
 
@@ -1141,73 +1194,3 @@ For more details, see [feature attribute](../docs/1.7/featureAttribute.cmn.md).
 <p><em>Attributes of the Class SymbolLayers within the 3dSceneLayerInfo document</em></p>
 
 
-# I3S Design Principles
-
-The Esri Indexed 3d Scene Layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) utilize these design principles:  
-
-- **User Experience First**: Provide a positive user experience, including high interactivity and fast display.
-- **Scalability**: Support very large scene layers, including scenes with a global extent and many detailed features.
-- **Reusability**: Use as a service delivery format, storage format, and exchange format.
-- **Level of Detail**: Support multiple detail levels.
-- **Distribution**: Allow efficient distribution of very large data sets.
-- **User-controllable symbology**: Support efficient rendering of client-side symbology and styling.
-- **Extensibility**: Support new layer types, new geometry types, and new platforms.
-- **Web Friendliness**: Provide easy to handle data using JSON and current web standards.
-- **Compatibility**: Provide a single structure that is compatible across web, mobile, and desktop clients.  Support is also included for cloud and servers.
-- **Declarative**: Communicate clearly to minimize the amount of required domain knowledge to support the format.
-- **Follow REST/JSON API Best Practices:** Provide navigable links to all resources.
-- **[Version History of I3S](../README.md)**: Provide an overview on which ESRI I3S specification version is equivalent to OGC I3S specification version.
-- **[I3S Converter](../i3s_converter/i3s_converter_ReadMe.md)**: Allows users to update existing 1.6 3D object or Integrated Mesh Scene layers to update to 1.7
-
-
-# I3S Flexibility
-
-I3S supports many different implementations.  The implementation decisions can be made based on the type of 3D data and the layer profile. Here are a few implementation options:
-
-**The Minimum Bounding Volume (MBV)**
-
-- Minimum Bounding Sphere (MBS)
-- Oriented Bounding Box (OBB)
-
-**Node Structure**
-
-- Expanded: Supports clients that want to get more complete metadata about a node's position in the bounding volume hierarchy (BVH) and its immediate neighborhood.  Each node index provides pointers to its parent, children, and sibling.  Used by meshpyramids and points profiles.
-- Fixed-size: Supports paged access. Minimal structural elements: only the bounding volume, first child reference, child count, level of detail selection data, etc.  Used by the Point Cloud profile.
-
-**Embedded Geometry**
-
-- Included as text (JSON) with other metadata within a feature data resource.  Supports profiles where run-length encoding of feature IDs along the vertex data is suboptimal.  Typed array buffer and fixed format binary buffers are supported.  Used by the points profile.
-
-**Binary Geometry**
-
-- For Voluminous, ready to render geometries and cached attributes.  Typed array buffer and fixed format binary buffers are supported.  Used by mesh pyramids (array buffer views using the Khronos Types Array specification) and Point Clouds (to support domain specific data compression).
-
-**Level of Detail Selection**
-
-Level of detail switch based on:
-
-- maxScreenThreshold: The screen size of the node's minimum bounding volume.  Used by mesh pyramids
-- screenSpaceRelative: The scale of the node's minimum bounding volume.  used by the points profile.
-- distanceRangeFromDefaultCamera: Normalized distance of the node's minimum bounding volume from the camera.  Used by the points profile.
-- effectiveDensity: Estimation of the point density covered by the node.  Used by Point Clouds.
-
-### I3S Defining Characteristics
-
-- Attributes may be included on individual entities, on individual point cloud points, or on partial segments of meshes
-- Attribute based stylization may be modified by client software
-- Multiple, alternative textures may be provided to optimize for per-platform performance and display
-- Texture and attribute data be created as JSON for index and metadata, and binary for large geometries
-- A Scene Layer Package format for distribution, or direct use, of the scene layer as a single file (see SLPK section)
-- Direct access is enabled through optional paired services that expose query-able and updatable RESTful endpoints
-- Explicit control over bounding index shape and per-node switching allows for optimized display and query
-- Bounding volume hierarchy (BVH) is based on minimum bounding sphere (MBS) or oriented bounding box (OBB)
-- Scene Layers may be created in Cartesian 3D or in global 3D world coordinate systems
-
-### Persistence
-
-I3S Scene Layers can be delivered to web, mobile and desktop clients using a number of patterns. Most users will interact with Scene Layers using applications with cloud or server based information.  In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources.  
-
-Alternatively, a scene layer can be delivered as a Scene Layer Package.  This is a single file that includes the complete node tree and all necessary resources in an archive.  It allows direct access to individual nodes and their resources.  
-
-
-All storage methods store the Indexed 3D Scene Layers in a simple key-value structure, where the key is the access URL and the value is resource (e.g. JSON document).

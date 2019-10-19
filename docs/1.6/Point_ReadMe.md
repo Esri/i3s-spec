@@ -2,6 +2,10 @@
 
 Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings.  Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
 
+**Examples**:<br />
+NYC 2015 Tree Survey [Scene Service]. <br />
+NYC 2015 Tree Survey [Scene Layer Package] (SLPK).<br />
+
 *Example of a point scene layer*
 
 ![Point Scene Layer](../img/PointSceneLayer.png)

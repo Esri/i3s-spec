@@ -49,14 +49,14 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
  There are several Scene Layer profile types:
 
 * [3D Object](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
-* [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface that may include vegetation, buildings and roads)
-* [Point](../docs/1.6/Point_ReadMe.md) (e.g. a collection of point data, like individual trees in a forest)
-* [Point Cloud](../docs/2.0/pcsl_ReadMe.md) (e.g. a volumetric collection of point data, like lidar data)
-* [Building](../docs/1.7/BSL_ReadMe.md) (e.g. a building including its components, such as windows, doors, chairs, etc.)
+* [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) - An integrated surface that may include vegetation, buildings and roads.
+* [Point](../docs/1.6/Point_ReadMe.md) - A collection of point data, like individual trees in a forest.
+* [Point Cloud](../docs/2.0/pcsl_ReadMe.md) - A volumetric collection of point data, like lidar data.
+* [Building](../docs/1.7/BSL_ReadMe.md) - A building including its components, such as windows, doors, chairs, etc.
 
-I3S is designed to support very large 3D content of global extent with many detailed features. Clients can visualize scene layers takign advantage of the multi-LOD representation and defining symbology to create the right experience for their 3D content. You can convert and validate your I3S scene layers (SLPK) using the [I3S Converter](../i3s_converter/i3s_converter_ReadMe.md). I3S continues to evolve adding more functionality. You can find an overview of [Version History of I3S](../README.md).
+I3S is designed to support large 3D content of global extent with containing detailed features. Clients can visualize scene layers takign advantage of the multi-LOD (level of detail) representation and symbology to create the right experience for 3D content. The I3S format continues to evolve adding more functionality. Previous versions of I3S (SLPK) can be converted and validated using the [I3S Converter](../i3s_converter/i3s_converter_ReadMe.md). You can find an overview of [Version History of I3S](../README.md).
 
-I3S is organized in [nodes](#Nodes) which are structured in [node pages](#Node_Page_Index). The node page includes the [bounding volume](#Bounding-Volume-Hierarchy), child reference and count as well as the [level of detail selection](#Level_of_Detail). Nodes contain all information to describe features including [geometry](#Geometry), [attributes](#Attributes), [textures](#textures) and [material](#Material). Scene Layers can be created in Cartesian 3D or in global 3D world [coordinate systems](#Coordinate_Reference_Systems). I3S Scene Layers can be delivered to web, mobile and desktop clients. Most users will interact with Scene Layers using applications with cloud or server-based information. In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources. Alternatively, a scene layer can be delivered as a Scene Layer Package. This is a single file that includes the complete node tree and all necessary resources in an archive. 
+I3S is organized in [nodes](#Nodes), which are structured into [node pages](#Node_Page_Index). The node page includes the [bounding volume](#Bounding-Volume-Hierarchy), child reference, count and the [level of detail selection](#Level_of_Detail). Nodes contain all the information to describe features including [geometry](#Geometry), [attributes](#Attributes), [textures](#textures) and [material](#Material). Scene Layers can be created in Cartesian 3D or in global 3D world [coordinate systems](#Coordinate_Reference_Systems). I3S Scene Layers can be delivered to web, mobile and desktop clients. Most users will interact with Scene Layers using applications with cloud or server-based information. In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources. Alternatively, a scene layer can be delivered as a Scene Layer Package. This is a single file that includes the complete node tree and all necessary resources in an archive. 
 
 # Organization and Structure
 
@@ -70,7 +70,7 @@ Nodes represent the spatial index of the data as a [bounding-volume hierarchy](#
 
 Nodes are stored in a flat array and divided by a fixed size page. Each node references its children using their index in this array. To traverse the tree, clients start by loading the node page that contains the root. Then, clients identify the pages required to access its children within the view. The process is repeated until the desired nodes have been discovered.   
 
-Note that for backward compatability reasons, the node index must be a **stringified integer**.   This index must be unique and is used for identification only.  It has no other semantic meaning in I3S. 
+Note that for backward compatibility reasons, the node index must be a **stringified integer**.   This index must be unique and is used for identification only.  It has no other semantic meaning in I3S. 
 
 For more details regarding 3D Objects and Integrated Mesh in 1.7, see [nodePages](../docs/1.7/nodePageDefinition.cmn.md).
 
@@ -110,11 +110,11 @@ Treekeys contain levels which are separated by dashes.  The root node is at leve
 
 *A sample index tree using Treekeys.*
 
-### 3D Node Index Document
+#### 3D Node Index Document
 
-The [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md) is a JSON resource that describes a node, its index, and information about other sub-resources including bounding-volume information, LoD selection criteria, and parent-child relationships.  This resource allows for paging or tree traversal without the need to access the more voluminous content within a node.
+The [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md) is used in I3S version 1.6 and earlier. For backward compatability with older clients this document needs to be included in 1.7 as well. This JSON resource describes the nodes, its index, and information about other sub-resources. These resources include the bounding-volume information, LoD selection criteria, and parent-child relationships, which allows for paging or tree traversal without the need to access the more voluminous content within a node.
 
-**Access the 3D Node Index Document from REST API**
+**Access 3D Node Index Document from REST API**
 
 <table>
 <tr>
@@ -123,21 +123,21 @@ The [3D Node Index Document](../docs/1.7/3DNodeIndexDocument.cmn.md) is a JSON r
 </tr>
 <tr>
     <td>URL Templace</td>
-    <td>http://serviceURL/layers/{layerID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0</td>
+    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98</td>
 </tr>
 <tr>
     <td>Description</td>
-    <td>This is the root document for the service that will contain properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
+    <td>Description of the node. layerID: Integer. ID of the associated layer. Esri clients expect this to be `0`. resourceID: Integer. ID of the associated resource.</td>
 </tr>
 </table>
 
 ### Bounding Volume Hierarchy
 
-Within the node structure all nodes belong to a bounding volume. When zooming into a scene layer the bounding volume exceedes the maxScreenThreshold and the client switches to the next higher Level of Detail by loading the children nodes belonging to the next bounding volume. The root node contains the entiry bounding volume of the layer.
+Within the node structure all nodes belong to a bounding volume. When zooming into a scene layer the bounding volume exceeds the maxScreenThreshold and the client switches to the next higher LoD (Level of Detail) by loading the children nodes belonging to the next bounding volume. The root node contains the entiry bounding volume of the layer.
 
 The meshpyramid profile supports the bounding volume in either minimum bounding sphere (MBS) or oriented bounding box (OBB) representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
 
@@ -155,7 +155,7 @@ Note: All binary data is stored in little endian.
 
 Features, attributes, and geometry are bundled.  This balances the node size, which helps optimize network transfer and client-side reactivity. 
 
-Each set of features and geometries contains all the data elements to render a complete feature.  In order to avoid dependency on the features, the geometries are available as a separate binary resource. The geometry data includes all vertex attributes, feature counts, and mesh segmentation.  There are always an equal number of features and geometries.  
+Each set of features and geometries contains all the data elements to render a complete feature.  In order to avoid dependency on the features, the geometries are available as a separate binary resource. The geometry data includes all vertex attributes, feature counts, and mesh segmentation.    
 
 A node's bounding-volume determines if a node is within the current 3D view. If a node is in view, then the client determines the level of detail to display based on the view parameters, the node's bounding volume, and the [level of detail selection metrics](../docs/1.7/lodSelection.cmn.md).  Nodes are loaded according to their indexing model.
 
@@ -173,11 +173,10 @@ The expected triangle/face winding order in all geometry resources is counterclo
 If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal Coordinate Reference System, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian Coordinate Reference System first.
 
 
-Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the meshpyramid profile. The meshpyramid profile uses the triangles geometry type to store triangle meshes.  The meshes have a reduced level of detail, are segmented by features, and available in the interior nodes.
+Both 3D Object and Integrated Mesh layer types model geometries as triangle meshes using the meshpyramid profile. The meshpyramid profile uses the triangles geometry type to store triangle meshes.  
 
-Points and Point cloud layers model geometries as points. 
+Point and Point cloud layers model geometries as points. 
 
-For more details regarding 3D objects and point scene layer, see [Geometry](../docs/1.7/geometry.cmn.md).
 For more details regarding Integrated Mesh and 3D objects in 1.7, see the [geometryDefinition](../docs/1.7/geometryDefinition.cmn.md).
 
 For more details regarding point cloud scene layer, see [defaultGeometryShema](../docs/2.0/defaultGeometrySchema.pcsl.md).
@@ -244,7 +243,7 @@ When the same feature is included in more than one node at different levels of d
 
 Metadata on each _attribute_ resource is made available to clients via the scene service layer. When attributes are present within the scene cache, the resourcePattern array in the layers store will include a value called attributes.  The attributes value indicates that attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the resourcePattern, additional metadata in the fields array and attributeStorageInfo array further describe each attribute resource.  
 
-These metadata allow clients to initialize and allocate any required client side resources prior to accessing any attributes of interest.  
+These metadata allow clients to initialize and allocate any required client-side resources prior to accessing any attributes of interest.  
 
 <div>
 <img src="images/figure-11.png" title="An example of the fields array." alt="An example of the fields array (layers[id].fields[]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its key, name, type and alias.">
@@ -258,7 +257,7 @@ The attribute resource header contains:
 - For all numerical field types, the header section is followed by the attribute values array record. The attribute values must always begin at an offset that is divisible by the byte length of a single value. If the header does not end at such an offset, the necessary amount of padding is inserted between the header and the attribute values.
 - For string field types, the header section is followed by a fixed length array whose values are the byte counts of each string data, inclusive of the null termination character. This array is then followed by an array of actual string data. The strings are stored null terminated.
 
-A client application will be able to find the URI of any attribute resource through its reference from the attributeData array of the Node Index Document (similar access patterns exist for resources such as 'features', 'geometries', etc.). See the figure below:  
+A client will be able to find the URI of any attribute resource through its reference from the attributeData array of the Node Index Document (similar access patterns exist for resources such as 'features', 'geometries', etc.). See the figure below:  
 
 <div>
 <img src="images/figure-12.png" title="A node resource document illustrating attribute data content access urls (href)" alt="A node resource document illustrating attribute data content access urls (href)">
@@ -279,7 +278,7 @@ For more details regarding point cloud scene layer, see [AttributeInfo](../docs/
 
 For more details on all other scene layer types, see [Attribute](../docs/1.7/attributeStorageInfo.cmn.md).
 
-***Access attribute from REST API**
+**Access attribute from REST API**
 <table>
 <tr>
     <td>Type</td>
@@ -287,11 +286,11 @@ For more details on all other scene layer types, see [Attribute](../docs/1.7/att
 </tr>
 <tr>
     <td>URL Templace</td>
-    <td>http://serviceURL/layers/{layerID}/attributes/f_{attributeID}/0</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/f_{attributeID}/0</td>
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/attributes/f_48/0  </td>
+    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/2/attributes/f_48/0  </td>
 </tr>
 <tr>
     <td>Description</td>
@@ -307,23 +306,23 @@ The textures file is a binary resource that contains images to be used as textur
 
 Textures are expected in the following formats: 0_0.jpg for JPEG, 0.bin for PNG, 0_0_1.dds for S3TC, and 0_0_2.ktx for ETC2. The texture resource must include either a JPEG or PNG texture file for proper drawing.
 
-In 1.6, the size property will give you the width of a texture. In 1.7, the texelCountHint can be used to determine the cost of loading a node as well as for use in texel-resolution based LOD switching. Compressed textures such as S3TC and ETC may contain mipmaps, which can also be used for LOD switching. When compressing textures with with mipmaps,  the texture dimensions must 2^n sized and the smallest size allowed is 4x4.  
+In 1.6, the size property will give you the width of a texture. In 1.7, the texelCountHint can be used to determine the cost of loading a node as well as for use in texel-resolution based LOD switching. Compressed textures such as S3TC and ETC may contain mipmaps. When compressing textures with mipmaps,  the texture dimensions must 2^n sized and the smallest size allowed is 4x4.  
 
-The number and volume of textures tends to be the limiting display factor, especially for web and mobile clients.  The format used depends on the use case. For example, a client might choose to consume JPEG in low bandwidth conditions since they are efficient to transmit and widely used. Clients constrained for memory or computing resources might choose to directly consume compressed textures performance reasons.
+The number and volume of textures tends to be the limiting display factor, especially for web and mobile clients.  The format used depends on the use case. For example, a client might choose to consume JPEG in low bandwidth conditions since they are efficient to transmit and widely used. Clients constrained for memory or computing resources might choose to directly consume compressed textures for performance reasons.
 
 For more details, see the [Textures](../docs/1.7/texture.cmn.md) section or in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).  
 
 **Atlas Usage and Regions**
 
-Individual textures should be aggregated into texture atlases. Large texture atlases (e.g. 2048 x 2048 px) with one texture per node are recommended. Each individual texture becomes a subtexture.  As with all texture resources, the atlas has to be 2^n sized on both dimensions, where n ranges [3,12].  Width and height do not need to be equal.  Subtextures also need to be 2^n sized with n in range [3,12].  Subtextures with other dimensions can cause border artifacts when filtering or MIP-mapping.  A subtexture can be padded to the nearest greater 2^n size by interpolating or scaling pixels.
+Individual textures should be aggregated into texture atlases (e.g. 2048 x 2048 px). A node can only have one texture. Each individual texture becomes a subtexture.  As with all texture resources, the atlas has to be 2^n sized on both dimensions, where n ranges from 3 until 12.  Width and height do not need to be equal.  Subtextures also need to be 2^n sized with n in range from 3 until 12.  Subtextures with other dimensions can cause border artifacts when filtering or MIP-mapping.  A subtexture can be padded to the nearest greater 2^n size by interpolating or scaling pixels.
 
 Subtexture pixels are identified by the subimageRegion attribute: [umin, vmin, umax, vmax].  Region information is passed to the shader using a separate vertex attribute, which converts a UV vertex coordinate to a UVR coordinate.  R encodes the [umin, vmin, umax, vmax] attribute values into 4 UInt16 values.
 
-**Texture coordinates**
+**Texture Coordinates**
 
-Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the "repeat" wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. Repeating textures may repeat vertically, horizontally, or both. The client is expected to use the subimage region values and the texture coordinates to best handle repeating textures in atlases.
+Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. They range from 0 to 1 in U and V, except when using the 'repeat' wrapping mode.  In repeat mode, U and V  range from 0 to n, where n is the number of repeats. Repeating textures may repeat vertically, horizontally, or both. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases.
 
-**Access for textures from REST API**
+**Access textures from REST API**
 <table>
 <tr>
     <td>Type</td>
@@ -351,13 +350,13 @@ For more details regarding Integrated Mesh and 3D objects in 1.7, see the [mater
 
 ### Node resources for I3S 1.6 and earlier
 
-To assure backwardcompatability with 1.6 clients a scene layers needs to have the Node index document as well as the shared resources avialable.
+To assure backward compatibility with 1.6 clients a scene layers needs to have the Node index document as well as the shared resources available.
 
-#### Shared
+#### Shared resources
 
 Shared resource includes the material definition of the node. 
 
-**Access for textures from REST API**
+**Access shared resources from REST API**
 <table>
 <tr>
     <td>Type</td>
@@ -378,9 +377,9 @@ Shared resource includes the material definition of the node.
 </table>
 
 ## Statistics
-Statistics are used by clients to visualize or query attributes. For example, clients can visualize all unique values with a (Need to have full definition of statistics and how they are used)
+Statistics are used by clients to define symbology without having to read all data. For example, if you want to define a unique value symbology, statistics are used to collect all unique values within the layer and calculate the number features that are included in a unique value. Beside symbology, statistics are also used to filter data.   
 
-**Access for statistics from REST API**
+**Access statistics from REST API**
 <table>
 <tr>
     <td>Type</td>
@@ -404,9 +403,10 @@ Statistics are used by clients to visualize or query attributes. For example, cl
 
 The I3S specification supports specifying the Coordinate Reference System (CRS) as a Well Known Text, as defined in clause 6.4 in OGC Simple Features [99-036/ISO 19125](http://portal.opengeospatial.org/files/?artifact_id=13227) standard. I3S also supports specifying CRS in the WKT standard [CRS/ISO 19162:2015](http://docs.opengeospatial.org/is/12-063r5/12-063r5.html), Geographic information – Well-known text representation of coordinate reference systems, which provided an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
 
-In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. Important Note: WKT1 does not support explicit definition of axis order.
+In I3S implementation the CRS may be represented using either WKT1 or WKT2. While WKT1 has been in use for many years, WKT1 has been superseded by WKT2. Although implementations of OGC standards using WKT2 are not yet widely available the guidance from the OGC/ISO community is to implement WKT2. 
 
-Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS client applications support WKT2 yet.  
+WKT1 does not support explicit definition of axis order.
+Therefore, I3S implementers need to note for their implementations if they support WKT1 only or both (as WKT2 requires continued support of WKT1). In addition, please note that not all ArcGIS clients support WKT2 yet.  
 
 The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be selected with the following considerations:
 
@@ -424,15 +424,15 @@ As a result, for an I3S layer to be in a *global* mode the following requirement
 The location of all vertex positions and index-related data structures, such as the nodes minimum bounding volume, are specified using the geographic CRS WGS84 or CGCS 2000, where:
 
 - The only supported CRS in this mode is EPSG code, 4326 and 4490.
-- X and Y Coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
+- X and Y coordinate bounds of the layer and XY components of the vertex position are specified in decimal degrees.
 - Elevation (the z component of the vertex position) is specified in meters.
 - The Minimum Bounding Volume (MBV) radius unit (for MBS) or halfSize unit (for OBB) is specified in meters.
 
 For an I3S layer to be in a *local* mode the following requirements must be met:
 
-All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. In addition:
+All vertex positions are specified using geodetic CRS, identified by an EPSG code. Any CRS with an EPSG code *other* than 4326 or 4490 will be treated as in a local mode. 
 
-- All the three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit
+- All three components of a vertex position (XYZ) and the Minimum Bounding Volume (MBV) radius (for MBS) or halfSize (for OBB) need to be in the same unit.
 
 All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the [3dSceneLayer](../docs/1.6/3DSceneLayer.cmn.md) resource. This property is normative.
 
@@ -442,7 +442,7 @@ The [spatial reference](../docs/1.6/spatialReference.cmn.md) object is common to
 
 The I3S standard allows either ellipsoidal or gravity-related vertical coordinate systems. This allows I3S to be applied across a diverse range of fields and applications.
 
-At version 1.5, I3S added support for vertical coordinate systems. The Well known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The [spatial reference](../docs/1.6/spatialReference.cmn.md) object also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client application can consume any of these properties to designate the height model.
+At version 1.5, I3S added support for vertical coordinate systems. The Well known Text (WKT) representation of the Coordinate Reference System now includes the vertical coordinate system used by the layer. The [spatial reference](../docs/1.6/spatialReference.cmn.md) object also includes a Well-known ID (WKID) and a Vertical Coordinate System Well-known ID (VcsWKID).  The client can consume any of these properties to designate the height model.
 
 The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
 
@@ -458,7 +458,7 @@ Note that the I3S Level of Detail concept is orthogonal to the concept of consol
 
 Discrete Levels of Detail provide multiple models to display the same object.  A specific detail level is bound to certain levels of the index tree. Leaf nodes typically contain the original feature representation with the most detail.  The closer a node is to the root (in the BVH tree), the lower the level of detail. The detail is reduced by texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning in order to ensure inner nodes have a balanced weight. The number of discrete Levels of Detail for the layer corresponds to the number of levels in the index tree.
 
-By using only information found in the node index document, such as bounding volume and level of detail selection metrics, a client application traversing an I3S tree can readily decide if it needs to:
+By using only information found in the node index document, such as bounding volume and level of detail selection metrics, a client traversing an I3S tree can readily decide if it needs to:
 
 - Stop traversal to the node's children if the current node bounding volume is not visible.
 - Use the data in the node if the quality is appropriate, and then stop traversal to children.

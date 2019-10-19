@@ -82,12 +82,13 @@ Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodes/98
 
 | Resource   | Type  | Description                                        | URL Template                                                 |
 | ---------- | ----- | -------------------------------------------------- | ------------------------------------------------------------ |
-| Attributes | `bin` | The value for a specific  attribute within a node. | `http://serviceURL/layers/{layerID}/attributes/{attributeID}` |
+| Attributes | `bin` | The value for a specific  attribute within a node. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/{attributeID}/` |
 
 - `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+- `resourceID`: Integer. ID of the associated node.
 - `attributeID`: Integer.  ID of the specific attribute for the layer.
 
-Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/attributes/64
+Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodes/20/attributes/64
 
 
 

@@ -1,6 +1,10 @@
 # Integrated Mesh Scene Layer (1.7)
 
 Integrated mesh scene layers are generally created for citywide 3D mapping.  Integrated mesh scene layers include an entire surface and cannot be restyled.  Three-dimensional mesh data are typically captured by an automated process (e.g. drone) for constructing 3D objects out of large sets of overlapping imagery. The result integrates the original input image information as a textured mesh including 3D objects, such as buildings and trees, and elevation information.
+ 
+**Examples**:<br />
+Rancho Cucamonga Fire Station No. 3 [Scene Layer Package] (SLPK). <br />
+Rancho Cucamonga Fire Station No. 3 [Scene Service]. <br />
 
 *Example of integrated mesh scene layer*
 

@@ -2,14 +2,12 @@
     "title": "defaultGeometrySchema [common profiles]",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "The defaultGeometry schema is used in stores where all arrayBufferView geometry declarations use the same pattern for face and vertex elements. It reduces redundancies of arrayBufferView geometry declarations in a store, and reuses the geometryAttribute type from featureData. Only valueType and valuesPerElement are required.",
+    "description-href": "description/geometryBuffer.cmn.0106.md",
     "properties": {
         "geometryType": {
             "type": "string",
             "enum": [
-                "triangles",
-                "lines",
-                "points"
+                "triangles"
             ],
             "description": "Low-level default geometry type. If defined, all geometries in the store are expected to have this type."
         },

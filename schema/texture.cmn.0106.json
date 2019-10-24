@@ -3,7 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.",
-  "properties": {
+    "properties": {
     "encoding": {
       "type": "array",
       "items": {

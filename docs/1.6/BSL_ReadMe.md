@@ -34,7 +34,11 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  |  |  +-- 0
   |  |  |  |  +-- 0_0_1
   |  |  |  |  +--(...)
+  |  |  +-- 3dNodeIndexDocument
   |  |  |  +-- shared 
+  |  |  |  +-- sharedResource*
+	|  |  +-- features^
+	|  |  |  +-- 0
   |  |  |  (...) 
   |  +--statistics
   |  |  +-- f_2
@@ -43,31 +47,52 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  |  | +--0
   |  |  +-- (...)
 ```
+_^ Not used by client. Human readable version of the features._ <br />
+
 # HTTP API Overview
 
 The following API methods are available for Building Scene Layer:
 
-| Resource             | Type   | Description                                                  | URL Template                         |
-| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
-| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
+**Scene layer document**
 
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0</td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>This is the root document for the service containing properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
+</tr>
+</table>
 
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0
+**Sublayer Document**
 
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}/sublayers/{sublayerID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98</td>
+    <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1</td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td> Discipline or category layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. sublayerID: Integer. ID of the associated resource. Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`</td>
+</tr>
+</table>
 
-
-| Resource          | Type   | Description                   | URL Template                                                |
-| ----------------- | ------ | ----------------------------- | ----------------------------------------------------------- |
-| Sublayer Document | `JSON` | Discipline or category layer. | `http://serviceURL/layers/{layerID}/sublayers/{sublayerID}` |
-
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `sublayerID`: Integer. ID of the associated resource. 
-
-Example: http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98
-
-
-
-Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`.
-
-Example:  http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1

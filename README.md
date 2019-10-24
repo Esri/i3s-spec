@@ -19,7 +19,8 @@ The following layer types have been specified and the standard validated via imp
 - [Building Scene Layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
-The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#scene-layer-packages), as well as the specification for accessing I3S resources as scene service REST endpoints, are described in this standard as open formats.  The REST endpoint implementations are described in the ReadMe for each profile. 
+The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this standard as open formats.  The REST endpoint implementations are described in the ReadMe for each profile. 
+You can use [i3s tools](tools\scripts\getting_started.md) to convert to the newest i3s specification or validate your existing SLPK.
 
 
 ## Designed for Web, Mobile and Cloud  
@@ -66,6 +67,16 @@ Released 10/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specificaiton
 
 Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
 
+### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
+
+- Nodes are now accessible as pages using a [page node index](docs/1.7/nodePageDefinition.cmn.md) - significantly reducing server-client traffic.
+- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
+- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
+- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.
+- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3D Object scene layers to I3S 1.7.
+
+I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online.  More support of I3S 1.7 across the ArcGIS platform will roll out in upcoming releases.
+
 ### Version 1.6
 
 Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
@@ -77,17 +88,6 @@ Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
 
 #### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
-
-
-### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
-
-- Nodes are now accessible as pages using a [page node index](docs/1.7/nodePageDefinition.cmn.md) - significantly reducing server-client traffic.
-- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
-- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
-- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.
-- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3D Object scene layers to I3S 1.7.
-
-I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online.  More support of I3S 1.7 across the ArcGIS platform will roll out in upcoming releases.
 
 ### Version 2.0
 

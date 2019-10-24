@@ -6,9 +6,6 @@ A 3D object scene layer is used to visualize 3D objects.  3D object scene layers
 New York LoD2 3D [Buildings Scene Service](https://www.arcgis.com/home/item.html?id=2e0761b9a4274b8db52c4bf34356911e). <br />
 New York LoD2 3D Buildings [Scene Layer Package](https://3dcities.maps.arcgis.com/home/item.html?id=44039155906640438c906d47fac50301) (SLPK).<br />
 
-Montreal LoD2 3D [Buildings Scene Service. <br />
-Montreal LoD2 3D Buildings Scene Layer Package (SLPK). <br />
-
 *Realistic 3D Object Scene Layer with textures*
 
 ![Realistic 3D Object Scene Layer with textures](../img/LyonTextured.png)
@@ -26,7 +23,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. A 3D
 - attributesBuffer (binary)
 - textures (binary)
 - [statistics](statsInfo.cmn.md)
-- [nodesIndex](3DNodeIndexDocument.cmn.md)*
+- [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)*
 - [sharedResource](sharedResource.cmn.md)*
 - features^
 

@@ -48,55 +48,102 @@ The point cloud scene layer is structured into a tree of multiple JSON files.  P
 
 The following API methods are available for point cloud scene layer:
 
-| Resource             | Type   | Description                                                  | URL Template                         |
-| -------------------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
-| Scene Layer Document | `JSON` | This is the root document for the service that will contain properties common to the entire layer. | `http://serviceURL/layers/{layerID}` |
+**Scene Layer Document**
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0 </td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>This is the root document for the service that will contain properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`</td>
+</tr>
+</table>
 
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
+**Node Page**
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}/nodepages/{nodePageID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodepages/8</td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>A page of nodes. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodePageID: Integer. ID of the associated node page.</td>
+</tr>
+</table>
 
-Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0
+**Geometries**
+<table>
+<tr>
+    <td>Type</td>
+    <td>lepcc</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/0</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodes/98/geometries/0</td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>The point coordinate values within the node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node.</td>
+</tr>
+</table>
 
+**Attributes**
+<table>
+<tr>
+    <td>Type</td>
+    <td>bin</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/{attributeID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodes/20/attributes/64</td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>The value for a specific  attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node. attributeID: Integer.  ID of the specific attribute for the layer.</td>
+</tr>
+</table>
 
-
-| Resource  | Type   | Description      | URL Template                                                 |
-| --------- | ------ | ---------------- | ------------------------------------------------------------ |
-| Node Page | `JSON` | A page of nodes. | `http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/` |
-
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `nodePageID`: Integer. ID of the associated node page.
-
-Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodepages/8
-
-
-
-| Resource   | Type    | Description                                  | URL Template                                                 |
-| ---------- | ------- | -------------------------------------------- | ------------------------------------------------------------ |
-| Geometries | `lepcc` | The point coordinate values within the node. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/0` |
-
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node.
-
-Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodes/98/geometries/0
-
-
-
-| Resource   | Type  | Description                                        | URL Template                                                 |
-| ---------- | ----- | -------------------------------------------------- | ------------------------------------------------------------ |
-| Attributes | `bin` | The value for a specific  attribute within a node. | `http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/{attributeID}/` |
-
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `resourceID`: Integer. ID of the associated node.
-- `attributeID`: Integer.  ID of the specific attribute for the layer.
-
-Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/nodes/20/attributes/64
-
-
-
-| Resource   | Type   | Description                                                  | URL Template                                                 |
-| ---------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Statistics | `JSON` | The statistics for the entire layer for a specific attribute. | `http://serviceURL/layers/{layerID}/statistics/{attributeID}` |
-
-- `layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`.
-- `attributeID`: Integer.  ID of the specific attribute for the layer.
-
-Example: http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/statistics/64 
+**Statistics**
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Templace</td>
+    <td>http://serviceURL/layers/{layerID}/statistics/{attributeID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/PointCloudSceneLayer/SceneServer/layers/0/statistics/64 </td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>The statistics for the entire layer for a specific attribute. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer.  ID of the specific attribute for the layer.</td>
+</tr>
+</table>

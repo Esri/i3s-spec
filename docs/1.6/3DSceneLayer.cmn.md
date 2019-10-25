@@ -10,7 +10,7 @@ When generating scene layers with the meshpyramid cooker, the root node never ha
 | --- | --- | --- |
 | **id** | integer | Unique numeric ID of the layer. |
 | href | string | The relative URL to the 3DSceneLayerResource. Only present as part of the SceneServiceInfo resource. |
-| **layerType** | string | The user-visible layer type<div>Possible values are:<ul><li>`Point`</li><li>`3DObject`</li><li>`IntegratedMesh`</li></ul></div> |
+| **layerType** | string | The user-visible layer type<div>Possible values are:<ul><li>`3DObject`</li><li>`IntegratedMesh`</li></ul></div> |
 | spatialReference | [spatialReference](spatialReference.cmn.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
 | heightModelInfo | [heightModelInfo](heightModelInfo.cmn.md) | Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical coordinate system) with existing content. |
 | **version** | string | The ID of the last update session in which any resource belonging to this layer has been updated. |

@@ -13,7 +13,7 @@ An example schema can be found below and a point cloud scene layer can be downlo
 ![Point Cloud Scene Layer](../img/point-cloud-scene-layer.png)
 
 ## Point Cloud Scene Layer Structure
-The point cloud scene layer is structured into a tree of multiple JSON files.  Point cloud scene layers can be used to create a scene layer package (*.slpk) or a I3S service. Since an *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hash_table.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
+The point cloud scene layer is structured into a tree of multiple JSON files.  Point cloud scene layers can be used to create a scene layer package (*.slpk) or a I3S service. Since an *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hashtable.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
 
 - [Layer description](layer.pcsl.md)
 - Nodes containing [Geometry](defaultGeometrySchema.pcsl.md) and [Attributes](attributeInfo.pcsl.md)

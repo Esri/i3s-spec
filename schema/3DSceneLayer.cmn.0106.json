@@ -15,7 +15,6 @@
     "layerType": {
       "type": "string",
       "enum": [
-        "Point",
         "3DObject",
         "IntegratedMesh"
       ],

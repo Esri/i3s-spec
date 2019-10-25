@@ -1,5 +1,5 @@
 {
-  "title": "Node page index document",
+  "title": "Node page document",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "related": "nodePageDefinition.cmn.0107",

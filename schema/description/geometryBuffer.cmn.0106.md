@@ -11,7 +11,7 @@ The defaultGeometry schema is used in stores where all arrayBufferView geometry 
 |uv0|Float32[2*vertex count]|Texture coordinates.|
 |color|UInt8[4*vertex count|RGBA colors.
 |id|UInt64[feature count]|Feature IDs.|
-|faceRange|UInt32[2*feature count|Inclusive [range](geometryFaceRange.cmn.md) of the mesh triangles belonging to each feature in the featureID array.|
-|region|UINT16[4*vertex count]|UV [region](geometryUVRegion.cmn.md) for repeated textures.|
+|faceRange|UInt32[2*feature count|Inclusive [range](../1.7/geometryFaceRange.cmn.md) of the mesh triangles belonging to each feature in the featureID array.|
+|region|UINT16[4*vertex count]|UV [region](../1.7/geometryUVRegion.cmn.md) for repeated textures.|
 
 

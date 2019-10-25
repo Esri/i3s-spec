@@ -26,7 +26,7 @@ UV regions are defined as a four-component array per vertex : [u_min, v_min, u_m
 | **type** | string | Color channel values.<div>Must be:<ul><li>`UInt16`</li></ul></div> |
 | **component** | integer | The `default =4`, must be 4. |
 | encoding | string | Encoding<div>Must be:<ul><li>`normalized`</li></ul></div> |
-| binding | string | binding<div>Possible values are:<ul><li>`per-vertex`: default</li><li>`per-uvregion`: Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present.</li></ul></div> |
+| binding | string | binding<div>Possible values are:<ul><li>`per-vertex`: default</li><li>`per-uvregion`: Only valid in conjonction with [`compressedAttributes`](compressedAttributes.cmn.md) when `uvRegionIndex` attribute is present.</li></ul></div> |
 
 *Note: properties in **bold** are required*
 

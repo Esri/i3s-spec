@@ -31,7 +31,7 @@
       ],
       "enum-description": {
         "per-vertex": "default",
-        "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](geometryCompressedAttribute.md) when `uvRegionIndex` attribute is present."
+        "per-uvregion": "Only valid in conjonction with [`compressedAttributes`](compressedAttributes.cmn.md) when `uvRegionIndex` attribute is present."
       },
       "description": "binding"
     }

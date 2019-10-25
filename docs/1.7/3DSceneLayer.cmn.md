@@ -1,6 +1,6 @@
 # 3DSceneLayer [Common Profiles]
 
-The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the [drawingInfo](drawingInfo.md), which contains stylization information for a feature layer.
+The 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.
 
 When generating scene layers with the meshpyramid cooker, the root node never has any geometry. Any node's children represent a higher LOD quality than an ancestor node.  Nodes without geometry at the top of the tree are allowable since the lowest LOD of a feature/geometry is not to shown.
 
@@ -13,7 +13,7 @@ When generating scene layers with the meshpyramid cooker, the root node never ha
 | --- | --- | --- |
 | **id** | integer | Unique numeric ID of the layer. |
 | href | string | The relative URL to the 3DSceneLayerResource. Only present as part of the SceneServiceInfo resource. |
-| **layerType** | string | The user-visible layer type<div>Possible values are:<ul><li>`Line`</li><li>`Polygon`</li><li>`3DObject`</li><li>`IntegratedMesh`</li></ul></div> |
+| **layerType** | string | The user-visible layer type<div>Possible values are:<ul><li>`Point`</li><li>`3DObject`</li><li>`IntegratedMesh`</li></ul></div> |
 | spatialReference | [spatialReference](spatialReference.cmn.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
 | heightModelInfo | [heightModelInfo](heightModelInfo.cmn.md) | Enables consuming clients to quickly determine whether this layer is compatible (with respect to its horizontal and vertical coordinate system) with existing content. |
 | **version** | string | The ID of the last update session in which any resource belonging to this layer has been updated. |

@@ -3,8 +3,8 @@
 Integrated mesh scene layers are generally created for citywide 3D mapping.  Integrated mesh scene layers include an entire surface and cannot be restyled.  Three-dimensional mesh data are typically captured by an automated process (e.g. drone) for constructing 3D objects out of large sets of overlapping imagery. The result integrates the original input image information as a textured mesh including 3D objects, such as buildings and trees, and elevation information.
  
 **Examples**:<br />
-Rancho Cucamonga Fire Station No. 3 [Scene Layer Package](https://www.arcgis.com/home/item.html?id=e0dfde9f11054aac8e15edbb8aa1631d) (SLPK). <br />
-Rancho Cucamonga Fire Station No. 3 [Scene Service](https://www.arcgis.com/home/item.html?id=4028eb46e12e42f7889367bafcd6866d). <br />
+Rancho Cucamonga Fire Station No. 3 [SLPK](https://www.arcgis.com/home/item.html?id=e0dfde9f11054aac8e15edbb8aa1631d). <br />
+Rancho Cucamonga Fire Station No. 3 [service](https://www.arcgis.com/home/item.html?id=4028eb46e12e42f7889367bafcd6866d). <br />
 
 *Example of integrated mesh scene layer*
 

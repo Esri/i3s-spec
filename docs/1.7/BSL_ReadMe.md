@@ -2,6 +2,10 @@
 
 Building content is derived from a Building Information Modeling (BIM). BIM is a best-practice process for optimizing design and construction. BIM processes can produce 3D virtual representations of real-world assets that are commonly used for construction, documentation, and evaluation. BIM processes are applied in multiple domains including architecture, buildings, energy, utilities, and transportation. A building scene layer can represent the 3D model aspect of BIM structuring disciplines such as architectural or piping, and its categories like windows or walls.
 
+**Examples**:<br />
+Building Scene Layer example [SLPK](https://www.arcgis.com/home/item.html?id=1cad3c2028f740a39460d32081265c06 ).<br />
+Building Scene Layer example [service](https://www.arcgis.com/home/item.html?id=812feb34830941a196e517ff3b8bf98f ).<br />
+
 *Example of a Building Scene Layer*
 
 ![Building Scene Layer](../img/buildingSceneLayer.png)

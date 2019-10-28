@@ -3,7 +3,8 @@
 Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings.  Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
 
 **Examples**:<br />
-NYC 2015 Tree Survey [Scene Layer Package](https://www.arcgis.com/home/item.html?id=7f3221f2984f49d89a9ef6d114d5f748) (SLPK).<br />
+NYC 2015 Tree Survey [SLPK](https://www.arcgis.com/home/item.html?id=7f3221f2984f49d89a9ef6d114d5f748).<br />
+NYC 2015 Tree Survey [service](www.arcgis.com/home/item.html?id=496552d059644b4892c51ad06bdba8e2).<br />
 
 *Example of a point scene layer*
 

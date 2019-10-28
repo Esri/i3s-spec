@@ -3,7 +3,7 @@
 A 3D object scene layer is used to visualize 3D objects.  3D object scene layers are often created from GIS data with attributes and explicitly modeled in 3D.  These attributes allow definition queries to specify symbology and other properties in lieu of setting properties for each object individually.  A 3D object scene layer can efficiently create and share just a few buildings or an entire city.
 
 **Examples**:<br />
-New York LoD2 3D [Buildings Scene Service](https://www.arcgis.com/home/item.html?id=2e0761b9a4274b8db52c4bf34356911e). <br />
+
 New York LoD2 3D Buildings [Scene Layer Package](https://3dcities.maps.arcgis.com/home/item.html?id=44039155906640438c906d47fac50301) (SLPK).<br />
 
 *Realistic 3D Object Scene Layer with textures*

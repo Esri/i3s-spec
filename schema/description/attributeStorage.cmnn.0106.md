@@ -1,6 +1,6 @@
-AttributeStorageInfo describes the structure of the binary attribute data resource of a node.
+AttributeStorageInfo describes the structure of the binary attribute data resource of a node. The following examples show how different attribute types are represented as binary buffer.
 
-# Examples of attribute resources
+# Examples of attribute resources 
 
 ## String
 
@@ -8,8 +8,8 @@ AttributeStorageInfo describes the structure of the binary attribute data resour
 |-------|-------|-------|
 |String count n|UINT32|Number of strings in the attribute buffer.|
 |Total number of byte|UINT32|Total number of bytes in all the stings including NULL terminating character.
-|String size|UINT32[n]|Size of each string.|
-|String data|byte[m]|String values.|
+|String size|UINT32[n]|Size of each string in bytes.|
+|String data|byte[m]|String values. All strings are UTF8 encoded and NULL terminated.|
 
 A string object contains the following:
 {

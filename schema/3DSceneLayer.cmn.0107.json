@@ -5,7 +5,13 @@
     "description": "The 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.\n\nWhen generating scene layers with the meshpyramid cooker, the root node never has any geometry. Any node's children represent a higher LOD quality than an ancestor node.  Nodes without geometry at the top of the tree are allowable since the lowest LOD of a feature/geometry is not to shown.",
     "related": "nodes.cmn.0107.json",
     "$include": "3DSceneLayer.cmn.0106.json",
+    
     "properties": {
+        "store": {
+            "type": "object",
+            "description": "The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.",
+            "$ref": "store.cmn.0107.json"
+          },
         "nodePages": {
             "type": "object",
             "$ref": "nodePageDefinition.cmn.0107.json",

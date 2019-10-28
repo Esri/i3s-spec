@@ -53,8 +53,7 @@ The 3D object scene layer is structured into a tree of multiple JSON files. A 3D
 	|  |  |  +-- 0_0_1
 	|  |  |  +--(...)
 	|  |  +-- 3dNodeIndexDocument*
-	|  |  +-- shared 
-	|  |  |  +-- sharedResource*
+	|  |  +-- shared* 
 	|  |  +-- features^
 	|  |  |  +-- 0
 	|  |  (...) 

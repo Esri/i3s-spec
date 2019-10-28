@@ -42,7 +42,6 @@ Integrated mesh scene layer packages can optionally contain a [hash table](slpk_
 	|  |  |  +-- 1
 	|  |  |  +--(...)
 	|  |  +-- shared 
-	|  |  |  +-- sharedResource*
     |  +-- (...)
 
 ```

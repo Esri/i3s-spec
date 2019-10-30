@@ -19,7 +19,8 @@ The following layer types have been specified and the standard validated via imp
 - [Building Scene Layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
-The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and [scene layer package (\*.slpk)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md#scene-layer-packages), as well as the specification for accessing I3S resources as scene service REST endpoints, are described in this standard as open formats.  The REST endpoint implementations are described in the ReadMe for each profile. 
+The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this standard as open formats.  The REST endpoint implementations are described in the ReadMe for each profile. 
+You can use [i3s tool](./i3s_converter/i3s_converter_ReadMe.md) to convert to the newest i3s specification or validate your existing SLPK.
 
 
 ## Designed for Web, Mobile and Cloud  
@@ -49,7 +50,7 @@ The table below shows how the OGC I3S Community Standard relates to the I3S spec
 | Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
-A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed [here](#version-16), were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
+A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers) were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
 
 The Point Cloud Scene Layer specification is going through the adoption process for inclusion in OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard.
 
@@ -62,9 +63,20 @@ The following changes to the I3S community specification are yet to be proposed 
 
 ### Version 1.7
 
-Released 10/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specificaiton upgrade to 1.7.
+Released 11/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specification upgrade to 1.7.
+- Upgrade [tooling slpk](i3s_converter/i3s_converter_ReadMe.md) to convert 1.6 building scene layer to I3S 1.7.
 
 Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
+
+#### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
+
+  - Nodes are now accessible as pages using a [page node index](docs/1.7/nodePageDefinition.cmn.md) - significantly reducing server-client traffic.
+  - Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
+  - Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
+  - Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.
+  - New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3D Object scene layers to I3S 1.7.
+
+I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online.  More support of I3S 1.7 across the ArcGIS platform will roll out in upcoming releases.
 
 ### Version 1.6
 
@@ -77,17 +89,6 @@ Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md) profile)
 
 #### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
 - [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
-
-
-### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
-
-- Nodes are now accessible as pages using a [page node index](docs/1.7/nodePageDefinition.cmn.md) - significantly reducing server-client traffic.
-- Support for [Draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
-- Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
-- Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.
-- New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3D Object scene layers to I3S 1.7.
-
-I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online.  More support of I3S 1.7 across the ArcGIS platform will roll out in upcoming releases.
 
 ### Version 2.0
 
@@ -336,7 +337,7 @@ This table reflects the current versions of the ArcGIS Clients.
 
 You are invited to fork this repository and to submit pull requests with ideas for improvements, bugs, or issues in this documentation. Creating a fork solely for this purpose does not constitute the creation and distribution of a derivative work. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
-## License for indexed 3D scene format and REST endpoint specification
+## License for indexed 3D scene format and REST endpoint specification <a name="license-for-indexed-3d-scene-format-and-rest-endpoint-specification"></a>
 
 Copyright &copy; 2015 - 2019 Esri
 
@@ -366,6 +367,6 @@ Version 1.7 – present integrated mesh and 3D object (dated 06/30/2019 to prese
 
 Version 2.0 - present point cloud scene layer (01/01/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 
-## License for JSON resources, validator, and examples
+## License for JSON resources, validator, and examples <a name="license-for-indexed-3d-scene-format-and-rest-endpoint-specification"></a>
 
 The supplementary resources may be updated without notice and are provided for use under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license and may be used, under the terms of that license, at your own risk.

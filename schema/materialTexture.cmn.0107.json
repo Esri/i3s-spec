@@ -10,7 +10,7 @@
     },
     "texCoord": {
       "type": "integer",
-      "description": "The set index of texture's TEXCOORD attribute used for texture coordinate mapping. Default is 0."
+      "description": "The set index of texture's TEXCOORD attribute used for texture coordinate mapping. Default is 0. Deprecated."
     },
     "factor": {
       "type": "number",

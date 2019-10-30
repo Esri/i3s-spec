@@ -48,12 +48,16 @@ Model names allow clients to identify entities of a building without having to r
 |LightingDevices|Daylight sensors, occupancy sensors, manual switches|
 |AirTerminals	|Exhaust grill, Return diffuser|
 |FlexDucts|	FlexDucts|
-|DuctAccessories|	Balancing damper, Fire damper, Filter cartridge|
-|DuctFitting|	DuctFitting|
+|DuctAccessories|Balancing damper, Fire damper, Filter cartridge|
+|DuctFitting|DuctFitting|
 |Ducts|	Ducts|
-|MechanicalEquipment|	Chillers, Boilers, AWWA pumps|
-|FlexPipes|	FlexPipes|
+|MechanicalEquipment|Chillers, Boilers, AWWA pumps|
+|FlexPipes|FlexPipes|
 |PipeAccessory|	3-way valve, Butterfly valve, Gate valve|
 |PipeFitting	|PipeFitting|
 |Pipes|	Pipes|
 |Sprinkler|	Sprinkler|
+|CableTray|Runs such as rigid ladder or channel tray.|
+|CableTrayFitting|Cable Tray Fitting, such as elbows, tees, wyes, crosses and other unions.|
+|Conduit|Rigid runs, such as tube or trough for protecting electric wiring.|
+|ConduitFitting|Conduit Fitting, such as elbows, tees, wyes, crosses and other unions.|

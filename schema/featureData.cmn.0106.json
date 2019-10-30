@@ -2,7 +2,7 @@
     "title": "featureData",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials.",
+    "description": "The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials. FeatureData is only used by point scene layers. For other scene layer types, such as 3D object scene layer or integrated mesh scene layer, clients read [defaultGeometrySchema](defaultGeometrySchema.cmn.md) to access the geometry buffer.",
     "properties": {
         "id": {
             "type": "number",
@@ -63,13 +63,15 @@
     "esriDocumentation": {
         "examples": [
             {
-                "title": "3D Scene Layer info for point scene layer"
-            },
-            {
-                "title": "3D Scene Layer info for 3D object scene layer"
-            },
-            {
-                "title": "3D Scene Layer info for integrated mesh scene layer"
+                "title": "FeatureData for point scene layer",
+                "code": {
+                    "position": [
+                        -120.230476574493366,
+                        39.1976590870344666,
+                        1888.84558120960378
+                    ],
+                    "id": 2
+                  }
             }
         ]
     }

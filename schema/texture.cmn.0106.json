@@ -2,8 +2,8 @@
   "title": "texture",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "A texture is a set of images, with some parameters specific to the texture/uv mapping to geometries.",
-  "properties": {
+  "description-href": "description/textureDefinition.cmn.0106.md",
+    "properties": {
     "encoding": {
       "type": "array",
       "items": {

@@ -2,7 +2,7 @@
     "title": "attributeStorageInfo",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "An object that describes the structure of the binary attribute data resource of a node.",
+    "description-href": "description/attributeStorage.cmnn.0106.md",
     "properties": {
         "key": {
             "type": "string",

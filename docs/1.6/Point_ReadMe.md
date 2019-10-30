@@ -56,7 +56,7 @@ The following API methods are available for Point Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}</td>
 </tr>
 <tr>
@@ -77,7 +77,7 @@ The following API methods are available for Point Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
 </tr>
 <tr>
@@ -97,7 +97,7 @@ The following API methods are available for Point Scene Layer:
     <td>bin</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/f_{attributeID}/0</td>
 </tr>
 <tr>
@@ -117,7 +117,7 @@ The following API methods are available for Point Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/features/0</td>
 </tr>
 <tr>
@@ -137,7 +137,7 @@ The following API methods are available for Point Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0</td>
 </tr>
 <tr>

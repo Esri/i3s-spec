@@ -50,7 +50,7 @@ The table below shows how the OGC I3S Community Standard relates to the I3S spec
 | Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
-A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers), as detailed version 1.6, were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
+A small number of optional changes for the Mesh Pyramids profile (3D Objects and Integrated Mesh Scene Layers) were made to the I3S 1.6 community specification after its adoption as the OGC I3S 1.0 Community Standard. These changes are in the process of being picked up for the OGC Community Standard 1.1 update.
 
 The Point Cloud Scene Layer specification is going through the adoption process for inclusion in OGC I3S 1.1. Through this process, new layer types could be added to I3S Standard.
 
@@ -63,7 +63,7 @@ The following changes to the I3S community specification are yet to be proposed 
 
 ### Version 1.7
 
-Released 11/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specificaiton upgrade to 1.7.
+Released 11/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specification upgrade to 1.7.
 - Upgrade [tooling slpk](i3s_converter/i3s_converter_ReadMe.md) to convert 1.6 building scene layer to I3S 1.7.
 
 Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)

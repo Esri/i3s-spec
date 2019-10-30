@@ -66,7 +66,7 @@ The following API methods are available for 3D Object scene layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}</td>
 </tr>
 <tr>
@@ -75,7 +75,8 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>This is the root document for the service containing properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
+    <td>This is the root document for the service containing properties common to the entire layer. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
 </tr>
 </table>
 
@@ -87,7 +88,7 @@ The following API methods are available for 3D Object scene layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
 </tr>
 <tr>
@@ -96,7 +97,8 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>Description of the node. ID of the associated layer. Esri clients expect this to be `0`. resourceID: Integer. ID of the associated resource.</td>
+    <td>Description of the node. ID of the associated layer. Esri clients expect this to be `0`. <br/>
+    <code>resourceID</code> Integer. ID of the associated resource.</td>
 </tr>
 </table>
 
@@ -107,7 +109,7 @@ The following API methods are available for 3D Object scene layer:
     <td>JPG, PNG, DDS, KTX </td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}</td>
 </tr>
 <tr>
@@ -116,7 +118,10 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The texture resource (image). layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node. textureID: String. This ID returns one of the textures available for this node. The same texture may be available in different formats.</td>
+    <td>The texture resource (image). <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>resourceID</code> Integer. ID of the associated node. <br/>
+    <code>textureID</code> String. This ID returns one of the textures available for this node. The same texture may be available in different formats.</td>
 </tr>
 </table>
 
@@ -128,7 +133,7 @@ The following API methods are available for 3D Object scene layer:
     <td>bin, draco</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}</td>
 </tr>
 <tr>
@@ -137,8 +142,10 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The geometry resource (mesh information). layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node.
-geometryID: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
+    <td>The geometry resource (mesh information). <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>resourceID</code> Integer. ID of the associated node.<br/>
+    <code>geometryID</code> Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
 </tr>
 </table>
 
@@ -149,7 +156,7 @@ geometryID: Integer. This ID returns one of the geometries available for this no
     <td>bin</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/f_{attributeID}/0</td>
 </tr>
 <tr>
@@ -158,7 +165,9 @@ geometryID: Integer. This ID returns one of the geometries available for this no
 </tr>
 <tr>
     <td>Description</td>
-    <td>The value for a specific attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer. ID of the specific attribute for the layer. </td>
+    <td>The value for a specific attribute within a node. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>attributeID</code> Integer. ID of the specific attribute for the layer. </td>
 </tr>
 </table>
 
@@ -169,7 +178,7 @@ geometryID: Integer. This ID returns one of the geometries available for this no
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/statistics/f_{attributeID}/0</td>
 </tr>
 <tr>
@@ -178,7 +187,9 @@ geometryID: Integer. This ID returns one of the geometries available for this no
 </tr>
 <tr>
     <td>Description</td>
-    <td>The statistics for the entire layer for a specific attribute. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer.  ID of the specific attribute for the layer. </td>
+    <td>The statistics for the entire layer for a specific attribute. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`.
+    <code>attributeID</code> Integer.  ID of the specific attribute for the layer. </td>
 </tr>
 </table>
 
@@ -189,7 +200,7 @@ geometryID: Integer. This ID returns one of the geometries available for this no
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared</td>
 </tr>
 <tr>
@@ -198,6 +209,8 @@ geometryID: Integer. This ID returns one of the geometries available for this no
 </tr>
 <tr>
     <td>Description</td>
-    <td>Texture and material description. layerID: Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. resourceID: Integer. ID of the associated node.  </td>
+    <td>Texture and material description.<br/>
+    <code>layerID</code> Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. <br/>
+    <code>resourceID</code> Integer. ID of the associated node.  </td>
 </tr>
 </table>

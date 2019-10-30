@@ -28,24 +28,24 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  +--0 // sublayer document
   |  |  |  +--nodes
   |  |  |  |  +--0
-  |	 |  |  +-- attributes
-  |	 |  |  |  +--f_2
-  |  |  |  |  +--f_4
-  |  |  |  |  +--(...)
-  |  |  |  +-- geometries
-  |  |  |  |  +-- 0
-  |  |  |  +-- textures
-  |  |  |  |  +-- 0
-  |  |  |  |  +-- 0_0_1
-  |  |  |  |  +--(...)
-  |  |  |  +-- shared 
-  |  |  |  (...) 
-  |  +--statistics
-  |  |  +-- f_2
-  |  |  |  | +--0
-  |  |  +-- f_4
-  |  |  |  | +--0
-  |  |  +-- (...)
+  |  |  |  |  |  +-- attributes
+  |  |  |  |  |  |  +--f_2
+  |  |  |  |  |  |  +--f_4
+  |  |  |  |  |  |  +--(...)
+  |  |  |  |  |  +-- geometries
+  |  |  |  |  |  |  +-- 0
+  |  |  |  |  |  +-- textures
+  |  |  |  |  |  |  +-- 0
+  |  |  |  |  |  |  +-- 0_0_1
+  |  |  |  |  |  |  +--(...)
+  |  |  |  |  |  +-- shared 
+  |  |  |  |  (...) 
+  |  |  |  +--statistics
+  |  |  |  | +-- f_2
+  |  |  |  |  |  | +--0
+  |  |  |  |  +-- f_4
+  |  |  |  |  |  | +--0
+  |  |  |  |  +-- (...)
 ```
 # HTTP API Overview
 
@@ -58,7 +58,7 @@ The following API methods are available for Building Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}</td>
 </tr>
 <tr>
@@ -78,7 +78,7 @@ The following API methods are available for Building Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/sublayers/{sublayerID}</td>
 </tr>
 <tr>
@@ -88,7 +88,9 @@ The following API methods are available for Building Scene Layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>Discipline or category layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. sublayerID: Integer. ID of the associated resource. </td>
+    <td>Discipline or category layer. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>sublayerID</code> Integer. ID of the associated resource. </td>
 </tr>
 </table>
 

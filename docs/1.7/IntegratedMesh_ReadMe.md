@@ -19,7 +19,7 @@ The Integrated Mesh scene layer is structured into a tree of multiple JSON files
 - textures (binary)
 - [Shared Resources](sharedResource.cmn.md)*
 
-*Shared resources and feature data are deprecated as of version 1.7 and are only included for backwards compatibility.*
+**Shared resources are deprecated as of version 1.7 and are only included for backwards compatibility.*
 
 Integrated mesh scene layer packages can optionally contain a [hash table](slpk_hashtable.cmn.md) for faster indexing. 
 
@@ -41,7 +41,7 @@ Integrated mesh scene layer packages can optionally contain a [hash table](slpk_
 	|  |  |  +-- 0
 	|  |  |  +-- 1
 	|  |  |  +--(...)
-	|  |  +-- shared 
+	|  |  +-- shared* 
     |  +-- (...)
 
 ```
@@ -61,7 +61,7 @@ The following API methods are available for integrated mesh scene layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}</td>
 </tr>
 <tr>
@@ -70,7 +70,8 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>This is the root document for the service containing properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
+    <td>This is the root document for the service containing properties common to the entire layer. <br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
 </tr>
 </table>
 
@@ -82,7 +83,7 @@ The following API methods are available for integrated mesh scene layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>`http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/`</td>
 </tr>
 <tr>
@@ -91,7 +92,8 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>`layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`. `nodePageID`: Integer. ID of the associated node page.</td>
+    <td><code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`. <br>
+    <code>nodePageID</code>: Integer. ID of the associated node page.</td>
 </tr>
 </table>
 
@@ -102,7 +104,7 @@ The following API methods are available for integrated mesh scene layer:
     <td>JPG, PNG, DDS, KTX </td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}</td>
 </tr>
 <tr>
@@ -112,7 +114,10 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The texture resource (image). layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node. textureID: String. This ID returns one of the textures available for this node. The same texture may be available in different formats.</td>
+    <td>The texture resource (image). <br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>resourceID</code>: Integer. ID of the associated node. <br/>
+    <code>textureID</code>: String. This ID returns one of the textures available for this node. The same texture may be available in different formats.</td>
 </tr>
 </table>
 
@@ -123,7 +128,7 @@ The following API methods are available for integrated mesh scene layer:
     <td>bin, draco</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}</td>
 </tr>
 <tr>
@@ -132,8 +137,10 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The geometry resource (mesh information). layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node.
-geometryID: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
+    <td>The geometry resource (mesh information). <br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>resourceID</code>: Integer. ID of the associated node. <br/>
+    <code>geometryID</code>: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
 </tr>
 </table>
 
@@ -146,7 +153,7 @@ geometryID: Integer. This ID returns one of the geometries available for this no
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared</td>
 </tr>
 <tr>
@@ -155,7 +162,9 @@ geometryID: Integer. This ID returns one of the geometries available for this no
 </tr>
 <tr>
     <td>Description</td>
-    <td>Legacy texture and material description. **Not used in 1.7.**. layerID: Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. resourceID: Integer. ID of the associated node.  </td>
+    <td>Legacy texture and material description. <strong>Not used in 1.7.</strong> <br/>
+    <code>layerID</code>: Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. <br/>
+    <code>resourceID</code>: Integer. ID of the associated node.  </td>
 </tr>
 </table>
 
@@ -167,7 +176,7 @@ geometryID: Integer. This ID returns one of the geometries available for this no
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
 </tr>
 <tr>
@@ -176,6 +185,8 @@ geometryID: Integer. This ID returns one of the geometries available for this no
 </tr>
 <tr>
     <td>Description</td>
-    <td>Description of the node. **Not used in 1.7.** layerID: Integer. ID of the associated layer. Esri clients expect this to be `0`. resourceID: Integer. ID of the associated resource.</td>
+    <td>Description of the node. <strong>Not used in 1.7.</strong> <br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri clients expect this to be `0`. <br/>
+    <code>resourceID</code>: Integer. ID of the associated resource.</td>
 </tr>
 </table>

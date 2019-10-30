@@ -1,6 +1,6 @@
 # featureData
 
-The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials. FeatureData is only used by point scene layer. For other scene layer type such as 3D object scene layer or integrated mesh scene layer clients read [defaultGeometrySchema](defaultGeometrySchema.cmn.md) to access the geometry buffer.
+The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials. FeatureData is only used by point scene layers. For other scene layer types, such as 3D object scene layer or integrated mesh scene layer, clients read [defaultGeometrySchema](defaultGeometrySchema.cmn.md) to access the geometry buffer.
 
 ### Related:
 

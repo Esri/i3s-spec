@@ -24,30 +24,31 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  +--0 // sublayer document
   |  |  |  +--nodes
   |  |  |  |  +--0
-  |	 |  |  +-- attributes
-  |	 |  |  |  +--f_2
-  |  |  |  |  +--f_4
-  |  |  |  |  +--(...)
-  |  |  |  +-- geometries
-  |  |  |  |  +-- 0
-  |  |  |  +-- textures
-  |  |  |  |  +-- 0
-  |  |  |  |  +-- 0_0_1
-  |  |  |  |  +--(...)
-  |  |  +-- 3dNodeIndexDocument
-  |  |  |  +-- shared 
-  |  |  |  +-- sharedResource*
-	|  |  +-- features^
-	|  |  |  +-- 0
-  |  |  |  (...) 
-  |  +--statistics
-  |  |  +-- f_2
-  |  |  |  | +--0
-  |  |  +-- f_4
-  |  |  |  | +--0
-  |  |  +-- (...)
+  |  |  |  |  |  +-- attributes
+  |  |  |  |  |  |  +--f_2
+  |  |  |  |  |  |  +--f_4
+  |  |  |  |  |  |  +--(...)
+  |  |  |  |  |  +-- geometries
+  |  |  |  |  |  |  +-- 0
+  |  |  |  |  |  +-- textures
+  |  |  |  |  |  |  +-- 0
+  |  |  |  |  |  |  +-- 0_0_1
+  |  |  |  |  |  |  +--(...)
+  |  |  |  |  |  +-- 3dNodeIndexDocument
+  |  |  |  |  |  +-- shared 
+  |  |  |  |  |  |  +-- sharedResource*
+  |  |  |  |  |  +-- features^
+  |  |  |  |  |  |  |  +-- 0
+  |  |  |  |  (...) 
+  |  |  |  +--statistics
+  |  |  |  |  +-- f_2
+  |  |  |  |  |  | +--0
+  |  |  |  |  +-- f_4
+  |  |  |  |  |  | +--0
+  |  |  |  |  +-- (...)
 ```
 _^ Not used by client. Human readable version of the features._ <br />
+_* Deprecated._ <br />
 
 # HTTP API Overview
 
@@ -61,7 +62,7 @@ The following API methods are available for Building Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}</td>
 </tr>
 <tr>
@@ -70,7 +71,8 @@ The following API methods are available for Building Scene Layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>This is the root document for the service containing properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
+    <td>This is the root document for the service containing properties common to the entire layer. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
 </tr>
 </table>
 
@@ -82,17 +84,19 @@ The following API methods are available for Building Scene Layer:
     <td>JSON</td>
 </tr>
 <tr>
-    <td>URL Templace</td>
+    <td>URL Template</td>
     <td>http://serviceURL/layers/{layerID}/sublayers/{sublayerID}</td>
 </tr>
 <tr>
     <td>Example</td>
     <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98</td>
-    <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1</td>
 </tr>
 <tr>
     <td>Description</td>
-    <td> Discipline or category layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. sublayerID: Integer. ID of the associated resource. Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`</td>
+    <td> Discipline or category layer. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>sublayerID</code> Integer. ID of the associated resource. <br/>
+    Sublayers are identical to 3D Object layers and contain the same resources. The resource URL are prefixed with `sublayers/{sublayerID}`</td>
 </tr>
 </table>
 

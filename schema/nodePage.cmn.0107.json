@@ -1,5 +1,5 @@
 {
-  "title": "Node page document",
+  "title": "Node page",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "related": "nodePageDefinition.cmn.0107",
@@ -21,7 +21,7 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Nodepage document",
+        "title": "Node page",
         "code_href": "example/example1_nodes.cmn.0107.json"
       }
     ]

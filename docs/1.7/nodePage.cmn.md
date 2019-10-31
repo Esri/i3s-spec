@@ -1,4 +1,4 @@
-# Node page document
+# Node page
 
 
 
@@ -15,7 +15,7 @@
 
 ### Examples 
 
-#### Example: Nodepage document 
+#### Example: Node page 
 
 ```json
  {

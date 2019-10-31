@@ -4,7 +4,7 @@ The node object.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::nodes](nodes.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::nodePage](nodePage.cmn.md)
 ### Properties
 
 | Property | Type | Description |

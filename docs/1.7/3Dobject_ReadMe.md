@@ -4,8 +4,11 @@ A 3D object scene layer is used to visualize 3D objects.  3D object scene layers
 
 **Examples**:<br />
 
-New York LoD2 3D Buildings [SLPK](www.arcgis.com/home/item.html?id=44039155906640438c906d47fac50301).<br />
+New York LoD2 3D Buildings [SLPK](http://www.arcgis.com/home/item.html?id=44039155906640438c906d47fac50301).<br />
 New York LoD2 3D Buildings [service](https://www.arcgis.com/home/item.html?id=a457834a6cb449cd958502d6e98ba305).<br />
+
+Montreal, Canada textured buildings [SLPK](https://www.arcgis.com/home/item.html?id=5a575b5ab50845c2bfd071c593e9fc40).<br />
+Montreal, Canada textured buildings [service](https://www.arcgis.com/home/item.html?id=77611df5dfae41019d5b57d89229e1d3).<br />
 
 *Realistic 3D Object Scene Layer with textures*
 

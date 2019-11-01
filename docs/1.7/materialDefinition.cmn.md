@@ -6,7 +6,7 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
 
 ### Related:
 
-[cmn::sharedResource](sharedResource.cmn.md), [cmn::store](store.cmn.md), [cmn::store](store.cmn.md), [psl::store](store.psl.md)
+[cmn::sharedResource](sharedResource.cmn.md), [cmn::store](store.cmn.md), [psl::store](store.psl.md)
 ### Properties
 
 | Property | Type | Description |

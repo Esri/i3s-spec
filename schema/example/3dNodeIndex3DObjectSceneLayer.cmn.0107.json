@@ -1,44 +1,40 @@
 {
-    "version": "{8F10DF9A-885E-41E0-A5DF-2686CE5B4EAC}",
-    "id": "1",
-    "level": 2,
+    "id": "25030",
+    "level": 6,
     "mbs": [
-        0.026676119561926726,
-        0.0024989835685061959,
-        34.265922634862363,
-        131.39643859863281
+        54.483553612201497,
+        24.36252247939186,
+        8.115040997043252,
+        202.28157036604742
     ],
     "obb": {
         "center": [
-            0.026676119561926726,
-            0.0024989835685061959,
-            34.265922634862363
+            54.483553612201497,
+            24.36252247939186,
+            8.115040997043252
         ],
         "halfSize": [
-            115.30760192871094,
-            58.432319641113281,
-            60.50103759765625
+            93.1058044,
+            6.90459251,
+            181.712433
         ],
         "quaternion": [
-            0.50604724884033203,
-            0.41447588801383972,
-            0.64152449369430542,
-            -0.40071475505828857
+            0.933717132,
+            -0.28870675,
+            0.055369094,
+            -0.204340667
         ]
     },
     "lodSelection": [
         {
-            "metricType": "maxScreenThreshold",
-            "maxError": 20.530693054199219
+            "metricType": "maxScreenThresholdSQ",
+            "maxError": 1278203.75
         },
         {
-            "metricType": "maxScreenThresholdSQ",
-            "maxError": 331.05267333984375
+            "metricType": "maxScreenThreshold",
+            "maxError": 1275.7192232958625
         }
     ],
-    "sharedResource": {
-        "href": "./shared"
-    },
     "featureData": [
         {
             "href": "./features/0"
@@ -49,43 +45,175 @@
             "href": "./geometries/0"
         }
     ],
-    "textureData": [
-        {
-            "href": "./textures/0_0"
-        },
-        {
-            "href": "./textures/0_0_1"
+    "sharedResource": {
+        "href": "./shared"
+    },
+    "parentNode": {
+        "id": "25031",
+        "href": "../25031",
+        "mbs": [
+            54.483553612201497,
+            24.36252247939186,
+            8.115040997043252,
+            202.28157036604742
+        ],
+        "obb": {
+            "center": [
+                54.483553612201497,
+                24.36252247939186,
+                8.115040997043252
+            ],
+            "halfSize": [
+                93.1058044,
+                6.90459251,
+                181.712433
+            ],
+            "quaternion": [
+                0.933717132,
+                -0.28870675,
+                0.055369094,
+                -0.204340667
+            ]
         }
-    ],
+    },
     "attributeData": [
         {
             "href": "./attributes/f_0/0"
         },
         {
             "href": "./attributes/f_1/0"
-        }
-    ],
-    "parentNode": {
-        "id": "root",
-        "href": "../root",
-        "mbs": [
-            0.026340863717777552,
-            0.0038648506589316588,
-            103.90042581222951,
-            314.794677734375
-        ]
-    },
-    "features": null,
-    "children": [
+        },
         {
-            "id": "1-0",
-            "href": "../1-0",
-            "mbs": [
-                0.026676119561926726,
-                0.0024989835685061959,
-                34.265922634862363,
-                131.39643859863281
-            ]
+            "href": "./attributes/f_2/0"
+        },
+        {
+            "href": "./attributes/f_3/0"
+        },
+        {
+            "href": "./attributes/f_4/0"
+        },
+        {
+            "href": "./attributes/f_5/0"
+        },
+        {
+            "href": "./attributes/f_6/0"
+        },
+        {
+            "href": "./attributes/f_7/0"
+        },
+        {
+            "href": "./attributes/f_8/0"
+        },
+        {
+            "href": "./attributes/f_9/0"
+        },
+        {
+            "href": "./attributes/f_10/0"
+        },
+        {
+            "href": "./attributes/f_11/0"
+        },
+        {
+            "href": "./attributes/f_12/0"
+        },
+        {
+            "href": "./attributes/f_13/0"
+        },
+        {
+            "href": "./attributes/f_14/0"
+        },
+        {
+            "href": "./attributes/f_15/0"
+        },
+        {
+            "href": "./attributes/f_16/0"
+        },
+        {
+            "href": "./attributes/f_17/0"
+        },
+        {
+            "href": "./attributes/f_18/0"
+        },
+        {
+            "href": "./attributes/f_19/0"
+        },
+        {
+            "href": "./attributes/f_20/0"
+        },
+        {
+            "href": "./attributes/f_21/0"
+        },
+        {
+            "href": "./attributes/f_22/0"
+        },
+        {
+            "href": "./attributes/f_23/0"
+        },
+        {
+            "href": "./attributes/f_24/0"
+        },
+        {
+            "href": "./attributes/f_25/0"
+        },
+        {
+            "href": "./attributes/f_26/0"
+        },
+        {
+            "href": "./attributes/f_27/0"
+        },
+        {
+            "href": "./attributes/f_28/0"
+        },
+        {
+            "href": "./attributes/f_29/0"
+        },
+        {
+            "href": "./attributes/f_30/0"
+        },
+        {
+            "href": "./attributes/f_31/0"
+        },
+        {
+            "href": "./attributes/f_32/0"
+        },
+        {
+            "href": "./attributes/f_33/0"
+        },
+        {
+            "href": "./attributes/f_34/0"
+        },
+        {
+            "href": "./attributes/f_35/0"
+        },
+        {
+            "href": "./attributes/f_36/0"
+        },
+        {
+            "href": "./attributes/f_37/0"
+        },
+        {
+            "href": "./attributes/f_38/0"
+        },
+        {
+            "href": "./attributes/f_39/0"
+        },
+        {
+            "href": "./attributes/f_40/0"
+        },
+        {
+            "href": "./attributes/f_41/0"
+        },
+        {
+            "href": "./attributes/f_42/0"
+        },
+        {
+            "href": "./attributes/f_43/0"
+        },
+        {
+            "href": "./attributes/f_44/0"
+        },
+        {
+            "href": "./attributes/f_45/0"
         }
     ]
 }

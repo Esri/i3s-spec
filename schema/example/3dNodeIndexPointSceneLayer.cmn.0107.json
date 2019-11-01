@@ -1,41 +1,46 @@
 {
-    "id": "root",
-    "level": 1,
-    "version": "ee4fbf04-e882-444e-854d-cd519b68594a",
+    "id": "1306",
+    "level": 6,
     "mbs": [
-        -120.235609902853241,
-        39.1981414865211661,
-        1895.23079465422779,
-        446.269165373884221
+        -73.800118851149136,
+        40.73669251979566,
+        0.021572002209722996,
+        679.45720236569286
     ],
-    "created": "2014-07-23T00:00:00.000Z",
-    "expires": "2015-07-23T00:00:00.000Z",
-    "transform": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        1
-    ],
+    "obb": {
+        "center": [
+            -73.800118851149136,
+            40.73669251979566,
+            0.021572002209722996
+        ],
+        "halfSize": [
+            365.631592,
+            477.904175,
+            0.0500000007
+        ],
+        "quaternion": [
+            0.0587248169,
+            -0.412625164,
+            0.89993757,
+            -0.128079131
+        ]
+    },
     "lodSelection": [
         {
             "metricType": "screenSpaceRelative",
-            "maxError": 0
+            "maxError": 140.54929551759727
         },
         {
             "metricType": "distanceRangeFromDefaultCamera",
-            "maxError": 0
+            "maxError": 139191.99158812518
+        },
+        {
+            "metricType": "maxScreenThreshold",
+            "maxError": 48.521113838756797
+        },
+        {
+            "metricType": "maxScreenThresholdSQ",
+            "maxError": 2354.2984881535963
         }
     ],
     "featureData": [
@@ -43,24 +48,164 @@
             "href": "./features/0",
             "featureRange": [
                 0,
-                3
+                890
             ]
         }
     ],
-    "parentNode": null,
-    "children": null,
+    "parentNode": {
+        "id": "156",
+        "href": "../156",
+        "mbs": [
+            -73.795788258698877,
+            40.732381367513021,
+            -1.1518597602844238e-05,
+            1362.6036826773482
+        ],
+        "obb": {
+            "center": [
+                -73.795788258698877,
+                40.732381367513021,
+                -1.1518597602844238e-05
+            ],
+            "halfSize": [
+                731.456299,
+                960.864807,
+                0.128648579
+            ],
+            "quaternion": [
+                0.0586951897,
+                -0.412657171,
+                0.899904907,
+                -0.128218919
+            ]
+        }
+    },
     "attributeData": [
         {
             "href": "./attributes/f_0/0"
-        },
-        {
-            "href": "./attributes/f_1/0"
         },
         {
             "href": "./attributes/f_2/0"
         },
         {
             "href": "./attributes/f_3/0"
+        },
+        {
+            "href": "./attributes/f_4/0"
+        },
+        {
+            "href": "./attributes/f_5/0"
+        },
+        {
+            "href": "./attributes/f_6/0"
+        },
+        {
+            "href": "./attributes/f_7/0"
+        },
+        {
+            "href": "./attributes/f_8/0"
+        },
+        {
+            "href": "./attributes/f_9/0"
+        },
+        {
+            "href": "./attributes/f_10/0"
+        },
+        {
+            "href": "./attributes/f_11/0"
+        },
+        {
+            "href": "./attributes/f_12/0"
+        },
+        {
+            "href": "./attributes/f_13/0"
+        },
+        {
+            "href": "./attributes/f_14/0"
+        },
+        {
+            "href": "./attributes/f_15/0"
+        },
+        {
+            "href": "./attributes/f_16/0"
+        },
+        {
+            "href": "./attributes/f_17/0"
+        },
+        {
+            "href": "./attributes/f_18/0"
+        },
+        {
+            "href": "./attributes/f_19/0"
+        },
+        {
+            "href": "./attributes/f_20/0"
+        },
+        {
+            "href": "./attributes/f_21/0"
+        },
+        {
+            "href": "./attributes/f_22/0"
+        },
+        {
+            "href": "./attributes/f_23/0"
+        },
+        {
+            "href": "./attributes/f_24/0"
+        },
+        {
+            "href": "./attributes/f_25/0"
+        },
+        {
+            "href": "./attributes/f_26/0"
+        },
+        {
+            "href": "./attributes/f_27/0"
+        },
+        {
+            "href": "./attributes/f_28/0"
+        },
+        {
+            "href": "./attributes/f_29/0"
+        },
+        {
+            "href": "./attributes/f_30/0"
+        },
+        {
+            "href": "./attributes/f_31/0"
+        },
+        {
+            "href": "./attributes/f_32/0"
+        },
+        {
+            "href": "./attributes/f_33/0"
+        },
+        {
+            "href": "./attributes/f_34/0"
+        },
+        {
+            "href": "./attributes/f_35/0"
+        },
+        {
+            "href": "./attributes/f_36/0"
+        },
+        {
+            "href": "./attributes/f_37/0"
+        },
+        {
+            "href": "./attributes/f_38/0"
+        },
+        {
+            "href": "./attributes/f_39/0"
+        },
+        {
+            "href": "./attributes/f_40/0"
+        },
+        {
+            "href": "./attributes/f_41/0"
+        },
+        {
+            "href": "./attributes/f_42/0"
         }
     ]
 }

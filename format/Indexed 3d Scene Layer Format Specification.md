@@ -52,7 +52,7 @@ I3S is organized as [nodes](#Nodes), which are structured into [node pages](#Nod
 
 ## Tree Structure <a name="Tree"></a>
 
-To assure high performance when visualizing 3D content, data are spatially grouped into [nodes](#Nodes). The process is repeated recursively to create a tree of nodes. Each spatial extent of a node encompasses all its children to create a bounding volume hierarchy. Bothe spatially regular (e.g. quadtree) as well as spatially irregular (e.g. R-tree) organizations of data are supported.
+To assure high performance when visualizing 3D content, data are spatially grouped into [nodes](#Nodes). The process is repeated recursively to create a tree of nodes. Each spatial extent of a node encompasses all its children to create a bounding volume hierarchy. Both spatially regular (e.g. quadtree) as well as spatially irregular (e.g. R-tree) organizations of data are supported.
 
 The bounding volume is captured in either minimum bounding sphere (MBS) or oriented bounding box (OBB) representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
 
@@ -62,9 +62,9 @@ In order to provide a scalable representation of the original data, parent nodes
 
 *Schematic view of spatially distributed data and recursive grouping of nodes into a bounding volume hierarchy.*
 
-![Bonding volume hierarchy represented as a tree of nodes.](../docs/img/BoundingVolumeHierarchyTree.png)
+![Buonding volume hierarchy represented as a tree of nodes.](../docs/img/BoundingVolumeHierarchyTree.png)
 
-*Example of bonding volume hierarchy represented as a tree of nodes.*
+*Example of bounding volume hierarchy represented as a tree of nodes.*
 
 ## Nodes <a name="Nodes"></a>
 

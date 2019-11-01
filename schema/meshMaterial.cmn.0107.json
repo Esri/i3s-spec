@@ -10,7 +10,7 @@
     },
     "resource": {
       "type": "integer",
-      "description": "Locator ID for the material textures. i.e: `layers/0/nodes/{material.resource}/textures/{tex_name}`. Is **required** if material declares any textures."
+      "description": "Resource id for the material textures. i.e: `layers/0/nodes/{material.resource}/textures/{tex_name}`. Is **required** if material declares any textures."
     },
     "texelCountHint": {
       "type": "integer",

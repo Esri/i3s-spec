@@ -44,15 +44,15 @@ An I3S Scene Layer is a file format which stores 3D geographic data.  Scene Laye
 * [Point Cloud](../docs/2.0/pcsl_ReadMe.md) - A volumetric collection of point data, like lidar data.
 * [Building](../docs/1.7/BSL_ReadMe.md) - A building including its components, such as windows, doors, chairs, etc.
 
-I3S is designed to support large 3D content of global extent with containing detailed features. Clients can visualize scene layers takign advantage of the multi-LOD (level of detail) representation and symbology to create the right experience for 3D content. The I3S format continues to evolve adding more functionality. Previous versions of I3S (SLPK) can be converted and validated using the [I3S Converter](../i3s_converter/i3s_converter_ReadMe.md). You can find an overview of [Version History of I3S](../README.md).
+I3S is designed to support large 3D content of global extent with containing detailed features. Clients can visualize scene layers taking advantage of the multi-LOD (level of detail) representation and symbology to create the right experience for 3D content. The I3S format continues to evolve adding more functionality. Previous versions of I3S (SLPK) can be converted and validated using the [I3S Converter](../i3s_converter/i3s_converter_ReadMe.md). You can find an overview of [Version History of I3S](../README.md).
 
-I3S is organized in [nodes](#Nodes), which are structured into [node pages](#NodePages). The node page includes the bounding volume, child reference, count and the [level of detail selection](LevelofDetail.md). Nodes contain all the information to describe features including [geometry](#Geometry), [attributes](#Attributes) and [textures](#textures). Scene Layers can be created in Cartesian 3D or in global 3D world [coordinate systems](#CRS). I3S Scene Layers can be delivered to web, mobile and desktop clients. Most users will interact with Scene Layers using applications with cloud or server-based information. In these cases, the scene layer cache is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources. Alternatively, a scene layer can be delivered as a Scene Layer Package. This is a single file that includes the complete node tree and all necessary resources in an archive. 
+I3S is organized as [nodes](#Nodes), which are structured into [node pages](#NodePages). The node page includes the bounding volume, child reference, count and the [level of detail selection](LevelofDetail.md). Nodes contain all the information to describe features including [geometry](#Geometry), [attributes](#Attributes) and [textures](#textures). Scene Layers can be created in cartesian 3D or in global 3D world [coordinate systems](#CRS). I3S Scene Layers can be delivered to web, mobile and desktop clients. Most users will interact with Scene Layers using applications with cloud or server-based information. In these cases, the scene layer content is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources. Alternatively, a scene layer can be delivered as a Scene Layer Package. This is a single file that includes the complete node tree and all necessary resources in an archive. 
 
 # Organization and Structure <a name="structure"></a>
 
 ## Tree Structure <a name="Tree"></a>
 
-To assure high performance when visualizing 3D content, spatially close data are grouped into [nodes](#Nodes). The process is repeated recursively to create a tree of nodes. Each spatial extent of a node encompasses all its children to create a bounding volume hierarchy. 
+To assure high performance when visualizing 3D content, data are spatially grouped into [nodes](#Nodes). The process is repeated recursively to create a tree of nodes. Each spatial extent of a node encompasses all its children to create a bounding volume hierarchy. Both spatially regular (e.g. quadtree) as well as spatially irregular (e.g. R-tree) organizations of data are supported.
 
 The bounding volume is captured in either minimum bounding sphere (MBS) or oriented bounding box (OBB) representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
 
@@ -62,9 +62,9 @@ In order to provide a scalable representation of the original data, parent nodes
 
 *Schematic view of spatially distributed data and recursive grouping of nodes into a bounding volume hierarchy.*
 
-![Bonding volume hierarchy represented as a tree of nodes.](../docs/img/BoundingVolumeHierarchyTree.png)
+![Buonding volume hierarchy represented as a tree of nodes.](../docs/img/BoundingVolumeHierarchyTree.png)
 
-*Bonding volume hierarchy represented as a tree of nodes.*
+*Example of bounding volume hierarchy represented as a tree of nodes.*
 
 ## Nodes <a name="Nodes"></a>
 
@@ -72,7 +72,7 @@ In a Scene Layer, data are spatially grouped into nodes. The nodes contain node 
 
 ### Feature <a name="Feature"></a>
 
-A feature represents a real-world object within a node. For example, an individual point in a point scene layer or a building within a 3D object scene layer. Node resources such as geometry buffer and attributes can belong to a feature and accessed by object-ID.  
+A feature represents a real-world object within a node. For example, an individual point in a point scene layer or a building within a 3D object scene layer. Node resources such as geometry buffer and attributes can belong to a feature and can be accessed by object-ID.  
 
 When the same feature is included in more than one node at different [Levels of Detail](LevelofDetail.md), the corresponding attributes for the feature are included as attribute resources in each node. This redundancy in attribute storage allows each node to be rendered independently of other nodes.
 
@@ -83,7 +83,7 @@ When the same feature is included in more than one node at different [Levels of 
 
 ### Node resources <a name="NodeResources"></a>
 
-In addition to a bounding volume each node contains references to node resources. The type of resource available, such as geometry buffer, texture and attribute, depends on the original data and layer type. 3D object and point scene layer can define features within the geometry buffer and attributes.
+In addition to a bounding volume each node contains references to node resources. The type of resource available, such as geometry buffer, texture and attribute, depends on the original data and layer type. 3D object and point scene layer can define features within the geometry buffer and attributes. Clients have to use the resource identifiers (id) written in each node to access the resources. While content creator may choose to match resource id with the node id this is not required by the I3S specification and clients should not make this assumption.
 
 | Node Resources |Integrated Mesh  | 3D Object                    | Points                       | Point Clouds                 | Building Scene Layer         |
 | -------------- | ----------------|---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
@@ -120,22 +120,24 @@ Metadata on each attribute resource is made available to clients via the scene s
 
 #### Textures <a name="Textures"></a>
 
-The texture resource contains texture image files. Textures are stored as a binary resource within a node. Individual textures should be aggregated into texture atlases. Client capabilities for handling complex UV cases may vary, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases.
+The texture resource contains texture image files. Textures are stored as a binary resource. Individual textures should be aggregated into texture atlases. Client capabilities for handling complex UV cases may vary, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases.
 
 For more details, see the [Textures](../docs/1.7/texture.cmn.md) section or in 1.7, see the [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).  
 
 ### Node resources for I3S 1.6 and earlier <a name="NodeResources1.6"></a>
 
-To assure backward compatibility with 1.6 clients a scene layers needs to have the [3dNodeIndexDocument](../docs/1.7/3DNodeIndexDocument.cmn.md) as well as the [sharedResources](../docs/1.7/sharedResource.cmn.md) available. SharedResource includes the material definition of the node.
+To assure backward compatibility with 1.6 clients a 1.7 scene layer needs to also include the [3dNodeIndexDocument](../docs/1.7/3DNodeIndexDocument.cmn.md) resource as well as the [sharedResources](../docs/1.7/sharedResource.cmn.md) available for any node. SharedResource includes the material definition of the node.
 
 ## Node Page <a name="NodePages"></a>
-In version 1.6 and earlier, each node is stored individually within the 3DNodeIndexDocument, causing the tree traversal performance to be negatively impacted because of the large number of small resource requests required. Version 1.7 packs many nodes into a single resource called a node page. 
-These node pages are created by representing the tree as a flat array of nodes where internal nodes reference their children by array indices.
+In version 1.6 and earlier, each node is stored individually as a 3DNodeIndexDocument, causing the tree traversal performance to be negatively impacted because of the large number of small resource requests required. Version 1.7 packs many nodes into a single resource called a node page. 
+These node pages are created by representing the tree as a flat array of nodes where internal nodes reference their children by their array indices.
+
+I3S creators are free to use any ordering (e.g. breadth first, depth first) of the nodes into a flad array of nodes. At 1.7 the ID for a node is an integer that represents the index of the node within this flattened array. 
 
 ![bounding volume hierarchy tree](../docs/img/BoundingVolumeHierarchyTree.png)
 ![node page](../docs/img/NodePageArray.png)
 
-*Flat array representation of the tree. Children nodes are address by their index in the array.*
+*Example of breadth first ordering of nodes in a flat array. Children nodes are addressed by their index in the array.*
 
 ## Statistics <a name="Statistics"></a>
 [Statistics](../docs/1.7/stats.cmn.md) are used by clients to define symbology without having to read all data. For example, if you want to define a unique value symbology, statistics are used to collect all unique values within the layer and calculate the number features that are included in a unique value. Beside symbology, statistics are also used to filter data.   
@@ -189,7 +191,7 @@ The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clien
 
 ### REST API  <a name="rest-API"></a>
 
-I3S is a REST API.  Each scene layer profile has different components and features.  For details on a specific profile and version, refer to the individual README documents. 
+I3S is a REST API.  Each scene layer profile has different components and features.  For details on the REST API of a specific profile and version, refer to the individual README documents. 
 
 Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).
 
@@ -197,11 +199,9 @@ Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrat
 
 Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
 
-The following examples are included to provide a structural overview. 
-
 ### Scene Layer Packages <a name="SLPK"></a>
 
-Scene Layer Packages (SLPK) consolidate an I3S layer into a single file.  It is designed to be directly consumed by applications.
+Scene Layer Packages (SLPK) consolidate an I3S layer into a single file.  They are designed to be directly consumed by applications.
 
 
 An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources.  The archiving method for SLPK is `STORE`, meaning that the archive itself is not compressed.  The individual resources within the SLPK may be compressed using the compression method `GZIP`, with the exception of jpg and png files. For example, `.json.gz`. It is recommended to compress all resources.
@@ -227,7 +227,7 @@ Here are a few examples of SLPK file extensions:
 
 **Hash**
 
-In 1.7, an M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
+In 1.7, an MD5 [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
 
 
 #### Example 1.7 SLPK Structure Summary for 3D Objects <a name="1.7-SLPK-Structure"></a>
@@ -266,7 +266,7 @@ In 1.7, an M5D [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve load
 	+--3dSceneLayer.json.gz
 	+--@specialIndexFileHASH128@
 ```
-The path is the same as for services without the `layers/0` prefix. Acceptions are:
+The path is the same as in the REST API but without the `layers/0` prefix. Exceptions are:
 
 |Resource|SLPK|Service|
 |-----|---|------|

@@ -1,6 +1,6 @@
 # mesh
 
-Mesh object. Mesh geometry for a node.
+Mesh object. Mesh geometry for a node. Clients have to use the `resource` identifiers written in each node to access the resources. While content creator may choose to match `resource` with the node id this is not required by the I3S specification and clients should not make this assumption.
 
 ### Related:
 

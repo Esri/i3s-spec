@@ -17,7 +17,7 @@ Texture coordinates do not take atlas regions into account directly. They range 
 
 ### Related:
 
-[cmn::store](store.cmn.md), [psl::store](store.psl.md)
+[cmn::store](store.cmn.md), [cmn::store](store.cmn.md), [psl::store](store.psl.md)
 ### Properties
 
 | Property | Type | Description |

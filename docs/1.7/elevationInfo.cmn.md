@@ -4,7 +4,7 @@ An object defining where a feature is placed within a scene. For example, on the
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
+[cmn::3DNodeIndexDocument](3DNodeIndexDocument.cmn.md), [cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
 ### Properties
 
 | Property | Type | Description |

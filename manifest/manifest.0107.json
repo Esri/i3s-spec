@@ -41,8 +41,8 @@
           "schema": "sharedResource.cmn.0107.json"
         },
         {
-          "path": "nodepages",
-          "schema": "nodes.cmn.0107.json"
+          "path": "nodepage",
+          "schema": "nodePage.cmn.0107.json"
         }
       ]
     },

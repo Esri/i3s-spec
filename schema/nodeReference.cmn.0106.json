@@ -6,7 +6,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Tree Key ID (e.g. '1-3-0-5') of the referenced node."
+      "description": "Tree Key ID of the referenced node represented as string."
     },
     "mbs": {
       "type": "array",
@@ -42,16 +42,34 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "cachedDrawingInfo for 3D Object scene layer.",
+        "title": "Node reference for integrated mesh scene layer.",
         "code": {
-          "id": "2-0-0-0",
-          "href": "../2-0-0-0",
-          "mbs": [
-            0.027173397137801203,
-            0.0049950922109050205,
-            139.15166463702917,
-            133.99739074707031
-          ]
+            "id": "18",
+            "href": "../18",
+            "mbs": [
+                138.59974403386326,
+                -34.929125554424836,
+                77.791773992590606,
+                245.39599377770242
+            ],
+            "obb": {
+                "center": [
+                    138.59974403386326,
+                    -34.929125554424836,
+                    77.791773992590606
+                ],
+                "halfSize": [
+                    186.775208,
+                    31.6982021,
+                    158.549973
+                ],
+                "quaternion": [
+                    -0.116017461,
+                    0.276839644,
+                    0.871147692,
+                    -0.388588935
+                ]
+            }
         }
       }
     ]

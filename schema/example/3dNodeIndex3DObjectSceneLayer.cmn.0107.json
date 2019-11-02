@@ -1,0 +1,219 @@
+{
+    "id": "25030",
+    "level": 6,
+    "mbs": [
+        54.483553612201497,
+        24.36252247939186,
+        8.115040997043252,
+        202.28157036604742
+    ],
+    "obb": {
+        "center": [
+            54.483553612201497,
+            24.36252247939186,
+            8.115040997043252
+        ],
+        "halfSize": [
+            93.1058044,
+            6.90459251,
+            181.712433
+        ],
+        "quaternion": [
+            0.933717132,
+            -0.28870675,
+            0.055369094,
+            -0.204340667
+        ]
+    },
+    "lodSelection": [
+        {
+            "metricType": "maxScreenThresholdSQ",
+            "maxError": 1278203.75
+        },
+        {
+            "metricType": "maxScreenThreshold",
+            "maxError": 1275.7192232958625
+        }
+    ],
+    "featureData": [
+        {
+            "href": "./features/0"
+        }
+    ],
+    "geometryData": [
+        {
+            "href": "./geometries/0"
+        }
+    ],
+    "sharedResource": {
+        "href": "./shared"
+    },
+    "parentNode": {
+        "id": "25031",
+        "href": "../25031",
+        "mbs": [
+            54.483553612201497,
+            24.36252247939186,
+            8.115040997043252,
+            202.28157036604742
+        ],
+        "obb": {
+            "center": [
+                54.483553612201497,
+                24.36252247939186,
+                8.115040997043252
+            ],
+            "halfSize": [
+                93.1058044,
+                6.90459251,
+                181.712433
+            ],
+            "quaternion": [
+                0.933717132,
+                -0.28870675,
+                0.055369094,
+                -0.204340667
+            ]
+        }
+    },
+    "attributeData": [
+        {
+            "href": "./attributes/f_0/0"
+        },
+        {
+            "href": "./attributes/f_1/0"
+        },
+        {
+            "href": "./attributes/f_2/0"
+        },
+        {
+            "href": "./attributes/f_3/0"
+        },
+        {
+            "href": "./attributes/f_4/0"
+        },
+        {
+            "href": "./attributes/f_5/0"
+        },
+        {
+            "href": "./attributes/f_6/0"
+        },
+        {
+            "href": "./attributes/f_7/0"
+        },
+        {
+            "href": "./attributes/f_8/0"
+        },
+        {
+            "href": "./attributes/f_9/0"
+        },
+        {
+            "href": "./attributes/f_10/0"
+        },
+        {
+            "href": "./attributes/f_11/0"
+        },
+        {
+            "href": "./attributes/f_12/0"
+        },
+        {
+            "href": "./attributes/f_13/0"
+        },
+        {
+            "href": "./attributes/f_14/0"
+        },
+        {
+            "href": "./attributes/f_15/0"
+        },
+        {
+            "href": "./attributes/f_16/0"
+        },
+        {
+            "href": "./attributes/f_17/0"
+        },
+        {
+            "href": "./attributes/f_18/0"
+        },
+        {
+            "href": "./attributes/f_19/0"
+        },
+        {
+            "href": "./attributes/f_20/0"
+        },
+        {
+            "href": "./attributes/f_21/0"
+        },
+        {
+            "href": "./attributes/f_22/0"
+        },
+        {
+            "href": "./attributes/f_23/0"
+        },
+        {
+            "href": "./attributes/f_24/0"
+        },
+        {
+            "href": "./attributes/f_25/0"
+        },
+        {
+            "href": "./attributes/f_26/0"
+        },
+        {
+            "href": "./attributes/f_27/0"
+        },
+        {
+            "href": "./attributes/f_28/0"
+        },
+        {
+            "href": "./attributes/f_29/0"
+        },
+        {
+            "href": "./attributes/f_30/0"
+        },
+        {
+            "href": "./attributes/f_31/0"
+        },
+        {
+            "href": "./attributes/f_32/0"
+        },
+        {
+            "href": "./attributes/f_33/0"
+        },
+        {
+            "href": "./attributes/f_34/0"
+        },
+        {
+            "href": "./attributes/f_35/0"
+        },
+        {
+            "href": "./attributes/f_36/0"
+        },
+        {
+            "href": "./attributes/f_37/0"
+        },
+        {
+            "href": "./attributes/f_38/0"
+        },
+        {
+            "href": "./attributes/f_39/0"
+        },
+        {
+            "href": "./attributes/f_40/0"
+        },
+        {
+            "href": "./attributes/f_41/0"
+        },
+        {
+            "href": "./attributes/f_42/0"
+        },
+        {
+            "href": "./attributes/f_43/0"
+        },
+        {
+            "href": "./attributes/f_44/0"
+        },
+        {
+            "href": "./attributes/f_45/0"
+        }
+    ]
+}

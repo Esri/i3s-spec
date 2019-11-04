@@ -19,10 +19,10 @@ Montreal, Canada textured buildings [service](https://www.arcgis.com/home/item.h
 ![Thematic 3D Object Scene Layer without textures](../img/LyonThematic.png)
 
 ## 3D Object Scene Layer Structure
-The 3D object scene layer is structured into a tree of multiple JSON files. A 3D object scene layer can be used to create a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
+The 3D object scene layer is structured into a tree of multiple JSON files. A 3D object scene layer can be represented as a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [layer description](3DSceneLayer.cmn.md)
-- [node pages](nodes.cmn.md)
+- [node pages](nodepage.cmn.md)
 - geometryBuffer (binary)
 - attributesBuffer (binary)
 - textures (binary)
@@ -73,7 +73,7 @@ _^ Not used by client. Human readable version of the features._ <br />
 
 # HTTP API Overview 1.7
 
-Version 1.7 is backwards compatible with 1.6.  For older clients to be able to read 1.7, sharedResources and nodeIndexDocument are included.
+Version 1.7 is backwards compatible with 1.6.  For older clients to be able to read 1.7, sharedResources and  the 3DNodeIndexDocument resources are included.
 
 
 The following API methods are available for 3D Object scene layer:
@@ -99,6 +99,8 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 </table>
 
+[Scene Layer document](3DSceneLayer.cmn.md)
+
 **Node page** <br />
 
 <table>
@@ -108,7 +110,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>`http://serviceURL/layers/{layerID}/nodepages/{nodePageID}/`</td>
+    <td>http://serviceURL/layers/{layerID}/nodepages/{nodePageID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -116,11 +118,13 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>`layerID`: Integer. ID of the associated layer. Esri products expect this to be `0`. `nodePageID`: Integer. ID of the associated node page.</td>
+    <td>layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodePageID: Integer. ID of the associated node page.</td>
 </tr>
 </table>
 
-**Textures**
+[node pages](nodepage.cmn.md)
+
+**Texture**
 <table>
 <tr>
     <td>Type</td>
@@ -128,7 +132,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/textures/{textureID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -138,7 +142,7 @@ The following API methods are available for 3D Object scene layer:
     <td>Description</td>
     <td>The texture resource (image). <br/>
     <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
-    <code>resourceID</code> Integer. ID of the associated node. <br/>
+    <code>nodeID</code> Integer. ID of the associated node. <br/>
     <code>textureID</code> String. This ID returns one of the textures available for this node. The same texture may be available in different formats.</td>
 </tr>
 </table>
@@ -150,10 +154,6 @@ The following API methods are available for 3D Object scene layer:
     <td>bin, draco</td>
 </tr>
 <tr>
-    <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}</td>
-</tr>
-<tr>
     <td>Example</td>
     <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 </td>
 </tr>
@@ -161,7 +161,7 @@ The following API methods are available for 3D Object scene layer:
     <td>Description</td>
     <td>The geometry resource (mesh information). <br/>
     <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
-    <code>resourceID</code> Integer. ID of the associated node. <br/>
+    <code>nodeID</code> Integer. ID of the associated node. <br/>
     <code>geometryID</code> Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
 </tr>
 </table>
@@ -174,7 +174,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/f_{attributeID}/0</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/attributes/f_{attributeID}/0</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -184,6 +184,7 @@ The following API methods are available for 3D Object scene layer:
     <td>Description</td>
     <td>The value for a specific attribute within a node. <br/>
     <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>nodeID</code> Integer. ID of the associated node. <br/>
     <code>attributeID</code> Integer. ID of the specific attribute for the layer. </td>
 </tr>
 </table>
@@ -210,6 +211,8 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 </table>
 
+[statistic](statsInfo.cmn.md)
+
 ## HTTP API included for backward compatibility with 1.6
 
 **Shared resources**
@@ -220,7 +223,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/shared</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -234,6 +237,8 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 </table>
 
+[sharedResource](sharedResource.cmn.md)
+
 **3D node index document**
 
 <table>
@@ -243,7 +248,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -257,4 +262,5 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 </table>
 
+[3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)
 

@@ -7,8 +7,8 @@ Point cloud scene layers are scalable, which allows for efficiency when working 
 Point cloud scene layers also support caching attributes like RGB, Intensity, Flags, Class Code, Returns, User Data, Point Source ID, GPS Time, Scan Angle and Near Infrared.  This allows client applications to update the symbology as well as query point information.
 
 **Examples**:<br />
-Morro Bay LiDAR data sample [SLPK](www.arcgis.com/home/item.html?id=496552d059644b4892c51ad06bdba8e2).<br />
-Morro Bay LiDAR data sample [service](www.arcgis.com/home/item.html?id=908d6b986f314d51b1ff50b3bc321dfd).<br />
+Morro Bay LiDAR data sample [SLPK](https://www.arcgis.com/home/item.html?id=496552d059644b4892c51ad06bdba8e2).<br />
+Morro Bay LiDAR data sample [service](https://www.arcgis.com/home/item.html?id=908d6b986f314d51b1ff50b3bc321dfd).<br />
 
 
 *Example of point cloud rendering*
@@ -111,7 +111,9 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The point coordinate values within the node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodeID: Integer. ID of the associated node.</td>
+    <td>The point coordinate values within the node.<br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.<br/>
+    <code>nodeID</code>: Integer. ID of the associated node.</td>
 </tr>
 </table>
 
@@ -131,7 +133,10 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The value for a specific  attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodeID: Integer. ID of the associated node. attributeID: Integer.  ID of the specific attribute for the layer.</td>
+    <td>The value for a specific  attribute within a node.<br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.<br/>
+    <code>nodeID</code>: Integer. ID of the associated node.<br/>
+    <code>attributeID</code>: Integer.  ID of the specific attribute for the layer.</td>
 </tr>
 </table>
 
@@ -151,7 +156,9 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The statistics for the entire layer for a specific attribute. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer.  ID of the specific attribute for the layer.</td>
+    <td>The statistics for the entire layer for a specific attribute.<br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.<br/>
+    <code>attributeID</code>: Integer.  ID of the specific attribute for the layer.</td>
 </tr>
 </table>
 

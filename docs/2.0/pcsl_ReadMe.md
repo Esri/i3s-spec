@@ -16,7 +16,7 @@ Morro Bay LiDAR data sample [service](www.arcgis.com/home/item.html?id=908d6b986
 ![Point Cloud Scene Layer](../img/point-cloud-scene-layer.png)
 
 ## Point Cloud Scene Layer Structure
-The point cloud scene layer is structured into a tree of multiple JSON files.  Point cloud scene layers can be used to create a scene layer package (*.slpk) or a I3S service. Since an *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hashtable.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
+The point cloud scene layer is structured into a tree of multiple JSON files.  Point cloud scene layers can be representated as a scene layer package (*.slpk) or a I3S service. Since an *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hashtable.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
 
 - [Layer description](layer.pcsl.md)
 - Nodes containing [Geometry](defaultGeometrySchema.pcsl.md) and [Attributes](attributeInfo.pcsl.md)
@@ -71,6 +71,8 @@ The following API methods are available for point cloud scene layer:
 </tr>
 </table>
 
+[Layer description](layer.pcsl.md)
+
 **Node Page**
 <table>
 <tr>
@@ -91,6 +93,8 @@ The following API methods are available for point cloud scene layer:
 </tr>
 </table>
 
+[Node pages](nodePageDefinition.pcsl.md)
+
 **Geometries**
 <table>
 <tr>
@@ -99,7 +103,7 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>URL Templace</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/0</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/geometries/0</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -107,7 +111,7 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The point coordinate values within the node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node.</td>
+    <td>The point coordinate values within the node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodeID: Integer. ID of the associated node.</td>
 </tr>
 </table>
 
@@ -119,7 +123,7 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>URL Templace</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/{attributeID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/attributes/{attributeID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -127,7 +131,7 @@ The following API methods are available for point cloud scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The value for a specific  attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. resourceID: Integer. ID of the associated node. attributeID: Integer.  ID of the specific attribute for the layer.</td>
+    <td>The value for a specific  attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodeID: Integer. ID of the associated node. attributeID: Integer.  ID of the specific attribute for the layer.</td>
 </tr>
 </table>
 
@@ -150,3 +154,5 @@ The following API methods are available for point cloud scene layer:
     <td>The statistics for the entire layer for a specific attribute. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer.  ID of the specific attribute for the layer.</td>
 </tr>
 </table>
+
+[Statistics](statistics.pcsl.md)

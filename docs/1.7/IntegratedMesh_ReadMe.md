@@ -14,7 +14,7 @@ Rancho Cucamonga Fire Station No. 3 [service](https://www.arcgis.com/home/item.h
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Integrated mesh scene layers can be represented as a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [3DSceneLayer](3DSceneLayer.cmn.md)
-- [Node Pages](nodes.cmn.md)
+- [Node Pages](nodepage.cmn.md)
 - geometryBuffer (binary)
 - textures (binary)
 - [Shared Resources](sharedResource.cmn.md)*
@@ -92,7 +92,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/8</td>
+    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodepages/1</td>
 </tr>
 <tr>
     <td>Description</td>
@@ -101,7 +101,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 </table>
 
-[Node Pages](nodes.cmn.md)
+[Node Pages](nodepage.cmn.md)
 
 **Textures**
 <table>
@@ -115,7 +115,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/textures/1
+    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/9/textures/0_0_1
  </td>
 </tr>
 <tr>
@@ -139,7 +139,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/geometries/1  </td>
+    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/9/geometries/1  </td>
 </tr>
 <tr>
     <td>Description</td>
@@ -164,7 +164,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98/shared  </td>
+    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/9/shared  </td>
 </tr>
 <tr>
     <td>Description</td>
@@ -189,7 +189,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/98</td>
+    <td>http://my.server.com/IntegratedMeshSceneLayer/SceneServer/layers/0/nodes/9</td>
 </tr>
 <tr>
     <td>Description</td>

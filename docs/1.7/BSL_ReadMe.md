@@ -89,8 +89,8 @@ The following API methods are available for Building Scene Layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98 <br /> 
-    http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/98/geometries/1 </td>
+    <td>http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/33 <br /> 
+    http://my.server.com/BuildingSceneLayer/SceneServer/layers/0/sublayers/33/nodes/0/geometries/0 </td>
 </tr>
 <tr>
     <td>Description</td>

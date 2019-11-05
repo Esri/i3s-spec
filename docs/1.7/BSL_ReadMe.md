@@ -11,9 +11,9 @@ Building Scene Layer example [service](https://www.arcgis.com/home/item.html?id=
 ![Building Scene Layer](../img/buildingSceneLayer.png)
 
 ## Building Scene Layer Structure
-The building scene layer contains discipline and category layers as sublayers which represent a building and its assets. Building scene layers can be used to create a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:
+The building scene layer contains discipline and category layers as sublayers which represent a building and its assets. Building scene layers can be represented as a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:
 
-- [Layer description](layer.bld.md)
+- [3DSceneLayer](layer.bld.md)
 - [Sublayers](sublayer.bld.md)
 - [Statistics](stats.bld.md)
 
@@ -38,7 +38,8 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  |  |  |  |  +-- 0
   |  |  |  |  |  |  +-- 0_0_1
   |  |  |  |  |  |  +--(...)
-  |  |  |  |  |  +-- shared 
+  |  |  |  +-- 3dNodeIndexDocument*
+  |  |  |  |  |  +-- shared* 
   |  |  |  |  (...) 
   |  |  |  +--statistics
   |  |  |  | +-- f_2
@@ -47,6 +48,9 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  |  |  |  | +--0
   |  |  |  |  +-- (...)
 ```
+
+_* Only required for 1.6 compatability for older clients._ <br />
+
 # HTTP API Overview
 
 The following API methods are available for Building Scene Layer:
@@ -71,6 +75,8 @@ The following API methods are available for Building Scene Layer:
 </tr>
 </table>
 
+[3DSceneLayer](layer.bld.md)
+
 **Sublayer Document**
 <table>
 <tr>
@@ -94,3 +100,27 @@ The following API methods are available for Building Scene Layer:
 </tr>
 </table>
 
+[Sublayers](sublayer.bld.md)
+
+**Statistics**
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Template</td>
+    <td>http://serviceURL/layers/{layerID}/statistics/summary</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/summary  </td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>The statistics for the entire layer for a specific attribute. <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`.
+</tr>
+</table>
+
+[Statistics](stats.bld.md)

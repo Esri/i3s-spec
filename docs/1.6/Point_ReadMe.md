@@ -11,12 +11,12 @@ NYC 2015 Tree Survey [service](www.arcgis.com/home/item.html?id=496552d059644b48
 ![Point Scene Layer](../img/PointSceneLayer.png)
 
 ## Point Scene Layer Structure
-The point scene layer is structured into a tree of multiple JSON files. Point scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:
+The point scene layer is structured into a tree of multiple JSON files. Point scene layers can be represented as a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:
 
-- [Layer description](3DSceneLayer.psl.md)
+- [3DSceneLayer](3DSceneLayer.psl.md)
 - [Feature Data](featureData.cmn.md)
 - attribute (binary)
-- [Node Index Document](3DNodeIndexDocument.cmn.md)
+- [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)
 - [Statistics](statisticsInfo.cmn.md)
 
 *Example of point scene layer structure*
@@ -69,6 +69,8 @@ The following API methods are available for Point Scene Layer:
 </tr>
 </table>
 
+[3DSceneLayer](3DSceneLayer.psl.md)
+
 **3D node index document**
 
 <table>
@@ -78,7 +80,7 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -86,9 +88,11 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>Description of the node. ID of the associated layer. Esri clients expect this to be `0`. resourceID: Integer. ID of the associated resource.</td>
+    <td>Description of the node. ID of the associated layer. Esri clients expect this to be `0`. nodeID: Integer. ID of the associated resource.</td>
 </tr>
 </table>
+
+[3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)
 
 **Attributes**
 <table>
@@ -98,7 +102,7 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/attributes/f_{attributeID}/0</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/attributes/f_{attributeID}/0</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -106,7 +110,7 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>The value for a specific attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer. ID of the specific attribute for the layer. </td>
+    <td>The value for a specific attribute within a node. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodeID: Integer. ID of the associated resource. attributeID: Integer. ID of the specific attribute for the layer. </td>
 </tr>
 </table>
 
@@ -118,7 +122,7 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/features/0</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/features/0</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -126,9 +130,11 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>Point location and feature IDs. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer. ID of the specific attribute for the layer. </td>
+    <td>Point location and feature IDs. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodeID: Integer. ID of the associated resource. attributeID: Integer. ID of the specific attribute for the layer. </td>
 </tr>
 </table>
+
+[Feature Data](featureData.cmn.md)
 
 **Statistics**
 <table>
@@ -149,4 +155,6 @@ The following API methods are available for Point Scene Layer:
     <td>The statistics for the entire layer for a specific attribute. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. attributeID: Integer.  ID of the specific attribute for the layer</td>
 </tr>
 </table>
+
+[Statistics](statisticsInfo.cmn.md)
 

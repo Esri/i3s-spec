@@ -154,6 +154,10 @@ The following API methods are available for 3D Object scene layer:
     <td>bin, draco</td>
 </tr>
 <tr>
+    <td>URL Template</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/geometries/{geometryID}</td>
+</tr>
+<tr>
     <td>Example</td>
     <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 </td>
 </tr>
@@ -233,7 +237,7 @@ The following API methods are available for 3D Object scene layer:
     <td>Description</td>
     <td>Legacy texture and material description. **Not used in 1.7.**. <br/>
     <code>layerID</code> Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. <br/>
-    <code>resourceID</code> Integer. ID of the associated node.  </td>
+    <code>nodeID</code> Integer. ID of the associated node.  </td>
 </tr>
 </table>
 
@@ -258,7 +262,7 @@ The following API methods are available for 3D Object scene layer:
     <td>Description</td>
     <td>Description of the node. **Not used in 1.7.** 
     <code>layerID</code> Integer. ID of the associated layer. Esri clients expect this to be `0`.
-    <code>resourceID</code> Integer. ID of the associated resource.</td>
+    <code>nodeID</code> Integer. ID of the associated resource.</td>
 </tr>
 </table>
 

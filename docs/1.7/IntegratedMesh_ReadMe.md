@@ -11,13 +11,14 @@ Rancho Cucamonga Fire Station No. 3 [service](https://www.arcgis.com/home/item.h
 ![Integrated Mesh Scene Layer](../img/IM.PNG)
 
 ## Integrated Mesh Scene Layer Structure
-The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Integrated mesh scene layers can be used to create a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
+The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Integrated mesh scene layers can be represented as a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
-- [Layer description](3DSceneLayer.cmn.md)
+- [3DSceneLayer](3DSceneLayer.cmn.md)
 - [Node Pages](nodes.cmn.md)
 - geometryBuffer (binary)
 - textures (binary)
 - [Shared Resources](sharedResource.cmn.md)*
+- [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)*
 
 **Shared resources are deprecated as of version 1.7 and are only included for backwards compatibility.*
 
@@ -41,6 +42,7 @@ Integrated mesh scene layer packages can optionally contain a [hash table](slpk_
 	|  |  |  +-- 0
 	|  |  |  +-- 1
 	|  |  |  +--(...)
+	|  |  +-- 3dNodeIndexDocument*
 	|  |  +-- shared* 
     |  +-- (...)
 
@@ -49,7 +51,7 @@ _* Only required for 1.6 compatability for older clients._ <br />
 
 # HTTP API Overview 1.7
 
-Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResources and nodeDocument are included but not used in 1.7.
+Spec version 1.7 is backwards compatible with 1.6.  For all of our clients to be able to read 1.7, sharedResources and the 3DNodeIndexDocument resource are included but not used in 1.7.
 
 The following API methods are available for integrated mesh scene layer:
 
@@ -75,6 +77,8 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 </table>
 
+[3DSceneLayer](3DSceneLayer.cmn.md)
+
 **Node page** <br />
 
 <table>
@@ -97,6 +101,8 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 </table>
 
+[Node Pages](nodes.cmn.md)
+
 **Textures**
 <table>
 <tr>
@@ -105,7 +111,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/textures/{texture ID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/textures/{texture ID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -116,7 +122,7 @@ The following API methods are available for integrated mesh scene layer:
     <td>Description</td>
     <td>The texture resource (image). <br/>
     <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
-    <code>resourceID</code>: Integer. ID of the associated node. <br/>
+    <code>nodeID</code>: Integer. ID of the associated node. <br/>
     <code>textureID</code>: String. This ID returns one of the textures available for this node. The same texture may be available in different formats.</td>
 </tr>
 </table>
@@ -129,7 +135,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/geometries/{geometry ID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/geometries/{geometry ID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -139,7 +145,7 @@ The following API methods are available for integrated mesh scene layer:
     <td>Description</td>
     <td>The geometry resource (mesh information). <br/>
     <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
-    <code>resourceID</code>: Integer. ID of the associated node. <br/>
+    <code>nodeID</code>: Integer. ID of the associated node. <br/>
     <code>geometryID</code>: Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
 </tr>
 </table>
@@ -154,7 +160,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}/shared</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/shared</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -164,9 +170,11 @@ The following API methods are available for integrated mesh scene layer:
     <td>Description</td>
     <td>Legacy texture and material description. <strong>Not used in 1.7.</strong> <br/>
     <code>layerID</code>: Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. <br/>
-    <code>resourceID</code>: Integer. ID of the associated node.  </td>
+    <code>nodeID</code>: Integer. ID of the associated node.  </td>
 </tr>
 </table>
+
+[Shared Resources](sharedResource.cmn.md)
 
 **3D node index document**
 
@@ -177,7 +185,7 @@ The following API methods are available for integrated mesh scene layer:
 </tr>
 <tr>
     <td>URL Template</td>
-    <td>http://serviceURL/layers/{layerID}/nodes/{resourceID}</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -187,6 +195,8 @@ The following API methods are available for integrated mesh scene layer:
     <td>Description</td>
     <td>Description of the node. <strong>Not used in 1.7.</strong> <br/>
     <code>layerID</code>: Integer. ID of the associated layer. Esri clients expect this to be `0`. <br/>
-    <code>resourceID</code>: Integer. ID of the associated resource.</td>
+    <code>nodeID</code>: Integer. ID of the associated resource.</td>
 </tr>
 </table>
+
+[3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)

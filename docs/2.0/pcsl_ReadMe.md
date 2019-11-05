@@ -16,7 +16,7 @@ Morro Bay LiDAR data sample [service](https://www.arcgis.com/home/item.html?id=9
 ![Point Cloud Scene Layer](../img/point-cloud-scene-layer.png)
 
 ## Point Cloud Scene Layer Structure
-The point cloud scene layer is structured into a tree of multiple JSON files.  Point cloud scene layers can be representated as a scene layer package (*.slpk) or a I3S service. Since an *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hashtable.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
+The point cloud scene layer is structured into a tree of multiple JSON files.  Point cloud scene layers can be represented as a scene layer package (*.slpk) or an I3S service. Since an *.slpk file can contain millions of documents, an [SLPK hash table](slpk_hashtable.pcsl.md) improves performance when scanning the slpk. A point cloud scene layer contains the following:
 
 - [Layer description](layer.pcsl.md)
 - Nodes containing [Geometry](defaultGeometrySchema.pcsl.md) and [Attributes](attributeInfo.pcsl.md)

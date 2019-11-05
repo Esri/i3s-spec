@@ -95,7 +95,8 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>This is the root document for the service containing properties common to the entire layer. layerID: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
+    <td>This is the root document for the service containing properties common to the entire layer.<br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.</td>
 </tr>
 </table>
 
@@ -118,11 +119,12 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>layerID: Integer. ID of the associated layer. Esri products expect this to be `0`. nodePageID: Integer. ID of the associated node page.</td>
+    <td><code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.<br/>
+    <code>nodePageID</code>: Integer. ID of the associated node page.</td>
 </tr>
 </table>
 
-[node pages](nodepage.cmn.md)
+[Node Pages](nodepage.cmn.md)
 
 **Texture**
 <table>
@@ -136,7 +138,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/textures/1  </td>
+    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/98/textures/0_0_1  </td>
 </tr>
 <tr>
     <td>Description</td>
@@ -152,6 +154,10 @@ The following API methods are available for 3D Object scene layer:
 <tr>
     <td>Type</td>
     <td>bin, draco</td>
+</tr>
+<tr>
+    <td>URL Template</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/geometries/{geometryID}</td>
 </tr>
 <tr>
     <td>Example</td>
@@ -178,7 +184,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/2/attributes/f_48/0  </td>
+    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/nodes/2/attributes/f_5/0  </td>
 </tr>
 <tr>
     <td>Description</td>
@@ -201,17 +207,17 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_48/0  </td>
+    <td>http://my.server.com/3DObjectSceneLayer/SceneServer/layers/0/statistics/f_5/0  </td>
 </tr>
 <tr>
     <td>Description</td>
     <td>The statistics for the entire layer for a specific attribute. <br/>
-    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`.
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`.<br/>
     <code>attributeID</code> Integer.  ID of the specific attribute for the layer. </td>
 </tr>
 </table>
 
-[statistic](statsInfo.cmn.md)
+[Statistics](statsInfo.cmn.md)
 
 ## HTTP API included for backward compatibility with 1.6
 
@@ -233,11 +239,11 @@ The following API methods are available for 3D Object scene layer:
     <td>Description</td>
     <td>Legacy texture and material description. **Not used in 1.7.**. <br/>
     <code>layerID</code> Integer. ID of the associated layer. ArcGIS clients expect this to be `0`. <br/>
-    <code>resourceID</code> Integer. ID of the associated node.  </td>
+    <code>nodeID</code> Integer. ID of the associated node.  </td>
 </tr>
 </table>
 
-[sharedResource](sharedResource.cmn.md)
+[Shared Resources](sharedResource.cmn.md)
 
 **3D node index document**
 
@@ -256,9 +262,9 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 <tr>
     <td>Description</td>
-    <td>Description of the node. **Not used in 1.7.** 
-    <code>layerID</code> Integer. ID of the associated layer. Esri clients expect this to be `0`.
-    <code>resourceID</code> Integer. ID of the associated resource.</td>
+    <td>Description of the node. **Not used in 1.7.**<br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri clients expect this to be `0`.<br/>
+    <code>nodeID</code> Integer. ID of the associated resource.</td>
 </tr>
 </table>
 

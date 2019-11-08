@@ -18,7 +18,7 @@ UV regions are defined as a four-component array per vertex : [u_min, v_min, u_m
 
 ### Related:
 
-[cmn::geometryBuffer](geometryBuffer.cmn.md), [cmn::geometryCompressedAttribute](geometryCompressedAttribute.cmn.md)
+[cmn::compressedAttributes](compressedAttributes.cmn.md), [cmn::geometryBuffer](geometryBuffer.cmn.md)
 ### Properties
 
 | Property | Type | Description |

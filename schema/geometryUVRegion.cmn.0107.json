@@ -3,7 +3,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/geometryUVRegion.cmn.0107.md",
-  "related": "geometryCompressedAttribute.cmn.0107",
+  "related": "compressedAttributes.cmn.0107",
   "properties": {
     "type": {
       "type": "string",

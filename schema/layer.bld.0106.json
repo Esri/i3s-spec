@@ -71,7 +71,7 @@
     },
     "statisticsHRef": {
       "type": "string",
-      "description": "url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md)"
+      "description": "url to statistic summary for the BIM layer. [statistics/summary.json](attributestats.bld.md)"
     }
   },
   "required": [

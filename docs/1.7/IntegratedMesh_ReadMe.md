@@ -14,7 +14,7 @@ Rancho Cucamonga Fire Station No. 3 [service](https://www.arcgis.com/home/item.h
 The Integrated Mesh scene layer is structured into a tree of multiple JSON files. Integrated mesh scene layers can be represented as a scene layer package (*.slpk) or a I3S service. A Integrated Mesh scene layer contains the following:
 
 - [3DSceneLayer](3DSceneLayer.cmn.md)
-- [Node Pages](nodepage.cmn.md)
+- [Node Pages](nodePage.cmn.md)
 - geometryBuffer (binary)
 - textures (binary)
 - [Shared Resources](sharedResource.cmn.md)*

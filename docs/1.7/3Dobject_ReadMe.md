@@ -22,7 +22,7 @@ Montreal, Canada textured buildings [service](https://www.arcgis.com/home/item.h
 The 3D object scene layer is structured into a tree of multiple JSON files. A 3D object scene layer can be represented as a scene layer package (*.slpk) or a I3S service. A 3D object scene layer contains the following:
 
 - [3DSceneLayer](3DSceneLayer.cmn.md)
-- [nodePage](nodepage.cmn.md)
+- [nodePage](nodePage.cmn.md)
 - geometryBuffer (binary)
 - attributesBuffer (binary)
 - textures (binary)
@@ -124,7 +124,7 @@ The following API methods are available for 3D Object scene layer:
 </tr>
 </table>
 
-[nodePage](nodepage.cmn.md)
+[nodePage](nodePage.cmn.md)
 
 **Texture**
 <table>

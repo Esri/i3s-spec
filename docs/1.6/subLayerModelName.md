@@ -43,7 +43,7 @@ Model names allow clients to identify entities of a building without having to r
 |DataDevices|Ethernet and other network connections|
 |FireAlarmDevices|Smoke detectors, manual pull stations|
 |SecurityDevices|CCTV, motions sensors, Door locks|
-|TelephonDevices|Phone jacks|
+|TelephoneDevices|Phone jacks|
 |NurseCallDevices|Nurse call devices|
 |LightingDevices|Daylight sensors, occupancy sensors, manual switches|
 |AirTerminals	|Exhaust grill, Return diffuser|

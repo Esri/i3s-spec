@@ -6,7 +6,7 @@ When generating scene layers with the meshpyramid cooker, the root node never ha
 
 ### Related:
 
-[cmn::nodes](nodes.cmn.md)
+[cmn::nodePage](nodePage.cmn.md)
 ### Properties
 
 | Property | Type | Description |

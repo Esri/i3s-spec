@@ -14,8 +14,8 @@ Building Scene Layer example [service](https://www.arcgis.com/home/item.html?id=
 The building scene layer contains discipline and category layers as sublayers which represent a building and its assets. Building scene layers can be represented as a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:
 
 - [3DSceneLayer](layer.bld.md)
-- [Sublayers](sublayer.bld.md)
-- [Statistics](stats.bld.md)
+- [sublayer](sublayer.bld.md)
+- [statistics](stats.bld.md)
 
 *Example of building scene scene layer structure*
 
@@ -100,7 +100,7 @@ The following API methods are available for Building Scene Layer:
 </tr>
 </table>
 
-[Sublayers](sublayer.bld.md)
+[sublayer](sublayer.bld.md)
 
 **Statistics**
 <table>
@@ -123,4 +123,4 @@ The following API methods are available for Building Scene Layer:
 </tr>
 </table>
 
-[Statistics](stats.bld.md)
+[statistics](stats.bld.md)

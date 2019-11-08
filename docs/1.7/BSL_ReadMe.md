@@ -38,7 +38,7 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |  |  |  |  |  +-- 0
   |  |  |  |  |  |  +-- 0_0_1
   |  |  |  |  |  |  +--(...)
-  |  |  |  +-- 3dNodeIndexDocument*
+  |  |  |  |  |  +-- 3dNodeIndexDocument*
   |  |  |  |  |  +-- shared* 
   |  |  |  |  (...) 
   |  |  |  +--statistics

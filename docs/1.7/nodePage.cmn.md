@@ -1,6 +1,6 @@
 # Node page
 
-
+The node page object representing the tree as a flat array of nodes where internal nodes reference their children by their array indices.
 
 ### Related:
 

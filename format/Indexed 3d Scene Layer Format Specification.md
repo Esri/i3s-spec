@@ -460,7 +460,7 @@ The Attributes REST API syntax:
 
 ### <a name="attribute-resource-details">Attribute Resource - Details</a>
 
-A numeric attribute resource is a singe, one dimensional array.  A string attribute resource is two, sequential, one dimensional arrays.
+A numeric attribute resource is a single, one dimensional array.  A string attribute resource is two, sequential, one dimensional arrays.
 
 The structure of each attribute resource is declared upfront in the scene layer resource through the Attribute Storage Info. The client is reads the Attribute Storage Info metadata to get the header information, the order, and the value types before consuming the binary attribute resource.
 

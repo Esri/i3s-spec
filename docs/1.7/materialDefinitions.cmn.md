@@ -1,6 +1,6 @@
 # materialDefinitions
 
-Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials).
+Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) with the following exceptions: I3S materials is assumed to be in the same color space as the textures, most commonly sRGB while glTF it would be interpretated as [linear](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#metallic-roughness-material). glTF has separate definitions, strength for [occlusionTextureInfo](https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.occlusionTextureInfo.schema.json) and scale for [normalTextureInfo](https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.normalTextureInfo.schema.json). I3S only has one [texture definition](materialTexture.cmn.md) with factor that replaces strength and scale.
 
 ### Related:
 

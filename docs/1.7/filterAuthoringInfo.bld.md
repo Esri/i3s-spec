@@ -1,4 +1,4 @@
-# Filter Authoring Info for building scene layer
+# filterAuthoringInfo [building profile]
 
 The filter authoring info object contains metadata about the authoring process for creating a filter object. This allows the authoring client to save specific, overridable settings.  The next time it is accessed with an authoring client, the selections are remembered. Non-authoring clients can ignore it.
 

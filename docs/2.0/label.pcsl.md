@@ -1,6 +1,6 @@
-# I3S point cloud scene layer: Statistics Label
+# label [point cloud profile]
 
-
+Label object for the statistics labels in the point cloud profile.
 
 ### Related:
 

@@ -1,4 +1,4 @@
-# PBR Metalic Roughness material model
+# PBR Metalic Roughness Material Model
 
 Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) (with the exception of emissive texture?)
 

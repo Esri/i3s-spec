@@ -73,7 +73,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 
 ### Related:
 
-[bld::statsummary](statsummary.bld.md)
+[bld::stats](stats.bld.md)
 ### Properties
 
 | Property | Type | Description |
@@ -91,7 +91,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 | **sublayers** | [sublayer](sublayer.bld.md)[] | List of sublayers or group of sublayers. |
 | filters | [filter](filter.bld.md)[] | Array of filters defined for the building scene layer. |
 | activeFilterID | string | Global ID, filter ID of the currently active filter for the building scene layer. |
-| statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
+| statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](attributestats.bld.md) |
 
 *Note: properties in **bold** are required*
 
@@ -102,10 +102,10 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 ```json
  {
   "id": 10,
-  "name": "esri_campus",
+  "name": "Building_E",
   "layerType": "Building",
-  "alias": "Esri Campus 2018",
-  "version": "1.6",
+  "alias": "Building_E",
+  "version": "1.7",
   "spatialReference": {
     "wkid": 4326,
     "latestWkid": 4326
@@ -209,7 +209,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
     "name": "11 Jay St - 2015",
     "layerType": "Building",
     "alias": "11 Jay St - 2015",
-    "version": "1.6",
+    "version": "1.7",
     "spatialReference": {
         "wkid": 2875,
         "latestWkid": 2875

@@ -1,6 +1,6 @@
 # i3s_converter.exe
 
-Command line tool to validate an slpk (v1.6) or convert a v1.6 slpk to v1.7.  
+Command line tool to validate a 1.6 Scene Layer Package (slpk ) or convert a 1.6 slpk to 1.7.  
 
 
 |      &nbsp;     | Validate | Convert |
@@ -9,7 +9,9 @@ Command line tool to validate an slpk (v1.6) or convert a v1.6 slpk to v1.7.
 | Integrated Mesh |     X    |    X    |
 | Point           |     X    | &nbsp;  |
 | Pointcloud      |     X    | &nbsp;  |
-| Building        |     X    | &nbsp;  |
+| Building        |     X    |    X    |
+
+*Note:* 1.7 maintains backwards compatibility with 1.6. The resultant 1.7 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
 
 ## Running the executable
 
@@ -24,7 +26,7 @@ Command line tool to validate an slpk (v1.6) or convert a v1.6 slpk to v1.7.
 1. Specify the .exe path
 
   - Drag and drop the .exe into the command prompt window (absolute path).  
-  ![exe_abs_path](readme_images/exe_abs_path.PNG)
+    ![exe_abs_path](readme_images/exe_abs_path.PNG)
 
   - _cd_ into the directory that contains the .exe (relative path)
     - Use: i3s_converter  
@@ -46,7 +48,7 @@ Command line tool to validate an slpk (v1.6) or convert a v1.6 slpk to v1.7.
 |--------------|-----------------|
 | -b           | Show converter version    |
 | -h           | Show usage      |
-| -u infile.slpk | Convert slpk to v1.7   |
+| -u infile.slpk | Convert slpk to 1.7   |
 | -v infile.slpk | Validate slpk |
 | -i infile.slpk | Show basic layer info |
 
@@ -57,8 +59,8 @@ Command line tool to validate an slpk (v1.6) or convert a v1.6 slpk to v1.7.
 | -d dir         | Change output directory. Create it if it doesn't exist|
 | -j \[log_name] | Set log name    |
 | -e             | Create ETC2 texture \(slow) |
-| -o outfile   | v1.7 slpk name   |
-| -x             | Don't write dxt textures |
+| -o outfile   | 1.7 slpk name   |
+| -x             | Don't write DXT textures |
 
 ## Examples
 In the following example, the .exe and input slpk are in the current working directory.  
@@ -89,4 +91,4 @@ It uses:
   - _cd_ to the directory that contains the .exe
   - add the .exe as a PATH environment variable
 
-- v1.7 slpks and log files will be overwritten when tool is re-run with the same input
+- 1.7 slpks and log files will be overwritten when tool is re-run with the same input

@@ -1,4 +1,4 @@
-# vertexAttribute
+# vertexAttribute [common profile]
 
 The vertexAttributes describe valid properties for a single vertex.
 

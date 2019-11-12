@@ -1,4 +1,4 @@
-# nodePages
+# nodePageDefinition [common profile]
 
 
 

@@ -1,4 +1,4 @@
-# stats
+# statsInfo
 
 Contains statistics about each attribute. Statistics are useful to estimate attribute distribution and range.
 

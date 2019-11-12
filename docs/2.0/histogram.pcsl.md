@@ -1,4 +1,4 @@
-# I3S point cloud scene layer: histogram
+# histogram [point cloud profile]
 
 The histogram of the point cloud scene layer. The bin size may be computed as (max-min)/bin count. Please note that stats.histo.min/max is not equivalent to stats.min/max since values smaller than stats.histo.min and greater than stats.histo.max are counted in the first and last bin respectively. The values stats.min and stats.max may be conservative estimates.
 

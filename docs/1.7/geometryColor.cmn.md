@@ -1,6 +1,6 @@
-# Color vertex attribute
+# geometryColor
 
-Colors for geometry.  Assumed to be sRGB space.
+Color vertex attribute.  Assumed to be sRGB space.
 
 ### Related:
 

@@ -73,7 +73,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 
 ### Related:
 
-[bld::statsummary](statsummary.bld.md)
+[bld::stats](stats.bld.md)
 ### Properties
 
 | Property | Type | Description |
@@ -91,7 +91,7 @@ Building scene layer is not envisioned to represent many buildings (e.g. a city)
 | **sublayers** | [sublayer](sublayer.bld.md)[] | List of sublayers or group of sublayers. |
 | filters | [filter](filter.bld.md)[] | Array of filters defined for the building scene layer. |
 | activeFilterID | string | Global ID, filter ID of the currently active filter for the building scene layer. |
-| statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](statsummary.md) |
+| statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](attributestats.bld.md) |
 
 *Note: properties in **bold** are required*
 

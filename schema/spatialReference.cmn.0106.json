@@ -2,7 +2,7 @@
   "title": "spatialReference",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The spatialReference object is located at the top level of the JSON hierarchy.  A spatial reference can be defined using a well-known ID (WKID) or well-known text (WKT). The default tolerance and resolution values for the associated coordinate system are used.\n\nA spatial reference can optionally include a definition for a vertical coordinate system (VCS), which is used to interpret the z values of a geometry.",
+  "description": "The spatialReference object is located at the top level of the JSON hierarchy.  A spatial reference can be defined using a Well-Known ID (WKID) or Well-Known Text (WKT). The default tolerance and resolution values for the associated Coordinate Reference System (CRS) are used.\n\nA spatial reference can optionally include a definition for a vertical coordinate system (VCS), which is used to interpret a geometries z values.",
   "properties": {
     "latestVcsWkid": {
       "type": "integer",
@@ -18,12 +18,12 @@
     },
     "wkid": {
       "type": "integer",
-      "description": "The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system.",
+      "description": "WKID, or Well-Known ID, of the CRS. Specify either WKID or WKT of the CRS.",
       "default": 102100
     },
     "wkt": {
       "type": "string",
-      "description": "The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system but not both."
+      "description": "WKT, or Well-Known Text, of the CRS. Specify either WKT or WKID of the CRS but not both."
     }
   },
   "additionalProperties": false,

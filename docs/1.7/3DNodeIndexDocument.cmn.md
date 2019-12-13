@@ -1,14 +1,14 @@
 # 3D Node Index Document
 
-The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
+The 3dNodeIndexDocument JSON file describes a single index node within a [store](store.cmn.md). The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. The file includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
 
-Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
+Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide enough data for a simple visualization.  For example, the centroids of a bounding volume could be rendered as point features. 
 
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | string | Tree Key ID, unique within the store. At 1.7 the tree-key is the integer id of the node represented as a string. |
+| **id** | string | Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string. |
 | level | integer | Explicit level of this node within the index tree. The lowest level is 1. |
 | version | string | The version (store update session ID) of this node. |
 | mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |

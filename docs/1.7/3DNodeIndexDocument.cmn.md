@@ -8,7 +8,7 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | string | Tree Key ID, is a unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string. |
+| **id** | string | Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string. |
 | level | integer | Explicit level of this node within the index tree. The lowest level is 1. |
 | version | string | The version (store update session ID) of this node. |
 | mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |

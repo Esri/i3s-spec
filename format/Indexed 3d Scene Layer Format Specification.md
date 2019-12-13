@@ -54,17 +54,17 @@ I3S is organized as [nodes](#Nodes), which are structured into [node pages](#Nod
 
 To ensure high performance when visualizing 3D content, data are spatially grouped into [nodes](#Nodes). The grouping process is repeated recursively to create a tree of nodes. The spatial extent of a given node encompasses all its children to create a bounding volume hierarchy. Both spatially regular (e.g. quadtree) as well as spatially irregular (e.g. R-tree) organizations of data are supported.
 
-The bounding volume is defined either as minimum bounding sphere (MBS) or oriented bounding box (OBB) representation. 
+The bounding volume is defined either as minimum bounding sphere (MBS) or oriented bounding box (OBB) representation.  
 
- ![Minimum bounding sphere..](../docs/img/MBS_Example.png)|
+ ![Minimum bounding sphere..](../docs/img/MBS_Example.png)
  
  *3D objects enclosed in minimum bounding spheres.*
 
- ![Oriented bounding box.](../docs/img/OBB_Example.png) 
+ ![Oriented bounding box.](../docs/img/OBB_Example.png)  
 
- *3D objects enclosed in the smalles bounding box.* 
+ *3D objects enclosed in the smalles bounding box.*  
 
-OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
+OBB is the more optimal representation and implementers are encouraged to output node bounding volumes in OBB format. Point cloud profile supports OBB representation only.
 
 In order to provide a scalable representation of the original data, parent nodes contain a simplified representation of their children creating [Level of Details](LevelofDetail.md).
 
@@ -168,7 +168,7 @@ The Coordinate Reference System (CRS) of the Indexed 3D Scene Layer should be se
 - Support data with a global extent.
 - Support local and global data with high positional accuracy.
 
-All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84, as identified by its EPSG code 4326 and GCS China Geodetic Coordinate System 2000, as identified by its EPSG 4490 is supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
+All I3S profiles support writing 3D content in two modes: *global* and *local*. In global mode, only the geographic CRS WGS84, as identified by its EPSG code 4326, and GCS China Geodetic Coordinate System 2000, as identified by its EPSG code 4490, are supported for both index and vertex positions. It is represented using longitude, latitude and elevation. In local mode, all other geodetic CRS, including projected coordinate systems, are allowed.
 
 In both modes, node index and position vertex must have the same CRS. In addition, all vertex positions are specified as an *offset* from a node's Minimum Bounding Volume (MBV) center. The MBV could be specified as a Minimum Bounding Sphere (MBS) or as an Oriented Bounding Box (OBB).
 
@@ -203,7 +203,7 @@ The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clien
 
 # I3S services and Packages <a name="i3s-services-and-scene-layer-packages"></a>
 
-### I3S services <a name="rest-API"></a>
+### I3S services <a name="I3S-services"></a>
 
 A RESTful API allows access to I3S scene layers.  Each scene layer profile has different components and features.  For details on the API of a specific profile and version, refer to the individual README documents. 
 
@@ -224,7 +224,7 @@ Both 64-bit and 32-bit zip archives are supported.  64-bit is required for datas
 
 Please note that this method is slightly different than a typical zip archive.  In general, when a file is added to a zip archive, the new file is individually compressed, and the overall archive is compressed. **That is not the case for SLPK.**  When adding files to an SLPK, the new file is compressed, but the overall archive remains uncompressed and is archived using compression level not compressed (`STORE`). 
 
-This is an example of a geometry resource opened in 7-zip.  Notice that both the Size and the Packaged Size are equal.  The method is `STORE`.
+This is an example of a geometry resource opened in 7-zip.  Notice that both the Size and the Packed Size are equal.  The method is `STORE`.
 
 ![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
 
@@ -280,7 +280,7 @@ In I3S verison 1.7, an [MD5](https://en.wikipedia.org/wiki/MD5) [hash](../docs/1
 	+--3dSceneLayer.json.gz
 	+--@specialIndexFileHASH128@
 ```
-The path is the same as in the API but without the `layers/0` prefix. Exceptions are:
+Paths are the same as in the API, but without the `layers/0` prefix. Exceptions are:
 
 |Resource|SLPK|Service|
 |-----|---|------|

@@ -21,7 +21,7 @@
       "description": "The user-visible layer type"
     },
     "spatialReference": {
-      "description": "The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references.",
+      "description": "The spatialReference of the layer including the vertical coordinate reference system (CRS). Well Known Text (WKT) for CRS is included to support custom CRS.",
       "$ref": "spatialReference.cmn.0106.json"
     },
     "heightModelInfo": {
@@ -77,7 +77,7 @@
     },
     "cachedDrawingInfo": {
       "type": "object",
-      "description": "Indicates if any stylization information represented as drawingInfo is captured as part of the binary mesh representation.  This helps provide optimal client-side access. Currently the color component of the drawingInfo is supported.",
+      "description": "Indicates if any styling information represented as drawingInfo is captured as part of the binary mesh representation.  This helps provide optimal client-side access. Currently the color component of the drawingInfo is supported.",
       "$ref": "cachedDrawingInfo.cmn.0106.json"
     },
     "drawingInfo": {

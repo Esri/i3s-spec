@@ -1,6 +1,6 @@
 # spatialReference
 
-The spatialReference object is located at the top level of the JSON hierarchy.  A spatial reference can be defined using a Well Known ID (WKID) or Well Known Text (WKT). The default tolerance and resolution values for the associated Coordinate Reference System (CRS) are used.
+The spatialReference object is located at the top level of the JSON hierarchy.  A spatial reference can be defined using a Well-Known ID (WKID) or Well-Known Text (WKT). The default tolerance and resolution values for the associated Coordinate Reference System (CRS) are used.
 
 A spatial reference can optionally include a definition for a vertical coordinate system (VCS), which is used to interpret a geometries z values.
 
@@ -14,8 +14,8 @@ A spatial reference can optionally include a definition for a vertical coordinat
 | latestVcsWkid | integer | The current WKID value of the vertical coordinate system. |
 | latestWkid | integer | Identifies the current WKID value associated with the same spatial reference. For example a WKID of '102100' (Web Mercator) has a latestWKid of '3857'. |
 | vcsWkid | integer | The WKID value of the vertical coordinate system. |
-| wkid | integer | WKID or Well Known ID of the CRS. Specify either WKID or WKT the well-known text of the CRS. |
-| wkt | string | The well-known text (WKT) of the CRS. Specify either WKT or WKID of the CRS but not both. |
+| wkid | integer | WKID, or Well-Known ID, of the CRS. Specify either WKID or WKT of the CRS. |
+| wkt | string | WKT, or Well-Known Text, of the CRS. Specify either WKT or WKID of the CRS but not both. |
 
 ### Examples 
 

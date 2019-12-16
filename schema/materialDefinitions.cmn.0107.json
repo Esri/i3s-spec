@@ -2,7 +2,7 @@
   "title": "materialDefinitions",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) with the following exceptions: I3S material colors properties (baseColorFactor, emissiveFactor etc.) are assumed to be in the same color space as the textures, most commonly sRGB while glTF they would be interpretated as [linear](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#metallic-roughness-material). glTF has separate definitions, strength for [occlusionTextureInfo](https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.occlusionTextureInfo.schema.json) and scale for [normalTextureInfo](https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.normalTextureInfo.schema.json). I3S only has one [texture definition](materialTexture.cmn.md) with factor that replaces strength and scale.",
+  "description": "The materialDefinitions object in I3S version 1.7 and higher are feature-compatible with [glTF material](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#materials) but with the following exceptions. I3S material colors properties (baseColorFactor, emissiveFactor etc.) are assumed to be in the same color space as the textures, most commonly sRGB while in glTF they are interpreted as [linear](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#metallic-roughness-material). glTF has separate definitions for properties like strength for [occlusionTextureInfo](https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.occlusionTextureInfo.schema.json) and scale for [normalTextureInfo](https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.normalTextureInfo.schema.json). Further I3S has only one [texture definition](materialTexture.cmn.md) with factor that replaces strength and scale.",
   "properties": {
     "pbrMetallicRoughness": {
       "type": "object",
@@ -12,17 +12,17 @@
     "normalTexture": {
       "type": "object",
       "$ref": "materialTexture.cmn.0107.json",
-      "description": "The normal map texture."
+      "description": "The normal texture map. They are a special kind of texture that allow you to add surface detail such as bumps, grooves, and scratches to a model which catch the light as if they are represented by real geometry."
     },
     "occlusionTexture": {
       "type": "object",
       "$ref": "materialTexture.cmn.0107.json",
-      "description": "The occlusion map texture."
+      "description": "The occlusion texture map. The occlusion map is used to provide information about which areas of the model should receive high or low indirect lighting"
     },
     "emissiveTexture": {
       "type": "object",
       "$ref": "materialTexture.cmn.0107.json",
-      "description": "The emissive map texture."
+      "description": "The emissive texture map. A texture that receives no lighting, so the pixels are shown at full intensity."
     },
     "emissiveFactor": {
       "type": "array",

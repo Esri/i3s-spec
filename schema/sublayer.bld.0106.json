@@ -2,11 +2,11 @@
   "title": "sublayer [building profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Sublayer of a building scene layer. A building scene layer is composed of an overview and the full model containing discipline and category layer. These layer types are represented as sublayers. A sublayer may contain other layers or sublayers (i.e `group`) to form a nested structure.  The order of the layers is inverted, meaning the first layer is on the bottom and the last layer is on the top.",
+  "description": "Sublayer of a building scene layer. A building scene layer is composed of an overview and the full model containing the discipline and category layers. These layer types are represented as sublayers. A sublayer may contain other layers or sublayers (i.e. `group`) to form a nested structure.  The order of the layers is inverted, meaning the first layer is on the bottom and the last layer is on the top.",
   "properties": {
     "id": {
       "type": "integer",
-      "description": "Identifier for this item. **IF** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...`"
+      "description": "Identifier for this sublayer. **If** `layerType != 'group'`, resources will be at `/layers/{bim_layer_id}/sublayers/{this.id}/...`"
     },
     "name": {
       "type": "string",
@@ -19,7 +19,7 @@
     "discipline": {
       "type": "string",
       "enum": [ "Mechanical", "Architectural", "Piping", "Electrical", "Structural" ],
-      "description": "Semantic for work discipline groups which refine the user experience. "
+      "description": "Semantics for work discipline groups which can be used to refine the user experience. "
     },
     "modelName": {
       "type": "string",

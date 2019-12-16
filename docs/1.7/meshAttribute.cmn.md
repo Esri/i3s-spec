@@ -1,6 +1,6 @@
 # meshAttribute
 
-Mesh geometry for a node.
+Mesh attributes for a node.
 
 ### Related:
 
@@ -9,7 +9,7 @@ Mesh geometry for a node.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **resource** | integer | The resource locator to be used attribute resources for this mesh. i.e. `layers/0/nodes/<resource id>/attributes/...` |
+| **resource** | integer | The resource identifier to be used to locate attribute resources of this mesh. i.e. `layers/0/nodes/<resource id>/attributes/...` |
 
 *Note: properties in **bold** are required*
 

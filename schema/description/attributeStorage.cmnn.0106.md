@@ -1,4 +1,4 @@
-AttributeStorageInfo describes the structure of the binary attribute data resource of a node. The following examples show how different attribute types are represented as binary buffer.
+The attributeStorageInfo object describes the structure of the binary attribute data resource of a node. The following examples show how different attribute types are represented as a binary buffer.
 
 # Examples of attribute resources 
 

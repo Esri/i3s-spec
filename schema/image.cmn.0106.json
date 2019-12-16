@@ -2,7 +2,7 @@
   "title": "image",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. It represents one specific texture LoD. For details on texture organization, please refer to the section on texture resources.",
+  "description": "An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. An image represents one specific texture LoD. For details on texture organization, please refer to the section on [texture resources](texture.cmn.md).",
   "properties": {
     "id": {
       "type": "string",
@@ -10,11 +10,11 @@
     },
     "size": {
       "type": "number",
-      "description": "x size of this image."
+      "description": "x size of this image in pixel."
     },
     "pixelInWorldUnits": {
       "type": "number",
-      "description": "The maximum size of a single pixel in world units. It is used by the client to pick the imate to load and render."
+      "description": "The maximum size of a single pixel in world units. This property is used by the client to pick the imate to load and render."
     },
     "href": {
       "type": "array",

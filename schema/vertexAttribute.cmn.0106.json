@@ -2,7 +2,7 @@
   "title": "vertexAttribute [common profile]",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "The vertexAttributes describe valid properties for a single vertex.",
+  "description": "The vertexAttribute object describes valid properties for a single vertex.",
   "properties": {
     "position": {
       "type": "object",

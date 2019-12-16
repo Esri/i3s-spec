@@ -10,11 +10,11 @@
     },
     "size": {
       "type": "number",
-      "description": "x size of this image in pixel."
+      "description": "width of this image, in pixels."
     },
     "pixelInWorldUnits": {
       "type": "number",
-      "description": "The maximum size of a single pixel in world units. This property is used by the client to pick the imate to load and render."
+      "description": "The maximum size of a single pixel in world units. This property is used by the client to pick the image to load and render."
     },
     "href": {
       "type": "array",

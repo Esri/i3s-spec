@@ -2,7 +2,7 @@
   "title": "materialParams",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Parameter describing the material.",
+  "description": "Parameters describing the material.",
   "properties": {
     "transparency": {
       "type": "number",
@@ -21,21 +21,21 @@
       "items": {
         "type": "number"
       },
-      "description": "Ambient color of this material."
+      "description": "Ambient color of this material. Ambient color is the color of an object where it is in shadow. This color is what the object reflects when illuminated by ambient light rather than direct light."
     },
     "diffuse": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Diffuse color of this material."
+      "description": "Diffuse color of this material. Diffuse color is the most instinctive meaning of the color of an object. It is that essential color that the object reveals under pure white light. It is perceived as the color of the object itself rather than a reflection of the light."
     },
     "specular": {
       "type": "array",
       "items": {
         "type": "number"
       },
-      "description": "Specular color of this material."
+      "description": "Specular color of this material. Specular color is the color of the light of a specular reflection (specular reflection is the type of reflection that is characteristic of light reflected from a shiny surface)."
     },
     "renderMode": {
       "type": "string",

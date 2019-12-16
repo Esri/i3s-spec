@@ -29,7 +29,7 @@
       },
       "minItems": 4,
       "maxItems": 4,
-      "description": "Orientation of the oriented bounding box as a 4-component quaternion. For global scene, quaternion is in Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0)."
+      "description": "Orientation of the oriented bounding box as a 4-component quaternion. For global scene, quaternion is in Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0). The quaternion components are in the order x, y, z, w."
     }
   },
   "required": [

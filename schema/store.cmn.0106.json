@@ -41,7 +41,7 @@
     },
     "version": {
       "type": "string",
-      "description": "Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server."
+      "description": "Format version of this resource. Used here again if this store hasn't been served by a 3D Scene Server."
     },
     "extent": {
       "type": "array",
@@ -54,11 +54,11 @@
     },
     "indexCRS": {
       "type": "string",
-      "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL. Needs to be identical with the spatial reference."
+      "description": "The horizontal CRS used for all minimum bounding spheres (mbs) in this store. The CRS is identified by an OGC URL. Needs to be identical to the spatial reference."
     },
     "vertexCRS": {
       "type": "string",
-      "description": "The horizontal CRS used for all 'vertex positions' in this store, identified by an OGC URL. Needs to be identical with the spatial reference."
+      "description": "The horizontal CRS used for all 'vertex positions' in this store. The CRS is identified by an OGC URL. Needs to be identical to the spatial reference."
     },
     "normalReferenceFrame": {
       "type": "string",
@@ -69,7 +69,7 @@
       ],
       "enum-description": {
         "east-north-up": "Normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS.",
-        "earth-centered": "Normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.  Default value for OGC.",
+        "earth-centered": "Normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards the Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS.  Earth centered is the default value.",
         "vertex-reference-frame": "Normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS."
       },
       "description": "Describes the coordinate reference frame used for storing normals.  "

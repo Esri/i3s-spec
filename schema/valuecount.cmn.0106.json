@@ -10,7 +10,7 @@
     },
     "count": {
       "type": "number",
-      "description": "Count the number of values. May exceed 32 bit."
+      "description": "Count of the number of values. May exceed 32 bits."
     }
   },
   "required": [

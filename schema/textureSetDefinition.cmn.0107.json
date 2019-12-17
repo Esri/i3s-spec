@@ -14,7 +14,7 @@
     },
     "atlas": {
       "type": "boolean",
-      "description": "Set to `true` if this texture is a texture atlas. It's expected that geometries that use this texture have uv regions to specify the subtexture in the atlas."
+      "description": "Set to `true` if this texture is a texture atlas. It is expected that geometries that use this texture have uv regions to specify the subtexture in the atlas."
     }
   },
   "required": [

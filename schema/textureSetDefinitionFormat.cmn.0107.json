@@ -6,16 +6,16 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "The location ID for the resource (last segment of the URL path). For best compatibility, must be `\"0\"` for jpg/png and `\"0_0_1\"` for DDS."
+      "description": "The location ID for the resource (last segment of the URL path). Must be `\"0\"` for jpg/png and `\"0_0_1\"` for DDS."
     },
     "format": {
       "type": "string",
       "enum": [ "jpg", "png", "dds", "ktx-etc2" ],
       "enum-description": {
-        "jpg": "JPEG compression. No mipmaps. Please note that alpha channel may have been added after the JPEG stream. This alpha channel is alwasy 8bit and zlib compressed. Last 4 byte of the entire stream are the 32 bit offset to the beginning of the alpha stream (little-endian).",
+        "jpg": "JPEG compression. No mipmaps. Please note that alpha channel may have been added after the JPEG stream. This alpha channel is alwasy 8bit and zlib compressed. Last 4 bytes of the entire stream are the 32 bit offset to the beginning of the alpha stream (little-endian).",
         "png": "PNG format, no mipmaps",
         "dds": "The DDS header will specify the type of compression and number of mipmaps. **WARNING:** Only DXT1 (no alpha) and DXT5 (alpha channel) are supported.",
-        "ktx-etc2": "Kronos group container for ETC2 compressed texture. Mipmap may be available."
+        "ktx-etc2": "Khronos group container for ETC2 compressed texture. Mipmap may be available. Note: KTX (Khronos Texture) is a lightweight file format for OpenGL® textures, designed around how textures are loaded in OpenGL."
       },
       "description": "The texture format."
     }

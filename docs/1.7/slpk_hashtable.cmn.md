@@ -25,10 +25,10 @@ A hash table is a data structure that implements an associative array abstract d
 	}
 ```
 5. Write this sorted array as the last file of the SLPK archive (last entry in the ZIP central directory). The file must be named  `@specialIndexFileHASH128@`. Each array element is 24-bytes long, and includes the following restrictions:
-   - 16 bytes for the MD5-digest and 8 bits for the offset
-   - Must be in little-endian order
-   - Must **not** contain padding
-   - Must  **not** contain a header
+   - 16 bytes for the MD5-digest and 8 bits for the offset.
+   - Must be in little-endian order.
+   - Must **not** contain padding.
+   - Must  **not** contain a header.
 ## To read SLPK hash table
 1. Convert the input path to the canonical path and compute its MD5 hash (i.e. key).
 

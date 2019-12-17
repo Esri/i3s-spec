@@ -1,6 +1,6 @@
 # geometryFeatureID
 
-FeatureID attribute helps to identify a part of a mesh from belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`. For example, if a 3D Object scene layer has a building with ID 1 all triangles in the faceRange for this feature will belong to this feature_id
+FeatureID attribute helps to identify a part of a mesh belonging to a particular GIS `feature`. This ID may be used to query additional information from a `FeatureService`. For example, if a 3D Object scene layer has a building with ID 1 all triangles in the faceRange for this feature will belong to this feature_id.
 
 ### Related:
 

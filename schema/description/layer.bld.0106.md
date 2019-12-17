@@ -60,8 +60,8 @@ Building scene layer is envisioned to represent individual buildings or a campus
 
 **Edits**
 - Group/layer names **must be unique**. 
-- Capabilities that have been removed
-  - `sublayers.href` and `groups.href` have been removed in favor of IDs
-  - Removed `fullExtent` from `group` object
+- Capabilities that have been removed.
+  - `sublayers.href` and `groups.href` have been removed in favor of IDs.
+  - Removed `fullExtent` from `group` object.
 - Added back `modelName`.
-- Added statistics
+- Added statistics.

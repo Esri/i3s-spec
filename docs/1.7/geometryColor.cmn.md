@@ -1,6 +1,6 @@
 # geometryColor
 
-Color vertex attribute.  Assumed to be sRGB space.
+The color vertex attribute. Assumed to be Standard RGB (sRGB space). sRGB is a color space that defines a range of colors that can be displayed on screen on in print. It is the most widely used color space and is supported by most operating systems, software programs, monitors, and printers.
 
 ### Related:
 

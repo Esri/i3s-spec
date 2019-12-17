@@ -56,12 +56,12 @@ The service definition is identical to other scene layer service definitions and
 ```
 
 #### Notes on _City_ scale building scene layer:
-Building scene layer is not envisioned to represent many buildings (e.g. a city). In this case, a single `3DObject` layer will be used as a placeholder to visualize and select individual building scene layers. Once a building is selected, its matching building scene layer will be open.
+Building scene layer is envisioned to represent individual buildings or a campus composed of multiple buildings at one location. Even though you might be able to include a high number of buildings that are not co-located into a building scene layer, it is not recommended. If you want to represent city-wide buildings, you can create a single `3DObject` layer that will be used as a placeholder to visualize and select a link to individual building scene layers. Once a building is selected, its matching building scene layer will be open.
 
 **Edits**
-- group/layer names **must be unique**. 
-- capabilities that have been removed
+- Group/layer names **must be unique**. 
+- Capabilities that have been removed
   - `sublayers.href` and `groups.href` have been removed in favor of IDs
   - Removed `fullExtent` from `group` object
-- Added backed `modelName`.
+- Added back `modelName`.
 - Added statistics

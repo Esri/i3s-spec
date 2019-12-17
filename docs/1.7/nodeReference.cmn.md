@@ -9,7 +9,7 @@ A nodeReference is a pointer to another node - the parent, a child or a neighbor
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | string | Tree Key ID (e.g. '1-3-0-5') of the referenced node. |
+| **id** | string | Tree Key ID of the referenced node represented as string. |
 | mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the [minimum bounding sphere](mbs.cmn.md) of a node. |
 | href | string | Number of values per element. |
 | version | string | Version (store update session ID) of the referenced node. |
@@ -20,18 +20,36 @@ A nodeReference is a pointer to another node - the parent, a child or a neighbor
 
 ### Examples 
 
-#### Example: cachedDrawingInfo for 3D Object scene layer. 
+#### Example: Node reference for integrated mesh scene layer. 
 
 ```json
  {
-  "id": "2-0-0-0",
-  "href": "../2-0-0-0",
+  "id": "18",
+  "href": "../18",
   "mbs": [
-    0.027173397137801203,
-    0.0049950922109050205,
-    139.15166463702917,
-    133.9973907470703
-  ]
+    138.59974403386326,
+    -34.929125554424836,
+    77.7917739925906,
+    245.39599377770242
+  ],
+  "obb": {
+    "center": [
+      138.59974403386326,
+      -34.929125554424836,
+      77.7917739925906
+    ],
+    "halfSize": [
+      186.775208,
+      31.6982021,
+      158.549973
+    ],
+    "quaternion": [
+      -0.116017461,
+      0.276839644,
+      0.871147692,
+      -0.388588935
+    ]
+  }
 } 
 ```
 

@@ -11,7 +11,7 @@ Concatenated attribute statistics. If needed, the type of the attribute (string 
 | --- | --- | --- |
 | **fieldName** | string | Name of the field. |
 | label | string | Label of the field name. If label is empty, the label and fieldName are identical. |
-| modelName | string | A fixed string of building information, similar to a filter. Used by client applications to define specific behavior for the modelName. The [default filter types](description/defaultFilterTypes.bld.0106.md) define the modelName for the attribute statistics.<div>Possible values are:<ul><li>`category`</li><li>`family`</li><li>`familyType`</li><li>`bldgLevel`</li><li>`createdPhase`</li><li>`demolishedPhase`</li><li>`discipline`</li><li>`assemblyCode`</li><li>`omniClass`</li><li>`systemClassifications`</li><li>`systemType`</li><li>`systemName`</li><li>`systemClass`</li><li>`custom`</li></ul></div> |
+| modelName | string | A fixed string of building information, similar to a filter. Used by client applications to define specific behavior for the modelName. The [default filter types](./defaultFilterTypes.bld.md) define the modelName for the attribute statistics.<div>Possible values are:<ul><li>`category`</li><li>`family`</li><li>`familyType`</li><li>`bldgLevel`</li><li>`createdPhase`</li><li>`demolishedPhase`</li><li>`discipline`</li><li>`assemblyCode`</li><li>`omniClass`</li><li>`systemClassifications`</li><li>`systemType`</li><li>`systemName`</li><li>`systemClass`</li><li>`custom`</li></ul></div> |
 | min | number | Minimum value. Numeric attributes only. |
 | max | number | Maximum value. Numeric attributes only. |
 | mostFrequentValues | integer[0:256], string[0:256] | Most frequent value, if applicable for this attribute. Truncated to 256 entries. |

@@ -2,7 +2,7 @@
   "title": "Oriented Bounding Box (OBB)",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Oriented bounding box",
+  "description": "Definition of an oriented bounding box",
   "properties": {
     "center": {
       "type": "array",
@@ -11,7 +11,7 @@
       },
       "minItems": 3,
       "maxItems": 3,
-      "description": "The center point of the oriented bounding box. For a global scene, i.e. XY coordinate system in WGS1984, center is in longitude of decimal degrees, latitude of decimal degrees, elevation in meters."
+      "description": "The center point of the oriented bounding box. For a global scene, such as the XY coordinate system in WGS1984, the center is specified in latitude/longitude in decimal degrees, elevation (Z) in meters."
     },
     "halfSize": {
       "type": "array",
@@ -20,7 +20,7 @@
       },
       "minItems": 3,
       "maxItems": 3,
-      "description": "Half size of the oriented bounding box in spatial reference units (or meters for global scenes)."
+      "description": "Half size of the oriented bounding box in units of the CRS. For a global scene, such as the XY coordinate system in WGS1984, the center is specified in latitude/longitude in decimal degrees, elevation (Z) in meters."
     },
     "quaternion": {
       "type": "array",
@@ -29,7 +29,7 @@
       },
       "minItems": 4,
       "maxItems": 4,
-      "description": "Orientation of the oriented bounding box as a 4-component quaternion. For global scene, quaternion is in Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0). The quaternion components are in the order x, y, z, w."
+      "description": "Orientation of the oriented bounding box as a 4-component quaternion. For a global scene, the quaternion is in an Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0). Note: A quaternion is a four-element vector that can be used to encode any rotation in a 3D coordinate system."
     }
   },
   "required": [

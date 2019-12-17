@@ -1,6 +1,6 @@
 # fullExtent
 
-Defines the full extent of a scene layer.
+This object allows the definition of the full extent of a scene layer.
 
 ### Related:
 

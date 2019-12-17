@@ -10,7 +10,7 @@ A string or numeric value.
 | Property | Type | Description |
 | --- | --- | --- |
 | **value** | string, number | Type of the attribute values after decompression, if applicable. Please note that `string` is not supported for point cloud scene layer attributes. |
-| **count** | number | Count the number of values. May exceed 32 bit. |
+| **count** | number | Count of the number of values. May exceed 32 bits. |
 
 *Note: properties in **bold** are required*
 

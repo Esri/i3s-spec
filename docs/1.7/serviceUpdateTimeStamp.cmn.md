@@ -9,7 +9,7 @@ Object to provide time stamp when the I3S service or the source of the service w
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **lastUpdate** | number | Specifies the moment in milliseconds when the I3S service was created or updated. |
+| **lastUpdate** | number | Specifies the Unix epoch counting from 1 January 1970 in milliseconds. Time stamp is created when the I3S service was created or updated. |
 
 *Note: properties in **bold** are required*
 

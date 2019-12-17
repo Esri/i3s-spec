@@ -4,13 +4,13 @@ The node object.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::nodes](nodes.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::nodePage](nodePage.cmn.md)
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
 | **index** | integer | The index in the node array. May be **different than** material, geometry and attribute `resource` id. See [`mesh`](mesh.cmn.md) for more information. |
-| lodThreshold | number | When to swith LOD. See [`nodepages[i].lodSelectionMetricType`](nodePageDefinition.cmn.md) for more information. |
+| lodThreshold | number | When to switch LoD. See [`nodepages[i].lodSelectionMetricType`](nodePageDefinition.cmn.md) for more information. |
 | **obb** | [obb](obb.cmn.md) | Oriented bounding box for this node.  |
 | children | integer[] | index of the children nodes indices. |
 | mesh | [mesh](mesh.cmn.md) |  The mesh for this node. **WARNING:** only **SINGLE** mesh is supported at version 1.7 (i.e. `length` **must** be 0 or 1). |

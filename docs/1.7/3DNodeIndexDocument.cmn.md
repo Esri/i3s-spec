@@ -1,17 +1,17 @@
 # 3D Node Index Document
 
-The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
+The 3dNodeIndexDocument JSON file describes a single index node within a [store](store.cmn.md). The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. The file includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
 
-Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
+Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide enough data for a simple visualization.  For example, the centroids of a bounding volume could be rendered as point features. 
 
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | string | Tree Key ID, unique within the store. The root node is always 'root', all others follow the pattern '2-4-0-15-2'. At each level in a subtree, numbering starts at 0. |
+| **id** | string | Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string. |
 | level | integer | Explicit level of this node within the index tree. The lowest level is 1. |
 | version | string | The version (store update session ID) of this node. |
-| mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the [minimum bounding sphere](docs/1.6/mbs.cmn.md) of a node. |
+| mbs | number[4] | The center point of the minimum bounding sphere. An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. For a global scene, i.e. ellipsoidal coordinate systems, the values of the array correspond to longitude in decimal degrees, latitude of in decimal degrees, elevation in meters and radius in meters. For all other CRS, the values of x,y,z and r are in the same unit. |
 | obb | [obb](obb.cmn.md) | Describes oriented bounding box. |
 | created | string | Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
 | expires | string | Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
@@ -35,43 +35,48 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
 
 ```json
  {
-    "id": "root",
-    "level": 1,
-    "version": "ee4fbf04-e882-444e-854d-cd519b68594a",
+    "id": "1306",
+    "level": 6,
     "mbs": [
-        -120.235609902853241,
-        39.1981414865211661,
-        1895.23079465422779,
-        446.269165373884221
+        -73.800118851149136,
+        40.73669251979566,
+        0.021572002209722996,
+        679.45720236569286
     ],
-    "created": "2014-07-23T00:00:00.000Z",
-    "expires": "2015-07-23T00:00:00.000Z",
-    "transform": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        1
-    ],
+    "obb": {
+        "center": [
+            -73.800118851149136,
+            40.73669251979566,
+            0.021572002209722996
+        ],
+        "halfSize": [
+            365.631592,
+            477.904175,
+            0.0500000007
+        ],
+        "quaternion": [
+            0.0587248169,
+            -0.412625164,
+            0.89993757,
+            -0.128079131
+        ]
+    },
     "lodSelection": [
         {
             "metricType": "screenSpaceRelative",
-            "maxError": 0
+            "maxError": 140.54929551759727
         },
         {
             "metricType": "distanceRangeFromDefaultCamera",
-            "maxError": 0
+            "maxError": 139191.99158812518
+        },
+        {
+            "metricType": "maxScreenThreshold",
+            "maxError": 48.521113838756797
+        },
+        {
+            "metricType": "maxScreenThresholdSQ",
+            "maxError": 2354.2984881535963
         }
     ],
     "featureData": [
@@ -79,12 +84,250 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
             "href": "./features/0",
             "featureRange": [
                 0,
-                3
+                890
             ]
         }
     ],
-    "parentNode": null,
-    "children": null,
+    "parentNode": {
+        "id": "156",
+        "href": "../156",
+        "mbs": [
+            -73.795788258698877,
+            40.732381367513021,
+            -1.1518597602844238e-05,
+            1362.6036826773482
+        ],
+        "obb": {
+            "center": [
+                -73.795788258698877,
+                40.732381367513021,
+                -1.1518597602844238e-05
+            ],
+            "halfSize": [
+                731.456299,
+                960.864807,
+                0.128648579
+            ],
+            "quaternion": [
+                0.0586951897,
+                -0.412657171,
+                0.899904907,
+                -0.128218919
+            ]
+        }
+    },
+    "attributeData": [
+        {
+            "href": "./attributes/f_0/0"
+        },
+        {
+            "href": "./attributes/f_2/0"
+        },
+        {
+            "href": "./attributes/f_3/0"
+        },
+        {
+            "href": "./attributes/f_4/0"
+        },
+        {
+            "href": "./attributes/f_5/0"
+        },
+        {
+            "href": "./attributes/f_6/0"
+        },
+        {
+            "href": "./attributes/f_7/0"
+        },
+        {
+            "href": "./attributes/f_8/0"
+        },
+        {
+            "href": "./attributes/f_9/0"
+        },
+        {
+            "href": "./attributes/f_10/0"
+        },
+        {
+            "href": "./attributes/f_11/0"
+        },
+        {
+            "href": "./attributes/f_12/0"
+        },
+        {
+            "href": "./attributes/f_13/0"
+        },
+        {
+            "href": "./attributes/f_14/0"
+        },
+        {
+            "href": "./attributes/f_15/0"
+        },
+        {
+            "href": "./attributes/f_16/0"
+        },
+        {
+            "href": "./attributes/f_17/0"
+        },
+        {
+            "href": "./attributes/f_18/0"
+        },
+        {
+            "href": "./attributes/f_19/0"
+        },
+        {
+            "href": "./attributes/f_20/0"
+        },
+        {
+            "href": "./attributes/f_21/0"
+        },
+        {
+            "href": "./attributes/f_22/0"
+        },
+        {
+            "href": "./attributes/f_23/0"
+        },
+        {
+            "href": "./attributes/f_24/0"
+        },
+        {
+            "href": "./attributes/f_25/0"
+        },
+        {
+            "href": "./attributes/f_26/0"
+        },
+        {
+            "href": "./attributes/f_27/0"
+        },
+        {
+            "href": "./attributes/f_28/0"
+        },
+        {
+            "href": "./attributes/f_29/0"
+        },
+        {
+            "href": "./attributes/f_30/0"
+        },
+        {
+            "href": "./attributes/f_31/0"
+        },
+        {
+            "href": "./attributes/f_32/0"
+        },
+        {
+            "href": "./attributes/f_33/0"
+        },
+        {
+            "href": "./attributes/f_34/0"
+        },
+        {
+            "href": "./attributes/f_35/0"
+        },
+        {
+            "href": "./attributes/f_36/0"
+        },
+        {
+            "href": "./attributes/f_37/0"
+        },
+        {
+            "href": "./attributes/f_38/0"
+        },
+        {
+            "href": "./attributes/f_39/0"
+        },
+        {
+            "href": "./attributes/f_40/0"
+        },
+        {
+            "href": "./attributes/f_41/0"
+        },
+        {
+            "href": "./attributes/f_42/0"
+        }
+    ]
+} 
+```
+
+#### Example: 3D Scene Layer info for 3D object scene layer 
+
+```json
+ {
+    "id": "25030",
+    "level": 6,
+    "mbs": [
+        54.483553612201497,
+        24.36252247939186,
+        8.115040997043252,
+        202.28157036604742
+    ],
+    "obb": {
+        "center": [
+            54.483553612201497,
+            24.36252247939186,
+            8.115040997043252
+        ],
+        "halfSize": [
+            93.1058044,
+            6.90459251,
+            181.712433
+        ],
+        "quaternion": [
+            0.933717132,
+            -0.28870675,
+            0.055369094,
+            -0.204340667
+        ]
+    },
+    "lodSelection": [
+        {
+            "metricType": "maxScreenThresholdSQ",
+            "maxError": 1278203.75
+        },
+        {
+            "metricType": "maxScreenThreshold",
+            "maxError": 1275.7192232958625
+        }
+    ],
+    "featureData": [
+        {
+            "href": "./features/0"
+        }
+    ],
+    "geometryData": [
+        {
+            "href": "./geometries/0"
+        }
+    ],
+    "sharedResource": {
+        "href": "./shared"
+    },
+    "parentNode": {
+        "id": "25031",
+        "href": "../25031",
+        "mbs": [
+            54.483553612201497,
+            24.36252247939186,
+            8.115040997043252,
+            202.28157036604742
+        ],
+        "obb": {
+            "center": [
+                54.483553612201497,
+                24.36252247939186,
+                8.115040997043252
+            ],
+            "halfSize": [
+                93.1058044,
+                6.90459251,
+                181.712433
+            ],
+            "quaternion": [
+                0.933717132,
+                -0.28870675,
+                0.055369094,
+                -0.204340667
+            ]
+        }
+    },
     "attributeData": [
         {
             "href": "./attributes/f_0/0"
@@ -97,55 +340,177 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
         },
         {
             "href": "./attributes/f_3/0"
+        },
+        {
+            "href": "./attributes/f_4/0"
+        },
+        {
+            "href": "./attributes/f_5/0"
+        },
+        {
+            "href": "./attributes/f_6/0"
+        },
+        {
+            "href": "./attributes/f_7/0"
+        },
+        {
+            "href": "./attributes/f_8/0"
+        },
+        {
+            "href": "./attributes/f_9/0"
+        },
+        {
+            "href": "./attributes/f_10/0"
+        },
+        {
+            "href": "./attributes/f_11/0"
+        },
+        {
+            "href": "./attributes/f_12/0"
+        },
+        {
+            "href": "./attributes/f_13/0"
+        },
+        {
+            "href": "./attributes/f_14/0"
+        },
+        {
+            "href": "./attributes/f_15/0"
+        },
+        {
+            "href": "./attributes/f_16/0"
+        },
+        {
+            "href": "./attributes/f_17/0"
+        },
+        {
+            "href": "./attributes/f_18/0"
+        },
+        {
+            "href": "./attributes/f_19/0"
+        },
+        {
+            "href": "./attributes/f_20/0"
+        },
+        {
+            "href": "./attributes/f_21/0"
+        },
+        {
+            "href": "./attributes/f_22/0"
+        },
+        {
+            "href": "./attributes/f_23/0"
+        },
+        {
+            "href": "./attributes/f_24/0"
+        },
+        {
+            "href": "./attributes/f_25/0"
+        },
+        {
+            "href": "./attributes/f_26/0"
+        },
+        {
+            "href": "./attributes/f_27/0"
+        },
+        {
+            "href": "./attributes/f_28/0"
+        },
+        {
+            "href": "./attributes/f_29/0"
+        },
+        {
+            "href": "./attributes/f_30/0"
+        },
+        {
+            "href": "./attributes/f_31/0"
+        },
+        {
+            "href": "./attributes/f_32/0"
+        },
+        {
+            "href": "./attributes/f_33/0"
+        },
+        {
+            "href": "./attributes/f_34/0"
+        },
+        {
+            "href": "./attributes/f_35/0"
+        },
+        {
+            "href": "./attributes/f_36/0"
+        },
+        {
+            "href": "./attributes/f_37/0"
+        },
+        {
+            "href": "./attributes/f_38/0"
+        },
+        {
+            "href": "./attributes/f_39/0"
+        },
+        {
+            "href": "./attributes/f_40/0"
+        },
+        {
+            "href": "./attributes/f_41/0"
+        },
+        {
+            "href": "./attributes/f_42/0"
+        },
+        {
+            "href": "./attributes/f_43/0"
+        },
+        {
+            "href": "./attributes/f_44/0"
+        },
+        {
+            "href": "./attributes/f_45/0"
         }
     ]
 } 
 ```
 
-#### Example: 3D Scene Layer info for 3D object scene layer 
+#### Example: 3D Scene Layer info for integrated mesh scene layer 
 
 ```json
  {
-    "version": "{8F10DF9A-885E-41E0-A5DF-2686CE5B4EAC}",
-    "id": "1",
-    "level": 2,
+    "id": "17",
+    "level": 8,
     "mbs": [
-        0.026676119561926726,
-        0.0024989835685061959,
-        34.265922634862363,
-        131.39643859863281
+        138.59974403386326,
+        -34.929125554424836,
+        77.791773992590606,
+        245.39599377770242
     ],
     "obb": {
         "center": [
-            0.026676119561926726,
-            0.0024989835685061959,
-            34.265922634862363
+            138.59974403386326,
+            -34.929125554424836,
+            77.791773992590606
         ],
         "halfSize": [
-            115.30760192871094,
-            58.432319641113281,
-            60.50103759765625
+            186.775208,
+            31.6982021,
+            158.549973
         ],
         "quaternion": [
-            0.50604724884033203,
-            0.41447588801383972,
-            0.64152449369430542,
-            -0.40071475505828857
+            -0.116017461,
+            0.276839644,
+            0.871147692,
+            -0.388588935
         ]
     },
     "lodSelection": [
         {
-            "metricType": "maxScreenThreshold",
-            "maxError": 20.530693054199219
+            "metricType": "maxScreenThresholdSQ",
+            "maxError": 807.53091035651016
         },
         {
-            "metricType": "maxScreenThresholdSQ",
-            "maxError": 331.05267333984375
+            "metricType": "maxScreenThreshold",
+            "maxError": 32.065250248092006
         }
     ],
-    "sharedResource": {
-        "href": "./shared"
-    },
     "featureData": [
         {
             "href": "./features/0"
@@ -158,110 +523,73 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
     ],
     "textureData": [
         {
-            "href": "./textures/0_0"
+            "href": "./textures/0"
         },
         {
             "href": "./textures/0_0_1"
         }
     ],
-    "attributeData": [
-        {
-            "href": "./attributes/f_0/0"
-        },
-        {
-            "href": "./attributes/f_1/0"
-        }
-    ],
-    "parentNode": {
-        "id": "root",
-        "href": "../root",
-        "mbs": [
-            0.026340863717777552,
-            0.0038648506589316588,
-            103.90042581222951,
-            314.794677734375
-        ]
+    "sharedResource": {
+        "href": "./shared"
     },
-    "features": null,
-    "children": [
-        {
-            "id": "1-0",
-            "href": "../1-0",
-            "mbs": [
-                0.026676119561926726,
-                0.0024989835685061959,
-                34.265922634862363,
-                131.39643859863281
+    "parentNode": {
+        "id": "18",
+        "href": "../18",
+        "mbs": [
+            138.59974403386326,
+            -34.929125554424836,
+            77.791773992590606,
+            245.39599377770242
+        ],
+        "obb": {
+            "center": [
+                138.59974403386326,
+                -34.929125554424836,
+                77.791773992590606
+            ],
+            "halfSize": [
+                186.775208,
+                31.6982021,
+                158.549973
+            ],
+            "quaternion": [
+                -0.116017461,
+                0.276839644,
+                0.871147692,
+                -0.388588935
             ]
         }
-    ]
-} 
-```
-
-#### Example: 3D Scene Layer info for integrated mesh scene layer 
-
-```json
- {
-  "version": "{cc6ba509-6253-444c-8cc3-455867ce5521}",
-  "id": "3",
-  "level": 2,
-  "mbs": [
-    -119.61204566699678,
-    37.730869080000808,
-    1922.2222099672463,
-    17855.905819243209
-  ],
-  "lodSelection": [
-    {
-      "metricType": "maxScreenThreshold",
-      "maxError": 17.437408026604697
-    }
-  ],
-  "sharedResource": {
-    "href": "./shared"
-  },
-  "featureData": [
-    {
-      "href": "./features/0"
-    }
-  ],
-  "geometryData": [
-    {
-      "href": "./geometries/0"
-    }
-  ],
-  "textureData": [
-    {
-      "href": "./textures/0_0"
     },
-    {
-      "href": "./textures/0_0_1"
-    }
-  ],
-  "parentNode": {
-    "id": "root",
-    "href": "../root",
-    "mbs": [
-      -119.61204566699678,
-      37.730869080000808,
-      1920.951396978965,
-      17855.841813106414
+    "children": [
+        {
+            "id": "16",
+            "href": "../16",
+            "mbs": [
+                138.59974490889948,
+                -34.929115017712391,
+                73.978384077548981,
+                245.28071623121846
+            ],
+            "obb": {
+                "center": [
+                    138.59974490889948,
+                    -34.929115017712391,
+                    73.978384077548981
+                ],
+                "halfSize": [
+                    162.582504,
+                    36.705143,
+                    181.55722
+                ],
+                "quaternion": [
+                    0.0534443446,
+                    -0.690046966,
+                    0.487695336,
+                    0.532101691
+                ]
+            }
+        }
     ]
-  },
-  "features": null,
-  "neighbors": null,
-  "children": [
-    {
-      "id": "3-0",
-      "href": "../3-0",
-      "mbs": [
-        -119.61204567725831,
-        37.730869097892402,
-        1902.7901114998331,
-        17856.256970142622
-      ]
-    }
-  ]
 } 
 ```
 

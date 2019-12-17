@@ -1,6 +1,6 @@
 # vertexAttribute [common profile]
 
-The vertexAttributes describe valid properties for a single vertex.
+The vertexAttribute object describes valid properties for a single vertex.
 
 ### Related:
 

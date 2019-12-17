@@ -7,9 +7,9 @@ Scene Layers include Levels of Detail (LoD) that apply to the whole layer and se
 Discrete LoD provide multiple models to display the same object. A specific detail level is bound to certain levels of the bounding volume hierarchy tree. Leaf nodes typically contain the original feature representation with the most detail. The closer a node is to the root of the bounding volume hierarchy tree, the lower the LoD. The detail is reduced by texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning in order to ensure inner nodes have a balanced weight. The number of discrete LoD for the layer corresponds to the number of levels in the bounding volume hierarchy tree.
 
 By using the bounding volume and LoD selection metrics, a client traversing an I3S tree can readily decide if it needs to:
-•	Stop traversal to the node's children if the current node bounding volume is not visible.
-•	Use the data in the node if the quality is appropriate, and then stop traversal to children.
-•	Continue traversal until nodes with higher quality are found.
+- Stop traversal to the node's children if the current node bounding volume is not visible.
+- Use the data in the node if the quality is appropriate, and then stop traversal to children.
+- Continue traversal until nodes with higher quality are found.
 
 I3S supports multiple LoD selection metrics and switching level of detail models. Details about the LoD generation process can be optionally included in the Scene Layer's metadata.
 

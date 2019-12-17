@@ -21,7 +21,7 @@ The I3S format is declarative and extendable, and can be used to represent diffe
 The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this document as open formats.  The REST endpoint implementations are described in the ReadMe for each layer type. 
 You can use [I3S tool](./i3s_converter/i3s_converter_ReadMe.md) to convert to the newest i3s specification or validate your existing SLPK.
 
-This gitHub repo includes documentation for 1.6, 1.7, 2.0. Deprecated elements from a minor version will be removed as part of the next major revision.
+This GitHub repo includes documentation for 1.6, 1.7, and 2.0. Deprecated elements from a minor version will be removed as part of the next major revision.
 
 ## Designed for Web, Mobile and cloud  
 

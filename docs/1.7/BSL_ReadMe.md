@@ -3,8 +3,8 @@
 Building content is often derived from Building Information Modeling (BIM) workflows. BIM is a best-practice process for optimizing design and construction. BIM processes can produce 3D virtual representations of real-world assets that are commonly used for construction, documentation, and evaluation. BIM processes are applied in multiple domains including architecture, buildings, energy, utilities, and transportation. A building scene layer can represent the 3D model content based on BIM structuring disciplines such as architectural or structural, and categories such as windows or walls.
 
 **Examples**:<br />
-Building Scene Layer example [SLPK](https://www.arcgis.com/home/item.html?id=1cad3c2028f740a39460d32081265c06 ).<br />
-Building Scene Layer example [service](https://www.arcgis.com/home/item.html?id=812feb34830941a196e517ff3b8bf98f ).<br />
+Building Scene Layer example [SLPK](www.arcgis.com/home/item.html?id=f830fd580eb24f9b8c749d700b6249b3 ).<br />
+Building Scene Layer example [service](www.arcgis.com/home/item.html?id=64f68adf72474330b195ba2718a8d3e0).<br />
 
 *Example of a Building Scene Layer*
 
@@ -26,6 +26,9 @@ An I3S building scene layer contains discipline, such as architectural, and cate
   |  |   +-- summary.json
   |  +-- sublayers
   |  |  +--0 // sublayer document
+  |  |  |   +-- nodePages
+  |  |  |   |   |  +-- 0
+  |  |  |   |   |  +-- (...)
   |  |  |  +--nodes
   |  |  |  |  +--0
   |  |  |  |  |  +-- attributes

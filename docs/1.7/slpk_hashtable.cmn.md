@@ -2,7 +2,7 @@
 
 Scanning an SLPK (ZIP store) containing millions of documents is usually inefficient and slow.  A hash table file may be added to the SLPK to improve first load and file scanning performances.
 
-A hash table is a data structure that implements an associative array abstract data type, a structure that can map keys to values. A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from which the desired value can be found (Wkipedia).
+A hash table is a data structure that implements an associative array abstract data type, a structure that can map keys to values. A hash table uses a hash function to compute an index, also called a hash code, into an array of buckets or slots, from which the desired value can be found (Wikipedia).
 
 ## To create SLPK hash table
 1. The offset of each SLPK file is known. For example, the byte offset from the beginning of the SLPK file to the first byte of its ZIP local file header. See ZIP specification for reference.

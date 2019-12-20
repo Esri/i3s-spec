@@ -104,30 +104,67 @@ There are several applications that can create and consume scene layers. The tab
   <td><strong>Vendor</strong></td>  
   <td><strong>Product/URL</strong></td>
   <td><strong>Scene Layer Type</strong></td>
+  <td><strong>Creation</strong></td>
+  <td><strong>Consumption</strong></td>
  </tr>
  <tr>
   <td>Bentley</td>  
   <td><a href="https://www.bentley.com/en/products/brands/contextcapture">ContextCapture</a></td>  
   <td>IntegratedMesh</a></td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
  </tr>
  <tr>
   <td>Vricon</td>
   <td><a href="http://www.vricon.com">Vricon</a></td>
   <td>IntegratedMesh</td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
  </tr>
   <tr>
   <td>Pix4D</td>
   <td><a href="https://pix4d.com/">Pix4D</a></td>
-  <td>IntegratedMesh</td>  
+  <td>IntegratedMesh</td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
  </tr>
   </tr>
   <tr>
   <td>Skyline</td>
   <td><a href="http://www.skylineglobe.com/SkylineGlobe/corporate/Products/photomesh.aspx">PhotoMesh</a></td>
+  <td>IntegratedMesh</td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
+ </tr>
+ <tr>
+  <td>NFrames</td>
+  <td><a href="https://docs.nframes.com/what's-new%253F/what's-new-in-sure-4.0/">Sure 4.0</a></td>
+  <td>IntegratedMesh</td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+ </tr>
+ <tr>
+  <td>Uber</td>
+  <td><a href="https://github.com/uber-web/loaders.gl/tree/master/examples/deck.gl/i3s">loaders.gl</a></td>
+  <td>IntegratedMesh, 3D Object</td>
+  <td></td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+ </tr> 
+  <td>Nearmap</td>
+  <td><a href="https://www.nearmap.com/us/en/products/3d-mapping-dsm-textured-mesh-point-cloud">Nearmap 3D</a></td>
+  <td>IntegratedMesh</td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
+ </tr>
+  </tr> 
+  <td>Agisoft</td>
+  <td><a href="https://www.agisoft.com/">Metashape</a></td>
   <td>IntegratedMesh</td>  
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
  </tr>
 </table>
-<p><em>List of vendors and products that support creation of I3S layers.</em></p>
+<p><em>List of vendors and products that support creation and consumption of I3S layers.</em></p>
 
 The Table below shows the various scene layer types that are supported by the <a href="http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm#">ArcGIS platform</a>.
 

@@ -10,6 +10,7 @@ The node object.
 | Property | Type | Description |
 | --- | --- | --- |
 | **index** | integer | The index in the node array. May be **different than** material, geometry and attribute `resource` id. See [`mesh`](mesh.cmn.md) for more information. |
+| parentIndex | integer | The index of the parent node in the node array |
 | lodThreshold | number | When to switch LoD. See [`nodepages[i].lodSelectionMetricType`](nodePageDefinition.cmn.md) for more information. |
 | **obb** | [obb](obb.cmn.md) | Oriented bounding box for this node.  |
 | children | integer[] | index of the children nodes indices. |

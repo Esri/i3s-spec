@@ -11,7 +11,7 @@
     },
     "parentIndex": {
       "type": "integer",
-      "description": "The index of the parent node in the node array"
+      "description": "The index of the parent node in the node array."
     },
     "lodThreshold": {
       "type": "number",

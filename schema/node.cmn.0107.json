@@ -9,6 +9,10 @@
       "type": "integer",
       "description": "The index in the node array. May be **different than** material, geometry and attribute `resource` id. See [`mesh`](mesh.cmn.md) for more information."
     },
+    "parentIndex": {
+      "type": "integer",
+      "description": "The index of the parent node in the node array."
+    },
     "lodThreshold": {
       "type": "number",
       "description": "When to switch LoD. See [`nodepages[i].lodSelectionMetricType`](nodePageDefinition.cmn.md) for more information."
@@ -35,6 +39,7 @@
     "index",
     "obb"
   ],
+  "additionalProperties": false,
   "esriDocumentation": {
     "examples": [
       {

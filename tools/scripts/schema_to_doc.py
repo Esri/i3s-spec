@@ -200,6 +200,8 @@ class Schema_type :
         if ( 'patternProperties' in dom ) :
             for name, value in dom['patternProperties'].items() :
                 self.properties[name] = value
+        ##if('$remove' in dom):
+        ##   for  
 
     def get_properties(self, dom) :
         self.get_all_properties(dom)
@@ -236,6 +238,13 @@ class Schema_type :
                 self.range[1] = str(dom['maxItems'])
 
         self.get_properties(dom)    # get properties, patternProperties, and $include properties
+        if("$delete" in dom):
+            for item in dom["$delete"]:
+                print(item)
+                for x in self.props:
+                    if x.name == item:
+                        self.props.remove(x)
+                self.properties.pop(item)
 
         if self.json_type == 'string' and 'enum' in dom :
             for en in dom['enum'] :
@@ -430,6 +439,8 @@ class Markdown_writer  :
 
 def validate_examples(manifest, validated_schemas, store) :
     for profile in manifest.types:
+        if profile == 'store.psl.0106' :
+            print("")
         if profile not in validated_schemas:
             validated_schemas.append(profile)
             examples = manifest.types[profile].example_dom

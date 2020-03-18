@@ -19,7 +19,7 @@
       },
       "minItems": 16,
       "maxItems": 16,
-      "description": "3D (4x4) transformation matrix expressed as a linear array of 16 values."
+      "description": "3D (4x4) transformation matrix expressed as a linear array of 16 values.  Used for methods such as translation, scaling, and rotation."
     },
     "params": {
       "type": "object",

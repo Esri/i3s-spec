@@ -236,6 +236,13 @@ class Schema_type :
                 self.range[1] = str(dom['maxItems'])
 
         self.get_properties(dom)    # get properties, patternProperties, and $include properties
+        if("$delete" in dom):
+            for item in dom["$delete"]:
+                print(item)
+                for x in self.props:
+                    if x.name == item:
+                        self.props.remove(x)
+                self.properties.pop(item)
 
         if self.json_type == 'string' and 'enum' in dom :
             for en in dom['enum'] :

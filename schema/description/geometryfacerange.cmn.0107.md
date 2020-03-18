@@ -1,4 +1,4 @@
-`faceRange` is an inclusive range of faces in this geometry that belongs to this feature.
+`faceRange` is an inclusive range of faces of the geometry that belongs to a specific feature.
 
 For each feature, `faceRange` indicates its first and last triangles as a pair of integer indices in the face list. 
 

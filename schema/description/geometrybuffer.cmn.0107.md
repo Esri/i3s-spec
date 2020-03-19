@@ -20,7 +20,8 @@ compressedAttributes
 ```
 
  **Important:**
-- Attribute that are present are store contiguously in the corresponding geometry buffers.
+- Attribute that are present are stored continuously in the corresponding geometry buffers.
 - All vertex attributes ( **except** `compressedAttributes`) have a fixed size that may be computed as:
-      `#component * sizeof( type ) * {#vertices or #features}`
+      `#component * sizeof( type ) * {# of vertices or #features}`
+      where `#component` is the number of components such as `position`,`normal`, etc.  Furthermore,`type` is the datatype of the variable used and `sizeof` returns the size of the datatype in bytes.
 

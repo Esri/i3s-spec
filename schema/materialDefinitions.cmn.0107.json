@@ -49,7 +49,7 @@
     },
     "alphaCutoff": {
       "type": "number",
-      "description": "The alpha cutoff value of the material (alphaMode=`mask`) default = `0.25`."
+      "description": "The alpha cutoff value of the material (only applies when alphaMode=`mask`) default = `0.25`.  If the alpha value is greater than or equal to the `alphaCutoff` value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent."
     },
     "doubleSided": {
       "type": "boolean",

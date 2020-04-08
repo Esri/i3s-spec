@@ -6,7 +6,7 @@ Point scene layers contain point features and their attributes. Point scene laye
 
 Some PSL [SLPK]()
 
-SomE PSL server [service]()
+Some PSL server [service]()
 
 *screenshots here*
 
@@ -23,6 +23,9 @@ EDIT THIS AS NEEDED
 ```
 .<host>/SceneServer/layers
 	+--0 // scene layer document
+	+-- nodePages
+	|  +-- 0
+	|  +-- (...)
 	+-- nodes
 	|  +--root
 	|  |  +-- attributes
@@ -31,22 +34,24 @@ EDIT THIS AS NEEDED
 	|  |  |  +--(...)
 	|  |  +-- features
 	|  |  |  +-- 0
+	|  |  +-- geometries    
+	|  |  |  +-- 1
 	|  +-- (...)
 	+--statistics
-	|  +-- f_2
+	|  +-- f_1
 	|  | +--0
-	|  +-- f_4
+	|  +-- f_2
 	|  | +--0
 	|  +-- (...)
 	+--resources
 	    +-- styles
 	 	| +-- root
-	 	| +-- web 
+	 	| +-- gltf 
 ```
 
 
 # HTTP API Overview
-EDIT AS NEEDED
+EDIT AS NEEDED *change url examples?*
 The following API methods are available for Point Scene Layer:
 
 **Scene layer document**
@@ -145,6 +150,9 @@ The following API methods are available for Point Scene Layer:
 
 [featureData](featureData.cmn.md)
 
+**Geometry**
+add here
+
 **Statistics**
 <table>
 <tr>
@@ -169,3 +177,5 @@ The following API methods are available for Point Scene Layer:
 
 [statistics](statisticsInfo.cmn.md)
 
+**Resources**
+add here

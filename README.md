@@ -13,7 +13,7 @@ The I3S format is declarative and extendable, and can be used to represent diffe
 
 - [3D objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [Integrated mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
-- [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
+- [Point](docs/1.7/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
 - [Point cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
 - [Building scene layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 

@@ -21,11 +21,10 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 - geometryBuffer (binary)
 - [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)
 - [statistics](statisticsInfo.cmn.md)
-- [resources]()
+- [resources](resources.cmn.md)
 
 *Example of point scene layer structure*
 
-EDIT THIS AS NEEDED
 ```
 .<host>/SceneServer/layers
 	+--0 // scene layer document
@@ -53,7 +52,6 @@ EDIT THIS AS NEEDED
 	+--resources
 	    +-- styles
 	 	| +-- root
-	 	| +-- gltf 
 ```
 
 

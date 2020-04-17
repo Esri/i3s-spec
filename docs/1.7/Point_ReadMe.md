@@ -4,18 +4,24 @@ Point scene layers contain point features and their attributes. Point scene laye
 
 **Examples**:<br />
 
-Some PSL [SLPK]()
+NYC 2015 Tree Survey [SLPK](https://www.arcgis.com/home/item.html?id=7ed3f75dfa2a4ed281471d4bd4110792)
 
-Some PSL server [service]()
+NYC 2015 Tree Survey [service](https://www.arcgis.com/home/item.html?id=7aba674fae86425694b21723d2680fa4)
 
-*screenshots here*
+*Example of a point scene layer*
 
-![Point scene layer ex](../img/PointSceneLayer.png)
+![Point Scene Layer](../img/PointSceneLayer.png)
 
 ## Point Scene Layer Structure
 The point scene layer is structured into a tree of multiple JSON files. Point scene layers can be represented as a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:
 
-[Stuff contained]()
+- [3DSceneLayer](3DSceneLayer.psl.md)
+- [featureData](featureData.cmn.md)
+- attribute (binary)
+- geometryBuffer (binary)
+- [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)
+- [statistics](statisticsInfo.cmn.md)
+- [resources]()
 
 *Example of point scene layer structure*
 
@@ -35,6 +41,7 @@ EDIT THIS AS NEEDED
 	|  |  +-- features
 	|  |  |  +-- 0
 	|  |  +-- geometries    
+	|  |  |  +-- 0
 	|  |  |  +-- 1
 	|  +-- (...)
 	+--statistics
@@ -51,7 +58,6 @@ EDIT THIS AS NEEDED
 
 
 # HTTP API Overview
-EDIT AS NEEDED *change url examples?*
 The following API methods are available for Point Scene Layer:
 
 **Scene layer document**
@@ -151,7 +157,27 @@ The following API methods are available for Point Scene Layer:
 [featureData](featureData.cmn.md)
 
 **Geometry**
-add here
+<table>
+<tr>
+    <td>Type</td>
+    <td>bin, draco</td>
+</tr>
+<tr>
+    <td>URL Template</td>
+    <td>http://serviceURL/layers/{layerID}/nodes/{nodeID}/geometries/{geometryID}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td>http://my.server.com/PointSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 </td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>The geometry resource (mesh information). <br/>
+    <code>layerID</code> Integer. ID of the associated layer. Esri products expect this to be `0`. <br/>
+    <code>nodeID</code> Integer. ID of the associated node. <br/>
+    <code>geometryID</code> Integer. This ID returns one of the geometries available for this node. The same geometry may be available in a different format. </td>
+</tr>
+</table>
 
 **Statistics**
 <table>
@@ -178,4 +204,4 @@ add here
 [statistics](statisticsInfo.cmn.md)
 
 **Resources**
-add here
+Currently no API for extracting resources?

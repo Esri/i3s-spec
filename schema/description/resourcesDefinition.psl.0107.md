@@ -2,7 +2,7 @@ The resources folder is a location for additional symbology.  In styles subfolde
 
 In this folder, root.json.gz must be defined.  Root carries information such as a name(which is unique), itemtype, and more.  
 
-###Example of root.json
+<b>Example of root.json</b>
 ```
 {
     "items": [
@@ -33,11 +33,11 @@ In this folder, root.json.gz must be defined.  Root carries information such as 
 ```
 
 
-If a symbol is defined, then it is placed in a folder based on the type(gltf,jpeg,png) and given a symbolLayer json.  The symbolLayer json is named based on the unique symbol name, and the [resource](../resource.cmn.md) attribute is an href to an image or glb file.
+If a symbol is defined, then it is placed in a folder based on the type(gltf,jpeg,png) and given a symbolLayer json.  The symbolLayer json is named based on the unique symbol name, and the [resource](resource.cmn.md) attribute is an href to an image or glb file.
 
 The supported symbol resource types are JPEG, PNG, glb.gz.  The glb file type is a binary representation of 3D models saved in the gltf, then compressed with gzip.
 
-###Example of the resource symbolLayer json
+<b>Example of the resource symbolLayer json</b>
 ```
 {
     "name": "5fe9e487e2230d61de71aff13744c5e9",

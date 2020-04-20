@@ -47,7 +47,7 @@ The table below shows how the OGC community standard relates to the community sp
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S community specification**      | **OGC I3S community standard**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
 | MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
-| Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
+| Points            | [Point](docs/1.7/Point_ReadMe.md)                                                  | 1.7              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
 The Point Cloud Scene Layer specification is going through the adoption process for inclusion in OGC I3S 1.1. Through this process, new layer types can be added to the OGC I3S Community Standard.

@@ -33,9 +33,9 @@
       "type": "boolean",
       "description": "Visibility of the sublayer. Default is `true`."
     },
-    "featureCount": {
-      "type": "integer",
-      "description": "Count of the number of features in a sublayer.  Can be 0, which represents that no features are present."
+    "isEmpty": {
+      "type": "boolean",
+      "description": "Returns true if the layer has no features, false otherwise.  Only specified if ```layerType``` is ```3DObject```."
     },
     "sublayers": {
       "type": "array",
@@ -63,21 +63,22 @@
           "alias": "Architecture",
           "modelName": "Architectural",
           "visibility": true,
-          "featureCount": 2,
           "sublayers": [
             {
               "id": 0,
               "layerType": "3DObject",
               "name": "stairs",
               "alias": "Escaliers",
-              "visibility": true
+              "visibility": true,
+              "isEmpty": false
             },
             {
               "id": 1,
               "layerType": "3DObject",
               "name": "roof",
               "alias": "Toitures",
-              "visibility": true
+              "visibility": true,
+              "isEmpty": false
             }
           ]
         }
@@ -99,7 +100,8 @@
               "alias": "Casework",
               "modelName": "Casework",
               "discipline": "Architectural",
-              "visibility": true
+              "visibility": true,
+              "isEmpty": false
             },
             {
               "id": 2,
@@ -108,7 +110,8 @@
               "alias": "LocationPoints",
               "modelName": "LocationPoints",
               "discipline": "Architectural",
-              "visibility": true
+              "visibility": true,
+              "isEmpty":false
             }
           ]
         }

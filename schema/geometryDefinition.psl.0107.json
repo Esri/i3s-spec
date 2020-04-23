@@ -26,8 +26,8 @@
   "esriDocumentation": {
     "examples": [
       {
-        "title": "Definition for a v1.6-equivalent geometry buffer (`geometryBuffers[0]`) and draco compressed geometry buffer (`geometryBuffers[1]`)",
-        "geometryDefinitions" : [{
+        "title": "Definition for a v1.7-equivalent geometry buffer",
+        "code" : [{
             "geometryBuffers" : [{
             "compressedAttributes" : {
             "encoding" : "draco",

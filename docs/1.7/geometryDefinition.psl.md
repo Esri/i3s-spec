@@ -30,4 +30,3 @@ The geometry definitions used in [Point Scene Layer]() I3S version 1.7.
     }]
 }
 ```
-

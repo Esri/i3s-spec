@@ -203,4 +203,26 @@ The following API methods are available for Point Scene Layer:
 [statistics](statisticsInfo.cmn.md)
 
 **Resources**
-Currently no API for extracting resources?
+<table>
+<tr>
+    <td>Type</td>
+    <td>JSON</td>
+</tr>
+<tr>
+    <td>URL Template</td>
+    <td>http://serviceURL/layers/{layerID}/resources/styles/{resourceType}/resource/{uniqueId}</td>
+</tr>
+<tr>
+    <td>Example</td>
+    <td> http://my.server.com/PointSceneLayer/SceneServer/layers/0/resources/styles/gltf/resource/5fe9e487e2230d61de71aff13744c5e9  </td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td>A specific symbology resource.<br/>
+    <code>layerID</code>: Integer. ID of the associated layer. Esri products expect this to be `0`.<br/>
+    <code>resourceType</code>: String.  Possible values include <code>JPEG, PNG, GLB.GZ</code><br>
+    <code>uniqueId</code>: Integer.  Unique ID of the specific resource for the symbol</td>
+</tr>
+</table>
+
+[resources](resources.psl.md)

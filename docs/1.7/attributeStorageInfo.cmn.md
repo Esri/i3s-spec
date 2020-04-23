@@ -55,7 +55,7 @@ Integer values of 3,10,7.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
 ### Properties
 
 | Property | Type | Description |

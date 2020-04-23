@@ -1,0 +1,44 @@
+{
+  "title": "geometryDefinition [1.7 PSL]",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "The geometry definitions used in [Point Scene Layer]() I3S version 1.7.",
+  "properties": {
+    "topology": {
+      "type": "string",
+      "enum": [ "point"],
+      "description": "Defines the topology type of the point."
+    },
+    "geometryBuffers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "$ref": "geometryBuffer.psl.0107.json"
+      },
+      "description": "Array of geometry representation(s) for this class of points.  Must be compressed."
+    }
+  },
+  "required": [
+    "geometryBuffers"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Definition for a v1.6-equivalent geometry buffer (`geometryBuffers[0]`) and draco compressed geometry buffer (`geometryBuffers[1]`)",
+        "geometryDefinitions" : [{
+            "geometryBuffers" : [{
+            "compressedAttributes" : {
+            "encoding" : "draco",
+            "attributes" : ["position", "feature-index"]
+            }
+            
+            }
+            ]
+            }
+            ]
+    }
+    ]
+  }
+}

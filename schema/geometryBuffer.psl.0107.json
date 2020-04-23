@@ -15,6 +15,7 @@
     "examples":
      [ {
         "title": "I3S PSL v1.7 equivalent geometry buffer definition",
+        "code":{
             "geometryBuffers" : {
                 "compressedAttributes" : {
                 "encoding" : "draco",
@@ -22,6 +23,7 @@
                 }
                 
                 }
+              }
                 
               
      }]

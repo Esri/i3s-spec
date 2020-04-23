@@ -29,6 +29,16 @@ compressedAttributes
 #### Example: I3S PSL v1.7 equivalent geometry buffer definition 
 
 ```json
- None 
+ {
+  "geometryBuffers": {
+    "compressedAttributes": {
+      "encoding": "draco",
+      "attributes": [
+        "position",
+        "feature-index"
+      ]
+    }
+  }
+} 
 ```
 

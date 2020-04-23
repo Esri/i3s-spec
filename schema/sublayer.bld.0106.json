@@ -33,7 +33,10 @@
       "type": "boolean",
       "description": "Visibility of the sublayer. Default is `true`."
     },
-
+    "featureCount": {
+      "type": "integer",
+      "description": "Count of the number of features in a sublayer.  Can be 0, which represents that no features are present."
+    },
     "sublayers": {
       "type": "array",
       "items": {
@@ -60,6 +63,7 @@
           "alias": "Architecture",
           "modelName": "Architectural",
           "visibility": true,
+          "featureCount": 2,
           "sublayers": [
             {
               "id": 0,

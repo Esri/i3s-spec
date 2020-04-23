@@ -16,6 +16,7 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
 | modelName | string | A fixed string of sublayer information. Used by client applications to define specific behavior for the modelName. See [list of defined modelNames](subLayerModelName.md) for sublayers. |
 | **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`3DObject`</li><li>`Point`</li></ul></div> |
 | visibility | boolean | Visibility of the sublayer. Default is `true`. |
+| featureCount | integer | Count of the number of features in a sublayer.  Can be 0, which represents that no features are present. |
 | sublayers | [sublayer](sublayer.bld.md)[] | Sublayers contained in this layer. |
 
 *Note: properties in **bold** are required*
@@ -32,6 +33,7 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
   "alias": "Architecture",
   "modelName": "Architectural",
   "visibility": true,
+  "featureCount": 2,
   "sublayers": [
     {
       "id": 0,

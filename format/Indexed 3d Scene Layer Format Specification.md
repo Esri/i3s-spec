@@ -115,7 +115,7 @@ In addition to a bounding volume, each node contains references to node resource
 
 Depending on the scene layer type and the version of I3S, different geometry representations are used. For example, an integrated mesh scene layer geometry data includes all vertex attributes, feature counts, and mesh segmentation.
 
-In I3S version 1.7 3D Objects and Integrated Mesh scene layer are using [geometryBuffer](../docs/1.7/geometryBuffer.cmn.md) with draco compression to describe the geometry. Previous versions of 3D Object and Integrated Mesh scene layers (1.6 and earlier) define geometry in the [defaultGeometrySchema](../docs/1.6/defaultGeometrySchema.cmn.md). The expected triangle/face winding order in all geometry resources is counterclockwise. 
+In I3S version 1.7, 3D Objects and Integrated Mesh scene layer are using [geometryBuffer](../docs/1.7/geometryBuffer.cmn.md) with draco compression to describe the geometry. Previous versions of 3D Object and Integrated Mesh scene layers (1.6 and earlier) define geometry in the [defaultGeometrySchema](../docs/1.6/defaultGeometrySchema.cmn.md). The expected triangle/face winding order in all geometry resources is counterclockwise. 
 
 Point and Point cloud layers model geometries as points. Point scene layer define the geometry in [featureData](../docs/1.6/featureData.cmn.md). For a Point Cloud Scene Layer the binary [geometry](../docs/2.0/defaultGeometrySchema.pcsl.md") is lepcc-xyz compressed.
 
@@ -149,7 +149,7 @@ I3S creators are free to use any ordering (e.g. breadth first, depth first) of t
 
 *Example of breadth first ordering of nodes in a flat array. Children nodes are addressed by their index in the array.*
 
-## Statistics <a name="Statistics"></a>
+## Statistics <a name="statistics"></a>
 [Statistics](../docs/1.7/stats.cmn.md) are used by clients to define symbology without having to read all data. For example, if you want to define a unique value symbology, statistics are used to collect all unique values within the layer and calculate the number of features that are included in a unique value. Beside symbology, statistics are also used to filter data.   
 
 ## Coordinate Reference Systems <a name="CRS"></a>
@@ -217,7 +217,6 @@ Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
 
 Scene Layer Package (SLPK) consolidates an I3S layer into a single file.  SLPKs are designed to be directly consumed by applications.
 
-
 An SLPK is a [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) archive containing compressed files and resources. The compression level for a SLPK file is not compressed. For example, if using 7-zip to create a scene layer package the compression level is `STORE`. The individual resources within the SLPK may be compressed using the compression method `GZIP`. For example, `.json.gz`. The exception is for jpg and png files.  We recommend compressing all resources.
 
 Both 64-bit and 32-bit zip archives are supported.  64-bit is required for datasets larger than 2GB.
@@ -226,7 +225,9 @@ Please note that this method is slightly different than a typical zip archive.  
 
 This is an example of a geometry resource opened in 7-zip.  Notice that both the Size and the Packed Size are equal.  The method is `STORE`.
 
-![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG) *Compressed geometry resource with size and method.*
+![Example of compressed geometry resource with size and method](images/slpk_archive_store.PNG)
+
+*Compressed geometry resource with size and method.*
 
 **File Extensions**
 
@@ -288,7 +289,7 @@ Paths are the same as in the API, but without the `layers/0` prefix. Exceptions 
 |Legacy node resource|/nodes/4/3dNodeIndexDocument.json.gz|layers/0/nodes/4|
 |Legacy shared resource|/nodes/4/shared/sharedResource.json.gz|layers/0/nodes/4/shared| 
 
-<br />
+
 #### Example 1.6 Structure Summary for 3D Objects <a name="1.6-SLPK-Structure"></a>
 
 ```
@@ -332,8 +333,3 @@ Paths are the same as in the API, but without the `layers/0` prefix. Exceptions 
 	+--3dSceneLayer.json.gz
 	+--metadata.json
 ```
-
-
-
-
-

@@ -17,7 +17,7 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
 | **layerType** | string | <div>Possible values are:<ul><li>`group`</li><li>`3DObject`</li><li>`Point`</li></ul></div> |
 | visibility | boolean | Visibility of the sublayer. Default is `true`. |
 | sublayers | [sublayer](sublayer.bld.md)[] | Sublayers contained in this layer. |
-| isEmpty | boolean | Returns true if the layer is empty, false otherwise. |
+| isEmpty | boolean | Returns true if the layer has no features. |
 
 *Note: properties in **bold** are required*
 

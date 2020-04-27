@@ -27,18 +27,20 @@
     "examples": [
       {
         "title": "Definition for a v1.7-equivalent geometry buffer",
-        "code" : [{
-            "geometryBuffers" : [{
-            "compressedAttributes" : {
-            "encoding" : "draco",
-            "attributes" : ["position", "feature-index"]
+        "code": {
+          "geometryBuffers": [
+            {
+              "compressedAttributes": {
+                "encoding": "draco",
+                "attributes": [
+                  "position",
+                  "feature-index"
+                ]
+              }
             }
-            
-            }
-            ]
-            }
-            ]
-    }
+          ]
+        } 
+      }
     ]
   }
 }

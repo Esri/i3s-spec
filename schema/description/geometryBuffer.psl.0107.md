@@ -1,7 +1,5 @@
 Point Geometry Description
 
-**Important**: The order of the vertex attributes in the buffer is **fixed** to simplify binary parsing:
-
 ```
 compressedAttributes
 ```

@@ -5,6 +5,16 @@
   "description-href": "description/layer.bld.0106.md",
   "related": "stats.bld.0107",
   "$include": "layer.bld.0106.json",
+  "properties": {    
+    "sublayers": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "$ref": "sublayer.bld.0107.json"
+    },
+    "description": "List of sublayers or group of sublayers."
+    }
+  },
   "required": [
     "id",
     "name",

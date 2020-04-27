@@ -17,7 +17,7 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 
 - [3DSceneLayer](3DSceneLayer.psl.md)
 - [nodePage](nodePage.cmn.md)
-- [featureData](featureData.cmn.md)
+- [featureData](featureData.cmn.md)*
 - attribute (binary)
 - geometryBuffer (binary)
 - [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)*

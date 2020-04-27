@@ -16,7 +16,7 @@ The geometry definitions used in [Point Scene Layer]() I3S version 1.7.
 
 ### Examples 
 
-#### Example: Definition for a v1.6-equivalent geometry buffer (`geometryBuffers[0]`) and draco compressed geometry buffer (`geometryBuffers[1]`) 
+#### Example: Definition for a v1.7-equivalent geometry buffer 
 
 ```json
  {

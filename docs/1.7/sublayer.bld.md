@@ -4,7 +4,7 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
 
 ### Related:
 
-[bld::layer](layer.bld.md)
+[bld::layer](layer.bld.md), [bld::sublayer](sublayer.bld.md)
 ### Properties
 
 | Property | Type | Description |
@@ -33,21 +33,22 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
   "alias": "Architecture",
   "modelName": "Architectural",
   "visibility": true,
-  "isEmpty": false,
   "sublayers": [
     {
       "id": 0,
       "layerType": "3DObject",
       "name": "stairs",
       "alias": "Escaliers",
-      "visibility": true
+      "visibility": true,
+      "isEmpty": false
     },
     {
       "id": 1,
       "layerType": "3DObject",
       "name": "roof",
       "alias": "Toitures",
-      "visibility": true
+      "visibility": true,
+      "isEmpty": false
     }
   ]
 } 
@@ -63,7 +64,6 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
   "alias": "Architecture",
   "modelName": "Architectural",
   "visibility": true,
-  "isEmpty": false,
   "sublayers": [
     {
       "id": 1,
@@ -72,7 +72,8 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
       "alias": "Casework",
       "modelName": "Casework",
       "discipline": "Architectural",
-      "visibility": true
+      "visibility": true,
+      "isEmpty": false
     },
     {
       "id": 2,
@@ -81,7 +82,8 @@ Sublayer of a building scene layer. A building scene layer is composed of an ove
       "alias": "LocationPoints",
       "modelName": "LocationPoints",
       "discipline": "Architectural",
-      "visibility": true
+      "visibility": true,
+      "isEmpty": false
     }
   ]
 } 

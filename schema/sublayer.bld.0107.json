@@ -8,6 +8,14 @@
     "isEmpty": {
       "type": "boolean",
       "description": "Returns true if the layer has no features."
+    },
+    "sublayers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "sublayer.bld.0107.json"
+      },
+      "description": "Sublayers contained in this layer."
     }
   },
   "required": [
@@ -27,21 +35,22 @@
           "alias": "Architecture",
           "modelName": "Architectural",
           "visibility": true,
-          "isEmpty" : false,
           "sublayers": [
             {
               "id": 0,
               "layerType": "3DObject",
               "name": "stairs",
               "alias": "Escaliers",
-              "visibility": true
+              "visibility": true,
+              "isEmpty" : false
             },
             {
               "id": 1,
               "layerType": "3DObject",
               "name": "roof",
               "alias": "Toitures",
-              "visibility": true
+              "visibility": true,
+              "isEmpty" : false
             }
           ]
         }
@@ -55,7 +64,6 @@
           "alias": "Architecture",
           "modelName": "Architectural",
           "visibility": true,
-          "isEmpty" : false,
           "sublayers": [
             {
               "id": 1,
@@ -64,7 +72,8 @@
               "alias": "Casework",
               "modelName": "Casework",
               "discipline": "Architectural",
-              "visibility": true
+              "visibility": true,
+              "isEmpty" : false
             },
             {
               "id": 2,
@@ -73,7 +82,8 @@
               "alias": "LocationPoints",
               "modelName": "LocationPoints",
               "discipline": "Architectural",
-              "visibility": true
+              "visibility": true,
+              "isEmpty" : false
             }
           ]
         }

@@ -33,7 +33,6 @@
       "type": "boolean",
       "description": "Visibility of the sublayer. Default is `true`."
     },
-
     "sublayers": {
       "type": "array",
       "items": {

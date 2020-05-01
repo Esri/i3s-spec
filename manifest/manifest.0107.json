@@ -52,6 +52,14 @@
         {
           "path": "3dSceneLayer.json.gz",
           "schema": "3DSceneLayer.psl.0106.json"
+        },
+        {
+          "path": "3dSceneLayer",
+          "schema": "3DSceneLayer.psl.0107.json"
+        },
+        {
+          "path": "resources",
+          "schema": "resources.psl.0107.json"
         }
       ]
     }

@@ -4,7 +4,7 @@ The store object describes the exact physical storage of a layer and enables the
 
 ### Related:
 
-[psl::3DSceneLayer](3DSceneLayer.psl.md)
+[psl::3DSceneLayer](3DSceneLayer.psl.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
 ### Properties
 
 | Property | Type | Description |

@@ -13,7 +13,7 @@ The I3S format is declarative and extendable, and can be used to represent diffe
 
 - [3D objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
 - [Integrated mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
-- [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
+- [Point](docs/1.7/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
 - [Point cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
 - [Building scene layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
@@ -47,7 +47,7 @@ The table below shows how the OGC community standard relates to the community sp
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S community specification**      | **OGC I3S community standard**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
 | MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
-| Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
+| Points            | [Point](docs/1.7/Point_ReadMe.md)                                                  | 1.7              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
 
 The Point Cloud Scene Layer specification is going through the adoption process for inclusion in OGC I3S 1.1. Through this process, new layer types can be added to the OGC I3S Community Standard.

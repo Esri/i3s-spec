@@ -34,9 +34,9 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 	|  |  |  +-- 0
 	|  +-- (...)
 	+--statistics
-	|  +-- f_2
+	|  +-- f_1
 	|  | +--0
-	|  +-- f_4
+	|  +-- f_2
 	|  | +--0
 	|  +-- (...)
 	+--resources

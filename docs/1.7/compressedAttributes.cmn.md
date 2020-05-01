@@ -10,7 +10,7 @@ All *vertexAttributes* of a Meshpyramids profile can be compressed with Draco.
 
 ### Related:
 
-[cmn::geometryBuffer](geometryBuffer.cmn.md)
+[cmn::geometryBuffer](geometryBuffer.cmn.md), [psl::geometryBuffer](geometryBuffer.psl.md)
 ### Properties
 
 | Property | Type | Description |

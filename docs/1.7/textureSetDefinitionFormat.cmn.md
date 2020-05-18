@@ -1,6 +1,6 @@
 # textureSetDefinitionFormat
 
-Describes the formats available for a texture set. Note: JPEG or PNG must always be provided.
+Describes the formats available for a [texture](texture.cmn.md) set. Note: JPEG or PNG must always be provided.
 
 ### Related:
 

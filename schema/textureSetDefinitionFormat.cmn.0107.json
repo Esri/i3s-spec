@@ -6,7 +6,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "The location ID for the resource (last segment of the URL path). Must be `\"0\"` for jpg/png, `\"0_0_1\"` for DDS and/or `\"0_0_2\"` for KTX."
+      "description": "The location ID for the resource (last segment of the URL path). Must be `\"0\"` for jpg/png, `\"0_0_1\"` for DDS and `\"0_0_2\"` for KTX."
     },
     "format": {
       "type": "string",

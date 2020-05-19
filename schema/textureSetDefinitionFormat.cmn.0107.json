@@ -2,11 +2,11 @@
   "title": "textureSetDefinitionFormat",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Describes the formats available for a texture set. Note: JPEG or PNG must always be provided.",
+  "description": "Describes the formats available for a [texture](texture.cmn.md) set. Note: JPEG or PNG must always be provided.",
   "properties": {
     "name": {
       "type": "string",
-      "description": "The location ID for the resource (last segment of the URL path). Must be `\"0\"` for jpg/png and `\"0_0_1\"` for DDS."
+      "description": "The location ID for the resource (last segment of the URL path). Must be `\"0\"` for jpg/png, `\"0_0_1\"` for DDS and `\"0_0_2\"` for KTX."
     },
     "format": {
       "type": "string",
@@ -45,6 +45,13 @@
         "code": {
           "name": "0_0_1",
           "format": "dds"
+        }
+      },
+      {
+        "title": "KTX texture at `/layers/0/nodes/{resource_id}/textures/0_0_2`",
+        "code":{
+          "name": "0_0_2",
+          "format": "ktx-etc2"
         }
       }
     ]

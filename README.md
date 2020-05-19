@@ -58,7 +58,7 @@ The following changes to the I3S community specification are yet to be proposed 
 - Inclusion of the [Building Scene Layer](docs/1.7/BSL_ReadMe.md), first introduced at I3S 1.6.
 
 ## What's New?
-Please see the [Version Histroy](version_history.md) for document updates.
+Please see the [Version History](version_history.md) for document updates.
 
 ## Where Can I Use...?
 

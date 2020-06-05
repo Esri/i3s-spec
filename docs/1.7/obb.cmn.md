@@ -1,8 +1,8 @@
 # Oriented Bounding Box (OBB)
 
-An oriented bounding Box (OBB) is a compact bounding volume representation, tightly fitting the geometries it represents. An OBBs' invariance to translation and rotation, makes it ideal as the optimal and default bounding volume representation in I3S. 
+An Oriented Bounding Box (OBB) is a compact bounding volume representation, tightly fitting the geometries it represents. An OBBs' invariance to translation and rotation, makes it ideal as the optimal and default bounding volume representation in I3S. 
 
-When constructing an OBB for I3S use, there are two considerations an implementer needs to be make based on the CRS of the layer:
+When constructing an OBB for I3S use, there are two considerations an implementer needs to be make based on the Coordinate Reference System (CRS) of the layer:
 
 ## Constructing OBB for a global scene layer
 
@@ -46,18 +46,44 @@ Examples of oriented-bounding boxes. The OBB examples below enclose the same geo
 #### Example 1: an oriented-bounding box for a Global scene layer (WSG84, wkid: 4326)
 
 ```json
-	{
-		"center": [-122.40277014424709, 37.795204290863012, 134.5439856108278],
-		"halfSize": [30.701572418212891, 27.71544075012207, 129.72760009765625],
-		"quaternion": [-0.50688880681991577, 0.74475228786468506, 0.1719556450843811, 0.39854612946510315]
-	}
+{
+	"center": [
+		-122.40277014424709, 
+		37.795204290863012, 
+		134.5439856108278
+	],
+	"halfSize": [
+		30.701572418212891, 
+		27.71544075012207, 
+		129.72760009765625
+	],
+	"quaternion": [
+		-0.50688880681991577,
+		0.74475228786468506,
+		0.1719556450843811,
+		0.39854612946510315
+	]
+}
 ```
 
 #### Example 2: an oriented-bounding box for Local scene layer (Lambert, Wkid: 2227)
 ```json
 {
-		"center": [6011913.2692229711, 2117599.0498975096, 441.1241036703866],
-		"halfSize": [100.45386505126953, 91.120384216308594, 426.03338623046875],
-		"quaternion": [0.64432936906814575, 0.76474469900131226, -0.0020481476094573736, 0.0010012148413807154]
-	}
+	"center": [
+		6011913.2692229711,
+		2117599.0498975096,
+		441.1241036703866
+	],
+	"halfSize": [
+		100.45386505126953, 
+		91.120384216308594, 
+		426.03338623046875
+	],
+	"quaternion": [
+		0.64432936906814575, 
+		0.76474469900131226, 
+		-0.0020481476094573736, 
+		0.0010012148413807154
+	]
+}
  ```

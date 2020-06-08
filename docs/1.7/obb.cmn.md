@@ -1,13 +1,14 @@
 # Oriented Bounding Box (OBB)
 
-An Oriented Bounding Box (OBB) is a compact bounding volume representation, tightly fitting the geometries it represents. An OBBs' invariance to translation and rotation, makes it ideal as the optimal and default bounding volume representation in I3S. 
+An Oriented Bounding Box (OBB) is a compact bounding volume representation, tightly fitting the geometries it represents. An OBBs' invariance to translation and rotation, makes it ideal as the optimal and default bounding volume representation in I3S.
 
 When constructing an OBB for I3S use, there are two considerations an implementer needs to be make based on the Coordinate Reference System (CRS) of the layer:
 
 ## Constructing OBB for a global scene layer
 
-For an I3S layer in WGS84 geographic coordinate system, referred to as a *global scene layer* and identified by the wkid value of 4326 (see [spatial reference](/spatialReference.cmn.md) in [3DSceneLayer](/3DSceneLayer.cmn.md) resource): 
-- the OBB should be constructed in an earth-centered, earth-fixed (ECEF) coordinate system equivalent to the layers' CRS. 
+For an I3S layer in WGS84 geographic coordinate system, referred to as a *global scene layer* and identified by the wkid value of 4326 (see [spatial reference](/docs/1.7/spatialReference.cmn.md) in [3DSceneLayer](/docs/1.7/3DSceneLayer.cmn.md) resource): 
+docs/1.7/3DSceneLayer.cmn.md
+- the OBB should be constructed in an earth-centered, earth-fixed (ECEF) coordinate system equivalent to the layers' CRS.
 - the center component of the OBB is specified as longitude, latitude (in decimal degrees) and the elevation (z) in meters.
 - the halfSize component of the OBB is specified in meters.
 - the quaternion component is in reference to an ECEF coordinate system.
@@ -20,9 +21,9 @@ When constructing an OBB for a global scene layer, the following steps must occu
 ## Constructing OBB for a local scene layer
 
 For an I3S layer, with a CRS *other* than wkid value of 4326, referred to as a *local scene layer*:
-- the OBB should be constructed in the same CRS as the layer. 
-- the units for the center and halfSize components of the OBB should be in the unit of the CRS. 
-- both center and quaternion are specified in reference to the CRS of the layer. 
+- the OBB should be constructed in the same CRS as the layer.
+- the units for the center and halfSize components of the OBB should be in the unit of the CRS.
+- both center and quaternion are specified in reference to the CRS of the layer.
 
 The OBB construction steps described in the global scene layer use case above apply here also. However, for a local scene layer, vertices, OBB computation and the resultant OBB components all remain in the CRS of the layer. The units of the OBB components are in the same unit as the layers'.
 
@@ -39,7 +40,7 @@ The OBB construction steps described in the global scene layer use case above ap
 
 *Note: properties in **bold** are required*
 
-### Examples 
+### Examples
 
 Examples of oriented-bounding boxes. The OBB examples below enclose the same geometry, differing only in the CRS of the input layer, as indicated by the wkid values.
 
@@ -48,13 +49,13 @@ Examples of oriented-bounding boxes. The OBB examples below enclose the same geo
 ```json
 {
 	"center": [
-		-122.40277014424709, 
-		37.795204290863012, 
+		-122.40277014424709,
+		37.795204290863012,
 		134.5439856108278
 	],
 	"halfSize": [
-		30.701572418212891, 
-		27.71544075012207, 
+		30.701572418212891,
+		27.71544075012207,
 		129.72760009765625
 	],
 	"quaternion": [
@@ -75,14 +76,14 @@ Examples of oriented-bounding boxes. The OBB examples below enclose the same geo
 		441.1241036703866
 	],
 	"halfSize": [
-		100.45386505126953, 
-		91.120384216308594, 
+		100.45386505126953,
+		91.120384216308594,
 		426.03338623046875
 	],
 	"quaternion": [
-		0.64432936906814575, 
-		0.76474469900131226, 
-		-0.0020481476094573736, 
+		0.64432936906814575,
+		0.76474469900131226,
+		-0.0020481476094573736,
 		0.0010012148413807154
 	]
 }

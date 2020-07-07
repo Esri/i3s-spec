@@ -28,6 +28,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Height Models](#heightModels) <br />
 [I3S services and formats](#i3s-services-and-scene-layer-packages) <br />
 &emsp;[I3S services](#I3S-services)  <br />
+&emsp;[I3SREST](#i3sREST)  <br />
 &emsp;[Scene Layer Packages](#SLPK)  <br />
 &emsp;&emsp;[1.7 SLPK Structure](#1.7-SLPK-Structure)  <br />
 &emsp;&emsp;[1.6 SLPK Structure](#1.6-SLPK-Structure)  <br />
@@ -212,6 +213,12 @@ Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrat
 Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
 Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
+
+### Indexed 3D Scene Layer REST (i3sREST) <a name="i3sREST"></a>
+
+This format is based on JSON, REST, and modern web standards making it easy to handle, parse, and render by web clients when stored in cloud stores such as Amazon S3, Azure Blob stores or Alibaba OSS. Use this storage format if you would like to store and serve the scene layer content from a cloud object store.
+
+You can follow the I3S service definition to write into the cloud store or use the [i3s converter tool](../i3s_converter/i3s_converter_ReadMe.md) to create a Indexed 3D scene layer REST storage format.
 
 ### Scene Layer Packages <a name="SLPK"></a>
 

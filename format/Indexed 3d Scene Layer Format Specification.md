@@ -26,7 +26,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Statistics](#statistics)<br />
 &emsp;[Coordinate Reference Systems](#CRS)  <br />
 &emsp;[Height Models](#heightModels) <br />
-[I3S services and Packages](#i3s-services-and-scene-layer-packages) <br />
+[I3S services and formats](#i3s-services-and-scene-layer-packages) <br />
 &emsp;[I3S services](#I3S-services)  <br />
 &emsp;[Scene Layer Packages](#SLPK)  <br />
 &emsp;&emsp;[1.7 SLPK Structure](#1.7-SLPK-Structure)  <br />
@@ -201,7 +201,7 @@ At version 1.5, I3S added support for vertical coordinate systems. The Well Know
 
 The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
 
-# I3S services and Packages <a name="i3s-services-and-scene-layer-packages"></a>
+# I3S services and formats <a name="i3s-services-and-scene-layer-packages"></a>
 
 ### I3S services <a name="I3S-services"></a>
 

@@ -29,6 +29,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 [I3S services and formats](#i3s-services-and-scene-layer-packages) <br />
 &emsp;[I3S services](#I3S-services)  <br />
 &emsp;[I3SREST](#i3sREST)  <br />
+&emsp;[Extracted Scene Layer Package](#ESLPK)  <br />
 &emsp;[Scene Layer Packages](#SLPK)  <br />
 &emsp;&emsp;[1.7 SLPK Structure](#1.7-SLPK-Structure)  <br />
 &emsp;&emsp;[1.6 SLPK Structure](#1.6-SLPK-Structure)  <br />
@@ -219,6 +220,12 @@ Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
 This format is based on JSON, REST, and modern web standards making it easy to handle, parse, and render by web clients when stored in cloud stores such as Amazon S3, Azure Blob stores or Alibaba OSS. Use this storage format if you would like to store and serve the scene layer content from a cloud object store.
 
 You can follow the I3S service definition to write into the cloud store or use the [i3s converter tool](../i3s_converter/i3s_converter_ReadMe.md) to create a Indexed 3D scene layer REST storage format.
+
+### Extracted Scene Layer Package (ESLPK) <a name="ESLPK"></a>
+
+ESLPK is a non-archived folder directory structure of SLPK. This format can be served using a tile handler designed specifically for handling file extensions. This format is suitable for file systems. You can additionally store it in S3 compatible blob stores on file systems such as MinIO which provide data resiliency, sharding, and failover support. Use ESLPK storage format if you would like to use a file system as a folder data store for storing and serving your scene layer content.
+
+When creating an ESPK you need to use the same structure and file extensions as defined in a scene layer package (SLPK) without using the archiving option or you can use the [i3s converter](../i3s_converter/i3s_converter_ReadMe.md) to convert an SLPK into an ESLPK.
 
 ### Scene Layer Packages <a name="SLPK"></a>
 

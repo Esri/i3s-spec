@@ -1,17 +1,29 @@
 # i3s_converter.exe
 
-Command line tool to validate a 1.6 Scene Layer Package (slpk ) or convert a 1.6 slpk to 1.7.  
+Command line tool for
+- Validate a 1.6 Scene Layer Package (slpk)
+- Convert a 1.4-1.6 slpk to 1.7
+- Extract a 1.7 slpk or an slpk with layer type of Point Cloud (Version 2.0 only for Point Cloud).
 
 
-|      &nbsp;     | Validate | Convert |
-|-----------------|----------|---------|
-| 3DObject        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    |
-| Integrated Mesh |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    |
-| Point           |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    |
-| Pointcloud      |     <img alt="supported" src="readme_images/checkmark.png">    | &nbsp;  |
-| Building        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    |
+|      &nbsp;     | Validate | Convert | Extract |
+|-----------------|----------|---------|---------|
+| 3DObject        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
+| Integrated Mesh |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
+| Point           |     <img alt="supported" src="readme_images/checkmark.png">    |        |
+| Pointcloud      |     <img alt="supported" src="readme_images/checkmark.png">    | &nbsp;  | <img alt="supported" src="readme_images/checkmark.png"> |
+| Building        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
 
 *Note:* 1.7 maintains backwards compatibility with 1.6. The resultant 1.7 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
+
+When extracing, the following formats are available:
+- Filesystem : *.eslpk
+- Cloud : *.i3srest
+
+Cloud storage options supported:
+- Microsoft Azure
+- AWS S3
+- Alibaba OSS
 
 ## Running the executable
 
@@ -77,6 +89,27 @@ It uses:
 - -v to validate the slpk
 - -j to write a json log. (The name of the input slpk is used for the log name)  
 ![validation](readme_images/validate_example_errors.PNG)
+
+## Conversion and Extraction
+#### Filesystem
+To convert an slpk to filesystem (*.eslpk)
+- ```i3s_converter.exe --convert <path-to-slpk> -d <output-directory> -t <num-threads>```
+
+To extract an slpk to filesystem (*.eslpk)
+- ```i3s_converter.exe --extract <path-to-slpk> -d <output-directory>```
+
+#### Cloud
+To convert an slpk to cloud (*.i3srest)
+ - ```  i3s_converter.exe --convert <path-to-slpk> -d <scheme>://<bucket-or-container> -a <access-key> -s <secret-key> -r <s3-or-alibaba-region> -t <num-threads>```
+
+Usage for converting an slpk to cloud
+- ```i3s_converter.exe --extract <path-to-slpk> -d <scheme>://<bucket-or-container> -a <access> -s <secret-key> -r <s3-or-alibaba-region>```
+
+Supported schemes:
+- AWS S3:          s3
+- Microsoft Azure: az
+- Alibaba OSS:     oss
+
 
 ## Notes
 

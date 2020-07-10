@@ -16,7 +16,8 @@ Command line tool for
 
 *Note:* 1.7 maintains backwards compatibility with 1.6. The resultant 1.7 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
 
-When extracing, the following formats are available:
+When extracing or converting, the following formats are available:
+- Archived: *.slpk
 - Filesystem : *.eslpk
 - Cloud : *.i3srest
 
@@ -125,3 +126,18 @@ Supported schemes:
   - add the .exe as a PATH environment variable
 
 - 1.7 slpks and log files will be overwritten when tool is re-run with the same input
+
+## Licensing
+   Copyright 2020 ESRI
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.

@@ -11,7 +11,7 @@
 
 ------------------
 
-##Introduction <a name="Introduction"></a>
+## Introduction <a name="Introduction"></a>
 i3s_converter is used a command line tooling for
 - Validating a 1.6 Scene Layer Package (slpk)
 - Convert a 1.4-1.6 slpk to 1.7

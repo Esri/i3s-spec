@@ -1,9 +1,21 @@
 # i3s_converter.exe
+------------------
+## Quick Links
+[Introduction](#Introduction) <br />
+[Running the executable](#Execute)  <br />
+[Subcommands](#Subcommands) <br />
+[Options](#Options)<br />
+[Examples](#Examples)<br />
+[Notes](#Notes)<br />
+[Licensing](#Licensing)<br />
 
-Command line tool for
-- Validate a 1.6 Scene Layer Package (slpk)
+------------------
+
+##Introduction <a name="Introduction"></a>
+i3s_converter is used a command line tooling for
+- Validating a 1.6 Scene Layer Package (slpk)
 - Convert a 1.4-1.6 slpk to 1.7
-- Extract a 1.7 slpk or an slpk with layer type of Point Cloud (Version 2.0 only for Point Cloud).
+- Extract a 1.7 slpk or a 2.0 slpk with layer type of Point Cloud.
 
 
 |      &nbsp;     | Validate | Convert | Extract |
@@ -26,7 +38,7 @@ Cloud storage options supported:
 - AWS S3
 - Alibaba OSS
 
-## Running the executable
+## Running the executable <a name="Execute"></a>
 
 #### Open Command Prompt
 
@@ -38,8 +50,9 @@ Cloud storage options supported:
 
 1. Specify the .exe path
 
-  - Drag and drop the .exe into the command prompt window (absolute path).  
+  - Drag and drop the .exe into the command prompt window (absolute path)
     ![exe_abs_path](readme_images/exe_abs_path.PNG)
+    OR
 
   - _cd_ into the directory that contains the .exe (relative path)
     - Use: i3s_converter  
@@ -55,41 +68,34 @@ Cloud storage options supported:
 
   This is the minumum required to use the converter with an slpk.
 
-## Subcommands
+## Subcommands <a name="Subcommands"></a>
 
 | Subcommand   | Action          |
 |--------------|-----------------|
 | -b           | Show converter version    |
+| -e           | Extract slpk to eslpk    |
 | -h           | Show usage      |
-| -u infile.slpk | Convert slpk to 1.7   |
-| -v infile.slpk | Validate slpk |
-| -i infile.slpk | Show basic layer info |
+| -i \[infile.slpk] | Show basic layer info |
+| -u \[infile.slpk] | Convert slpk to 1.7   |
+| -v \[infile.slpk] | Validate slpk |
 
-## Options
+## Options <a name="Options"></a>
 
 | Option         | Action                  |
 |----------------|-------------------------|
-| -d dir         | Change output directory. Create it if it doesn't exist|
+| -a \[key]         | AWS S3 access key / Azure Account / Alibaba Account |
+| -d \[dir]         | Change [output directory](#outputDirectory). Will create it if it doesn't exist|
+| -k             | Create ETC2 texture from input \(slow) |
 | -j \[log_name] | Set log name    |
-| -e             | Create ETC2 texture from input \(slow) |
-| -o outfile   | 1.7 slpk name   |
+| -n    | Drop all normals. Client will recreate   |
+| -o \[outfile]   | 1.7 slpk name   |
+| -r    | Region where bucket is located   |
+| -s \[key]   | AWS S3 secret key   |
+| -t \[num threads]   | [Number of threads](#threadsDesc) to use when converting, default is 1 |
 | -x             | Don't write DXT textures |
 
-## Examples
-In the following example, the .exe and input slpk are in the current working directory.  
-It uses:
-
-- -u to convert slpk from 1.6 to 1.7
-- -o to the set the name of the new slpk to ExampleSLPK_1_7.slpk
-- -j set the log name to ExampleLog
-- -d to set the output directory to C:\Users\juan9976\Desktop\ExampleDir
-![No errors](readme_images/example.good.PNG)
-
-The following example validates a 1.6 slpk. There errors are output to the console.
-It uses:
-- -v to validate the slpk
-- -j to write a json log. (The name of the input slpk is used for the log name)  
-![validation](readme_images/validate_example_errors.PNG)
+## Examples <a name="Examples"></a> 
+Examples can be found [here](i3s_converter_examples.md), which show various uses of the i3s_converter.
 
 ## Conversion and Extraction
 #### Filesystem
@@ -112,14 +118,11 @@ Supported schemes:
 - Alibaba OSS:     oss
 
 
-## Notes
-
-- Only works with __local__ files
+## Notes <a name="Notes"></a>
 
 - Only the first 10 warnings/errors are output to the command line.
 
-- Any output files are written out relative to the current working directory, unless _-d_ flag is used.  
-![Current Working Directory](readme_images/cwd.PNG)
+- <a name = "outputDirectory"></a>Any output files are written out relative to the current working directory, unless _-d_ flag is used.  
 
 - To avoid having to specify the absolute path to the .exe
   - _cd_ to the directory that contains the .exe
@@ -127,7 +130,8 @@ Supported schemes:
 
 - 1.7 slpks and log files will be overwritten when tool is re-run with the same input
 
-## Licensing
+- <a name = "threadsDesc"></a>The number of threads to run the extraction or conversion on.  Increasing the number of threads typically reduces execution time.
+## Licensing <a name="Licensing"></a>
    Copyright 2020 ESRI
 
    Licensed under the Apache License, Version 2.0 (the "License");

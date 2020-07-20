@@ -1,9 +1,9 @@
-#i3s_converter.exe Examples
+# i3s_converter.exe Examples
 
 In all the of following examples, we will assume a working directory of ```C:\Users\johndoe\Desktop``` and that my i3s_converter.exe has a path of ```C:\Users\johndoe\Desktop\i3s_converter.exe```
 
 -------------------------------------
-##Quick Links
+## Quick Links
 [Convert from old version (1.4-1.6) to new version (1.7)](#ConvertSLPK)
 [Set name for the log file](#setLogName)
 [Set the output directory](#setOuput)

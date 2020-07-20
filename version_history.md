@@ -3,6 +3,9 @@ Version History
 Last updated 3/6/2020
 ### Version 1.7
 
+Released 7/28/2020 [ESLPK and I3SREST Formats](format/Indexed&#32;3d&#32;Scene&#32;Layer&#32;Format&#32;Specification.md#i3s-scene-layer-packages)
+ - [I3S Converter Tool](i3s_converter/i3s_converter_ReadMe.md) upgrade to support these formats
+
 Released 12/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specification upgrade to 1.7.
 - Upgrade [tooling slpk](i3s_converter/i3s_converter_ReadMe.md) to convert 1.6 building scene layer to I3S 1.7.
 

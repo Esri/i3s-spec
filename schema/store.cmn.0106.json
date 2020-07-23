@@ -6,11 +6,11 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "A store ID, unique across a SceneServer. Enables the client to discover which layers are part of a common store, if any. {meshes, polygons, points, lines, analytics, meshpyramids, pointclouds, symbols}"
+      "description": "A store ID, unique across a SceneServer. Enables the client to discover which layers are part of a common store, if any."
     },
     "profile": {
       "type": "string",
-      "description": "Indicates which profile this scene store fulfills."
+      "description": "Indicates which profile this scene store fulfills.{point, meshpyramid, pointcloud}"
     },
     "resourcePattern": {
       "type": "array",
@@ -107,9 +107,9 @@
       ],
       "enum-description": {
         "MeshPyramid": "Used for integrated mesh and 3D scene layer.",
-        "AutoThinning": "Use for point scene layer.",
-        "Clustering": "Fill in which profile types are using this lodType",
-        "Generalizing": "Fill in which profile types are using this lodType"
+        "AutoThinning": "Used for point scene layer.",
+        "Clustering": "Used for point cloud scene layer",
+        "Generalizing": "Used for point cloud scene layer"
       },
       "description": "Optional field to indicate which LoD generation scheme is used in this store."
     },

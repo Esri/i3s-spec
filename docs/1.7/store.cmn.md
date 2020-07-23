@@ -9,8 +9,8 @@ The store object describes the exact physical storage of a layer and enables the
 
 | Property | Type | Description |
 | --- | --- | --- |
-| id | string | A store ID, unique across a SceneServer. Enables the client to discover which layers are part of a common store, if any. {meshes, polygons, points, lines, analytics, meshpyramids, pointclouds, symbols} |
-| **profile** | string | Indicates which profile this scene store fulfills. |
+| id | string | A store ID, unique across a SceneServer. Enables the client to discover which layers are part of a common store, if any. |
+| **profile** | string | Indicates which profile this scene store fulfills.{point, meshpyramid, pointcloud} |
 | resourcePattern | string[] | Indicates the resources needed for rendering and the required order in which the client should load them. <div>Possible values for each array string:<ul><li>`3dNodeIndexDocument`: JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent. [Read more](3DNodeIndexDocument.cmn.md)</li><li>`SharedResource`: Shared resources are models or textures that can be shared among features within the same layer.</li><li>`featureData`: The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials.</li><li>`Geometry`: Each geometry resource is an array of geometries.</li><li>`Texture`: The texture resource for a node contains the images that are used as textures for the features stored in the node.</li><li>`Attributes`: Attribute resource for node containing feature data attributes</li></ul></div> |
 | rootNode | string | Relative URL to root node resource. |
 | **version** | string | Format version of this resource. Used here again if this store hasn't been served by a 3D Scene Server. |

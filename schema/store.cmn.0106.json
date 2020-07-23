@@ -10,7 +10,7 @@
     },
     "profile": {
       "type": "string",
-      "description": "Indicates which profile this scene store fulfills.{meshes, polygons, points, lines, meshpyramids, pointclouds}"
+      "description": "Indicates which profile this scene store fulfills.{point, meshpyramid, pointcloud}"
     },
     "resourcePattern": {
       "type": "array",

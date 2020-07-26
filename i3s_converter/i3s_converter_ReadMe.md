@@ -34,8 +34,8 @@ When extracing or converting, the following formats are available:
 - Cloud : *.i3srest
 
 Cloud storage options supported:
-- Microsoft Azure
-- AWS S3
+- Microsoft Azure Blob
+- Amazon Web Services S3
 - Alibaba OSS
 
 ## Running the executable <a name="Execute"></a>
@@ -69,30 +69,36 @@ Cloud storage options supported:
   This is the minumum required to use the converter with an slpk.
 
 ## Subcommands <a name="Subcommands"></a>
+**Short name is interchangeable with long name, so either may be used for an action.  For example, <br>
+```i3s_converter.exe -e myFile.slpk```<br>
+is the equivalent to<br>
+```i3s_converter.exe --extract myFile.slpk```<br>
 
-| Subcommand   | Action          |
-|--------------|-----------------|
-| -b           | Show converter version    |
-| -e           | Extract slpk to eslpk    |
-| -h           | Show usage      |
-| -i \[infile.slpk] | Show basic layer info |
-| -u \[infile.slpk] | Convert slpk to 1.7   |
-| -v \[infile.slpk] | Validate slpk |
+
+| Subcommand Short | Subcommand Long | Action | 
+|------------------|-----------------|--------|
+| -b               | --converter-info | Show converter version |
+| -e \[infile.slpk] | --extract \[infile.slpk] | Extract slpk to eslpk    |
+| -h           | --help | Show usage      |
+| -i \[infile.slpk] | --slpk-info \[infile.slpk] | Show basic layer info |
+| -u \[infile.slpk] | --convert \[in-slpk]  | Convert slpk to 1.7   |
+| -v \[infile.slpk] | --validate \[in-slpk] | Validate slpk |
+|  | --convert-and-extract \[in-slpk] | Convert to 1.7 extracted slpk |
 
 ## Options <a name="Options"></a>
 
-| Option         | Action                  |
-|----------------|-------------------------|
-| -a \[key]         | AWS S3 access key / Azure Account / Alibaba Account |
-| -d \[dir]         | Change [output directory](#outputDirectory). Will create it if it doesn't exist|
-| -k             | Create ETC2 texture from input \(slow) |
-| -j \[log_name] | Set log name    |
-| -n    | Drop all normals. Client will recreate   |
-| -o \[outfile]   | 1.7 slpk name   |
-| -r    | Region where bucket is located   |
-| -s \[key]   | AWS S3 secret key   |
-| -t \[num threads]   | [Number of threads](#threadsDesc) to use when converting, default is 1 |
-| -x             | Don't write DXT textures |
+| Option Short | Option Long         | Action                  |
+|----------------|-------------------------|-------------------|
+| -a \[key] | --access-key \[key] | AWS S3 access key / Azure Account / Alibaba Account |
+| -d \[dir] | --dest \[output-directory] | Change [output directory](#outputDirectory). Will create it if it doesn't exist|
+| -k | --create-ktx-textures | Create ETC2 texture from input \(slow) |
+| -j \[log_name] | --json \[log_name] | Set log name    |
+| -n | --drop-normals | Drop all normals. Client will recreate   |
+| -o \[outfile]  | --output-name \[outfile] | 1.7 slpk name   |
+| -r  | --region  | Region where bucket is located   |
+| -s \[key] | --secret-key \[key] | AWS S3 secret key   |
+| -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |
+| -x | --drop-dxt | Don't write DXT textures |
 
 ## Examples <a name="Examples"></a> 
 Examples can be found [here](i3s_converter_examples.md), which show various uses of the i3s_converter.
@@ -114,7 +120,7 @@ Usage for converting an slpk to cloud
 
 Supported schemes:
 - AWS S3:          s3
-- Microsoft Azure: az
+- Azure Blob: az
 - Alibaba OSS:     oss
 
 
@@ -130,7 +136,7 @@ Supported schemes:
 
 - 1.7 slpks and log files will be overwritten when tool is re-run with the same input
 
-- <a name = "threadsDesc"></a>The number of threads to run the extraction or conversion on.  Increasing the number of threads typically reduces execution time.
+- <a name = "threadsDesc"></a>The number of threads to run the extraction or conversion on.  Increasing the number of threads typically reduces execution time.  If unsure, base of off number of CPU cores and I/O bandwidth of your machine.
 ## Licensing <a name="Licensing"></a>
    Copyright 2020 ESRI
 

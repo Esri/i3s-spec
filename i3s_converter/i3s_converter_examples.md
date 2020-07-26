@@ -70,5 +70,5 @@ This command performs a conversion to the i3srest format for cloud storage.  Thi
 This command will extract the slpk to the cloud.  This example uses Alibaba OSS.  
 
 ### Convert and extract<a name = "convertAndExtract"></a>
-```i3s_converter.exe -e myFile.slpk -d az://mySlpkBlob -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY ```<br>
+```i3s_converter.exe --convert-and-extract myFile.slpk -d az://mySlpkBlob -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY ```<br>
 This command will convert and extract the slpk to the cloud.  This example uses Azure.

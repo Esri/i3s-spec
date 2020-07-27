@@ -225,7 +225,7 @@ You can follow the I3S service definition ([2.0](#service2.0) for Point Cloud or
 
 ESLPK is a non-archived folder directory structure of SLPK. This format can be served using a tile handler designed specifically for handling file extensions. This format is suitable for file systems. You can additionally store it in S3 compatible blob stores on file systems such as MinIO which provide data resiliency, sharding, and failover support. Use ESLPK storage format if you would like to use a file system as a folder data store for storing and serving your scene layer content.
 
-When creating an ESPK you need to use the same structure and file extensions as defined in a Scene Layer Package (SLPK), version 1.7,  without using the archiving option or you can use the [i3s converter](../i3s_converter/i3s_converter_ReadMe.md) to convert an SLPK into an ESLPK.
+When creating an ESLPK you need to use the same structure and file extensions as defined in a Scene Layer Package (SLPK), version 1.7,  without using the archiving option or you can use the [i3s converter](../i3s_converter/i3s_converter_ReadMe.md) to convert an SLPK into an ESLPK.
 
 ### Scene Layer Packages <a name="SLPK"></a>
 

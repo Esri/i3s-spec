@@ -26,15 +26,15 @@ This command will convert/upgrade from an older SLPK version to the latest SLPK 
 
 ### Set name for the log file.<a name = "setLogName"></a>
 ```i3s_converter.exe -u myFile.slpk -j myFileInfo```<br>
-This command performs a converion and the log file will have the name ```myFileInfo.json``` and will be placed in the working directory.
+This command performs a conversion and the log file will have the name ```myFileInfo.json``` and will be placed in the working directory.
 
 ### Set the output directory.<a name = "setOuput"></a>
 ```i3s_converter.exe -u myFile.slpk -d C:\Users\johndoe\Desktop\MyFolder```<br>
-This command performs a converion and the output file will be placed in ```C:\Users\johndoe\Desktop\MyFolder```.
+This command performs a conversion and the output file will be placed in ```C:\Users\johndoe\Desktop\MyFolder```.
 
 ### Set the name of the output file.<a name = "setFileName"></a>
 ```i3s_converter.exe -u myFile.slpk -o myNewFile```<br>
-This command performs a converion and the output file will have the name ```myNewFile``` and be placed in the working directory.
+This command performs a conversion and the output file will have the name ```myNewFile``` and be placed in the working directory.
 
 ### Validate 1.6 SLPK<a name = "validate"></a>
 ```i3s_converter.exe -v myFile.slpk```<br>
@@ -46,20 +46,20 @@ This command will extract the eslpk from the slpk and place it in the working di
 
 ### Multithreaded conversion<a name = "multithreadedConversion"></a>
 ```i3s_converter.exe -u myFile.slpk -t 4```<br>
-This command performs a converion using 4 threads instead of 1, placing the output file in the working directory.
+This command performs a conversion using 4 threads instead of 1, placing the output file in the working directory.
 
 ### Create ETC2 textures.<a name = "createETC2"></a>
 ```i3s_converter.exe -u myFile.slpk -k```<br>
-This command performs a converion and creates ETC2 textures.  This can be very slow.
+This command performs a conversion and creates ETC2 textures.  This can be very slow.
 
 ### Drop DXT textures.<a name = "dropDXT"></a>
 ```i3s_converter.exe -u myFile.slpk -x```<br>
-This command performs a converion and drops DXT textures if they are 
+This command performs a conversion and drops DXT textures if they are 
 present.
 
 ### Drop normals.<a name = "dropNormals"></a>
 ```i3s_converter.exe -u myFile.slpk -n```<br>
-This command performs a converion and drops all normals.  Client will recreate these normals. 
+This command performs a conversion and drops all normals.  Client will recreate these normals. 
 
 ### Convert to cloud format (i3srest)<a name = "convertCloud"></a>
 ```i3s_converter.exe -u myFile.slpk -d s3://mySlpkBucket -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -r us-east-1a```<br>
@@ -70,5 +70,5 @@ This command performs a conversion to the i3srest format for cloud storage.  Thi
 This command will extract the slpk to the cloud.  This example uses Alibaba OSS.  
 
 ### Convert and extract<a name = "convertAndExtract"></a>
-```i3s_converter.exe --convert-and-extract myFile.slpk -d az://mySlpkContainer -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -r example-ex ```<br>
+```i3s_converter.exe --convert-and-extract myFile.slpk -d az://mySlpkContainer -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY ```<br>
 This command will convert and extract the slpk to the cloud.  This example uses Azure.

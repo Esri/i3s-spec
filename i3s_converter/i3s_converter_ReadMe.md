@@ -12,7 +12,7 @@
 ------------------
 
 ## Introduction <a name="Introduction"></a>
-i3s_converter is used a command line tooling for
+i3s_converter a command line tool for
 - Validating a 1.6 Scene Layer Package (slpk)
 - Convert a 1.4-1.6 slpk to 1.7
 - Extract a 1.7 slpk or a 2.0 slpk with layer type of Point Cloud.
@@ -95,7 +95,7 @@ is the equivalent to<br>
 | -j \[log_name] | --json \[log_name] | Set log name    |
 | -n | --drop-normals | Drop all normals. Client will recreate   |
 | -o \[outfile]  | --output-name \[outfile] | 1.7 slpk name   |
-| -r  | --region  | Region where bucket is located (S3/OSS) or Environment<br> where contianer is located (AZ).|
+| -r  | --region  | Region where bucket is located (S3/OSS).|
 | -s \[key] | --secret-key \[key] | AWS S3/Alibaba OSS secret key or Azure account key   |
 | -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |
 | -x | --drop-dxt | Don't write DXT textures |

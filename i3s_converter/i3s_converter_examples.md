@@ -22,7 +22,7 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 
 ### Convert from old version (1.4-1.6) to new version (1.7)<a name = "ConvertSLPK"></a>
 ```i3s_converter.exe -u myFile.slpk```<br>
-This command will convert from an older SLPK version to the latest SLPK version.  The output file will be in the working directory.
+This command will convert/upgrade from an older SLPK version to the latest SLPK version.  The output file will be in the working directory.
 
 ### Set name for the log file.<a name = "setLogName"></a>
 ```i3s_converter.exe -u myFile.slpk -j myFileInfo```<br>
@@ -70,5 +70,5 @@ This command performs a conversion to the i3srest format for cloud storage.  Thi
 This command will extract the slpk to the cloud.  This example uses Alibaba OSS.  
 
 ### Convert and extract<a name = "convertAndExtract"></a>
-```i3s_converter.exe --convert-and-extract myFile.slpk -d az://mySlpkBlob -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY ```<br>
+```i3s_converter.exe --convert-and-extract myFile.slpk -d az://mySlpkContainer -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -r example-ex ```<br>
 This command will convert and extract the slpk to the cloud.  This example uses Azure.

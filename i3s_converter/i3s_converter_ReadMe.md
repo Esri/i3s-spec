@@ -81,7 +81,7 @@ is the equivalent to<br>
 | -e \[infile.slpk] | --extract \[infile.slpk] | Extract slpk to eslpk    |
 | -h           | --help | Show usage      |
 | -i \[infile.slpk] | --slpk-info \[infile.slpk] | Show basic layer info |
-| -u \[infile.slpk] | --convert \[in-slpk]  | Convert slpk to 1.7   |
+| -u \[infile.slpk] | --convert \[in-slpk]  | Convert and/or upgrade slpk to 1.7   |
 | -v \[infile.slpk] | --validate \[in-slpk] | Validate slpk |
 |  | --convert-and-extract \[in-slpk] | Convert to 1.7 extracted slpk |
 
@@ -95,8 +95,8 @@ is the equivalent to<br>
 | -j \[log_name] | --json \[log_name] | Set log name    |
 | -n | --drop-normals | Drop all normals. Client will recreate   |
 | -o \[outfile]  | --output-name \[outfile] | 1.7 slpk name   |
-| -r  | --region  | Region where bucket is located   |
-| -s \[key] | --secret-key \[key] | AWS S3 secret key   |
+| -r  | --region  | Region where bucket is located (S3/OSS) or Environment<br> where contianer is located (AZ).|
+| -s \[key] | --secret-key \[key] | AWS S3/Alibaba OSS secret key or Azure account key   |
 | -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |
 | -x | --drop-dxt | Don't write DXT textures |
 

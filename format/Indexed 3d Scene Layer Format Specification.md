@@ -2,7 +2,7 @@
 
 Version 1.7. June 30, 2019
 
-*Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang
+*Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang, Richard Vargas
 
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed
 
@@ -26,8 +26,10 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Statistics](#statistics)<br />
 &emsp;[Coordinate Reference Systems](#CRS)  <br />
 &emsp;[Height Models](#heightModels) <br />
-[I3S services and Packages](#i3s-services-and-scene-layer-packages) <br />
-&emsp;[I3S services](#I3S-services)  <br />
+[I3S Services](#i3s-services) <br />
+[I3S Formats](#i3s-scene-layer-packages) <br />
+&emsp;[I3SREST](#i3sREST)  <br />
+&emsp;[Extracted Scene Layer Package](#ESLPK)  <br />
 &emsp;[Scene Layer Packages](#SLPK)  <br />
 &emsp;&emsp;[1.7 SLPK Structure](#1.7-SLPK-Structure)  <br />
 &emsp;&emsp;[1.6 SLPK Structure](#1.6-SLPK-Structure)  <br />
@@ -201,17 +203,29 @@ At version 1.5, I3S added support for vertical coordinate systems. The Well Know
 
 The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clients to determine if the layer's height model is orthometric or gravity-related.
 
-# I3S services and Packages <a name="i3s-services-and-scene-layer-packages"></a>
-
-### I3S services <a name="I3S-services"></a>
+# I3S Services <a name="i3s-services"></a>
 
 A RESTful API allows access to I3S scene layers.  Each scene layer profile has different components and features.  For details on the API of a specific profile and version, refer to the individual README documents. 
 
-Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).<a name="service1.7"></a>
 
 Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
-Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).
+Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).<a name= "service2.0"></a>
+
+# I3S Formats <a name = "i3s-scene-layer-packages"></a>
+
+### Indexed 3D Scene Layer REST (i3sREST) <a name="i3sREST"></a>
+
+This format is based on JSON, REST, and modern web standards making it easy to handle, parse, and render by web clients when stored in cloud stores such as Amazon S3, Azure Blob stores or Alibaba OSS. Use this storage format if you would like to store and serve the scene layer content from a cloud object store.
+
+You can follow the I3S service definition ([2.0](#service2.0) for Point Cloud or [1.7](#service1.7) for others) to write into the cloud store or use the [i3s converter tool](../i3s_converter/i3s_converter_ReadMe.md) to create a Indexed 3D scene layer REST storage format.
+
+### Extracted Scene Layer Package (ESLPK) <a name="ESLPK"></a>
+
+ESLPK is a non-archived folder directory structure of SLPK. This format can be served using a tile handler designed specifically for handling file extensions. This format is suitable for file systems. You can additionally store it in S3 compatible blob stores on file systems such as MinIO which provide data resiliency, sharding, and failover support. Use ESLPK storage format if you would like to use a file system as a folder data store for storing and serving your scene layer content.
+
+When creating an ESLPK you need to use the same structure and file extensions as defined in a Scene Layer Package (SLPK), version 1.7,  without using the archiving option or you can use the [i3s converter](../i3s_converter/i3s_converter_ReadMe.md) to convert an SLPK into an ESLPK.
 
 ### Scene Layer Packages <a name="SLPK"></a>
 

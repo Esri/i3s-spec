@@ -257,6 +257,17 @@ Here are a few examples of SLPK file extensions:
 
 In I3S verison 1.7, an [MD5](https://en.wikipedia.org/wiki/MD5) [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
 
+**Metadata**
+Every SLPK archive has a metadata.json file. The following entries are required and must be of the specified type. The default is in italicized.
+
+|Property|Details|
+|--------|-------|
+|<b>folderPattern</b> |	One of {BASIC, <i>EXTENDED</i>} |
+|<b>ArchiveCompressionType</b>	| One of {<i>STORE</i>, DEFLATE64, [DEFLATE]} |
+|<b>ResourceCompressionType</b> |	One of {<i>GZIP</i>, NONE} |
+|<b>I3SVersion</b> |	One of {1.2, 1.3, 1.4, 1.6, <i>1.7</i>} |
+|<b>nodeCount</b> |	Total number of nodes in the SLPK |
+
 
 #### Example 1.7 SLPK Structure Summary for 3D Objects <a name="1.7-SLPK-Structure"></a>
 

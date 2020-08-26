@@ -33,6 +33,7 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Scene Layer Packages](#SLPK)  <br />
 &emsp;&emsp;[1.7 SLPK Structure](#1.7-SLPK-Structure)  <br />
 &emsp;&emsp;[1.6 SLPK Structure](#1.6-SLPK-Structure)  <br />
+&emsp;&emsp;[Metadata](#metadata)<br />
 
 # Introduction to Scene Layers <a name="introduction"></a>
 
@@ -257,7 +258,6 @@ Here are a few examples of SLPK file extensions:
 
 In I3S verison 1.7, an [MD5](https://en.wikipedia.org/wiki/MD5) [hash](../docs/1.7/slpk_hashtable.cmn.md) is used to improve loading time.  The hash must be the last item at the end of the central directory and named `@specialIndexFileHASH128@`.  
 
-
 #### Example 1.7 SLPK Structure Summary for 3D Objects <a name="1.7-SLPK-Structure"></a>
 
 ```
@@ -347,7 +347,41 @@ Paths are the same as in the API, but without the `layers/0` prefix. Exceptions 
 	+--metadata.json
 ```
 
+**Metadata**<a name="metadata"></a>
 
+Scene layer packages (SLPK) contain metadata information regarding its content in the metadata.json file. The following entries are required and must be of the specified type.
 
+|Property|Details|
+|--------|-------|
+|<b>folderPattern</b> |	One of {BASIC, EXTENDED},<br> Default is {BASIC} |
+|<b>archiveCompressionType</b>	| One of {STORE, DEFLATE64, [DEFLATE]},<br>Default is {STORE} |
+|<b>resourceCompressionType</b> |	One of {GZIP, NONE}, Default is {GZIP} |
+|<b>I3SVersion</b> |	One of {1.2, 1.3, 1.4, 1.6, 1.7, 2.0},<br>Default is {1.7} (Point cloud is {2.0}) |
+|<b>nodeCount</b> |	Total number of nodes in the SLPK |
 
+<br />
+
+**Example of 1.7 Metadata json**
+```
+.\metadata.json
+{
+	"folderPattern":"BASIC",
+	"archiveCompressionType":"STORE",
+	"resourceCompressionType":"GZIP",
+	"I3SVersion":"1.7",
+	"nodeCount":62
+}
+```
+
+**Example of 2.0 Metadata json**
+```
+.\metadata.json
+{
+	"folderPattern":"BASIC",
+	"archiveCompressionType":"STORE",
+	"resourceCompressionType":"GZIP",
+	"I3SVersion":"2.0",
+	"nodeCount":1156
+}
+```
 

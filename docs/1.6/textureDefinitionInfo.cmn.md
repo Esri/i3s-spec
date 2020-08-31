@@ -15,7 +15,7 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
 | wrap | string[] | UV wrapping modes, from {none, repeat, mirror}. |
 | atlas | boolean | TRUE if the Map represents a texture atlas. |
 | uvSet | string | The name of the UV set to be used as texture coordinates. |
-| channels | string[] | Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement,etc. |
+| channels | string | Indicates channels description.<div>Possible values are:<ul><li>`rgb`</li><li>`rgba`</li></ul></div> |
 | images | [image](image.cmn.md)[] | An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. |
 
 *Note: properties in **bold** are required*
@@ -36,11 +36,7 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
   ],
   "atlas": false,
   "uvSet": "uv0",
-  "channels": [
-    "r",
-    "g",
-    "b"
-  ],
+  "channels": "rgb",
   "images": [
     {
       "id": "1161930902884843552",

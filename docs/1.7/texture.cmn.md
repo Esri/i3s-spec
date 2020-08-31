@@ -32,7 +32,7 @@ Texture coordinates do not take atlas regions into account directly. They range 
 | wrap | string[] | <div>Possible values for each array string:<ul><li>`none`</li><li>`repeat`</li><li>`mirror`</li></ul></div> |
 | atlas | boolean | True if the Map represents a texture atlas. |
 | uvSet | string | The name of the UV set to be used as texture coordinates. |
-| channels | string[] | Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement. |
+| channels | string | Indicates channels description.<div>Possible values are:<ul><li>`rgb`</li><li>`rgba`</li></ul></div> |
 
 ### Examples 
 
@@ -50,11 +50,7 @@ Texture coordinates do not take atlas regions into account directly. They range 
   ],
   "atlas": false,
   "uvSet": "uv0",
-  "channels": [
-    "r",
-    "g",
-    "b"
-  ]
+  "channels": "rgb"
 } 
 ```
 

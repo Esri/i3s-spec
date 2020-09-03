@@ -55,11 +55,7 @@
               ],
               "atlas": false,
               "uvSet": "uv0",
-              "channels": [
-                "r",
-                "g",
-                "b"
-              ],
+              "channels": "rgb",
               "images": [
                 {
                   "id": "525",

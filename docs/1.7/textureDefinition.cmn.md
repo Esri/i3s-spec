@@ -34,11 +34,7 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
     ],
     "atlas": false,
     "uvSet": "uv0",
-    "channels": [
-      "r",
-      "g",
-      "b"
-    ],
+    "channels": "rgb",
     "images": [
       {
         "id": "1161930902884843552",

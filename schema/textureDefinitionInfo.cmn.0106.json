@@ -27,11 +27,16 @@
       "description": "The name of the UV set to be used as texture coordinates."
     },
     "channels": {
-      "type": "array",
-      "items": {
-        "type": "string"
+      "type": "string",
+      "enum": [
+        "rgb",
+        "rgba"
+      ],
+      "enum-description": {
+        "rgb": "",
+        "rgba": ""
       },
-      "description": "Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement,etc."
+        "description": "Indicates channels description."
     },
     "images": {
       "type": "array",
@@ -61,7 +66,7 @@
           ],
           "atlas": false,
           "uvSet": "uv0",
-          "channels": ["r","g", "b"],
+          "channels": "rgb",
           "images": [
             {
               "id": "1161930902884843552",

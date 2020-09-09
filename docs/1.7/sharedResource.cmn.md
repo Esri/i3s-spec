@@ -61,11 +61,7 @@ Shared resources are models or textures that can be shared among features within
       ],
       "atlas": false,
       "uvSet": "uv0",
-      "channels": [
-        "r",
-        "g",
-        "b"
-      ],
+      "channels": "rgb",
       "images": [
         {
           "id": "525",

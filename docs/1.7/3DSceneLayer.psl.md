@@ -28,7 +28,7 @@ The 3DSceneLayerInfo object describes the properties of a layer in a store. Ever
 | fields | [field](field.cmn.md)[] | A collection of objects that describe each attribute field regarding its field name, datatype, and a user friendly name {name,type,alias}. It includes all fields that are included as part of the scene layer as derived from a source input feature layer. |
 | attributeStorageInfo | [attributeStorageInfo](attributeStorageInfo.cmn.md)[] | Provides the schema and layout used for storing attribute content in binary format in I3S. |
 | statisticsInfo | [statisticsInfo](statisticsInfo.cmn.md)[] | Contains the statistical information for a layer. |
-| pointNodePages | [pointNodePageDefinition](pointNodePageDefinition.psl.md) | The paged-access index description. |
+| pointNodePages | [nodePageDefinition](nodePageDefinition.cmn.md) | The paged-access index description. For legacy purposes, this property is called pointNodePages in [Point Scene Layers](3DSceneLayer.psl.md).  |
 | geometryDefinition | [geometryDefinition](geometryDefinition.psl.md) | Define the layouts of point geometry and its attributes. |
 
 *Note: properties in **bold** are required*

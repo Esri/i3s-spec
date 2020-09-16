@@ -7,8 +7,8 @@
     "properties": {
         "pointNodePages": {
             "type": "object",
-            "description": "The paged-access index description.",
-            "$ref": "pointNodePageDefinition.psl.0107.json"
+            "description": "The paged-access index description. For legacy purposes, this property is called pointNodePages in [Point Scene Layers](3DSceneLayer.psl.md). ",
+            "$ref": "nodePageDefinition.cmn.0107.json"
         },
         "geometryDefinition": {
             "type": "object",

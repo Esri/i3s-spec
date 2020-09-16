@@ -16,7 +16,7 @@ NYC 2015 Tree Survey [service](https://www.arcgis.com/home/item.html?id=7aba674f
 The point scene layer is structured into a tree of multiple JSON files. Point scene layers can be represented as a scene layer package (*.slpk) or a I3S service. A point scene layer contains the following:
 
 - [3DSceneLayer](3DSceneLayer.psl.md)
-- [nodePage](nodePage.cmn.md)
+- [pointNodePage](pointNodePage.psl.md)
 - [featureData](featureData.cmn.md)*
 - attribute (binary)
 - geometryBuffer (binary)
@@ -29,7 +29,7 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 ```
 .<host>/SceneServer/layers
 	+--0 // scene layer document
-	+-- nodePages
+	+-- pointNodePages
 	|  +-- 0
 	|  +-- (...)
 	+-- nodes

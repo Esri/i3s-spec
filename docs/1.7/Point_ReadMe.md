@@ -1,6 +1,6 @@
 # Point Scene Layer (1.7)
 
-Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings.  Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
+Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings.  Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layer.
 
 **Examples**:<br />
 
@@ -41,7 +41,7 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 	|  |  +-- features*
 	|  |  |  +-- 0
 	|  |  +-- geometries    
-	|  |  |  +-- 1
+	|  |  |  +-- 0
 	|  +-- (...)
 	+--statistics
 	|  +-- f_1
@@ -166,7 +166,7 @@ The following API methods are available for Point Scene Layer:
 </tr>
 <tr>
     <td>Example</td>
-    <td>http://my.server.com/PointSceneLayer/SceneServer/layers/0/nodes/98/geometries/1 </td>
+    <td>http://my.server.com/PointSceneLayer/SceneServer/layers/0/nodes/98/geometries/0 </td>
 </tr>
 <tr>
     <td>Description</td>

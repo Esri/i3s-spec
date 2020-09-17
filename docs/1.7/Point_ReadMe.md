@@ -177,6 +177,8 @@ The following API methods are available for Point Scene Layer:
 </tr>
 </table>
 
+The available gometry formats are specified in [geometryDefinitions](geometryDefinition.psl.md) on the layer document.
+
 **Statistics**
 <table>
 <tr>

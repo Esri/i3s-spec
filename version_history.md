@@ -4,7 +4,7 @@ Last updated 3/6/2020
 ### Version 1.7
 
 Released 9/29/2020 [Point Scene Layer 1.7](docs/1.7/Point_ReadMe.md)
- - [I3S Converter Tool](i3s_converter/i3s_converter_ReadMe.md) Upgraded support to convert Point Scene Layers to 1.7.
+ - [I3S Converter Tool](i3s_converter/i3s_converter_ReadMe.md) upgraded support to convert Point Scene Layers to 1.7.
 
 Released 7/28/2020 [ESLPK and I3SREST Formats](format/Indexed&#32;3d&#32;Scene&#32;Layer&#32;Format&#32;Specification.md#i3s-scene-layer-packages)
  - [I3S Converter Tool](i3s_converter/i3s_converter_ReadMe.md) upgrade to support these formats

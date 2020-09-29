@@ -4,8 +4,7 @@ Point scene layers contain point features and their attributes. Point scene laye
 
 **Examples**:<br />
 
-NYC 2015 Tree Survey [SLPK](https://www.arcgis.com/home/item.html?id=7ed3f75dfa2a4ed281471d4bd4110792)
-
+NYC 2015 Tree Survey [SLPK](https://www.arcgis.com/home/item.html?id=7f3221f2984f49d89a9ef6d114d5f748)
 NYC 2015 Tree Survey [service](https://www.arcgis.com/home/item.html?id=7aba674fae86425694b21723d2680fa4)
 
 *Example of a point scene layer*

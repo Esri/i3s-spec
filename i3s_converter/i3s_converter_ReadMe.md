@@ -22,7 +22,7 @@ i3s_converter a command line tool for
 |-----------------|----------|---------|---------|
 | 3DObject        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
 | Integrated Mesh |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
-| Point           |     <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png">       | <img alt="supported" src="readme_images/checkmark.png">
+| Point           |     <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png">        | <img alt="supported" src="readme_images/checkmark.png">
 | Pointcloud      |     <img alt="supported" src="readme_images/checkmark.png">    | &nbsp;  | <img alt="supported" src="readme_images/checkmark.png"> |
 | Building        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
 

@@ -2,7 +2,7 @@
   "title": "Oriented Bounding Box (OBB)",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "description": "Definition of an oriented bounding box.",
+  "description-href": "description/obb.cmn.106.md",
   "properties": {
     "center": {
       "type": "array",

@@ -18,7 +18,7 @@ The I3S format is declarative and extendable, and can be used to represent diffe
 - [Building scene layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
-The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this document as open formats.  The REST endpoint implementations are described in the ReadMe for each layer type. 
+The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this document as open formats.  The REST endpoint implementations are described in the ReadMe for each layer type.
 You can use [I3S tool](./i3s_converter/i3s_converter_ReadMe.md) to convert to the newest i3s specification or validate your existing SLPK.
 
 This GitHub repo includes documentation for 1.6, 1.7, and 2.0. Deprecated elements from a minor version will be removed as part of the next major revision.
@@ -36,9 +36,9 @@ For the purpose of encouraging community adoption and feedback, the I3S format i
 
 ## An OGC Community Standard
 
-The Open Geospatial Consortium (OGC) approved I3S as a Community Standard which was publicly released September 2017 as the [OGC Indexed 3d Scene Layer (I3S)](https://www.opengeospatial.org/standards/i3s) version 1.0. 
+The Open Geospatial Consortium (OGC) approved I3S as a Community Standard which was publicly released September 2017 as the [OGC Indexed 3d Scene Layer (I3S)](https://www.opengeospatial.org/standards/i3s) version 1.0.
 
-The open community specification hosted in this GitHub repository is the sole source of content for the OGC I3S Community Standard. The community specification evolves driven by advancements in technology as well as community needs. The OGC process allows for updating and synchronizing the Community Standard with this community specification at regular intervals to achieve equivalency. 
+The open community specification hosted in this GitHub repository is the sole source of content for the OGC I3S Community Standard. The community specification evolves driven by advancements in technology as well as community needs. The OGC process allows for updating and synchronizing the Community Standard with this community specification at regular intervals to achieve equivalency.
 
 OGC is in the process of updating the I3S Community Standard to version 1.1 to include updates from this repository. To facilitate this process, as well as to quickly provide new capabilities to the community without impacting other existing scene layer types and profiles, each I3S layer evolves independently and follows its own release cycle.
 
@@ -46,16 +46,12 @@ The table below shows how the OGC community standard relates to the community sp
 
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S community specification**      | **OGC I3S community standard**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
-| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                         |
-| Points            | [Point](docs/1.7/Point_ReadMe.md)                                                  | 1.7              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)                          |
-| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | 1.1 (under adoption process) |
+| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.0](http://docs.opengeospatial.org/cs/17-014r5/17-014r5.html)
+| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html) |
 
-The Point Cloud Scene Layer specification is going through the adoption process for inclusion in OGC I3S 1.1. Through this process, new layer types can be added to the OGC I3S Community Standard.
-
-The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC I3S Community Standard:
+The following changes to the I3S community specification are being proposed for incorporation into the OGC I3S Community Standard:
 
 - The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification.
-- Inclusion of the [Building Scene Layer](docs/1.7/BSL_ReadMe.md), first introduced at I3S 1.6.
 
 ## What's New?
 Please see the [Version History](version_history.md) for document updates.
@@ -102,25 +98,25 @@ There are several applications that can create and consume scene layers. The tab
  </tr>
  <tr>
   <td>NFrames</td>
-  <td><a href="https://docs.nframes.com/what's-new%253F/what's-new-in-sure-4.0/">Sure 4.0</a></td>
+  <td><a href="https://docs.nframes.com/what's-new%253F/what's-new-in-sure-4.2/">Sure 4.2</a></td>
   <td>IntegratedMesh</td>
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+  <td></td>
  </tr>
  <tr>
-  <td>Uber</td>
-  <td><a href="https://github.com/uber-web/loaders.gl/tree/master/examples/deck.gl/i3s">loaders.gl</a></td>
+  <td>VIS.GL</td>
+  <td><a href="https://loaders.gl/modules/i3s/docs/api-reference/i3s-loader">loaders.gl</a></td>
   <td>IntegratedMesh, 3D Object</td>
   <td></td>
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
- </tr> 
+ </tr>
   <td>Nearmap</td>
   <td><a href="https://www.nearmap.com/us/en/products/3d-mapping-dsm-textured-mesh-point-cloud">Nearmap 3D</a></td>
   <td>IntegratedMesh</td>
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   <td></td>
  </tr>
-  </tr> 
+  </tr>
   <td>Agisoft</td>
   <td><a href="https://www.agisoft.com/">Metashape</a></td>
   <td>IntegratedMesh</td>  

@@ -1,9 +1,9 @@
-Scene Layers: Service and Package Standard
+[OGC_Proposal_1.2] Scene Layers: Service and Package Standard
 ===============================================
 
 ![Multiple scene layers in web scene viewer](./sceneLayers.jpg )
 
-This GitHub repository hosts the specification for scene layers. Scene layers are containers for large volumes of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are detailed in this specification. Both formats are encoded using JSON and binary array buffers.
+This GitHub repository hosts the specification for scene layers as proposed in OGC 1.2. Scene layers are containers for large volumes of geographic data. The delivery format and persistence model, referred to as indexed 3D scene layer (I3S) and scene layer package (.slpk) respectively, are detailed in this specification. Both formats are encoded using JSON and binary array buffers.
 
 The I3S format originated from investigation into technology for rapidly streaming and distributing large volumes of 3D content across enterprise systems.  These systems can include server components, cloud hosted components, and a variety of client software from desktop to web to mobile applications.  
 
@@ -15,11 +15,8 @@ The I3S format is declarative and extendable, and can be used to represent diffe
 - [Integrated mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
 - [Point](docs/1.6/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
 - [Point cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
-- [Building scene layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
-
-The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this document as open formats.  The REST endpoint implementations are described in the ReadMe for each layer type. 
-You can use [I3S tool](./i3s_converter/i3s_converter_ReadMe.md) to convert to the newest i3s specification or validate your existing SLPK.
+The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this document as open formats.  The REST endpoint implementations are described in the ReadMe for each layer type.
 
 This GitHub repo includes documentation for 1.6, 1.7, and 2.0. Deprecated elements from a minor version will be removed as part of the next major revision.
 
@@ -55,46 +52,6 @@ The Point Cloud Scene Layer specification is going through the adoption process 
 The following changes to the I3S community specification are yet to be proposed for incorporation into the OGC I3S Community Standard:
 
 - The performance optimizations for the MeshPyramids profile that are part of the I3S 1.7 community specification.
-- Inclusion of the [Building Scene Layer](docs/1.7/BSL_ReadMe.md), first introduced at I3S 1.6.
-
-## What's New?
-
-### Version 1.7
-
-Released 12/15/2019 [Building Scene Layer](docs/1.7/BSL_ReadMe.md) Specification upgrade to 1.7.
-- Upgrade [tooling slpk](i3s_converter/i3s_converter_ReadMe.md) to convert 1.6 building scene layer to I3S 1.7.
-
-Released 06/30/2019 - (applies to [MeshPyramids](docs/1.7/store.cmn.md) profile)
-
-#### [3D Object Scene Layer](docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh Scene Layer](docs/1.7/IntegratedMesh_ReadMe.md)
-
-  - Nodes are now accessible as pages using a [node page](docs/1.7/nodePageDefinition.cmn.md) - significantly reducing server-client traffic.
-  - Support for [draco geometry compression](docs/1.7/compressedAttributes.cmn.md) - more compact geometry allows for smaller payloads.
-  - Support for [advanced material](docs/1.7/materialDefinitions.cmn.md) such as physically based materials.
-  - Deprecated [SharedResource](docs/1.7/sharedResource.cmn.md) - sharedResource properties are readily available in the node index resource.
-  - New [tooling to validate existing slpk](i3s_converter/i3s_converter_ReadMe.md) and convert Integrated Mesh or 3D Object scene layers to I3S 1.7.
-
-I3S specification version 1.7 is backwards compatible with I3S Version 1.6 and is currently supported by ArcGIS Pro 2.4 and ArcGIS Online.  More support of I3S 1.7 across the ArcGIS platform will roll out in upcoming releases.
-
-### Version 1.6
-
-Released 03/01/2019 - (applies to [MeshPyramids](docs/1.6/store.cmn.md profile) and officially submitted to the OGC in August 2019.
-
-#### [3D Object Scene Layer](docs/1.6/3Dobject_ReadMe.md)
-- [oriented bounding boxes](docs/1.6/obb.cmn.md) - Introduces support for oriented bounding boxes as a bounding volume.
-- [attribute domain](docs/1.6/domain.cmn.md) (i.e. field) - Attribute domains are rules that describe the allowed values of a field type, providing a method for enforcing data integrity.  For example, domain values can be used in pop-ups with definition queries.
-- [serviceUpdateTimeStamp](docs/1.6/serviceUpdateTimeStamp.cmn.md) - Provides the time stamp when the I3S service or the source of the service was created or updated. This property can be used in conjunction with the associated feature layer for editing.
-
-#### [Building Scene Layer](docs/1.6/BSL_ReadMe.md)
-- [Building Scene Layer](docs/1.6/BSL_ReadMe.md) profile specification. The Building Scene Layer is used to visualize and work with buildings.
-
-### Version 2.0
-
-Released 03/01/2019  - (applies to [Point Cloud](docs/1.6/store.cmn.md) profile)
-
-#### [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md)
-
-- [Point Cloud Scene Layer](docs/2.0/pcsl_ReadMe.md) profile specification.  The Point Cloud Scene Layer is used to visualize sensor data, including LiDAR.
 
 ## Where Can I Use...?
 
@@ -183,15 +140,6 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>2.0</td>
   </tr>
-  <tr>
-    <td>Building Scene Layer</td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>10.7</td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td>2.2</td>
-  </tr>
 </table>
 <table>
   <tr>
@@ -254,17 +202,6 @@ This table reflects the current versions of the ArcGIS Clients.
     <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
     <td>100.5</td>
   </tr>
-  <tr>
-    <td>Building Scene Layer</td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td></td>
-    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
 </table>
 
 
@@ -319,17 +256,7 @@ This table reflects the current versions of the ArcGIS Clients.
     <td></td>
     <td></td>
   </tr>
-  <tr>
-    <td>Building Scene Layer</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
 </table>
-
 
 ## Contributing
 

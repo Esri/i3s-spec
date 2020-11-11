@@ -2,13 +2,13 @@
 
 Version 1.7. June 30, 2019
 
-*Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang, Richard Vargas
+*Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Richard Vargas,Moxie Zhang
 
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed
 
 ---
 
-The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.  See the [version history on the main ReadMe](../README.md) for more details about previous versions of I3S as well as information on compatability with the OGC I3S Community Standard. 
+The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.
 
 # Table of Contents
 
@@ -28,8 +28,6 @@ The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format us
 &emsp;[Height Models](#heightModels) <br />
 [I3S Services](#i3s-services) <br />
 [I3S Formats](#i3s-scene-layer-packages) <br />
-&emsp;[I3SREST](#i3sREST)  <br />
-&emsp;[Extracted Scene Layer Package](#ESLPK)  <br />
 &emsp;[Scene Layer Packages](#SLPK)  <br />
 &emsp;&emsp;[1.7 SLPK Structure](#1.7-SLPK-Structure)  <br />
 &emsp;&emsp;[1.6 SLPK Structure](#1.6-SLPK-Structure)  <br />
@@ -45,9 +43,8 @@ Scene Layers provide a structured way for clients to store and visualize large v
 * [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) - An integrated surface that may include vegetation, buildings and roads.
 * [Point](../docs/1.6/Point_ReadMe.md) - A collection of point data, like individual trees in a forest.
 * [Point Cloud](../docs/2.0/pcsl_ReadMe.md) - A volumetric collection of point data, like lidar data.
-* [Building](../docs/1.7/BSL_ReadMe.md) - A building including its components, such as windows, doors, chairs, etc.
 
-I3S is designed to support large datasets of 3D content ranging from local to global extent containing detailed features. Clients can visualize scene layers by taking advantage of the multi-LoD (level of detail) representation and symbology to create the right user experience for visualizing the 3D content. The I3S format continues to evolve and new functionality continues to be added. Previous versions of I3S (SLPK) can be converted and validated using the [I3S Converter](../i3s_converter/i3s_converter_ReadMe.md). You can find an overview of the[Version History of I3S](../README.md).
+I3S is designed to support large datasets of 3D content ranging from local to global extent containing detailed features. Clients can visualize scene layers by taking advantage of the multi-LoD (level of detail) representation and symbology to create the right user experience for visualizing the 3D content. The I3S format continues to evolve and new functionality continues to be added.
 
 I3S is organized as [nodes](#Nodes), which are structured into [node pages](#NodePages). The node page includes the bounding volume, child reference, count and the [level of detail selection](LevelofDetail.md). Nodes contain all the information to describe features including [geometry](#Geometry), [attributes](#Attributes) and [textures](#textures). Scene Layers can be created in cartesian 3D or in global 3D world [coordinate reference systems](#CRS). I3S Scene Layers can be delivered to web, mobile and desktop clients. Most users will interact with Scene Layers using applications with cloud or server-based information. In these cases, the scene layer content is on the server and is provided to clients through a RESTful interface. These web addressable resources provide access to the scene layer, nodes, and associated resources. Alternatively, a scene layer can be delivered as a Scene Layer Package. This is a single file that includes the complete node tree and all necessary resources in an archive. 
 
@@ -89,25 +86,24 @@ A feature represents a real-world object within a node. For example, an individu
 
 When the same feature is included in more than one node at different [Levels of Detail](LevelofDetail.md), the corresponding attributes for the feature are included as attribute resources in each node. This redundancy in attribute storage allows each node to be rendered independently of other nodes. The following scene layer types support features:
 
-| Feature |Integrated Mesh  | 3D Object                    | Points                       | Point Clouds                 | Building Scene Layer         |
-| -------------- | ----------------|---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-|support| &nbsp;  |![yes](images/checkmark.png)|![yes](images/checkmark.png)|&nbsp; |![yes](images/checkmark.png)|
-
+| Feature |Integrated Mesh  | 3D Object                    | Points                       | Point Clouds                 | 
+| -------------- | ----------------|---------------------------- | ---------------------------- | ---------------------------- | 
+|support| &nbsp;  |![yes](images/checkmark.png)|![yes](images/checkmark.png)|&nbsp; |
 
 ### Node resources <a name="NodeResources"></a>
 
 In addition to a bounding volume, each node contains references to node resources. The type of resource available, such as geometry buffer, texture and attribute, depends on the original data and layer type. Clients must use the resource identifiers (id) written in each node to access the resources. While content creators may choose to match a resource id with the node id this is not required by the I3S specification. As such, clients should not make this assumption.
 
-| Node Resources |Integrated Mesh  | 3D Object                    | Points                       | Point Clouds                 | Building Scene Layer         |
-| -------------- | ----------------|---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| Node Resources |Integrated Mesh  | 3D Object                    | Points                       | Point Clouds                 | 
+| -------------- | ----------------|---------------------------- | ---------------------------- | ---------------------------- | 
 | geometry buffer   | ![yes](images/checkmark.png) |![yes](images/checkmark.png) |&nbsp;| ![yes](images/checkmark.png)| ![yes](images/checkmark.png) |
 | attribute    | &nbsp; |![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) | ![yes](images/checkmark.png) |
 | texture       | ![yes](images/checkmark.png) |![yes](images/checkmark.png) | &nbsp; | &nbsp; | ![yes](images/checkmark.png) |
 
 *Node resource for backward compatibility with 1.6*
 
-| Node Resources |Integrated Mesh  | 3D Object                    | Building Scene Layer         |
-| -------------- | ----------------|---------------------------- | ---------------------------- | 
+| Node Resources |Integrated Mesh  | 3D Object                    | 
+| -------------- | ----------------|---------------------------- | 
 | sharedResources   | ![yes](images/checkmark.png) |![yes](images/checkmark.png) |![yes](images/checkmark.png) |
 | 3dNodeIndexDocument|![yes](images/checkmark.png) |![yes](images/checkmark.png) | ![yes](images/checkmark.png) | 
 
@@ -208,25 +204,14 @@ The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clien
 
 A RESTful API allows access to I3S scene layers.  Each scene layer profile has different components and features.  For details on the API of a specific profile and version, refer to the individual README documents. 
 
-Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).<a name="service1.7"></a>
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md) and [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md).
 
-Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
+Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
 Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).<a name= "service2.0"></a>
 
 # I3S Formats <a name = "i3s-scene-layer-packages"></a>
 
-### Indexed 3D Scene Layer REST (i3sREST) <a name="i3sREST"></a>
-
-This format is based on JSON, REST, and modern web standards making it easy to handle, parse, and render by web clients when stored in cloud stores such as Amazon S3, Azure Blob stores or Alibaba OSS. Use this storage format if you would like to store and serve the scene layer content from a cloud object store.
-
-You can follow the I3S service definition ([2.0](#service2.0) for Point Cloud or [1.7](#service1.7) for others) to write into the cloud store or use the [i3s converter tool](../i3s_converter/i3s_converter_ReadMe.md) to create a Indexed 3D scene layer REST storage format.
-
-### Extracted Scene Layer Package (ESLPK) <a name="ESLPK"></a>
-
-ESLPK is a non-archived folder directory structure of SLPK. This format can be served using a tile handler designed specifically for handling file extensions. This format is suitable for file systems. You can additionally store it in S3 compatible blob stores on file systems such as MinIO which provide data resiliency, sharding, and failover support. Use ESLPK storage format if you would like to use a file system as a folder data store for storing and serving your scene layer content.
-
-When creating an ESLPK you need to use the same structure and file extensions as defined in a Scene Layer Package (SLPK), version 1.7,  without using the archiving option or you can use the [i3s converter](../i3s_converter/i3s_converter_ReadMe.md) to convert an SLPK into an ESLPK.
 
 ### Scene Layer Packages <a name="SLPK"></a>
 

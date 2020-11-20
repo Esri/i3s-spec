@@ -65,7 +65,7 @@ The bounding volume is defined either as minimum bounding sphere (MBS) or orient
 
  ![Oriented bounding box.](../docs/img/OBB_Example.png)  
 
- *3D objects enclosed in the smalles bounding box.*  
+ *3D objects enclosed in the smallest bounding box.*  
 
 OBB is the more optimal representation and implementers are encouraged to output node bounding volumes in OBB format. Point cloud profile supports OBB representation only.
 

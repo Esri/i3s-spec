@@ -4,7 +4,6 @@
 
 Nodes are stored contiguously in what can be considered a _flat_ array of nodes. This array can be accessed by fixed-size pages of nodes for better request efficiency.
 All pages contains exactly `layer.nodePages.nodesPerPage` nodes, except for the last page (that may contain less).
-
 We use an integer ID to map a node to its page as follow:
  ```
 page_id         = floor( node_id / node_per_page)
@@ -15,7 +14,7 @@ node_id_in_page = modulo( node_id, node_per_page)
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [cmn::node](node.cmn.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md), [cmn::node](node.cmn.md)
 ### Properties
 
 | Property | Type | Description |

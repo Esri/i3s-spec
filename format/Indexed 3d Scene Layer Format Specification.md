@@ -353,7 +353,7 @@ Scene layer packages (SLPK) contain metadata information regarding its content i
 
 |Property|Details|
 |--------|-------|
-|<b>folderPattern</b> |	One of {BASIC, EXTENDED},<br> Default is {EXTENDED} |
+|<b>folderPattern</b> |	One of {BASIC, EXTENDED},<br> Default is {BASIC} |
 |<b>archiveCompressionType</b>	| One of {STORE, DEFLATE64, [DEFLATE]},<br>Default is {STORE} |
 |<b>resourceCompressionType</b> |	One of {GZIP, NONE}, Default is {GZIP} |
 |<b>I3SVersion</b> |	One of {1.2, 1.3, 1.4, 1.6, 1.7, 2.0},<br>Default is {1.7} (Point cloud is {2.0}) |

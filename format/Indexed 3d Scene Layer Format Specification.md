@@ -2,7 +2,7 @@
 
 Version 1.7. June 30, 2019
 
-*Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Moxie Zhang, Richard Vargas
+*Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Richard Vargas, Moxie Zhang 
 
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed
 
@@ -65,7 +65,7 @@ The bounding volume is defined either as minimum bounding sphere (MBS) or orient
 
  ![Oriented bounding box.](../docs/img/OBB_Example.png)  
 
- *3D objects enclosed in the smalles bounding box.*  
+ *3D objects enclosed in the smallest bounding box.*  
 
 OBB is the more optimal representation and implementers are encouraged to output node bounding volumes in OBB format. Point cloud profile supports OBB representation only.
 
@@ -208,9 +208,9 @@ The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clien
 
 A RESTful API allows access to I3S scene layers.  Each scene layer profile has different components and features.  For details on the API of a specific profile and version, refer to the individual README documents. 
 
-Version 1.7 support for [3D Objects](../docs/1.7/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).<a name="service1.7"></a>
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).<a name="service1.7"></a>
 
-Version 1.6 support for [3D Objects](../docs/1.6/3Dobjects_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
+Version 1.6 support for [3D Objects](../docs/1.6/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
 Version 2.0 support for [Point Cloud](../docs/2.0/pcsl_ReadMe.md).<a name= "service2.0"></a>
 

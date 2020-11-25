@@ -1,5 +1,7 @@
 # Esri Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Specification
 
+include::ogc-front-page.adoc[]
+
 Version 1.7. June 30, 2019
 
 *Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Richard Vargas, Moxie Zhang

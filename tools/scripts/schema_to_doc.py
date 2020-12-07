@@ -15,8 +15,8 @@ def json_to_dom( path ) :
 
 
 class Schema_manifest :
-    c_code_to_versions = { '0106' : '1.6', '0107' : '1.7', '0200' : '2.0' }
-    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '2.0' : '0200' }
+    c_code_to_versions = { '0106' : '1.6', '0107' : '1.7','0108' : '1.8', '0200' : '2.0' }
+    c_versions_to_code = { '1.6' : '0106', '1.7' : '0107', '1.8' : '0108', '2.0' : '0200' }
 
     """ Keep track of all the schemas to avoid parsing sub-schema multiple times"""
     def __init__(self, schema_reference_path, version) :
@@ -483,7 +483,7 @@ if __name__ == "__main__" :
     output_path = os.path.join(root, "docs")
 
     manifest = {}   # {version : Schema_manifest}
-
+            
     # scan the manifest:
     for file in glob.glob(os.path.join(manifest_folder, '*.json')):
         version = file.split('.')[1]                # e.g manifest.0106.json

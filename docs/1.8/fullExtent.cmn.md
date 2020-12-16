@@ -4,7 +4,7 @@ This object allows the definition of the full extent of a scene layer.
 
 ### Related:
 
-[bld::layer](layer.bld.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md), [bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |

@@ -9,7 +9,7 @@
       "schemas": [
         {
           "path": "3dSceneLayer.json.gz",
-          "schema": "layer.bld.0107.json"
+          "schema": "layer.bld.0108.json"
         },
         {
           "path": "summary.json.gz",

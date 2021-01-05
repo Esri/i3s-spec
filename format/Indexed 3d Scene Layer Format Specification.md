@@ -43,7 +43,7 @@ Scene Layers provide a structured way for clients to store and visualize large v
 
 * [3D Object](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
 * [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) - An integrated surface that may include vegetation, buildings and roads.
-* [Point](../docs/1.6/Point_ReadMe.md) - A collection of point data, like individual trees in a forest.
+* [Point](../docs/1.7/Point_ReadMe.md) - A collection of point data, like individual trees in a forest.
 * [Point Cloud](../docs/2.0/pcsl_ReadMe.md) - A volumetric collection of point data, like lidar data.
 * [Building](../docs/1.7/BSL_ReadMe.md) - A building including its components, such as windows, doors, chairs, etc.
 
@@ -208,7 +208,7 @@ The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clien
 
 A RESTful API allows access to I3S scene layers.  Each scene layer profile has different components and features.  For details on the API of a specific profile and version, refer to the individual README documents. 
 
-Version 1.7 support for [3D Objects](../docs/1.7/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) and [Building](../docs/1.7/BSL_ReadMe.md).<a name="service1.7"></a>
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md), [Building](../docs/1.7/BSL_ReadMe.md), and [Point](../docs/1.7/Point_ReadMe.md)<a name="service1.7"></a>
 
 Version 1.6 support for [3D Objects](../docs/1.6/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), [Building](../docs/1.6/BSL_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 
@@ -353,7 +353,7 @@ Scene layer packages (SLPK) contain metadata information regarding its content i
 
 |Property|Details|
 |--------|-------|
-|<b>folderPattern</b> |	One of {BASIC, EXTENDED},<br> Default is {BASIC} |
+|<b>folderPattern</b> |	One of {BASIC, EXTENDED},<br> Default is {EXTENDED} |
 |<b>archiveCompressionType</b>	| One of {STORE, DEFLATE64, [DEFLATE]},<br>Default is {STORE} |
 |<b>resourceCompressionType</b> |	One of {GZIP, NONE}, Default is {GZIP} |
 |<b>I3SVersion</b> |	One of {1.2, 1.3, 1.4, 1.6, 1.7, 2.0},<br>Default is {1.7} (Point cloud is {2.0}) |

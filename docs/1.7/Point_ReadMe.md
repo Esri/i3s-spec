@@ -22,7 +22,7 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 - geometryBuffer (binary)
 - [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)*
 - [statistics](statisticsInfo.cmn.md)
-- [resources](resources.psl.md)
+- [resources](resource.psl.md)
 
 *Example of point scene layer structure*
 
@@ -226,4 +226,4 @@ The available gometry formats are specified in [geometryDefinitions](geometryDef
 </tr>
 </table>
 
-[resources](resources.psl.md)
+[resources](resource.psl.md)

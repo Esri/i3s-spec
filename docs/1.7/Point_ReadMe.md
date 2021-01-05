@@ -4,9 +4,9 @@ Point scene layers contain point features and their attributes. Point scene laye
 
 **Examples**:<br />
 
-NYC 2015 Tree Survey [SLPK](https://www.arcgis.com/home/item.html?id=7ed3f75dfa2a4ed281471d4bd4110792)
-
-NYC 2015 Tree Survey [service](https://www.arcgis.com/home/item.html?id=7aba674fae86425694b21723d2680fa4)
+NYC 2015 Tree Survey [SLPK](https://www.arcgis.com/home/item.html?id=7f3221f2984f49d89a9ef6d114d5f748)
+<br>
+NYC 2015 Tree Survey [service](https://www.arcgis.com/home/item.html?id=b9d916c329df40a2a1611c9d3e253c69)
 
 *Example of a point scene layer*
 
@@ -19,7 +19,7 @@ The point scene layer is structured into a tree of multiple JSON files. Point sc
 - [nodePages](nodePage.cmn.md)
 - [featureData](featureData.cmn.md)*
 - attribute (binary)
-- geometryBuffer (binary)
+- [geometryBuffer](geometryBuffer.cmn.md) (binary)
 - [3DNodeIndexDocument](3DNodeIndexDocument.cmn.md)*
 - [statistics](statisticsInfo.cmn.md)
 - [resources](resource.psl.md)

@@ -4,12 +4,5 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/layer.bld.0106.md",
   "related": "stats.bld.0107",
-  "$include": "layer.bld.0107.json",
-  "properties": {
-    "fullExtent": {
-        "type": "object",
-        "$ref": "fullExtent.cmn.0108.json",
-        "description": "3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`."
-    }  
-  }
+  "$include": "layer.bld.0107.json"
 }

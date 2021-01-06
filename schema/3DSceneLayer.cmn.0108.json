@@ -8,8 +8,8 @@
     "properties": {
         "fullExtent": {
             "type": "object",
-            "description": "This object allows the definition of the full extent of a scene layer.",
-            "$ref": "fullExtent.cmn.0108.json"
+            "description": "3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```.",
+            "$ref": "fullExtent.cmn.0106.json"
           }
     },
     "required": [

@@ -9,12 +9,15 @@ This object allows the definition of the full extent of a scene layer.
 
 | Property | Type | Description |
 | --- | --- | --- |
-| xmin | number | left |
-| xmax | number | right |
-| ymin | number | bottom |
-| ymax | number | top |
-| zmin | number | lowest elevation |
-| zmax | number | highest elevation |
+| spatialReference | [spatialReference](spatialReference.cmn.md) | An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. |
+| **xmin** | number | left |
+| **xmax** | number | right |
+| **ymin** | number | bottom |
+| **ymax** | number | top |
+| **zmin** | number | lowest elevation |
+| **zmax** | number | highest elevation |
+
+*Note: properties in **bold** are required*
 
 ### Examples 
 

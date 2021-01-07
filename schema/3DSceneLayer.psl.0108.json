@@ -1,0 +1,22 @@
+{
+    "title": "3DSceneLayer [Point Profile]",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The 3DSceneLayerInfo object describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.",
+    "$include": "3DSceneLayer.psl.0107.json",
+    "properties": {
+        "fullExtent": {
+            "type": "object",
+            "description":  "3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```.",
+            "$ref": "fullExtent.cmn.0106.json"
+          }
+    },
+    "required": [
+        "id",
+        "version",
+        "layerType",
+        "capabilities",
+        "store",
+        "fullExtent"
+    ]
+}

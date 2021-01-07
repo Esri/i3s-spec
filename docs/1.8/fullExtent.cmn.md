@@ -4,7 +4,7 @@ This object allows the definition of the full extent of a scene layer.
 
 ### Related:
 
-[bld::layer](layer.bld.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md), [bld::layer](layer.bld.md)
 ### Properties
 
 | Property | Type | Description |
@@ -30,11 +30,7 @@ This object allows the definition of the full extent of a scene layer.
   "xmax": -116.87086222794,
   "ymax": 34.1460567673275,
   "zmin": 0.1,
-  "zmax": 50.0,
-  "spatialReference": {
-    "wkid": 4326,
-    "latestWkid": 4326
-  }
+  "zmax": 50.0
 } 
 ```
 

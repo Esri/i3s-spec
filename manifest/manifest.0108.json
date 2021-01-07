@@ -9,7 +9,7 @@
       "schemas": [
         {
           "path": "3dSceneLayer.json.gz",
-          "schema": "layer.bld.0107.json"
+          "schema": "layer.bld.0108.json"
         },
         {
           "path": "summary.json.gz",
@@ -22,7 +22,7 @@
       "schemas": [
         {
           "path": "3dSceneLayer.json.gz",
-          "schema": "3DSceneLayer.cmn.0107.json"
+          "schema": "3DSceneLayer.cmn.0108.json"
         },
         {
           "path": "3dNodeIndexDocument.json.gz",
@@ -55,7 +55,7 @@
         },
         {
           "path": "3dSceneLayer",
-          "schema": "3DSceneLayer.psl.0107.json"
+          "schema": "3DSceneLayer.psl.0108.json"
         },
         {
           "path": "resources",

@@ -1,4 +1,4 @@
-# Esri Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Specification
+# OGC Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Community Standard
 
 Version 1.7. June 30, 2019
 
@@ -7,8 +7,75 @@ Version 1.7. June 30, 2019
 *Acknowledgements:* Bart van Andel, Fabien Dachicourt, Carl Reed
 
 ---
+*i.     Abstract*
 
-The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers.  ArcGIS Scene Layers and [Scene Services](http://server.arcgis.com/en/server/latest/publish-services/windows/scene-services.htm) use the I3S infrastructure.
+The Indexed 3D Scene Layer (I3S) format is an open 3D content delivery format used to rapidly stream and distribute large volumes of 3D GIS data to mobile, web and desktop clients.  I3S content can be shared across enterprise systems using both physical and cloud servers. 
+
+A single I3S data set, referred to as a Scene Layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. Scene Layers are designed to be used in mobile, desktop, and server-based workflows and can be accessed over the web or as local files. 
+
+The delivery format and persistence model for Scene Layers, referred to as Indexed 3d Scene Layer (I3S) and Scene Layer Package (SLPK) respectively, are specified in detail in this OGC Community Standard. Both formats are encoded using JSON and binary ArrayBuffers (ECMAScript 2015). I3S is designed to be cloud, web and mobile friendly. I3S is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. I3S is designed to stream large 3D datasets and is designed for performance and scalability. I3S is designed to support 3D geospatial content and supports the requisite coordinate reference systems and height models in conjunction with a rich set of layer types.
+
+The open community GitHub version of this standard is [here](https://github.com/Esri/i3s-spec). 
+
+*ii.    Source of this document*
+
+The majority of the content in this OGC document is a direct copy of the content contained at https://github.com/Esri/i3s-spec . No normative changes have been made to the content. This OGC document does contain content not in source Esri GitHub repository. Specifically, while derived from content on the [Esri I3S repository](https://github.com/Esri/i3s-spec), the Abstract, Keywords, Preface, Submitting Organizations, Endorsers, Terms and Definitions, and References sections and Annex B (Bibliography) in this document are not found on the [Esri I3S repository](https://github.com/Esri/i3s-spec). The Terms and Definitions and References sections may be added into the Esri community GitHub repository in the future.
+
+Please note that the Esri I3S Github repository includes a “Building Scene Layer (e.g. comprehensive building model including building components)”. This layer type is not included in this OGC Community Standard but may be proposed for inclusion in a future version.
+
+*iii.    Validity of content*
+
+The Submission Team has reviewed and certified that the “snapshot” content in this Community Standard is true and accurate. <<Add date this time>>
+
+*iv.    Keywords*
+
+The following are keywords to be used by search engines and document catalogues.
+
+ogcdoc, OGC document, i3s, 3d, point clouds, visualization, scene, scene layer, slpk
+
+*vi.   Preface*
+
+I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
+
+Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
+
+*iv.    Submitting organizations*
+
+The following organizations submitted this Document to the Open Geospatial Consortium (OGC):
+
+Organization name(s)
+
+Esri, Inc.
+
+*v.     Supporting Organizations*
+
+The following organization support the submission of the I3S Community Standard version 1.2 to the OGC:
+
+
+|Name	|Affiliation
+|-------|-----------
+|Keith Ryden	|Esri
+|Carl Reed	|Carl Reed & Associates
+|Gordon Plunkett	|Esri Canada
+|Vijay Kumar	|Esri India Technologies
+|Bomi Lee	Korea |Land & Geospatial InformatiX Corporation
+|Dale Lutz	|Safe Software
+
+
+Note on supporting organizations. As per the OGC Technical Committee Policies and Procedures:
+
+- Any [Community Standard](http://www.opengeospatial.org/standards/community) submission requires that three or more distinct Member organizations support the submission. In addition to the submission team lead, each other organization supporting the submission shall provide the TCC with an email stating their organization’s support of the submission.
+
+Please note that all questions and/or comments regarding this OGC Community Standard should be submitted to the OGC via the comment submission form. <<insert link here when the OGC actually has one!>>
+
+*vi.     Future Work*
+The I3S community anticipates that revisions to this Community Standard will be required to prescribe content appropriate to meet new use cases.  These use cases may arise from either (or both) the external user and developer community or from OGC review and comments. Further, future revisions will be driven by any submitted change requests that document community uses cases and requirements.
+
+Currently, the following layer type may be considered for future inclusion in the I3S standard (future work):
+
+* Building Scene Layer (e.g. comprehensive building model including building components)
 
 # Table of Contents
 

@@ -6,11 +6,16 @@
     "related": "nodePage.cmn.0107.json",
     "$include": "3DSceneLayer.cmn.0107.json",
     "properties": {
+        "store": {
+            "type": "object",
+            "description": "The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.",
+            "$ref": "store.cmn.0108.json"
+            },
         "fullExtent": {
             "type": "object",
             "description": "3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```.",
             "$ref": "fullExtent.cmn.0106.json"
-          }
+        }
     },
     "required": [
         "id",

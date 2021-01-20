@@ -2,6 +2,6 @@
     "title": "texture",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "description-href": "description/textureDefinition.cmn.0108.md",
-    "$include": "texture.cmn.0106.json"
-  }
+    "$include": "texture.cmn.0106.json",
+    "description-href": "description/textureDefinition.cmn.0108.md"  
+}

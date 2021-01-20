@@ -15,6 +15,14 @@
             "type": "object",
             "description": "3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```.",
             "$ref": "fullExtent.cmn.0106.json"
+        },
+        "textureSetDefinitions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "textureSetDefinition.cmn.0108.json"
+            },
+            "description": "Defines the set of textures that can be referenced by meshes."
         }
     },
     "required": [

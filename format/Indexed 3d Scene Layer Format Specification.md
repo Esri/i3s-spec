@@ -1,6 +1,6 @@
 # Esri Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) Format Specification
 
-Version 1.7. June 30, 2019
+Version 1.8. June 30, 2019
 
 *Contributors:* Chris Andrews, Tamrat Belayneh, Jillian Foster, Javier Gutierrez, Markus Lipp, Sud Menon, Pascal M&uuml;ller, Dragan Petrovic, Ronald Poirrier, Simon Reinhard, Juan Ruiz, Johannes Schmid, Ivonne Seler, Chengliang Shan,Thorsten Reitz, Ben Tan, Richard Vargas, Moxie Zhang 
 
@@ -133,9 +133,9 @@ Metadata on each attribute resource is made available to clients via the scene s
 
 #### Textures <a name="Textures"></a>
 
-The texture resource contains texture image files. Textures are stored as a binary resource. Individual textures should be aggregated into texture atlases (An image containing a collection of smaller images.). Client capabilities for handling complex UV cases may vary, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases.
+The texture resource contains texture image files. Textures are stored as a binary resource. Individual textures should be aggregated into texture atlases (An image containing a collection of smaller images.). Client capabilities for handling complex UV cases may vary, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases. The recommended texture is [basis](https://github.com/BinomialLLC/basis_universal) as of 1.8. 
 
-For more details, see the [texture](../docs/1.7/texture.cmn.md) and [textureSetDefinition](../docs/1.7/textureSetDefinition.cmn.md).  
+For more details, see the [texture](../docs/1.8/texture.cmn.md) and [textureSetDefinition](../docs/1.8/textureSetDefinition.cmn.md).  
 
 ### Node resources for I3S 1.6 and earlier <a name="NodeResources1.6"></a>
 

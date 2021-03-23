@@ -4,5 +4,14 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description-href": "description/layer.bld.0106.md",
   "related": "stats.bld.0107",
-  "$include": "layer.bld.0107.json"
+  "$include": "layer.bld.0107.json",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "layerType",
+    "fullExtent",
+    "spatialReference",
+    "sublayers"
+  ]
 }

@@ -78,18 +78,20 @@ Building scene layer is envisioned to represent individual buildings or a campus
 
 | Property | Type | Description |
 | --- | --- | --- |
-| id | integer | Identifier for the layer. Building scene layer id is not in the same namespace as sublayer id. **Important**: clients should **not** assume it will be `0`. |
-| name | string | Layer name. |
-| version | string | Version of building scene layer. |
+| **id** | integer | Identifier for the layer. Building scene layer id is not in the same namespace as sublayer id. **Important**: clients should **not** assume it will be `0`. |
+| **name** | string | Layer name. |
+| **version** | string | Version of building scene layer. |
 | alias | string | Alias of the layer name. Can be empty if alias and name are identical. |
-| layerType | string | <div>Must be:<ul><li>`Building`</li></ul></div> |
+| **layerType** | string | <div>Must be:<ul><li>`Building`</li></ul></div> |
 | description | string | Description for the layer. |
 | copyrightText | string | Copyright information to be displayed. |
-| fullExtent | [fullExtent](fullExtent.cmn.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
-| spatialReference | [spatialReference](spatialReference.cmn.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
+| **fullExtent** | [fullExtent](fullExtent.cmn.md) | 3d extent. If `layer.fullExtent.spatialReference` is specified, it **must** match `layer.spatialReference`. |
+| **spatialReference** | [spatialReference](spatialReference.cmn.md) | The spatialReference of the layer including the vertical coordinate system. WKT is included to support custom spatial references. |
 | heightModelInfo | [heightModelInfo](heightModelInfo.cmn.md) | An object containing the vertical coordinate system information. |
-| sublayers | [sublayer](sublayer.bld.md)[] | List of sublayers or group of sublayers. |
+| **sublayers** | [sublayer](sublayer.bld.md)[] | List of sublayers or group of sublayers. |
 | filters | [filter](filter.bld.md)[] | Array of filters defined for the building scene layer. |
 | activeFilterID | string | Global ID, filter ID of the currently active filter for the building scene layer. |
 | statisticsHRef | string | url to statistic summary for the BIM layer. [statistics/summary.json](attributestats.bld.md) |
+
+*Note: properties in **bold** are required*
 

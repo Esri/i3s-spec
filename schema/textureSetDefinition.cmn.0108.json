@@ -1,0 +1,75 @@
+{
+  "title": "textureSetDefinition",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$include": "textureSetDefinition.cmn.0107.json",
+  "properties": { 
+    "formats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "textureSetDefinitionFormat.cmn.0108.json"
+      },
+      "description": "List of formats that are available for this texture set."
+    }
+  },
+  "required": [
+    "formats"
+  ],
+  "esriDocumentation": {
+    "examples": [
+      {
+        "title": "Texture set definition (desktop: jpg+dds)",
+        "description": "For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/textures/0` and DDS at `/layers/0/nodes/888/textures/0_0_1`",
+        "code": {
+          "formats": [
+            {
+              "name": "0",
+              "format": "jpg"
+            },
+            {
+              "name": "0_0_1",
+              "format": "dds"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Texture set definition with ETC2 compresses image (Mobile: jpg+ktx-etc2)",
+        "description": "JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/0`. Same texture in KTX format will be at  `/layers/0/nodes/{nodes[i].material.resource}/textures/0_0_2`",
+        "code": {
+          "formats": [
+            {
+              "name": "0",
+              "format": "jpg"
+            },
+            {
+              "name": "0_0_2",
+              "format": "ktx-etc2"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Texture set definition with atlas",
+        "code": {
+          "formats": [
+            {
+              "name": "0",
+              "format": "jpg"
+            },
+            {
+              "name": "0_0_1",
+              "format": "dds"
+            },
+            {
+              "name": "0_0_2",
+              "format": "ktx-etc2"
+            }
+          ],
+          "atlas": true
+        }
+      }
+    ]
+  }
+}

@@ -99,6 +99,10 @@ is the equivalent to<br>
 | -s \[key] | --secret-key \[key] | AWS S3/Alibaba OSS secret key or Azure account key   |
 | -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |
 | -x | --drop-dxt | Don't write DXT textures |
+|  | --endpoint-url | Endpoint url for S3 compatible services |
+| | --aws-profile | AWS Profile in ```%USERPROFILE%\.aws\credentials``` |
+
+
 
 ### Supported cloud schemes:
 - AWS S3:          s3

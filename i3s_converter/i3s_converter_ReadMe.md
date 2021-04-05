@@ -100,29 +100,14 @@ is the equivalent to<br>
 | -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |
 | -x | --drop-dxt | Don't write DXT textures |
 
-## Examples <a name="Examples"></a> 
-Examples can be found [here](i3s_converter_examples.md), which show various uses of the i3s_converter.
-
-## Conversion and Extraction
-#### Filesystem
-To convert an slpk to filesystem (*.eslpk)
-- ```i3s_converter.exe --convert <path-to-slpk> -d <output-directory> -t <num-threads>```
-
-To extract an slpk to filesystem (*.eslpk)
-- ```i3s_converter.exe --extract <path-to-slpk> -d <output-directory>```
-
-#### Cloud
-To convert an slpk to cloud (*.i3srest)
- - ```  i3s_converter.exe --convert <path-to-slpk> -d <scheme>://<bucket-or-container> -a <access-key> -s <secret-key> -r <s3-or-alibaba-region> -t <num-threads>```
-
-Usage for converting an slpk to cloud
-- ```i3s_converter.exe --extract <path-to-slpk> -d <scheme>://<bucket-or-container> -a <access> -s <secret-key> -r <s3-or-alibaba-region>```
-
-Supported schemes:
+### Supported cloud schemes:
 - AWS S3:          s3
 - Azure Blob: az
 - Alibaba OSS:     oss
 
+
+## Examples <a name="Examples"></a> 
+Examples can be found [here](i3s_converter_examples.md), which show various uses of the i3s_converter.
 
 ## Notes <a name="Notes"></a>
 

@@ -37,7 +37,7 @@ When generating 3D Objects or Integrated Mesh scene layers, the root node never 
 | materialDefinitions | [materialDefinitions](materialDefinitions.cmn.md)[] | List of materials classes used in this layer. |
 | textureSetDefinitions | [textureSetDefinition](textureSetDefinition.cmn.md)[] | Defines the set of textures that can be referenced by meshes. |
 | geometryDefinitions | [geometryDefinition](geometryDefinition.cmn.md)[] | Define the layouts of mesh geometry and its attributes. |
-| **fullExtent** | [fullExtent](fullExtent.cmn.md) | 3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```. |
+| fullExtent | [fullExtent](fullExtent.cmn.md) | 3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```. |
 
 *Note: properties in **bold** are required*
 

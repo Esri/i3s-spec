@@ -16,7 +16,6 @@
         "version",
         "layerType",
         "capabilities",
-        "store",
-        "fullExtent"
+        "store"
     ]
 }

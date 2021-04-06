@@ -30,7 +30,7 @@ The 3DSceneLayerInfo object describes the properties of a layer in a store. Ever
 | statisticsInfo | [statisticsInfo](statisticsInfo.cmn.md)[] | Contains the statistical information for a layer. |
 | pointNodePages | [nodePageDefinition](nodePageDefinition.cmn.md) | The paged-access index description. For legacy purposes, this property is called pointNodePages in [Point Scene Layers](3DSceneLayer.psl.md).  |
 | geometryDefinition | [geometryDefinition](geometryDefinition.psl.md) | Define the layouts of point geometry and its attributes. |
-| **fullExtent** | [fullExtent](fullExtent.cmn.md) | 3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```. |
+| fullExtent | [fullExtent](fullExtent.cmn.md) | 3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```. |
 
 *Note: properties in **bold** are required*
 

@@ -8,15 +8,7 @@
         "id": {
             "type": "string",
             "description": "Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string."
-        },
-        "lodSelection": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "$ref": "lodSelection.cmn.0106.json"
-            },
-            "description": "Metrics for LoD selection, to be evaluated by the client. *<i>This property was previously optional which was a documentation error.</i>"
-        }        
+        }
     },
     "required": [
         "id",

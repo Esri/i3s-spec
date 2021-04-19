@@ -8,10 +8,11 @@
         "id": {
             "type": "string",
             "description": "Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string."
-        }        
+        }
     },
     "required": [
-        "id"
+        "id",
+        "lodSelection"
     ],
    
     "esriDocumentation": {

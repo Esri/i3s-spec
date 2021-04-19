@@ -9,7 +9,7 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
 | Property | Type | Description |
 | --- | --- | --- |
 | **id** | string | Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string. |
-| **level** | integer | Explicit level of this node within the index tree. The lowest level is 1. *<i>This property was previously optional which was a documentation error.</i> |
+| level | integer | Explicit level of this node within the index tree. The lowest level is 1. |
 | version | string | The version (store update session ID) of this node. |
 | mbs | number[4] | The center point of the minimum bounding sphere. An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. For a global scene, i.e. ellipsoidal coordinate systems, the values of the array correspond to longitude in decimal degrees, latitude of in decimal degrees, elevation in meters and radius in meters. For all other CRS, the values of x,y,z and r are in the same unit. |
 | obb | [obb](obb.cmn.md) | Describes oriented bounding box. |
@@ -24,7 +24,7 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
 | geometryData | [resource](resource.cmn.md)[] | Resource reference describing a geometry resource. |
 | textureData | [resource](resource.cmn.md)[] | Resource reference describing a texture resource. |
 | attributeData | [resource](resource.cmn.md)[] | Resource reference describing a featureData document. |
-| **lodSelection** | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD selection, to be evaluated by the client. *<i>This property was previously optional which was a documentation error.</i> |
+| **lodSelection** | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD selection, to be evaluated by the client. |
 | features | [features](features.cmn.md)[] | **Deprecated.** A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
 
 *Note: properties in **bold** are required*

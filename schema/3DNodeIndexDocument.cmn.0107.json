@@ -8,10 +8,24 @@
         "id": {
             "type": "string",
             "description": "Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string."
+        },
+        "level": {
+            "type": "integer",
+            "description": "Explicit level of this node within the index tree. The lowest level is 1. *<i>This property was previously optional which was a documentation error.</i>"
+        },
+        "lodSelection": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "lodSelection.cmn.0106.json"
+            },
+            "description": "Metrics for LoD selection, to be evaluated by the client. *<i>This property was previously optional which was a documentation error.</i>"
         }        
     },
     "required": [
-        "id"
+        "id",
+        "level",
+        "lodSelection"
     ],
    
     "esriDocumentation": {

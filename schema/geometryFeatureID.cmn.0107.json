@@ -29,7 +29,7 @@
         "per-feature"
       ],
       "enum-description": {
-        "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **Requirement**: a) [`FaceRange`](geometryFaceRange.cmn.md) attribute must be **present** to map features-to-faces and vertices must _be grouped by feature_. **OR** b) [`compressedAttribute.attributes`](compressedAttributes.cmn.md) has `uvRegionIndex`. Important: a) and b) are mutually exlusive."
+        "per-feature": "Default for `geometryBuffer.featureId`. One `feature_id` per feature. **Requirement**: a) [`FaceRange`](geometryFaceRange.cmn.md) attribute must be **present** to map features-to-faces and vertices must _be grouped by feature_. **OR** b) [`compressedAttribute.attributes`](compressedAttributes.cmn.md) has `feature-index`. Important: a) and b) are mutually exclusive."
       }
     }
   },

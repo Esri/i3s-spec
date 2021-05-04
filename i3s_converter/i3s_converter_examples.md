@@ -4,7 +4,7 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 
 -------------------------------------
 ## Quick Links
-[Convert from old version (1.4-1.6) to new version (1.7)](#ConvertSLPK)<br>
+[Convert from old version (1.4-1.7) to new version (1.8)](#ConvertSLPK)<br>
 [Set name for the log file](#setLogName)<br>
 [Set the output directory](#setOuput)<br>
 [Set the name of the output file](#setFileName)<br>
@@ -39,7 +39,7 @@ This command performs a conversion and the output file will be placed in ```C:\U
 ```i3s_converter.exe -u myFile.slpk -o myNewFile```<br>
 This command performs a conversion and the output file will have the name ```myNewFile``` and be placed in the working directory.
 
-### Validate 1.6 SLPK<a name = "validate"></a>
+### Validate SLPK<a name = "validate"></a>
 ```i3s_converter.exe -v myFile.slpk```<br>
 This command will validate that a 1.6 or 1.7 slpk can be used and is compatible as 1.8 consumption.
 

@@ -1,17 +1,17 @@
 # Building Scene Layer
 
-Building content is derived from a Building Information Modeling (BIM). BIM is a best-practice process for optimizing design and construction. BIM processes can produce 3D virtual representations of real-world assets that are commonly used for construction, documentation, and evaluation. BIM processes are applied in multiple domains including architecture, buildings, energy, utilities, and transportation. A building scene layer can represent the 3D model aspect of BIM structuring disciplines such as architectural or piping, and its categories like windows or walls.
+Building content is often derived from Building Information Modeling (BIM) workflows. BIM is a best-practice process for optimizing design and construction. BIM processes can produce 3D virtual representations of real-world assets that are commonly used for construction, documentation, and evaluation. BIM processes are applied in multiple domains including architecture, buildings, energy, utilities, and transportation. A building scene layer can represent the 3D model content based on BIM structuring disciplines such as architectural or structural, and categories such as windows or walls.
 
 **Examples**:<br />
-Building Scene Layer example [SLPK](https://www.arcgis.com/home/item.html?id=1cad3c2028f740a39460d32081265c06 ).<br />
-Building Scene Layer example [service](https://www.arcgis.com/home/item.html?id=812feb34830941a196e517ff3b8bf98f ).<br />
+Building Scene Layer example [SLPK](https://www.arcgis.com/home/item.html?id=f830fd580eb24f9b8c749d700b6249b3 ).<br />
+Building Scene Layer example [service](https://www.arcgis.com/home/item.html?id=64f68adf72474330b195ba2718a8d3e0).<br />
 
 *Example of a Building Scene Layer*
 
 ![Building Scene Layer](../img/buildingSceneLayer.png)
 
 ## Building Scene Layer Structure
-The building scene layer contains discipline and category layers as sublayers which represent a building and its assets. Building scene layers can be represented as a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:
+An I3S building scene layer contains discipline, such as architectural, and category layers, such as walls, as sublayers that represent a building and its assets. Building scene layers can be represented as a scene layer package (*.slpk) or an I3S service. A building scene layer contains the following:
 
 - [3DSceneLayer](layer.bld.md)
 - [sublayer](sublayer.bld.md)
@@ -26,6 +26,9 @@ The building scene layer contains discipline and category layers as sublayers wh
   |  |   +-- summary.json
   |  +-- sublayers
   |  |  +--0 // sublayer document
+  |  |  |  +-- nodePages
+  |  |  |  |  +-- 0
+  |  |  |  |  +-- (...)
   |  |  |  +--nodes
   |  |  |  |  +--0
   |  |  |  |  |  +-- attributes

@@ -1,6 +1,6 @@
 # Model Name
 
-Model names allow clients to identify entities of a building without having to relay on a specific name of a categrory layer for example. The following modelNames are currently defined.
+Model names allow clients to identify entities of a building without having to rely on a specific name of a category layer, for example. The following modelNames are currently defined.
 
 ### Related:
 

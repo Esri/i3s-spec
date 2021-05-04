@@ -1,6 +1,6 @@
 # textureSetDefinition
 
-The set of available textures.
+The set of available [textures](texture.cmn.md).
 
 ### Related:
 
@@ -10,7 +10,7 @@ The set of available textures.
 | Property | Type | Description |
 | --- | --- | --- |
 | **formats** | [textureSetDefinitionFormat](textureSetDefinitionFormat.cmn.md)[] | List of formats that are available for this texture set. |
-| atlas | boolean | Set to `true` if this texture is a texture atlas. It's expected that geometries that use this texture have uv regions to specify the subtexture in the atlas. |
+| atlas | boolean | Set to `true` if this texture is a texture atlas. It is expected that geometries that use this texture have uv regions to specify the subtexture in the atlas. |
 
 *Note: properties in **bold** are required*
 

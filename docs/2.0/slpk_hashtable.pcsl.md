@@ -3,7 +3,7 @@
 Scanning an SLPK (ZIP store) containing millions of documents is usually inefficient and slow.  A hash table file may be added to the SLPK to improve first load and file scanning performances.
 
 ## To create SLPK hash table
-1. The offset of each file is known. For example, the byte offset from the beginning of the slpk file to the first byte of its ZIP local file header. See ZIP specification for reference.
+1. The offset of each SLPK file is known. For example, the byte offset from the beginning of the file to the first byte of its ZIP local file header. See ZIP specification for reference.
 2. Convert all file paths to their canonical path. Canonical paths must:
    - Be lower case
    - Use a forward slash as the path separator `/`
@@ -22,7 +22,7 @@ Scanning an SLPK (ZIP store) containing millions of documents is usually ineffic
 	 return a[0] == b[0] ? a[1] < b[1] : a[0] < b[0];
 	}
 ```
-5. Write this sorted array as the last file of the SLPK archive (last entry in the ZIP central directory). The file must be named  `@specialIndexFileHASH128@`. Each array element is 24-bytes long, which includes:
+5. Write this sorted array as the last file of the SLPK archive (last entry in the ZIP central directory). The file must be named  `@specialIndexFileHASH128@`. Each array element is 24-bytes long, and includes the following restrictions:
    - 16 bytes for the MD5-digest and 8 bits for the offset
    - Must be in little-endian order
    - Must **not** contain padding

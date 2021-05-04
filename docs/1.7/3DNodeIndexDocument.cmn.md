@@ -1,17 +1,17 @@
 # 3D Node Index Document
 
-The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
+The 3dNodeIndexDocument JSON file describes a single index node within a [store](store.cmn.md). The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. The file includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
 
-Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide sufficient data for a simple visualization.  For example, the centroids could be rendered as point features. 
+Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide enough data for a simple visualization.  For example, the centroids of a bounding volume could be rendered as point features. 
 
 ### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
-| **id** | string | Tree Key ID, unique within the store. At 1.7 the tree-key is the integer id of the node represented as a string. |
+| **id** | string | Tree-key ID. A unique identifier of a node within the scene layer. At 1.7 the tree-key is the integer id of the node represented as a string. |
 | level | integer | Explicit level of this node within the index tree. The lowest level is 1. |
 | version | string | The version (store update session ID) of this node. |
-| mbs | number[4] | An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. |
+| mbs | number[4] | The center point of the minimum bounding sphere. An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node. For a global scene, i.e. ellipsoidal coordinate systems, the values of the array correspond to longitude in decimal degrees, latitude of in decimal degrees, elevation in meters and radius in meters. For all other CRS, the values of x,y,z and r are in the same unit. |
 | obb | [obb](obb.cmn.md) | Describes oriented bounding box. |
 | created | string | Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
 | expires | string | Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed 'Z' time zone (see http://www.w3.org/TR/NOTE-datetime). |
@@ -24,7 +24,7 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
 | geometryData | [resource](resource.cmn.md)[] | Resource reference describing a geometry resource. |
 | textureData | [resource](resource.cmn.md)[] | Resource reference describing a texture resource. |
 | attributeData | [resource](resource.cmn.md)[] | Resource reference describing a featureData document. |
-| lodSelection | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD selection, to be evaluated by the client. |
+| **lodSelection** | [lodSelection](lodSelection.cmn.md)[] | Metrics for LoD selection, to be evaluated by the client. *<i>This property was previously optional which was a documentation error.</i> |
 | features | [features](features.cmn.md)[] | **Deprecated.** A list of summary information on the features present in this node, used for pre-visualisation and LoD switching in featureTree LoD stores. |
 
 *Note: properties in **bold** are required*

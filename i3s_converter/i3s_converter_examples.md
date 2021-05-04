@@ -53,7 +53,7 @@ This command performs a conversion using 4 threads instead of 1, placing the out
 
 ### Create basis textures.<a name = "createBasis"></a>
 ```i3s_converter.exe -u myFile.slpk -k```<br>
-This command performs a conversion and creates basis textures.  This can be very slow.
+This command performs a conversion and creates basis textures.
 
 ### Drop DXT textures.<a name = "dropDXT"></a>
 ```i3s_converter.exe -u myFile.slpk -x```<br>

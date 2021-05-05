@@ -8,10 +8,10 @@
     "defaultTextureDefinition": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "$ref": "texture.cmn.0108.json"
       },
-      "description": "Deprecated in 1.7. A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.",
-      "$ref": "texture.cmn.0108.json"
+      "description": "Deprecated in 1.7. A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels."
     }
   },
   "required": [

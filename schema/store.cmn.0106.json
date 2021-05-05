@@ -140,10 +140,10 @@
     "defaultTextureDefinition": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "$ref": "texture.cmn.0106.json"
       },
-      "description": "A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.",
-      "$ref": "texture.cmn.0106.json"
+      "description": "A common, global TextureDefinition to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels."
     },
     "defaultMaterialDefinition": {
       "type": "array",

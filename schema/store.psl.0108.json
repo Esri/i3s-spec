@@ -1,0 +1,11 @@
+{
+    "title": "store [point profile]",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$include": "store.cmn.0108.json",
+    "required": [
+      "profile",
+      "version"
+    ],
+    "additionalProperties": false
+  }

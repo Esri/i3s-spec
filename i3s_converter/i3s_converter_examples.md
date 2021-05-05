@@ -11,7 +11,7 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 [Validate SLPK](#validate)<br>
 [Extract slpk to filesystem](#extractFilesystem)<br>
 [Multithreaded conversion](#multithreadedConversion)<br>
-[Create basis textures](#createBasis)<br>
+[Create Basis Universal textures](#createBasis)<br>
 [Drop DXT textures](#dropDXT)<br>
 [Drop normals](#dropNormals)<br>
 [Convert slpk to filesystem (eslpk)](#convertFilesystem)<br>
@@ -51,9 +51,9 @@ This command will extract the eslpk from the slpk and place it in the working di
 ```i3s_converter.exe -u myFile.slpk -t 4```<br>
 This command performs a conversion using 4 threads instead of 1, placing the output file in the working directory.
 
-### Create basis textures.<a name = "createBasis"></a>
+### Create Basis Universal textures.<a name = "createBasis"></a>
 ```i3s_converter.exe -u myFile.slpk -k```<br>
-This command performs a conversion and creates basis textures.
+This command performs a conversion and creates Basis Universal textures.
 
 ### Drop DXT textures.<a name = "dropDXT"></a>
 ```i3s_converter.exe -u myFile.slpk -x```<br>

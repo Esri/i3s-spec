@@ -91,7 +91,7 @@ is the equivalent to<br>
 |----------------|-------------------------|-------------------|
 | -a \[key] | --access-key \[key] | AWS S3 access key / Azure Account / Alibaba Account |
 | -d \[dir] | --dest \[output-directory] | Change [output directory](#outputDirectory). Will create it if it doesn't exist|
-| -k | --create-ktx2-textures | Create basis texture from input |
+| -k | --create-ktx2-textures | Create Basis Universal texture from input |
 | -j \[log_name] | --json \[log_name] | Set log name    |
 | -n | --drop-normals | Drop all normals. Client will recreate   |
 | -o \[outfile]  | --output-name \[outfile] | 1.7 slpk name   |

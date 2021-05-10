@@ -14,9 +14,12 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 [Create ETC2 textures](#createETC2)<br>
 [Drop DXT textures](#dropDXT)<br>
 [Drop normals](#dropNormals)<br>
+[Convert slpk to filesystem (eslpk)](#convertFilesystem)<br>
+[Extract slpk to filesystem (eslpk)](#extractFilesystem)<br>
 [Convert to cloud format (i3srest)](#convertCloud)<br>
 [Extract to cloud (i3srest)](#extractCloud)<br>
-[Convert and extract to cloud](#convertAndExtract)
+[Convert and extract to cloud](#convertAndExtract)<br>
+[Validate using AWS profile](#validateWithAws)
 
 -------------------------------------
 
@@ -61,14 +64,34 @@ present.
 ```i3s_converter.exe -u myFile.slpk -n```<br>
 This command performs a conversion and drops all normals.  Client will recreate these normals. 
 
+### Convert to filesystem (eslpk)<a name = "convertFilesystem"></a>
+```i3s_converter.exe -u myFile.slpk -d C:\Users\johndoe\Desktop\MyFolder -t 2```<br>
+This command performs a conversion to the filesystem format (eslpk) for ready to serve files.
+In this example, the destination folder is changed, and number of threads is set to 2.
+
+### Extract to filesystem (eslpk)<a name = "extractFilesystem"></a>
+```i3s_converter.exe -e myFile.slpk -d C:\Users\johndoe\Desktop\MyFolder```<br>
+This command extracts an slpk to the filesystem format (eslpk) for ready to serve files.
+In this example, the destination folder is changed.
+
 ### Convert to cloud format (i3srest)<a name = "convertCloud"></a>
 ```i3s_converter.exe -u myFile.slpk -d s3://mySlpkBucket -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -r us-east-1a```<br>
 This command performs a conversion to the i3srest format for cloud storage.  This example uses AWS S3.
 
 ### Extract to cloud (i3srest)<a name = "extractCloud"></a>
-```i3s_converter.exe -e myFile.slpk -d oss://mySlpkBucket -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -r us-west-1```<br>
+```i3s_converter.exe -e myFile.slpk -d oss://mySlpkBucket -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -r oss-us-west-1```<br>
 This command will extract the slpk to the cloud.  This example uses Alibaba OSS.  
 
 ### Convert and extract<a name = "convertAndExtract"></a>
 ```i3s_converter.exe --convert-and-extract myFile.slpk -d az://mySlpkContainer -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY ```<br>
 This command will convert and extract the slpk to the cloud.  This example uses Azure.
+
+### Validate slpk on cloud service<a name = "validateOnCloud"></a>
+```i3s_converter.exe --validate az://mySlpkContainer/mySlpk.i3srest -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY```<br>
+This command will validate that an SLPK on a cloud store (i3srest) can be used and is compatible as 1.7 consumption. This example uses Azure.
+
+### Validate with AWS profile<a name = "validateWithAws"></a>
+```i3s_converter.exe --validate oss://mySlpkBucket/mySlpk.i3srest --aws-profile alibaba -r oss-us-west-1 ```<br>
+This command will validate using AWS profiles, rather than entering credentials into the program. This example uses Alibaba OSS.
+Note that this command will only work with AWS and OSS.
+

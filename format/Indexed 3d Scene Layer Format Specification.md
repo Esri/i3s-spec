@@ -108,7 +108,7 @@ Scene Layers provide a structured way for clients to store and visualize large v
 
 * [3D Object](../docs/1.7/3Dobject_ReadMe.md) (e.g. 3D models in various formats)
 * [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md) - An integrated surface that may include vegetation, buildings and roads.
-* [Point](../docs/1.6/Point_ReadMe.md) - A collection of point data, like individual trees in a forest.
+* [Point](../docs/1.7/Point_ReadMe.md) - A collection of point data, like individual trees in a forest.
 * [Point Cloud](../docs/2.0/pcsl_ReadMe.md) - A volumetric collection of point data, like lidar data.
 
 I3S is designed to support large datasets of 3D content ranging from local to global extent containing detailed features. Clients can visualize scene layers by taking advantage of the multi-LoD (level of detail) representation and symbology to create the right user experience for visualizing the 3D content. The I3S format continues to evolve and new functionality continues to be added.
@@ -271,7 +271,11 @@ The heightModelInfo, included in the 3DSceneLayerInfo resource, is used by clien
 
 A RESTful API allows access to I3S scene layers.  Each scene layer profile has different components and features.  For details on the API of a specific profile and version, refer to the individual README documents.
 
+<<<<<<< HEAD
 Version 1.7 support for [3D Objects](../docs/1.7/3Dobject_ReadMe.md) and [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md).
+=======
+Version 1.7 support for [3D Objects](../docs/1.7/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.7/IntegratedMesh_ReadMe.md), [Building](../docs/1.7/BSL_ReadMe.md), and [Point](../docs/1.7/Point_ReadMe.md)<a name="service1.7"></a>
+>>>>>>> Proposed_I3S_Updates
 
 Version 1.6 support for [3D Objects](../docs/1.6/3Dobject_ReadMe.md), [Integrated Mesh](../docs/1.6/IntegratedMesh_ReadMe.md), and [Point](../docs/1.6/Point_ReadMe.md).
 

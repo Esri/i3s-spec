@@ -9,7 +9,12 @@
             "type": "object",
             "description":  "3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```.",
             "$ref": "fullExtent.cmn.0106.json"
-          }
+          },
+          "store": {
+            "type": "object",
+            "description": "The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.",
+            "$ref": "store.psl.0108.json"
+        }
     },
     "required": [
         "id",

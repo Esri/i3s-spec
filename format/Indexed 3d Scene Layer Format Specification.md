@@ -133,7 +133,7 @@ Metadata on each attribute resource is made available to clients via the scene s
 
 #### Textures <a name="Textures"></a>
 
-The texture resource contains texture image files. Textures are stored as a binary resource. Individual textures should be aggregated into texture atlases (An image containing a collection of smaller images.). Client capabilities for handling complex UV cases may vary, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases. The recommended texture is [basis](https://github.com/BinomialLLC/basis_universal) as of 1.8. 
+The texture resource contains texture image files. Textures are stored as a binary resource. Individual textures should be aggregated into texture atlases (An image containing a collection of smaller images.). Client capabilities for handling complex UV cases may vary, so texture coordinates are used. Texture coordinates do not take atlas regions into account directly. The client is expected to use the sub-image region values and the texture coordinates to best handle repeating textures in atlases. At I3S version 1.8, the recommended compressed texture format is [Basis Universal](https://github.com/BinomialLLC/basis_universal) in [Khronos KTX2™️](http://github.khronos.org/KTX-Specification/) container format. 
 
 For more details, see the [texture](../docs/1.8/texture.cmn.md) and [textureSetDefinition](../docs/1.8/textureSetDefinition.cmn.md).  
 

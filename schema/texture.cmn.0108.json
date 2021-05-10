@@ -2,6 +2,72 @@
     "title": "texture",
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
-    "$include": "texture.cmn.0106.json",
-    "description-href": "description/textureDefinition.cmn.0108.md"  
-}
+    "description-href": "description/textureDefinition.cmn.0108.md",
+    "properties": {
+        "encoding": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "MIMEtype[1..*] The encoding/content type that is used by all images in this map"
+        },
+        "wrap": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "none",
+              "repeat",
+              "mirror"
+            ],
+            "enum-description": {
+              "none": "",
+              "repeat": "",
+              "mirror": ""
+            },
+            "description": "UV wrapping modes, from {none, repeat, mirror}"
+          }
+        },
+        "atlas": {
+          "type": "boolean",
+          "description": "True if the Map represents a texture atlas."
+        },
+        "uvSet": {
+          "type": "string",
+          "description": "The name of the UV set to be used as texture coordinates."
+        },
+        "channels": {
+          "type": "string",
+          "enum": [
+            "rgb",
+            "rgba"
+          ],
+          "enum-description": {
+            "rgb": "",
+            "rgba": ""
+          },
+            "description": "Indicates channels description."
+        }
+      },
+      "additionalProperties": false,
+      "esriDocumentation": {
+        "examples": [
+          {
+            "title": "textureDefinition",
+            "code": {
+              "encoding": [
+                "image/jpeg",
+                "image/vnd-ms.dds"
+              ],
+              "wrap": [
+                "none",
+                "none"
+              ],
+              "atlas": false,
+              "uvSet": "uv0",
+              "channels":"rgb"
+            }
+          }
+        ]
+      }
+    }  

@@ -1,6 +1,6 @@
 Version History
 ===============================================
-Last updated 3/6/2020
+Last updated 9/29/2020
 ### Version 1.7
 
 Released 9/29/2020 [Point Scene Layer 1.7](docs/1.7/Point_ReadMe.md)

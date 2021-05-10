@@ -2,7 +2,7 @@
 
 
 
-The attributeStorageInfo object describes the structure of the binary attribute data resource of a node. The following examples show how different attribute types are represented as a binary buffer.
+The attributeStorageInfo object describes the structure of the binary attribute data resource of a layer, which is the same for every node in the layer. The following examples show how different attribute types are represented as a binary buffer.
 
 # Examples of attribute resources 
 
@@ -55,7 +55,7 @@ Integer values of 3,10,7.
 
 ### Related:
 
-[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
+[cmn::3DSceneLayer](3DSceneLayer.cmn.md), [psl::3DSceneLayer](3DSceneLayer.psl.md), [psl::3DSceneLayer](3DSceneLayer.psl.md)
 ### Properties
 
 | Property | Type | Description |

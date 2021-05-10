@@ -1,6 +1,6 @@
 # textureSetDefinition
 
-The set of available textures.
+The set of available [textures](texture.cmn.md).
 
 ### Related:
 

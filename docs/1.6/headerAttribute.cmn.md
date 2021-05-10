@@ -1,6 +1,6 @@
 # header
 
-The header definition provides the name of each field and the value type. Headers to geometry resources must be uniform across a cache and may only contain fixed-width, single element fields.
+The header definition provides the name of each field and the value type. Headers to geometry resources must be uniform across any cache and may only contain fixed-width, single element fields.
 
 ### Related:
 

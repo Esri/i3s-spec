@@ -4,14 +4,14 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 
 -------------------------------------
 ## Quick Links
-[Convert from old version (1.4-1.6) to new version (1.7)](#ConvertSLPK)<br>
+[Convert from old version (1.4-1.7) to new version (1.8)](#ConvertSLPK)<br>
 [Set name for the log file](#setLogName)<br>
 [Set the output directory](#setOuput)<br>
 [Set the name of the output file](#setFileName)<br>
-[Validate 1.6 SLPK](#validate)<br>
+[Validate SLPK](#validate)<br>
 [Extract slpk to filesystem](#extractFilesystem)<br>
 [Multithreaded conversion](#multithreadedConversion)<br>
-[Create ETC2 textures](#createETC2)<br>
+[Create Basis Universal textures](#createBasis)<br>
 [Drop DXT textures](#dropDXT)<br>
 [Drop normals](#dropNormals)<br>
 [Convert slpk to filesystem (eslpk)](#convertFilesystem)<br>
@@ -39,9 +39,9 @@ This command performs a conversion and the output file will be placed in ```C:\U
 ```i3s_converter.exe -u myFile.slpk -o myNewFile```<br>
 This command performs a conversion and the output file will have the name ```myNewFile``` and be placed in the working directory.
 
-### Validate 1.6 SLPK<a name = "validate"></a>
+### Validate SLPK<a name = "validate"></a>
 ```i3s_converter.exe -v myFile.slpk```<br>
-This command will validate that a 1.6 slpk can be used and is compatible as 1.7 consumption.
+This command will validate that a 1.6 or 1.7 slpk can be used and is compatible as 1.8 consumption.
 
 ### Extract slpk to filesystem<a name = "extractFilesystem"></a>
 ```i3s_converter.exe -e myFile.slpk```<br>
@@ -51,9 +51,9 @@ This command will extract the eslpk from the slpk and place it in the working di
 ```i3s_converter.exe -u myFile.slpk -t 4```<br>
 This command performs a conversion using 4 threads instead of 1, placing the output file in the working directory.
 
-### Create ETC2 textures.<a name = "createETC2"></a>
+### Create Basis Universal textures.<a name = "createBasis"></a>
 ```i3s_converter.exe -u myFile.slpk -k```<br>
-This command performs a conversion and creates ETC2 textures.  This can be very slow.
+This command performs a conversion and creates Basis Universal textures.
 
 ### Drop DXT textures.<a name = "dropDXT"></a>
 ```i3s_converter.exe -u myFile.slpk -x```<br>

@@ -1,6 +1,12 @@
 Version History
 ===============================================
-Last updated 3/6/2020
+Last updated 5/21/2020
+
+### Version 1.8
+Released 5/21/2021 1.8 Versions of [3D Object Scene Layer](docs/1.8/3Dobject_ReadMe.md), [Integrated Mesh Scene Layer](docs/1.8/IntegratedMesh_ReadMe.md), [Building Scene Layer](docs/1.8/BSL_ReadMe.md) and [Point Scene Layer](docs/1.8/Point_ReadMe.md)
+ - Upgrade [I3S Converter Tool](i3s_converter/i3s_converter_ReadMe.md) to convert I3S 1.4 - 1.6 to 1.8 versions
+ - Minor updates
+
 ### Version 1.7
 
 Released 9/29/2020 [Point Scene Layer 1.7](docs/1.7/Point_ReadMe.md)

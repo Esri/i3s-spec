@@ -11,17 +11,17 @@ A single I3S data set, referred to as a scene layer, is a container for arbitrar
 
 The I3S format is declarative and extendable, and can be used to represent different types of 3D data. The following layer types are detailed in this documentation and validated via implementation and production deployments:
 
-- [3D objects](docs/1.7/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
-- [Integrated mesh](docs/1.7/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
-- [Point](docs/1.7/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
+- [3D objects](docs/1.8/3Dobject_ReadMe.md) (e.g. building exteriors, from GIS data as well as 3D models in various formats)
+- [Integrated mesh](docs/1.8/IntegratedMesh_ReadMe.md) (e.g. an integrated surface representing the skin of the earth, gathered through satellite, aerial, or drone imagery via dense matching photogrammetric software)
+- [Point](docs/1.8/Point_ReadMe.md) (e.g. hospitals, schools, trees, street furniture, signs, from GIS data)
 - [Point cloud](docs/2.0/pcsl_ReadMe.md) (e.g. large point data from LiDAR)
-- [Building scene layer](docs/1.7/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
+- [Building scene layer](docs/1.8/BSL_ReadMe.md) (e.g. comprehensive building model including building components)
 
 
 The specification of the [indexed 3D scene layer (I3S)](format/Indexed%203d%20Scene%20Layer%20Format%20Specification.md) and the specification for accessing I3S resources as scene service REST endpoints, are described in this document as open formats.  The REST endpoint implementations are described in the ReadMe for each layer type.
 You can use [I3S tool](./i3s_converter/i3s_converter_ReadMe.md) to convert to the newest i3s specification or validate your existing SLPK.
 
-This GitHub repo includes documentation for 1.6, 1.7, and 2.0. Deprecated elements from a minor version will be removed as part of the next major revision.
+This GitHub repo includes documentation for 1.6, 1.7, 1.8, and 2.0. Deprecated elements from a minor version will be removed as part of the next major revision.
 
 ## Designed for Web, Mobile and cloud  
 
@@ -46,9 +46,10 @@ The table below shows how the OGC community standard relates to the community sp
 
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S community specification**      | **OGC I3S community standard**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
-| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                         |
-| Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                          |
-| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)  |
+| MeshPyramids      | [3D Object](docs/1.8/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.8/IntegratedMesh_ReadMe.md) | 1.8              | [1.1]((http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                         |
+| Points            | [Point](docs/1.8/Point_ReadMe.md)                                                  | 1.8              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                          |
+| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)|
+
 
 OGC I3S 1.1 Community Standard added backward compatible enhancements to the original OGC I3S Community Standard. These [enhancements](https://portal.ogc.org/files/?artifact_id=89693) included:
 
@@ -66,11 +67,10 @@ OGC I3S 1.1 Community Standard added backward compatible enhancements to the ori
 
   - Introduction of paged node access pattern for MeshPyramids Profile – which significantly reduces the client-server traffic by bundling individual node metadata resources into compact pages of nodes
   - Introduction of a more compact geometry layout for 3D Object and IntegratedMesh layers binary geometry payloads – using a well-known quantization encoding (Draco)
-  - Support for Basis Universal Texture format in [Khronos KTX2]((https://github.khronos.org/KTX-Specification/) standard
+  - Support for Basis Universal Texture format in [Khronos KTX2](https:/github.khronos.org/KTX-Specification/) standard
   - More optimal selection strategy – standardizes on Oriented Bounding Boxes (OBBs) based node selection criterion
   - Introduction of an advanced material definitions property such as physically based materials
   - Numerous editorial updates/corrections
-
 
 ## What's New?
 Please see the [Version History](version_history.md) for document updates.
@@ -362,14 +362,14 @@ You may also extend or modify the standard using the built-in extension and prof
 
 You are free to:
 
-- Share — copy and redistribute the material in any medium or format for any purpose, even commercially.
+- Share – copy and redistribute the material in any medium or format for any purpose, even commercially.
 - The licensor cannot revoke these freedoms as long as you follow the license terms.
 
 Under the following terms:
 
-- Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-- No derivatives — If you remix, transform, or build upon the material, you may not distribute (see note below) the modified material.
-- No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+- Attribution – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- No derivatives – If you remix, transform, or build upon the material, you may not distribute (see note below) the modified material.
+- No additional restrictions – You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
 License history:  
 
@@ -378,6 +378,8 @@ Version 1.0 – 1.5 (04/30/2015 to 01/30/2017) of this specification are license
 Version 1.6 – present integrated mesh, 3D object, point scene layer, building scene layer (dated 01/31/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 
 Version 1.7 – present integrated mesh and 3D object (dated 06/30/2019 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
+
+Version 1.8 – present integrated mesh and 3D object (dated 05/21/2021 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 
 Version 2.0 - present point cloud scene layer (01/01/2017 to present) of this specification are licensed under the newer Creative Commons Attribution-NoDerivatives 4.0 International Public License.  
 

@@ -20,15 +20,16 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
 
 *Note: properties in **bold** are required*
 
-### Examples 
+### Examples
 
-#### Example: textureDefinition 
+#### Example: textureDefinition
 
 ```json
  {
   "encoding": [
     "image/jpeg",
-    "image/vnd-ms.dds"
+    "image/vnd-ms.dds",
+    "image/ktx2"
   ],
   "wrap": [
     "none",
@@ -39,23 +40,25 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
   "channels": "rgb",
   "images": [
     {
-      "id": "1161930902884843552",
-      "size": 512,
+      "id": "296",
+      "size": 2048,
       "pixelInWorldUnits": 0,
       "href": [
         "../textures/0_0",
-        "../textures/0_0_1"
+        "../textures/0_0_1",
+        "../textures/1"
       ],
       "byteOffset": [
+        0,
         0,
         0
       ],
       "length": [
-        7461,
-        174904
+        408644,
+        2796352,
+        436451
       ]
     }
   ]
-} 
+}
 ```
-

@@ -14,11 +14,11 @@
 
 *Note: properties in **bold** are required*
 
-### Examples 
+### Examples
 
-#### Example: Texture set definition (desktop: jpg+dds) 
+#### Example: Texture set definition (desktop: jpg+dds)
 
-For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/textures/0` and DDS at `/layers/0/nodes/888/textures/0_0_1` 
+For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/textures/0`, DDS at `/layers/0/nodes/888/textures/0_0_1` and KTX2 at DDS at `/layers/0/nodes/888/textures/1`
 
 ```json
  {
@@ -30,14 +30,19 @@ For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/te
     {
       "name": "0_0_1",
       "format": "dds"
+    },
+    {
+      "name": "1",
+      "format": "Ktx2"
     }
   ]
-} 
+}
 ```
 
-#### Example: Texture set definition with ETC2 compresses image (Mobile: jpg+ktx-etc2) 
 
-JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/0`. Same texture in KTX format will be at  `/layers/0/nodes/{nodes[i].material.resource}/textures/0_0_2` 
+#### Example: Texture set definition with Basis Universal SuperCompressed texture in KTX2 container format (Mobile: jpg+ktx2)
+
+JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/0`. Same texture in KTX format will be at  `/layers/0/nodes/{nodes[i].material.resource}/textures/1`
 
 ```json
  {
@@ -47,11 +52,11 @@ JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/0
       "format": "jpg"
     },
     {
-      "name": "0_0_2",
-      "format": "ktx-etc2"
+      "name": "1",
+      "format": "ktx2"
     }
   ]
-} 
+}
 ```
 
 #### Example: Texture set definition with atlas 
@@ -70,9 +75,13 @@ JPEG texture will be at `/layers/0/nodes/{nodes[i].material.resource}/textures/0
     {
       "name": "0_0_2",
       "format": "ktx-etc2"
+    },
+    ,
+    {
+      "name": "1",
+      "format": "Ktx2"
     }
   ],
   "atlas": true
-} 
+}
 ```
-

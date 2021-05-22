@@ -1,8 +1,8 @@
 # 3D Node Index Document
 
-The 3dNodeIndexDocument JSON file describes a single index node within a [store](store.cmn.md). The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. The file includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument. 
+The 3dNodeIndexDocument JSON file describes a single index node within a [store](store.cmn.md). The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store. The file includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. The node is the root object in the 3dNodeIndexDocument. There is always exactly one node object in a 3dNodeIndexDocument.
 
-Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide enough data for a simple visualization.  For example, the centroids of a bounding volume could be rendered as point features. 
+Depending on the geometry and LoD model, a node document can be tuned towards being light-weight or heavy-weight. Clients decide which data to retrieve. The bounding volume information for the node, its parent, siblings, and children provide enough data for a simple visualization.  For example, the centroids of a bounding volume could be rendered as point features.
 
 ### Properties
 
@@ -29,9 +29,9 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
 
 *Note: properties in **bold** are required*
 
-### Examples 
+### Examples
 
-#### Example: 3D Scene Layer info for point scene layer 
+#### Example: 3D Scene Layer info for point scene layer
 
 ```json
  {
@@ -128,126 +128,12 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
         },
         {
             "href": "./attributes/f_4/0"
-        },
-        {
-            "href": "./attributes/f_5/0"
-        },
-        {
-            "href": "./attributes/f_6/0"
-        },
-        {
-            "href": "./attributes/f_7/0"
-        },
-        {
-            "href": "./attributes/f_8/0"
-        },
-        {
-            "href": "./attributes/f_9/0"
-        },
-        {
-            "href": "./attributes/f_10/0"
-        },
-        {
-            "href": "./attributes/f_11/0"
-        },
-        {
-            "href": "./attributes/f_12/0"
-        },
-        {
-            "href": "./attributes/f_13/0"
-        },
-        {
-            "href": "./attributes/f_14/0"
-        },
-        {
-            "href": "./attributes/f_15/0"
-        },
-        {
-            "href": "./attributes/f_16/0"
-        },
-        {
-            "href": "./attributes/f_17/0"
-        },
-        {
-            "href": "./attributes/f_18/0"
-        },
-        {
-            "href": "./attributes/f_19/0"
-        },
-        {
-            "href": "./attributes/f_20/0"
-        },
-        {
-            "href": "./attributes/f_21/0"
-        },
-        {
-            "href": "./attributes/f_22/0"
-        },
-        {
-            "href": "./attributes/f_23/0"
-        },
-        {
-            "href": "./attributes/f_24/0"
-        },
-        {
-            "href": "./attributes/f_25/0"
-        },
-        {
-            "href": "./attributes/f_26/0"
-        },
-        {
-            "href": "./attributes/f_27/0"
-        },
-        {
-            "href": "./attributes/f_28/0"
-        },
-        {
-            "href": "./attributes/f_29/0"
-        },
-        {
-            "href": "./attributes/f_30/0"
-        },
-        {
-            "href": "./attributes/f_31/0"
-        },
-        {
-            "href": "./attributes/f_32/0"
-        },
-        {
-            "href": "./attributes/f_33/0"
-        },
-        {
-            "href": "./attributes/f_34/0"
-        },
-        {
-            "href": "./attributes/f_35/0"
-        },
-        {
-            "href": "./attributes/f_36/0"
-        },
-        {
-            "href": "./attributes/f_37/0"
-        },
-        {
-            "href": "./attributes/f_38/0"
-        },
-        {
-            "href": "./attributes/f_39/0"
-        },
-        {
-            "href": "./attributes/f_40/0"
-        },
-        {
-            "href": "./attributes/f_41/0"
-        },
-        {
-            "href": "./attributes/f_42/0"
         }
     ]
-} 
+}
 ```
 
-#### Example: 3D Scene Layer info for 3D object scene layer 
+#### Example: 3D Scene Layer info for 3D object scene layer
 
 ```json
  {
@@ -343,135 +229,12 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
         },
         {
             "href": "./attributes/f_4/0"
-        },
-        {
-            "href": "./attributes/f_5/0"
-        },
-        {
-            "href": "./attributes/f_6/0"
-        },
-        {
-            "href": "./attributes/f_7/0"
-        },
-        {
-            "href": "./attributes/f_8/0"
-        },
-        {
-            "href": "./attributes/f_9/0"
-        },
-        {
-            "href": "./attributes/f_10/0"
-        },
-        {
-            "href": "./attributes/f_11/0"
-        },
-        {
-            "href": "./attributes/f_12/0"
-        },
-        {
-            "href": "./attributes/f_13/0"
-        },
-        {
-            "href": "./attributes/f_14/0"
-        },
-        {
-            "href": "./attributes/f_15/0"
-        },
-        {
-            "href": "./attributes/f_16/0"
-        },
-        {
-            "href": "./attributes/f_17/0"
-        },
-        {
-            "href": "./attributes/f_18/0"
-        },
-        {
-            "href": "./attributes/f_19/0"
-        },
-        {
-            "href": "./attributes/f_20/0"
-        },
-        {
-            "href": "./attributes/f_21/0"
-        },
-        {
-            "href": "./attributes/f_22/0"
-        },
-        {
-            "href": "./attributes/f_23/0"
-        },
-        {
-            "href": "./attributes/f_24/0"
-        },
-        {
-            "href": "./attributes/f_25/0"
-        },
-        {
-            "href": "./attributes/f_26/0"
-        },
-        {
-            "href": "./attributes/f_27/0"
-        },
-        {
-            "href": "./attributes/f_28/0"
-        },
-        {
-            "href": "./attributes/f_29/0"
-        },
-        {
-            "href": "./attributes/f_30/0"
-        },
-        {
-            "href": "./attributes/f_31/0"
-        },
-        {
-            "href": "./attributes/f_32/0"
-        },
-        {
-            "href": "./attributes/f_33/0"
-        },
-        {
-            "href": "./attributes/f_34/0"
-        },
-        {
-            "href": "./attributes/f_35/0"
-        },
-        {
-            "href": "./attributes/f_36/0"
-        },
-        {
-            "href": "./attributes/f_37/0"
-        },
-        {
-            "href": "./attributes/f_38/0"
-        },
-        {
-            "href": "./attributes/f_39/0"
-        },
-        {
-            "href": "./attributes/f_40/0"
-        },
-        {
-            "href": "./attributes/f_41/0"
-        },
-        {
-            "href": "./attributes/f_42/0"
-        },
-        {
-            "href": "./attributes/f_43/0"
-        },
-        {
-            "href": "./attributes/f_44/0"
-        },
-        {
-            "href": "./attributes/f_45/0"
         }
     ]
-} 
+}
 ```
 
-#### Example: 3D Scene Layer info for integrated mesh scene layer 
+#### Example: 3D Scene Layer info for integrated mesh scene layer
 
 ```json
  {
@@ -590,6 +353,5 @@ Depending on the geometry and LoD model, a node document can be tuned towards be
             }
         }
     ]
-} 
+}
 ```
-

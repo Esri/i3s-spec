@@ -23,7 +23,7 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 
 -------------------------------------
 
-### Convert from old version (1.4-1.6) to new version (1.7)<a name = "ConvertSLPK"></a>
+### Convert from old version (1.4-1.6) to new version (1.8)<a name = "ConvertSLPK"></a>
 ```i3s_converter.exe -u myFile.slpk```<br>
 This command will convert/upgrade from an older SLPK version to the latest SLPK version.  The output file will be in the working directory.
 
@@ -62,7 +62,7 @@ present.
 
 ### Drop normals.<a name = "dropNormals"></a>
 ```i3s_converter.exe -u myFile.slpk -n```<br>
-This command performs a conversion and drops all normals.  Client will recreate these normals. 
+This command performs a conversion and drops all normals.  Client will recreate these normals. This command only drops normals from Draco compressed geometry.
 
 ### Convert to filesystem (eslpk)<a name = "convertFilesystem"></a>
 ```i3s_converter.exe -u myFile.slpk -d C:\Users\johndoe\Desktop\MyFolder -t 2```<br>

@@ -14,8 +14,8 @@
 ## Introduction <a name="Introduction"></a>
 i3s_converter a command line tool for
 - Validating a 1.6 Scene Layer Package (slpk)
-- Convert a 1.4-1.6 slpk to 1.7
-- Extract a 1.7 slpk or a 2.0 slpk with layer type of Point Cloud.
+- Convert a 1.4-1.6 slpk to 1.8
+- Extract a 1.8 slpk or a 2.0 slpk with layer type of Point Cloud.
 
 
 |      &nbsp;     | Validate | Convert | Extract |
@@ -26,7 +26,7 @@ i3s_converter a command line tool for
 | Pointcloud      |     <img alt="supported" src="readme_images/checkmark.png">    | &nbsp;  | <img alt="supported" src="readme_images/checkmark.png"> |
 | Building        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
 
-*Note:* 1.7 maintains backwards compatibility with 1.6. The resultant 1.7 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
+*Note:* 1.8 maintains backwards compatibility with 1.6. The resultant 1.8 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
 
 When extracing or converting, the following formats are available:
 - Archived: *.slpk
@@ -93,8 +93,8 @@ is the equivalent to<br>
 | -d \[dir] | --dest \[output-directory] | Change [output directory](#outputDirectory). Will create it if it doesn't exist|
 | -k | --create-ktx2-textures | Create Basis Universal texture from input |
 | -j \[log_name] | --json \[log_name] | Set log name    |
-| -n | --drop-normals | Drop all normals. Client will recreate   |
-| -o \[outfile]  | --output-name \[outfile] | 1.7 slpk name   |
+| -n | --drop-normals | Drop all normals. Client will recreate (Draco geometry buffer only) |
+| -o \[outfile]  | --output-name \[outfile] | 1.8 slpk name   |
 | -r  | --region  | Region where bucket is located (S3/OSS).|
 | -s \[key] | --secret-key \[key] | AWS S3/Alibaba OSS secret key or Azure account key   |
 | -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |

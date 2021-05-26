@@ -46,8 +46,8 @@ The table below shows how the OGC community standard relates to the community sp
 
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S community specification**      | **OGC I3S community standard**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
-| MeshPyramids      | [3D Object](docs/1.8/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.8/IntegratedMesh_ReadMe.md) | 1.8              | [1.1]((http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                         |
-| Points            | [Point](docs/1.8/Point_ReadMe.md)                                                  | 1.8              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                          |
+| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                         |
+| Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                          |
 | PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)|
 
 
@@ -61,7 +61,7 @@ OGC I3S 1.1 Community Standard added backward compatible enhancements to the ori
   - Index hash table for improved performance of SLPKs and
   - Numerous editorial updates/corrections to improve readability
 
-[OGC I3S 1.2 Community Standard](https://github.com/opengeospatial/ogc-i3s-community-standard) that's under [OGC adoption process](https://www.ogc.org/pressroom/pressreleases/4389)  incorporates the following features from this repository:
+[OGC I3S 1.2 Community Standard](https://github.com/opengeospatial/ogc-i3s-community-standard) is currently under [OGC adoption process](https://www.ogc.org/pressroom/pressreleases/4389) and will incorporate enhancements to [3D Object](docs/1.8/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.8/IntegratedMesh_ReadMe.md) layers that are released as version 1.8 in this repository:
 
  - An I3S update focused on Performance and Scalability
 
@@ -123,10 +123,10 @@ There are several applications that can create and consume scene layers. The tab
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
  </tr>
  <tr>
-  <td>Uber</td>
-  <td><a href="https://github.com/uber-web/loaders.gl/tree/master/examples/deck.gl/i3s">loaders.gl</a></td>
+  <td>Urban Computing Foundation</td>
+  <td><a href="https://loaders.gl/examples/i3s">loaders.gl</a></td>
   <td>IntegratedMesh, 3D Object</td>
-  <td></td>
+  <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
  </tr>
   <td>Nearmap</td>

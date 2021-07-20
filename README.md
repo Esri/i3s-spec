@@ -67,7 +67,7 @@ OGC I3S 1.1 Community Standard added backward compatible enhancements to the ori
 
   - Introduction of paged node access pattern for MeshPyramids Profile – which significantly reduces the client-server traffic by bundling individual node metadata resources into compact pages of nodes
   - Introduction of a more compact geometry layout for 3D Object and IntegratedMesh layers binary geometry payloads – using a well-known quantization encoding (Draco)
-  - Support for Basis Universal Texture format in [Khronos KTX2](https:/github.khronos.org/KTX-Specification/) standard
+  - Support for Basis Universal Texture format in [Khronos KTX2](https://github.khronos.org/KTX-Specification/) standard
   - More optimal selection strategy – standardizes on Oriented Bounding Boxes (OBBs) based node selection criterion
   - Introduction of an advanced material definitions property such as physically based materials
   - Numerous editorial updates/corrections

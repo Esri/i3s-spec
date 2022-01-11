@@ -5,8 +5,9 @@
 [Running the executable](#Execute)  <br />
 [Subcommands](#Subcommands) <br />
 [Options](#Options)<br />
-[Examples](#Examples)<br />
+[Examples](i3s_converter_examples.md)<br />
 [Notes](#Notes)<br />
+[Version History](i3s_converter_version_history.md)<br />
 [Licensing](#Licensing)<br />
 
 ------------------

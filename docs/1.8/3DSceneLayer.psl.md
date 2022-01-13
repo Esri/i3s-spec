@@ -29,7 +29,7 @@ The 3DSceneLayerInfo object describes the properties of a layer in a store. Ever
 | attributeStorageInfo | [attributeStorageInfo](attributeStorageInfo.cmn.md)[] | Provides the schema and layout used for storing attribute content in binary format in I3S. |
 | statisticsInfo | [statisticsInfo](statisticsInfo.cmn.md)[] | Contains the statistical information for a layer. |
 | pointNodePages | [nodePageDefinition](nodePageDefinition.cmn.md) | The paged-access index description. For legacy purposes, this property is called pointNodePages in [Point Scene Layers](3DSceneLayer.psl.md).  |
-| geometryDefinition | [geometryDefinition](geometryDefinition.psl.md) | Define the layouts of point geometry and its attributes. |
+| **geometryDefinition** | [geometryDefinition](geometryDefinition.psl.md) | Define the layouts of point geometry and its attributes. |
 | fullExtent | [fullExtent](fullExtent.cmn.md) | 3D extent. If ```layer.fullExtent.spatialReference``` is specified, it must match ```layer.spatialReference```. |
 
 *Note: properties in **bold** are required*

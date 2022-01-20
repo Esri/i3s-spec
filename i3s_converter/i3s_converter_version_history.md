@@ -4,5 +4,9 @@ This documents purpose is to keep track of the version history of the i3s_conver
 
 ------------------
 
+### Version 0.7.12282021
+- Fixed crash when validating BSL with missing statistics summary.
+- Fixed incorrect parentIndex for nodes in nodePages when converting.
+
 ### Version 0.7.09152021
 - Fixed bug where Draco decoded attributes were incorrectly handled in certain cases to due Draco re-ordering of vertices.

@@ -40,37 +40,26 @@ The Open Geospatial Consortium (OGC) approved I3S as a Community Standard which 
 
 The open community specification hosted in this GitHub repository is the sole source of content for the OGC I3S Community Standard. The community specification evolves driven by advancements in technology as well as community needs. The OGC process allows for updating and synchronizing the Community Standard with this community specification at regular intervals to achieve equivalency.
 
-OGC is in the process of incorporating updates from this repository as [OGC I3S 1.2 Community Standard](https://github.com/opengeospatial/ogc-i3s-community-standard). To facilitate this process, as well as to quickly provide new capabilities to the community without impacting other existing scene layer types and profiles, each I3S layer evolves independently and follows its own release cycle.
+In [mid December 2021](https://www.ogc.org/pressroom/pressreleases/4617), OGC released [OGC I3S 1.2 Community Standard](https://www.ogc.org/standards/i3s) by incorporating updates from this repository. To facilitate this process, as well as to quickly provide new capabilities to the community without impacting other existing scene layer types and profiles, each I3S layer evolves independently and follows its own release cycle.
 
 The table below shows how the OGC community standard relates to the community specification hosted here.
 
 | **I3S Profile**   | **Supported Layer Types**                                                                               | **I3S community specification**      | **OGC I3S community standard**          |
 | ----------------- | ------------------------------------------------------------------------------------------------------- |------------------|----------------------------- |
-| MeshPyramids      | [3D Object](docs/1.6/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.6/IntegratedMesh_ReadMe.md) | 1.6              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                         |
-| Points            | [Point](docs/1.6/Point_ReadMe.md)                                                  | 1.6              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                          |
-| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | [1.1](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)|
+| MeshPyramids      | [3D Object](docs/1.8/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.8/IntegratedMesh_ReadMe.md) | 1.8              | [1.2](http://docs.opengeospatial.org/cs/17-014r7/17-014r7.html)                         |
+| Points            | [Point](docs/1.8/Point_ReadMe.md)                                                  | 1.8              | [1.2](http://docs.opengeospatial.org/cs/17-014r8/17-014r8.html)                          |
+| PointClouds       | [Point Cloud](docs/2.0/pcsl_ReadMe.md)                                                               | 2.0              | [1.2](http://docs.opengeospatial.org/cs/17-014r8/17-014r8.html)|
 
 
-OGC I3S 1.1 Community Standard added backward compatible enhancements to the original OGC I3S Community Standard. These [enhancements](https://portal.ogc.org/files/?artifact_id=89693) included:
+[OGC I3S 1.2 Community Standard](https://github.com/opengeospatial/ogc-i3s-community-standard) added backward compatible enhancements to the original OGC I3S Community Standard. The enhancements targeted MeshPyramids profile [3D Object](docs/1.8/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.8/IntegratedMesh_ReadMe.md) layers, that are released as version 1.8 in this repository and bring:
 
-- Addition of Point Cloud Scene Layer to the standard
-- For existing layer types, the addition of:
-  - Oriented Bounding Boxes (OBB) as a selection criteria
-  - Attribute Domain Rules
-  - Service Update Timestamp
-  - Index hash table for improved performance of SLPKs and
-  - Numerous editorial updates/corrections to improve readability
-
-[OGC I3S 1.2 Community Standard](https://github.com/opengeospatial/ogc-i3s-community-standard) is currently under [OGC adoption process](https://www.ogc.org/pressroom/pressreleases/4389) and will incorporate enhancements to [3D Object](docs/1.8/3Dobject_ReadMe.md) and [Integrated Mesh](docs/1.8/IntegratedMesh_ReadMe.md) layers that are released as version 1.8 in this repository:
-
- - An I3S update focused on Performance and Scalability
-
-  - Introduction of paged node access pattern for MeshPyramids Profile – which significantly reduces the client-server traffic by bundling individual node metadata resources into compact pages of nodes
-  - Introduction of a more compact geometry layout for 3D Object and IntegratedMesh layers binary geometry payloads – using a well-known quantization encoding (Draco)
-  - Support for Basis Universal Texture format in [Khronos KTX2](https://github.khronos.org/KTX-Specification/) standard
+  - Support for node paging capability significantly reducing the client-server traffic by bundling individual node metadata resources into compact pages of nodes
+  - Support for [Draco](https://google.github.io/draco/) geometry compression. Compression of I3S geometry attributes creates more compact content, which in turn provides a smaller payload, increasing performance.
+  - Support for supercompression of texture data using the [Basis Universal Texture](https://github.com/BinomialLLC/basis_universal) interchange system in [Khronos® KTX™ 2.0](https://github.khronos.org/KTX-Specification/) format, reducing compressed texture size by over 60%,  which in turn provides a smaller payload, increasing performance.
   - More optimal selection strategy – standardizes on Oriented Bounding Boxes (OBBs) based node selection criterion
-  - Introduction of an advanced material definitions property such as physically based materials
+  - Support for advanced material definitions such as physically based materials. Feature compatible with [Khronos® glTF™](https://www.khronos.org/gltf/) standard.
   - Numerous editorial updates/corrections
+
 
 ## What's New?
 Please see the [Version History](version_history.md) for document updates.
@@ -125,7 +114,7 @@ There are several applications that can create and consume scene layers. The tab
  <tr>
   <td>Urban Computing Foundation</td>
   <td><a href="https://loaders.gl/examples/i3s">loaders.gl</a></td>
-  <td>IntegratedMesh, 3D Object</td>
+  <td>IntegratedMesh, 3D Object, Building Scene Layer</td>
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
   <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
  </tr>

@@ -7,6 +7,7 @@ A hash table is a data structure that implements an associative array abstract d
 ## To create SLPK hash table
 1. The offset of each SLPK file is known. For example, the byte offset from the beginning of the SLPK file to the first byte of its ZIP local file header. See ZIP specification for reference.
 2. Convert all file paths to their canonical path. Canonical paths must:
+   - Be lower case
    - Use a forward slash as the path separator `/`
    - Not contain a heading forward slash
    - Example: `/my/PATH.json` converts to `my/path.json`

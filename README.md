@@ -309,8 +309,8 @@ This table reflects the current versions of the ArcGIS Clients.
   <tr>
     <td>Point</td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.10</td>
     <td></td>
     <td></td>
     <td></td>
@@ -318,8 +318,8 @@ This table reflects the current versions of the ArcGIS Clients.
   <tr>
     <td>Point Cloud</td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td align="middle"><img alt="supported" src="format/images/checkmark.png"></td>
+    <td>1.10</td>
     <td></td>
     <td></td>
     <td></td>

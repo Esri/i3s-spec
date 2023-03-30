@@ -18,7 +18,7 @@
 
 #### Example: Texture set definition (desktop: jpg+dds)
 
-For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/textures/0`, DDS at `/layers/0/nodes/888/textures/0_0_1` and KTX2 at DDS at `/layers/0/nodes/888/textures/1`
+For a mesh with `material.resource=888`, JPEG will be at `/layers/0/nodes/888/textures/0`, DDS at `/layers/0/nodes/888/textures/0_0_1` and KTX2 at `/layers/0/nodes/888/textures/1`
 
 ```json
  {

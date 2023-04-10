@@ -27,7 +27,7 @@ i3s_converter a command line tool for
 | Pointcloud      |     <img alt="supported" src="readme_images/checkmark.png">    | &nbsp;  | <img alt="supported" src="readme_images/checkmark.png"> |
 | Building        |     <img alt="supported" src="readme_images/checkmark.png">    |    <img alt="supported" src="readme_images/checkmark.png">    | <img alt="supported" src="readme_images/checkmark.png"> |
 
-*Note:* 1.8 maintains backwards compatibility with 1.6. The resultant 1.8 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
+*Note:* 1.9 maintains backwards compatibility with 1.6. The resultant 1.9 slpk will be larger in size than the input slpk. This is due to the creation of Draco-compressed geometries and DXT-compressed textures.  All of these features are important for increased performance. If output slpk size is a limiting factor, the `-x` option can be used to skip writing DXT textures, but this may result in slower drawing performance.  
 
 When extracing or converting, the following formats are available:
 - Archived: *.slpk
@@ -82,7 +82,7 @@ is the equivalent to<br>
 | -e \[infile.slpk] | --extract \[infile.slpk] | Extract slpk to eslpk    |
 | -h           | --help | Show usage      |
 | -i \[infile.slpk] | --slpk-info \[infile.slpk] | Show basic layer info |
-| -u \[infile.slpk] | --convert \[in-slpk]  | Convert and/or upgrade slpk to 1.7   |
+| -u \[infile.slpk] | --convert \[in-slpk]  | Convert and/or upgrade slpk to current i3s version.|
 | -v \[infile.slpk] | --validate \[in-slpk] | Validate slpk |
 |  | --convert-and-extract \[in-slpk] | Convert to 1.7 extracted slpk |
 
@@ -102,7 +102,8 @@ is the equivalent to<br>
 | -x | --drop-dxt | Don't write DXT textures |
 |  | --endpoint-url | Endpoint url for S3 compatible services |
 | | --aws-profile | AWS Profile in ```%USERPROFILE%\.aws\credentials``` |
-
+| |--date-format| Expected date format of date field. Required to correctly convert date formats into [ECMA ISO8601](../docs/1.9/ECMA_ISO8601.md). Date always needs to be in uppercase and time in lower case. If not specified the default US date format "MM/DD/YYYY hh:mm:ss" is assumed.|
+|  |--utc-offset| Offset from UTC of date fields. Expected format is +hh:mm for positive or -hh:mm for negative offset. If not set, time zone setting of the device will be used.|
 
 
 ### Supported cloud schemes:

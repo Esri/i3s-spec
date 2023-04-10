@@ -1,8 +1,19 @@
 Version History
 ===============================================
-Last updated 5/21/2020
+
+Last updated 03/13/2023
+
+### Version 2.1
+
+- Added capability "Extract" to point cloud scene layers. The indication of the capability extract allows client application clip part of a layer to create a new SLPK, for example. 
+
+### Version 1.9
+
+- Added capability "Extract" to integrated mesh, 3D objects, points, and building scene layers. The indication of the capability extract allows client application clip part of a layer to create a new SLPK, for example.
+- Defining time as [ISO 8601](docs/1.9/ECMA_ISO8601.md) to provide well defined, unambiguous representation of calendar dates and times.
 
 ### Version 1.8
+
 Released 5/21/2021 1.8 Versions of [3D Object Scene Layer](docs/1.8/3Dobject_ReadMe.md), [Integrated Mesh Scene Layer](docs/1.8/IntegratedMesh_ReadMe.md), [Building Scene Layer](docs/1.8/BSL_ReadMe.md) and [Point Scene Layer](docs/1.8/Point_ReadMe.md)
  - Upgrade [I3S Converter Tool](i3s_converter/i3s_converter_ReadMe.md) to convert I3S 1.4 - 1.7 to 1.8 versions
  - Minor updates

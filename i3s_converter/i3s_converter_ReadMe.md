@@ -102,7 +102,7 @@ is the equivalent to<br>
 | -x | --drop-dxt | Don't write DXT textures |
 |  | --endpoint-url | Endpoint url of object store. |
 | | --aws-profile | AWS Profile in ```%USERPROFILE%\.aws\credentials``` |
-| |--date-format| Expected date format of date field. Required to correctly convert date formats into [ECMA ISO8601](../docs/1.9/ECMA_ISO8601.md). Date always needs to be in uppercase and time in lower case. If not specified the default US date format "MM/DD/YYYY hh:mm:ss" is assumed. Only dates in the Gregorian calendar are supported.|
+| |--date-format| Expected date format of date field. Required to correctly convert date formats into [ECMA ISO8601](../docs/1.9/ECMA_ISO8601.md). Date always needs to be in uppercase and time in lower case. If not specified the default US date format "MM/DD/YYYY hh:mm:ss" is assumed.|
 |  |--utc-offset| Offset from UTC of date fields. Expected format is +hh:mm for positive or -hh:mm for negative offset. If not set, time zone setting of the device will be used.|
 
 

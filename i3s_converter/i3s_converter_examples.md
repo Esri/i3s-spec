@@ -4,7 +4,7 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 
 -------------------------------------
 ## Quick Links
-[Convert from old version (1.4-1.7) to new version (1.8)](#ConvertSLPK)<br>
+[Convert from old version (1.4-1.7) to newest version](#ConvertSLPK)<br>
 [Set name for the log file](#setLogName)<br>
 [Set the output directory](#setOuput)<br>
 [Set the name of the output file](#setFileName)<br>
@@ -19,11 +19,12 @@ In all the of following examples, we will assume a working directory of ```C:\Us
 [Convert to cloud format (i3srest)](#convertCloud)<br>
 [Extract to cloud (i3srest)](#extractCloud)<br>
 [Convert and extract to cloud](#convertAndExtract)<br>
-[Validate using AWS profile](#validateWithAws)
+[Validate using AWS profile](#validateWithAws)<br>
+[Convert slpk with date fields](#dateFields)<br>
 
 -------------------------------------
 
-### Convert from old version (1.4-1.6) to new version (1.8)<a name = "ConvertSLPK"></a>
+### Convert from old version (1.4-1.6) to newest version<a name = "ConvertSLPK"></a>
 ```i3s_converter.exe -u myFile.slpk```<br>
 This command will convert/upgrade from an older SLPK version to the latest SLPK version.  The output file will be in the working directory.
 
@@ -41,7 +42,7 @@ This command performs a conversion and the output file will have the name ```myN
 
 ### Validate SLPK<a name = "validate"></a>
 ```i3s_converter.exe -v myFile.slpk```<br>
-This command will validate that a 1.6 or 1.7 slpk can be used and is compatible as 1.8 consumption.
+This command will validate that a 1.6 or 1.7 slpk can be used and is compatible with the newest i3s version consumption.
 
 ### Extract slpk to filesystem<a name = "extractFilesystem"></a>
 ```i3s_converter.exe -e myFile.slpk```<br>
@@ -88,10 +89,13 @@ This command will convert and extract the slpk to the cloud.  This example uses 
 
 ### Validate slpk on cloud service<a name = "validateOnCloud"></a>
 ```i3s_converter.exe --validate az://mySlpkContainer/mySlpk.i3srest -a AKIAIOSFODNN7EXAMPLE -s wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY```<br>
-This command will validate that an SLPK on a cloud store (i3srest) can be used and is compatible as 1.7 consumption. This example uses Azure.
+This command will validate that an SLPK on a cloud store (i3srest) can be used and is compatible with the newest i3s version consumption. This example uses Azure.
 
 ### Validate with AWS profile<a name = "validateWithAws"></a>
 ```i3s_converter.exe --validate oss://mySlpkBucket/mySlpk.i3srest --aws-profile alibaba -r oss-us-west-1 ```<br>
 This command will validate using AWS profiles, rather than entering credentials into the program. This example uses Alibaba OSS.
 Note that this command will only work with AWS and OSS.
 
+### Convert slpk with date fields<a name = "dateFields"></a>
+```i3s_converter.exe -u c:/temp/mySlpk.slpk --date-format "DD/MM/YYYY hh:mm:ss" --utc-offset -03:00```<br>
+This command will convert any date field in a SLPK or cloud store (i3sREST) into ECMA ISO 8601 including the UTC offset.

@@ -13,3 +13,6 @@ This documents purpose is to keep track of the version history of the i3s_conver
 
 ### Version 0.7.09152022
 - Added date-format and utc-offset options to convert date fields to ECMA ISO8601. 
+
+### Version 0.7.12062023
+- Honor endpoint-url when writing to Azure blob store.

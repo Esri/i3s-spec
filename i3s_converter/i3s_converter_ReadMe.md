@@ -100,9 +100,9 @@ is the equivalent to<br>
 | -s \[key] | --secret-key \[key] | AWS S3/Alibaba OSS secret key or Azure account key   |
 | -t \[num threads] | --thread-count \[num threads] | [Number of threads](#threadsDesc) to use when converting, default is 1 |
 | -x | --drop-dxt | Don't write DXT textures |
-|  | --endpoint-url | Endpoint url for S3 compatible services |
+|  | --endpoint-url | Endpoint url of object store. |
 | | --aws-profile | AWS Profile in ```%USERPROFILE%\.aws\credentials``` |
-| |--date-format| Expected date format of date field. Required to correctly convert date formats into [ECMA ISO8601](../docs/1.9/ECMA_ISO8601.md). Date always needs to be in uppercase and time in lower case. If not specified the default US date format "MM/DD/YYYY hh:mm:ss" is assumed.|
+| |--date-format| Expected date format of date field. Required to correctly convert date formats into [ECMA ISO8601](../docs/1.9/ECMA_ISO8601.md). Date always needs to be in uppercase and time in lower case. If not specified the default US date format "MM/DD/YYYY hh:mm:ss" is assumed. Only dates in the Gregorian calendar are supported.|
 |  |--utc-offset| Offset from UTC of date fields. Expected format is +hh:mm for positive or -hh:mm for negative offset. If not set, time zone setting of the device will be used.|
 
 

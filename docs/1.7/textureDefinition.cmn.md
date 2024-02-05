@@ -41,7 +41,7 @@ Part of [sharedResource](sharedResource.cmn.md) that is deprecated with 1.7.
         "size": 512,
         "pixelInWorldUnits": 0,
         "href": [
-          "../textures/0_0",
+          "../textures/0",
           "../textures/0_0_1"
         ],
         "byteOffset": [
